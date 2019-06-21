@@ -99,6 +99,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net461\System.Data.SqlClient.dll</HintPath>
@@ -137,6 +138,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\20190621054317_r1.cs" />
+    <Compile Include="Migrations\20190621054317_r1.designer.cs">
+      <DependentUpon>20190621054317_r1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621060146_r2.cs" />
+    <Compile Include="Migrations\20190621060146_r2.designer.cs">
+      <DependentUpon>20190621060146_r2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621061213_r3.cs" />
+    <Compile Include="Migrations\20190621061213_r3.designer.cs">
+      <DependentUpon>20190621061213_r3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621062228_r4.cs" />
+    <Compile Include="Migrations\20190621062228_r4.designer.cs">
+      <DependentUpon>20190621062228_r4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621062504_r5.cs" />
+    <Compile Include="Migrations\20190621062504_r5.designer.cs">
+      <DependentUpon>20190621062504_r5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621062857_r6.cs" />
+    <Compile Include="Migrations\20190621062857_r6.designer.cs">
+      <DependentUpon>20190621062857_r6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621063655_r7.cs" />
+    <Compile Include="Migrations\20190621063655_r7.designer.cs">
+      <DependentUpon>20190621063655_r7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190621084921_r8.cs" />
+    <Compile Include="Migrations\20190621084921_r8.designer.cs">
+      <DependentUpon>20190621084921_r8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ContextModelSnapshot.cs" />
+    <Compile Include="Model\Context.cs" />
+    <Compile Include="Model\RodzajDokumentuSlo.cs" />
+    <Compile Include="Model\StatusSlo.cs" />
+    <Compile Include="Model\Wladanie.cs" />
+    <Compile Include="ViewModel\Converters.cs" />
+    <Compile Include="ViewModel\Dane.cs" />
+    <Compile Include="ViewModel\DzialkaViewModel.cs" />
+    <Compile Include="ViewModel\MakeInitDatabase.cs" />
+    <Compile Include="View\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -145,12 +190,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Dzialka.cs" />
+    <Compile Include="Model\DzielnicaSlo.cs" />
+    <Compile Include="Model\FormaWladaniaSlo.cs" />
+    <Compile Include="Model\GminaSlo.cs" />
+    <Compile Include="Model\InnePrawa.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\NazwaCzynnosciSlo.cs" />
+    <Compile Include="Model\Obreb.cs" />
+    <Compile Include="Model\PlatnoscUw.cs" />
+    <Compile Include="Model\Podmiot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -177,6 +239,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
