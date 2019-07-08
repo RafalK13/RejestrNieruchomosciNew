@@ -1,0 +1,60 @@
+﻿<Window x:Class="RejestrNieruchomosciNew.View.AddView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+        mc:Ignorable="d"
+        Title="AddView" Height="742" Width="1059" WindowState="Maximized">
+    <Window.Resources>
+        
+        <Style TargetType="Button" x:Key="buttonRaf">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Margin" Value="50,5,5,5"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <!--<TextBox  Grid.Row="0" 
+                  FontSize="20"
+                  TextAlignment="Center"
+                  Text="{Binding modeMessage, Mode=TwoWay}"></TextBox>-->
+
+        <TextBox Grid.Row="0" 
+                  TextAlignment="Center"
+                Text="{Binding d.Numer}"
+                />
+
+        <TabControl Grid.Row="1" Margin="20">
+            <TabItem Header="Dane podstawowe">
+                <!--<local:UserControl_Add_danePodstawowe/>-->
+            </TabItem>
+            <TabItem Header="Własność" IsEnabled="{Binding canAdd}"></TabItem>
+            <TabItem Header="Inne prawa" IsEnabled="{Binding canAdd}"></TabItem>
+        </TabControl>
+        
+        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button 
+                Style="{StaticResource buttonRaf}" IsEnabled="{Binding canAdd}"
+                Content="Dodaj"></Button>
+            <Button 
+                Style="{StaticResource buttonRaf}"
+                Content="Modyfikacja"></Button>
+            <Button 
+                x:Name="buttonAdd"
+                Style="{StaticResource buttonRaf}"
+                Content="Dodawanie"></Button>
+            <Button 
+                Style="{StaticResource buttonRaf}"
+                Content="Inne"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -170,27 +170,21 @@
     <Compile Include="Migrations\20190621084921_r8.designer.cs">
       <DependentUpon>20190621084921_r8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190627110922_r-13.cs" />
+    <Compile Include="Migrations\20190627110922_r-13.designer.cs">
+      <DependentUpon>20190627110922_r-13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
+    <Compile Include="Model\ChangeClass.cs" />
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="ViewModel\Converters.cs" />
-    <Compile Include="ViewModel\DzialkaViewModel.cs" />
-    <Compile Include="ViewModel\MakeInitDatabase.cs" />
-    <Compile Include="ViewModel\UserControl_ModViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
-    <Compile Include="View\AddView.xaml.cs">
-      <DependentUpon>AddView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl_Add_danePodstawowe.xaml.cs">
-      <DependentUpon>UserControl_Add_danePodstawowe.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl_ModView.xaml.cs">
-      <DependentUpon>UserControl_ModView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
@@ -212,19 +206,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControl_Add_danePodstawowe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControl_ModView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
