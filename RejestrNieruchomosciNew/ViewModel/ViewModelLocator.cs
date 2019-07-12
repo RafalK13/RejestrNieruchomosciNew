@@ -43,16 +43,17 @@ namespace RejestrNieruchomosciNew.ViewModel
             #endregion
 
             //SimpleIoc.Default.Register<DzialkaViewModel>();
+            SimpleIoc.Default.Register<UserControl_PreviewViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
-        //public DzialkaViewModel DzialkaViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<DzialkaViewModel>();
-        //    }
-        //}
+        public UserControl_PreviewViewModel UserControl_PreviewViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            }
+        }
 
         public MainViewModel MainViewModel
         {

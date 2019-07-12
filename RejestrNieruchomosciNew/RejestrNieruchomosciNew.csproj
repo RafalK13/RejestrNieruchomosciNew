@@ -204,6 +204,7 @@
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\ChangeClass.cs" />
     <Compile Include="Model\Context.cs" />
+    <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
