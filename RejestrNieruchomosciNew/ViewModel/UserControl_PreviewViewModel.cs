@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,30 +11,31 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    class UserControl_PreviewViewModel : INotifyPropertyChanged
+    class UserControl_PreviewViewModel : ViewModelBase
     {
         #region Properties
 
-        MainViewModel main { get; set; }
+        //MainViewModel main { get; set; }
 
-        private string _modeMessage;
-        public string modeMessage
-        {
-            get => _modeMessage;
-            set
-            {
-                _modeMessage = value;
-                OnPropertyChanged("modeMessage");
-            }
-        }
+        //private string _modeMessage;
+        //public string modeMessage
+        //{
+        //    get => _modeMessage;
+        //    set
+        //    {
+        //        _modeMessage = value;
+        //        RaisePropertyChanged("modeMessage");
+        //    }
+        //}
         
-        public ICollectionView dzialkaView
-        {
-            get
-            {
-                return CollectionViewSource.GetDefaultView(main.dzialkaList);
-            }
-        }
+        //public ICollectionView dzialkaView
+        //{
+        //    get
+        //    {
+        //        var v = SimpleIoc.Default.GetInstance<MainViewModel>("Main");
+        //        return CollectionViewSource.GetDefaultView(v.dzialkaList);
+        //    }
+        //}
 
         //private List<Dzialka> _dzialkaList;
         //public List<Dzialka> dzialkaList
@@ -84,10 +88,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Konstructor
+
+
         public UserControl_PreviewViewModel()
         {
-            main = new MainViewModel();
-            modeMessage = "Przeglądanie bazy";
+            MessageBox.Show("DUPA");
+            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+            v.modeMessage = "Przeglądanie bazy";
         }
 
         #endregion
@@ -141,17 +148,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #endregion
 
-        #region OnPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(name));
-            }
-        }
-        #endregion
+   
     }
 
 }

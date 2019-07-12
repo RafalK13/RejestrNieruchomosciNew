@@ -6,9 +6,8 @@
              xmlns:localViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="915">
+   
     <UserControl.Resources>
-        <localViewModel:MainViewModel x:Key="mainViewModel"/>
-        <CollectionViewSource x:Key="collView"/>
         <localViewModel:resultCnvr x:Key="conv"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
@@ -32,7 +31,6 @@
         </Style>
     </UserControl.Resources>
    
-
     <Grid ShowGridLines="False" Margin="0,0,0,0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -87,11 +85,12 @@
                 />
 
         <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
-                  ItemsSource="{Binding Source={StaticResource collView}, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
+                  ItemsSource="{Binding dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
                   SelectedItem="{Binding dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
-                  SelectionMode="Single" IsSynchronizedWithCurrentItem="True">
+                  SelectionMode="Single" 
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"></DataGridTextColumn>
                 <DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
@@ -100,6 +99,15 @@
                 <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}"></DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.InputBindings>
+                <!--<MouseBinding
+                            Command="{Binding dubleClick}"
+                            CommandParameter="{Binding dzialkaView}"/>-->
+                <MouseBinding   Gesture="LeftDoubleClick" 
+                                Command="{Binding dubleClick}"/>
+                <!--<MouseBinding   Gesture="LeftDoubleClick" 
+                                Command="{Binding dubleClick}"/>-->
+            </DataGrid.InputBindings>
         </DataGrid>
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
     </Grid>

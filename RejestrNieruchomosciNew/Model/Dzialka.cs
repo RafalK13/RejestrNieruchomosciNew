@@ -1,11 +1,12 @@
-﻿using RejestrNieruchomosciNew.Model;
+﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew
 {
-    public partial class Dzialka : ChangeClass
+    public partial class Dzialka : ViewModelBase
     {
         private string _numer;
         private int _obrebId;
@@ -17,7 +18,7 @@ namespace RejestrNieruchomosciNew
             set
             {
                 _numer = value;
-                OnPropertyChanged("Numer");
+                RaisePropertyChanged("Numer");
             }
         }
         public string Kwakt { get; set; }
@@ -29,7 +30,7 @@ namespace RejestrNieruchomosciNew
             set
             {
                 _obrebId = value;
-                OnPropertyChanged("ObrebId");
+                RaisePropertyChanged("ObrebId");
             }
         }
         public Obreb Obreb { get; set; }

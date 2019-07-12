@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:localViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+        xmlns:locViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
         xmlns:localView="clr-namespace:RejestrNieruchomosciNew.View"
         x:Class="RejestrNieruchomosciNew.Views.MainView"
         mc:Ignorable="d"
-        Title="MainView" Width="1000" WindowState="Maximized">
+        
+        Title="MainView" Width="1000" WindowState="Maximized"
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
+    >
     <Window.Resources>
         <Style TargetType="Button" x:Key="buttonRaf">
             <Setter Property="Width" Value="100"></Setter>
@@ -17,7 +20,7 @@
     </Window.Resources>
 
     <!--<Window.DataContext>
-        <localViewModel:MainViewModel/>
+        <locViewModel:MainViewModel/>
     </Window.DataContext>-->
 
     <Grid ShowGridLines="False">
@@ -31,33 +34,31 @@
                   TextAlignment="Center"
                   Text="{Binding modeMessage, Mode=TwoWay}"></TextBox>
 
-
         <!--<localView:AddView Grid.Row="1"/>-->
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
-        
+
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Aktualizuj" ></Button>
-
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Przegladanie"></Button>
-        <Button 
+            <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Modyfikacja"></Button>
-        <Button 
+            <Button 
                 x:Name="buttonAdd"
                 Style="{StaticResource buttonRaf}"
                 Content="Dodawanie"></Button>
-        <Button 
+            <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Usuwanie"></Button>
-        <Button 
+            <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Inne"></Button>
         </StackPanel>
-       
+
     </Grid>
 </Window>
