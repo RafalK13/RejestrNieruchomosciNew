@@ -41,7 +41,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Konstruktor
         public MainViewModel()
         {
-            MessageBox.Show("1");
+           
             modeMessage = "Hanka";
             
             //initDzialkaList();          
