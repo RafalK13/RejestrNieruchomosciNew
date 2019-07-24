@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GalaSoft.MvvmLight.Ioc;
+using Microsoft.EntityFrameworkCore;
+using RejestrNieruchomosciNew.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +21,13 @@ namespace RejestrNieruchomosciNew
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            //SimpleIoc.Default.GetInstance<MainViewModel>("Main").initDzialkaList();
+            //MakeInitDatabase m = new MakeInitDatabase();
+        }
 
+        private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            //SimpleIoc.Default.GetInstance<MainViewModel>("Main").initDzialkaList();
         }
     }
 

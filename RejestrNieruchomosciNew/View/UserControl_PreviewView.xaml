@@ -5,16 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:localViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="915">
+             d:DesignHeight="300" d:DesignWidth="915"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             DataContext="{Binding Source={StaticResource Locator}, Path=UserControl_PreviewViewModel}"
+             >
+
     <UserControl.Resources>
-        <localViewModel:MainViewModel x:Key="mainViewModel"/>
-        <CollectionViewSource x:Key="collView"/>
         <localViewModel:resultCnvr x:Key="conv"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="VerticalContentAlignment" Value="Bottom"></Setter>
-         </Style>
+        </Style>
         <Style TargetType="TextBox" x:Key="tekstBox">
             <Setter Property="Height" Value="30" ></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
@@ -31,7 +33,6 @@
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
     </UserControl.Resources>
-   
 
     <Grid ShowGridLines="False" Margin="0,0,0,0" >
         <Grid.RowDefinitions>
@@ -51,7 +52,6 @@
                  Text="{Binding result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conv}}"
                  Margin="0,1,0,0"
                  IsReadOnly="True" Foreground="Black"/>
-
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Numer działki"
@@ -68,30 +68,44 @@
                 Style="{StaticResource comboBox}"
                 Margin="0,80,0,0"
                 SelectedValue="{Binding obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding obreb.gminaView}"
-                />
+                ItemsSource="{Binding obreb.gminaView}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Obręb"
                Margin="0,110,0,0"/>
+
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource comboBox}"
                 Margin="0,140,0,0"
                 SelectedValue="{Binding obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding obreb.obrebView}"
-                />
+                >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
         <Button Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource button}"
                 Content="Czyść"
                 Margin="0,200,0,0"
-                />
+                Command="{ Binding clsClick}"
+                >
+        </Button>
 
         <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
-                  ItemsSource="{Binding Source={StaticResource collView}, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
+                  ItemsSource="{Binding dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
                   SelectedItem="{Binding dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
-                  SelectionMode="Single" IsSynchronizedWithCurrentItem="True">
+                  SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"></DataGridTextColumn>
                 <DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
@@ -100,6 +114,11 @@
                 <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}"></DataGridTextColumn>
             </DataGrid.Columns>
+            <DataGrid.InputBindings>
+                <MouseBinding   Gesture="LeftDoubleClick" 
+                                Command="{Binding dubleClick}"/>
+
+            </DataGrid.InputBindings>
         </DataGrid>
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
     </Grid>
