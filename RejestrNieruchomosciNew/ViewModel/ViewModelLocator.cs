@@ -44,6 +44,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             //SimpleIoc.Default.Register<DzialkaViewModel>();
             SimpleIoc.Default.Register<UserControl_PreviewViewModel>();
+            SimpleIoc.Default.Register<DzialkaViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
@@ -52,6 +53,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            }
+        }
+
+        public DzialkaViewModel DzialkaViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DzialkaViewModel>();
             }
         }
 

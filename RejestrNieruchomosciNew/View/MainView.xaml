@@ -31,7 +31,7 @@
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
-        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Aktualizuj" ></Button>
@@ -44,6 +44,7 @@
             <Button 
                 x:Name="buttonAdd"
                 Style="{StaticResource buttonRaf}"
+                Command="{Binding addNewDzialka}"
                 Content="Dodawanie"></Button>
             <Button 
                 Style="{StaticResource buttonRaf}"

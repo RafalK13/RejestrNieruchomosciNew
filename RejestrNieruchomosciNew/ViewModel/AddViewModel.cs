@@ -1,4 +1,9 @@
-﻿using RejestrNieruchomosciNew.Model;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
+using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,10 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class AddViewModel : ChangeClass
+    public class AddViewModel : ViewModelBase
     {
         #region private Properties
         private string _modeMessage;
@@ -22,7 +28,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _modeMessage = value;
-                OnPropertyChanged("modeMessage");
+                RaisePropertyChanged("modeMessage");
             }
         }
 
@@ -32,11 +38,31 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _canAdd = value;
-                OnPropertyChanged("canAdd");
+                RaisePropertyChanged("canAdd");
             }
         }
 
+        public ICommand closeWindow { get; set; }
+
         public DzialkaViewModel dzialkaViewModel { get; set; }
+
+        #region Konstruktor
+        public AddViewModel()
+        {
+            closeWindow = new RelayCommand(onCloseWindow);
+        }
+        #endregion
+        
+        #region Medods
+        private void onCloseWindow()
+        {
+            #region obsługa messenger -REM
+            //Messenger.Default.Send<MessagesRaf>( new MessagesRaf() { activity=true }, "Token1" );
+            #endregion
+
+            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+            v.btActivity = true;
+        }
 
         //public int? isDzialka()
         //{
@@ -65,7 +91,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         //        }
         //    }
         //    return null;
-            
+
         //}
 
         //public AddViewModel()
@@ -83,8 +109,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         //{
         //    canAdd = isDzialka()==0 ? true : false;
         //}
-
-        #region Medods
         #endregion
     }
 }

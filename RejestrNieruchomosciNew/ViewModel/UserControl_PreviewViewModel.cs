@@ -64,6 +64,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _dzialkaList = value;
+
                 RaisePropertyChanged("dzialkaList");
                 RaisePropertyChanged("dzialkaView");
             }
@@ -98,8 +99,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PreviewViewModel()
         {
             initDzialkaList();
-            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
-            v.modeMessage = "Przeglądanie bazy";
+            //var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+            //v.modeMessage = "Przeglądanie bazy";
 
             dubleClick = new RelayCommand(onDoubleClicked);
             leftClick = new RelayCommand(onLeftClick);

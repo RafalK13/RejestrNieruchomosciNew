@@ -3,12 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+        xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
+        xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="AddView" Height="742" Width="1059" WindowState="Maximized">
+        Title="AddView" Height="742" Width="1059" WindowState="Maximized"
+        >
+    <Window.DataContext>
+        <loc:AddViewModel/>
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed" >
+            <i:InvokeCommandAction Command="{Binding closeWindow}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Window.Resources>
-        
-        <Style TargetType="Button" x:Key="buttonRaf">
+         <Style TargetType="Button" x:Key="buttonRaf">
             <Setter Property="Width" Value="100"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Margin" Value="50,5,5,5"></Setter>
@@ -34,7 +44,7 @@
 
         <TabControl Grid.Row="1" Margin="20">
             <TabItem Header="Dane podstawowe">
-                <!--<local:UserControl_Add_danePodstawowe/>-->
+                <view:UserControl_Add_danePodstawowe/>
             </TabItem>
             <TabItem Header="Własność" IsEnabled="{Binding canAdd}"></TabItem>
             <TabItem Header="Inne prawa" IsEnabled="{Binding canAdd}"></TabItem>
@@ -42,6 +52,7 @@
         
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button 
+                
                 Style="{StaticResource buttonRaf}" IsEnabled="{Binding canAdd}"
                 Content="Dodaj"></Button>
             <Button 

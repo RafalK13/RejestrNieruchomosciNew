@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
     <UserControl.Resources>
@@ -30,6 +31,9 @@
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
     </UserControl.Resources>
+    <UserControl.DataContext>
+        <loc:DzialkaViewModel/>
+    </UserControl.DataContext>
  
     <Grid ShowGridLines="False" Margin="0,0,0,0" >
         <Grid.RowDefinitions>
@@ -51,7 +55,7 @@
                Margin="0,0,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource tekstBox}"
-                Text="{Binding dzialkaViewModel.dzialka.Numer, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                Text="{Binding dzialkaNr, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                 Margin="0,25,0,0"/>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
@@ -60,8 +64,14 @@
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource comboBox}"
                 Margin="0,80,0,0"
-                SelectedValue="{Binding dzialkaViewModel.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding dzialkaViewModel.obreb.gminaView}"/>
+                SelectedValue="{Binding obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding obreb.gminaView}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Obręb"
@@ -69,8 +79,15 @@
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource comboBox}"
                 Margin="0,135,0,0"
-                SelectedValue="{Binding dzialkaViewModel.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding dzialkaViewModel.obreb.obrebView}"/>
+                SelectedValue="{Binding obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding obreb.obrebView}"
+                >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Numer KW zrob."

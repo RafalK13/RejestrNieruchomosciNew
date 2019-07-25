@@ -13,6 +13,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class ObrebClass : ViewModelBase
     {
+        #region Properties
         public List<Obreb> obrebList { get; set; }
 
         private ICollectionView _gminaView;
@@ -77,15 +78,19 @@ namespace RejestrNieruchomosciNew.Model
                 //setFilter();
             }
         }
+        #endregion
 
+        #region Konstructor
         public ObrebClass()
         {
             obrebList = new List<Obreb>();
             initObreb();
         }
-
+        #endregion
+        #region Methods
         private void initObreb()
         {
+            obrebList = null;
             using (var c = new Context())
             {
                 obrebList = c.Obreb.Include("GminaSlo").ToList();
@@ -110,5 +115,6 @@ namespace RejestrNieruchomosciNew.Model
             gminaValue = string.Empty;
             obrebValue = string.Empty;
         }
+        #endregion
     }
 }
