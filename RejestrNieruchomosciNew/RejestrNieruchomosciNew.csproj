@@ -156,6 +156,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Migrations\20190621054317_r1.cs" />
     <Compile Include="Migrations\20190621054317_r1.designer.cs">
       <DependentUpon>20190621054317_r1.cs</DependentUpon>
@@ -212,6 +213,7 @@
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
+    <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\Converters.cs" />
     <Compile Include="ViewModel\DzialkaViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

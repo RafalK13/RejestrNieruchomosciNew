@@ -35,6 +35,19 @@ namespace RejestrNieruchomosciNew
         }
         public Obreb Obreb { get; set; }
 
+        public Dzialka() { }
+
+        public Dzialka( string _numer, int _ObrebId, string _kwA=null, string _kwZ=null, decimal? _Pow=null  )
+        {
+            Numer = _numer;
+            ObrebId = _ObrebId;
+            Kwakt = _kwA;
+            Kwzrob = _kwZ;
+            Pow = _Pow;
+
+
+        }
+
         //public int? InnePrawa { get; set; }
         //public virtual ICollection<InnePrawa> InnePrawaNavigation { get; set; }
         //public virtual ICollection<Wladanie> Wladanie { get; set; }

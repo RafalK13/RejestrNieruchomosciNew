@@ -45,7 +45,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             //SimpleIoc.Default.Register<DzialkaViewModel>();
             SimpleIoc.Default.Register<UserControl_PreviewViewModel>();
             SimpleIoc.Default.Register<DzialkaViewModel>();
+            SimpleIoc.Default.Register<AddViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
+        }
+
+        public AddViewModel AddViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddViewModel>();
+            }
         }
 
         public UserControl_PreviewViewModel UserControl_PreviewViewModel

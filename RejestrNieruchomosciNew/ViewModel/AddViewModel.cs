@@ -20,6 +20,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region private Properties
         private string _modeMessage;
         private bool _canAdd;
+        private bool _canAddTab;
         #endregion
 
         public string modeMessage
@@ -42,18 +43,48 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public ICommand closeWindow { get; set; }
+        public bool canAddTab
+        {
+            get => _canAddTab;
+            set
+            {
+                _canAddTab = value;
+                RaisePropertyChanged("canAddTab");
+            }
+        }
+
+        public ICommand OnCloseWindow { get; set; }
+        public ICommand OnAddDzialka { get; set; }
 
         public DzialkaViewModel dzialkaViewModel { get; set; }
 
         #region Konstruktor
         public AddViewModel()
         {
-            closeWindow = new RelayCommand(onCloseWindow);
+            canAdd = false;
+            canAddTab = false;
+            modeMessage = "Dodawanie nowej działki";
+            OnCloseWindow = new RelayCommand(onCloseWindow);
+            OnAddDzialka = new RelayCommand(onAddDzialka);
         }
         #endregion
-        
+
         #region Medods
+        private void onAddDzialka()
+        {
+            using (var c = new Context())
+            {
+                var dzViewModel = ServiceLocator.Current.GetInstance<DzialkaViewModel>();
+
+                c.Dzialka.Add(dzViewModel.GetDzialka);
+                c.SaveChanges();
+
+                var previewViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+                previewViewModel.dzialkaList.Add(dzViewModel.GetDzialka);
+                previewViewModel.dzialkaView.Refresh();
+            }
+        }
+
         private void onCloseWindow()
         {
             #region obsługa messenger -REM

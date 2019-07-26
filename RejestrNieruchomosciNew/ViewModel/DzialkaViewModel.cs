@@ -22,7 +22,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _obreb = value;
                 RaisePropertyChanged("obreb");
             }
-        } 
+        }
 
         private string _dzialkaNr;
         public string dzialkaNr
@@ -34,6 +34,44 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("dzialkaNr");
                 setFilter();
             }
+        }
+
+        private string _kwA;
+        public string kwA
+        {
+            get => _kwA;
+            set
+            {
+                _kwA = value;
+                RaisePropertyChanged("kwA");
+            }
+        }
+
+        private string _kwZ;
+        public string kwZ
+        {
+            get => _kwZ;
+            set
+            {
+                _kwZ = value;
+                RaisePropertyChanged("kwZ");
+            }
+        }
+
+        private decimal _pow;
+        public decimal pow
+        {
+            get => _pow;
+            set
+            {
+                _pow = value;
+                RaisePropertyChanged("pow");
+            }
+        }
+
+        public Dzialka GetDzialka 
+        {
+            get => new Dzialka(dzialkaNr, obreb.getId().Value, kwA, kwZ, pow);
         }
 
         public ICommand leftClick { get; set; }
@@ -58,29 +96,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             UserControl_PreviewViewModel d = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
 
-            if (obreb.getId().HasValue)
+            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialkaNr) == false)
             {
                 int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialkaNr).Count();
-                
-               
+
+                var v = ServiceLocator.Current.GetInstance<AddViewModel>();
+
+                v.canAdd = c == 0 ? true : false;
             }
-
-            //bool nb = d.dzialkaList.Where(r => r.Numer == dzialkaNr).Count() > 0 ? true : false;
-            //int n = d.dzialkaList.Where(r => r.Numer == dzialkaNr).Count();
-
-            //MessageBox.Show(obreb.getId().ToString());
-            //bool nb = !string.IsNullOrEmpty(dzialkaNr) ? d.dzialkaList.Contains(dzialkaNr) : false;
-            //bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d..Obreb.Nazwa.Contains(obreb.obrebValue) : false;
-            //bool gb = !string.IsNullOrEmpty(obreb.gminaValue) ? d.Obreb.GminaSlo.Nazwa.Contains(obreb.gminaValue) : false;
-
-            //if ((nb && ob && gb) == true)
-            //    MessageBox.Show("OK");
-
-            //if (nb == true)
-            //    MessageBox.Show("OK");
-
-
             #endregion
         }
     }

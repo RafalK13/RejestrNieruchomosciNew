@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
         xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+        xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="AddView" Height="742" Width="1059" WindowState="Maximized"
+        Title="AddView" Height="700" Width="700"
+        DataContext="{Binding Source={StaticResource Locator}, Path=AddViewModel}"
         >
-    <Window.DataContext>
-        <loc:AddViewModel/>
-    </Window.DataContext>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed" >
-            <i:InvokeCommandAction Command="{Binding closeWindow}" />
+            <i:InvokeCommandAction Command="{Binding OnCloseWindow}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Window.Resources>
@@ -32,39 +31,32 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <!--<TextBox  Grid.Row="0" 
+        <TextBox  Grid.Row="0" 
                   FontSize="20"
                   TextAlignment="Center"
-                  Text="{Binding modeMessage, Mode=TwoWay}"></TextBox>-->
-
-        <TextBox Grid.Row="0" 
-                  TextAlignment="Center"
-                Text="{Binding d.Numer}"
-                />
+                  VerticalAlignment="Center"
+                  Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
 
         <TabControl Grid.Row="1" Margin="20">
             <TabItem Header="Dane podstawowe">
                 <view:UserControl_Add_danePodstawowe/>
             </TabItem>
-            <TabItem Header="Własność" IsEnabled="{Binding canAdd}"></TabItem>
-            <TabItem Header="Inne prawa" IsEnabled="{Binding canAdd}"></TabItem>
+            <TabItem Header="Własność" IsEnabled="{Binding canAddTab}"></TabItem>
+            <TabItem Header="Inne prawa" IsEnabled="{Binding canAddTab}"></TabItem>
         </TabControl>
         
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button 
-                
-                Style="{StaticResource buttonRaf}" IsEnabled="{Binding canAdd}"
-                Content="Dodaj"></Button>
+                Style="{StaticResource buttonRaf}" 
+                IsEnabled="{Binding canAdd}"
+                Command="{Binding OnAddDzialka}"
+                com:CloseOnClickBehaviour.IsEnabled="True"
+                Content="OK"></Button>
             <Button 
                 Style="{StaticResource buttonRaf}"
-                Content="Modyfikacja"></Button>
-            <Button 
-                x:Name="buttonAdd"
-                Style="{StaticResource buttonRaf}"
-                Content="Dodawanie"></Button>
-            <Button 
-                Style="{StaticResource buttonRaf}"
-                Content="Inne"></Button>
+                IsCancel="True"
+                com:CloseOnClickBehaviour.IsEnabled="True"
+                Content="Anuluj"></Button>
         </StackPanel>
 
     </Grid>

@@ -19,22 +19,35 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
         private bool _btActivity;
-        public bool btActivity {
+        public bool btActivity
+        {
             get => _btActivity;
-            set {
+            set
+            {
                 _btActivity = value;
                 RaisePropertyChanged("btActivity");
             }
         }
 
+        private string _modeMessage;
+        public string modeMessage
+        {
+            get => _modeMessage; set
+            {
+                _modeMessage = value;
+                RaisePropertyChanged("modeMessage");
+            }
+        }
+
         public ICommand addNewDzialka { get; set; }
         #endregion
-        
+
         #region Konstruktor
         public MainViewModel()
         {
             initButtonCommand();
             btActivity = true;
+            modeMessage = "Przegl¹danie dzia³ek";
 
             #region obs³uga messenger -REM
             //Messenger.Default.Register<MessagesRaf>( this, "Token1",  getMessage  );

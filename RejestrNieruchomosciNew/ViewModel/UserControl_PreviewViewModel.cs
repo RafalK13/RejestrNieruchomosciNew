@@ -53,7 +53,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _obreb = value;
-                //RaisePropertyChanged("obreb");
+                RaisePropertyChanged("obreb");
             }
         }
 

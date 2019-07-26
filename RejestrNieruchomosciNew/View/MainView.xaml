@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:locViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
         xmlns:localView="clr-namespace:RejestrNieruchomosciNew.View"
+        xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
         x:Class="RejestrNieruchomosciNew.Views.MainView"
         mc:Ignorable="d"
         Title="MainView" Width="1000" WindowState="Maximized"
@@ -27,7 +28,8 @@
         <TextBox  Grid.Row="0" 
                   FontSize="20"
                   TextAlignment="Center"
-                  Text="{Binding modeMessage, Mode=TwoWay}"></TextBox>
+                  VerticalAlignment="Center"
+                  Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
@@ -48,11 +50,17 @@
                 Content="Dodawanie"></Button>
             <Button 
                 Style="{StaticResource buttonRaf}"
-                Content="Usuwanie"></Button>
+                com:ClickButtonBevaviour.ClickButton="True"
+                Content="Usuwanie1"></Button>
+            <TextBox 
+                Width="50"
+                Height="30"
+                Margin="50,0,0,0"
+                ></TextBox>
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Inne"></Button>
         </StackPanel>
-
+<RadioButton />
     </Grid>
 </Window>
