@@ -19,8 +19,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region private Properties
         private string _modeMessage;
-        private bool _canAdd;
-        private bool _canAddTab;
         #endregion
 
         public string modeMessage
@@ -33,26 +31,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public bool canAdd
-        {
-            get => _canAdd;
-            set
-            {
-                _canAdd = value;
-                RaisePropertyChanged("canAdd");
-            }
-        }
-
-        public bool canAddTab
-        {
-            get => _canAddTab;
-            set
-            {
-                _canAddTab = value;
-                RaisePropertyChanged("canAddTab");
-            }
-        }
-
         public ICommand OnCloseWindow { get; set; }
         public ICommand OnAddDzialka { get; set; }
 
@@ -61,8 +39,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Konstruktor
         public AddViewModel()
         {
-            canAdd = false;
-            canAddTab = false;
+            dzialkaViewModel = new DzialkaViewModel();
             modeMessage = "Dodawanie nowej działki";
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
@@ -70,18 +47,20 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Medods
-        private void onAddDzialka()
+        private async void onAddDzialka()
         {
-            using (var c = new Context())
+            if (dzialkaViewModel.isNew == true)
             {
-                var dzViewModel = ServiceLocator.Current.GetInstance<DzialkaViewModel>();
+                using (var c = new Context())
+                {
+                    Dzialka dz = dzialkaViewModel.GetDzialka;
+                    c.Dzialka.Add( dz);
+                    c.SaveChanges();
 
-                c.Dzialka.Add(dzViewModel.GetDzialka);
-                c.SaveChanges();
-
-                var previewViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-                previewViewModel.dzialkaList.Add(dzViewModel.GetDzialka);
-                previewViewModel.dzialkaView.Refresh();
+                    var previewViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+                    await previewViewModel.refillDzialkaList();
+                    previewViewModel.dzialkaView.Refresh();
+                }
             }
         }
 
@@ -94,52 +73,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             var v = ServiceLocator.Current.GetInstance<MainViewModel>();
             v.btActivity = true;
         }
-
-        //public int? isDzialka()
-        //{
-        //    int? obrebId = dzialkaViewModel.obreb.getId();
-        //    string numer = dzialkaViewModel.dzialka.Numer;
-
-        //    if (obrebId.HasValue && !string.IsNullOrEmpty(numer))
-        //    {
-        //        using (var c = new Context())
-        //        {
-        //            var o = c.Dzialka.AsQueryable().FirstOrDefault(n => n.ObrebId == obrebId && n.Numer == numer);//.DzialkaId;
-
-        //            if (o != null)
-        //            {
-
-
-        //                return o.DzialkaId;
-        //            }
-        //            else
-        //            {
-        //               // dzialkaViewModel.dzialka.ObrebId = obrebId.Value;
-        //                return 0;
-        //            }
-
-        //            //return o != null ? o.DzialkaId : 0;
-        //        }
-        //    }
-        //    return null;
-
-        //}
-
-        //public AddViewModel()
-        //{
-        //    modeMessage = "Dodawanie nowego rekordu";
-        //    canAdd = false;
-
-        //    dzialkaViewModel = new DzialkaViewModel();
-
-        //    dzialkaViewModel.obreb.PropertyChanged += dzialkaViewModel_PropertyChanged;
-        //    dzialkaViewModel.dzialka.PropertyChanged += dzialkaViewModel_PropertyChanged;
-        //}
-
-        //private void dzialkaViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    canAdd = isDzialka()==0 ? true : false;
-        //}
         #endregion
     }
 }

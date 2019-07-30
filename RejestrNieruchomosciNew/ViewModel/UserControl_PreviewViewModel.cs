@@ -126,6 +126,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        public async Task refillDzialkaList()
+        {
+            dzialkaList.RemoveAt(0);
+
+            using (var c = new Context())
+            {
+                dzialkaList = new List<Dzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
+            }
+        }
+
         private void onClsClick()
         {
             dzialkaNr = String.Empty;
@@ -155,7 +165,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 Dzialka d = row as Dzialka;
 
-                bool nb = !string.IsNullOrEmpty( dzialkaNr) ? d.Numer.Contains(dzialkaNr) : true;
+                bool nb = !string.IsNullOrEmpty(dzialkaNr) ? d.Numer.Contains(dzialkaNr) : true;
                 bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d.Obreb.Nazwa.Contains(obreb.obrebValue) : true;
                 bool gb = !string.IsNullOrEmpty(obreb.gminaValue) ? d.Obreb.GminaSlo.Nazwa.Contains(obreb.gminaValue) : true;
 

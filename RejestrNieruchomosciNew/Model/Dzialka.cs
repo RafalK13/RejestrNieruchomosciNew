@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
@@ -44,8 +45,6 @@ namespace RejestrNieruchomosciNew
             Kwakt = _kwA;
             Kwzrob = _kwZ;
             Pow = _Pow;
-
-
         }
 
         //public int? InnePrawa { get; set; }

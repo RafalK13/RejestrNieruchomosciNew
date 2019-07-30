@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RejestrNieruchomosciNew
 {
@@ -11,6 +13,6 @@ namespace RejestrNieruchomosciNew
         public ICollection<Dzialka> Dzialka { get; set; }
 
         public int GminaSloId { get; set; }
-        public GminaSlo GminaSlo { get; set; }
+        public GminaSlo GminaSlo { get; set; }    
     }
 }

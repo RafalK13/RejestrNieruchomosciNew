@@ -30,6 +30,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _dzialkaNr;
             set
             {
+              
                 _dzialkaNr = value;
                 RaisePropertyChanged("dzialkaNr");
                 setFilter();
@@ -69,6 +70,17 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private bool _isNew;
+        public bool isNew
+        {
+            get => _isNew;
+            set
+            {
+                _isNew = value;
+                RaisePropertyChanged("isNew");
+            }
+        }
+
         public Dzialka GetDzialka 
         {
             get => new Dzialka(dzialkaNr, obreb.getId().Value, kwA, kwZ, pow);
@@ -82,6 +94,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public DzialkaViewModel()
         {
             obreb = new ObrebClass();
+            isNew = false;
+
             leftClick = new RelayCommand(onLeftClick);
         }
         #endregion
@@ -100,10 +114,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialkaNr).Count();
-
-                var v = ServiceLocator.Current.GetInstance<AddViewModel>();
-
-                v.canAdd = c == 0 ? true : false;
+                
+                isNew = c == 0 ? true : false;
             }
             #endregion
         }

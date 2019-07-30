@@ -22,7 +22,7 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value == null ? null : string.Format("{0:0.00000}", (decimal)value);
+            return value == null ? null : string.Format("{0:0.00}", (decimal)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

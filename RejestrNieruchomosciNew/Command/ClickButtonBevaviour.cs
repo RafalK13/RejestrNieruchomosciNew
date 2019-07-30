@@ -24,7 +24,7 @@ namespace RejestrNieruchomosciNew.Command
 
         private static void onButtonChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            MessageBox.Show("OK");
+            
         }
     }
 }

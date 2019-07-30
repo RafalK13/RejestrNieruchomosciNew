@@ -26,7 +26,6 @@ namespace RejestrNieruchomosciNew.Command
         private static void OnIsEnabledPropertyChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs args)
         {
 
-            MessageBox.Show("df");
             var button = dpo as Button;
             if (button == null)
                 return;
