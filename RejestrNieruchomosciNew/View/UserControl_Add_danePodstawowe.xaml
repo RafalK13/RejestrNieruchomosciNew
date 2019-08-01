@@ -54,7 +54,7 @@
                Margin="0,0,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource tekstBox}"
-                Text="{Binding dzialkaViewModel.dzialkaNr, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                Text="{Binding userControl_AddDanePod.dzialkaNr, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                 Margin="0,25,0,0"/>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
@@ -63,11 +63,11 @@
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource comboBox}"
                 Margin="0,80,0,0"
-                SelectedValue="{Binding dzialkaViewModel.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding dzialkaViewModel.obreb.gminaView}">
+                SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding dzialkaViewModel.leftClick}" />
+                    <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
@@ -78,12 +78,12 @@
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource comboBox}"
                 Margin="0,135,0,0"
-                SelectedValue="{Binding dzialkaViewModel.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding dzialkaViewModel.obreb.obrebView}"
+                SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
                 >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding dzialkaViewModel.leftClick}" />
+                    <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
@@ -93,7 +93,7 @@
                Margin="0,165,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource tekstBox}"
-                Text="{Binding dzialkaViewModel.kwZ, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                Text="{Binding userControl_AddDanePod.kwZ, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                 Margin="0,190,0,0"/>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
@@ -101,7 +101,7 @@
                Margin="0,220,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource tekstBox}"
-                Text="{Binding dzialkaViewModel.kwA, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                Text="{Binding userControl_AddDanePod.kwA, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                 Margin="0,245,0,0"/>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
@@ -109,7 +109,7 @@
                Margin="0,275,0,0"/>
         <TextBox Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource tekstBox}"
-                Text="{Binding dzialkaViewModel.pow, Converter={StaticResource convStrToDec}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                Text="{Binding userControl_AddDanePod.pow, Converter={StaticResource convStrToDec}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                 Margin="0,300,0,0"/>
     </Grid>
 </UserControl>

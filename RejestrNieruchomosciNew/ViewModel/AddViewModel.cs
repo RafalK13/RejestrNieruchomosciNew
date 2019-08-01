@@ -34,33 +34,32 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand OnCloseWindow { get; set; }
         public ICommand OnAddDzialka { get; set; }
 
-        public DzialkaViewModel dzialkaViewModel { get; set; }
+        public UserControl_Add_danePodstawoweViewModel userControl_AddDanePod { get; set; }
 
         #region Konstruktor
         public AddViewModel()
         {
-            dzialkaViewModel = new DzialkaViewModel();
+            userControl_AddDanePod = new UserControl_Add_danePodstawoweViewModel();
             modeMessage = "Dodawanie nowej działki";
+
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
         }
         #endregion
 
         #region Medods
-        private async void onAddDzialka()
+        private void onAddDzialka()
         {
-            if (dzialkaViewModel.isNew == true)
+            if (userControl_AddDanePod.isNew == true)
             {
                 using (var c = new Context())
                 {
-                    Dzialka dz = dzialkaViewModel.GetDzialka;
-                    c.Dzialka.Add( dz);
+                    Dzialka dz = userControl_AddDanePod.GetDzialka;
+                    c.Dzialka.Add(dz);
                     c.SaveChanges();
-
-                    var previewViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-                    await previewViewModel.refillDzialkaList();
-                    previewViewModel.dzialkaView.Refresh();
                 }
+                var userControl_ViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+                userControl_ViewModel.refillDzialkaList();
             }
         }
 

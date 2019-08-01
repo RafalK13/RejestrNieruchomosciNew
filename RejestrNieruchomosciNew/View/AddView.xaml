@@ -57,6 +57,7 @@
                 Command="{Binding OnAddDzialka}"
                 com:CloseOnClickBehaviour.IsEnabled="True"
                 Content="OK"></Button>
+            <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
             <Button 
                 Style="{StaticResource buttonRaf}"
                 IsCancel="True"

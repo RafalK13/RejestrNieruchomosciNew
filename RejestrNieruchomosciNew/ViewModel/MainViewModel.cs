@@ -1,3 +1,4 @@
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -5,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -39,12 +41,26 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private List<Dzialka> _dzialkaList;
+        public List<Dzialka> dzialkaList
+        {
+            get => _dzialkaList;
+            set
+            {
+                _dzialkaList = value;
+                RaisePropertyChanged("dzialkaList");
+            }
+        }
+
         public ICommand addNewDzialka { get; set; }
+        public ICommand delDzialka { get; set; }
         #endregion
 
         #region Konstruktor
         public MainViewModel()
         {
+            initDzialkaList();
+
             initButtonCommand();
             btActivity = true;
             modeMessage = "Przegl¹danie dzia³ek";
@@ -56,12 +72,45 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region methods
+        public void initDzialkaList()
+        {
+            Task task = Task.Run(() => fillDzialkaList());
+            task.Wait();
+        }
+
+        private async Task fillDzialkaList()
+        {
+            using (var c = new Context())
+            {
+                dzialkaList = new List<Dzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
+            }
+        }
         #endregion
 
         #region ButtonCommands
         private void initButtonCommand()
         {
             addNewDzialka = new RelayCommand(onAddNewDzialka);
+            delDzialka = new RelayCommand(onDeleteDzialka);
+        }
+
+        private void onDeleteDzialka()
+        {
+            deleteDzialka();
+        }
+
+        public void deleteDzialka()
+        {
+            var v = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            Dzialka dz = v.dzialkaSel;
+
+            using (var c = new Context())
+            {
+                c.Dzialka.Remove(dz);
+                c.SaveChanges();
+
+                v.refillDzialkaList();
+            }
         }
 
         private void onAddNewDzialka()

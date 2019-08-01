@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class DzialkaViewModel : ViewModelBase
+    public class UserControl_Add_danePodstawoweViewModel : ViewModelBase
     {
         #region Properties
         private ObrebClass _obreb;
@@ -91,7 +91,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Konstructor
-        public DzialkaViewModel()
+        public UserControl_Add_danePodstawoweViewModel()
         {
             obreb = new ObrebClass();
             isNew = false;
@@ -108,7 +108,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void setFilter()
         {
-            UserControl_PreviewViewModel d = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            MainViewModel d = ServiceLocator.Current.GetInstance<MainViewModel>();
 
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialkaNr) == false)
             {

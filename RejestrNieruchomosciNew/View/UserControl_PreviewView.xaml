@@ -121,5 +121,10 @@
             </DataGrid.InputBindings>
         </DataGrid>
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
+
+        <CheckBox Grid.Row="1" Grid.Column="3" Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
+                  IsChecked="{Binding allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="0,0,0,9"
+                  ></CheckBox>
     </Grid>
 </UserControl>

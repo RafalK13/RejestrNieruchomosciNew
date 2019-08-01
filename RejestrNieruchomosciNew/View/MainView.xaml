@@ -48,15 +48,11 @@
                 Style="{StaticResource buttonRaf}"
                 Command="{Binding addNewDzialka}"
                 Content="Dodawanie"></Button>
+            <!--com:ClickButtonBevaviour.ClickButton="True"-->
             <Button 
                 Style="{StaticResource buttonRaf}"
-                com:ClickButtonBevaviour.ClickButton="True"
-                Content="Usuwanie1"></Button>
-            <TextBox 
-                Width="50"
-                Height="30"
-                Margin="50,0,0,0"
-                ></TextBox>
+                Command="{Binding delDzialka}"
+                Content="Usuwanie"></Button>
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Inne"></Button>

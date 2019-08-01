@@ -21,20 +21,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Properties
 
         #region privateProperties
-        private string _modeMessage;
         public Dzialka _dzialkaSel;
         #endregion
-
         public ICommand dubleClick { get; set; }
         public ICommand leftClick { get; set; }
         public ICommand clsClick { get; set; }
 
         public ICollectionView dzialkaView
         {
-            get
-            {
-                return CollectionViewSource.GetDefaultView(dzialkaList);
-            }
+            get => CollectionViewSource.GetDefaultView(dzialkaList);
         }
 
         public Dzialka dzialkaSel
@@ -64,7 +59,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _dzialkaList = value;
-
                 RaisePropertyChanged("dzialkaList");
                 RaisePropertyChanged("dzialkaView");
             }
@@ -92,6 +86,17 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("result");
             }
         }
+
+        private bool _allowDelete;
+        public bool allowDelete
+        {
+            get => _allowDelete;
+            set
+            {
+                _allowDelete = value;
+                RaisePropertyChanged("allowDelete");
+            }
+        }
         #endregion
 
         #region Konstructor
@@ -99,42 +104,37 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PreviewViewModel()
         {
             initDzialkaList();
-            //var v = ServiceLocator.Current.GetInstance<MainViewModel>();
-            //v.modeMessage = "Przeglądanie bazy";
 
             dubleClick = new RelayCommand(onDoubleClicked);
             leftClick = new RelayCommand(onLeftClick);
             clsClick = new RelayCommand(onClsClick);
+
             obreb = new ObrebClass();
+            allowDelete = true;
         }
 
         #endregion
 
         #region Methods
 
-        public void initDzialkaList()
+        private void initDzialkaList()
         {
-            Task task = Task.Run(() => fillDzialkaList());
-            task.Wait();
+            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+            dzialkaList = v.dzialkaList;
         }
 
-        private async Task fillDzialkaList()
+        public void refillDzialkaList()
         {
-            using (var c = new Context())
-            {
-                dzialkaList = new List<Dzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
-            }
+            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+            v.initDzialkaList();
+            dzialkaList = v.dzialkaList;
+            //            dzialkaView.Refresh();
         }
 
-        public async Task refillDzialkaList()
-        {
-            dzialkaList.RemoveAt(0);
-
-            using (var c = new Context())
-            {
-                dzialkaList = new List<Dzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
-            }
-        }
+        //private Dzialka GetDzialka()
+        //{
+        //    //return new Dzialka( dzialkaNr, obreb.getId( ))
+        //}
 
         private void onClsClick()
         {
@@ -149,13 +149,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDoubleClicked()
         {
-            MessageBox.Show(dzialkaSel.Numer);
+            if (allowDelete == true)
+            {
+                var v = ServiceLocator.Current.GetInstance<MainViewModel>();
+                v.deleteDzialka();
+            }
         }
-
-        //private void Obreb_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    setFilter();
-        //}
 
         public void setFilter()
         {
@@ -173,31 +172,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             };
             result = dzialkaView.Cast<object>().Count().ToString();
         }
-
-
-        //internal void clearResult()
-        //{
-        //    dzialkaNr = string.Empty;
-        //    obreb.obrebValue = string.Empty;
-        //    obreb.gminaValue = string.Empty;
-        //}
-
-        //public async Task initAllDzialka()
-        //{
-        //    using (var c = new Context())
-        //    {
-        //        dzialkaList = await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync();
-        //    }
-        //    result = dzialkaView.Cast<object>().Count().ToString();
-        //}
-
-        //public void refreshView()
-        //{
-        //    dzialkaList.Clear();
-        //    //initAllDzialka();
-        //    dzialkaView.Refresh();
-        //}
-
         #endregion
     }
 

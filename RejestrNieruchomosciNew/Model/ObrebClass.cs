@@ -97,6 +97,11 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public int getId(string obreb, string gmina)
+        {
+            return obrebList.FirstOrDefault(r => r.Nazwa == obreb && r.GminaSlo.Nazwa == gmina).ObrebId;
+        }
+
         public int? getId()
         {
             int? n = null;

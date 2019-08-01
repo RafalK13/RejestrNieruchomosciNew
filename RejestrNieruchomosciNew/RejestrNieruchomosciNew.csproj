@@ -215,7 +215,7 @@
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\Converters.cs" />
-    <Compile Include="ViewModel\DzialkaViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_Add_danePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -287,6 +287,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
