@@ -24,14 +24,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        public Dzialka dzialka { get; set; }
+
         private string _dzialkaNr;
         public string dzialkaNr
         {
             get => _dzialkaNr;
             set
             {
-              
-                _dzialkaNr = value;
+                 _dzialkaNr = value;
                 RaisePropertyChanged("dzialkaNr");
                 setFilter();
             }
@@ -83,7 +84,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public Dzialka GetDzialka 
         {
-            get => new Dzialka(dzialkaNr, obreb.getId().Value, kwA, kwZ, pow);
+            get => new Dzialka(dzialka.Numer, obreb.getId().Value, kwA, kwZ, pow);
         }
 
         public ICommand leftClick { get; set; }
@@ -97,6 +98,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             isNew = false;
 
             leftClick = new RelayCommand(onLeftClick);
+            dzialka = new Dzialka();
         }
         #endregion
 
@@ -108,13 +110,14 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void setFilter()
         {
+            
             MainViewModel d = ServiceLocator.Current.GetInstance<MainViewModel>();
 
-            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialkaNr) == false)
+            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
                 int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialkaNr).Count();
-                
+                dzialka.ObrebId = obreb.getId().Value;
                 isNew = c == 0 ? true : false;
             }
             #endregion

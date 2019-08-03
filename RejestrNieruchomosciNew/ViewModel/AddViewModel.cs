@@ -50,12 +50,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Medods
         private void onAddDzialka()
         {
-            if (userControl_AddDanePod.isNew == true)
+            //if (userControl_AddDanePod.isNew == true)
             {
                 using (var c = new Context())
                 {
-                    Dzialka dz = userControl_AddDanePod.GetDzialka;
-                    c.Dzialka.Add(dz);
+                    c.Dzialka.Add(userControl_AddDanePod.dzialka);
                     c.SaveChanges();
                 }
                 var userControl_ViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();

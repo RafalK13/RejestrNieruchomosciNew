@@ -99,7 +99,7 @@
                 Command="{ Binding clsClick}"
                 >
         </Button>
-
+        
         <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                   ItemsSource="{Binding dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
                   SelectedItem="{Binding dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
@@ -126,5 +126,16 @@
                   IsChecked="{Binding allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Margin="0,0,0,9"
                   ></CheckBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="4" >
+            <TextBox    FontSize="39"
+                        Text="{Binding d.Numer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        Margin="10"
+                        />
+            <TextBox     FontSize="39"
+                        Text="{Binding d.Numer, Mode=TwoWay}"
+                        Margin="10"
+                        />
+        </StackPanel>
     </Grid>
 </UserControl>

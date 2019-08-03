@@ -30,8 +30,7 @@ namespace RejestrNieruchomosciNew
             get => _obrebId;
             set
             {
-                _obrebId = value;
-                RaisePropertyChanged("ObrebId");
+                _obrebId = value;                
             }
         }
         public Obreb Obreb { get; set; }
