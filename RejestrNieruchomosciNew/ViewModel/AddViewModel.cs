@@ -40,6 +40,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public AddViewModel()
         {
             userControl_AddDanePod = new UserControl_Add_danePodstawoweViewModel();
+            userControl_AddDanePod.dzialka.Numer = "DziałkaNUmer";
             modeMessage = "Dodawanie nowej działki";
 
             OnCloseWindow = new RelayCommand(onCloseWindow);

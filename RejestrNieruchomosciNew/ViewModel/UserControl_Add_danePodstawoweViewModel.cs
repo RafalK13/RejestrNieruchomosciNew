@@ -25,7 +25,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         public Dzialka dzialka { get; set; }
-
+      
         private string _dzialkaNr;
         public string dzialkaNr
         {
@@ -99,12 +99,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             leftClick = new RelayCommand(onLeftClick);
             dzialka = new Dzialka();
+  
         }
         #endregion
-
+               
         #region Metods
         private void onLeftClick()
-        {
+        {         
             setFilter();
         }
 
