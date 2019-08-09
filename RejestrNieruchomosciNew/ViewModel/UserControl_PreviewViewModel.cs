@@ -26,6 +26,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand dubleClick { get; set; }
         public ICommand leftClick { get; set; }
         public ICommand clsClick { get; set; }
+        public ICommand unselectClick { get; set; }
 
         public ICollectionView dzialkaView
         {
@@ -108,6 +109,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             dubleClick = new RelayCommand(onDoubleClicked);
             leftClick = new RelayCommand(onLeftClick);
             clsClick = new RelayCommand(onClsClick);
+            unselectClick = new RelayCommand(onUnSelectClick);
 
             obreb = new ObrebClass();
             allowDelete = true;
@@ -116,6 +118,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Methods
+
+        private void onUnSelectClick()
+        {
+            dzialkaSel = null;
+        }
 
         private void initDzialkaList()
         {
@@ -128,13 +135,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             var v = ServiceLocator.Current.GetInstance<MainViewModel>();
             v.initDzialkaList();
             dzialkaList = v.dzialkaList;
-            //            dzialkaView.Refresh();
         }
-
-        //private Dzialka GetDzialka()
-        //{
-        //    //return new Dzialka( dzialkaNr, obreb.getId( ))
-        //}
 
         private void onClsClick()
         {

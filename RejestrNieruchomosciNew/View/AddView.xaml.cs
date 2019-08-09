@@ -7,9 +7,10 @@ namespace RejestrNieruchomosciNew.View
 {
     public partial class AddView : Window
     {
-        public AddView()
+        public AddView( AddViewModel addViewModel )
         {
             InitializeComponent();
+            DataContext = addViewModel;
         }
     }
 }

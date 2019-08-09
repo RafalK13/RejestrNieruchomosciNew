@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew
 {
-    public partial class Obreb 
+    public partial class Obreb : IObreb
     {
         public int ObrebId { get; set; }
         public string Nazwa { get; set; }

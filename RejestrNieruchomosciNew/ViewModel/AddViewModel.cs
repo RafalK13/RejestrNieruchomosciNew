@@ -37,14 +37,19 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_Add_danePodstawoweViewModel userControl_AddDanePod { get; set; }
 
         #region Konstruktor
-        public AddViewModel()
+        public AddViewModel(UserControl_Add_danePodstawoweViewModel _userControl_AddDanePod)
         {
-            userControl_AddDanePod = new UserControl_Add_danePodstawoweViewModel();
-            userControl_AddDanePod.dzialka.Numer = "DziałkaNUmer";
+            
+            
+            userControl_AddDanePod = _userControl_AddDanePod;
+
+            //userControl_AddDanePod.dzialka.Numer = "DziałkaNUmer";
             modeMessage = "Dodawanie nowej działki";
 
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
+
+            
         }
         #endregion
 
@@ -52,15 +57,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onAddDzialka()
         {
             //if (userControl_AddDanePod.isNew == true)
-            {
-                using (var c = new Context())
-                {
-                    c.Dzialka.Add(userControl_AddDanePod.dzialka);
-                    c.SaveChanges();
-                }
-                var userControl_ViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-                userControl_ViewModel.refillDzialkaList();
-            }
+            //{
+            //    using (var c = new Context())
+            //    {
+            //        c.Dzialka.Add(userControl_AddDanePod.dzialka);
+            //        c.SaveChanges();
+            //    }
+            //    var userControl_ViewModel = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            //    userControl_ViewModel.refillDzialkaList();
+            //}
         }
 
         private void onCloseWindow()

@@ -11,7 +11,7 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class ObrebClass : ViewModelBase
+    public class ObrebClass : ViewModelBase, IObrebClass
     {
         #region Properties
         public List<Obreb> obrebList { get; set; }
@@ -94,6 +94,20 @@ namespace RejestrNieruchomosciNew.Model
             using (var c = new Context())
             {
                 obrebList = c.Obreb.Include("GminaSlo").ToList();
+            }
+        }
+
+        public void fillValues(int id)
+        {
+            try
+            {
+                obrebValue = obrebList.Where(r => r.ObrebId == id).First().Nazwa;
+                gminaValue = obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
+            }
+            catch (Exception)
+            {
+                obrebValue = null;
+                gminaValue = null;
             }
         }
 

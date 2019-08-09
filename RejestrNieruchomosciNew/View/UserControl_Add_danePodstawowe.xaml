@@ -25,7 +25,7 @@
         <Style TargetType="ComboBox" x:Key="comboBox">
             <Setter Property="Height" Value="30" ></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+
         </Style>
         <Style TargetType="Button" x:Key="button">
             <Setter Property="Height" Value="30" ></Setter>
@@ -40,11 +40,11 @@
                                 Path=Text,
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="LostFocus">
-                                <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </TextBox>
             </Grid>
         </ControlTemplate>
@@ -53,7 +53,7 @@
                 <ComboBox
                     ItemsSource="{Binding Path=ItemsSource, RelativeSource={ RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     SelectedValue="{Binding Path=SelectedValue, RelativeSource={ RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Style="{StaticResource comboBox}">
+                    >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
@@ -63,7 +63,7 @@
             </Grid>
         </ControlTemplate>
     </UserControl.Resources>
- 
+
     <Grid ShowGridLines="False" Margin="0,0,0,0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -85,7 +85,7 @@
         <TextBox Grid.Row="1" Grid.Column="1"
                  Margin="0,25,0,0"
                  Template="{StaticResource textBoxTemp}"
-                 Text="{Binding userControl_AddDanePod.dz.Numer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                 Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                  >
         </TextBox>
         <Label Grid.Row="1" Grid.Column="1"
@@ -94,10 +94,13 @@
                Margin="0,55,0,0"/>
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Margin="0,80,0,0"
+                Height="30"
+                VerticalAlignment="Top"
+                  
                 SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}"
                 Template="{StaticResource comboBoxTemp}">
-            
+
         </ComboBox>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
@@ -105,6 +108,8 @@
                Margin="0,110,0,0"/>
         <ComboBox Grid.Row="1" Grid.Column="1"
                 Margin="0,135,0,0"
+                Height="30"
+                VerticalAlignment="Top"
                 SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
                 Template="{StaticResource comboBoxTemp}"
@@ -117,7 +122,7 @@
         <TextBox Grid.Row="1" Grid.Column="1"        
                  Margin="0,190,0,0"
                  Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
-                 Template="{StaticResource textBoxTemp}">          
+                 Template="{StaticResource textBoxTemp}">
         </TextBox>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"

@@ -1,13 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
-using System;
-using System.Collections.Generic;
-using System.Windows;
 
 namespace RejestrNieruchomosciNew
 {
-    public partial class Dzialka : ViewModelBase
+    public partial class Dzialka : ViewModelBase, IDzialka
     {
         private string _numer;
         private int _obrebId;
@@ -33,6 +29,7 @@ namespace RejestrNieruchomosciNew
                 _obrebId = value;                
             }
         }
+
         public Obreb Obreb { get; set; }
 
         public Dzialka() { }

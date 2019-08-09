@@ -99,7 +99,14 @@
                 Command="{ Binding clsClick}"
                 >
         </Button>
-              
+        <Button Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource button}"
+                Content="Unselect"
+                Margin="0,250,0,0"
+                Command="{ Binding unselectClick}"
+                >
+        </Button>
+
         <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                   ItemsSource="{Binding dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
                   SelectedItem="{Binding dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
@@ -125,7 +132,7 @@
 
         <CheckBox Grid.Row="1" Grid.Column="3" Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="0,0,0,9"
+                  Margin="0,0,0,20"
                   ></CheckBox>
 
         <StackPanel Grid.Row="1" Grid.Column="4" >

@@ -25,9 +25,9 @@
         </Style>
     </Window.Resources>
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <loc:AddViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>

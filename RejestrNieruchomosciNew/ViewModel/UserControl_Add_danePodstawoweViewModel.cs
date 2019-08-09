@@ -1,4 +1,5 @@
-﻿using CommonServiceLocator;
+﻿using Castle.Core;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
@@ -13,63 +14,11 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_Add_danePodstawoweViewModel : ViewModelBase
     {
         #region Properties
-        private ObrebClass _obreb;
-        public ObrebClass obreb
-        {
-            get => _obreb;
-            set
-            {
-                _obreb = value;
-                RaisePropertyChanged("obreb");
-            }
-        }
 
-        public Dzialka dzialka { get; set; }
-      
-        private string _dzialkaNr;
-        public string dzialkaNr
-        {
-            get => _dzialkaNr;
-            set
-            {
-                 _dzialkaNr = value;
-                RaisePropertyChanged("dzialkaNr");
-                setFilter();
-            }
-        }
-
-        private string _kwA;
-        public string kwA
-        {
-            get => _kwA;
-            set
-            {
-                _kwA = value;
-                RaisePropertyChanged("kwA");
-            }
-        }
-
-        private string _kwZ;
-        public string kwZ
-        {
-            get => _kwZ;
-            set
-            {
-                _kwZ = value;
-                RaisePropertyChanged("kwZ");
-            }
-        }
-
-        private decimal _pow;
-        public decimal pow
-        {
-            get => _pow;
-            set
-            {
-                _pow = value;
-                RaisePropertyChanged("pow");
-            }
-        }
+        [DoNotWire]
+        public ObrebClass obreb { get; set; }
+        [DoNotWire]
+        public IDzialka dzialka { get; set; }
 
         private bool _isNew;
         public bool isNew
@@ -82,45 +31,43 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public Dzialka GetDzialka 
-        {
-            get => new Dzialka(dzialka.Numer, obreb.getId().Value, kwA, kwZ, pow);
-        }
-
         public ICommand leftClick { get; set; }
 
         #endregion
 
         #region Konstructor
-        public UserControl_Add_danePodstawoweViewModel()
+        public UserControl_Add_danePodstawoweViewModel(IDzialka dz, ObrebClass ob)
         {
-            obreb = new ObrebClass();
+            dzialka = dz;
+            obreb = ob;
             isNew = false;
 
             leftClick = new RelayCommand(onLeftClick);
-            dzialka = new Dzialka();
-  
+
+            obreb.fillValues(dzialka.ObrebId);
+            
         }
         #endregion
-               
+            
+
         #region Metods
         private void onLeftClick()
         {         
-            setFilter();
+            testDzialka();
         }
 
-        public void setFilter()
+        public void testDzialka()
         {
             
-            MainViewModel d = ServiceLocator.Current.GetInstance<MainViewModel>();
+            //MainViewModel d = ServiceLocator.Current.GetInstance<MainViewModel>();
 
-            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
-            {
-                int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
-                                                 r.Numer == dzialkaNr).Count();
-                dzialka.ObrebId = obreb.getId().Value;
-                isNew = c == 0 ? true : false;
-            }
+            //if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
+            //{
+            //    int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+            //                                     r.Numer == dzialka.Numer).Count();
+            //    dzialka.ObrebId = obreb.getId().Value;
+            //    isNew = c == 0 ? true : false;
+            //}
             #endregion
         }
     }

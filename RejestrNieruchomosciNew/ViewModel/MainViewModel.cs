@@ -1,19 +1,15 @@
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using Microsoft.EntityFrameworkCore;
+using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
@@ -87,6 +83,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
         #endregion
 
+        #region Bootsrtap
+        private IWindsorContainer BootStrap()
+        {
+             return new WindsorContainer().Install( new InstallersAdd());
+        }
+        #endregion
+
         #region ButtonCommands
         private void initButtonCommand()
         {
@@ -116,8 +119,20 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onAddNewDzialka()
         {
             btActivity = false;
-            AddView addView = new AddView();
-            addView.Show();
+
+            var loc = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            IDzialka dz = loc.dzialkaSel;
+
+            var container = BootStrap();
+            if (dz != null)
+                container.Register(Component.For<IDzialka>().Named("Haneczka").Instance( dz).IsDefault());
+            
+            var v = container.Resolve<AddView>();
+            
+            v.Show();
+
+            container.Dispose();
+            
         }
         #endregion
 
