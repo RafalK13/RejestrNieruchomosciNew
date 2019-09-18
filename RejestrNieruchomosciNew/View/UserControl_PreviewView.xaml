@@ -8,15 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="915"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              >
-    <!--<UserControl.DataContext>
-        <localViewModel:UserControl_PreviewViewModel/>
-    </UserControl.DataContext>-->
-    
-    
 
     <UserControl.Resources>
-        <!--<localViewModel:UserControl_PreviewViewModel x:Key="mod1"/>-->
-
         <localViewModel:resultCnvr x:Key="conv"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
@@ -39,4 +32,101 @@
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         </Style>
     </UserControl.Resources>
+
+    <Grid ShowGridLines="False" Margin="0,0,0,0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="13"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="13"/>
+            <ColumnDefinition Width="510"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Column="1" Grid.Row="0" BorderThickness="0"
+                 Text="{Binding result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conv}}"
+                 Margin="0,1,0,0"
+                 IsReadOnly="True" Foreground="Black"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource label}"
+               Content="Numer działki"
+               Margin="0,0,0,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource tekstBox}"
+                Text="{Binding userControl_prev.dzialkaNr, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
+                Margin="0,25,0,0"/>
+        <Label Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource label}"
+               Content="Gmina"
+               Margin="0,55,0,0"/>
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource comboBox}"
+                Margin="0,80,0,0"
+                SelectedValue="{Binding userControl_prev.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding userControl_prev.obreb.gminaView}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <Label Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource label}"
+               Content="Obręb"
+               Margin="0,110,0,0"/>
+
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource comboBox}"
+                Margin="0,140,0,0"
+                SelectedValue="{Binding userControl_prev.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding userControl_prev.obreb.obrebView}"
+                >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <Button Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource button}"
+                Content="Czyść"
+                Margin="0,200,0,0"
+                Command="{ Binding userControl_prev.clsClick}"
+                >
+        </Button>
+
+        <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                  ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
+                  SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                  
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"></DataGridTextColumn>
+                <DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
+                <DataGridTextColumn Header="KW Zrob" Binding="{Binding Kwzrob}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Pow}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.InputBindings>
+                <MouseBinding   Gesture="LeftDoubleClick" 
+                                Command="{Binding dubleClick}"/>
+
+            </DataGrid.InputBindings>
+        </DataGrid>
+        <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
+
+        <CheckBox Grid.Row="1" Grid.Column="3" Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
+                  IsChecked="{Binding allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="0,0,0,9"
+                  ></CheckBox>
+
+        
+    </Grid>
 </UserControl>
