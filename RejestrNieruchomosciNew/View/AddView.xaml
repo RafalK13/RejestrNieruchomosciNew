@@ -11,7 +11,6 @@
         Title="AddView" Height="700" Width="700"
         >
 
-    <!--DataContext="{Binding Source={StaticResource Locator}, Path=AddViewModel}"-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed" >
             <i:InvokeCommandAction Command="{Binding OnCloseWindow}" />
@@ -24,10 +23,6 @@
             <Setter Property="Margin" Value="50,5,5,5"></Setter>
         </Style>
     </Window.Resources>
-
-    <!--<Window.DataContext>
-        <loc:AddViewModel/>
-    </Window.DataContext>-->
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
@@ -53,7 +48,7 @@
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button 
                 Style="{StaticResource buttonRaf}" 
-                IsEnabled="{Binding dzialkaViewModel.isNew}"
+                IsEnabled="{Binding userControl_AddDanePod.isNew}"
                 Command="{Binding OnAddDzialka}"
                 com:CloseOnClickBehaviour.IsEnabled="True"
                 Content="OK"></Button>

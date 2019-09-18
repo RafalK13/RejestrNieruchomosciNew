@@ -3,12 +3,10 @@ using Castle.Windsor;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -37,16 +35,21 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        private List<Dzialka> _dzialkaList;
-        public List<Dzialka> dzialkaList
-        {
-            get => _dzialkaList;
-            set
-            {
-                _dzialkaList = value;
-                RaisePropertyChanged("dzialkaList");
-            }
-        }
+        public AddView addView { get; set; }
+        public UserControl_PreviewViewModel userControl_prev { get; set; }
+
+        public DzialkaList dzialkaList { get; set; }
+
+        //private List<Dzialka> _dzialkaList;
+        //public List<Dzialka> dzialkaList
+        //{
+        //    get => _dzialkaList;
+        //    set
+        //    {
+        //        _dzialkaList = value;
+        //        RaisePropertyChanged("dzialkaList");
+        //    }
+        //}
 
         public ICommand addNewDzialka { get; set; }
         public ICommand delDzialka { get; set; }
@@ -55,12 +58,9 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Konstruktor
         public MainViewModel()
         {
-            initDzialkaList();
-
             initButtonCommand();
             btActivity = true;
             modeMessage = "Przegl¹danie dzia³ek";
-
             #region obs³uga messenger -REM
             //Messenger.Default.Register<MessagesRaf>( this, "Token1",  getMessage  );
             #endregion
@@ -68,19 +68,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region methods
-        public void initDzialkaList()
-        {
-            Task task = Task.Run(() => fillDzialkaList());
-            task.Wait();
-        }
-
-        private async Task fillDzialkaList()
-        {
-            using (var c = new Context())
-            {
-                dzialkaList = new List<Dzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
-            }
-        }
+       
         #endregion
 
         #region Bootsrtap
@@ -104,35 +92,32 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void deleteDzialka()
         {
-            var v = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-            Dzialka dz = v.dzialkaSel;
+            Dzialka dz = userControl_prev.dzialkaSel;
 
-            using (var c = new Context())
-            {
-                c.Dzialka.Remove(dz);
-                c.SaveChanges();
-
-                v.refillDzialkaList();
-            }
+            userControl_prev.dzialkiBase.deleteRow((IDzialka)dz);
+            userControl_prev.dzialkaView.Refresh();
         }
 
         private void onAddNewDzialka()
         {
             btActivity = false;
 
-            var loc = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-            IDzialka dz = loc.dzialkaSel;
+            addView.Show();
 
-            var container = BootStrap();
-            if (dz != null)
-                container.Register(Component.For<IDzialka>().Named("Haneczka").Instance( dz).IsDefault());
-            
-            var v = container.Resolve<AddView>();
-            
-            v.Show();
+            //var loc = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
+            //IDzialka dz = loc.dzialkaSel;
 
-            container.Dispose();
+            //IDzialka dz = userControl_prev.dzialkaSel;
             
+            //var container = BootStrap();
+            //if (dz != null)
+            //    container.Register(Component.For<IDzialka>().Named("Haneczka").Instance(dz).IsDefault());
+
+            //var v = container.Resolve<AddView>();
+
+            //v.Show();
+
+            //container.Dispose();
         }
         #endregion
 

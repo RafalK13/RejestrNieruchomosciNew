@@ -216,7 +216,9 @@
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Context.cs" />
+    <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\IDzialka.cs" />
+    <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />
     <Compile Include="Model\IObrebClass.cs" />
     <Compile Include="Model\MessagesRaf.cs" />

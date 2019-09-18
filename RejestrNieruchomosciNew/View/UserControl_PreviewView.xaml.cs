@@ -1,4 +1,5 @@
-﻿using RejestrNieruchomosciNew.ViewModel;
+﻿using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 

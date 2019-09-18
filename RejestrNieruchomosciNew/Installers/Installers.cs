@@ -17,10 +17,15 @@ namespace RejestrNieruchomosciNew.Installers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>());
-            container.Register(Component.For<ObrebClass>());
+            container.Register(Component.For<DzialkaList>());
+            container.Register(Component.For<ObrebClass>().LifeStyle.Transient);
             container.Register(Component.For<AddView>());
             container.Register(Component.For<AddViewModel>());
             container.Register(Component.For<UserControl_Add_danePodstawoweViewModel>());
+            container.Register(Component.For<UserControl_PreviewViewModel>());
+            
+            container.Register(Component.For<MainView>());
+            container.Register(Component.For<MainViewModel>());
         }
     }
 }

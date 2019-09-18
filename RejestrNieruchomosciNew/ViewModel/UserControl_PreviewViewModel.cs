@@ -1,4 +1,5 @@
-﻿using CommonServiceLocator;
+﻿using Castle.Core;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
@@ -20,22 +21,26 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
 
-        #region privateProperties
-        public Dzialka _dzialkaSel;
-        #endregion
-        public ICommand dubleClick { get; set; }
+        #region ICommand
+        public ICommand doubleClick { get; set; }
         public ICommand leftClick { get; set; }
         public ICommand clsClick { get; set; }
         public ICommand unselectClick { get; set; }
+        #endregion
+        
+        [DoNotWire]
+        public DzialkaList dzialkiBase { get; set; }
 
         public ICollectionView dzialkaView
         {
-            get => CollectionViewSource.GetDefaultView(dzialkaList);
+            get => CollectionViewSource.GetDefaultView( dzialkiBase.dzialkaList);
         }
 
+        public Dzialka _dzialkaSel;
         public Dzialka dzialkaSel
         {
-            get => _dzialkaSel; set
+            get => _dzialkaSel;
+            set
             {
                 _dzialkaSel = value;
                 RaisePropertyChanged("dzialkaSel");
@@ -50,18 +55,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 _obreb = value;
                 RaisePropertyChanged("obreb");
-            }
-        }
-
-        private List<Dzialka> _dzialkaList;
-        public List<Dzialka> dzialkaList
-        {
-            get => _dzialkaList;
-            set
-            {
-                _dzialkaList = value;
-                RaisePropertyChanged("dzialkaList");
-                RaisePropertyChanged("dzialkaView");
             }
         }
 
@@ -98,20 +91,16 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("allowDelete");
             }
         }
+
         #endregion
 
         #region Konstructor
 
-        public UserControl_PreviewViewModel()
+        public UserControl_PreviewViewModel(DzialkaList _dzialkiBase)
         {
-            initDzialkaList();
+            dzialkiBase = _dzialkiBase;
 
-            dubleClick = new RelayCommand(onDoubleClicked);
-            leftClick = new RelayCommand(onLeftClick);
-            clsClick = new RelayCommand(onClsClick);
-            unselectClick = new RelayCommand(onUnSelectClick);
-
-            obreb = new ObrebClass();
+            initCommands();
             allowDelete = true;
         }
 
@@ -119,22 +108,17 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #region Methods
 
+        private void initCommands()
+        {
+            doubleClick = new RelayCommand(onDoubleClicked);
+            leftClick = new RelayCommand(onLeftClick);
+            clsClick = new RelayCommand(onClsClick);
+            unselectClick = new RelayCommand(onUnSelectClick);
+        }
+
         private void onUnSelectClick()
         {
             dzialkaSel = null;
-        }
-
-        private void initDzialkaList()
-        {
-            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
-            dzialkaList = v.dzialkaList;
-        }
-
-        public void refillDzialkaList()
-        {
-            var v = ServiceLocator.Current.GetInstance<MainViewModel>();
-            v.initDzialkaList();
-            dzialkaList = v.dzialkaList;
         }
 
         private void onClsClick()
@@ -152,8 +136,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (allowDelete == true)
             {
-                var v = ServiceLocator.Current.GetInstance<MainViewModel>();
-                v.deleteDzialka();
+                dzialkiBase.deleteRow((IDzialka)dzialkaSel);
+                dzialkaView.Refresh();
             }
         }
 
@@ -175,5 +159,4 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
         #endregion
     }
-
 }

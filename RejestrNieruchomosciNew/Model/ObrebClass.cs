@@ -53,6 +53,11 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public int? id
+        {
+            get => getId();
+        }
+
         private string _obrebValue;
         public string obrebValue
         {
@@ -61,7 +66,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _obrebValue = value;
                 RaisePropertyChanged("obrebValue");
-                RaisePropertyChanged("gminaView");               
+                RaisePropertyChanged("gminaView");
+
                 //setFilter();
             }
         }

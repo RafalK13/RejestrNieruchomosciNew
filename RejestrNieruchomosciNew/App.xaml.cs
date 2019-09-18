@@ -1,5 +1,10 @@
-﻿using GalaSoft.MvvmLight.Ioc;
+﻿using Castle.Windsor;
+using Castle.Windsor.Installer;
+using GalaSoft.MvvmLight.Ioc;
 using Microsoft.EntityFrameworkCore;
+using RejestrNieruchomosciNew.Installers;
+using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.View;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,22 +17,15 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew
 {
-    /// <summary>
-    /// Logika interakcji dla klasy App.xaml
-    /// </summary>
-    /// 
-
     public partial class App : Application
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //SimpleIoc.Default.GetInstance<MainViewModel>("Main").initDzialkaList();
-            //MakeInitDatabase m = new MakeInitDatabase();
-        }
-
-        private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
-        {
-            //SimpleIoc.Default.GetInstance<MainViewModel>("Main").initDzialkaList();
+            WindsorContainer container = new WindsorContainer();
+            container.Install(FromAssembly.This());
+            
+            var view = container.Resolve<MainView>();
+            view.Show();
         }
     }
 

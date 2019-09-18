@@ -15,9 +15,15 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
 
-        [DoNotWire]
-        public ObrebClass obreb { get; set; }
-        [DoNotWire]
+        private ObrebClass _obreb;
+        public ObrebClass obreb
+        {
+            get => _obreb; set
+            {
+                _obreb = value;
+                RaisePropertyChanged("obreb");
+            }
+        }
         public IDzialka dzialka { get; set; }
 
         private bool _isNew;
@@ -33,41 +39,37 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICommand leftClick { get; set; }
 
+        public DzialkaList dzialkaList { get; set; }
+
         #endregion
 
         #region Konstructor
-        public UserControl_Add_danePodstawoweViewModel(IDzialka dz, ObrebClass ob)
+
+        public UserControl_Add_danePodstawoweViewModel()
         {
-            dzialka = dz;
-            obreb = ob;
             isNew = false;
 
             leftClick = new RelayCommand(onLeftClick);
-
-            obreb.fillValues(dzialka.ObrebId);
-            
         }
         #endregion
-            
 
         #region Metods
         private void onLeftClick()
-        {         
+        {
             testDzialka();
         }
 
         public void testDzialka()
         {
             
-            //MainViewModel d = ServiceLocator.Current.GetInstance<MainViewModel>();
+            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
+            {
 
-            //if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
-            //{
-            //    int c = d.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
-            //                                     r.Numer == dzialka.Numer).Count();
-            //    dzialka.ObrebId = obreb.getId().Value;
-            //    isNew = c == 0 ? true : false;
-            //}
+                int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+                                                 r.Numer == dzialka.Numer).Count();
+                dzialka.ObrebId = obreb.getId().Value;
+                isNew = c == 0 ? true : false;
+            }
             #endregion
         }
     }

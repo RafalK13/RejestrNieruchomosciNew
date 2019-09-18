@@ -6,10 +6,9 @@
         xmlns:locViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
         xmlns:localView="clr-namespace:RejestrNieruchomosciNew.View"
         xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
-        x:Class="RejestrNieruchomosciNew.Views.MainView"
+        x:Class="RejestrNieruchomosciNew.View.MainView"
         mc:Ignorable="d"
         Title="MainView" Width="1000" WindowState="Maximized"
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
         >
     <Window.Resources>
         <Style TargetType="Button" x:Key="buttonRaf">
@@ -29,7 +28,8 @@
                   FontSize="20"
                   TextAlignment="Center"
                   VerticalAlignment="Center"
-                  Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
+                  Text="{Binding modeMessage, Mode=TwoWay}" 
+                  BorderThickness="0"></TextBox>
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
