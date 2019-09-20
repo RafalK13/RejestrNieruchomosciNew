@@ -1,31 +1,33 @@
-﻿using Castle.Windsor;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using Castle.Windsor.Installer;
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
-using RejestrNieruchomosciNew.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew
 {
     public partial class App : Application
     {
+        private static readonly WindsorContainer container = new WindsorContainer();
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            WindsorContainer container = new WindsorContainer();
+            container.Register(
+                                 Component.For<IWindsorContainer>().Instance(container),
+                                 Component.For<IViewFactory>().ImplementedBy<WindsorViewFactory>()
+                              );
             container.Install(FromAssembly.This());
-            
+            //container.Install( new InstallersAdd());
+
             var view = container.Resolve<MainView>();
             view.Show();
+
+            container.Dispose();
         }
     }
 

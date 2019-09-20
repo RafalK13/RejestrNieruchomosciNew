@@ -166,6 +166,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
+    <Compile Include="Installers\WindsorViewFactory.cs" />
     <Compile Include="Migrations\20190621054317_r1.cs" />
     <Compile Include="Migrations\20190621054317_r1.designer.cs">
       <DependentUpon>20190621054317_r1.cs</DependentUpon>
@@ -221,6 +222,8 @@
     <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />
     <Compile Include="Model\IObrebClass.cs" />
+    <Compile Include="Model\IView.cs" />
+    <Compile Include="Model\IViewFactory.cs" />
     <Compile Include="Model\MessagesRaf.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
@@ -244,6 +247,9 @@
     </Compile>
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +281,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\UserControl_PreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

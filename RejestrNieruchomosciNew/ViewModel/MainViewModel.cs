@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
+using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -24,6 +26,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("btActivity");
             }
         }
+        
+        //public AddView addView { get; set; }
+        public UserControl_PreviewViewModel userControl_prev { get; set; }
+
+        public ICommand addNewDzialka { get; set; }
+        public ICommand delDzialka { get; set; }
+
+        private IViewFactory viewFactory;
 
         private string _modeMessage;
         public string modeMessage
@@ -35,46 +45,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public AddView addView { get; set; }
-        public UserControl_PreviewViewModel userControl_prev { get; set; }
-
-        public DzialkaList dzialkaList { get; set; }
-
-        //private List<Dzialka> _dzialkaList;
-        //public List<Dzialka> dzialkaList
-        //{
-        //    get => _dzialkaList;
-        //    set
-        //    {
-        //        _dzialkaList = value;
-        //        RaisePropertyChanged("dzialkaList");
-        //    }
-        //}
-
-        public ICommand addNewDzialka { get; set; }
-        public ICommand delDzialka { get; set; }
         #endregion
 
         #region Konstruktor
-        public MainViewModel()
+        public MainViewModel(IViewFactory _viewFactory)
         {
+            viewFactory = _viewFactory;
+
             initButtonCommand();
             btActivity = true;
-            modeMessage = "Przegl¹danie dzia³ek";
-            #region obs³uga messenger -REM
-            //Messenger.Default.Register<MessagesRaf>( this, "Token1",  getMessage  );
-            #endregion
-        }
-        #endregion
-
-        #region methods
-       
-        #endregion
-
-        #region Bootsrtap
-        private IWindsorContainer BootStrap()
-        {
-             return new WindsorContainer().Install( new InstallersAdd());
         }
         #endregion
 
@@ -100,32 +79,20 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onAddNewDzialka()
         {
-            btActivity = false;
+            var factory = viewFactory.CreateView<AddView>();
+            factory.Show();
+           // var main = factory.CreateView<AddView>();
+           // main.Show();
 
-            addView.Show();
+            //{
+            //    btActivity = false;
 
-            //var loc = ServiceLocator.Current.GetInstance<UserControl_PreviewViewModel>();
-            //IDzialka dz = loc.dzialkaSel;
+            //    //addView.Show();
 
-            //IDzialka dz = userControl_prev.dzialkaSel;
-            
-            //var container = BootStrap();
-            //if (dz != null)
-            //    container.Register(Component.For<IDzialka>().Named("Haneczka").Instance(dz).IsDefault());
-
-            //var v = container.Resolve<AddView>();
-
-            //v.Show();
-
-            //container.Dispose();
+            //    var addView = container.Resolve<AddView>();
+            //    addView.Show();
         }
-        #endregion
 
-        #region obs³uga messenger -REM
-        //private void getMessage(MessagesRaf message)
-        //{
-        //    btActivity = message.activity;
-        //}
         #endregion
     }
 }

@@ -47,6 +47,17 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public void AddRow(IDzialka dz)
+        {
+            dzialkaList.Add(dz);
+
+            using (var c = new Context())
+            {
+                c.Dzialka.Add((Dzialka)dz);
+                c.SaveChanges();
+            }
+        }
+
         public DzialkaList()
         {
             initDzialkaList();
