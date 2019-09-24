@@ -222,10 +222,12 @@
     <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />
     <Compile Include="Model\IObrebClass.cs" />
+    <Compile Include="Model\IObrebList.cs" />
     <Compile Include="Model\IView.cs" />
     <Compile Include="Model\IViewFactory.cs" />
     <Compile Include="Model\MessagesRaf.cs" />
     <Compile Include="Model\ObrebClass.cs" />
+    <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />

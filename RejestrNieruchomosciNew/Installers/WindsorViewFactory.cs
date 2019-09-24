@@ -17,9 +17,19 @@ namespace RejestrNieruchomosciNew.Installers
             this.container = container;
         }
 
-        public T CreateView<T>() where T : IView
+        //public T CreateView<T>() where T : IView
+        //{
+        //    return container.Resolve<T>();
+        //}
+
+        T IViewFactory.CreateView<T>()
         {
             return container.Resolve<T>();
+        }
+
+        T IViewFactory.CreateView<T, G>(G argument)
+        {
+            throw new NotImplementedException();
         }
     }
 }

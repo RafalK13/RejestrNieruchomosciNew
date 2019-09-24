@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,13 +28,14 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand clsClick { get; set; }
         public ICommand unselectClick { get; set; }
         #endregion
-        
+
         [DoNotWire]
-        public DzialkaList dzialkiBase { get; set; }
+        public IDzialkaList dzialkiBase { get; set; }
 
         public ICollectionView dzialkaView
         {
             get => CollectionViewSource.GetDefaultView( dzialkiBase.dzialkaList);
+            
         }
 
         public Dzialka _dzialkaSel;
@@ -87,21 +89,24 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _allowDelete;
             set
             {
+
                 _allowDelete = value;
                 RaisePropertyChanged("allowDelete");
             }
         }
 
+        public IViewFactory viewFactory { get; set; }
+
         #endregion
 
         #region Konstructor
 
-        public UserControl_PreviewViewModel(DzialkaList _dzialkiBase)
+        public UserControl_PreviewViewModel(IDzialkaList _dzialkiBase)
         {
             dzialkiBase = _dzialkiBase;
 
             initCommands();
-            allowDelete = true;
+            allowDelete = false;
         }
 
         #endregion
@@ -138,6 +143,11 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 dzialkiBase.deleteRow((IDzialka)dzialkaSel);
                 dzialkaView.Refresh();
+            }
+            else
+            {
+                var factory = viewFactory.CreateView<AddView>();
+                factory.Show();
             }
         }
 

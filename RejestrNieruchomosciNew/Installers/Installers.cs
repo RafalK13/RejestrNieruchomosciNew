@@ -16,13 +16,18 @@ namespace RejestrNieruchomosciNew.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            container.Register(Component.For<IObrebList>().ImplementedBy<ObrebList>());
+
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().LifeStyle.Transient);
-            container.Register(Component.For<DzialkaList>());
+            container.Register(Component.For<IDzialkaList>().ImplementedBy<DzialkaList>().LifeStyle.Transient);
+            //container.Register(Component.For<DzialkaList>());
             container.Register(Component.For<ObrebClass>().LifeStyle.Transient);
             container.Register(Component.For<AddView>().LifeStyle.Transient);
             container.Register(Component.For<AddViewModel>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_Add_danePodstawoweViewModel>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_PreviewViewModel>());
+
+            
 
             container.Register(Component.For<Window2>());
 

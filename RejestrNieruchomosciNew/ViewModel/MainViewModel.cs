@@ -27,13 +27,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
         
-        //public AddView addView { get; set; }
         public UserControl_PreviewViewModel userControl_prev { get; set; }
 
         public ICommand addNewDzialka { get; set; }
         public ICommand delDzialka { get; set; }
 
-        private IViewFactory viewFactory;
+        public IViewFactory viewFactory { get; set; }
 
         private string _modeMessage;
         public string modeMessage
@@ -48,10 +47,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Konstruktor
-        public MainViewModel(IViewFactory _viewFactory)
+        public MainViewModel()
         {
-            viewFactory = _viewFactory;
-
             initButtonCommand();
             btActivity = true;
         }
@@ -79,18 +76,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onAddNewDzialka()
         {
-            var factory = viewFactory.CreateView<AddView>();
-            factory.Show();
-           // var main = factory.CreateView<AddView>();
-           // main.Show();
-
-            //{
-            //    btActivity = false;
-
-            //    //addView.Show();
-
-            //    var addView = container.Resolve<AddView>();
-            //    addView.Show();
+            var factory = viewFactory.CreateView<AddView>( );
+            factory.Show();         
         }
 
         #endregion

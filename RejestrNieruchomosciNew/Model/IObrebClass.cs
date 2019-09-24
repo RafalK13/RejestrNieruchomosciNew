@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    interface IObrebClass
+    interface IObrebClass //: IObrebList
     {
-        List<Obreb> obrebList { get; set; }
-
         ICollectionView gminaView { get; set; }
         ICollectionView obrebView { get; set; }
 

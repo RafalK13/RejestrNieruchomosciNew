@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IDzialkaList
+    public interface IObrebList
     {
-        List<IDzialka> dzialkaList { get; set; }
-        void AddRow(IDzialka dz);
-        void deleteRow(IDzialka dz);
+        List<Obreb> obrebList { get; set; }
     }
 }

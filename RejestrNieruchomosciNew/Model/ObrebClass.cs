@@ -1,12 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.Model
@@ -14,7 +10,7 @@ namespace RejestrNieruchomosciNew.Model
     public class ObrebClass : ViewModelBase, IObrebClass
     {
         #region Properties
-        public List<Obreb> obrebList { get; set; }
+        public IObrebList obrebList { get; set; }
 
         private ICollectionView _gminaView;
         public ICollectionView gminaView
@@ -22,9 +18,9 @@ namespace RejestrNieruchomosciNew.Model
             get
             {
                 if (obrebValue != null)
-                    return CollectionViewSource.GetDefaultView(obrebList.Where(a => a.Nazwa.Contains(obrebValue)).Select(a => a.GminaSlo.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.Nazwa.Contains(obrebValue)).Select(a => a.GminaSlo.Nazwa).Distinct());
                 else
-                    return CollectionViewSource.GetDefaultView(obrebList.Select(a => a.GminaSlo.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Select(a => a.GminaSlo.Nazwa).Distinct());
             }
 
             set
@@ -40,16 +36,15 @@ namespace RejestrNieruchomosciNew.Model
             get
             {
                 if (gminaValue != null)
-                    return CollectionViewSource.GetDefaultView(obrebList.Where(a => a.GminaSlo.Nazwa.Contains(gminaValue)).Select(a => a.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.GminaSlo.Nazwa.Contains(gminaValue)).Select(a => a.Nazwa).Distinct());
                 else
-                    return CollectionViewSource.GetDefaultView(obrebList.Select(a => a.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Select(a => a.Nazwa).Distinct());
             }
 
             set
             {
                 _obrebView = value;
                 RaisePropertyChanged("obrebView");
-
             }
         }
 
@@ -86,29 +81,17 @@ namespace RejestrNieruchomosciNew.Model
         }
         #endregion
 
-        #region Konstructor
-        public ObrebClass()
-        {
-            obrebList = new List<Obreb>();
-            initObreb();
-        }
-        #endregion
+        //#region Konstructor
+        
+        //#endregion
         #region Methods
-        private void initObreb()
-        {
-            obrebList = null;
-            using (var c = new Context())
-            {
-                obrebList = c.Obreb.Include("GminaSlo").ToList();
-            }
-        }
-
+        
         public void fillValues(int id)
         {
             try
             {
-                obrebValue = obrebList.Where(r => r.ObrebId == id).First().Nazwa;
-                gminaValue = obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
+                obrebValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().Nazwa;
+                gminaValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
             }
             catch (Exception)
             {
@@ -119,7 +102,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public int getId(string obreb, string gmina)
         {
-            return obrebList.FirstOrDefault(r => r.Nazwa == obreb && r.GminaSlo.Nazwa == gmina).ObrebId;
+            return obrebList.obrebList.FirstOrDefault(r => r.Nazwa == obreb && r.GminaSlo.Nazwa == gmina).ObrebId;
         }
 
         public int? getId()

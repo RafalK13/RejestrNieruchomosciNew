@@ -22,12 +22,11 @@ namespace RejestrNieruchomosciNew
                                  Component.For<IViewFactory>().ImplementedBy<WindsorViewFactory>()
                               );
             container.Install(FromAssembly.This());
-            //container.Install( new InstallersAdd());
 
             var view = container.Resolve<MainView>();
             view.Show();
 
-            container.Dispose();
+            //container.Dispose();
         }
     }
 

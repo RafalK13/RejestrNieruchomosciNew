@@ -24,6 +24,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("obreb");
             }
         }
+
         public IDzialka dzialka { get; set; }
 
         private bool _isNew;
@@ -39,7 +40,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICommand leftClick { get; set; }
 
-        public DzialkaList dzialkaList { get; set; }
+        public IDzialkaList dzialkaList { get; set; }
 
         #endregion
 
@@ -68,6 +69,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
                 dzialka.ObrebId = obreb.getId().Value;
+               
                 isNew = c == 0 ? true : false;
             }
             #endregion

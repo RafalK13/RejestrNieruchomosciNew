@@ -102,7 +102,6 @@
         <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
                   ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
                   SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
-                  
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   SelectionMode="Single">
@@ -119,13 +118,36 @@
                                 Command="{Binding userControl_prev.doubleClick}"/>
 
             </DataGrid.InputBindings>
+            <!--<DataGrid.Style>
+                <Style TargetType="DataGrid">
+                    <Setter Property="Background" Value="Aqua"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=checkBox, Path=IsChecked}" Value="True">
+                            <Setter Property="Background" Value="Bisque"></Setter>
+                         </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Style>-->
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="White"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=checkBox, Path=IsChecked}" Value="True">
+                            <Setter Property="Background" Value="#FFFFBFD4"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
         </DataGrid>
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
 
         <CheckBox Grid.Row="1" Grid.Column="3" Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding userControl_prev.allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Margin="0,0,0,9"
-                  ></CheckBox>
+                  Name="checkBox"
+                  >
+        </CheckBox>
 
         
     </Grid>
