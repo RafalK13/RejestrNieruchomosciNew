@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,9 @@ namespace RejestrNieruchomosciNew.Model
         decimal? Pow { get; set; }
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
+
+        IDzialka clone();
+        
+        ProcessDzialka procDz { get; set; }
     }
 }

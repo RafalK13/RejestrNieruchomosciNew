@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew
@@ -33,6 +34,9 @@ namespace RejestrNieruchomosciNew
         }
         public Obreb Obreb { get; set; }
 
+        [NotMapped]
+        public ProcessDzialka procDz { get; set; }
+        
         public Dzialka()
         {
         }
@@ -45,5 +49,18 @@ namespace RejestrNieruchomosciNew
             Kwzrob = _kwZ;
             Pow = _Pow;
         }
+
+        public IDzialka clone()
+        {
+            IDzialka d = new Dzialka();
+
+            d.Numer = Numer;
+            d.ObrebId = ObrebId;
+
+            return d;
+        }
+
+        
+        
     }
 }

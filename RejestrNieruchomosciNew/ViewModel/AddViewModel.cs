@@ -1,19 +1,8 @@
-﻿using Castle.Core;
-using CommonServiceLocator;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Messaging;
 using RejestrNieruchomosciNew.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
@@ -21,10 +10,12 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public string modeMessage { get; set; }
 
+        public  IPerson personAddViewModel { get; set; }
+
         public UserControl_Add_danePodstawoweViewModel userControl_AddDanePod { get; set; }
 
         public UserControl_PreviewViewModel userControl_PrevViewModel { get; set; }
-
+       
         #region ICommand
         public ICommand OnCloseWindow { get; set; }
         public ICommand OnAddDzialka { get; set; }
@@ -46,7 +37,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (userControl_AddDanePod.isNew == true)
             {
-                userControl_PrevViewModel.dzialkiBase.AddRow((Dzialka)userControl_AddDanePod.dzialka);
+                if (userControl_AddDanePod.dzialka.procDz == ProcessDzialka.add)
+                    userControl_PrevViewModel.dzialkiBase.AddRow((Dzialka)userControl_AddDanePod.dzialka);
+                else
+                {
+
+                    userControl_PrevViewModel.dzialkiBase.ModRow((Dzialka)userControl_AddDanePod.dzialka);
+                    
+                }
+
                 userControl_PrevViewModel.dzialkaView.Refresh();
             }
         }

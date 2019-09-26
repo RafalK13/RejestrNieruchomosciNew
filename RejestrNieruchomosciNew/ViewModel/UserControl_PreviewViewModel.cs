@@ -18,6 +18,7 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+   
     public class UserControl_PreviewViewModel : ViewModelBase
     {
         #region Properties
@@ -34,12 +35,23 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICollectionView dzialkaView
         {
-            get => CollectionViewSource.GetDefaultView( dzialkiBase.dzialkaList);
-            
+            get => CollectionViewSource.GetDefaultView(dzialkiBase.dzialkaList);
+
         }
 
-        public Dzialka _dzialkaSel;
-        public Dzialka dzialkaSel
+        public IDzialka _dzialka;
+        public IDzialka dzialka
+        {
+            get => _dzialka;
+            set
+            {
+                _dzialka = value;
+                RaisePropertyChanged("dzialka");
+            }
+        }
+
+        public IDzialka _dzialkaSel;
+        public IDzialka dzialkaSel
         {
             get => _dzialkaSel;
             set
@@ -100,7 +112,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         #region Konstructor
-
         public UserControl_PreviewViewModel(IDzialkaList _dzialkiBase)
         {
             dzialkiBase = _dzialkiBase;
@@ -108,7 +119,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             initCommands();
             allowDelete = false;
         }
-
         #endregion
 
         #region Methods
@@ -137,17 +147,55 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
+        public void addDzialka( ProcessDzialka pDz)
+        {
+            if (pDz == ProcessDzialka.mod)
+                cloneDzialka();
+            else
+                newDzialka();
+
+            var factory = viewFactory.CreateView<AddView>();
+            factory.Show();
+        }
+        
         private void onDoubleClicked()
         {
             if (allowDelete == true)
-            {
-                dzialkiBase.deleteRow((IDzialka)dzialkaSel);
-                dzialkaView.Refresh();
-            }
+                deleteDzialka();
             else
             {
-                var factory = viewFactory.CreateView<AddView>();
-                factory.Show();
+                addDzialka(ProcessDzialka.mod);
+            }
+        }
+
+        private void newDzialka()
+        {
+            dzialka.DzialkaId = 0;
+            dzialka.Kwakt = string.Empty;
+            dzialka.Kwzrob = string.Empty;
+            dzialka.Numer = string.Empty;
+            dzialka.ObrebId = 0;
+            dzialka.Pow = 0;
+            dzialka.procDz = ProcessDzialka.add;
+        }
+
+        private void cloneDzialka()
+        {
+            dzialka.DzialkaId = dzialkaSel.DzialkaId;
+            dzialka.Kwakt = dzialkaSel.Kwakt;
+            dzialka.Kwzrob = dzialkaSel.Kwzrob;
+            dzialka.Numer = dzialkaSel.Numer;
+            dzialka.ObrebId = dzialkaSel.ObrebId;
+            dzialka.Pow = dzialkaSel.Pow;
+            dzialka.procDz = ProcessDzialka.mod;
+        }
+
+        public void deleteDzialka()
+        {
+            if (dzialkaSel.Numer != null)
+            {
+                dzialkiBase.deleteRow(dzialkaSel);
+                dzialkaView.Refresh();
             }
         }
 

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IViewFactory
+    public enum ProcessDzialka
     {
-        T CreateView<T>() where T : IView;
-        //T CreateView<T, G>(G argument) where T : IView;
-                                       
+        add,
+        mod
     }
 }

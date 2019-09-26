@@ -15,17 +15,30 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
 
+        public IPerson personUserAddViewModel { get; set; }
+
+        private IDzialka _dzialka;
+        public IDzialka dzialka
+        {
+            get => _dzialka;
+            set
+            {
+                _dzialka = value;
+                RaisePropertyChanged("dzialka");
+            }
+        }
+
         private ObrebClass _obreb;
         public ObrebClass obreb
         {
             get => _obreb; set
             {
                 _obreb = value;
+
                 RaisePropertyChanged("obreb");
+                obreb.fillValues(dzialka.ObrebId);
             }
         }
-
-        public IDzialka dzialka { get; set; }
 
         private bool _isNew;
         public bool isNew
@@ -41,12 +54,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand leftClick { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
-
+     
         #endregion
 
         #region Konstructor
 
-        public UserControl_Add_danePodstawoweViewModel()
+        public UserControl_Add_danePodstawoweViewModel( )
         {
             isNew = false;
 
@@ -62,10 +75,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void testDzialka()
         {
-            
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
-
                 int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
                 dzialka.ObrebId = obreb.getId().Value;

@@ -216,8 +216,10 @@
       <DependentUpon>20190708193243_raf13.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
+    <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DzialkaList.cs" />
+    <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\IDzialka.cs" />
     <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />

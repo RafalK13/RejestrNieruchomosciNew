@@ -33,7 +33,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid ShowGridLines="False" Margin="0,0,0,0" >
+    <Grid ShowGridLines="False" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
@@ -99,8 +99,8 @@
                 >
         </Button>
 
-        <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
-                  ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" Margin="11,1,1,1"
+        <DataGrid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Margin="10,0,0,0"
+                  ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"
                   SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
@@ -144,11 +144,11 @@
 
         <CheckBox Grid.Row="1" Grid.Column="3" Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding userControl_prev.allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  Margin="0,0,0,9"
+                  Margin="0,0,0,10"
                   Name="checkBox"
                   >
         </CheckBox>
 
-        
+
     </Grid>
 </UserControl>

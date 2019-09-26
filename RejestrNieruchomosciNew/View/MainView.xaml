@@ -24,12 +24,15 @@
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <TextBox  Grid.Row="0" 
+        <StackPanel Grid.Row="0">
+           
+            <TextBox  Grid.Row="0" 
                   FontSize="20"
                   TextAlignment="Center"
                   VerticalAlignment="Center"
                   Text="{Binding modeMessage, Mode=TwoWay}" 
                   BorderThickness="0"></TextBox>
+        </StackPanel>
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
@@ -57,6 +60,6 @@
                 Style="{StaticResource buttonRaf}"
                 Content="Inne"></Button>
         </StackPanel>
-<RadioButton />
+
     </Grid>
 </Window>

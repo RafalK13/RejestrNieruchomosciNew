@@ -22,11 +22,14 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public IObrebList obrebList { get; set; }
-
+        
         private void initDzialkaList()
         {
             Task task = Task.Run(() => fillDzialkaList());
+
             task.Wait();
+
+    
         }
 
         private async Task fillDzialkaList()
@@ -64,5 +67,22 @@ namespace RejestrNieruchomosciNew.Model
         {
             initDzialkaList();
         }
+
+        public void ModRow(IDzialka dz)
+        {
+            using (var c = new Context())
+            {
+                c.Update(dz);
+                c.SaveChanges();
+            }
+
+            //MessageBox.Show(dz.DzialkaId.ToString());
+            MessageBox.Show( (dzialkaList.FindIndex(n => n.DzialkaId == dz.DzialkaId).ToString()));
+
+
+            //dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
+            //dzialkaList.Add(dz);
+        }
+
     }
 }

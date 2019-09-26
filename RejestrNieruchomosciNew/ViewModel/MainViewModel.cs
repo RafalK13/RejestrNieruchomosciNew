@@ -1,14 +1,7 @@
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
-using System;
-using System.ComponentModel;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -26,7 +19,20 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("btActivity");
             }
         }
-        
+
+        public IPerson person { get; set; }
+
+        private IDzialka _dzialka;
+        public IDzialka dzialka
+        {
+            get => _dzialka;
+            set
+            {
+                _dzialka = value;
+                RaisePropertyChanged("dzialka");
+            }
+        }
+
         public UserControl_PreviewViewModel userControl_prev { get; set; }
 
         public ICommand addNewDzialka { get; set; }
@@ -63,21 +69,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDeleteDzialka()
         {
-            deleteDzialka();
-        }
-
-        public void deleteDzialka()
-        {
-            Dzialka dz = userControl_prev.dzialkaSel;
-
-            userControl_prev.dzialkiBase.deleteRow((IDzialka)dz);
-            userControl_prev.dzialkaView.Refresh();
+            userControl_prev.deleteDzialka();
         }
 
         private void onAddNewDzialka()
         {
-            var factory = viewFactory.CreateView<AddView>( );
-            factory.Show();         
+            userControl_prev.addDzialka(ProcessDzialka.add);
         }
 
         #endregion

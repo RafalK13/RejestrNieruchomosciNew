@@ -17,10 +17,7 @@ namespace RejestrNieruchomosciNew
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            container.Register(
-                                 Component.For<IWindsorContainer>().Instance(container),
-                                 Component.For<IViewFactory>().ImplementedBy<WindsorViewFactory>()
-                              );
+           
             container.Install(FromAssembly.This());
 
             var view = container.Resolve<MainView>();
