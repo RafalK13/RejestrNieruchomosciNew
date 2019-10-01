@@ -150,7 +150,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public void addDzialka( ProcessDzialka pDz)
         {
             if (pDz == ProcessDzialka.mod)
-                cloneDzialka();
+            {
+                dzialka.clone(dzialkaSel);
+                dzialka.procDz = ProcessDzialka.mod;
+            }
             else
                 newDzialka();
 
@@ -177,17 +180,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzialka.ObrebId = 0;
             dzialka.Pow = 0;
             dzialka.procDz = ProcessDzialka.add;
-        }
-
-        private void cloneDzialka()
-        {
-            dzialka.DzialkaId = dzialkaSel.DzialkaId;
-            dzialka.Kwakt = dzialkaSel.Kwakt;
-            dzialka.Kwzrob = dzialkaSel.Kwzrob;
-            dzialka.Numer = dzialkaSel.Numer;
-            dzialka.ObrebId = dzialkaSel.ObrebId;
-            dzialka.Pow = dzialkaSel.Pow;
-            dzialka.procDz = ProcessDzialka.mod;
         }
 
         public void deleteDzialka()

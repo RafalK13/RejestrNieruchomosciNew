@@ -17,7 +17,7 @@ namespace RejestrNieruchomosciNew.Model
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
 
-        IDzialka clone();
+        void clone( IDzialka d);
         
         ProcessDzialka procDz { get; set; }
     }

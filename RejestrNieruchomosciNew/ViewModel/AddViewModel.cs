@@ -41,9 +41,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                     userControl_PrevViewModel.dzialkiBase.AddRow((Dzialka)userControl_AddDanePod.dzialka);
                 else
                 {
-
                     userControl_PrevViewModel.dzialkiBase.ModRow((Dzialka)userControl_AddDanePod.dzialka);
-                    
                 }
 
                 userControl_PrevViewModel.dzialkaView.Refresh();

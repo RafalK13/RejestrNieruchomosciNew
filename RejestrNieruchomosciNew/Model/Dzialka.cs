@@ -50,17 +50,17 @@ namespace RejestrNieruchomosciNew
             Pow = _Pow;
         }
 
-        public IDzialka clone()
+        public void clone( IDzialka d)
         {
-            IDzialka d = new Dzialka();
+            var t = d.GetType();
 
-            d.Numer = Numer;
-            d.ObrebId = ObrebId;
-
-            return d;
+            foreach (var v in t.GetProperties())
+            {
+                if (v.CanWrite)
+                {
+                    v.SetValue(this, v.GetValue(d));
+                }
+            }
         }
-
-        
-        
     }
 }
