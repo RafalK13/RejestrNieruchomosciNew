@@ -45,6 +45,7 @@
                 Content="Przegladanie"></Button>
             <Button 
                 Style="{StaticResource buttonRaf}"
+                Command="{Binding modDzialka}"
                 Content="Modyfikacja"></Button>
             <Button 
                 x:Name="buttonAdd"

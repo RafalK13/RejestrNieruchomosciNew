@@ -28,8 +28,6 @@ namespace RejestrNieruchomosciNew.Model
             Task task = Task.Run(() => fillDzialkaList());
 
             task.Wait();
-
-    
         }
 
         private async Task fillDzialkaList()

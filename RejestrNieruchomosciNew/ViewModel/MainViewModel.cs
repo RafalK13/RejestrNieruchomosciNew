@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
+using System;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -37,8 +38,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICommand addNewDzialka { get; set; }
         public ICommand delDzialka { get; set; }
+        public ICommand modDzialka { get; set; }
 
-        public IViewFactory viewFactory { get; set; }
+        //public IViewFactory viewFactory { get; set; }
 
         private string _modeMessage;
         public string modeMessage
@@ -65,6 +67,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             addNewDzialka = new RelayCommand(onAddNewDzialka);
             delDzialka = new RelayCommand(onDeleteDzialka);
+            modDzialka = new RelayCommand(onModifyDzialka);
+        }
+
+        private void onModifyDzialka()
+        {
+            userControl_prev.modDzialka();
         }
 
         private void onDeleteDzialka()
@@ -74,7 +82,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onAddNewDzialka()
         {
-            userControl_prev.addDzialka(ProcessDzialka.add);
+            userControl_prev.addDzialka();
         }
 
         #endregion

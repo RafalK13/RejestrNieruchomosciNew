@@ -84,6 +84,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        
         private string _result;
         public string result
         {
@@ -147,40 +148,37 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
-        public void addDzialka( ProcessDzialka pDz)
+        public void addDzialka()
         {
-            if (pDz == ProcessDzialka.mod)
-            {
-                dzialka.clone(dzialkaSel);
-                dzialka.procDz = ProcessDzialka.mod;
-            }
-            else
-                newDzialka();
-
             var factory = viewFactory.CreateView<AddView>();
             factory.Show();
         }
-        
+
+        public void modDzialka()
+        {
+
+        }
+
         private void onDoubleClicked()
         {
             if (allowDelete == true)
                 deleteDzialka();
             else
             {
-                addDzialka(ProcessDzialka.mod);
+                addDzialka();
             }
         }
 
-        private void newDzialka()
-        {
-            dzialka.DzialkaId = 0;
-            dzialka.Kwakt = string.Empty;
-            dzialka.Kwzrob = string.Empty;
-            dzialka.Numer = string.Empty;
-            dzialka.ObrebId = 0;
-            dzialka.Pow = 0;
-            dzialka.procDz = ProcessDzialka.add;
-        }
+        //private void newDzialka()
+        //{
+        //    dzialka.DzialkaId = 0;
+        //    dzialka.Kwakt = string.Empty;
+        //    dzialka.Kwzrob = string.Empty;
+        //    dzialka.Numer = string.Empty;
+        //    dzialka.ObrebId = 0;
+        //    dzialka.Pow = 0;
+        //    dzialka.procDz = ProcessDzialka.add;
+        //}
 
         public void deleteDzialka()
         {

@@ -235,7 +235,9 @@
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
+    <Compile Include="ViewModel\ChangeViewModel.cs" />
     <Compile Include="ViewModel\Converters.cs" />
+    <Compile Include="ViewModel\ModViewModel.cs" />
     <Compile Include="ViewModel\UserControl_Add_danePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
