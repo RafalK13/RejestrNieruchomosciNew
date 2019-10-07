@@ -44,7 +44,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             //SimpleIoc.Default.Register<DzialkaViewModel>();
             SimpleIoc.Default.Register<UserControl_PreviewViewModel>();
-            SimpleIoc.Default.Register<UserControl_Add_danePodstawoweViewModel>();
+            SimpleIoc.Default.Register<UserControl_DanePodstawoweViewModel>();
             SimpleIoc.Default.Register<AddViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
@@ -65,11 +65,11 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public UserControl_Add_danePodstawoweViewModel DzialkaViewModel
+        public UserControl_DanePodstawoweViewModel DzialkaViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<UserControl_Add_danePodstawoweViewModel>();
+                return ServiceLocator.Current.GetInstance<UserControl_DanePodstawoweViewModel>();
             }
         }
 

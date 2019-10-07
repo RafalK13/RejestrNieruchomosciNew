@@ -7,9 +7,9 @@ namespace RejestrNieruchomosciNew.View
     /// <summary>
     /// Logika interakcji dla klasy UserControl_Add_danePodstawowe.xaml
     /// </summary>
-    public partial class UserControl_Add_danePodstawowe : UserControl
+    public partial class UserControl_DanePodstawowe : UserControl
     {
-        public UserControl_Add_danePodstawowe()
+        public UserControl_DanePodstawowe()
         {
             InitializeComponent();
         }

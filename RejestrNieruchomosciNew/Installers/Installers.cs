@@ -24,22 +24,35 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<ChangeViewModel>());
 
-            container.Register(Component.For<IPerson>().ImplementedBy<Person>());
-
             container.Register(Component.For<IObrebList>().ImplementedBy<ObrebList>());
+
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>());
+            //container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().Named("dzialkaNew").LifeStyle.Transient);
+
             container.Register(Component.For<IDzialkaList>().ImplementedBy<DzialkaList>().LifeStyle.Transient);
-            container.Register(Component.For<ObrebClass>().LifeStyle.Transient);
 
-            container.Register(Component.For<AddView>().LifeStyle.Transient);
-            container.Register(Component.For<AddViewModel>().LifeStyle.Transient);
+            container.Register(Component.For<ObrebClass>());
 
-            container.Register(Component.For<UserControl_Add_danePodstawoweViewModel>());
+            container.Register(Component.For<ChangeView>().LifeStyle.Transient);
+
+            //container.Register(Component.For<AddViewModel>().LifeStyle.Transient);
+
+            container.Register(Component.For<UserControl_DanePodstawowe>());
+            container.Register(Component.For<UserControl_DanePodstawoweViewModel>());
+
             container.Register(Component.For<UserControl_PreviewViewModel>());
-            
+
+            container.Register(Component.For<ISelectorModel>().ImplementedBy<SelectorModel>());
+            container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add"));
+
+            //container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add")
+            //                  .DependsOn( Dependency.OnComponent( "dzialka", "dzialkaNew"))
+            //                  );
+
+            container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod"));
+
             container.Register(Component.For<Window2>());
 
-            
         }
     }
 }

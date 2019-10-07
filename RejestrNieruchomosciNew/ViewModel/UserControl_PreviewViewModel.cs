@@ -39,16 +39,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         }
 
-        public IDzialka _dzialka;
-        public IDzialka dzialka
-        {
-            get => _dzialka;
-            set
-            {
-                _dzialka = value;
-                RaisePropertyChanged("dzialka");
-            }
-        }
+        //public IDzialka _dzialka;
+        //public IDzialka dzialka
+        //{
+        //    get => _dzialka;
+        //    set
+        //    {
+        //        _dzialka = value;
+        //        RaisePropertyChanged("dzialka");
+        //    }
+        //}
 
         public IDzialka _dzialkaSel;
         public IDzialka dzialkaSel
@@ -83,7 +83,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 setFilter();
             }
         }
-
         
         private string _result;
         public string result
@@ -150,13 +149,14 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void addDzialka()
         {
-            var factory = viewFactory.CreateView<AddView>();
-            factory.Show();
+        //    var factory = viewFactory.CreateView<ChangeView>();
+        //    factory.Show();
         }
 
         public void modDzialka()
         {
-
+            //var factory = viewFactory.CreateView<ChangeView>();
+            //factory.Show();
         }
 
         private void onDoubleClicked()

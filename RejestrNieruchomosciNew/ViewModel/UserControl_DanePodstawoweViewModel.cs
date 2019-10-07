@@ -11,11 +11,11 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class UserControl_Add_danePodstawoweViewModel : ViewModelBase
+    public class UserControl_DanePodstawoweViewModel : ViewModelBase
     {
         #region Properties
 
-        public IPerson personUserAddViewModel { get; set; }
+        //public IPerson personUserAddViewModel { get; set; }
 
         private IDzialka _dzialka;
         public IDzialka dzialka
@@ -59,9 +59,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #region Konstructor
 
-        public UserControl_Add_danePodstawoweViewModel( )
+        public UserControl_DanePodstawoweViewModel( )
         {
-            isNew = false;
+            //isNew = false;
+            isNew = true;
 
             leftClick = new RelayCommand(onLeftClick);
         }
@@ -75,14 +76,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void testDzialka()
         {
-            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
-            {
-                int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
-                                                 r.Numer == dzialka.Numer).Count();
-                dzialka.ObrebId = obreb.getId().Value;
+            isNew = true;
+
+            //if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
+            //{
+            //    int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+            //                                     r.Numer == dzialka.Numer).Count();
+            //    dzialka.ObrebId = obreb.getId().Value;
                
-                isNew = c == 0 ? true : false;
-            }
+            //    isNew = c == 0 ? true : false;
+            //}
             #endregion
         }
     }

@@ -27,9 +27,9 @@ namespace RejestrNieruchomosciNew.Installers
             return container.Resolve<T>();
         }
 
-        //T IViewFactory.CreateView<T>(IDzialka argument)
-        //{
-        //    return container.Resolve<T>( new Dzialka());
-        //}
+        T IViewFactory.CreateView<T>( string s)
+        {
+            return container.Resolve<T>( s);
+        }
     }
 }

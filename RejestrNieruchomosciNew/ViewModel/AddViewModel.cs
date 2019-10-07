@@ -1,10 +1,10 @@
-﻿using System.Windows;
+﻿using RejestrNieruchomosciNew.Model;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class AddViewModel : ChangeViewModel
+    public class AddViewModel : ChangeViewModel, IChangeViewModel
     {
-
         public AddViewModel()
         {
             modeMessage = "Dodawanie nowej działki";
@@ -12,19 +12,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region initCommands
         public override void onAddDzialka()
         {
-
-            MessageBox.Show("kliknięto Dodawanie");
-            //if (userControl_AddDanePod.isNew == true)
-            //{
-            //    if (userControl_AddDanePod.dzialka.procDz == ProcessDzialka.add)
-            //        userControl_PrevViewModel.dzialkiBase.AddRow((Dzialka)userControl_AddDanePod.dzialka);
-            //    else
-            //    {
-            //        userControl_PrevViewModel.dzialkiBase.ModRow((Dzialka)userControl_AddDanePod.dzialka);
-            //    }
-
-            //    userControl_PrevViewModel.dzialkaView.Refresh();
-            //}
+            MessageBox.Show( user.dzialkaSel.Numer);
         }
 
         public override void onCloseWindow()
@@ -34,3 +22,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
     }
 }
+
+#region rem
+//if (userControl_AddDanePod.isNew == true)
+//{
+//    if (userControl_AddDanePod.dzialka.procDz == ProcessDzialka.add)
+//        userControl_PrevViewModel.dzialkiBase.AddRow((Dzialka)userControl_AddDanePod.dzialka);
+//    else
+//    {
+//        userControl_PrevViewModel.dzialkiBase.ModRow((Dzialka)userControl_AddDanePod.dzialka);
+//    }
+
+//    userControl_PrevViewModel.dzialkaView.Refresh();
+//}
+#endregion

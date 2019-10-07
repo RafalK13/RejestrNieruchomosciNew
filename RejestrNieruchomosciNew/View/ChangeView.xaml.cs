@@ -6,12 +6,12 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew.View
 {
-    public partial class AddView : Window, IView
+    public partial class ChangeView : Window, IView
     {
-        public AddView( ChangeViewModel addViewModel)
+        public ChangeView(ISelectorModel model)
         {
             InitializeComponent();
-            DataContext = addViewModel;
+            DataContext = model.selectedModel;
         }
     }
 }

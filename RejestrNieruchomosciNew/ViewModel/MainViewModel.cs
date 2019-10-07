@@ -21,18 +21,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public IPerson person { get; set; }
-
-        private IDzialka _dzialka;
-        public IDzialka dzialka
-        {
-            get => _dzialka;
-            set
-            {
-                _dzialka = value;
-                RaisePropertyChanged("dzialka");
-            }
-        }
+        public IViewFactory factory { get; set; }
+        public ISelectorModel modelSel { get; set; }
+        public IChangeViewModel model { get; set; }
 
         public UserControl_PreviewViewModel userControl_prev { get; set; }
 
@@ -40,18 +31,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand delDzialka { get; set; }
         public ICommand modDzialka { get; set; }
 
-        //public IViewFactory viewFactory { get; set; }
-
-        private string _modeMessage;
-        public string modeMessage
-        {
-            get => _modeMessage; set
-            {
-                _modeMessage = value;
-                RaisePropertyChanged("modeMessage");
-            }
-        }
-
+        public string modeMessage { get; set; }
         #endregion
 
         #region Konstruktor
@@ -72,18 +52,32 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onModifyDzialka()
         {
-            userControl_prev.modDzialka();
+            modelSel.selectedModel = factory.CreateView<IChangeViewModel>("Mod");
+
+            //userControl_prev.modDzialka();
+
+            var v = factory.CreateView<ChangeView>();
+            v.Show();
         }
+
+        private void onAddNewDzialka()
+        {
+            modelSel.selectedModel = factory.CreateView<IChangeViewModel>("Add");
+            //userControl_prev.addDzialka();
+
+            var v = factory.CreateView<ChangeView>();
+            v.Show();
+        }
+
+
+
 
         private void onDeleteDzialka()
         {
             userControl_prev.deleteDzialka();
         }
 
-        private void onAddNewDzialka()
-        {
-            userControl_prev.addDzialka();
-        }
+       
 
         #endregion
     }

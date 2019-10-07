@@ -1,10 +1,9 @@
-﻿<Window x:Class="RejestrNieruchomosciNew.View.AddView"
+﻿<Window x:Class="RejestrNieruchomosciNew.View.ChangeView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
-        xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
         xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
@@ -39,7 +38,7 @@
 
         <TabControl Grid.Row="1" Margin="20">
             <TabItem Header="Dane podstawowe">
-                <view:UserControl_Add_danePodstawowe/>
+                <view:UserControl_DanePodstawowe/>
             </TabItem>
             <TabItem Header="Własność" IsEnabled="{Binding canAddTab}"></TabItem>
             <TabItem Header="Inne prawa" IsEnabled="{Binding canAddTab}"></TabItem>

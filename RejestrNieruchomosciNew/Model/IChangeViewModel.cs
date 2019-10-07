@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IViewFactory
+    public interface IChangeViewModel
     {
-        T CreateView<T>();
-        T CreateView<T>(string s);
     }
+
+
 }

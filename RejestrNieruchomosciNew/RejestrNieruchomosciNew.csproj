@@ -220,6 +220,7 @@
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
+    <Compile Include="Model\IChangeViewModel.cs" />
     <Compile Include="Model\IDzialka.cs" />
     <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
+    <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
@@ -238,18 +240,18 @@
     <Compile Include="ViewModel\ChangeViewModel.cs" />
     <Compile Include="ViewModel\Converters.cs" />
     <Compile Include="ViewModel\ModViewModel.cs" />
-    <Compile Include="ViewModel\UserControl_Add_danePodstawoweViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\AddView.xaml.cs">
-      <DependentUpon>AddView.xaml</DependentUpon>
+    <Compile Include="View\ChangeView.xaml.cs">
+      <DependentUpon>ChangeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl_Add_danePodstawowe.xaml.cs">
-      <DependentUpon>UserControl_Add_danePodstawowe.xaml</DependentUpon>
+    <Compile Include="View\UserControl_DanePodstawowe.xaml.cs">
+      <DependentUpon>UserControl_DanePodstawowe.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
@@ -274,7 +276,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AddView.xaml">
+    <Page Include="View\ChangeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -282,7 +284,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl_Add_danePodstawowe.xaml">
+    <Page Include="View\UserControl_DanePodstawowe.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
