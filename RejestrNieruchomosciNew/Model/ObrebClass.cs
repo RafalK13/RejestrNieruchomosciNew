@@ -82,10 +82,25 @@ namespace RejestrNieruchomosciNew.Model
         #endregion
 
         //#region Konstructor
-        
+
         //#endregion
         #region Methods
-        
+
+        public void fillValues(IDzialka d)
+        {
+            try
+            {
+                obrebValue = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First().Nazwa;
+                gminaValue = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First().GminaSlo.Nazwa;
+            }
+            catch (Exception)
+            {
+                obrebValue = null;
+                gminaValue = null;
+            }
+        }
+
+
         public void fillValues(int id)
         {
             try

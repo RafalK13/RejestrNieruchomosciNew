@@ -5,39 +5,26 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class ModViewModel : ChangeViewModel, IChangeViewModel
     {
-        private IDzialka _dzialka;
-        public IDzialka dzialka
+        //public  UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+
+        public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
+                            UserControl_PreviewViewModel userPrev)
         {
-            get => _dzialka;
-            set
-            {
-                _dzialka = value;
-                RaisePropertyChanged("dzialka");
-            }
-        }
+                
+            userPodst.dzialka = (Dzialka)userPrev.dzialkaSel;
+            userPodst.obreb.fillValues(userPrev.dzialkaSel);
 
-        private ObrebClass _obreb;
-        public ObrebClass obreb
-        {
-            get => _obreb; set
-            {
-                _obreb = value;
+            //userControl_AddDanePod.dzialka = userPrev.dzialkaSel;
+            //userControl_AddDanePod.obreb.fillValues(userPrev.dzialkaSel);
 
-                RaisePropertyChanged("obreb");
-                obreb.fillValues(dzialka.ObrebId);
-            }
-        }
+            //userControl_AddDanePod = userPodst;
 
-        
 
-        public ModViewModel()
-        {
-            modeMessage = "Modyfikacja danych";
         }
 
         public override void onAddDzialka()
         {
-            MessageBox.Show(dzialka.Numer);
+            //MessageBox.Show(userControl_AddDanePod.dzialka.Numer);
         }
 
         public override void onCloseWindow()

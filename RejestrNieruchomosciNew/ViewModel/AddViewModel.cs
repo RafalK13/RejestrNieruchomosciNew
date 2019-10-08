@@ -1,18 +1,25 @@
-﻿using RejestrNieruchomosciNew.Model;
+﻿using Castle.Core;
+using RejestrNieruchomosciNew.Model;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
     public class AddViewModel : ChangeViewModel, IChangeViewModel
     {
-        public AddViewModel()
+        //public UserControl_DanePodstawoweViewModel userPodst { get; set; }
+
+
+        public AddViewModel(UserControl_DanePodstawoweViewModel userPodst,
+                            UserControl_PreviewViewModel userPrev
+                           )
         {
-            modeMessage = "Dodawanie nowej działki";
+           
         }
+
         #region initCommands
         public override void onAddDzialka()
         {
-            MessageBox.Show( user.dzialkaSel.Numer);
+           // MessageBox.Show( base.userControl_AddDanePod.dzialka.Numer);
         }
 
         public override void onCloseWindow()

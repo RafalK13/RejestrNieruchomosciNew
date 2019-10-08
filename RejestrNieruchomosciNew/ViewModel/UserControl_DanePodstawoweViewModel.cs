@@ -63,8 +63,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             //isNew = false;
             isNew = true;
-
             leftClick = new RelayCommand(onLeftClick);
+
+
+            //MessageBox.Show("Kon");
+
         }
         #endregion
 
