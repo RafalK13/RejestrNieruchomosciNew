@@ -1,30 +1,45 @@
 ﻿using Castle.Core;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using System.Windows;
+using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class AddViewModel : ChangeViewModel, IChangeViewModel
+
+    public class AddViewModel : ViewModelBase, IChangeViewModel
     {
-        //public UserControl_DanePodstawoweViewModel userPodst { get; set; }
+        [DoNotWire]
+        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        public UserControl_PreviewViewModel userControl_prevModel { get; set; }
 
+        public IDzialkaList dzialkaList;
 
-        public AddViewModel(UserControl_DanePodstawoweViewModel userPodst,
-                            UserControl_PreviewViewModel userPrev
-                           )
+        #region ICommand
+        public ICommand OnCloseWindow { get; set; }
+        public ICommand OnAddDzialka { get; set; }
+        #endregion
+
+        public AddViewModel(UserControl_DanePodstawoweViewModel userPodst)
         {
-           
+            userControl_AddDanePod = userPodst;
+
+            OnCloseWindow = new RelayCommand(onCloseWindow);
+            OnAddDzialka = new RelayCommand(onAddDzialka);
+
+            userControl_AddDanePod.changeMode = ChangeMode.add;
         }
 
         #region initCommands
-        public override void onAddDzialka()
+        public void onAddDzialka()
         {
-           // MessageBox.Show( base.userControl_AddDanePod.dzialka.Numer);
+            userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
+            userControl_prevModel.dzialkaView.Refresh();
         }
 
-        public override void onCloseWindow()
+        public void onCloseWindow()
         {
-
         }
         #endregion
     }

@@ -22,7 +22,12 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public IObrebList obrebList { get; set; }
-        
+
+        public DzialkaList()
+        {
+            initDzialkaList();
+        }
+
         private void initDzialkaList()
         {
             Task task = Task.Run(() => fillDzialkaList());
@@ -38,7 +43,7 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        public void deleteRow(IDzialka dz)
+        public void DelRow(IDzialka dz)
         {
             dzialkaList.Remove(dz);
 
@@ -61,11 +66,6 @@ namespace RejestrNieruchomosciNew.Model
             dzialkaList.Add(dz);
         }
 
-        public DzialkaList()
-        {
-            initDzialkaList();
-        }
-
         public void ModRow(IDzialka dz)
         {
             using (var c = new Context())
@@ -74,13 +74,10 @@ namespace RejestrNieruchomosciNew.Model
                 c.SaveChanges();
             }
 
-            //MessageBox.Show(dz.DzialkaId.ToString());
-            MessageBox.Show( (dzialkaList.FindIndex(n => n.DzialkaId == dz.DzialkaId).ToString()));
+            var v = dzialkaList.FindIndex( r=>r.DzialkaId == dz.DzialkaId);
+            dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
+            dzialkaList[v] = dz;
 
-
-            //dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-            //dzialkaList.Add(dz);
         }
-
     }
 }

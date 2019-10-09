@@ -15,7 +15,7 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
 
-        //public IPerson personUserAddViewModel { get; set; }
+        public ChangeMode changeMode;
 
         private IDzialka _dzialka;
         public IDzialka dzialka
@@ -36,60 +36,95 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _obreb = value;
 
                 RaisePropertyChanged("obreb");
-                obreb.fillValues(dzialka.ObrebId);
+                //dzialka.ObrebId = obreb.getId().Value;
+                //obreb.fillValues(dzialka.ObrebId);
             }
         }
 
-        private bool _isNew;
-        public bool isNew
+        private bool _canAdd;
+        public bool canAdd
         {
-            get => _isNew;
+            get
+            {
+                return _canAdd;
+            }
+
             set
             {
-                _isNew = value;
-                RaisePropertyChanged("isNew");
+                _canAdd = value;
+                RaisePropertyChanged("canAdd");
             }
         }
+
+        public bool? canMod;
 
         public ICommand leftClick { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
-     
+
         #endregion
 
         #region Konstructor
 
-        public UserControl_DanePodstawoweViewModel( )
+        public UserControl_DanePodstawoweViewModel()
         {
-            //isNew = false;
-            isNew = true;
             leftClick = new RelayCommand(onLeftClick);
-
-
-            //MessageBox.Show("Kon");
-
         }
         #endregion
 
         #region Metods
         private void onLeftClick()
         {
+            dzialka.ObrebId = obreb.getId().Value;
             testDzialka();
         }
 
         public void testDzialka()
         {
-            isNew = true;
+            if (changeMode == ChangeMode.add)
+                testDzialkaToAdd();
+            if (changeMode == ChangeMode.mod)
+                testDzialkaToMod();
 
-            //if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
-            //{
-            //    int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
-            //                                     r.Numer == dzialka.Numer).Count();
-            //    dzialka.ObrebId = obreb.getId().Value;
-               
-            //    isNew = c == 0 ? true : false;
-            //}
-            #endregion
         }
+
+        private void testDzialkaToAdd()
+        {
+            if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
+            {
+                int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+                                                 r.Numer == dzialka.Numer).Count();
+                //dzialka.ObrebId = obreb.getId().Value;
+
+                canAdd = c == 0 ? true : false;
+            }
+        }
+
+        private void testDzialkaToMod()
+        {
+            var dz = dzialkaList.dzialkaList.First(n => n.DzialkaId == dzialka.DzialkaId);
+
+            dz.ObrebId = obreb.getId().Value;
+
+            if (!string.IsNullOrEmpty(dzialka.Numer))
+            {
+                if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
+                           dz.ObrebId == dzialka.ObrebId)
+                {
+                    canAdd = true;
+                }
+                else
+                {
+                    int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+                                                 r.Numer == dzialka.Numer).Count();
+                    
+
+                    canAdd = c == 0 ? true : false;
+                }
+            }
+           
+        }
+
+        #endregion
     }
 }

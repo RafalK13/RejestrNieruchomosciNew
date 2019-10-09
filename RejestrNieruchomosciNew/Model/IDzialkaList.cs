@@ -10,7 +10,7 @@ namespace RejestrNieruchomosciNew.Model
     {
         List<IDzialka> dzialkaList { get; set; }
         void AddRow(IDzialka dz);
-        void deleteRow(IDzialka dz);
+        void DelRow(IDzialka dz);
         void ModRow(IDzialka dzialka);
     }
 }

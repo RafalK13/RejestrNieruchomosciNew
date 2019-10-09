@@ -42,7 +42,6 @@ namespace RejestrNieruchomosciNew
         
         public Dzialka()
         {
-            Numer = "DUPA";
         }
 
         public Dzialka( string _numer, int _ObrebId, string _kwA=null, string _kwZ=null, decimal? _Pow=null  )

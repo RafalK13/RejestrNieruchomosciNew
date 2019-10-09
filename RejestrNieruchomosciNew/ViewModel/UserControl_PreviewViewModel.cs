@@ -39,17 +39,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         }
 
-        //public IDzialka _dzialka;
-        //public IDzialka dzialka
-        //{
-        //    get => _dzialka;
-        //    set
-        //    {
-        //        _dzialka = value;
-        //        RaisePropertyChanged("dzialka");
-        //    }
-        //}
-
         public IDzialka _dzialkaSel;
         public IDzialka dzialkaSel
         {
@@ -107,7 +96,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public IViewFactory viewFactory { get; set; }
+        public IViewFactory factory { get; set; }
 
         #endregion
 
@@ -147,16 +136,10 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
-        public void addDzialka()
+        public void addDzialka( IDzialka dz)
         {
-        //    var factory = viewFactory.CreateView<ChangeView>();
-        //    factory.Show();
-        }
-
-        public void modDzialka()
-        {
-            //var factory = viewFactory.CreateView<ChangeView>();
-            //factory.Show();
+            dzialkiBase.AddRow( dz);
+            dzialkaView.Refresh();
         }
 
         private void onDoubleClicked()
@@ -165,26 +148,22 @@ namespace RejestrNieruchomosciNew.ViewModel
                 deleteDzialka();
             else
             {
-                addDzialka();
+                if (dzialkaSel != null)
+                {
+                    var v = factory.CreateView<ChangeView>();
+                    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
+                    v.Show();
+                }
             }
         }
 
-        //private void newDzialka()
-        //{
-        //    dzialka.DzialkaId = 0;
-        //    dzialka.Kwakt = string.Empty;
-        //    dzialka.Kwzrob = string.Empty;
-        //    dzialka.Numer = string.Empty;
-        //    dzialka.ObrebId = 0;
-        //    dzialka.Pow = 0;
-        //    dzialka.procDz = ProcessDzialka.add;
-        //}
 
         public void deleteDzialka()
         {
+            if( dzialkaSel != null)
             if (dzialkaSel.Numer != null)
             {
-                dzialkiBase.deleteRow(dzialkaSel);
+                dzialkiBase.DelRow(dzialkaSel);
                 dzialkaView.Refresh();
             }
         }

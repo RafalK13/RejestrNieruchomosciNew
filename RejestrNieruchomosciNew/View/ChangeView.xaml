@@ -47,7 +47,7 @@
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button 
                 Style="{StaticResource buttonRaf}" 
-                IsEnabled="{Binding userControl_AddDanePod.isNew}"
+                IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
                 Command="{Binding OnAddDzialka}"
                 com:CloseOnClickBehaviour.IsEnabled="True"
                 Content="OK"></Button>

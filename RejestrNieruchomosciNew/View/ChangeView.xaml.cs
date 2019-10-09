@@ -8,10 +8,9 @@ namespace RejestrNieruchomosciNew.View
 {
     public partial class ChangeView : Window, IView
     {
-        public ChangeView(ISelectorModel model)
+        public ChangeView()
         {
             InitializeComponent();
-            DataContext = model.selectedModel;
         }
     }
 }

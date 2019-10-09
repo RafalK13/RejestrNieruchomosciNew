@@ -221,6 +221,7 @@
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\IChangeViewModel.cs" />
+    <Compile Include="Model\IContrlosVisibling.cs" />
     <Compile Include="Model\IDzialka.cs" />
     <Compile Include="Model\IDzialkaList.cs" />
     <Compile Include="Model\IObreb.cs" />

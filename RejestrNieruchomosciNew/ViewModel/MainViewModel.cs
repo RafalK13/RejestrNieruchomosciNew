@@ -3,10 +3,13 @@ using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
 using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    public enum ChangeMode { add, mod}
+
     public class MainViewModel : ViewModelBase
     {
         #region Properties
@@ -52,33 +55,24 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onModifyDzialka()
         {
-            modelSel.selectedModel = factory.CreateView<IChangeViewModel>("Mod");
-
-            //userControl_prev.modDzialka();
-
-            var v = factory.CreateView<ChangeView>();
-            v.Show();
+            if (userControl_prev.dzialkaSel != null)
+            {
+                var v = factory.CreateView<ChangeView>();
+                v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
+                v.Show();
+            }
         }
 
         private void onAddNewDzialka()
         {
-            modelSel.selectedModel = factory.CreateView<IChangeViewModel>("Add");
-            //userControl_prev.addDzialka();
-
             var v = factory.CreateView<ChangeView>();
+            v.DataContext = factory.CreateView<IChangeViewModel>("Add");
             v.Show();
         }
-
-
-
-
         private void onDeleteDzialka()
         {
             userControl_prev.deleteDzialka();
         }
-
-       
-
         #endregion
     }
 }
