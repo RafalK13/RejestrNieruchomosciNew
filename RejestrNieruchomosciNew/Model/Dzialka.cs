@@ -7,36 +7,27 @@ namespace RejestrNieruchomosciNew
 {
     public partial class Dzialka : ViewModelBase, IDzialka
     {
-        private int _obrebId;
-
+       
         public int DzialkaId { get; set; }
-
         public string Numer { get; set; }
 
-        //private string _numer;
-        //public string Numer
-        //{
-        //    get => _numer;
-        //    set
-        //    {
-        //        _numer = value;
-        //        RaisePropertyChanged("Numer");
-        //    }
-        //}
         public string Kwakt { get; set; }
         public string Kwzrob { get; set; }
         public decimal? Pow { get; set; }
+
+        private int _ObrebId;
         public int ObrebId
         {
-            get => _obrebId;
+            get => _ObrebId;
             set
             {
-                _obrebId = value;
+                _ObrebId = value;
                 RaisePropertyChanged("ObrebId");
             }
         }
         public Obreb Obreb { get; set; }
-
+        public Wladanie Wladanie { get; set; }
+        
         [NotMapped]
         public ProcessDzialka procDz { get; set; }
         

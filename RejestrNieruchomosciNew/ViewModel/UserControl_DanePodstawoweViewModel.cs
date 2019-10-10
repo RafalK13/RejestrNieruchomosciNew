@@ -94,7 +94,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
-                //dzialka.ObrebId = obreb.getId().Value;
 
                 canAdd = c == 0 ? true : false;
             }
@@ -118,7 +117,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                     int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
                     
-
                     canAdd = c == 0 ? true : false;
                 }
             }

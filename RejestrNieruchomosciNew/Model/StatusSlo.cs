@@ -7,7 +7,5 @@ namespace RejestrNieruchomosciNew
     {
         public int Id { get; set; }
         public string Nazwa { get; set; }
-
-        public virtual ICollection<Podmiot> Podmiot { get; set; }
     }
 }

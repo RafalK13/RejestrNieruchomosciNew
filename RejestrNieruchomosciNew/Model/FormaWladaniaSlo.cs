@@ -8,6 +8,6 @@ namespace RejestrNieruchomosciNew
         public int Id { get; set; }
         public string Nazwa { get; set; }
 
-        public virtual ICollection<Wladanie> Wladanie { get; set; }
+        public Wladanie Wladanie { get; set; }
     }
 }
