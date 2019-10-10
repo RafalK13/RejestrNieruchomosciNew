@@ -11,6 +11,7 @@ namespace RejestrNieruchomosciNew
         public int? Okres { get; set; }
         public double? Wartosc { get; set; }
 
+        public int? WladanieId { get; set; }
         public Wladanie Wladanie { get; set; }
     }
 }

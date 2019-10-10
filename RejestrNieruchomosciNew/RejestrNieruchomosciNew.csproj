@@ -215,6 +215,10 @@
     <Compile Include="Migrations\20190708193243_raf13.1.designer.cs">
       <DependentUpon>20190708193243_raf13.1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191010101114_wladanie1.cs" />
+    <Compile Include="Migrations\20191010101114_wladanie1.designer.cs">
+      <DependentUpon>20191010101114_wladanie1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
@@ -230,6 +234,7 @@
     <Compile Include="Model\IObrebList.cs" />
     <Compile Include="Model\IPlatnoscUw.cs" />
     <Compile Include="Model\IPodmiot.cs" />
+    <Compile Include="Model\IPodmiotList.cs" />
     <Compile Include="Model\IRodzajDokumentuSlo.cs" />
     <Compile Include="Model\IView.cs" />
     <Compile Include="Model\IViewFactory.cs" />
@@ -237,6 +242,8 @@
     <Compile Include="Model\MessagesRaf.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
+    <Compile Include="Model\Podmiot.cs" />
+    <Compile Include="Model\PodmiotList.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />

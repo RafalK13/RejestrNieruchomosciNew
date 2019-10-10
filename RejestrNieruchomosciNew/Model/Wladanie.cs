@@ -26,7 +26,7 @@ namespace RejestrNieruchomosciNew
         public ICollection<PlatnoscUw> PlatnoscUw { get; set; }
         public ICollection<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
         public ICollection<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
-        public ICollection<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
+        //public ICollection<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
         public ICollection<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
     }
 }

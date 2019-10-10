@@ -27,9 +27,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IObrebList>().ImplementedBy<ObrebList>());
 
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().LifeStyle.Transient);
-            //container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().Named("dzialkaMod"));
-            //container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().Named("dzialkaNew").LifeStyle.Transient);
-
+            
             container.Register(Component.For<IDzialkaList>().ImplementedBy<DzialkaList>());
 
             container.Register(Component.For<ObrebClass>().LifeStyle.Transient);
@@ -38,23 +36,19 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_DanePodstawowe>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_DanePodstawoweViewModel>().LifeStyle.Transient);
-            //container.Register(Component.For<UserControl_DanePodstawoweViewModel>().Named("daneMod"));
-            //container.Register(Component.For<UserControl_DanePodstawoweViewModel>().Named("daneNew").LifeStyle.Transient);
-
+            
             container.Register(Component.For<UserControl_PreviewViewModel>());
 
             container.Register(Component.For<ISelectorModel>().ImplementedBy<SelectorModel>().LifeStyle.Transient);
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add").LifeStyle.Transient);
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod").LifeStyle.Transient);
 
-            //container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add")
-            //                                                                                  .DependsOn(Dependency.OnComponent("userPodst", "daneNew")));
-
-            //container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod"));
-
             container.Register(Component.For<Window2>());
 
             container.Register(Component.For<IContrlosVisibling>().ImplementedBy<ContrlosVisibling>());
+
+            container.Register(Component.For<IPodmiot>().ImplementedBy<Podmiot>());
+            container.Register(Component.For<IPodmiotList>().ImplementedBy<PodmiotList>());
 
 
 

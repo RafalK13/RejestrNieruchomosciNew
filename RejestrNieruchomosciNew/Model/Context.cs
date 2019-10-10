@@ -20,13 +20,25 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Obreb> Obreb { get; set; }
         public virtual DbSet<Dzialka> Dzialka { get; set; }
 
+        //public virtual DbSet<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
+
         public virtual DbSet<Wladanie> Wladanie { get; set; }
 
         public virtual DbSet<PlatnoscUw> PlatnoscUw { get; set; }
-        public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
-        public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
+        //public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
+        //public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
         public virtual DbSet<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
-        public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
+        //public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
+
+
+
+
+
+
+
+
+
+
 
         //public virtual DbSet<Dzialka> Dzialka { get; set; }
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }

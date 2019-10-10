@@ -26,8 +26,10 @@ namespace RejestrNieruchomosciNew
             }
         }
         public Obreb Obreb { get; set; }
+
+        public int? WladanieId { get; set; }
         public Wladanie Wladanie { get; set; }
-        
+
         [NotMapped]
         public ProcessDzialka procDz { get; set; }
         

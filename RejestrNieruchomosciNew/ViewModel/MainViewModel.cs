@@ -35,11 +35,14 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand modDzialka { get; set; }
 
         public string modeMessage { get; set; }
+
+        public IPodmiotList podmiotList { get; set; }
         #endregion
 
         #region Konstruktor
         public MainViewModel()
         {
+            modeMessage = "Przegl¹danie podstawowe";
             initButtonCommand();
             btActivity = true;
         }
