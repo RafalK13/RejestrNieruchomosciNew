@@ -22,12 +22,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                             UserControl_PreviewViewModel userPrev)
         {
 
-            userPodst.dzialka.Numer = userPrev.dzialkaSel.Numer;
-            userPodst.dzialka.ObrebId = userPrev.dzialkaSel.ObrebId;
-            userPodst.dzialka.DzialkaId = userPrev.dzialkaSel.DzialkaId;
-            userPodst.dzialka.Kwakt = userPrev.dzialkaSel.Kwakt;
-            userPodst.dzialka.Kwzrob = userPrev.dzialkaSel.Kwzrob;
-            userPodst.dzialka.Pow = userPrev.dzialkaSel.Pow;
+            //userPodst.dzialka.Numer = userPrev.dzialkaSel.Numer;
+            //userPodst.dzialka.ObrebId = userPrev.dzialkaSel.ObrebId;
+            //userPodst.dzialka.DzialkaId = userPrev.dzialkaSel.DzialkaId;
+            //userPodst.dzialka.Kwakt = userPrev.dzialkaSel.Kwakt;
+            //userPodst.dzialka.Kwzrob = userPrev.dzialkaSel.Kwzrob;
+            //userPodst.dzialka.Pow = userPrev.dzialkaSel.Pow;
+
+            userPodst.dzialka.copy(userPrev.dzialkaSel);
             userPodst.obreb.fillValues(userPrev.dzialkaSel);
 
             userControl_AddDanePod = userPodst;

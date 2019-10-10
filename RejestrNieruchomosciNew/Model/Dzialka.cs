@@ -65,5 +65,27 @@ namespace RejestrNieruchomosciNew
                 }
             }
         }
+
+        public void copy(IDzialka dzDest, IDzialka dzSource)
+        {
+            dzDest.Numer = dzSource.Numer;
+            dzDest.ObrebId = dzSource.ObrebId;
+            dzDest.DzialkaId = dzSource.DzialkaId;
+            dzDest.Kwakt = dzSource.Kwakt;
+            dzDest.Kwzrob = dzSource.Kwzrob;
+            dzDest.Pow = dzSource.Pow;
+        }
+
+        public IDzialka copy(IDzialka dzSource)
+        {
+            Numer = dzSource.Numer;
+            ObrebId = dzSource.ObrebId;
+            DzialkaId = dzSource.DzialkaId;
+            Kwakt = dzSource.Kwakt;
+            Kwzrob = dzSource.Kwzrob;
+            Pow = dzSource.Pow;
+
+            return this;
+        }
     }
 }

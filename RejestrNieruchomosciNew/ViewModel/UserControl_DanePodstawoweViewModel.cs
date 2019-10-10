@@ -34,10 +34,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _obreb; set
             {
                 _obreb = value;
-
                 RaisePropertyChanged("obreb");
-                //dzialka.ObrebId = obreb.getId().Value;
-                //obreb.fillValues(dzialka.ObrebId);
             }
         }
 
@@ -75,8 +72,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Metods
         private void onLeftClick()
         {
-            dzialka.ObrebId = obreb.getId().Value;
-            testDzialka();
+            if (obreb.getId().HasValue)
+            {
+                dzialka.ObrebId = obreb.getId().Value;
+                testDzialka();
+            }
         }
 
         public void testDzialka()

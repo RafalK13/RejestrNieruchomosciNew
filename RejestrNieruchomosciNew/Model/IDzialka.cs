@@ -18,7 +18,10 @@ namespace RejestrNieruchomosciNew.Model
         Obreb Obreb { get; set; }
 
         void clone( IDzialka d);
-        
+        void copy( IDzialka dzDest, IDzialka dzSource);
+
+        IDzialka copy(IDzialka dzSource);
+
         ProcessDzialka procDz { get; set; }
     }
 }
