@@ -7,9 +7,8 @@
         xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="AddView" Height="700" Width="700"
+        Title="AddView" Height="700" Width="954"
         >
-
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed" >
             <i:InvokeCommandAction Command="{Binding OnCloseWindow}" />
@@ -37,11 +36,23 @@
                   Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
 
         <TabControl Grid.Row="1" Margin="20">
+
+            <TabItem Header="Własność">
+                <view:UserControl_Wlasciciel/>
+            </TabItem>
             <TabItem Header="Dane podstawowe">
                 <view:UserControl_DanePodstawowe/>
             </TabItem>
-            <TabItem Header="Własność" IsEnabled="{Binding canAddTab}"></TabItem>
-            <TabItem Header="Inne prawa" IsEnabled="{Binding canAddTab}"></TabItem>
+           
+            <TabItem Header="Inne prawa">
+                <view:UserControl2>
+                </view:UserControl2>
+            </TabItem>
+            <TabItem Header="Inne prawa">
+                <StackPanel>
+                    <Button Height="39"/>
+                </StackPanel>
+            </TabItem>
         </TabControl>
         
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">

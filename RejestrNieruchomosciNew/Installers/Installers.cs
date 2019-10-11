@@ -36,7 +36,10 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_DanePodstawowe>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_DanePodstawoweViewModel>().LifeStyle.Transient);
-            
+
+            container.Register(Component.For<UserControl_Wlasciciel>().LifeStyle.Transient);
+            container.Register(Component.For<UserControl_WlascicielViewModel>().LifeStyle.Transient);
+
             container.Register(Component.For<UserControl_PreviewViewModel>());
 
             container.Register(Component.For<ISelectorModel>().ImplementedBy<SelectorModel>().LifeStyle.Transient);
@@ -49,9 +52,6 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<IPodmiot>().ImplementedBy<Podmiot>());
             container.Register(Component.For<IPodmiotList>().ImplementedBy<PodmiotList>());
-
-
-
         }
     }
 }

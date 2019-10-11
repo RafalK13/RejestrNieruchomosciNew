@@ -13,6 +13,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         [DoNotWire]
         public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
         public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+        public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
 
         public IDzialkaList dzialkaList;
 

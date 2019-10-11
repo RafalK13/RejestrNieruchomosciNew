@@ -9,7 +9,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class ChangeViewModel : ViewModelBase
     {
-        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        //public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
         //public UserControl_PreviewViewModel userPrv { get; set; }
 
         public string modeMessage { get; set; }
