@@ -10,5 +10,9 @@ namespace RejestrNieruchomosciNew.Model
     {
         int Id { get; set; }
         string Nazwa { get; set; }
+
+
+
+
     }
 }

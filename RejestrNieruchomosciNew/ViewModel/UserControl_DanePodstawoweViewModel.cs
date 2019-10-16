@@ -92,7 +92,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
-                int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+                int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
 
                 canAdd = c == 0 ? true : false;
@@ -101,7 +101,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testDzialkaToMod()
         {
-            var dz = dzialkaList.dzialkaList.First(n => n.DzialkaId == dzialka.DzialkaId);
+            var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
 
             dz.ObrebId = obreb.getId().Value;
 
@@ -114,7 +114,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
                 else
                 {
-                    int c = dzialkaList.dzialkaList.Where(r => r.ObrebId == obreb.getId().Value &&
+                    int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
                                                  r.Numer == dzialka.Numer).Count();
                     
                     canAdd = c == 0 ? true : false;

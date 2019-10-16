@@ -10,14 +10,14 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class DzialkaList : ViewModelBase, IDzialkaList
     {
-        private List<IDzialka> _dzialkaList;
-        public List<IDzialka> dzialkaList
+        private List<IDzialka> _list;
+        public List<IDzialka> list
         {
-            get => _dzialkaList;
+            get => _list;
             set
             {
-                _dzialkaList = value;
-                RaisePropertyChanged("dzialkaList");
+                _list = value;
+                RaisePropertyChanged("list");
             }
         }
 
@@ -31,7 +31,6 @@ namespace RejestrNieruchomosciNew.Model
         private void initDzialkaList()
         {
             Task task = Task.Run(() => fillDzialkaList());
-
             task.Wait();
         }
 
@@ -39,13 +38,13 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                dzialkaList = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
+                list = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
             }
         }
 
         public void DelRow(IDzialka dz)
         {
-            dzialkaList.Remove(dz);
+            list.Remove(dz);
 
             using (var c = new Context())
             {
@@ -63,7 +62,7 @@ namespace RejestrNieruchomosciNew.Model
             }
 
             dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-            dzialkaList.Add(dz);
+            list.Add(dz);
         }
 
         public void ModRow(IDzialka dz)
@@ -74,9 +73,9 @@ namespace RejestrNieruchomosciNew.Model
                 c.SaveChanges();
             }
 
-            var v = dzialkaList.FindIndex( r=>r.DzialkaId == dz.DzialkaId);
+            var v =list.FindIndex( r=>r.DzialkaId == dz.DzialkaId);
             dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-            dzialkaList[v] = dz;
+            list[v] = dz;
 
         }
     }

@@ -8,7 +8,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public interface IDzialkaList
     {
-        List<IDzialka> dzialkaList { get; set; }
+        List<IDzialka> list { get; set; }
         void AddRow(IDzialka dz);
         void DelRow(IDzialka dz);
         void ModRow(IDzialka dzialka);

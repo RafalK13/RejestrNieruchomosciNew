@@ -1,19 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using WpfControlLibraryRaf;
 
 namespace RejestrNieruchomosciNew.Model
 {
     public class PodmiotList : IPodmiotList
     {
         public List<IPodmiot> list { get; set; }
+        public List<WpfControlLibraryRaf.Podmiot> listView { get; set; }
 
         public PodmiotList()
         {
             initPodmiotList();
+            listView = list.ConvertAll(r => new WpfControlLibraryRaf.Podmiot { id = r.PodmiotId, nazwa = r.Name });
+            int a = 13;
         }
 
         private void initPodmiotList()
@@ -27,7 +28,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new List<IPodmiot>( await c.MK_REJNIER_PERSONS.ToListAsync());
+                list = new List<IPodmiot>( await c.Podmiot.ToListAsync());
             
             }
         }

@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Name="win"
              d:DesignHeight="660" d:DesignWidth="800">
     <UserControl.Resources>
         <con:DateConverter x:Key="dateConvert"/>
@@ -85,12 +88,27 @@
                        FontWeight="Bold"                      
                        FontSize="19"
                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
-                <ComboBox
+                <!--<ComboBox
                        ItemsSource="{Binding  userControl_Wlasciciel.podmiotList.list}"
                        DisplayMemberPath="nazwa"                            
                        SelectedItem="{Binding daneWlasc.podmiotSel}"
                        IsEditable="True" >
-                </ComboBox>
+                </ComboBox>-->
+                <!--podmiotList="{Binding userControl_Wlasciciel.podmiotList.listView}"-->
+                <conRaf:DataGridRaf     x:Name="conRaf1"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                                        TekstProp="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
+                                        podmiotList="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.listView, ElementName=win}"
+                                        selectedValuePathRaf="id"
+                                        selectedItemRaf="{Binding Path=DataContext.userControl_Wlasciciel.wlascSel, Mode=TwoWay, ElementName=win}"
+                                        fontSizeRaf="14"
+                                        heightRaf="25"
+                                        HorizontalAlignment="Stretch"
+                                        />
+
+
+                <!--dataGridSource="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.list, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}}"-->
+                <!--selectedItemRaf="{Binding Path=DataContext.userControl_Wlasciciel.podmiotSel, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 <Grid DockPanel.Dock="Top" Height="90">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="43*"/>
@@ -113,7 +131,7 @@
                         Command="{Binding daneWlasc.btUsunWlasc}"/>
 
                 <DataGrid 
-                        ItemsSource="{Binding daneWlasc.wladanie}"  
+                        ItemsSource="{Binding userControl_Wlasciciel.wladanieList.list, Mode=TwoWay}"
                         SelectedItem="{Binding daneWlasc.wladanieSel}"
                         SelectedIndex="{Binding daneWlasc.wladIndeks}"
                         CanUserSortColumns="False"
@@ -127,10 +145,10 @@
                         SelectionMode="Single" 
                         SelectionUnit="FullRow"
                         Margin="10"
-                        AutoGenerateColumns="False">
+                       >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
-                                            Binding="{Binding opis}"
+                                            Binding="{Binding PodmiodId}"
                                             Width="500"/>
                     </DataGrid.Columns>
                 </DataGrid>

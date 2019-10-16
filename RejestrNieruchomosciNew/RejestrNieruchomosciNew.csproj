@@ -158,6 +158,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfControlLibraryRaf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Rejestr\UserControlWpf\WpfControlLibraryRaf\bin\Debug\WpfControlLibraryRaf.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -167,57 +171,41 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20190621054317_r1.cs" />
-    <Compile Include="Migrations\20190621054317_r1.designer.cs">
-      <DependentUpon>20190621054317_r1.cs</DependentUpon>
+    <Compile Include="Migrations\20191016103220_wladanie1.cs" />
+    <Compile Include="Migrations\20191016103220_wladanie1.designer.cs">
+      <DependentUpon>20191016103220_wladanie1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621060146_r2.cs" />
-    <Compile Include="Migrations\20190621060146_r2.designer.cs">
-      <DependentUpon>20190621060146_r2.cs</DependentUpon>
+    <Compile Include="Migrations\20191016103830_wladanie2.cs" />
+    <Compile Include="Migrations\20191016103830_wladanie2.designer.cs">
+      <DependentUpon>20191016103830_wladanie2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621061213_r3.cs" />
-    <Compile Include="Migrations\20190621061213_r3.designer.cs">
-      <DependentUpon>20190621061213_r3.cs</DependentUpon>
+    <Compile Include="Migrations\20191016104307_wladanie3.cs" />
+    <Compile Include="Migrations\20191016104307_wladanie3.designer.cs">
+      <DependentUpon>20191016104307_wladanie3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621062228_r4.cs" />
-    <Compile Include="Migrations\20190621062228_r4.designer.cs">
-      <DependentUpon>20190621062228_r4.cs</DependentUpon>
+    <Compile Include="Migrations\20191016104845_wladanie4.cs" />
+    <Compile Include="Migrations\20191016104845_wladanie4.designer.cs">
+      <DependentUpon>20191016104845_wladanie4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621062504_r5.cs" />
-    <Compile Include="Migrations\20190621062504_r5.designer.cs">
-      <DependentUpon>20190621062504_r5.cs</DependentUpon>
+    <Compile Include="Migrations\20191016113901_wladanie6.cs" />
+    <Compile Include="Migrations\20191016113901_wladanie6.designer.cs">
+      <DependentUpon>20191016113901_wladanie6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621062857_r6.cs" />
-    <Compile Include="Migrations\20190621062857_r6.designer.cs">
-      <DependentUpon>20190621062857_r6.cs</DependentUpon>
+    <Compile Include="Migrations\20191016114014_w1.cs" />
+    <Compile Include="Migrations\20191016114014_w1.designer.cs">
+      <DependentUpon>20191016114014_w1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621063655_r7.cs" />
-    <Compile Include="Migrations\20190621063655_r7.designer.cs">
-      <DependentUpon>20190621063655_r7.cs</DependentUpon>
+    <Compile Include="Migrations\20191016114805_w2.cs" />
+    <Compile Include="Migrations\20191016114805_w2.designer.cs">
+      <DependentUpon>20191016114805_w2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190621084921_r8.cs" />
-    <Compile Include="Migrations\20190621084921_r8.designer.cs">
-      <DependentUpon>20190621084921_r8.cs</DependentUpon>
+    <Compile Include="Migrations\20191016115250_w3.cs" />
+    <Compile Include="Migrations\20191016115250_w3.designer.cs">
+      <DependentUpon>20191016115250_w3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190627110922_r-13.cs" />
-    <Compile Include="Migrations\20190627110922_r-13.designer.cs">
-      <DependentUpon>20190627110922_r-13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190708190204_raf1.cs" />
-    <Compile Include="Migrations\20190708190204_raf1.designer.cs">
-      <DependentUpon>20190708190204_raf1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190708190856_raf13.cs" />
-    <Compile Include="Migrations\20190708190856_raf13.designer.cs">
-      <DependentUpon>20190708190856_raf13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190708193243_raf13.1.cs" />
-    <Compile Include="Migrations\20190708193243_raf13.1.designer.cs">
-      <DependentUpon>20190708193243_raf13.1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191010101114_wladanie1.cs" />
-    <Compile Include="Migrations\20191010101114_wladanie1.designer.cs">
-      <DependentUpon>20191010101114_wladanie1.cs</DependentUpon>
+    <Compile Include="Migrations\20191016121431_w5.cs" />
+    <Compile Include="Migrations\20191016121431_w5.designer.cs">
+      <DependentUpon>20191016121431_w5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
@@ -239,15 +227,16 @@
     <Compile Include="Model\IView.cs" />
     <Compile Include="Model\IViewFactory.cs" />
     <Compile Include="Model\IWladanie.cs" />
+    <Compile Include="Model\IWladanieList.cs" />
     <Compile Include="Model\MessagesRaf.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
-    <Compile Include="Model\Podmiot.cs" />
     <Compile Include="Model\PodmiotList.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
+    <Compile Include="Model\WladanieList.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />
@@ -329,7 +318,7 @@
     <Compile Include="Model\NazwaCzynnosciSlo.cs" />
     <Compile Include="Model\Obreb.cs" />
     <Compile Include="Model\PlatnoscUw.cs" />
-    <Compile Include="Model\MK_REJNIER_PERSONS.cs" />
+    <Compile Include="Model\Podmiot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

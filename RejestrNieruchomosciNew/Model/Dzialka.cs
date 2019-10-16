@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
@@ -27,8 +28,8 @@ namespace RejestrNieruchomosciNew
         }
         public Obreb Obreb { get; set; }
 
-        public int? WladanieId { get; set; }
-        public Wladanie Wladanie { get; set; }
+        //public int? WladanieId { get; set; }
+        public ICollection<Wladanie> Wladanie { get; set; }
 
         [NotMapped]
         public ProcessDzialka procDz { get; set; }

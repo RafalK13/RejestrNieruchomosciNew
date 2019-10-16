@@ -9,7 +9,7 @@ namespace RejestrNieruchomosciNew.Model
     public interface IWladanie
     {
          int WladanieId { get; set; }
-         int DzialkaId { get; set; }
+         int? DzialkaId { get; set; }
          int? PodmiodId { get; set; }
 
          int? FormaWladaniaId { get; set; }

@@ -5,9 +5,8 @@ namespace RejestrNieruchomosciNew
 {
     public partial class InnePrawa
     {
-        public int Id { get; set; }
+        public int InnePrawaId { get; set; }
         public int DzialkaId { get; set; }
-        public int? InnePrawaId { get; set; }
         public int PodmiotId { get; set; }
         public int? PrzedstawicielId { get; set; }
         public int? NazwaCzynnosciNabId { get; set; }

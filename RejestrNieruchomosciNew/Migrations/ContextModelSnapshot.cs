@@ -35,13 +35,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<decimal?>("Pow");
 
-                    b.Property<int?>("WladanieId");
-
                     b.HasKey("DzialkaId");
 
                     b.HasIndex("ObrebId");
-
-                    b.HasIndex("WladanieId");
 
                     b.HasIndex("Numer", "ObrebId")
                         .IsUnique()
@@ -58,11 +54,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Nazwa");
 
-                    b.Property<int?>("WladanieId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WladanieId");
 
                     b.ToTable("FormaWladaniaSlo");
                 });
@@ -78,31 +70,43 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("GminaSloId");
 
                     b.ToTable("GminaSlo");
-                });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.MK_REJNIER_PERSONS", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("House");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("PostCode");
-
-                    b.Property<string>("Street");
-
-                    b.Property<int?>("WladanieId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WladanieId");
-
-                    b.ToTable("MK_REJNIER_PERSONS");
+                    b.HasData(
+                        new
+                        {
+                            GminaSloId = 1,
+                            Nazwa = "miasto Gdańsk"
+                        },
+                        new
+                        {
+                            GminaSloId = 2,
+                            Nazwa = "miasto Sopot"
+                        },
+                        new
+                        {
+                            GminaSloId = 3,
+                            Nazwa = "miasto Pruszcz Gdański"
+                        },
+                        new
+                        {
+                            GminaSloId = 4,
+                            Nazwa = "gmina Gdańsk"
+                        },
+                        new
+                        {
+                            GminaSloId = 5,
+                            Nazwa = "gmina Pruszcz Gdański"
+                        },
+                        new
+                        {
+                            GminaSloId = 6,
+                            Nazwa = "gmina Żukowo"
+                        },
+                        new
+                        {
+                            GminaSloId = 7,
+                            Nazwa = "gmina Kolbudy"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
@@ -113,11 +117,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Nazwa");
 
-                    b.Property<int?>("WladanieId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WladanieId");
 
                     b.ToTable("NazwaCzynnosciSlo");
                 });
@@ -137,11 +137,163 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("GminaSloId");
 
                     b.ToTable("Obreb");
+
+                    b.HasData(
+                        new
+                        {
+                            ObrebId = 1,
+                            GminaSloId = 1,
+                            Nazwa = "010"
+                        },
+                        new
+                        {
+                            ObrebId = 2,
+                            GminaSloId = 1,
+                            Nazwa = "020"
+                        },
+                        new
+                        {
+                            ObrebId = 3,
+                            GminaSloId = 1,
+                            Nazwa = "030"
+                        },
+                        new
+                        {
+                            ObrebId = 4,
+                            GminaSloId = 1,
+                            Nazwa = "040"
+                        },
+                        new
+                        {
+                            ObrebId = 5,
+                            GminaSloId = 1,
+                            Nazwa = "050"
+                        },
+                        new
+                        {
+                            ObrebId = 6,
+                            GminaSloId = 1,
+                            Nazwa = "060"
+                        },
+                        new
+                        {
+                            ObrebId = 7,
+                            GminaSloId = 1,
+                            Nazwa = "070"
+                        },
+                        new
+                        {
+                            ObrebId = 8,
+                            GminaSloId = 1,
+                            Nazwa = "080"
+                        },
+                        new
+                        {
+                            ObrebId = 9,
+                            GminaSloId = 1,
+                            Nazwa = "090"
+                        },
+                        new
+                        {
+                            ObrebId = 10,
+                            GminaSloId = 1,
+                            Nazwa = "100"
+                        },
+                        new
+                        {
+                            ObrebId = 11,
+                            GminaSloId = 1,
+                            Nazwa = "110"
+                        },
+                        new
+                        {
+                            ObrebId = 12,
+                            GminaSloId = 1,
+                            Nazwa = "120"
+                        },
+                        new
+                        {
+                            ObrebId = 13,
+                            GminaSloId = 1,
+                            Nazwa = "130"
+                        },
+                        new
+                        {
+                            ObrebId = 14,
+                            GminaSloId = 2,
+                            Nazwa = "010"
+                        },
+                        new
+                        {
+                            ObrebId = 15,
+                            GminaSloId = 2,
+                            Nazwa = "020"
+                        },
+                        new
+                        {
+                            ObrebId = 16,
+                            GminaSloId = 2,
+                            Nazwa = "030"
+                        },
+                        new
+                        {
+                            ObrebId = 17,
+                            GminaSloId = 2,
+                            Nazwa = "040"
+                        },
+                        new
+                        {
+                            ObrebId = 18,
+                            GminaSloId = 2,
+                            Nazwa = "050"
+                        },
+                        new
+                        {
+                            ObrebId = 19,
+                            GminaSloId = 2,
+                            Nazwa = "060"
+                        },
+                        new
+                        {
+                            ObrebId = 20,
+                            GminaSloId = 2,
+                            Nazwa = "070"
+                        },
+                        new
+                        {
+                            ObrebId = 21,
+                            GminaSloId = 3,
+                            Nazwa = "010"
+                        },
+                        new
+                        {
+                            ObrebId = 22,
+                            GminaSloId = 3,
+                            Nazwa = "020"
+                        },
+                        new
+                        {
+                            ObrebId = 23,
+                            GminaSloId = 4,
+                            Nazwa = "030"
+                        },
+                        new
+                        {
+                            ObrebId = 24,
+                            GminaSloId = 4,
+                            Nazwa = "040"
+                        },
+                        new
+                        {
+                            ObrebId = 25,
+                            GminaSloId = 4,
+                            Nazwa = "050"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUw", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PlatnoscUwId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -151,13 +303,46 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<double?>("Wartosc");
 
-                    b.Property<int?>("WladanieId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WladanieId");
+                    b.HasKey("PlatnoscUwId");
 
                     b.ToTable("PlatnoscUw");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Podmiot", b =>
+                {
+                    b.Property<int>("PodmiotId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Fax");
+
+                    b.Property<string>("House");
+
+                    b.Property<string>("Kontakt");
+
+                    b.Property<string>("MobilePhone");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<string>("PostCode");
+
+                    b.Property<string>("Street");
+
+                    b.Property<string>("TaxNumber");
+
+                    b.Property<string>("URL");
+
+                    b.HasKey("PodmiotId");
+
+                    b.ToTable("Podmiot");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.RodzajDokumentuSlo", b =>
@@ -168,11 +353,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Nazwa");
 
-                    b.Property<int?>("WladanieId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("WladanieId");
 
                     b.ToTable("RodzajDokumentuSlo");
                 });
@@ -189,11 +370,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<DateTime?>("DataObowiazywaniaOd");
 
-                    b.Property<int>("DzialkaId");
+                    b.Property<int?>("DzialkaId");
 
                     b.Property<int?>("FormaWladaniaId");
 
+                    b.Property<int?>("FormaWladaniaSloId");
+
                     b.Property<int?>("NazwaCzynnosciId");
+
+                    b.Property<int?>("NazwaCzynnosciSloId");
 
                     b.Property<int?>("Okres");
 
@@ -201,7 +386,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("PodmiodId");
 
+                    b.Property<int?>("PodmiotId");
+
                     b.Property<int?>("RodzajDokumentuId");
+
+                    b.Property<int?>("RodzajDokumentuSloId");
 
                     b.Property<int?>("Stawka");
 
@@ -213,6 +402,18 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasKey("WladanieId");
 
+                    b.HasIndex("DzialkaId");
+
+                    b.HasIndex("FormaWladaniaSloId");
+
+                    b.HasIndex("NazwaCzynnosciSloId");
+
+                    b.HasIndex("PlatnoscUwId");
+
+                    b.HasIndex("PodmiotId");
+
+                    b.HasIndex("RodzajDokumentuSloId");
+
                     b.ToTable("Wladanie");
                 });
 
@@ -222,53 +423,41 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("Dzialka")
-                        .HasForeignKey("WladanieId");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.FormaWladaniaSlo", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("FormaWladaniaSlo")
-                        .HasForeignKey("WladanieId");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.MK_REJNIER_PERSONS", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("MK_REJNIER_PERSONS")
-                        .HasForeignKey("WladanieId");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("NazwaCzynnosciSlo")
-                        .HasForeignKey("WladanieId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Obreb", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.GminaSlo", "GminaSlo")
-                        .WithMany("Obreb")
+                        .WithMany()
                         .HasForeignKey("GminaSloId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUw", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.Wladanie", b =>
                 {
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("PlatnoscUw")
-                        .HasForeignKey("WladanieId");
-                });
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("DzialkaId");
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.RodzajDokumentuSlo", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Wladanie", "Wladanie")
-                        .WithMany("RodzajDokumentuSlo")
-                        .HasForeignKey("WladanieId");
+                    b.HasOne("RejestrNieruchomosciNew.FormaWladaniaSlo", "FormaWladaniaSlo")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("FormaWladaniaSloId");
+
+                    b.HasOne("RejestrNieruchomosciNew.NazwaCzynnosciSlo", "NazwaCzynnosciSlo")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("NazwaCzynnosciSloId");
+
+                    b.HasOne("RejestrNieruchomosciNew.PlatnoscUw", "PlatnoscUw")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("PlatnoscUwId");
+
+                    b.HasOne("RejestrNieruchomosciNew.Podmiot", "Podmiot")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("PodmiotId");
+
+                    b.HasOne("RejestrNieruchomosciNew.RodzajDokumentuSlo", "RodzajDokumentuSlo")
+                        .WithMany("Wladanie")
+                        .HasForeignKey("RodzajDokumentuSloId");
                 });
 #pragma warning restore 612, 618
         }

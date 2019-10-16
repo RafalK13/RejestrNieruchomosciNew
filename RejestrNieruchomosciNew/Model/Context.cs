@@ -2,6 +2,8 @@
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using RejestrNieruchomosciNew.Model;
+
 
 namespace RejestrNieruchomosciNew
 {
@@ -20,40 +22,17 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Obreb> Obreb { get; set; }
         public virtual DbSet<Dzialka> Dzialka { get; set; }
 
-        //public virtual DbSet<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
-
         public virtual DbSet<Wladanie> Wladanie { get; set; }
-
+        public virtual DbSet<Podmiot> Podmiot { get; set; }
         public virtual DbSet<PlatnoscUw> PlatnoscUw { get; set; }
-        //public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
-        //public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
-        public virtual DbSet<MK_REJNIER_PERSONS> MK_REJNIER_PERSONS { get; set; }
-        //public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-        //public virtual DbSet<Dzialka> Dzialka { get; set; }
+        public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
+        public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
+        public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
+        
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
-        //public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
 
         //public virtual DbSet<InnePrawa> InnePrawa { get; set; }
-        //public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
-
-        //public virtual DbSet<ObrebSlo> ObrebSlo { get; set; }
-        //public virtual DbSet<PlatnoscUw> PlatnoscUw { get; set; }
-        //public virtual DbSet<Podmiot> Podmiot { get; set; }
-        //public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
-        //public virtual DbSet<StatusSlo> StatusSlo { get; set; }
-
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -74,43 +53,43 @@ namespace RejestrNieruchomosciNew
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
 
-            //modelBuilder.Entity<GminaSlo>().HasData(
-            //   new GminaSlo() { GminaSloId = 1, Nazwa = "miasto Gdańsk" },
-            //   new GminaSlo() { GminaSloId = 2, Nazwa = "miasto Sopot" },
-            //   new GminaSlo() { GminaSloId = 3, Nazwa = "miasto Pruszcz Gdański" },
-            //   new GminaSlo() { GminaSloId = 4, Nazwa = "gmina Gdańsk" },
-            //   new GminaSlo() { GminaSloId = 5, Nazwa = "gmina Pruszcz Gdański" },
-            //   new GminaSlo() { GminaSloId = 6, Nazwa = "gmina Żukowo" },
-            //   new GminaSlo() { GminaSloId = 7, Nazwa = "gmina Kolbudy" }
-            //);
+            modelBuilder.Entity<GminaSlo>().HasData(
+               new GminaSlo() { GminaSloId = 1, Nazwa = "miasto Gdańsk" },
+               new GminaSlo() { GminaSloId = 2, Nazwa = "miasto Sopot" },
+               new GminaSlo() { GminaSloId = 3, Nazwa = "miasto Pruszcz Gdański" },
+               new GminaSlo() { GminaSloId = 4, Nazwa = "gmina Gdańsk" },
+               new GminaSlo() { GminaSloId = 5, Nazwa = "gmina Pruszcz Gdański" },
+               new GminaSlo() { GminaSloId = 6, Nazwa = "gmina Żukowo" },
+               new GminaSlo() { GminaSloId = 7, Nazwa = "gmina Kolbudy" }
+            );
 
-            //modelBuilder.Entity<Obreb>().HasData(
-            //        new Obreb() { ObrebId = 1, Nazwa = "010", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 2, Nazwa = "020", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 3, Nazwa = "030", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 4, Nazwa = "040", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 5, Nazwa = "050", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 6, Nazwa = "060", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 7, Nazwa = "070", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 8, Nazwa = "080", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 9, Nazwa = "090", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 10, Nazwa = "100", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 11, Nazwa = "110", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 12, Nazwa = "120", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 13, Nazwa = "130", GminaSloId = 1 },
-            //        new Obreb() { ObrebId = 14, Nazwa = "010", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 15, Nazwa = "020", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 16, Nazwa = "030", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 17, Nazwa = "040", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 18, Nazwa = "050", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 19, Nazwa = "060", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 20, Nazwa = "070", GminaSloId = 2 },
-            //        new Obreb() { ObrebId = 21, Nazwa = "010", GminaSloId = 3 },
-            //        new Obreb() { ObrebId = 22, Nazwa = "020", GminaSloId = 3 },
-            //        new Obreb() { ObrebId = 23, Nazwa = "030", GminaSloId = 4 },
-            //        new Obreb() { ObrebId = 24, Nazwa = "040", GminaSloId = 4 },
-            //        new Obreb() { ObrebId = 25, Nazwa = "050", GminaSloId = 4 }
-            //    );
+            modelBuilder.Entity<Obreb>().HasData(
+                    new Obreb() { ObrebId = 1, Nazwa = "010", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 2, Nazwa = "020", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 3, Nazwa = "030", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 4, Nazwa = "040", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 5, Nazwa = "050", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 6, Nazwa = "060", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 7, Nazwa = "070", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 8, Nazwa = "080", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 9, Nazwa = "090", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 10, Nazwa = "100", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 11, Nazwa = "110", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 12, Nazwa = "120", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 13, Nazwa = "130", GminaSloId = 1 },
+                    new Obreb() { ObrebId = 14, Nazwa = "010", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 15, Nazwa = "020", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 16, Nazwa = "030", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 17, Nazwa = "040", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 18, Nazwa = "050", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 19, Nazwa = "060", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 20, Nazwa = "070", GminaSloId = 2 },
+                    new Obreb() { ObrebId = 21, Nazwa = "010", GminaSloId = 3 },
+                    new Obreb() { ObrebId = 22, Nazwa = "020", GminaSloId = 3 },
+                    new Obreb() { ObrebId = 23, Nazwa = "030", GminaSloId = 4 },
+                    new Obreb() { ObrebId = 24, Nazwa = "040", GminaSloId = 4 },
+                    new Obreb() { ObrebId = 25, Nazwa = "050", GminaSloId = 4 }
+                );
 
 
             #region Added automatically

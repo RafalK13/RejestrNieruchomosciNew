@@ -35,7 +35,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICollectionView dzialkaView
         {
-            get => CollectionViewSource.GetDefaultView(dzialkiBase.dzialkaList);
+            get => CollectionViewSource.GetDefaultView(dzialkiBase.list);
 
         }
 

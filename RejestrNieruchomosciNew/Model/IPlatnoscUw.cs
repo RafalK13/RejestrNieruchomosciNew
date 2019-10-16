@@ -8,7 +8,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public interface IPlatnoscUw
     {
-        int Id { get; set; }
+        int PlatnoscUwId { get; set; }
         double? Stawka { get; set; }
         int? Okres { get; set; }
         double? Wartosc { get; set; }

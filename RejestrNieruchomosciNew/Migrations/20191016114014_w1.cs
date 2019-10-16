@@ -2,7 +2,7 @@
 
 namespace RejestrNieruchomosciNew.Migrations
 {
-    public partial class r5 : Migration
+    public partial class w1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

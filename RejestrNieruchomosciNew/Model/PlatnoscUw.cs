@@ -6,12 +6,11 @@ namespace RejestrNieruchomosciNew
 {
     public partial class PlatnoscUw : IPlatnoscUw
     {
-        public int Id { get; set; }
+        public int PlatnoscUwId { get; set; }
         public double? Stawka { get; set; }
         public int? Okres { get; set; }
         public double? Wartosc { get; set; }
 
-        public int? WladanieId { get; set; }
-        public Wladanie Wladanie { get; set; }
+        public ICollection<Wladanie> Wladanie { get; set; }
     }
 }
