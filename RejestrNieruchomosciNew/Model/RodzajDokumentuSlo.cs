@@ -1,12 +1,10 @@
-﻿using RejestrNieruchomosciNew.Model;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace RejestrNieruchomosciNew
+namespace RejestrNieruchomosciNew.Model
 {
     public partial class RodzajDokumentuSlo : IRodzajDokumentuSlo
     {
-        public int Id { get; set; }
+        public int RodzajDokumentuSloId { get; set; }
         public string Nazwa { get; set; }
 
         public ICollection<Wladanie> Wladanie { get; set; }

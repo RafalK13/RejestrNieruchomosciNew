@@ -8,11 +8,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     interface IRodzajDokumentuSlo
     {
-        int Id { get; set; }
+        int RodzajDokumentuSloId { get; set; }
         string Nazwa { get; set; }
-
-
-
-
     }
 }

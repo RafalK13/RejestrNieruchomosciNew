@@ -239,29 +239,40 @@
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
-    <Compile Include="Model\IChangeViewModel.cs" />
-    <Compile Include="Model\IContrlosVisibling.cs" />
-    <Compile Include="Model\IDzialka.cs" />
-    <Compile Include="Model\IDzialkaList.cs" />
-    <Compile Include="Model\INazwaCzynosciSlo.cs" />
-    <Compile Include="Model\IObreb.cs" />
-    <Compile Include="Model\IObrebClass.cs" />
-    <Compile Include="Model\IObrebList.cs" />
-    <Compile Include="Model\IPlatnoscUw.cs" />
-    <Compile Include="Model\IPodmiot.cs" />
-    <Compile Include="Model\IPodmiotList.cs" />
-    <Compile Include="Model\IRodzajDokumentuSlo.cs" />
-    <Compile Include="Model\IView.cs" />
-    <Compile Include="Model\IViewFactory.cs" />
-    <Compile Include="Model\IWladanie.cs" />
-    <Compile Include="Model\IWladanieList.cs" />
+    <Compile Include="Model\Interfaces\IChangeViewModel.cs" />
+    <Compile Include="Model\Interfaces\IContrlosVisibling.cs" />
+    <Compile Include="Model\Interfaces\IDzialka.cs" />
+    <Compile Include="Model\Interfaces\IDzialkaList.cs" />
+    <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
+    <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
+    <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
+    <Compile Include="Model\Interfaces\IRodzajCzynnosciSlo.cs" />
+    <Compile Include="Model\Interfaces\IRodzajDokScanSlo.cs" />
+    <Compile Include="Model\Interfaces\IObreb.cs" />
+    <Compile Include="Model\Interfaces\IObrebClass.cs" />
+    <Compile Include="Model\Interfaces\IObrebList.cs" />
+    <Compile Include="Model\Interfaces\IPlatnoscUW.cs" />
+    <Compile Include="Model\Interfaces\IPodmiot.cs" />
+    <Compile Include="Model\Interfaces\IPodmiotList.cs" />
+    <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
+    <Compile Include="Model\Interfaces\IScan.cs" />
+    <Compile Include="Model\Interfaces\ITransakcje.cs" />
+    <Compile Include="Model\Interfaces\IView.cs" />
+    <Compile Include="Model\Interfaces\IViewFactory.cs" />
+    <Compile Include="Model\Interfaces\IWladanie.cs" />
+    <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\MessagesRaf.cs" />
+    <Compile Include="Model\NabyciePrawa.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\PodmiotList.cs" />
+    <Compile Include="Model\RodzajCzynnosciSlo.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
+    <Compile Include="Model\RodzajDokScanSlo.cs" />
+    <Compile Include="Model\Scan.cs" />
     <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />
+    <Compile Include="Model\Transakcje.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
     <Compile Include="Startup1.cs" />
@@ -308,7 +319,7 @@
     <Compile Include="Model\DzielnicaSlo.cs" />
     <Compile Include="Model\FormaWladaniaSlo.cs" />
     <Compile Include="Model\GminaSlo.cs" />
-    <Compile Include="Model\InnePrawa.cs" />
+    <Compile Include="Model\Interfaces\InnePrawa.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -345,7 +356,7 @@
   <ItemGroup>
     <Compile Include="Model\NazwaCzynnosciSlo.cs" />
     <Compile Include="Model\Obreb.cs" />
-    <Compile Include="Model\PlatnoscUw.cs" />
+    <Compile Include="Model\PlatnoscUW.cs" />
     <Compile Include="Model\Podmiot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -364,8 +375,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

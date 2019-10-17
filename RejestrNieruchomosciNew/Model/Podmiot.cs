@@ -1,5 +1,4 @@
 ﻿using RejestrNieruchomosciNew.Model;
-using System;
 using System.Collections.Generic;
 
 namespace RejestrNieruchomosciNew

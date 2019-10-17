@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IPlatnoscUw
+    public interface IPlatnoscUW
     {
-        int PlatnoscUwId { get; set; }
+        int PlatnoscUWId { get; set; }
+        int? DzialkaId { get; set; }
         double? Stawka { get; set; }
         int? Okres { get; set; }
         double? Wartosc { get; set; }

@@ -24,7 +24,7 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbSet<Wladanie> Wladanie { get; set; }
         public virtual DbSet<Podmiot> Podmiot { get; set; }
-        public virtual DbSet<PlatnoscUw> PlatnoscUw { get; set; }
+        public virtual DbSet<PlatnoscUW> PlatnoscUw { get; set; }
         public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
         public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
         public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
@@ -52,6 +52,26 @@ namespace RejestrNieruchomosciNew
             modelBuilder.Entity<Dzialka>()
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
+
+            modelBuilder.Entity<RodzajDokScanSlo>().HasData(
+                new RodzajDokScanSlo() { RodzajDokScanSloId = 1, Nazwa="Transakcje" },
+                new RodzajDokScanSlo() { RodzajDokScanSloId = 2, Nazwa = "Nabycie Prawa" }
+            );
+
+            modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
+                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "Akt notarialny" },
+                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 2, Nazwa = "Postanowienie sądu" }
+            );
+
+            modelBuilder.Entity<RodzajCzynnosciSlo>().HasData(
+               new RodzajCzynnosciSlo() { RodzajCzynnosciSloId = 1, Nazwa = "Kupno" },
+               new RodzajCzynnosciSlo() { RodzajCzynnosciSloId = 2, Nazwa = "Sprzedaż" }
+           );
+
+            modelBuilder.Entity<FormaWladaniaSlo>().HasData(
+              new FormaWladaniaSlo() { FormaWladaniaSloId = 1, Nazwa = "Własność" },
+              new FormaWladaniaSlo() { FormaWladaniaSloId = 2, Nazwa = "UW" }
+          );
 
             modelBuilder.Entity<GminaSlo>().HasData(
                new GminaSlo() { GminaSloId = 1, Nazwa = "miasto Gdańsk" },
