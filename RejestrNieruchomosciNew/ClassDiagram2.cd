@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RejestrNieruchomosciNew.Model.MessagesRaf" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\MessagesRaf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RejestrNieruchomosciNew.Wladanie" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADAAAEAACAUAAARIIAEIAgAAADAAAEAAQAAIIEABAA=</HashCode>
+      <FileName>Model\Wladanie.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RejestrNieruchomosciNew.Dzialka" Collapsed="true">
+    <Position X="4.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GQkAAAAAAAAAAAAAAAEAAAAAAACAAAIAAAAIMAABAAA=</HashCode>
+      <FileName>Model\Dzialka.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RejestrNieruchomosciNew.Model.DzialkaList" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAIAAAAAAACAgAAAAAAAEAAAAUAAQAAAAAAA=</HashCode>
+      <FileName>Model\DzialkaList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GalaSoft.MvvmLight.ViewModelBase" Collapsed="true">
+    <Position X="9.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="RejestrNieruchomosciNew.Model.IObreb" Collapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAQAAAA=</HashCode>
+      <FileName>Model\IObreb.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RejestrNieruchomosciNew.Model.IDzialkaList" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAACAAAAAAAAAEAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Model\IDzialkaList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="RejestrNieruchomosciNew.Model.IDzialka" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAkAAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAIMAABAAA=</HashCode>
+      <FileName>Model\IDzialka.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
