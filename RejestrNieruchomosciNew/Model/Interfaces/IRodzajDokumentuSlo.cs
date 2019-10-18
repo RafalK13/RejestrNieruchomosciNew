@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    interface IRodzajDokumentuSlo
+    public interface IRodzajDokumentuSlo
     {
         int RodzajDokumentuSloId { get; set; }
         string Nazwa { get; set; }

@@ -16,5 +16,7 @@ namespace RejestrNieruchomosciNew
         public int? TransakcjaId { get; set; }
         public int? NabycieId { get; set; }
         public string Udzial { get; set; }
+
+        public Podmiot Podmiot { get; set; }
     }
 }

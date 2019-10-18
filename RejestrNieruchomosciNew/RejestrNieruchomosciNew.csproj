@@ -239,6 +239,7 @@
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
+    <Compile Include="Model\FormaWladaniaList.cs" />
     <Compile Include="Model\Interfaces\IChangeViewModel.cs" />
     <Compile Include="Model\Interfaces\IContrlosVisibling.cs" />
     <Compile Include="Model\Interfaces\IDzialka.cs" />
@@ -259,10 +260,13 @@
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
+    <Compile Include="Model\NazwaCzynnosciList.cs" />
     <Compile Include="Model\NabyciePrawa.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\PodmiotList.cs" />
+    <Compile Include="Model\RodzajDokumentuList.cs" />
+    <Compile Include="Model\RodzajTransakcjiList.cs" />
     <Compile Include="Model\RodzajTransakcjiSlo.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\SelectorModel.cs" />
@@ -270,7 +274,6 @@
     <Compile Include="Model\TransakcjeSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
-    <Compile Include="Startup1.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />

@@ -10,7 +10,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_WlascicielViewModel : ViewModelBase
     {
         
-
         private string _tekstCls;
         public string tekstCls
         {
@@ -21,15 +20,10 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("tekstCls");
             }
         }
-
         public IWladanie wladanie { get; set; }
-
         public IWladanieList wladanieList { get; set; }
-
         public IPodmiotList podmiotList { get; set; }
-
         public ICommand wlascAdd { get; set; }
-
         private int dzialkaId;
 
         private WpfControlLibraryRaf.Podmiot _wlascSel;
@@ -46,18 +40,21 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_WlascicielViewModel(IDzialkaList dzList)
         {
             wlascAdd = new RelayCommand(onWlascAdd);
-            //dzialkaId = int.Parse( dzList.list.First(r => r.Numer.Contains("13") == true).DzialkaId.ToString());
-
-           
+            dzialkaId = int.Parse( dzList.list.First(r => r.Numer.Contains("1") == true).DzialkaId.ToString());
         }
 
         private void onWlascAdd()
         {
-            var v = wlascSel as WpfControlLibraryRaf.Podmiot;
-            wladanie.PodmiodId = v.id;
-            wladanieList.AddRow(wladanie);
+            if (wlascSel != null)
+            {
+                var v = wlascSel;// as WpfControlLibraryRaf.Podmiot;
+                int a = 13;
+                wladanie.PodmiodId = v.id;
+                wladanie.Podmiot.Name = v.nazwa;
+                wladanieList.AddRow(wladanie);
 
-            tekstCls = string.Empty;
+                tekstCls = string.Empty;
+            }
         }
     }
 }

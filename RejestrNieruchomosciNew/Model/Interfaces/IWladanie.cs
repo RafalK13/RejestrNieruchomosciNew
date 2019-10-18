@@ -17,5 +17,7 @@ namespace RejestrNieruchomosciNew.Model
          int? TransakcjaId { get; set; }
          int? NabycieId { get; set; }
          string Udzial { get; set; }
+
+         Podmiot Podmiot { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
@@ -55,6 +56,15 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<IWladanie>().ImplementedBy<Wladanie>().LifeStyle.Transient);
             container.Register(Component.For<IWladanieList>().ImplementedBy<WladanieList>().LifeStyle.Transient);
+
+            container.Register(Component.For<IFormaWladaniaSlo>().ImplementedBy<FormaWladaniaSlo>());
+            container.Register(Component.For<FormaWladaniaList>());
+            container.Register(Component.For<IRodzajTransakcjiSlo>().ImplementedBy<RodzajTransakcjiSlo>());
+            container.Register(Component.For<RodzajTransakcjiList>());
+            container.Register(Component.For<INazwaCzynosciSlo>().ImplementedBy<NazwaCzynnosciSlo>());
+            container.Register(Component.For<NazwaCzynnosciList>());
+            container.Register(Component.For<IRodzajDokumentuSlo>().ImplementedBy<RodzajDokumentuSlo>());
+            container.Register(Component.For<RodzajDokumentuList>());
         }
     }
 }

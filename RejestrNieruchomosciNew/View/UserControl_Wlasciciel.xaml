@@ -148,7 +148,7 @@
                        >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
-                                            Binding="{Binding PodmiodId}"
+                                            Binding="{Binding Name}"
                                             Width="500"/>
                     </DataGrid.Columns>
                 </DataGrid>
