@@ -12,22 +12,10 @@ namespace RejestrNieruchomosciNew.Model
          int? DzialkaId { get; set; }
          int? PodmiodId { get; set; }
 
-         int? FormaWladaniaId { get; set; }
-         string Udzial { get; set; }
+         int? FormaWladaniaSloId { get; set; }
+
+         int? TransakcjaId { get; set; }
          int? NabycieId { get; set; }
-         int? ZbycieId { get; set; }
-
-        //int? NazwaCzynnosciId { get; set; }
-        //int? RodzajDokumentuId { get; set; }
-        //int? PlatnoscUwId { get; set; }
-
-        //string TytulDokumentu { get; set; }
-        //DateTime? DataDokumentu { get; set; }
-        //DateTime? DataObowiazywaniaOd { get; set; }
-        //DateTime? DataObowiazywaniaDo { get; set; }
-
-        //int? Stawka { get; set; }
-        //int? Okres { get; set; }
-        //decimal? Wartosc { get; set; }
+         string Udzial { get; set; }
     }
 }

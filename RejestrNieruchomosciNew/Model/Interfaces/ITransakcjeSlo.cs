@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface ITransakcje
+    public interface ITransakcjeSlo
     {
-        int TransakcjeId { get; set; }
+        int TransakcjeSloId { get; set; }
+        int RodzajTransakcjiId { get; set; }
+        int RodzajCzynnosciId { get; set; }
         int RodzajDokumentuId { get; set; }
-        int RodzajCzynnosciSloId { get; set; }
-        string numer { get; set; }
+        string Numer { get; set; }
         DateTime Data { get; set; }
         string Tytul { get; set; }
+        string Skan { get; set; }
     }
 }

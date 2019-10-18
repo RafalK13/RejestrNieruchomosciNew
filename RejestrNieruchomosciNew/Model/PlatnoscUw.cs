@@ -12,7 +12,10 @@ namespace RejestrNieruchomosciNew
         public int? Okres { get; set; }
         public double? Wartosc { get; set; }
 
-        public ICollection<Wladanie> Wladanie { get; set; }
-        
+        public int rok1 { get; set; }
+        public int rok2 { get; set; }
+        public int rok3 { get; set; }
+
+        public Dzialka Dzialka { get; set; }
     }
 }

@@ -198,41 +198,41 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191016103220_wladanie1.cs" />
-    <Compile Include="Migrations\20191016103220_wladanie1.designer.cs">
-      <DependentUpon>20191016103220_wladanie1.cs</DependentUpon>
+    <Compile Include="Migrations\20191017102358_w1.cs" />
+    <Compile Include="Migrations\20191017102358_w1.designer.cs">
+      <DependentUpon>20191017102358_w1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016103830_wladanie2.cs" />
-    <Compile Include="Migrations\20191016103830_wladanie2.designer.cs">
-      <DependentUpon>20191016103830_wladanie2.cs</DependentUpon>
+    <Compile Include="Migrations\20191017104051_w2.cs" />
+    <Compile Include="Migrations\20191017104051_w2.designer.cs">
+      <DependentUpon>20191017104051_w2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016104307_wladanie3.cs" />
-    <Compile Include="Migrations\20191016104307_wladanie3.designer.cs">
-      <DependentUpon>20191016104307_wladanie3.cs</DependentUpon>
+    <Compile Include="Migrations\20191017110412_w3.cs" />
+    <Compile Include="Migrations\20191017110412_w3.designer.cs">
+      <DependentUpon>20191017110412_w3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016104845_wladanie4.cs" />
-    <Compile Include="Migrations\20191016104845_wladanie4.designer.cs">
-      <DependentUpon>20191016104845_wladanie4.cs</DependentUpon>
+    <Compile Include="Migrations\20191017112637_w4.cs" />
+    <Compile Include="Migrations\20191017112637_w4.designer.cs">
+      <DependentUpon>20191017112637_w4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016113901_wladanie6.cs" />
-    <Compile Include="Migrations\20191016113901_wladanie6.designer.cs">
-      <DependentUpon>20191016113901_wladanie6.cs</DependentUpon>
+    <Compile Include="Migrations\20191017113922_w5.cs" />
+    <Compile Include="Migrations\20191017113922_w5.designer.cs">
+      <DependentUpon>20191017113922_w5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016114014_w1.cs" />
-    <Compile Include="Migrations\20191016114014_w1.designer.cs">
-      <DependentUpon>20191016114014_w1.cs</DependentUpon>
+    <Compile Include="Migrations\20191017115130_w6.cs" />
+    <Compile Include="Migrations\20191017115130_w6.designer.cs">
+      <DependentUpon>20191017115130_w6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016114805_w2.cs" />
-    <Compile Include="Migrations\20191016114805_w2.designer.cs">
-      <DependentUpon>20191016114805_w2.cs</DependentUpon>
+    <Compile Include="Migrations\20191018095801_w7.cs" />
+    <Compile Include="Migrations\20191018095801_w7.designer.cs">
+      <DependentUpon>20191018095801_w7.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016115250_w3.cs" />
-    <Compile Include="Migrations\20191016115250_w3.designer.cs">
-      <DependentUpon>20191016115250_w3.cs</DependentUpon>
+    <Compile Include="Migrations\20191018101044_w8.cs" />
+    <Compile Include="Migrations\20191018101044_w8.designer.cs">
+      <DependentUpon>20191018101044_w8.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191016121431_w5.cs" />
-    <Compile Include="Migrations\20191016121431_w5.designer.cs">
-      <DependentUpon>20191016121431_w5.cs</DependentUpon>
+    <Compile Include="Migrations\20191018101322_w9.cs" />
+    <Compile Include="Migrations\20191018101322_w9.designer.cs">
+      <DependentUpon>20191018101322_w9.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
@@ -246,8 +246,7 @@
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
-    <Compile Include="Model\Interfaces\IRodzajCzynnosciSlo.cs" />
-    <Compile Include="Model\Interfaces\IRodzajDokScanSlo.cs" />
+    <Compile Include="Model\Interfaces\IRodzajTransakcjiSlo.cs" />
     <Compile Include="Model\Interfaces\IObreb.cs" />
     <Compile Include="Model\Interfaces\IObrebClass.cs" />
     <Compile Include="Model\Interfaces\IObrebList.cs" />
@@ -255,24 +254,20 @@
     <Compile Include="Model\Interfaces\IPodmiot.cs" />
     <Compile Include="Model\Interfaces\IPodmiotList.cs" />
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
-    <Compile Include="Model\Interfaces\IScan.cs" />
-    <Compile Include="Model\Interfaces\ITransakcje.cs" />
+    <Compile Include="Model\Interfaces\ITransakcjeSlo.cs" />
     <Compile Include="Model\Interfaces\IView.cs" />
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
-    <Compile Include="Model\MessagesRaf.cs" />
     <Compile Include="Model\NabyciePrawa.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\PodmiotList.cs" />
-    <Compile Include="Model\RodzajCzynnosciSlo.cs" />
+    <Compile Include="Model\RodzajTransakcjiSlo.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
-    <Compile Include="Model\RodzajDokScanSlo.cs" />
-    <Compile Include="Model\Scan.cs" />
     <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />
-    <Compile Include="Model\Transakcje.cs" />
+    <Compile Include="Model\TransakcjeSlo.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
     <Compile Include="Startup1.cs" />

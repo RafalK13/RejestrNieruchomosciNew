@@ -46,7 +46,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_WlascicielViewModel(IDzialkaList dzList)
         {
             wlascAdd = new RelayCommand(onWlascAdd);
-            dzialkaId = int.Parse( dzList.list.First(r => r.Numer.Contains("13") == true).DzialkaId.ToString());
+            //dzialkaId = int.Parse( dzList.list.First(r => r.Numer.Contains("13") == true).DzialkaId.ToString());
 
            
         }

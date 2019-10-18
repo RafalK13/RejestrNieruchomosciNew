@@ -14,7 +14,6 @@ namespace RejestrNieruchomosciNew.Model
         {
             initPodmiotList();
             listView = list.ConvertAll(r => new WpfControlLibraryRaf.Podmiot { id = r.PodmiotId, nazwa = r.Name });
-            int a = 13;
         }
 
         private void initPodmiotList()

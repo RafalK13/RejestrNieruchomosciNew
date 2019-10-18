@@ -8,7 +8,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public interface INazwaCzynosciSlo
     {
-        int Id { get; set; }
+        int NazwaCzynnosciSloId { get; set; }
         string Nazwa { get; set; }
     }
 }

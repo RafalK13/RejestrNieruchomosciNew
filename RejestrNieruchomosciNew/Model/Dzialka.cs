@@ -28,8 +28,8 @@ namespace RejestrNieruchomosciNew
         }
         public Obreb Obreb { get; set; }
 
-        //public int? WladanieId { get; set; }
         public ICollection<Wladanie> Wladanie { get; set; }
+        public PlatnoscUW PlatnoscUW { get; set; }
 
         [NotMapped]
         public ProcessDzialka procDz { get; set; }

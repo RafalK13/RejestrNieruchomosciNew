@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    interface IRodzajCzynnosciSlo
+    interface IRodzajTransakcjiSlo
     {
-        int RodzajCzynnosciSloId { get; set; }
+        int RodzajTransakcjiSloId { get; set; }
         string Nazwa { get; set; }
     }
 }

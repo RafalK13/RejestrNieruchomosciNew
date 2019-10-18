@@ -6,9 +6,9 @@ namespace RejestrNieruchomosciNew
 {
     public partial class NazwaCzynnosciSlo : INazwaCzynosciSlo
     {
-        public int Id { get; set; }
+        public int NazwaCzynnosciSloId { get; set; }
         public string Nazwa { get; set; }
 
-        public ICollection<Wladanie> Wladanie { get; set; }
+        public ICollection<TransakcjeSlo> TransakcjeSlo { get; set; }
     }
 }

@@ -24,15 +24,20 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbSet<Wladanie> Wladanie { get; set; }
         public virtual DbSet<Podmiot> Podmiot { get; set; }
-        public virtual DbSet<PlatnoscUW> PlatnoscUw { get; set; }
+        public virtual DbSet<PlatnoscUW> PlatnoscUW { get; set; }
         public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
         public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
         public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
+
+        public virtual DbSet<TransakcjeSlo> Transakcje { get; set; }
+        public virtual DbSet<NabyciePrawa> NabyciePrawa { get; set; }
         
+
+
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 
         //public virtual DbSet<InnePrawa> InnePrawa { get; set; }
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -53,25 +58,29 @@ namespace RejestrNieruchomosciNew
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
 
-            modelBuilder.Entity<RodzajDokScanSlo>().HasData(
-                new RodzajDokScanSlo() { RodzajDokScanSloId = 1, Nazwa="Transakcje" },
-                new RodzajDokScanSlo() { RodzajDokScanSloId = 2, Nazwa = "Nabycie Prawa" }
-            );
-
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
-                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "Akt notarialny" },
-                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 2, Nazwa = "Postanowienie sądu" }
+                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },
+                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 2, Nazwa = "Akt notarialny" },
+                new RodzajDokumentuSlo() { RodzajDokumentuSloId = 3, Nazwa = "Postanowienie sądu" }
             );
 
-            modelBuilder.Entity<RodzajCzynnosciSlo>().HasData(
-               new RodzajCzynnosciSlo() { RodzajCzynnosciSloId = 1, Nazwa = "Kupno" },
-               new RodzajCzynnosciSlo() { RodzajCzynnosciSloId = 2, Nazwa = "Sprzedaż" }
+            modelBuilder.Entity<RodzajTransakcjiSlo>().HasData(
+               new RodzajTransakcjiSlo() { RodzajTransakcjiSloId = 1, Nazwa = "-" },
+               new RodzajTransakcjiSlo() { RodzajTransakcjiSloId = 2, Nazwa = "Kupno" },
+               new RodzajTransakcjiSlo() { RodzajTransakcjiSloId = 3, Nazwa = "Sprzedaż" }
            );
 
             modelBuilder.Entity<FormaWladaniaSlo>().HasData(
-              new FormaWladaniaSlo() { FormaWladaniaSloId = 1, Nazwa = "Własność" },
-              new FormaWladaniaSlo() { FormaWladaniaSloId = 2, Nazwa = "UW" }
+              new FormaWladaniaSlo() { FormaWladaniaSloId = 1, Nazwa = "-" },
+              new FormaWladaniaSlo() { FormaWladaniaSloId = 2, Nazwa = "Własność" },
+              new FormaWladaniaSlo() { FormaWladaniaSloId = 3, Nazwa = "UW" }
           );
+
+            modelBuilder.Entity<NazwaCzynnosciSlo>().HasData(
+             new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 1, Nazwa = "-" },
+             new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 2, Nazwa = "Zakup" },
+             new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 3, Nazwa = "Aport" }
+         );
 
             modelBuilder.Entity<GminaSlo>().HasData(
                new GminaSlo() { GminaSloId = 1, Nazwa = "miasto Gdańsk" },

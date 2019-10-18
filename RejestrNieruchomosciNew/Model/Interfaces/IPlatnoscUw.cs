@@ -13,5 +13,9 @@ namespace RejestrNieruchomosciNew.Model
         double? Stawka { get; set; }
         int? Okres { get; set; }
         double? Wartosc { get; set; }
+
+        int rok1 { get; set; }
+        int rok2 { get; set; }
+        int rok3 { get; set; }
     }
 }

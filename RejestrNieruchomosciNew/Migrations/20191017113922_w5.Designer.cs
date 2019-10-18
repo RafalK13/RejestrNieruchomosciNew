@@ -10,7 +10,7 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191016121431_w5")]
+    [Migration("20191017113922_w5")]
     partial class w5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,15 +50,32 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.FormaWladaniaSlo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("FormaWladaniaSloId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nazwa");
 
-                    b.HasKey("Id");
+                    b.HasKey("FormaWladaniaSloId");
 
                     b.ToTable("FormaWladaniaSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            FormaWladaniaSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            FormaWladaniaSloId = 2,
+                            Nazwa = "Własność"
+                        },
+                        new
+                        {
+                            FormaWladaniaSloId = 3,
+                            Nazwa = "UW"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.GminaSlo", b =>
@@ -111,17 +128,194 @@ namespace RejestrNieruchomosciNew.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.NabyciePrawa", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("NabyciePrawaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("NumerPost");
+
+                    b.Property<DateTime>("ObowiazywanieDo");
+
+                    b.Property<DateTime>("ObowiazywanieOd");
+
+                    b.Property<int>("WladanieId");
+
+                    b.HasKey("NabyciePrawaId");
+
+                    b.HasIndex("WladanieId")
+                        .IsUnique();
+
+                    b.ToTable("NabyciePrawa");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajDokScanSlo", b =>
+                {
+                    b.Property<int>("RodzajDokScanSloId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nazwa");
 
-                    b.HasKey("Id");
+                    b.HasKey("RodzajDokScanSloId");
+
+                    b.ToTable("RodzajDokScanSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            RodzajDokScanSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            RodzajDokScanSloId = 2,
+                            Nazwa = "Transakcje"
+                        },
+                        new
+                        {
+                            RodzajDokScanSloId = 3,
+                            Nazwa = "Nabycie Prawa"
+                        });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajDokumentuSlo", b =>
+                {
+                    b.Property<int>("RodzajDokumentuSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("RodzajDokumentuSloId");
+
+                    b.ToTable("RodzajDokumentuSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            RodzajDokumentuSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            RodzajDokumentuSloId = 2,
+                            Nazwa = "Akt notarialny"
+                        },
+                        new
+                        {
+                            RodzajDokumentuSloId = 3,
+                            Nazwa = "Postanowienie sądu"
+                        });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo", b =>
+                {
+                    b.Property<int>("RodzajTransakcjiSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("RodzajTransakcjiSloId");
+
+                    b.ToTable("RodzajTransakcjiSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            RodzajTransakcjiSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            RodzajTransakcjiSloId = 2,
+                            Nazwa = "Kupno"
+                        },
+                        new
+                        {
+                            RodzajTransakcjiSloId = 3,
+                            Nazwa = "Sprzedaż"
+                        });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Scan", b =>
+                {
+                    b.Property<int>("ScanId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("NabyciePrawaId");
+
+                    b.Property<string>("Path");
+
+                    b.Property<int>("RodzajDokScanSloId");
+
+                    b.Property<int>("RodzajId");
+
+                    b.Property<int?>("TransakcjeId");
+
+                    b.HasKey("ScanId");
+
+                    b.HasIndex("NabyciePrawaId");
+
+                    b.HasIndex("TransakcjeId");
+
+                    b.ToTable("Scan");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>
+                {
+                    b.Property<int>("TransakcjeId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<int>("NabycieId");
+
+                    b.Property<int>("RodzajCzynnosciSloId");
+
+                    b.Property<int>("RodzajDokumentuId");
+
+                    b.Property<string>("Tytul");
+
+                    b.Property<string>("numer");
+
+                    b.HasKey("TransakcjeId");
+
+                    b.ToTable("Transakcje");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
+                {
+                    b.Property<int>("NazwaCzynnosciSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("NazwaCzynnosciSloId");
 
                     b.ToTable("NazwaCzynnosciSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            NazwaCzynnosciSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            NazwaCzynnosciSloId = 2,
+                            Nazwa = "Zakup"
+                        },
+                        new
+                        {
+                            NazwaCzynnosciSloId = 3,
+                            Nazwa = "Aport"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Obreb", b =>
@@ -293,11 +487,15 @@ namespace RejestrNieruchomosciNew.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUw", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUW", b =>
                 {
-                    b.Property<int>("PlatnoscUwId")
+                    b.Property<int>("PlatnoscUWId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DzialkaId");
+
+                    b.Property<int?>("NabyciePrawaId");
 
                     b.Property<int?>("Okres");
 
@@ -305,9 +503,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<double?>("Wartosc");
 
-                    b.HasKey("PlatnoscUwId");
+                    b.HasKey("PlatnoscUWId");
 
-                    b.ToTable("PlatnoscUw");
+                    b.HasIndex("DzialkaId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL");
+
+                    b.HasIndex("NabyciePrawaId");
+
+                    b.ToTable("PlatnoscUW");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Podmiot", b =>
@@ -347,30 +551,11 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.ToTable("Podmiot");
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.RodzajDokumentuSlo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Nazwa");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RodzajDokumentuSlo");
-                });
-
             modelBuilder.Entity("RejestrNieruchomosciNew.Wladanie", b =>
                 {
                     b.Property<int>("WladanieId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DataDokumentu");
-
-                    b.Property<DateTime?>("DataObowiazywaniaDo");
-
-                    b.Property<DateTime?>("DataObowiazywaniaOd");
 
                     b.Property<int?>("DzialkaId");
 
@@ -378,29 +563,19 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("FormaWladaniaSloId");
 
-                    b.Property<int?>("NazwaCzynnosciId");
+                    b.Property<int?>("NabycieId");
 
                     b.Property<int?>("NazwaCzynnosciSloId");
-
-                    b.Property<int?>("Okres");
-
-                    b.Property<int?>("PlatnoscUwId");
 
                     b.Property<int?>("PodmiodId");
 
                     b.Property<int?>("PodmiotId");
 
-                    b.Property<int?>("RodzajDokumentuId");
-
                     b.Property<int?>("RodzajDokumentuSloId");
-
-                    b.Property<int?>("Stawka");
-
-                    b.Property<string>("TytulDokumentu");
 
                     b.Property<string>("Udzial");
 
-                    b.Property<decimal?>("Wartosc");
+                    b.Property<int?>("ZbycieId");
 
                     b.HasKey("WladanieId");
 
@@ -408,9 +583,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasIndex("FormaWladaniaSloId");
 
-                    b.HasIndex("NazwaCzynnosciSloId");
+                    b.HasIndex("NabycieId")
+                        .IsUnique()
+                        .HasFilter("[NabycieId] IS NOT NULL");
 
-                    b.HasIndex("PlatnoscUwId");
+                    b.HasIndex("NazwaCzynnosciSloId");
 
                     b.HasIndex("PodmiotId");
 
@@ -427,6 +604,25 @@ namespace RejestrNieruchomosciNew.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.NabyciePrawa", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Wladanie")
+                        .WithOne("NabyciePrawa")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.NabyciePrawa", "WladanieId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Scan", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Model.NabyciePrawa")
+                        .WithMany("Scan")
+                        .HasForeignKey("NabyciePrawaId");
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
+                        .WithMany("Scan")
+                        .HasForeignKey("TransakcjeId");
+                });
+
             modelBuilder.Entity("RejestrNieruchomosciNew.Obreb", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.GminaSlo", "GminaSlo")
@@ -435,29 +631,40 @@ namespace RejestrNieruchomosciNew.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.Wladanie", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUW", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithOne("PlatnoscUW")
+                        .HasForeignKey("RejestrNieruchomosciNew.PlatnoscUW", "DzialkaId");
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.NabyciePrawa", "NabyciePrawa")
+                        .WithMany()
+                        .HasForeignKey("NabyciePrawaId");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Wladanie", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka")
                         .WithMany("Wladanie")
                         .HasForeignKey("DzialkaId");
 
-                    b.HasOne("RejestrNieruchomosciNew.FormaWladaniaSlo", "FormaWladaniaSlo")
+                    b.HasOne("RejestrNieruchomosciNew.FormaWladaniaSlo")
                         .WithMany("Wladanie")
                         .HasForeignKey("FormaWladaniaSloId");
 
-                    b.HasOne("RejestrNieruchomosciNew.NazwaCzynnosciSlo", "NazwaCzynnosciSlo")
+                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "Transakcje")
+                        .WithOne("Wladanie1")
+                        .HasForeignKey("RejestrNieruchomosciNew.Wladanie", "NabycieId");
+
+                    b.HasOne("RejestrNieruchomosciNew.NazwaCzynnosciSlo")
                         .WithMany("Wladanie")
                         .HasForeignKey("NazwaCzynnosciSloId");
 
-                    b.HasOne("RejestrNieruchomosciNew.PlatnoscUw", "PlatnoscUw")
-                        .WithMany("Wladanie")
-                        .HasForeignKey("PlatnoscUwId");
-
-                    b.HasOne("RejestrNieruchomosciNew.Podmiot", "Podmiot")
+                    b.HasOne("RejestrNieruchomosciNew.Podmiot")
                         .WithMany("Wladanie")
                         .HasForeignKey("PodmiotId");
 
-                    b.HasOne("RejestrNieruchomosciNew.RodzajDokumentuSlo", "RodzajDokumentuSlo")
+                    b.HasOne("RejestrNieruchomosciNew.Model.RodzajDokumentuSlo")
                         .WithMany("Wladanie")
                         .HasForeignKey("RodzajDokumentuSloId");
                 });
