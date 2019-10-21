@@ -1,15 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using WpfControlLibraryRaf;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_WlascicielViewModel : ViewModelBase
     {
-        
         private string _tekstCls;
         public string tekstCls
         {
@@ -37,24 +38,62 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        //public IWladanie wladanieSel { get; set; }
+
+        private IWladanie _wladanieSel;
+
+        public IWladanie wladanieSel
+        {
+            get { return _wladanieSel; }
+            set
+            {
+                _wladanieSel = value;
+                RaisePropertyChanged("wladanieSel");
+            }
+        }
+
+        public ICommand btUsunWlasc { get; set; }
+
         public UserControl_WlascicielViewModel(IDzialkaList dzList)
         {
             wlascAdd = new RelayCommand(onWlascAdd);
-            dzialkaId = int.Parse( dzList.list.First(r => r.Numer.Contains("1") == true).DzialkaId.ToString());
+            btUsunWlasc = new RelayCommand(onUsunWlasc);
+
+            dzialkaId = int.Parse(dzList.list.First(r => r.Numer.Contains("1") == true).DzialkaId.ToString());
+        }
+
+        private void onUsunWlasc()
+        {
+            wladanieList.list.Remove(wladanieSel);
+            wladanieSel = null;
         }
 
         private void onWlascAdd()
         {
             if (wlascSel != null)
             {
-                var v = wlascSel;// as WpfControlLibraryRaf.Podmiot;
-                int a = 13;
-                wladanie.PodmiodId = v.id;
-                wladanie.Podmiot.Name = v.nazwa;
-                wladanieList.AddRow(wladanie);
+                if (testWlascExist(wlascSel) == false)
+                {
+                    wladanie.PodmiodId = wlascSel.id;
+                    wladanie.Podmiot = new Podmiot() { Name = wlascSel.nazwa, PodmiotId=wlascSel.id };
 
-                tekstCls = string.Empty;
+                    wladanieList.AddRow( wladanie);
+
+                    tekstCls = string.Empty;
+                    wladanieSel = null;
+                }
             }
+        }
+
+        private bool testWlascExist(WpfControlLibraryRaf.Podmiot wlascSel)
+        {
+            if (wladanieList.list.Count == 0)
+                return false;
+
+            var v = wladanieList.list.Where(r => r.Podmiot.Name == wlascSel.nazwa).Count();
+
+            return (v == 0) ? false : true;
+
         }
     }
 }

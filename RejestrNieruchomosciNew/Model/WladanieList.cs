@@ -10,17 +10,15 @@ namespace RejestrNieruchomosciNew.Model
         
         public WladanieList()
         {
-            //list = new ObservableCollection<IWladanie>();
             using (Context c = new Context())
             {
                 list = new ObservableCollection<IWladanie>(c.Wladanie.Include( r=>r.Podmiot));
-                int a = 13;
             }
         }
 
         public void AddRow(IWladanie wlad)
         {
-            list.Add(wlad);
+            list.Add( new Wladanie( wlad.DzialkaId, wlad.PodmiodId, wlad.Podmiot.Name));
         }
 
         public void DelRow(IWladanie wlad) { }

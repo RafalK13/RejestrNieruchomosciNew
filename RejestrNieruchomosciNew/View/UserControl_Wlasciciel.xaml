@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
@@ -82,12 +81,14 @@
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"/>
-            <StackPanel Grid.Column="0" Margin="40,0">
-                <Label Content="Właściciel"
-                       DockPanel.Dock="Top"
-                       FontWeight="Bold"                      
-                       FontSize="19"
-                       Style="{StaticResource label}" HorizontalAlignment="Left"/>
+            <Grid Grid.Column="0" Margin="40,0">
+                <Label  Margin="10,10,0,0"
+                        Content="Właściciel"
+                        FontWeight="Bold"                      
+                        FontSize="19"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
                 <!--<ComboBox
                        ItemsSource="{Binding  userControl_Wlasciciel.podmiotList.list}"
                        DisplayMemberPath="nazwa"                            
@@ -95,7 +96,8 @@
                        IsEditable="True" >
                 </ComboBox>-->
                 <!--podmiotList="{Binding userControl_Wlasciciel.podmiotList.listView}"-->
-                <conRaf:DataGridRaf     x:Name="conRaf1"
+                <conRaf:DataGridRaf     Margin="10,50,0,0"
+                                        x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
                                         TekstProp="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
                                         podmiotList="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.listView, ElementName=win}"
@@ -106,10 +108,9 @@
                                         HorizontalAlignment="Stretch"
                                         />
 
-
                 <!--dataGridSource="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.list, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}}"-->
                 <!--selectedItemRaf="{Binding Path=DataContext.userControl_Wlasciciel.podmiotSel, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-                <Grid DockPanel.Dock="Top" Height="90">
+                <!--<Grid Height="90">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="43*"/>
                         <ColumnDefinition Width="37*"/>
@@ -121,38 +122,53 @@
                             Height="30"
                             Width="100"
                             Command="{Binding userControl_Wlasciciel.wlascAdd}" Grid.ColumnSpan="2"/>
-                </Grid>
+                </Grid>-->
 
-                <Button DockPanel.Dock="Bottom"
-                        Content="Usuń"
-                        Style="{StaticResource button }"
-                        Width="100"
-                        Height="30"
-                        Command="{Binding daneWlasc.btUsunWlasc}"/>
-
+                <Button     Grid.Column="0"
+                            Margin="10,100,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Dodaj"
+                            Height="30"
+                            Width="100"
+                            Command="{Binding userControl_Wlasciciel.wlascAdd}" Grid.ColumnSpan="2"/>
                 <DataGrid 
+                        VerticalAlignment="Top"
+                        Margin="10,160,0,0"
                         ItemsSource="{Binding userControl_Wlasciciel.wladanieList.list, Mode=TwoWay}"
-                        SelectedItem="{Binding daneWlasc.wladanieSel}"
-                        SelectedIndex="{Binding daneWlasc.wladIndeks}"
+                        SelectedItem="{Binding userControl_Wlasciciel.wladanieSel, Mode=TwoWay}"
                         CanUserSortColumns="False"
-                        HorizontalScrollBarVisibility="Hidden"
                         FrozenColumnCount="1" 
                         IsReadOnly="True"
                         CanUserAddRows="False"
                         CanUserDeleteRows="False" 
                         CanUserReorderColumns="False"
                         HeadersVisibility="Column"
-                        SelectionMode="Single" 
+                        SelectionMode="Single"
                         SelectionUnit="FullRow"
-                        Margin="10"
+                        VerticalScrollBarVisibility="Auto"
+                        AutoGenerateColumns="False"
                        >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
-                                            Binding="{Binding Name}"
-                                            Width="500"/>
+                                            Binding="{Binding Podmiot.Name}"
+                                            Width="*"/>
+                        <DataGridTemplateColumn Header="Usun" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button 
+                                            Height="20" 
+                                            Width="20" 
+                                            Content="x"                                                           
+                                            Foreground="Red"
+                                            BorderBrush="White"
+                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.btUsunWlasc, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+            </Grid>
 
             <StackPanel Grid.Column="1" Margin="30,0">
                 <Grid>
