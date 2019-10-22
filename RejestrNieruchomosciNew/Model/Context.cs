@@ -29,11 +29,9 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
         public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
 
-        public virtual DbSet<TransakcjeSlo> Transakcje { get; set; }
+        public virtual DbSet<Transakcje> Transakcje { get; set; }
         public virtual DbSet<NabyciePrawa> NabyciePrawa { get; set; }
         
-
-
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 
         //public virtual DbSet<InnePrawa> InnePrawa { get; set; }

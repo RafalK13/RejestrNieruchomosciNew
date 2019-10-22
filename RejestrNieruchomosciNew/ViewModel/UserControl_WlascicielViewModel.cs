@@ -25,8 +25,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IWladanieList wladanieList { get; set; }
         public IPodmiotList podmiotList { get; set; }
         public ICommand wlascAdd { get; set; }
-        private int dzialkaId;
 
+        public FormaWladaniaList sloFormWlad { get; set; }
+        public NazwaCzynnosciSlo sloNazwaCzyn { get; set; }
+
+        private int dzialkaId;
+        
         private WpfControlLibraryRaf.Podmiot _wlascSel;
         public WpfControlLibraryRaf.Podmiot wlascSel
         {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191022095835_w11")]
+    partial class w11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,19 +213,19 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("Data");
+                    b.Property<DateTime>("Data");
 
                     b.Property<int?>("NazwaCzynnosciSloId");
 
                     b.Property<string>("Numer");
 
-                    b.Property<int?>("RodzajCzynnosciId");
+                    b.Property<int>("RodzajCzynnosciId");
 
-                    b.Property<int?>("RodzajDokumentuId");
+                    b.Property<int>("RodzajDokumentuId");
 
                     b.Property<int?>("RodzajDokumentuSloId");
 
-                    b.Property<int?>("RodzajTransakcjiId");
+                    b.Property<int>("RodzajTransakcjiId");
 
                     b.Property<int?>("RodzajTransakcjiSloId");
 

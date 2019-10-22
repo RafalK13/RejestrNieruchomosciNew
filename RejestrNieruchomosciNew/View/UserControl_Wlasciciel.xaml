@@ -192,25 +192,26 @@
                                         Content="Rodzaj"                                       
                                         Style="{StaticResource label1}"/>
                                 <ComboBox  
-                                        ItemsSource="{Binding  dvm.dtFormaWladaniaTab}"
-                                        SelectedValue="{Binding  daneWlasc.wladanieSel[formaWladaniaID]}"
-                                        SelectedValuePath="ID"
-                                        DisplayMemberPath="nazwa"  
+                                        ItemsSource="{Binding  userControl_Wlasciciel.sloFormWlad.list}"
+                                        SelectedValue="{Binding  userControl_Wlasciciel.wladanieSel.FormaWladaniaSloId}"
+                                        SelectedValuePath="FormaWladaniaSloId"
+                                        DisplayMemberPath="Nazwa"  
                                         Style="{StaticResource comboBox}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Udział"                                       
                                        Style="{StaticResource label1}"/>
-                                <TextBox   Text="{Binding daneWlasc.wladanieSel[udzial]}" 
+                                <TextBox
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.Udzial}" 
                                        Style="{StaticResource tekst}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Nazwa czynności"                                       
                                        Style="{StaticResource label1}"/>
-                                <ComboBox ItemsSource="{Binding  daneWlasc.dvm.dtNazwaCzynnosciTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[nazwaCzynnosciID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
+                            <ComboBox ItemsSource="{Binding  userControl_Wlasciciel.sloNazwaCzyn.list}"
+                                       SelectedValue="{Binding  userControl_Wlasciciel.wladanieSel[NazwaCzynnosciSloId]}"
+                                       SelectedValuePath="NazwaCzynnosciSloId"
+                                       DisplayMemberPath="Nazwa"  
                                        Style="{StaticResource comboBox}"
                                        />
                             </StackPanel>

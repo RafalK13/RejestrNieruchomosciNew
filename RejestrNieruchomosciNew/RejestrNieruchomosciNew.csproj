@@ -234,6 +234,14 @@
     <Compile Include="Migrations\20191018101322_w9.designer.cs">
       <DependentUpon>20191018101322_w9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191022095835_w11.cs" />
+    <Compile Include="Migrations\20191022095835_w11.designer.cs">
+      <DependentUpon>20191022095835_w11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191022100617_w12.cs" />
+    <Compile Include="Migrations\20191022100617_w12.designer.cs">
+      <DependentUpon>20191022100617_w12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
@@ -255,7 +263,8 @@
     <Compile Include="Model\Interfaces\IPodmiot.cs" />
     <Compile Include="Model\Interfaces\IPodmiotList.cs" />
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
-    <Compile Include="Model\Interfaces\ITransakcjeSlo.cs" />
+    <Compile Include="Model\Interfaces\ITransakcje.cs" />
+    <Compile Include="Model\Interfaces\ITransakcjeList.cs" />
     <Compile Include="Model\Interfaces\IView.cs" />
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
@@ -271,7 +280,8 @@
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\SelectorModel.cs" />
     <Compile Include="Model\StatusSlo.cs" />
-    <Compile Include="Model\TransakcjeSlo.cs" />
+    <Compile Include="Model\Transakcje.cs" />
+    <Compile Include="Model\TransakcjeList.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
