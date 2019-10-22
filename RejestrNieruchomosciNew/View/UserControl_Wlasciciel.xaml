@@ -8,12 +8,12 @@
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Name="win"
-             d:DesignHeight="660" d:DesignWidth="800">
+             d:DesignHeight="660" d:DesignWidth="1030">
     <UserControl.Resources>
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
         <con:IntConverter x:Key="intConverter"/>
-        <sys:Double x:Key="widthMin">200</sys:Double>
+        <sys:Double x:Key="widthMin">150</sys:Double>
         <sys:Double x:Key="widthMax">500</sys:Double>
         <Style x:Key="label" TargetType="Label">
             <Setter Property="Margin" Value="10,10,0,0"></Setter>
@@ -30,7 +30,7 @@
             <Setter Property="DockPanel.Dock" Value="Top"/>
             <Setter Property="Height" Value="25"></Setter>
             <Setter Property="Width"  Value="70"></Setter>
-            <Setter Property="Margin" Value="10,0,20,0"/>
+            <Setter Property="Margin" Value="10,5,20,0"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="MinWidth" Value="{StaticResource ResourceKey=widthMin}"/>
             <Setter Property="MaxWidth" Value="{StaticResource ResourceKey=widthMax}"/>
@@ -43,21 +43,14 @@
             <Setter Property="Margin" Value="15,30"></Setter>
         </Style>
         <Style x:Key="comboBox" TargetType="ComboBox">
-            <Setter Property="Margin" Value="10,0,0,0"></Setter>
-            <Setter Property="Width" Value="200"></Setter>
+            <Setter Property="Margin" Value="10,5,0,0"></Setter>
+            <Setter Property="Width" Value="150"></Setter>
         </Style>
         <Style x:Key="textBox" TargetType="TextBlock">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
             <Setter Property="Width" Value="200"></Setter>
         </Style>
 
-        <!--<Style x:Key="tekst" TargetType="TextBox">
-            <Setter Property="" Value=""/>
-            <Setter Property="" Value=""/>
-            <Setter Property="" Value=""/>
-            <Setter Property="" Value=""/>
-        </Style>
-        -->
     </UserControl.Resources>
 
     <Grid>
@@ -67,20 +60,20 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="400"/>
-                <ColumnDefinition Width="500"/>
+                <ColumnDefinition MinWidth="350"/>
+                <ColumnDefinition Width="350"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
             <GridSplitter 
                    Grid.Column ="0"  
-                   Width="5"
+                   Width="15"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"/>
-            <GridSplitter 
-                   Grid.Column ="1"  
-                   Width="5"
-                   HorizontalAlignment="Right" 
-                   VerticalAlignment="Stretch"/>
+
             <Grid Grid.Column="0" Margin="40,0">
                 <Label  Margin="10,10,0,0"
                         Content="Właściciel"
@@ -170,167 +163,195 @@
                 </DataGrid>
             </Grid>
 
-            <StackPanel Grid.Column="1" Margin="30,0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
-                        <Label 
-                       Content="Forma władania"
-                       FontWeight="Bold"
-                       FontSize="19"     
-                       Margin="0,10,0,0"
-                       Style="{StaticResource label}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Rodzaj"                                       
-                                    Style="{StaticResource label1}"/>
-                            <ComboBox  ItemsSource="{Binding  dvm.dtFormaWladaniaTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[formaWladaniaID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
-                                       Style="{StaticResource comboBox}"
-                                       />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Udział"                                       
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+                <Grid Grid.Column="1" Margin="10,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="130"/>
+                            <RowDefinition Height="175"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <Label 
+                                   Content="Forma władania"
+                                   FontWeight="Bold"
+                                   FontSize="19"     
+                                   Margin="0,10,0,0"
+                                   Style="{StaticResource label}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label 
+                                        Content="Rodzaj"                                       
+                                        Style="{StaticResource label1}"/>
+                                <ComboBox  
+                                        ItemsSource="{Binding  dvm.dtFormaWladaniaTab}"
+                                        SelectedValue="{Binding  daneWlasc.wladanieSel[formaWladaniaID]}"
+                                        SelectedValuePath="ID"
+                                        DisplayMemberPath="nazwa"  
+                                        Style="{StaticResource comboBox}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Udział"                                       
                                        Style="{StaticResource label1}"/>
-                            <TextBox   Text="{Binding daneWlasc.wladanieSel[udzial]}" 
+                                <TextBox   Text="{Binding daneWlasc.wladanieSel[udzial]}" 
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Nazwa czynności"                                       
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Nazwa czynności"                                       
                                        Style="{StaticResource label1}"/>
-                            <ComboBox ItemsSource="{Binding  daneWlasc.dvm.dtNazwaCzynnosciTab}"
+                                <ComboBox ItemsSource="{Binding  daneWlasc.dvm.dtNazwaCzynnosciTab}"
                                        SelectedValue="{Binding  daneWlasc.wladanieSel[nazwaCzynnosciID]}"
                                        SelectedValuePath="ID"
                                        DisplayMemberPath="nazwa"  
                                        Style="{StaticResource comboBox}"
                                        />
+                            </StackPanel>
+
                         </StackPanel>
 
-                    </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Label 
+                                   Content="Sposób nabycia prawa"
+                                   FontWeight="Bold"
+                                   FontSize="19"         
+                                   Margin="0,20,0,0"
+                                   Style="{StaticResource label}"/>
 
-                    <StackPanel Grid.Row="1">
-                        <Label 
-                       Content="Sposób nabycia prawa"
-                       FontWeight="Bold"
-                       FontSize="19"         
-                       Margin="0,20,0,0"
-                       Style="{StaticResource label}"/>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Rodzaj dokumentu"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Rodzaj dokumentu"                                       
                                        Style="{StaticResource label1}"/>
-                            <ComboBox ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
+                                <ComboBox ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
                                        SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
                                        SelectedValuePath="ID"
                                        DisplayMemberPath="nazwa"  
                                        Style="{StaticResource comboBox}"
                                        />
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Tytuł dokumentu"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Tytuł dokumentu"                                       
                                        Style="{StaticResource label1}"/>
-                            <TextBox   Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                                <TextBox   Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label  Content="Data dokumentu"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label  Content="Data dokumentu"                                       
                                         Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        Text="{Binding daneWlasc.wladanieSel[dataDokumentu], Converter={StaticResource dateConvert}}"
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Skan dokumentu"    
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Skan dokumentu"    
                                            Style="{StaticResource label1}"/>
-                            <Button  Width="200"
+                                <Button  Width="150"
+                                         Height="25"
                                          Content="Wstaw"
-                                         Margin="10,0"/>
+                                         Margin="10,5,0,0"/>
+                            </StackPanel>
+
                         </StackPanel>
 
-                    </StackPanel>
-                    <StackPanel Grid.Row="2">
-                        <Label 
-                       Content="Data obowiązywania dokumentu"
-                       FontWeight="Bold"
-                       FontSize="19"    
-                        Margin="0,20,0,0"
-                       Style="{StaticResource label}"/>
+                        <StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
+                            Orientation="Horizontal" />
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Od"                                       
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" >
+                <Grid Grid.Column="2" >
+                    
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0">
+                            <Label 
+                                      Content="Data obowiązywania dokumentu"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                       Margin="0,20,0,0"
+                                      Style="{StaticResource label}"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Od"                                       
                                       Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                         Text="{Binding daneWlasc.wladanieSel[dataObowiazywaniaOD] , Converter={StaticResource dateConvert}}"
                                         Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Do"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Do"                                       
                                       Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        Text="{Binding daneWlasc.wladanieSel[dataObowiazywaniaDO] , Converter={StaticResource dateConvert}}"
                                        Style="{StaticResource tekst}"/>
+                            </StackPanel>
                         </StackPanel>
-
-                    </StackPanel>
-                    <StackPanel Grid.Row="3">
+                        
+                        <StackPanel Grid.Row="1">
                         <Label 
-                       Content="Płatnośc z tytułu UW"
-                       FontWeight="Bold"
-                       FontSize="19"     
-                       Margin="0,20,0,0"
-                       Style="{StaticResource label}"/>
+                           Content="Płatnośc z tytułu UW"
+                           FontWeight="Bold"
+                           FontSize="19"     
+                           Margin="0,20,0,0"
+                           Style="{StaticResource label}"/> 
 
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Stawka [%]"                                       
+                                <Label Content="Stawka [%]"                                       
                                        Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        
                                        Text="{Binding daneWlasc.wladanieSel[stawka] , Converter={StaticResource intConverter} }"                                        
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Okres [lata]"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Okres [lata]"                                       
                                        Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        Text="{Binding daneWlasc.wladanieSel[okres], Converter={StaticResource intConverter} }"
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wysokośc opłaty"                                       
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Wysokośc opłaty"                                       
                                     Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wartość z wyceny"                                       
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Wartość z wyceny"                                       
                                       Style="{StaticResource label1}"/>
-                            <TextBox
+                                <TextBox
                                        Text="{Binding daneWlasc.wladanieSel[wartosc], Converter={StaticResource doubleConverter}}"
                                        Style="{StaticResource tekst}"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                    </StackPanel>
-                    <StackPanel Grid.Row="4" 
-                            Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Czyść"
-                                    Margin="70,20,0,0"
+                        </StackPanel>
+                    </Grid>
+            </ScrollViewer>
+            <StackPanel 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            VerticalAlignment="Bottom"
+                            >
+                <Button             Content="Czyść"
+                                    Width="130"
+                                    Height="25"
+                                    
                                     Command="{Binding daneWlasc.btClsWladanieSel}"
-                                    Style="{StaticResource button }"/>
-                    </StackPanel>
-                </Grid>
+                                    />
             </StackPanel>
         </Grid>
     </Grid>

@@ -38,8 +38,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        //public IWladanie wladanieSel { get; set; }
-
         private IWladanie _wladanieSel;
 
         public IWladanie wladanieSel
