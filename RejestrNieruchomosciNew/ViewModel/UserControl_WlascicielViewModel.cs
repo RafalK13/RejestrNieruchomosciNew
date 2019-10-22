@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Linq;
 using System.Windows;
@@ -42,8 +43,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        private IWladanie _wladanieSel;
+        public ITransakcjeList transakcjeList { get; set; }
 
+        private IWladanie _wladanieSel;
         public IWladanie wladanieSel
         {
             get { return _wladanieSel; }

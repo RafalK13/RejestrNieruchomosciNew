@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    class TransakcjeList : ViewModelBase, ITransakcjeList
+    public class TransakcjeList : ViewModelBase, ITransakcjeList
     {
         public ObservableCollection<ITransakcje> list { get; set; }
 
