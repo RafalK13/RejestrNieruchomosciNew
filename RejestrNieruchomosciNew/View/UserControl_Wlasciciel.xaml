@@ -58,11 +58,12 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+    
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition MinWidth="350"/>
-                <ColumnDefinition Width="350"/>
-                <ColumnDefinition/>
+                <ColumnDefinition  MinWidth="9"/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -70,8 +71,13 @@
             </Grid.RowDefinitions>
             <GridSplitter 
                    Grid.Column ="0"  
-                   Width="15"
+                   Width="5"
                    HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"/>
+            <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Left" 
                    VerticalAlignment="Stretch"/>
 
             <Grid Grid.Column="0" Margin="40,0">
@@ -164,7 +170,7 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-                <Grid Grid.Column="1" Margin="10,0">
+                
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="130"/>
@@ -233,8 +239,23 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Tytuł dokumentu"                                       
                                        Style="{StaticResource label1}"/>
-                                <TextBox   Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                                       Style="{StaticResource tekst}"/>
+                                <TextBox
+                                        Margin="10,5,20,0"
+                                        Width="150"     
+                                        TextWrapping="Wrap"
+                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
+                    
+                                    <TextBox.Style>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Height" Value="25"/>
+                                        <Style.Triggers>
+                                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                                <Setter Property="Height" Value="200"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal">
@@ -260,12 +281,11 @@
                             Orientation="Horizontal" />
 
                     </Grid>
-                </Grid>
+              
             </ScrollViewer>
 
-            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" >
-                <Grid Grid.Column="2" >
-                    
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <Grid Margin="10,0,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="120"/>
                             <RowDefinition Height="150"/>
@@ -278,7 +298,7 @@
                                       Content="Data obowiązywania dokumentu"
                                       FontWeight="Bold"
                                       FontSize="19"    
-                                       Margin="0,20,0,0"
+                                       Margin="0,10,0,0"
                                       Style="{StaticResource label}"/>
 
                             <StackPanel Orientation="Horizontal">
@@ -339,7 +359,9 @@
 
                         </StackPanel>
                     </Grid>
+             
             </ScrollViewer>
+  
             <StackPanel 
                             Grid.Column="1"
                             Grid.Row="1"
