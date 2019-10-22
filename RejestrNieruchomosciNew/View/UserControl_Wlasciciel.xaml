@@ -91,13 +91,7 @@
                         Height="35"
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
-                <!--<ComboBox
-                       ItemsSource="{Binding  userControl_Wlasciciel.podmiotList.list}"
-                       DisplayMemberPath="nazwa"                            
-                       SelectedItem="{Binding daneWlasc.podmiotSel}"
-                       IsEditable="True" >
-                </ComboBox>-->
-                <!--podmiotList="{Binding userControl_Wlasciciel.podmiotList.listView}"-->
+                
                 <conRaf:DataGridRaf     Margin="10,50,0,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
@@ -110,21 +104,7 @@
                                         HorizontalAlignment="Stretch"
                                         />
 
-                <!--dataGridSource="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.list, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}}"-->
-                <!--selectedItemRaf="{Binding Path=DataContext.userControl_Wlasciciel.podmiotSel, RelativeSource={RelativeSource AncestorType=local:UserControl_Wlasciciel}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-                <!--<Grid Height="90">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="43*"/>
-                        <ColumnDefinition Width="37*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="0"
-                            HorizontalAlignment="Center"
-                            Content="Dodaj"
-                            Height="30"
-                            Width="100"
-                            Command="{Binding userControl_Wlasciciel.wlascAdd}" Grid.ColumnSpan="2"/>
-                </Grid>-->
+               
 
                 <Button     Grid.Column="0"
                             Margin="10,100,0,0"
@@ -173,11 +153,10 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
-                        <RowDefinition Height="275"/>
+                        <RowDefinition Height="300"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -217,10 +196,9 @@
                                    Content="Sposób nabycia prawa"
                                    FontWeight="Bold"
                                    FontSize="19"         
-                                   Margin="0,00,0,0"
+                                   Margin="0,0,0,0"
                                    Style="{StaticResource label}"/>
-
-                        <Grid>
+                        <Grid Panel.ZIndex="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="5*"/>
@@ -231,14 +209,15 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="3" Grid.Row="0"
@@ -286,14 +265,18 @@
                                        Style="{StaticResource labelTab}"/>
                             <TextBox Grid.Column="3" Grid.Row="4" 
                                        Margin="3"
-                                        TextWrapping="Wrap"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
+                                       AcceptsReturn="True"
+                                       TextWrapping="Wrap"
+                                       Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
                                         <Setter Property="Height" Value="20"/>
+                                        <Setter Property="Panel.ZIndex" Value="1"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="200"/>
+                                                <Setter Property="Height" Value="100"/>
+                                                <Setter Property="Panel.ZIndex" Value="13"/>
+                                                <Setter Property="Grid.RowSpan" Value="3"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -311,6 +294,7 @@
                                        Style="{StaticResource labelTab}"/>
                             <TextBox Grid.Column="3" Grid.Row="6" 
                                        Margin="3"
+                                     AcceptsReturn="True"
                                         TextWrapping="Wrap"
                                         Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
                                 <TextBox.Style>
@@ -318,7 +302,9 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="200"/>
+                                                <Setter Property="Height" Value="100"/>
+                                                <Setter Property="Panel.ZIndex" Value="13"/>
+                                                <Setter Property="Grid.RowSpan" Value="3"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -361,13 +347,16 @@
                             <TextBox Grid.Column="5" Grid.Row="4" 
                                        Margin="3"
                                         TextWrapping="Wrap"
+                                        AcceptsReturn="True"
                                         Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
                                         <Setter Property="Height" Value="20"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="200"/>
+                                               <Setter Property="Height" Value="100"/>
+                                                <Setter Property="Panel.ZIndex" Value="13"/>
+                                                <Setter Property="Grid.RowSpan" Value="3"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -382,16 +371,19 @@
                             <TextBox Grid.Column="5" Grid.Row="6" 
                                        Margin="3"
                                         TextWrapping="Wrap"
+                                     AcceptsReturn="True"
                                         Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox">
                                         <Setter Property="Height" Value="20"/>
                                         <Style.Triggers>
-                                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="200"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
+                                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                                    <Setter Property="Height" Value="100"/>
+                                                    <Setter Property="Panel.ZIndex" Value="13"/>
+                                                    <Setter Property="Grid.RowSpan" Value="3"/>
+                                                    </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
                                 </TextBox.Style>
                             </TextBox>
 
@@ -415,7 +407,7 @@
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="120"/>
-                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="190"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
