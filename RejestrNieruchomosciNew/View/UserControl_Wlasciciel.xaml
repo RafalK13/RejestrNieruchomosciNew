@@ -25,7 +25,7 @@
         </Style>
         <Style x:Key="labelTab" TargetType="Label">
             <Setter Property="Margin" Value="3,0,0,0"></Setter>
-           </Style>
+        </Style>
         <Style x:Key="label2" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
         </Style>
@@ -54,6 +54,18 @@
             <Setter Property="Width" Value="200"></Setter>
         </Style>
 
+        <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Style.Triggers>
+                <Trigger  Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="Height" Value="80"/>
+                    <Setter Property="Panel.ZIndex" Value="13"/>
+                    <Setter Property="Grid.RowSpan" Value="3"/>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -91,7 +103,7 @@
                         Height="35"
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
-                
+
                 <conRaf:DataGridRaf     Margin="10,50,0,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
@@ -104,7 +116,7 @@
                                         HorizontalAlignment="Stretch"
                                         />
 
-               
+
 
                 <Button     Grid.Column="0"
                             Margin="10,100,0,0"
@@ -263,25 +275,13 @@
                             <Label Grid.Column="1" Grid.Row="4" 
                                     Content="Numer dokumentu"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <TextBox Grid.Column="3" Grid.Row="4" 
+                            <TextBox   Grid.Column="3" Grid.Row="4" 
                                        Margin="3"
-                                       AcceptsReturn="True"
-                                       TextWrapping="Wrap"
-                                       Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Height" Value="20"/>
-                                        <Setter Property="Panel.ZIndex" Value="1"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="100"/>
-                                                <Setter Property="Panel.ZIndex" Value="13"/>
-                                                <Setter Property="Grid.RowSpan" Value="3"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
+                                       Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                                       Style="{StaticResource tekstBoxTrigger}"  
+                                       />
+
+
                             <Label Grid.Column="1" Grid.Row="5" 
                                     Content="Data"                                       
                                        Style="{StaticResource labelTab}"/>
@@ -292,32 +292,18 @@
                             <Label Grid.Column="1" Grid.Row="6" 
                                     Content="Tytuł dokumentu"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <TextBox Grid.Column="3" Grid.Row="6" 
-                                       Margin="3"
-                                     AcceptsReturn="True"
-                                        TextWrapping="Wrap"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Height" Value="20"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="80"/>
-                                                <Setter Property="Panel.ZIndex" Value="13"/>
-                                                <Setter Property="Grid.RowSpan" Value="3"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-
+                            <TextBox    Grid.Column="3" Grid.Row="6" 
+                                        Margin="3"
+                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                                        Style="{StaticResource tekstBoxTrigger}"/>
+                                     
                             <Label  Grid.Column="1" Grid.Row="7" 
                                         Content="Skan dokumentu"    
                                            Style="{StaticResource labelTab}"/>
                             <Button  Grid.Column="3" Grid.Row="7" 
                                          Content="Wstaw"
                                          Margin="3"/>
-                        
+
                             <ComboBox Grid.Column="5" Grid.Row="1" 
                                       ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
                                       SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
@@ -325,7 +311,7 @@
                                       DisplayMemberPath="nazwa"
                                       Margin="3"
                                       />
-                           
+
                             <ComboBox Grid.Column="5" Grid.Row="2" 
                                       ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
                                        SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
@@ -340,51 +326,23 @@
                                        DisplayMemberPath="nazwa"  
                                       Margin="3"
                                        />
-                         
+
                             <TextBox Grid.Column="5" Grid.Row="4" 
                                        Margin="3"
-                                        TextWrapping="Wrap"
-                                        AcceptsReturn="True"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Height" Value="20"/>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                               <Setter Property="Height" Value="100"/>
-                                                <Setter Property="Panel.ZIndex" Value="13"/>
-                                                <Setter Property="Grid.RowSpan" Value="3"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
-                           
+                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                                        Style="{StaticResource tekstBoxTrigger}"/>
+
+
                             <TextBox Grid.Column="5" Grid.Row="5" 
                                        Margin="3"
                                         TextWrapping="Wrap"
                                         Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"/>
-                           
-                            <TextBox Grid.Column="5" Grid.Row="6" 
-                                       Margin="3"
-                                        TextWrapping="Wrap"
-                                     AcceptsReturn="True"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="Height" Value="20"/>
-                                        <Style.Triggers>
-                                                <Trigger Property="IsKeyboardFocused" Value="true">
-                                                    <Setter Property="Height" Value="100"/>
-                                                    <Setter Property="Panel.ZIndex" Value="13"/>
-                                                    <Setter Property="Grid.RowSpan" Value="3"/>
-                                                    </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                </TextBox.Style>
-                            </TextBox>
 
-                           
+                            <TextBox    Grid.Column="5" Grid.Row="6" 
+                                        Margin="3"
+                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                                        Style="{StaticResource tekstBoxTrigger}"/>
+
                             <Button  Grid.Column="5" Grid.Row="7" 
                                          Content="Wstaw"
                                          Margin="3"/>
@@ -486,13 +444,13 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-                            <Button Content="Add"
+                <Button Content="Add"
                                     Width="130"
                                     Height="25"
                                     Margin="20,0,20,0"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
                                     />
-                            <Button Content="Czyść"
+                <Button Content="Czyść"
                                     Width="130"
                                     Height="25"
                                     Margin="20,0,20,0"
