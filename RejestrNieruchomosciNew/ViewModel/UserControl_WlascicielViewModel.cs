@@ -25,8 +25,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IWladanie wladanie { get; set; }
         public IWladanieList wladanieList { get; set; }
         public IPodmiotList podmiotList { get; set; }
-        public ICommand wlascAdd { get; set; }
-
+        
         public FormaWladaniaList sloFormWlad { get; set; }
         public NazwaCzynnosciSlo sloNazwaCzyn { get; set; }
 
@@ -56,17 +55,37 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public ICommand btUsunWlasc { get; set; }
+        public ICommand podmiotAdd { get; set; }
+        public ICommand wlascAdd { get; set; }
+        public ICommand podmiotDel { get; set; }
 
         public UserControl_WlascicielViewModel(IDzialkaList dzList)
         {
+            podmiotAdd = new RelayCommand(onPodmiotAdd);
             wlascAdd = new RelayCommand(onWlascAdd);
-            btUsunWlasc = new RelayCommand(onUsunWlasc);
+            podmiotDel = new RelayCommand(onPodmiotDel);
 
             dzialkaId = int.Parse(dzList.list.First(r => r.Numer.Contains("1") == true).DzialkaId.ToString());
         }
 
-        private void onUsunWlasc()
+        private void onPodmiotAdd()
+        {
+            if (wlascSel != null)
+            {
+                if (testWlascExist(wlascSel) == false)
+                {
+                    wladanie.PodmiodId = wlascSel.id;
+                    wladanie.Podmiot = new Podmiot() { Name = wlascSel.nazwa, PodmiotId = wlascSel.id };
+
+                    wladanieList.AddRow(wladanie);
+
+                    tekstCls = string.Empty;
+                    wladanieSel = null;
+                }
+            }
+        }
+
+        private void onPodmiotDel()
         {
             wladanieList.list.Remove(wladanieSel);
             wladanieSel = null;
@@ -74,19 +93,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            if (wlascSel != null)
-            {
-                if (testWlascExist(wlascSel) == false)
-                {
-                    wladanie.PodmiodId = wlascSel.id;
-                    wladanie.Podmiot = new Podmiot() { Name = wlascSel.nazwa, PodmiotId=wlascSel.id };
-
-                    wladanieList.AddRow( wladanie);
-
-                    tekstCls = string.Empty;
-                    wladanieSel = null;
-                }
-            }
+            
         }
 
         private bool testWlascExist(WpfControlLibraryRaf.Podmiot wlascSel)

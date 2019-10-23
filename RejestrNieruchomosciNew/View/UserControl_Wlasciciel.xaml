@@ -113,7 +113,7 @@
                             Content="Dodaj"
                             Height="30"
                             Width="100"
-                            Command="{Binding userControl_Wlasciciel.wlascAdd}" Grid.ColumnSpan="2"/>
+                            Command="{Binding userControl_Wlasciciel.podmiotAdd}" Grid.ColumnSpan="2"/>
                 <DataGrid 
                         VerticalAlignment="Top"
                         Margin="10,160,0,0"
@@ -144,7 +144,7 @@
                                             Content="x"                                                           
                                             Foreground="Red"
                                             BorderBrush="White"
-                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.btUsunWlasc, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -302,7 +302,7 @@
                                         <Setter Property="Height" Value="20"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsKeyboardFocused" Value="true">
-                                                <Setter Property="Height" Value="100"/>
+                                                <Setter Property="Height" Value="80"/>
                                                 <Setter Property="Panel.ZIndex" Value="13"/>
                                                 <Setter Property="Grid.RowSpan" Value="3"/>
                                             </Trigger>
@@ -317,9 +317,6 @@
                             <Button  Grid.Column="3" Grid.Row="7" 
                                          Content="Wstaw"
                                          Margin="3"/>
-
-                          
-                           
                         
                             <ComboBox Grid.Column="5" Grid.Row="1" 
                                       ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
@@ -482,15 +479,23 @@
             </ScrollViewer>
 
             <StackPanel 
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Grid.Row="1"
-                            Grid.ColumnSpan="2"
+                            Grid.ColumnSpan="3"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-                <Button             Content="Czyść"
+                            <Button Content="Add"
                                     Width="130"
                                     Height="25"
-                                    
+                                    Margin="20,0,20,0"
+                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"
+                                    />
+                            <Button Content="Czyść"
+                                    Width="130"
+                                    Height="25"
+                                    Margin="20,0,20,0"
                                     Command="{Binding daneWlasc.btClsWladanieSel}"
                                     />
             </StackPanel>

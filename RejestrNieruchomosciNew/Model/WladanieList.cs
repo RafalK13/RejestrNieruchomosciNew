@@ -22,6 +22,12 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public void DelRow(IWladanie wlad) { }
-        public void ModRow(IWladanie wlad) { }
+        public void ModRow(IWladanie wlad)
+        {
+            using (Context c = new Context())
+            {
+
+            }
+        }
     }
 }
