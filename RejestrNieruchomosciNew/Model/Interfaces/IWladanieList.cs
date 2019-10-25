@@ -13,5 +13,7 @@ namespace RejestrNieruchomosciNew.Model
         void AddRow(IWladanie wlad);
         void DelRow(IWladanie wlad);
         void ModRow(IWladanie wlad);
+
+        void saveWladanie();
     }
 }

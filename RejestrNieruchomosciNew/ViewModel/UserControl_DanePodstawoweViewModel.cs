@@ -93,7 +93,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
                 int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
-                                                 r.Numer == dzialka.Numer).Count();
+                                                    r.Numer == dzialka.Numer).Count();
 
                 canAdd = c == 0 ? true : false;
             }
@@ -120,7 +120,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                     canAdd = c == 0 ? true : false;
                 }
             }
-           
         }
 
         #endregion

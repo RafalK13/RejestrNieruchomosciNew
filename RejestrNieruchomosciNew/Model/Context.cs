@@ -46,6 +46,8 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
+
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
                .WithMany(a => a.Dzialka)
@@ -118,8 +120,7 @@ namespace RejestrNieruchomosciNew
                     new Obreb() { ObrebId = 25, Nazwa = "050", GminaSloId = 4 }
                 );
 
-
-            #region Added automatically
+          #region Added automatically
             //modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
             //modelBuilder.Entity<Dzialka>(entity =>

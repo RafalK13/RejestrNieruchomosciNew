@@ -242,6 +242,14 @@
     <Compile Include="Migrations\20191022100617_w12.designer.cs">
       <DependentUpon>20191022100617_w12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191023075525_w13.cs" />
+    <Compile Include="Migrations\20191023075525_w13.designer.cs">
+      <DependentUpon>20191023075525_w13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191025074314_q1.cs" />
+    <Compile Include="Migrations\20191025074314_q1.designer.cs">
+      <DependentUpon>20191025074314_q1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
@@ -273,6 +281,7 @@
     <Compile Include="Model\NabyciePrawa.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
+    <Compile Include="Model\ObservableCon.cs" />
     <Compile Include="Model\PodmiotList.cs" />
     <Compile Include="Model\RodzajDokumentuList.cs" />
     <Compile Include="Model\RodzajTransakcjiList.cs" />

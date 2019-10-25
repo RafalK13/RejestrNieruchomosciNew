@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IWladanie
+    public interface IWladanie : IEquatable<IWladanie>, ICloneable
     {
          int WladanieId { get; set; }
          int? DzialkaId { get; set; }
-         int? PodmiodId { get; set; }
+         int? PodmiotId { get; set; }
 
          int? FormaWladaniaSloId { get; set; }
 

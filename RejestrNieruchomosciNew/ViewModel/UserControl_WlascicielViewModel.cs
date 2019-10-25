@@ -74,11 +74,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 if (testWlascExist(wlascSel) == false)
                 {
-                    wladanie.PodmiodId = wlascSel.id;
-                    wladanie.Podmiot = new Podmiot() { Name = wlascSel.nazwa, PodmiotId = wlascSel.id };
+                    wladanie.PodmiotId = wlascSel.id;
 
-                    wladanieList.AddRow(wladanie);
+                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascSel.id);
 
+                    wladanieList.list.Add(new Wladanie()
+                                                        {
+                                                            PodmiotId = wladanie.PodmiotId,
+                                                            Podmiot = wladanie.Podmiot
+                                                        });
                     tekstCls = string.Empty;
                     wladanieSel = null;
                 }
@@ -93,7 +97,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            
+            wladanieList.saveWladanie();
         }
 
         private bool testWlascExist(WpfControlLibraryRaf.Podmiot wlascSel)
@@ -101,7 +105,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (wladanieList.list.Count == 0)
                 return false;
 
-            var v = wladanieList.list.Where(r => r.Podmiot.Name == wlascSel.nazwa).Count();
+            var v = wladanieList.list.Where(r => r.PodmiotId == wlascSel.id).Count();
+      
+            //var v = wladanieList.list.Where(r => r.Podmiot.Name == wlascSel.nazwa).Count();
 
             return (v == 0) ? false : true;
 
