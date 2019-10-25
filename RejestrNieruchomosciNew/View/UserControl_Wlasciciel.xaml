@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -449,12 +450,15 @@
                                     Height="25"
                                     Margin="20,0,20,0"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
-                                    />
+                        
+                                    com:CloseOnClickBehaviour.IsEnabled="True"/>
+                
+                       
                 <Button Content="Czyść"
                                     Width="130"
                                     Height="25"
                                     Margin="20,0,20,0"
-                                    Command="{Binding daneWlasc.btClsWladanieSel}"
+                                    Command="{Binding userControl_Wlasciciel.wlascCls}"
                                     />
             </StackPanel>
         </Grid>
