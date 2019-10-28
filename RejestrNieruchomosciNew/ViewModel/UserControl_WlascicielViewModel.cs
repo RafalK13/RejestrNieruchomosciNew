@@ -52,13 +52,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("wladanieSel");
             }
         }
-
-        public UserControl_PreviewViewModel userControl_prevModel { get; set; }
-
+        
         public ICommand wlascAdd { get; set; }
         public ICommand wlascCls { get; set; }
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
+
+        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
 
         //public UserControl_WlascicielViewModel(IDzialkaList dzList)
         public UserControl_WlascicielViewModel()
@@ -78,17 +78,22 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotAdd()
         {
+
+         
+
+
+
             if (wlascSel != null)
             {
                 if (testWlascExist(wlascSel) == false)
                 {
-                    wladanie.DzialkaId = userControl_prevModel.dzialkaSel.DzialkaId;
+                    //wladanie.DzialkaId = userControl_prevModel.dzialkaSel.DzialkaId;
                     wladanie.PodmiotId = wlascSel.id;
                     wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascSel.id);
 
                     wladanieList.list.Add(new Wladanie()
                                                         {
-                                                            DzialkaId = wladanie.DzialkaId,
+                                                            //DzialkaId = wladanie.DzialkaId,
                                                             PodmiotId = wladanie.PodmiotId,
                                                             Podmiot = wladanie.Podmiot
                                                         });
@@ -106,6 +111,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
+      
+
             wladanieList.saveWladanie();
         }
 

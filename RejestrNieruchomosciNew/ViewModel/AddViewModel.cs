@@ -8,12 +8,12 @@ using System.Windows.Input;
 namespace RejestrNieruchomosciNew.ViewModel
 {
 
-    public class AddViewModel : ViewModelBase, IChangeViewModel
+    public class AddViewModel : ChangeViewModel
     {
-        [DoNotWire]
-        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
-        public UserControl_PreviewViewModel userControl_prevModel { get; set; }
-        public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
+        //[DoNotWire]
+        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        //public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+        //public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
 
         public IDzialkaList dzialkaList;
 
@@ -33,13 +33,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         #region initCommands
-        public void onAddDzialka()
+        public override  void onAddDzialka()
         {
             userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
             userControl_prevModel.dzialkaView.Refresh();
         }
 
-        public void onCloseWindow()
+        public override void onCloseWindow()
         {
         }
         #endregion

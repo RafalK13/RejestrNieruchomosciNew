@@ -7,11 +7,11 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel 
 {
-    public class ModViewModel : ViewModelBase, IChangeViewModel
+    public class ModViewModel : ChangeViewModel
     {
-        [DoNotWire]
-        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
-        public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+        //[DoNotWire]
+        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        //public UserControl_PreviewViewModel userControl_prevModel { get; set; }
 
         #region ICommand
         public ICommand OnCloseWindow { get; set; }
@@ -39,13 +39,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             OnAddDzialka = new RelayCommand(onAddDzialka);
         }
 
-        public void onAddDzialka()
+        public override void onAddDzialka()
         {
             userControl_prevModel.dzialkiBase.ModRow( userControl_AddDanePod.dzialka);
             userControl_prevModel.dzialkaView.Refresh();
         }
 
-        public void onCloseWindow()
+        public override void onCloseWindow()
         {
         }
     }

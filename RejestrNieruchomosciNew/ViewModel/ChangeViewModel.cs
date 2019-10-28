@@ -7,12 +7,13 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-    public class ChangeViewModel : ViewModelBase
+    public class ChangeViewModel : ViewModelBase, IChangeViewModel
     {
-        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
-        //public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
-        //public UserControl_PreviewViewModel userPrv { get; set; }
-
+        [DoNotWire]
+        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
+        public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+ 
         public string modeMessage { get; set; }
       
         #region ICommand
@@ -23,7 +24,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Konstruktor
         public ChangeViewModel()
         {
-            MessageBox.Show("CHANGEViewModel - Konstruktor");
+            //MessageBox.Show("CHANGEViewModel - Konstruktor");
 
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
