@@ -2,11 +2,9 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using WpfControlLibraryRaf;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
@@ -23,7 +21,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
         public IWladanie wladanie { get; set; }
+        
         public IWladanieList wladanieList { get; set; }
+
         public IPodmiotList podmiotList { get; set; }
         
         public FormaWladaniaList sloFormWlad { get; set; }
@@ -58,17 +58,22 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
 
-        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+        public IDzialka dzialkaSel { get; set; }
+        public IDzialkaList dzialkaList { get; set; }
+      
+        private int dzialkaId;
 
-        //public UserControl_WlascicielViewModel(IDzialkaList dzList)
-        public UserControl_WlascicielViewModel()
+        public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
             wlascCls = new RelayCommand(onWlascCls);
             wlascAdd = new RelayCommand(onWlascAdd);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
 
-            //dzialkaId = int.Parse(dzList.list.First(r => r.Numer.Contains("1") == true).DzialkaId.ToString());
+            if( userPrev.dzialkaSel != null)
+                dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+
+
         }
 
         private void onWlascCls()
@@ -78,22 +83,17 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotAdd()
         {
-
-         
-
-
-
             if (wlascSel != null)
             {
                 if (testWlascExist(wlascSel) == false)
                 {
-                    //wladanie.DzialkaId = userControl_prevModel.dzialkaSel.DzialkaId;
+                    wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = wlascSel.id;
                     wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascSel.id);
 
                     wladanieList.list.Add(new Wladanie()
                                                         {
-                                                            //DzialkaId = wladanie.DzialkaId,
+                                                            DzialkaId = wladanie.DzialkaId,
                                                             PodmiotId = wladanie.PodmiotId,
                                                             Podmiot = wladanie.Podmiot
                                                         });
@@ -111,8 +111,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-      
-
             wladanieList.saveWladanie();
         }
 

@@ -9,10 +9,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class ModViewModel : ChangeViewModel
     {
-        //[DoNotWire]
-        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
-        //public UserControl_PreviewViewModel userControl_prevModel { get; set; }
-
         #region ICommand
         public ICommand OnCloseWindow { get; set; }
         public ICommand OnAddDzialka { get; set; }
@@ -21,13 +17,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
                             UserControl_PreviewViewModel userPrev)
         {
-
-            //userPodst.dzialka.Numer = userPrev.dzialkaSel.Numer;
-            //userPodst.dzialka.ObrebId = userPrev.dzialkaSel.ObrebId;
-            //userPodst.dzialka.DzialkaId = userPrev.dzialkaSel.DzialkaId;
-            //userPodst.dzialka.Kwakt = userPrev.dzialkaSel.Kwakt;
-            //userPodst.dzialka.Kwzrob = userPrev.dzialkaSel.Kwzrob;
-            //userPodst.dzialka.Pow = userPrev.dzialkaSel.Pow;
+            tabsVisible = true;
 
             userPodst.dzialka.copy(userPrev.dzialkaSel);
             userPodst.obreb.fillValues(userPrev.dzialkaSel);

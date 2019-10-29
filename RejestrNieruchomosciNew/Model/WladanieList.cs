@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
+using RejestrNieruchomosciNew.ViewModel;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,24 +16,44 @@ namespace RejestrNieruchomosciNew.Model
         private List<IWladanie> listToAdd { get; set; }
         private List<IWladanie> listToMod { get; set; }
         private List<IWladanie> listToDel { get; set; }
-
+        
         public string result;
 
-        public WladanieList()
+        //public WladanieList()
+        //{
+        //    using (Context c = new Context())
+        //    {
+        //        list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot));
+
+        //        listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+
+        //        listToAdd = new List<IWladanie>();
+        //        listToMod = new List<IWladanie>();
+        //        listToDel = new List<IWladanie>();
+
+        //        result = string.Empty;
+        //    }
+        //}
+
+        public WladanieList(UserControl_PreviewViewModel userPrev)
         {
             using (Context c = new Context())
             {
-                list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot));
+                if (userPrev.dzialkaSel != null)
+                {
+                    list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
 
-                listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+                    listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
-                listToAdd = new List<IWladanie>();
-                listToMod = new List<IWladanie>();
-                listToDel = new List<IWladanie>();
+                    listToAdd = new List<IWladanie>();
+                    listToMod = new List<IWladanie>();
+                    listToDel = new List<IWladanie>();
 
-                result = string.Empty;
+                    result = string.Empty;
+                }
             }
         }
+
 
         public void saveWladanie()
         {

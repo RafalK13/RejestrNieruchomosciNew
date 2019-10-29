@@ -187,5 +187,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             return false;
         }
     }
+
+    
     #endregion
 }

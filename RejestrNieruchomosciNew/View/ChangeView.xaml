@@ -15,7 +15,9 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Window.Resources>
-         <Style TargetType="Button" x:Key="buttonRaf">
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <Style TargetType="Button" x:Key="buttonRaf">
             <Setter Property="Width" Value="100"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Margin" Value="50,5,5,5"></Setter>
@@ -36,19 +38,27 @@
                   Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
 
         <TabControl Grid.Row="1" Margin="20">
-
-            <TabItem Header="Własność">
-                <view:UserControl_Wlasciciel/>
-            </TabItem>
-            <TabItem Header="Dane podstawowe">
+            
+            <TabItem Header="Dane podstawowe"
+                    >
                 <view:UserControl_DanePodstawowe/>
             </TabItem>
-           
-            <TabItem Header="Inne prawa">
+            
+            <TabItem Header="Własność"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
+                <view:UserControl_Wlasciciel/>
+            </TabItem>
+
+            <TabItem Header="Inne prawa"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
                 <view:UserControl2>
                 </view:UserControl2>
             </TabItem>
-            <TabItem Header="Inne prawa">
+            <TabItem Header="Inne prawa"
+                    Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
                 <StackPanel>
                     <Button Height="39"/>
                 </StackPanel>

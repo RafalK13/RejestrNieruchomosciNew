@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Name="win"
-             d:DesignHeight="660" d:DesignWidth="1030">
+             d:DesignHeight="660" d:DesignWidth="1146">
     <UserControl.Resources>
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
@@ -116,9 +116,6 @@
                                         heightRaf="25"
                                         HorizontalAlignment="Stretch"
                                         />
-
-
-
                 <Button     Grid.Column="0"
                             Margin="10,100,0,0"
                             HorizontalAlignment="Center"

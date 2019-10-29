@@ -7,15 +7,9 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-
     public class AddViewModel : ChangeViewModel
     {
-        //[DoNotWire]
-        //public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
-        //public UserControl_PreviewViewModel userControl_prevModel { get; set; }
-        //public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
-
-        public IDzialkaList dzialkaList;
+        //public IDzialkaList dzialkaList;
 
         #region ICommand
         public ICommand OnCloseWindow { get; set; }
@@ -28,6 +22,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
+
+            tabsVisible = false;
 
             userControl_AddDanePod.changeMode = ChangeMode.add;
         }
