@@ -43,8 +43,6 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Wlasciciel>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_WlascicielViewModel>().LifeStyle.Transient);
 
-            
-
             container.Register(Component.For<ISelectorModel>().ImplementedBy<SelectorModel>().LifeStyle.Transient);
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add").LifeStyle.Transient);
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod").LifeStyle.Transient);
