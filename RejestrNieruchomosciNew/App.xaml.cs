@@ -20,8 +20,8 @@ namespace RejestrNieruchomosciNew
            
             container.Install(FromAssembly.This());
 
-            //var view = container.Resolve<MainView>();
-            var view = container.Resolve<Window2>();
+            var view = container.Resolve<MainView>();
+            //var view = container.Resolve<Window2>();
             view.Show();
 
             //container.Dispose();

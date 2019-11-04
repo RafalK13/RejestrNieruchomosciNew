@@ -17,7 +17,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public TransakcjeList()
         {
-            MessageBox.Show("TransakcjeList-KON");
+            //MessageBox.Show("TransakcjeList-KON");
 
             using (Context c = new Context())
             {

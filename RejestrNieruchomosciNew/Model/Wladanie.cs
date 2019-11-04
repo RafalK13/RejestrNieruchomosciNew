@@ -13,10 +13,12 @@ namespace RejestrNieruchomosciNew
 
         public int? FormaWladaniaSloId { get; set; }
 
-        public int? TransakcjaId { get; set; }
+        //public int? TransakcjaId { get; set; }
         public int? NabycieId { get; set; }
         public string Udzial { get; set; }
         public Podmiot Podmiot { get; set; }
+
+        public ICollection<Transakcje> Transakcje { get; set; }
 
         public object Clone()
         {
@@ -51,7 +53,7 @@ namespace RejestrNieruchomosciNew
                    DzialkaId.Equals(other.DzialkaId) &&
                    PodmiotId.Equals(other.PodmiotId) &&
                    FormaWladaniaSloId.Equals(other.FormaWladaniaSloId) &&
-                   TransakcjaId.Equals(other.TransakcjaId) &&
+                   //TransakcjaId.Equals(other.TransakcjaId) &&
                    string.Equals( Udzial,other.Udzial) &&
                    NabycieId.Equals(other.NabycieId);
                    

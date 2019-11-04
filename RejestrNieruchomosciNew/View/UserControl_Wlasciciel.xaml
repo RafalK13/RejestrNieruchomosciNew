@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
+             xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -105,7 +106,22 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
 
-                <conRaf:DataGridRaf     Margin="10,50,0,0"
+                <conRaf:DataGridRafALL     Margin="10,50,0,0"
+                                        x:Name="conRaf1"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                                        TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
+                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.listView, ElementName=win}"
+                                        selectedValuePathRafALL="id"
+                                        fontSizeRafALL="14"
+                                        heightRafALL="25"
+                                        HorizontalAlignment="Stretch"
+                                        colNameRaf="nazwa"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}"
+                                        />
+
+                <!--selectedItemRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascSel, Mode=TwoWay, ElementName=win}"-->
+
+                <!--<conRaf:DataGridRaf     Margin="10,50,0,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
                                         TekstProp="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
@@ -115,7 +131,7 @@
                                         fontSizeRaf="14"
                                         heightRaf="25"
                                         HorizontalAlignment="Stretch"
-                                        />
+                                        />-->
                 <Button     Grid.Column="0"
                             Margin="10,100,0,0"
                             HorizontalAlignment="Center"
@@ -250,57 +266,25 @@
                                       DisplayMemberPath="nazwa"
                                       Margin="3"
                                       />
+                           
                             <Label Grid.Column="1" Grid.Row="2" 
-                                   Content="Nazwa czynności"                                       
+                                   Content="Numer dokumentu"                                       
                                    Style="{StaticResource labelTab}"/>
-                            <ComboBox Grid.Column="3" Grid.Row="2" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
-                                      Margin="3"
-                                       />
                             <Label Grid.Column="1" Grid.Row="3" 
                                    Content="Rodzaj dokumentu"                                       
                                    Style="{StaticResource labelTab}"/>
-                            <ComboBox Grid.Column="3" Grid.Row="3" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
-                                      Margin="3"
-                                       />
                             <Label Grid.Column="1" Grid.Row="4" 
-                                    Content="Numer dokumentu"                                       
+                                    Content="Nazwa czynności"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <TextBox   Grid.Column="3" Grid.Row="4" 
-                                       Margin="3"
-                                       Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                                       Style="{StaticResource tekstBoxTrigger}"  
-                                       />
-
-
                             <Label Grid.Column="1" Grid.Row="5" 
                                     Content="Data"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <TextBox Grid.Column="3" Grid.Row="5" 
-                                       Margin="3"
-                                        TextWrapping="Wrap"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"/>
                             <Label Grid.Column="1" Grid.Row="6" 
                                     Content="Tytuł dokumentu"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <TextBox    Grid.Column="3" Grid.Row="6" 
-                                        Margin="3"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                                        Style="{StaticResource tekstBoxTrigger}"/>
-                                     
                             <Label  Grid.Column="1" Grid.Row="7" 
                                         Content="Skan dokumentu"    
                                            Style="{StaticResource labelTab}"/>
-                            <Button  Grid.Column="3" Grid.Row="7" 
-                                         Content="Wstaw"
-                                         Margin="3"/>
 
                             <ComboBox Grid.Column="5" Grid.Row="1" 
                                       ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
@@ -309,41 +293,8 @@
                                       DisplayMemberPath="nazwa"
                                       Margin="3"
                                       />
+                            <userCon:UserControl_Transakcja Grid.Column="3" Grid.Row="2" Grid.RowSpan="7"/>
 
-                            <ComboBox Grid.Column="5" Grid.Row="2" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
-                                      Margin="3"
-                                       />
-                            <ComboBox Grid.Column="5" Grid.Row="3" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                       SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                       SelectedValuePath="ID"
-                                       DisplayMemberPath="nazwa"  
-                                      Margin="3"
-                                       />
-
-                            <TextBox Grid.Column="5" Grid.Row="4" 
-                                       Margin="3"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                                        Style="{StaticResource tekstBoxTrigger}"/>
-
-
-                            <TextBox Grid.Column="5" Grid.Row="5" 
-                                       Margin="3"
-                                        TextWrapping="Wrap"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"/>
-
-                            <TextBox    Grid.Column="5" Grid.Row="6" 
-                                        Margin="3"
-                                        Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                                        Style="{StaticResource tekstBoxTrigger}"/>
-
-                            <Button  Grid.Column="5" Grid.Row="7" 
-                                         Content="Wstaw"
-                                         Margin="3"/>
 
                         </Grid>
 

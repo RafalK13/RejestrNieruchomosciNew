@@ -40,6 +40,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private int _wlascId;
+        public int wlascId {
+            get => _wlascId;
+            set
+            {
+                _wlascId = value;
+                RaisePropertyChanged("wlascId");
+            } }
+
         public ITransakcjeList transakcjeList { get; set; }
 
         private IWladanie _wladanieSel;
@@ -72,8 +81,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if( userPrev.dzialkaSel != null)
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-
-
+            
         }
 
         private void onWlascCls()
@@ -83,13 +91,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotAdd()
         {
-            if (wlascSel != null)
+            if (wlascId > 0)
             {
-                if (testWlascExist(wlascSel) == false)
+                if (testWlascExist() == false)
                 {
                     wladanie.DzialkaId = dzialkaId;
-                    wladanie.PodmiotId = wlascSel.id;
-                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascSel.id);
+                    wladanie.PodmiotId = wlascId;
+                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascId);
 
                     wladanieList.list.Add(new Wladanie()
                                                         {
@@ -114,12 +122,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             wladanieList.saveWladanie();
         }
 
-        private bool testWlascExist(WpfControlLibraryRaf.Podmiot wlascSel)
+        private bool testWlascExist()
         {
             if (wladanieList.list.Count == 0)
                 return false;
 
-            var v = wladanieList.list.Where(r => r.PodmiotId == wlascSel.id).Count();
+            var v = wladanieList.list.Where(r => r.PodmiotId == wlascId).Count();
       
             return (v == 0) ? false : true;
         }

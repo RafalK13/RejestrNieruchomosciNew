@@ -34,12 +34,12 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <ComboBox Grid.Row="0" 
-                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                  SelectedValuePath="ID"
-                  DisplayMemberPath="nazwa"  
-                  Margin="3"/>
+        <TextBox Grid.Row="0" 
+                 Margin="3"
+                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                 Style="{StaticResource tekstBoxTrigger}"/>
+
+        
         
         <ComboBox Grid.Row="1" 
                   ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
@@ -47,12 +47,14 @@
                   SelectedValuePath="ID"
                   DisplayMemberPath="nazwa"  
                   Margin="3"/>
-        
-        <TextBox Grid.Row="2" 
-                 Margin="3"
-                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                 Style="{StaticResource tekstBoxTrigger}"/>
-        
+
+        <ComboBox Grid.Row="2" 
+                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
+                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
+                  SelectedValuePath="ID"
+                  DisplayMemberPath="nazwa"  
+                  Margin="3"/>
+
         <TextBox Grid.Row="3" 
                  Margin="3"
                  TextWrapping="Wrap"
@@ -70,11 +72,11 @@
             <Button
                  Content="Dodaj"
                  Width="60" 
-                 Margin="3"/>
+                 Margin="5"/>
             <Button
                  Content="Usuń"
                 Width="60" 
-                 Margin="3"/>
+                 Margin="5"/>
         </StackPanel>
 
     </Grid>

@@ -15,7 +15,5 @@ namespace RejestrNieruchomosciNew.Model
         public DateTime? Data { get; set; }
         public string Tytul { get; set; }
         public string Skan { get; set; }
-
-        public ICollection<Wladanie> Wladanie { get; set; }
     }
 }
