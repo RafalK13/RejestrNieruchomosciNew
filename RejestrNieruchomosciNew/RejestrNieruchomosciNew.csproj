@@ -293,6 +293,9 @@
     <Compile Include="Model\TransakcjeList.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
+    <Compile Include="UserControls\Transakcja.xaml.cs">
+      <DependentUpon>Transakcja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />
@@ -303,6 +306,7 @@
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\UserControl_WlascicielViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\Window2ViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
       <DependentUpon>ChangeView.xaml</DependentUpon>
     </Compile>
@@ -317,6 +321,9 @@
     </Compile>
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Transakcja.xaml.cs">
+      <DependentUpon>UserControl_Transakcja.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_Wlasciciel.xaml.cs">
       <DependentUpon>UserControl_Wlasciciel.xaml</DependentUpon>
@@ -341,6 +348,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Transakcja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ChangeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -358,6 +369,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\UserControl_PreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Transakcja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

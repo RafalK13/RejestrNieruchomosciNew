@@ -47,8 +47,6 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add").LifeStyle.Transient);
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod").LifeStyle.Transient);
 
-            container.Register(Component.For<Window2>());
-
             container.Register(Component.For<IContrlosVisibling>().ImplementedBy<ContrlosVisibling>());
 
             container.Register(Component.For<IPodmiot>().ImplementedBy<Podmiot>());
@@ -60,8 +58,8 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IFormaWladaniaSlo>().ImplementedBy<FormaWladaniaSlo>());
             container.Register(Component.For<FormaWladaniaList>());
 
-            container.Register(Component.For<ITransakcje>().ImplementedBy<Transakcje>());
-            container.Register(Component.For<ITransakcjeList>().ImplementedBy<TransakcjeList>().LifeStyle.Transient);
+            container.Register(Component.For<ITransakcje>().ImplementedBy<Transakcje>().LifeStyle.Transient);
+            container.Register(Component.For<ITransakcjeList>().ImplementedBy<TransakcjeList>());
 
             container.Register(Component.For<IRodzajTransakcjiSlo>().ImplementedBy<RodzajTransakcjiSlo>());
             container.Register(Component.For<RodzajTransakcjiList>());
@@ -69,6 +67,9 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<NazwaCzynnosciList>());
             container.Register(Component.For<IRodzajDokumentuSlo>().ImplementedBy<RodzajDokumentuSlo>());
             container.Register(Component.For<RodzajDokumentuList>());
+
+            container.Register(Component.For<Window2>());
+            container.Register(Component.For<Window2ViewModel>());
         }
     }
 }

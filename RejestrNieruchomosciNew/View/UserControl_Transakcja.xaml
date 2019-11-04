@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_Transakcja"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+            <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="AcceptsReturn" Value="True"/>
+                <Style.Triggers>
+                    <Trigger  Property="IsKeyboardFocused" Value="true">
+                        <Setter Property="Height" Value="80"/>
+                        <Setter Property="Panel.ZIndex" Value="13"/>
+                        <Setter Property="Grid.RowSpan" Value="3"/>
+                    </Trigger>
+
+                </Style.Triggers>
+            </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox Grid.Row="0" 
+                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
+                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
+                  SelectedValuePath="ID"
+                  DisplayMemberPath="nazwa"  
+                  Margin="3"/>
+        
+        <ComboBox Grid.Row="1" 
+                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
+                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
+                  SelectedValuePath="ID"
+                  DisplayMemberPath="nazwa"  
+                  Margin="3"/>
+        
+        <TextBox Grid.Row="2" 
+                 Margin="3"
+                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                 Style="{StaticResource tekstBoxTrigger}"/>
+        
+        <TextBox Grid.Row="3" 
+                 Margin="3"
+                 TextWrapping="Wrap"
+                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"/>
+        
+        <TextBox Grid.Row="4" 
+                 Margin="3"
+                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
+                 Style="{StaticResource tekstBoxTrigger}"/>
+        
+        <Button  Grid.Row="5" 
+                 Content="Zalczniki"
+                 Margin="3"/>
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button
+                 Content="Dodaj"
+                 Width="60" 
+                 Margin="3"/>
+            <Button
+                 Content="Usuń"
+                Width="60" 
+                 Margin="3"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
