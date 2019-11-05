@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191105075705_trans1")]
+    partial class trans1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -525,8 +527,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("TransK_Id");
 
-                    b.Property<int?>("TransS_Id");
-
                     b.Property<int?>("TransakcjaId");
 
                     b.Property<string>("Udzial");
@@ -542,8 +542,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("PodmiotId");
 
                     b.HasIndex("TransK_Id");
-
-                    b.HasIndex("TransS_Id");
 
                     b.ToTable("Wladanie");
                 });
@@ -605,12 +603,8 @@ namespace RejestrNieruchomosciNew.Migrations
                         .HasForeignKey("PodmiotId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
-                        .WithMany("Wladanie1")
+                        .WithMany("Wladanie")
                         .HasForeignKey("TransK_Id");
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
-                        .WithMany("Wladanie2")
-                        .HasForeignKey("TransS_Id");
                 });
 #pragma warning restore 612, 618
         }

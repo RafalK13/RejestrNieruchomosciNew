@@ -250,6 +250,18 @@
     <Compile Include="Migrations\20191025074314_q1.designer.cs">
       <DependentUpon>20191025074314_q1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191105075705_trans1.cs" />
+    <Compile Include="Migrations\20191105075705_trans1.designer.cs">
+      <DependentUpon>20191105075705_trans1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191105080306_trans2.cs" />
+    <Compile Include="Migrations\20191105080306_trans2.designer.cs">
+      <DependentUpon>20191105080306_trans2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191105081130_trans3.cs" />
+    <Compile Include="Migrations\20191105081130_trans3.designer.cs">
+      <DependentUpon>20191105081130_trans3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />

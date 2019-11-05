@@ -13,13 +13,21 @@ namespace RejestrNieruchomosciNew
 
         public int? FormaWladaniaSloId { get; set; }
 
-        //public int? TransakcjaId { get; set; }
+        public int? TransakcjaId { get; set; }
+
+        //[ForeignKey ("TransakcjeId")]
+        //public Transakcje Transakcje { get; set; }
+
+        //public int? TransakcjaId_s { get; set; }
+
+
+
+
         public int? NabycieId { get; set; }
         public string Udzial { get; set; }
         public Podmiot Podmiot { get; set; }
 
-        public ICollection<Transakcje> Transakcje { get; set; }
-
+        
         public object Clone()
         {
             return this.MemberwiseClone();
