@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191105075705_trans1")]
-    partial class trans1
+    [Migration("20191105104357_raf1")]
+    partial class raf1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -527,7 +527,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("TransK_Id");
 
-                    b.Property<int?>("TransakcjaId");
+                    b.Property<int?>("TransS_Id");
 
                     b.Property<string>("Udzial");
 
@@ -542,6 +542,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("PodmiotId");
 
                     b.HasIndex("TransK_Id");
+
+                    b.HasIndex("TransS_Id");
 
                     b.ToTable("Wladanie");
                 });
@@ -603,8 +605,12 @@ namespace RejestrNieruchomosciNew.Migrations
                         .HasForeignKey("PodmiotId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
-                        .WithMany("Wladanie")
+                        .WithMany("WladanieK")
                         .HasForeignKey("TransK_Id");
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
+                        .WithMany("WladanieS")
+                        .HasForeignKey("TransS_Id");
                 });
 #pragma warning restore 612, 618
         }

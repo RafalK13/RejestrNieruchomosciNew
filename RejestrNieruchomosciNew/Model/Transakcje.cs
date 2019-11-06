@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -18,8 +17,9 @@ namespace RejestrNieruchomosciNew.Model
         public string Skan { get; set; }
 
         [ForeignKey("TransK_Id")]
-        public ICollection<Wladanie> Wladanie1 { get; set; }
+        public ICollection<Wladanie> WladanieK { get; set; }
         [ForeignKey("TransS_Id")]
-        public ICollection<Wladanie> Wladanie2 { get; set; }
+        public ICollection<Wladanie> WladanieS { get; set; }
+
     }
 }

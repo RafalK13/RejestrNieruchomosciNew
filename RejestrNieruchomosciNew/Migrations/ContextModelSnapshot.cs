@@ -527,8 +527,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("TransS_Id");
 
-                    b.Property<int?>("TransakcjaId");
-
                     b.Property<string>("Udzial");
 
                     b.HasKey("WladanieId");
@@ -605,11 +603,11 @@ namespace RejestrNieruchomosciNew.Migrations
                         .HasForeignKey("PodmiotId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
-                        .WithMany("Wladanie1")
+                        .WithMany("WladanieK")
                         .HasForeignKey("TransK_Id");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
-                        .WithMany("Wladanie2")
+                        .WithMany("WladanieS")
                         .HasForeignKey("TransS_Id");
                 });
 #pragma warning restore 612, 618

@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             x:Name="userControl_Transakcja1"
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="userControl_Transakcja1_Loaded">
     <UserControl.Resources>
             <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
                 <Setter Property="TextWrapping" Value="Wrap"/>
@@ -33,14 +35,30 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-
-        <TextBox Grid.Row="0" 
-                 Margin="3"
-                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                 Style="{StaticResource tekstBoxTrigger}"/>
-
         
-        
+        <conRaf:DataGridRafALL
+                    Grid.Row="0" 
+                    Margin="3,2,0,0"
+                    x:Name="userControlDataGridRafALL"
+                    VerticalAlignment="Top"
+                    
+                    itemSourceRafALL="{Binding itemSourceTrans, Mode=TwoWay}"
+                    
+                    fontSizeRafALL="14"
+                    heightRafALL="25"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="TransakcjeId" 
+                    colNameRaf="Numer"
+                    Panel.ZIndex="130"
+                    Grid.RowSpan="6"
+                    selectedIdRafALL="{Binding selelectedId}"
+                    clearTekstOnExit="False"
+            />
+        <!--selectedValuePathRafALL="id"-->
+            <!--selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}"-->
+            <!--TekstPropALL="{Binding numerTrans, Mode=TwoWay}"-->
+
+
         <ComboBox Grid.Row="1" 
                   ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
                   SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
@@ -58,18 +76,19 @@
         <TextBox Grid.Row="3" 
                  Margin="3"
                  TextWrapping="Wrap"
-                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"/>
+                 Text="{Binding numerTrans, Mode=TwoWay}"/>
         
         <TextBox Grid.Row="4" 
                  Margin="3"
-                 Text="{Binding daneWlasc.wladanieSel[tytulDokumentu]}"
-                 Style="{StaticResource tekstBoxTrigger}"/>
+                 Text="{Binding numerTrans, Mode=TwoWay}"
+                 />
         
         <Button  Grid.Row="5" 
                  Content="Zalczniki"
                  Margin="3"/>
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button
+                 Command="{Binding clickOK}"
                  Content="Dodaj"
                  Width="60" 
                  Margin="5"/>

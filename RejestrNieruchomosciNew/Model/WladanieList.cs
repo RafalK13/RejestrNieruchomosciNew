@@ -19,22 +19,6 @@ namespace RejestrNieruchomosciNew.Model
         
         public string result;
 
-        //public WladanieList()
-        //{
-        //    using (Context c = new Context())
-        //    {
-        //        list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot));
-
-        //        listOrg = ObservableCon<IWladanie>.ObservableToList(list);
-
-        //        listToAdd = new List<IWladanie>();
-        //        listToMod = new List<IWladanie>();
-        //        listToDel = new List<IWladanie>();
-
-        //        result = string.Empty;
-        //    }
-        //}
-
         public WladanieList(UserControl_PreviewViewModel userPrev)
         {
             using (Context c = new Context())

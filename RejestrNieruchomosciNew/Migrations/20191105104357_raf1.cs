@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
-    public partial class w1 : Migration
+    public partial class raf1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,32 +35,32 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NabyciePrawa",
+                columns: table => new
+                {
+                    NabyciePrawaId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ObowiazywanieOd = table.Column<DateTime>(nullable: false),
+                    ObowiazywanieDo = table.Column<DateTime>(nullable: false),
+                    ProtokolPrzejecia = table.Column<string>(nullable: true),
+                    Skan = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NabyciePrawa", x => x.NabyciePrawaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "NazwaCzynnosciSlo",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    NazwaCzynnosciSloId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nazwa = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NazwaCzynnosciSlo", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PlatnoscUw",
-                columns: table => new
-                {
-                    PlatnoscUWId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DzialkaId = table.Column<int>(nullable: true),
-                    Stawka = table.Column<double>(nullable: true),
-                    Okres = table.Column<int>(nullable: true),
-                    Wartosc = table.Column<double>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlatnoscUw", x => x.PlatnoscUWId);
+                    table.PrimaryKey("PK_NazwaCzynnosciSlo", x => x.NazwaCzynnosciSloId);
                 });
 
             migrationBuilder.CreateTable(
@@ -88,32 +89,6 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RodzajCzynnosciSlo",
-                columns: table => new
-                {
-                    RodzajCzynnosciSloId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nazwa = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RodzajCzynnosciSlo", x => x.RodzajCzynnosciSloId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RodzajDokScanSlo",
-                columns: table => new
-                {
-                    RodzajDokScanSloId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nazwa = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RodzajDokScanSlo", x => x.RodzajDokScanSloId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RodzajDokumentuSlo",
                 columns: table => new
                 {
@@ -124,6 +99,19 @@ namespace RejestrNieruchomosciNew.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RodzajDokumentuSlo", x => x.RodzajDokumentuSloId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RodzajTransakcjiSlo",
+                columns: table => new
+                {
+                    RodzajTransakcjiSloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RodzajTransakcjiSlo", x => x.RodzajTransakcjiSloId);
                 });
 
             migrationBuilder.CreateTable(
@@ -144,6 +132,46 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalTable: "GminaSlo",
                         principalColumn: "GminaSloId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transakcje",
+                columns: table => new
+                {
+                    TransakcjeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RodzajTransakcjiId = table.Column<int>(nullable: true),
+                    RodzajCzynnosciId = table.Column<int>(nullable: true),
+                    RodzajDokumentuId = table.Column<int>(nullable: true),
+                    Numer = table.Column<string>(nullable: true),
+                    Data = table.Column<DateTime>(nullable: true),
+                    Tytul = table.Column<string>(nullable: true),
+                    Skan = table.Column<string>(nullable: true),
+                    NazwaCzynnosciSloId = table.Column<int>(nullable: true),
+                    RodzajDokumentuSloId = table.Column<int>(nullable: true),
+                    RodzajTransakcjiSloId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transakcje", x => x.TransakcjeId);
+                    table.ForeignKey(
+                        name: "FK_Transakcje_NazwaCzynnosciSlo_NazwaCzynnosciSloId",
+                        column: x => x.NazwaCzynnosciSloId,
+                        principalTable: "NazwaCzynnosciSlo",
+                        principalColumn: "NazwaCzynnosciSloId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Transakcje_RodzajDokumentuSlo_RodzajDokumentuSloId",
+                        column: x => x.RodzajDokumentuSloId,
+                        principalTable: "RodzajDokumentuSlo",
+                        principalColumn: "RodzajDokumentuSloId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Transakcje_RodzajTransakcjiSlo_RodzajTransakcjiSloId",
+                        column: x => x.RodzajTransakcjiSloId,
+                        principalTable: "RodzajTransakcjiSlo",
+                        principalColumn: "RodzajTransakcjiSloId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,22 +198,44 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlatnoscUW",
+                columns: table => new
+                {
+                    PlatnoscUWId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DzialkaId = table.Column<int>(nullable: true),
+                    Stawka = table.Column<double>(nullable: true),
+                    Okres = table.Column<int>(nullable: true),
+                    Wartosc = table.Column<double>(nullable: true),
+                    rok1 = table.Column<int>(nullable: false),
+                    rok2 = table.Column<int>(nullable: false),
+                    rok3 = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlatnoscUW", x => x.PlatnoscUWId);
+                    table.ForeignKey(
+                        name: "FK_PlatnoscUW_Dzialka_DzialkaId",
+                        column: x => x.DzialkaId,
+                        principalTable: "Dzialka",
+                        principalColumn: "DzialkaId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Wladanie",
                 columns: table => new
                 {
                     WladanieId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DzialkaId = table.Column<int>(nullable: true),
-                    PodmiodId = table.Column<int>(nullable: true),
-                    FormaWladaniaId = table.Column<int>(nullable: true),
-                    Udzial = table.Column<string>(nullable: true),
-                    NabycieId = table.Column<int>(nullable: true),
-                    ZbycieId = table.Column<int>(nullable: true),
-                    FormaWladaniaSloId = table.Column<int>(nullable: true),
-                    NazwaCzynnosciSloId = table.Column<int>(nullable: true),
-                    PlatnoscUWId = table.Column<int>(nullable: true),
                     PodmiotId = table.Column<int>(nullable: true),
-                    RodzajDokumentuSloId = table.Column<int>(nullable: true)
+                    FormaWladaniaSloId = table.Column<int>(nullable: true),
+                    NabycieId = table.Column<int>(nullable: true),
+                    Udzial = table.Column<string>(nullable: true),
+                    NabyciePrawaId = table.Column<int>(nullable: true),
+                    TransK_Id = table.Column<int>(nullable: true),
+                    TransS_Id = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -203,16 +253,10 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalColumn: "FormaWladaniaSloId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Wladanie_NazwaCzynnosciSlo_NazwaCzynnosciSloId",
-                        column: x => x.NazwaCzynnosciSloId,
-                        principalTable: "NazwaCzynnosciSlo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Wladanie_PlatnoscUw_PlatnoscUWId",
-                        column: x => x.PlatnoscUWId,
-                        principalTable: "PlatnoscUw",
-                        principalColumn: "PlatnoscUWId",
+                        name: "FK_Wladanie_NabyciePrawa_NabyciePrawaId",
+                        column: x => x.NabyciePrawaId,
+                        principalTable: "NabyciePrawa",
+                        principalColumn: "NabyciePrawaId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Wladanie_Podmiot_PodmiotId",
@@ -221,10 +265,16 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalColumn: "PodmiotId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Wladanie_RodzajDokumentuSlo_RodzajDokumentuSloId",
-                        column: x => x.RodzajDokumentuSloId,
-                        principalTable: "RodzajDokumentuSlo",
-                        principalColumn: "RodzajDokumentuSloId",
+                        name: "FK_Wladanie_Transakcje_TransK_Id",
+                        column: x => x.TransK_Id,
+                        principalTable: "Transakcje",
+                        principalColumn: "TransakcjeId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Wladanie_Transakcje_TransS_Id",
+                        column: x => x.TransS_Id,
+                        principalTable: "Transakcje",
+                        principalColumn: "TransakcjeId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -233,8 +283,9 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "FormaWladaniaSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "Własność" },
-                    { 2, "UW" }
+                    { 1, "-" },
+                    { 2, "Własność" },
+                    { 3, "UW" }
                 });
 
             migrationBuilder.InsertData(
@@ -242,31 +293,23 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "GminaSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "miasto Gdańsk" },
-                    { 2, "miasto Sopot" },
-                    { 3, "miasto Pruszcz Gdański" },
-                    { 4, "gmina Gdańsk" },
-                    { 5, "gmina Pruszcz Gdański" },
                     { 6, "gmina Żukowo" },
-                    { 7, "gmina Kolbudy" }
+                    { 5, "gmina Pruszcz Gdański" },
+                    { 4, "gmina Gdańsk" },
+                    { 7, "gmina Kolbudy" },
+                    { 2, "miasto Sopot" },
+                    { 1, "miasto Gdańsk" },
+                    { 3, "miasto Pruszcz Gdański" }
                 });
 
             migrationBuilder.InsertData(
-                table: "RodzajCzynnosciSlo",
-                columns: new[] { "RodzajCzynnosciSloId", "Nazwa" },
+                table: "NazwaCzynnosciSlo",
+                columns: new[] { "NazwaCzynnosciSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "Kupno" },
-                    { 2, "Sprzedaż" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RodzajDokScanSlo",
-                columns: new[] { "RodzajDokScanSloId", "Nazwa" },
-                values: new object[,]
-                {
-                    { 1, "Transakcje" },
-                    { 2, "Nabycie Prawa" }
+                    { 2, "Zakup" },
+                    { 1, "-" },
+                    { 3, "Aport" }
                 });
 
             migrationBuilder.InsertData(
@@ -274,8 +317,19 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "RodzajDokumentuSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "Akt notarialny" },
-                    { 2, "Postanowienie sądu" }
+                    { 1, "-" },
+                    { 2, "Akt notarialny" },
+                    { 3, "Postanowienie sądu" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RodzajTransakcjiSlo",
+                columns: new[] { "RodzajTransakcjiSloId", "Nazwa" },
+                values: new object[,]
+                {
+                    { 1, "-" },
+                    { 2, "Kupno" },
+                    { 3, "Sprzedaż" }
                 });
 
             migrationBuilder.InsertData(
@@ -328,6 +382,28 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "GminaSloId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PlatnoscUW_DzialkaId",
+                table: "PlatnoscUW",
+                column: "DzialkaId",
+                unique: true,
+                filter: "[DzialkaId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transakcje_NazwaCzynnosciSloId",
+                table: "Transakcje",
+                column: "NazwaCzynnosciSloId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transakcje_RodzajDokumentuSloId",
+                table: "Transakcje",
+                column: "RodzajDokumentuSloId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transakcje_RodzajTransakcjiSloId",
+                table: "Transakcje",
+                column: "RodzajTransakcjiSloId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Wladanie_DzialkaId",
                 table: "Wladanie",
                 column: "DzialkaId");
@@ -338,14 +414,9 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "FormaWladaniaSloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_NazwaCzynnosciSloId",
+                name: "IX_Wladanie_NabyciePrawaId",
                 table: "Wladanie",
-                column: "NazwaCzynnosciSloId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_PlatnoscUWId",
-                table: "Wladanie",
-                column: "PlatnoscUWId");
+                column: "NabyciePrawaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Wladanie_PodmiotId",
@@ -353,18 +424,20 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "PodmiotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_RodzajDokumentuSloId",
+                name: "IX_Wladanie_TransK_Id",
                 table: "Wladanie",
-                column: "RodzajDokumentuSloId");
+                column: "TransK_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wladanie_TransS_Id",
+                table: "Wladanie",
+                column: "TransS_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RodzajCzynnosciSlo");
-
-            migrationBuilder.DropTable(
-                name: "RodzajDokScanSlo");
+                name: "PlatnoscUW");
 
             migrationBuilder.DropTable(
                 name: "Wladanie");
@@ -376,19 +449,25 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "FormaWladaniaSlo");
 
             migrationBuilder.DropTable(
-                name: "NazwaCzynnosciSlo");
-
-            migrationBuilder.DropTable(
-                name: "PlatnoscUw");
+                name: "NabyciePrawa");
 
             migrationBuilder.DropTable(
                 name: "Podmiot");
 
             migrationBuilder.DropTable(
-                name: "RodzajDokumentuSlo");
+                name: "Transakcje");
 
             migrationBuilder.DropTable(
                 name: "Obreb");
+
+            migrationBuilder.DropTable(
+                name: "NazwaCzynnosciSlo");
+
+            migrationBuilder.DropTable(
+                name: "RodzajDokumentuSlo");
+
+            migrationBuilder.DropTable(
+                name: "RodzajTransakcjiSlo");
 
             migrationBuilder.DropTable(
                 name: "GminaSlo");

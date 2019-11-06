@@ -111,14 +111,14 @@
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
                                         TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
                                         itemSourceRafALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.listView, ElementName=win}"
-                                        selectedValuePathRafALL="id"
+                                        
                                         fontSizeRafALL="14"
                                         heightRafALL="25"
                                         HorizontalAlignment="Stretch"
                                         colNameRaf="nazwa"
                                         selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}"
                                         />
-
+                <!--selectedValuePathRafALL="id"-->
                 <!--selectedItemRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascSel, Mode=TwoWay, ElementName=win}"-->
 
                 <!--<conRaf:DataGridRaf     Margin="10,50,0,0"
@@ -293,9 +293,11 @@
                                       DisplayMemberPath="nazwa"
                                       Margin="3"
                                       />
-                            <userCon:UserControl_Transakcja Grid.Column="3" Grid.Row="2" Grid.RowSpan="7"/>
-
-
+                            <userCon:UserControl_Transakcja
+                                       Grid.Column="3" Grid.Row="2" Grid.RowSpan="7"
+                                       itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
+                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win}"
+                                        />
                         </Grid>
 
                     </StackPanel>
@@ -327,9 +329,21 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Od"                                       
                                       Style="{StaticResource label1}"/>
-                            <TextBox
-                                        Text="{Binding daneWlasc.wladanieSel[dataObowiazywaniaOD] , Converter={StaticResource dateConvert}}"
-                                        Style="{StaticResource tekst}"/>
+                            <conRaf:DataGridRafALL     
+                                        x:Name="conRaf2"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                                        TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.tekstRaf, ElementName=win, Mode=TwoWay}"
+                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
+                                        
+                                        fontSizeRafALL="14"
+                                        heightRafALL="25"
+                                        HorizontalAlignment="Stretch"
+                                        colNameRaf="Numer"
+                                        colNameIdRaf="TransakcjeId"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}" Width="148"
+                                        />
+
+                            <!--selectedValuePathRafALL="id"-->
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">

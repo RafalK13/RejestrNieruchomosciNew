@@ -17,8 +17,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public TransakcjeList()
         {
-            //MessageBox.Show("TransakcjeList-KON");
-
             using (Context c = new Context())
             {
                 list = new ObservableCollection<ITransakcje>(c.Transakcje);
@@ -26,7 +24,6 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public void AddRow(ITransakcje wlad) { }
-
         public void DelRow(IWladanie wlad) { }
         public void ModRow(IWladanie wlad) { }
     }
