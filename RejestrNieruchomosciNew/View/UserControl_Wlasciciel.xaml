@@ -412,7 +412,6 @@
                                     Height="25"
                                     Margin="20,0,20,0"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
-                        
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
                 
                        

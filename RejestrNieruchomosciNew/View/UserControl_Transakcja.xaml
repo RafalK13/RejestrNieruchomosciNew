@@ -43,7 +43,7 @@
                     VerticalAlignment="Top"
                     
                     itemSourceRafALL="{Binding itemSourceTrans, Mode=TwoWay}"
-                    
+                    TekstPropALL="{Binding numerTrans, Mode=TwoWay}"
                     fontSizeRafALL="14"
                     heightRafALL="25"
                     HorizontalAlignment="Stretch"

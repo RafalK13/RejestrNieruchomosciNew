@@ -19,7 +19,7 @@ namespace RejestrNieruchomosciNew.View
 
         private void onClickOK()
         {
-            MessageBox.Show( $"{userControlDataGridRafALL.TekstPropALL}\r\n" +
+            MessageBox.Show($"{userControlDataGridRafALL.TekstPropALL}\r\n" +
                              $"{userControlDataGridRafALL.selectedIdRafALL}");
         }
 
@@ -55,7 +55,7 @@ namespace RejestrNieruchomosciNew.View
         private void userControl_Transakcja1_Loaded(object sender, RoutedEventArgs e)
         {
             userControlDataGridRafALL.itemSourceRafALL = itemSourceTrans;
-            numerTrans = userControlDataGridRafALL.TekstPropALL;
+            userControlDataGridRafALL.TekstPropALL = "numer1";
         }
     }
 }
