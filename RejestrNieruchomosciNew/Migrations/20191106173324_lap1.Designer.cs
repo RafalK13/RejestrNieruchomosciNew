@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191105104357_raf1")]
-    partial class raf1
+    [Migration("20191106173324_lap1")]
+    partial class lap1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
-    public partial class raf1 : Migration
+    public partial class lap1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
