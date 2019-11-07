@@ -54,14 +54,9 @@
                     Grid.RowSpan="6"
                     selectedIdRafALL="{Binding selelectedId}"
                     clearTekstOnExit="False"
-            
                     UserControlChanged="UserControlDataGridRafALL_UserControlChanged"
             />
-        <!--selectedValuePathRafALL="id"-->
-            <!--selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}"-->
-            <!--TekstPropALL="{Binding numerTrans, Mode=TwoWay}"-->
-
-
+       
         <ComboBox Grid.Row="1" 
                   ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
                   SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"

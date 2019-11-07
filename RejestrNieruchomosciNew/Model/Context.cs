@@ -47,7 +47,6 @@ namespace RejestrNieruchomosciNew
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            
-
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
                .WithMany(a => a.Dzialka)
@@ -58,7 +57,7 @@ namespace RejestrNieruchomosciNew
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
 
-            modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
+           modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 2, Nazwa = "Akt notarialny" },
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 3, Nazwa = "Postanowienie sądu" }

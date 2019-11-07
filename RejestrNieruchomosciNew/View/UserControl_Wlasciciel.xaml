@@ -296,6 +296,7 @@
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="2" Grid.RowSpan="7"
                                        itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
+                                       selectedId="{Binding userControl_Wlasciciel.wladanieSel.TransK_Id}" 
                                        
                                         />
                         </Grid>

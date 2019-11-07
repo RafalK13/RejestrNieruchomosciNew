@@ -197,9 +197,9 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191106173324_lap1.cs" />
-    <Compile Include="Migrations\20191106173324_lap1.designer.cs">
-      <DependentUpon>20191106173324_lap1.cs</DependentUpon>
+    <Compile Include="Migrations\20191107183451_lap1.cs" />
+    <Compile Include="Migrations\20191107183451_lap1.designer.cs">
+      <DependentUpon>20191107183451_lap1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />

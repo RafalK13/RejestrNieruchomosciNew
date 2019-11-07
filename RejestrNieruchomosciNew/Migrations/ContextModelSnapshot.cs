@@ -523,9 +523,13 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("PodmiotId");
 
-                    b.Property<int?>("TransK_Id");
+                    b.Property<int>("TransK_Id");
 
-                    b.Property<int?>("TransS_Id");
+                    b.Property<int>("TransS_Id");
+
+                    b.Property<int?>("TransakcjeKTransakcjeId");
+
+                    b.Property<int?>("TransakcjeSTransakcjeId");
 
                     b.Property<string>("Udzial");
 
@@ -539,9 +543,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasIndex("PodmiotId");
 
-                    b.HasIndex("TransK_Id");
+                    b.HasIndex("TransakcjeKTransakcjeId");
 
-                    b.HasIndex("TransS_Id");
+                    b.HasIndex("TransakcjeSTransakcjeId");
 
                     b.ToTable("Wladanie");
                 });
@@ -602,13 +606,13 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Wladanie")
                         .HasForeignKey("PodmiotId");
 
-                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
+                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeK")
                         .WithMany("WladanieK")
-                        .HasForeignKey("TransK_Id");
+                        .HasForeignKey("TransakcjeKTransakcjeId");
 
-                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje")
+                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeS")
                         .WithMany("WladanieS")
-                        .HasForeignKey("TransS_Id");
+                        .HasForeignKey("TransakcjeSTransakcjeId");
                 });
 #pragma warning restore 612, 618
         }

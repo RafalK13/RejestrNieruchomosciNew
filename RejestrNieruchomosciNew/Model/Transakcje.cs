@@ -16,9 +16,9 @@ namespace RejestrNieruchomosciNew.Model
         public string Tytul { get; set; }
         public string Skan { get; set; }
 
-        [ForeignKey("TransK_Id")]
+        [InverseProperty("TransakcjeK")]
         public ICollection<Wladanie> WladanieK { get; set; }
-        [ForeignKey("TransS_Id")]
+        [InverseProperty("TransakcjeS")]
         public ICollection<Wladanie> WladanieS { get; set; }
 
     }

@@ -25,6 +25,7 @@ namespace RejestrNieruchomosciNew.View
 
         public ICommand clickOK { get; set; }
 
+        #region itemSourceTrans
         public IEnumerable itemSourceTrans
         {
             get { return (IEnumerable)GetValue(itemSourceTransProperty); }
@@ -33,8 +34,9 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty itemSourceTransProperty =
             DependencyProperty.Register("itemSourceTrans", typeof(IEnumerable), typeof(UserControl_Transakcja) );
-        
+        #endregion
 
+        #region selectedId
         public int selectedId
         {
             get { return (int)GetValue(selectedIdProperty); }
@@ -42,10 +44,8 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty selectedIdProperty =
-           DependencyProperty.Register("selectedId", typeof(int), typeof(UserControl_Transakcja));
-
-
-        
+           DependencyProperty.Register("selectedId", typeof(int), typeof(UserControl_Transakcja), new PropertyMetadata(14));
+        #endregion
 
         private void userControl_Transakcja1_Loaded(object sender, RoutedEventArgs e)
         {
@@ -54,8 +54,6 @@ namespace RejestrNieruchomosciNew.View
 
         private void UserControlDataGridRafALL_UserControlChanged(object sender, EventArgs e)
         {
-            
-
             MessageBox.Show( "Zdarzenie");
         }
     }
