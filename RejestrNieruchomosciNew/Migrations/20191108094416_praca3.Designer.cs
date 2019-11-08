@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191107183451_lap1")]
-    partial class lap1
+    [Migration("20191108094416_praca3")]
+    partial class praca3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -219,13 +219,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Numer");
 
-                    b.Property<int?>("RodzajCzynnosciId");
-
-                    b.Property<int?>("RodzajDokumentuId");
+                    b.Property<int?>("RodzajCzynnosciSloId");
 
                     b.Property<int?>("RodzajDokumentuSloId");
-
-                    b.Property<int?>("RodzajTransakcjiId");
 
                     b.Property<int?>("RodzajTransakcjiSloId");
 
@@ -525,13 +521,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("PodmiotId");
 
-                    b.Property<int>("TransK_Id");
+                    b.Property<int?>("TransK_Id");
 
-                    b.Property<int>("TransS_Id");
-
-                    b.Property<int?>("TransakcjeKTransakcjeId");
-
-                    b.Property<int?>("TransakcjeSTransakcjeId");
+                    b.Property<int?>("TransS_Id");
 
                     b.Property<string>("Udzial");
 
@@ -545,9 +537,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasIndex("PodmiotId");
 
-                    b.HasIndex("TransakcjeKTransakcjeId");
+                    b.HasIndex("TransK_Id");
 
-                    b.HasIndex("TransakcjeSTransakcjeId");
+                    b.HasIndex("TransS_Id");
 
                     b.ToTable("Wladanie");
                 });
@@ -563,15 +555,15 @@ namespace RejestrNieruchomosciNew.Migrations
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.NazwaCzynnosciSlo")
-                        .WithMany("TransakcjeSlo")
+                        .WithMany("Transakcje")
                         .HasForeignKey("NazwaCzynnosciSloId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajDokumentuSlo")
-                        .WithMany("TransakcjeSlo")
+                        .WithMany("Transakcje")
                         .HasForeignKey("RodzajDokumentuSloId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo")
-                        .WithMany("TransakcjeSlo")
+                        .WithMany("Transakcje")
                         .HasForeignKey("RodzajTransakcjiSloId");
                 });
 
@@ -610,11 +602,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeK")
                         .WithMany("WladanieK")
-                        .HasForeignKey("TransakcjeKTransakcjeId");
+                        .HasForeignKey("TransK_Id");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeS")
                         .WithMany("WladanieS")
-                        .HasForeignKey("TransakcjeSTransakcjeId");
+                        .HasForeignKey("TransS_Id");
                 });
 #pragma warning restore 612, 618
         }

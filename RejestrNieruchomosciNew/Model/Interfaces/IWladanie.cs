@@ -14,9 +14,8 @@ namespace RejestrNieruchomosciNew.Model
 
          int? FormaWladaniaSloId { get; set; }
 
-         int TransK_Id { get; set; }
-
-         int TransS_Id { get; set; }
+         int? TransK_Id { get; set; }
+         int? TransS_Id { get; set; }
 
          int? NabycieId { get; set; }
          string Udzial { get; set; }

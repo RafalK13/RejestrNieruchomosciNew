@@ -257,47 +257,35 @@
                                    FontSize="17"         
                                    />
                             <Label Grid.Column="1" Grid.Row="1" 
-                                   Content="Rodzaj transakcji"                                       
+                                   Content=""                                       
                                    Style="{StaticResource labelTab}"/>
-                            <ComboBox Grid.Column="3" Grid.Row="1" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                      SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                      SelectedValuePath="ID"
-                                      DisplayMemberPath="nazwa"
-                                      Margin="3"
-                                      />
-                           
-                            <Label Grid.Column="1" Grid.Row="2" 
+
+                            <Label Grid.Column="1" Grid.Row="1" 
                                    Content="Numer dokumentu"                                       
                                    Style="{StaticResource labelTab}"/>
-                            <Label Grid.Column="1" Grid.Row="3" 
+                            <Label Grid.Column="1" Grid.Row="2" 
                                    Content="Rodzaj dokumentu"                                       
                                    Style="{StaticResource labelTab}"/>
-                            <Label Grid.Column="1" Grid.Row="4" 
+                            <Label Grid.Column="1" Grid.Row="3" 
                                     Content="Nazwa czynności"                                       
+                                       Style="{StaticResource labelTab}"/>
+                            <Label Grid.Column="1" Grid.Row="4" 
+                                    Content="Tytuł dokumentu"                                       
                                        Style="{StaticResource labelTab}"/>
                             <Label Grid.Column="1" Grid.Row="5" 
                                     Content="Data"                                       
                                        Style="{StaticResource labelTab}"/>
-                            <Label Grid.Column="1" Grid.Row="6" 
-                                    Content="Tytuł dokumentu"                                       
-                                       Style="{StaticResource labelTab}"/>
-                            <Label  Grid.Column="1" Grid.Row="7" 
+                            <Label  Grid.Column="1" Grid.Row="6" 
                                         Content="Skan dokumentu"    
                                            Style="{StaticResource labelTab}"/>
 
-                            <ComboBox Grid.Column="5" Grid.Row="1" 
-                                      ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                                      SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                                      SelectedValuePath="ID"
-                                      DisplayMemberPath="nazwa"
-                                      Margin="3"
-                                      />
                             <userCon:UserControl_Transakcja
-                                       Grid.Column="3" Grid.Row="2" Grid.RowSpan="7"
+                                       Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
+                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
                                        itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
-                                       selectedId="{Binding userControl_Wlasciciel.wladanieSel.TransK_Id}" 
-                                       
+                                       selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
                                         />
                         </Grid>
 

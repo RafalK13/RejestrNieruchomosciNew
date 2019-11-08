@@ -10,9 +10,9 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     public interface ITransakcje
     {
         int TransakcjeId { get; set; }
-        int? RodzajTransakcjiId { get; set; }
-        int? RodzajCzynnosciId { get; set; }
-        int? RodzajDokumentuId { get; set; }
+        int? RodzajTransakcjiSloId { get; set; }
+        int? NazwaCzynnosciSloId { get; set; }
+        int? RodzajDokumentuSloId { get; set; }
         string Numer { get; set; }
         DateTime? Data { get; set; }
         string Tytul { get; set; }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191108074647_praca1")]
+    partial class praca1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -217,7 +219,13 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Numer");
 
+                    b.Property<int?>("RodzajCzynnosciId");
+
+                    b.Property<int?>("RodzajDokumentuId");
+
                     b.Property<int?>("RodzajDokumentuSloId");
+
+                    b.Property<int?>("RodzajTransakcjiId");
 
                     b.Property<int?>("RodzajTransakcjiSloId");
 
@@ -551,15 +559,15 @@ namespace RejestrNieruchomosciNew.Migrations
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.NazwaCzynnosciSlo")
-                        .WithMany("Transakcje")
+                        .WithMany("TransakcjeSlo")
                         .HasForeignKey("NazwaCzynnosciSloId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajDokumentuSlo")
-                        .WithMany("Transakcje")
+                        .WithMany("TransakcjeSlo")
                         .HasForeignKey("RodzajDokumentuSloId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo")
-                        .WithMany("Transakcje")
+                        .WithMany("TransakcjeSlo")
                         .HasForeignKey("RodzajTransakcjiSloId");
                 });
 

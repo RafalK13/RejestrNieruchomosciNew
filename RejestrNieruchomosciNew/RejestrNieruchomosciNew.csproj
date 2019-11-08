@@ -197,9 +197,21 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191107183451_lap1.cs" />
-    <Compile Include="Migrations\20191107183451_lap1.designer.cs">
-      <DependentUpon>20191107183451_lap1.cs</DependentUpon>
+    <Compile Include="Migrations\20191108074647_praca1.cs" />
+    <Compile Include="Migrations\20191108074647_praca1.designer.cs">
+      <DependentUpon>20191108074647_praca1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191108094002_praca2.cs" />
+    <Compile Include="Migrations\20191108094002_praca2.designer.cs">
+      <DependentUpon>20191108094002_praca2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191108094416_praca3.cs" />
+    <Compile Include="Migrations\20191108094416_praca3.designer.cs">
+      <DependentUpon>20191108094416_praca3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191108094814_praca4.cs" />
+    <Compile Include="Migrations\20191108094814_praca4.designer.cs">
+      <DependentUpon>20191108094814_praca4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Classes.cs" />

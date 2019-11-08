@@ -7,6 +7,6 @@ namespace RejestrNieruchomosciNew.Model
         public int RodzajDokumentuSloId { get; set; }
         public string Nazwa { get; set; }
 
-        public ICollection<Transakcje> TransakcjeSlo { get; set; }
+        public ICollection<Transakcje> Transakcje { get; set; }
     }
 }

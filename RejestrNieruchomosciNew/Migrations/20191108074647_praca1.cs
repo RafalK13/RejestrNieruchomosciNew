@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
-    public partial class lap1 : Migration
+    public partial class praca1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -233,10 +233,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     FormaWladaniaSloId = table.Column<int>(nullable: true),
                     NabycieId = table.Column<int>(nullable: true),
                     Udzial = table.Column<string>(nullable: true),
-                    TransK_Id = table.Column<int>(nullable: false),
-                    TransakcjeKTransakcjeId = table.Column<int>(nullable: true),
-                    TransS_Id = table.Column<int>(nullable: false),
-                    TransakcjeSTransakcjeId = table.Column<int>(nullable: true),
+                    TransK_Id = table.Column<int>(nullable: true),
+                    TransS_Id = table.Column<int>(nullable: true),
                     NabyciePrawaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -267,14 +265,14 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalColumn: "PodmiotId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Wladanie_Transakcje_TransakcjeKTransakcjeId",
-                        column: x => x.TransakcjeKTransakcjeId,
+                        name: "FK_Wladanie_Transakcje_TransK_Id",
+                        column: x => x.TransK_Id,
                         principalTable: "Transakcje",
                         principalColumn: "TransakcjeId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Wladanie_Transakcje_TransakcjeSTransakcjeId",
-                        column: x => x.TransakcjeSTransakcjeId,
+                        name: "FK_Wladanie_Transakcje_TransS_Id",
+                        column: x => x.TransS_Id,
                         principalTable: "Transakcje",
                         principalColumn: "TransakcjeId",
                         onDelete: ReferentialAction.Restrict);
@@ -426,14 +424,14 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "PodmiotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_TransakcjeKTransakcjeId",
+                name: "IX_Wladanie_TransK_Id",
                 table: "Wladanie",
-                column: "TransakcjeKTransakcjeId");
+                column: "TransK_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_TransakcjeSTransakcjeId",
+                name: "IX_Wladanie_TransS_Id",
                 table: "Wladanie",
-                column: "TransakcjeSTransakcjeId");
+                column: "TransS_Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

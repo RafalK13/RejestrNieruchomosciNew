@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              x:Name="userControl_Transakcja1"
              d:DesignHeight="300" d:DesignWidth="300" Loaded="userControl_Transakcja1_Loaded"
-             
+             xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              >
     <UserControl.Resources>
             <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
@@ -23,6 +23,8 @@
 
                 </Style.Triggers>
             </Style>
+
+            <convert:DateConverter x:Key="cnvData"/>
     </UserControl.Resources>
 
     <Grid>
@@ -55,35 +57,35 @@
                     selectedIdRafALL="{Binding selelectedId}"
                     clearTekstOnExit="False"
                     UserControlChanged="UserControlDataGridRafALL_UserControlChanged"
-            />
+                    />
        
         <ComboBox Grid.Row="1" 
-                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                  SelectedValuePath="ID"
-                  DisplayMemberPath="nazwa"  
+                  ItemsSource="{Binding rodzDokSlo.list}"
+                  SelectedValue="{Binding  transakcje.RodzajDokumentuSloId}"
+                  SelectedValuePath="RodzajDokumentuSloId"
+                  DisplayMemberPath="Nazwa"  
                   Margin="3"/>
-
+        
         <ComboBox Grid.Row="2" 
-                  ItemsSource="{Binding  daneWlasc.dvm.dtRodzajDokumentuTab}"
-                  SelectedValue="{Binding  daneWlasc.wladanieSel[rodzajDokumentuID]}"
-                  SelectedValuePath="ID"
-                  DisplayMemberPath="nazwa"  
+                  ItemsSource="{Binding nazwaCzynSlo.list}"
+                  SelectedValue="{Binding  transakcje.NazwaCzynnosciSloId}"
+                  SelectedValuePath="NazwaCzynnosciSloId"
+                  DisplayMemberPath="Nazwa"  
                   Margin="3"/>
 
         <TextBox Grid.Row="3" 
                  Margin="3"
                  TextWrapping="Wrap"
-                 Text="{Binding numerTrans, Mode=TwoWay}"/>
+                 Text="{Binding transakcje.Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         <TextBox Grid.Row="4" 
                  Margin="3"
-                 Text="{Binding numerTrans, Mode=TwoWay}"
-                 />
-        
+                 Text="{Binding transakcje.Data, Converter={StaticResource cnvData}, Mode=TwoWay}"/>
+                 
         <Button  Grid.Row="5" 
                  Content="Zalczniki"
                  Margin="3"/>
+        
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button
                  Command="{Binding clickOK}"
@@ -92,7 +94,7 @@
                  Margin="5"/>
             <Button
                  Content="Usuń"
-                Width="60" 
+                 Width="60" 
                  Margin="5"/>
         </StackPanel>
 

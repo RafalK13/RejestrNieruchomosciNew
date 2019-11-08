@@ -16,14 +16,13 @@ namespace RejestrNieruchomosciNew
         public int? NabycieId { get; set; }
         public string Udzial { get; set; }
 
-        public int TransK_Id { get; set; }
+        [ForeignKey("TransakcjeK")]
+        public int? TransK_Id { get; set; }
         public Transakcje TransakcjeK { get; set; }
 
-        public int TransS_Id { get; set; }
+        [ForeignKey("TransakcjeS")]
+        public int? TransS_Id { get; set; }
         public Transakcje TransakcjeS { get; set; }
-
-
-
 
         public Podmiot Podmiot { get; set; }
 

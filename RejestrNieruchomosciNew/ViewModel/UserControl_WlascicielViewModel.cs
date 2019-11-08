@@ -20,6 +20,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged("tekstCls");
             }
         }
+
         public IWladanie wladanie { get; set; }
 
         public IWladanieList wladanieList { get; set; }
@@ -27,7 +28,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IPodmiotList podmiotList { get; set; }
 
         public FormaWladaniaList sloFormWlad { get; set; }
-        public NazwaCzynnosciSlo sloNazwaCzyn { get; set; }
+        
 
         private int _wlascId;
         public int wlascId
@@ -41,6 +42,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         public ITransakcjeList transakcjeList { get; set; }
+
+        public RodzajDokumentuList rodzDokSlo { get; set; }
+
+        public NazwaCzynnosciList nazwaCzynSlo { get; set; }
 
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel
