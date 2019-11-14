@@ -21,6 +21,8 @@ namespace RejestrNieruchomosciNew.View
             clickAdd = new RelayCommand(onClickAdd);
 
             clickCls = new RelayCommand(onClickCls);
+
+            //itemSourceTrans = transList.list;
         }
         
         #region Transakcje
@@ -32,6 +34,21 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty transakcjeProperty =
             DependencyProperty.Register("transakcje", typeof(ITransakcje), typeof(UserControl_Transakcja), new PropertyMetadata(null));
+        #endregion
+
+        #region TransacjeList
+
+
+        public TransakcjeList transList
+        {
+            get { return (TransakcjeList)GetValue(transListProperty); }
+            set { SetValue(transListProperty, value); }
+        }
+
+        public static readonly DependencyProperty transListProperty =
+            DependencyProperty.Register("transList", typeof(TransakcjeList), typeof(UserControl_Transakcja));
+
+
         #endregion
 
         #region itemSourceTrans
@@ -52,7 +69,7 @@ namespace RejestrNieruchomosciNew.View
             set { SetValue(numerTransProperty, value); }
         }
         public static readonly DependencyProperty numerTransProperty =
-            DependencyProperty.Register("numerTrans", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null, new PropertyChangedCallback(onNumerTransChange)));
+            DependencyProperty.Register("numerTrans", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata( null, new PropertyChangedCallback(onNumerTransChange)));
 
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -120,7 +137,7 @@ namespace RejestrNieruchomosciNew.View
         #region clsDialog
         private void clsDialog()
         {
-            numerTrans = string.Empty;
+            //numerTrans = string.Empty;
             transakcje = null;
             selectedIdTrans = 0;
         }
@@ -128,7 +145,7 @@ namespace RejestrNieruchomosciNew.View
 
         private void onClickAdd()
         {
-            itemSourceTrans.
+           
         }
 
         private void onClickCls()
