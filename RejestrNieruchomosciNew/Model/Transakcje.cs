@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
 
@@ -88,5 +89,6 @@ namespace RejestrNieruchomosciNew.Model
         public ICollection<Wladanie> WladanieK { get; set; }
         [InverseProperty("TransakcjeS")]
         public ICollection<Wladanie> WladanieS { get; set; }
+
     }
 }

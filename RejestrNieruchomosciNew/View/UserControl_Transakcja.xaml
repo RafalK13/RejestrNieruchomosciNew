@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
-             x:Name="userControl_Transakcja1"
-             d:DesignHeight="300" d:DesignWidth="300" Loaded="userControl_Transakcja1_Loaded"
+             d:DesignHeight="300" d:DesignWidth="300"
              xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             x:Name="Trans"
              >
     <UserControl.Resources>
             <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
@@ -20,10 +20,8 @@
                         <Setter Property="Panel.ZIndex" Value="13"/>
                         <Setter Property="Grid.RowSpan" Value="3"/>
                     </Trigger>
-
                 </Style.Triggers>
             </Style>
-
             <convert:DateConverter x:Key="cnvData"/>
     </UserControl.Resources>
 
@@ -45,8 +43,9 @@
                     Margin="3,2,0,0"
                     x:Name="userControlDataGridRafALL"
                     VerticalAlignment="Top"
-                    itemSourceRafALL="{Binding itemSourceTrans, Mode=TwoWay}"
-                    TekstPropALL="{Binding numerTrans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    itemSourceRafALL="{Binding itemSourceTrans, ElementName=Trans, Mode=TwoWay}"
+                    TekstPropALL="{Binding numerTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
+                    selectedIdRafALL="{Binding selectedIdTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
                     fontSizeRafALL="14"
                     heightRafALL="25"
                     HorizontalAlignment="Stretch"
@@ -54,9 +53,7 @@
                     colNameRaf="Numer"
                     Panel.ZIndex="130"
                     Grid.RowSpan="6"
-                    selectedIdRafALL="{Binding selelectedId}"
                     clearTekstOnExit="False"
-                    UserControlChanged="UserControlDataGridRafALL_UserControlChanged"
                     />
        
         <ComboBox Grid.Row="1" 
@@ -76,11 +73,11 @@
         <TextBox Grid.Row="3" 
                  Margin="3"
                  TextWrapping="Wrap"
-                 Text="{Binding transakcje.Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding transakcje.Tutul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         <TextBox Grid.Row="4" 
                  Margin="3"
-                 Text="{Binding transakcje.Data, Converter={StaticResource cnvData}, Mode=TwoWay}"/>
+                 Text="{Binding transakcje.Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                  
         <Button  Grid.Row="5" 
                  Content="Zalczniki"
@@ -88,12 +85,15 @@
         
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button
-                 Command="{Binding clickOK}"
+                 Command="{Binding clickAdd}"
+                 IsEnabled="{Binding addButton}"
                  Content="Dodaj"
                  Width="60" 
                  Margin="5"/>
             <Button
-                 Content="Usuń"
+                 Command="{Binding clickCls}"
+                 Content="Czyść"
+                 IsEnabled="{Binding clsButton}"
                  Width="60" 
                  Margin="5"/>
         </StackPanel>

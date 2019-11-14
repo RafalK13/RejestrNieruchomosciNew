@@ -58,7 +58,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IFormaWladaniaSlo>().ImplementedBy<FormaWladaniaSlo>());
             container.Register(Component.For<FormaWladaniaList>());
 
-            container.Register(Component.For<ITransakcje>().ImplementedBy<Transakcje>());
+            container.Register(Component.For<ITransakcje>().ImplementedBy<Transakcje>().LifeStyle.Transient);
             container.Register(Component.For<ITransakcjeList>().ImplementedBy<TransakcjeList>());
 
             container.Register(Component.For<IRodzajTransakcjiSlo>().ImplementedBy<RodzajTransakcjiSlo>());

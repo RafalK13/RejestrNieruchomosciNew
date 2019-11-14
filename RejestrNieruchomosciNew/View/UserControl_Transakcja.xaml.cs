@@ -3,6 +3,7 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -17,26 +18,129 @@ namespace RejestrNieruchomosciNew.View
         {
             InitializeComponent();
             DataContext = this;
+            clickAdd = new RelayCommand(onClickAdd);
 
-            clickOK = new RelayCommand( onClickOK);
+            clickCls = new RelayCommand(onClickCls);
         }
-
-        public Transakcje transakcje
+        
+        #region Transakcje
+        public ITransakcje transakcje
         {
-            get { return (Transakcje)GetValue(transakcjeProperty); }
+            get { return (ITransakcje)GetValue(transakcjeProperty); }
             set { SetValue(transakcjeProperty, value); }
         }
 
         public static readonly DependencyProperty transakcjeProperty =
-            DependencyProperty.Register("transakcje", typeof(Transakcje), typeof(UserControl_Transakcja), new PropertyMetadata(null, new PropertyChangedCallback(onTransakcjeChanged)) );
+            DependencyProperty.Register("transakcje", typeof(ITransakcje), typeof(UserControl_Transakcja), new PropertyMetadata(null));
+        #endregion
 
-        private static void onTransakcjeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        #region itemSourceTrans
+        public ObservableCollection<ITransakcje> itemSourceTrans
         {
-            UserControl_Transakcja u = d as UserControl_Transakcja;
-            if (u.transakcje != null)
-                u.transakcje.PropertyChanged += onNotify;
+            get { return (ObservableCollection<ITransakcje>)GetValue(itemSourceTransProperty); }
+            set { SetValue(itemSourceTransProperty, value); }
         }
 
+        public static readonly DependencyProperty itemSourceTransProperty =
+            DependencyProperty.Register("itemSourceTrans", typeof(ObservableCollection<ITransakcje>), typeof(UserControl_Transakcja));
+        #endregion
+
+        #region numerTrans
+        public string numerTrans
+        {
+            get { return (string)GetValue(numerTransProperty); }
+            set { SetValue(numerTransProperty, value); }
+        }
+        public static readonly DependencyProperty numerTransProperty =
+            DependencyProperty.Register("numerTrans", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null, new PropertyChangedCallback(onNumerTransChange)));
+
+        private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Transakcja u = d as UserControl_Transakcja;
+
+            if (u.numerTrans != null)
+            {
+                if (u.selectedIdTrans > 0)
+                {
+                    u.addButton = false;
+                    u.clsButton = true;
+                }
+                else
+                {
+                    u.addButton = true;
+                    u.clsButton = true;
+                }
+            }
+        }
+        #endregion
+
+        #region selectedIdTrans
+        public int selectedIdTrans
+        {
+            get { return (int)GetValue(selectedIdTransProperty); }
+            set { SetValue(selectedIdTransProperty, value); }
+        }
+
+        public static readonly DependencyProperty selectedIdTransProperty =
+            DependencyProperty.Register("selectedIdTrans", typeof(int), typeof(UserControl_Transakcja), new PropertyMetadata(0, new PropertyChangedCallback(onSelectedIdTransChanged)));
+
+        private static void onSelectedIdTransChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Transakcja u = d as UserControl_Transakcja;
+            if (u.selectedIdTrans <= 0)
+            {
+                u.clsDialog();
+            }
+            else
+            {
+                u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == u.selectedIdTrans);
+            }
+        }
+        #endregion
+
+        public bool addButton
+        {
+            get { return (bool)GetValue(addButtonProperty); }
+            set { SetValue(addButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty addButtonProperty =
+            DependencyProperty.Register("addButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+
+        public bool clsButton
+        {
+            get { return (bool)GetValue(clsButtonProperty); }
+            set { SetValue(clsButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty clsButtonProperty =
+            DependencyProperty.Register("clsButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+        
+        #region Buttons
+        #region clsDialog
+        private void clsDialog()
+        {
+            numerTrans = string.Empty;
+            transakcje = null;
+            selectedIdTrans = 0;
+        }
+        #endregion
+
+        private void onClickAdd()
+        {
+            itemSourceTrans.
+        }
+
+        private void onClickCls()
+        {
+            clsDialog();
+        }
+
+        public ICommand clickAdd { get; set; }
+        public ICommand clickCls { get; set; }
+        #endregion
+
+        #region slowniki
         public RodzajDokumentuList rodzDokSlo
         {
             get { return (RodzajDokumentuList)GetValue(rodzDokSloProperty); }
@@ -53,66 +157,6 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty nazwaCzynSloProperty =
             DependencyProperty.Register("nazwaCzynSlo", typeof(NazwaCzynnosciList), typeof(UserControl_Transakcja));
-
-        private void onClickOK()
-        {
-            //MessageBox.Show($"{userControlDataGridRafALL.TekstPropALL}\r\n" +
-            //                $"{userControlDataGridRafALL.selectedIdRafALL}\r\n");
-        }
-
-        public ICommand clickOK { get; set; }
-
-        #region itemSourceTrans
-        public IEnumerable itemSourceTrans
-        {
-            get { return (IEnumerable)GetValue(itemSourceTransProperty); }
-            set { SetValue(itemSourceTransProperty, value); }
-        }
-
-        public static readonly DependencyProperty itemSourceTransProperty =
-            DependencyProperty.Register("itemSourceTrans", typeof(IEnumerable), typeof(UserControl_Transakcja) );
         #endregion
-
-        #region selectedId
-        public int selectedId
-        {
-            get { return (int)GetValue(selectedIdProperty); }
-            set { SetValue(selectedIdProperty, value); }
-        }
-
-        public static readonly DependencyProperty selectedIdProperty =
-           DependencyProperty.Register("selectedId", typeof(int), typeof(UserControl_Transakcja), new PropertyMetadata(0, new PropertyChangedCallback( onSelecteIdChanged)));
-
-        private static void onSelecteIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            
-            UserControl_Transakcja u = d as UserControl_Transakcja;
-            if (u.selectedId > 0)
-            {
-                u.transakcje = u.itemSourceTrans.Cast<Transakcje>().FirstOrDefault(row => row.TransakcjeId == u.selectedId);
-                u.userControlDataGridRafALL.TekstPropALL = u.transakcje.Numer;
-
-               
-            }
-        }
-        #endregion
-
-        private void userControl_Transakcja1_Loaded(object sender, RoutedEventArgs e)
-        {
-            userControlDataGridRafALL.itemSourceRafALL = itemSourceTrans;
-
-            //if( transakcje != null)
-            //    transakcje.PropertyChanged += onNotify;
-        }
-
-        private void UserControlDataGridRafALL_UserControlChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show( "Zdarzenie");
-        }
-
-        static void onNotify(object sender, PropertyChangedEventArgs e)
-        {
-            //MessageBox.Show( $"onNotify:{e.PropertyName}");
-        }
     }
 }

@@ -1,12 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
@@ -23,7 +17,9 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        public void AddRow(ITransakcje wlad) { }
+        public void AddRow(ITransakcje wlad) {
+            MessageBox.Show("RafałekADD");
+        }
         public void DelRow(IWladanie wlad) { }
         public void ModRow(IWladanie wlad) { }
     }
