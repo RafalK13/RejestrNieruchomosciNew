@@ -292,13 +292,14 @@
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
-                                       itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
+                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
                                 />
+                            <!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"-->
                             <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                         </Grid>
 

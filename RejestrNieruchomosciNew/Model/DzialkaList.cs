@@ -60,7 +60,7 @@ namespace RejestrNieruchomosciNew.Model
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }
-
+            
             dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
             list.Add(dz);
         }

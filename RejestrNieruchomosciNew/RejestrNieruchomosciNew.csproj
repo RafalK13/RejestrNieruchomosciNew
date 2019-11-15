@@ -179,7 +179,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfControlLibraryRaf">
+    <Reference Include="WpfControlLibraryRaf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Rejestr\UserControlWpf\WpfControlLibraryRaf\bin\Debug\WpfControlLibraryRaf.dll</HintPath>
     </Reference>
     <Reference Include="XAct.Core.PCL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

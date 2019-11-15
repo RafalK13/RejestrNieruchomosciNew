@@ -21,8 +21,7 @@ namespace RejestrNieruchomosciNew.View
             clickAdd = new RelayCommand(onClickAdd);
 
             clickCls = new RelayCommand(onClickCls);
-
-            //itemSourceTrans = transList.list;
+            
         }
         
         #region Transakcje
@@ -38,7 +37,6 @@ namespace RejestrNieruchomosciNew.View
 
         #region TransacjeList
 
-
         public TransakcjeList transList
         {
             get { return (TransakcjeList)GetValue(transListProperty); }
@@ -47,7 +45,6 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty transListProperty =
             DependencyProperty.Register("transList", typeof(TransakcjeList), typeof(UserControl_Transakcja));
-
 
         #endregion
 
@@ -60,6 +57,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty itemSourceTransProperty =
             DependencyProperty.Register("itemSourceTrans", typeof(ObservableCollection<ITransakcje>), typeof(UserControl_Transakcja));
+
         #endregion
 
         #region numerTrans
@@ -137,20 +135,34 @@ namespace RejestrNieruchomosciNew.View
         #region clsDialog
         private void clsDialog()
         {
-            //numerTrans = string.Empty;
-            transakcje = null;
+            transakcje = new Transakcje();
             selectedIdTrans = 0;
         }
         #endregion
 
-        private void onClickAdd()
+        public void onClickAdd()
         {
-           
+
+            //addButton = false;
+            transakcje.Numer = numerTrans;
+            transList.AddRow( transakcje);
+            transList.PropertyChanged += TransList_PropertyChanged;
+
+            int a = 13;
+
+        }
+
+        private void TransList_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            MessageBox.Show("DUPA Biskupa");
         }
 
         private void onClickCls()
         {
-            clsDialog();
+            
+            MessageBox.Show( $"{transList.list.Count}\r\n" +
+                             $"{itemSourceTrans.Count.ToString()}");
+            //clsDialog();
         }
 
         public ICommand clickAdd { get; set; }
@@ -174,6 +186,13 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty nazwaCzynSloProperty =
             DependencyProperty.Register("nazwaCzynSlo", typeof(NazwaCzynnosciList), typeof(UserControl_Transakcja));
+
         #endregion
+
+        private void Trans_Loaded(object sender, RoutedEventArgs e)
+        {
+            if ( transList != null )
+                itemSourceTrans = transList.list;
+        }
     }
 }

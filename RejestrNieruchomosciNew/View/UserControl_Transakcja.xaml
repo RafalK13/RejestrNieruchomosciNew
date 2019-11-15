@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-             x:Name="Trans"
+             x:Name="Trans" Loaded="Trans_Loaded"
              >
     <UserControl.Resources>
             <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
@@ -25,7 +25,7 @@
             <convert:DateConverter x:Key="cnvData"/>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -73,7 +73,7 @@
         <TextBox Grid.Row="3" 
                  Margin="3"
                  TextWrapping="Wrap"
-                 Text="{Binding transakcje.Tutul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding transakcje.Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         
         <TextBox Grid.Row="4" 
                  Margin="3"
