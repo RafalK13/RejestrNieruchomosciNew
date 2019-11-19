@@ -5,6 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,7 @@ namespace RejestrNieruchomosciNew.View
             clickAdd = new RelayCommand(onClickAdd);
             clickCls = new RelayCommand(onClickCls);
             clickMod = new RelayCommand(onClickMod);
+            clickZal = new RelayCommand(onClickZalacznik);
 
         }
         
@@ -48,7 +52,7 @@ namespace RejestrNieruchomosciNew.View
 
         #endregion
 
-        #region itemSourceTrans
+        #region ItemSourceTrans
         public ObservableCollection<ITransakcje> itemSourceTrans
         {
             get { return (ObservableCollection<ITransakcje>)GetValue(itemSourceTransProperty); }
@@ -60,7 +64,7 @@ namespace RejestrNieruchomosciNew.View
 
         #endregion
 
-        #region numerTrans
+        #region NumerTrans
         public string numerTrans
         {
             get { return (string)GetValue(numerTransProperty); }
@@ -102,7 +106,7 @@ namespace RejestrNieruchomosciNew.View
         }
         #endregion
 
-        #region selectedIdTrans
+        #region SelectedIdTrans
         public int? selectedIdTrans
         {
             get { return (int?)GetValue(selectedIdTransProperty); }
@@ -124,17 +128,19 @@ namespace RejestrNieruchomosciNew.View
                     u.transakcje.Numer = s;
                     u.selectedIdTrans = null;
                     u.addButton = true;
+                    u.zalButton = false;
                 }
                 else
                 {
                     u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == u.selectedIdTrans.Value);
+                    u.zalButton = true;
                     u.transakcje.onChange += u.Transakcje_onChange;
                 }
             }
         }
         #endregion
 
-        #region Buttons Visible
+        #region Buttons Visibility
 
         public bool addButton
         {
@@ -162,6 +168,15 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty clsButtonProperty =
             DependencyProperty.Register("clsButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+        
+        public bool zalButton
+        {
+            get { return (bool)GetValue(zalButtonProperty); }
+            set { SetValue(zalButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty zalButtonProperty =
+            DependencyProperty.Register("zalButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
 
         #endregion
 
@@ -194,6 +209,7 @@ namespace RejestrNieruchomosciNew.View
             addButton = false;
             modButton = false;
             clsButton = false;
+            zalButton = false;
         }
 
         public void onClickMod()
@@ -205,12 +221,28 @@ namespace RejestrNieruchomosciNew.View
             modButton = false;
         }
 
+        public void onClickZalacznik()
+        {
+        //    if (string.IsNullOrEmpty(transakcje.Skan) == true)
+            {
+                string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +"\\Transakcje\\" + transakcje.TransakcjeId;
+                transakcje.Skan = zalPath;
+
+                DirectoryInfo dir = new DirectoryInfo(zalPath);
+                if (!dir.Exists)
+                    dir.Create();
+
+                Process.Start(zalPath);
+            }
+        }
+
         public ICommand clickAdd { get; set; }
         public ICommand clickCls { get; set; }
         public ICommand clickMod { get; set; }
+        public ICommand clickZal { get; set; }
         #endregion
 
-        #region slowniki
+        #region Slowniki
         public RodzajDokumentuList rodzDokSlo
         {
             get { return (RodzajDokumentuList)GetValue(rodzDokSloProperty); }
@@ -230,6 +262,7 @@ namespace RejestrNieruchomosciNew.View
 
         #endregion
 
+        #region Events
         private void Trans_Loaded(object sender, RoutedEventArgs e)
         {
             if ( transList != null )
@@ -240,5 +273,6 @@ namespace RejestrNieruchomosciNew.View
         {
             modButton = true;
         }
+        #endregion
     }
 }
