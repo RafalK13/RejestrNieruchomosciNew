@@ -2,6 +2,10 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -62,6 +66,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand wlascCls { get; set; }
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
+        public ICommand wlascProt { get; set; }
 
         public IDzialka dzialkaSel { get; set; }
         public IDzialkaList dzialkaList { get; set; }
@@ -73,12 +78,28 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             wlascCls = new RelayCommand(onWlascCls);
             wlascAdd = new RelayCommand(onWlascAdd);
+            wlascProt = new RelayCommand(onWlascProt);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
+            
 
             if (userPrev.dzialkaSel != null)
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
 
+        }
+
+        private void onWlascProt()
+        {   
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId+"\\Podmiot\\"+wladanieSel.PodmiotId;
+            wladanieSel.Scan = zalPath;
+
+            DirectoryInfo dir = new DirectoryInfo(zalPath);
+            if (!dir.Exists)
+                dir.Create();
+
+           int a = 13;
+
+            Process.Start(zalPath);
         }
 
         private void onWlascCls()
@@ -102,6 +123,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                         PodmiotId = wladanie.PodmiotId,
                         Podmiot = wladanie.Podmiot
                     });
+
                     tekstCls = string.Empty;
                     wladanieSel = null;
                 }

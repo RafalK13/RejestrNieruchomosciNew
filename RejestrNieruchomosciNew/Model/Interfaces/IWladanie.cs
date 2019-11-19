@@ -17,8 +17,13 @@ namespace RejestrNieruchomosciNew.Model
          int? TransK_Id { get; set; }
          int? TransS_Id { get; set; }
 
-         int? NabycieId { get; set; }
-         string Udzial { get; set; }
+         DateTime? DataOdbOd { get; set; }
+         DateTime? DataOdbDo { get; set; }
+         string ProtPrzejecia { get; set; }
+         string Scan { get; set; }
+
+        //int? NabycieId { get; set; }
+        string Udzial { get; set; }
 
          Podmiot Podmiot { get; set; }
     }

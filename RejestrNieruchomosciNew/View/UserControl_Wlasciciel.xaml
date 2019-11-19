@@ -303,8 +303,8 @@
             <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="120"/>
-                        <RowDefinition Height="190"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -320,30 +320,42 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Od"                                       
                                       Style="{StaticResource label1}"/>
-                            <conRaf:DataGridRafALL     
-                                        x:Name="conRaf2"
-                                        VerticalAlignment="Top"   Panel.ZIndex="13"
-                                        TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.tekstRaf, ElementName=win, Mode=TwoWay}"
-                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"
-                                        
-                                        fontSizeRafALL="14"
-                                        heightRafALL="25"
-                                        HorizontalAlignment="Stretch"
-                                        colNameRaf="Numer"
-                                        colNameIdRaf="TransakcjeId"
-                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}" Width="148"
-                                        />
-
-                            <!--selectedValuePathRafALL="id"-->
+                            <TextBox
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbOd, Converter={StaticResource dateConvert}}"
+                                       Style="{StaticResource tekst}"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Do"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding daneWlasc.wladanieSel[dataObowiazywaniaDO] , Converter={StaticResource dateConvert}}"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbDo, Converter={StaticResource dateConvert}}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Protokół przejęcia"                                       
+                                      Style="{StaticResource label1}"/>
+                            <TextBox
+                                       Name="opisSkan"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.ProtPrzejecia}"
+                                       Style="{StaticResource tekst}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label    Content="Skan protokołu" 
+                                      
+                                      Style="{StaticResource label1}"/>
+                            <Button
+                                       MaxWidth="{Binding ElementName=opisSkan, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=opisSkan, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=opisSkan, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=opisSkan, Path=Margin}"
+                                       Content="Skan protokołu"
+                                       Command="{Binding userControl_Wlasciciel.wlascProt}"
+                                        />
+                        </StackPanel>
+
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">

@@ -13,9 +13,13 @@ namespace RejestrNieruchomosciNew
 
         public int? FormaWladaniaSloId { get; set; }
 
-        public int? NabycieId { get; set; }
         public string Udzial { get; set; }
 
+        public DateTime? DataOdbOd { get; set; }
+        public DateTime? DataOdbDo { get; set; }
+        public string ProtPrzejecia { get; set; }
+        public string Scan { get; set; }
+        
         [ForeignKey("TransakcjeK")]
         public int? TransK_Id { get; set; }
         public Transakcje TransakcjeK { get; set; }
@@ -62,7 +66,10 @@ namespace RejestrNieruchomosciNew
                    TransK_Id.Equals(other.TransK_Id) &&
                    TransS_Id.Equals(other.TransS_Id) &&
                    string.Equals( Udzial,other.Udzial) &&
-                   NabycieId.Equals(other.NabycieId);
+                   DataOdbOd.Equals(other.DataOdbOd) &&
+                   DataOdbDo.Equals(other.DataOdbDo) &&
+                   string.Equals(ProtPrzejecia, other.ProtPrzejecia) &&
+                   string.Equals(Scan, other.Scan);
                    
         }
     }

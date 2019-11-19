@@ -207,7 +207,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>
                 {
-                    b.Property<int>("TransakcjeId")
+                    b.Property<int?>("TransakcjeId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -507,15 +507,19 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("DataOdbDo");
+
+                    b.Property<DateTime?>("DataOdbOd");
+
                     b.Property<int?>("DzialkaId");
 
                     b.Property<int?>("FormaWladaniaSloId");
 
-                    b.Property<int?>("NabycieId");
-
-                    b.Property<int?>("NabyciePrawaId");
-
                     b.Property<int?>("PodmiotId");
+
+                    b.Property<string>("ProtPrzejecia");
+
+                    b.Property<string>("Scan");
 
                     b.Property<int?>("TransK_Id");
 
@@ -528,8 +532,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("DzialkaId");
 
                     b.HasIndex("FormaWladaniaSloId");
-
-                    b.HasIndex("NabyciePrawaId");
 
                     b.HasIndex("PodmiotId");
 
@@ -587,10 +589,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasOne("RejestrNieruchomosciNew.FormaWladaniaSlo")
                         .WithMany("Wladanie")
                         .HasForeignKey("FormaWladaniaSloId");
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.NabyciePrawa")
-                        .WithMany("Wladanie")
-                        .HasForeignKey("NabyciePrawaId");
 
                     b.HasOne("RejestrNieruchomosciNew.Podmiot", "Podmiot")
                         .WithMany("Wladanie")

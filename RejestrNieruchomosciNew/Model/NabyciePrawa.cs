@@ -12,6 +12,6 @@ namespace RejestrNieruchomosciNew.Model
         public string ProtokolPrzejecia { get; set; }
         public int Skan { get; set; }
 
-        public ICollection<Wladanie> Wladanie { get; set; }
+        //public ICollection<Wladanie> Wladanie { get; set; }
     }
 }
