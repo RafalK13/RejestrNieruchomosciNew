@@ -21,8 +21,6 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        
-
         private int? _RodzajTransakcjiSloId;
         public int? RodzajTransakcjiSloId
         {

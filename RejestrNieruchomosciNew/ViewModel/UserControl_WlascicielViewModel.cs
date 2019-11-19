@@ -66,16 +66,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IDzialka dzialkaSel { get; set; }
         public IDzialkaList dzialkaList { get; set; }
 
-        public string _numerTrans;
-        public string numerTrans
-        {
-            get => _numerTrans;
-            set
-            {
-                _numerTrans = value;
-                RaisePropertyChanged("numerTrans");
-            }
-        }
+       
 
         private int dzialkaId;
 

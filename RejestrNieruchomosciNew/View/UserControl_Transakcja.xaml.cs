@@ -119,7 +119,6 @@ namespace RejestrNieruchomosciNew.View
             {
                 if (u.selectedIdTrans.Value <= 0)
                 {
-                    
                     string s = u.numerTrans;
                     u.transakcje = new Transakcje();
                     u.transakcje.Numer = s;
