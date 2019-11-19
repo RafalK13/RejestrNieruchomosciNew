@@ -19,9 +19,9 @@ namespace RejestrNieruchomosciNew.View
             InitializeComponent();
             DataContext = this;
             clickAdd = new RelayCommand(onClickAdd);
-
             clickCls = new RelayCommand(onClickCls);
-            
+            clickMod = new RelayCommand(onClickMod);
+
         }
         
         #region Transakcje
@@ -82,36 +82,60 @@ namespace RejestrNieruchomosciNew.View
                 }
                 else
                 {
+                    var v = u.transList.list.FirstOrDefault(row => row.Numer == u.numerTrans);
+
+                    if (v != null)
+                    {
+                        u.addButton = false;
+                        u.clsButton = true;
+                    }
+                    else
+                    {
+                        u.addButton = true;
+                        u.clsButton = true;
+                    }
+                }
+            }
+            else
+                u.selectedIdTrans = null;
+
+        }
+        #endregion
+
+        #region selectedIdTrans
+        public int? selectedIdTrans
+        {
+            get { return (int?)GetValue(selectedIdTransProperty); }
+            set { SetValue(selectedIdTransProperty, value); }
+        }
+
+        public static readonly DependencyProperty selectedIdTransProperty =
+            DependencyProperty.Register("selectedIdTrans", typeof(int?), typeof(UserControl_Transakcja), new PropertyMetadata(0, new PropertyChangedCallback(onSelectedIdTransChanged)));
+
+        private static void onSelectedIdTransChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Transakcja u = d as UserControl_Transakcja;
+            if (u.selectedIdTrans != null)
+            {
+                if (u.selectedIdTrans.Value <= 0)
+                {
+                    
+                    string s = u.numerTrans;
+                    u.transakcje = new Transakcje();
+                    u.transakcje.Numer = s;
+                    u.selectedIdTrans = null;
                     u.addButton = true;
-                    u.clsButton = true;
+                }
+                else
+                {
+                    u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == u.selectedIdTrans.Value);
+                    u.transakcje.onChange += u.Transakcje_onChange;
                 }
             }
         }
         #endregion
 
-        #region selectedIdTrans
-        public int selectedIdTrans
-        {
-            get { return (int)GetValue(selectedIdTransProperty); }
-            set { SetValue(selectedIdTransProperty, value); }
-        }
-
-        public static readonly DependencyProperty selectedIdTransProperty =
-            DependencyProperty.Register("selectedIdTrans", typeof(int), typeof(UserControl_Transakcja), new PropertyMetadata(0, new PropertyChangedCallback(onSelectedIdTransChanged)));
-
-        private static void onSelectedIdTransChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            UserControl_Transakcja u = d as UserControl_Transakcja;
-            if (u.selectedIdTrans <= 0)
-            {
-                u.clsDialog();
-            }
-            else
-            {
-                u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == u.selectedIdTrans);
-            }
-        }
-        #endregion
+        #region Buttons Visible
 
         public bool addButton
         {
@@ -121,7 +145,16 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty addButtonProperty =
             DependencyProperty.Register("addButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+        
+        public bool modButton
+        {
+            get { return (bool)GetValue(modButtonProperty); }
+            set { SetValue(modButtonProperty, value); }
+        }
 
+        public static readonly DependencyProperty modButtonProperty =
+            DependencyProperty.Register("modButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+        
         public bool clsButton
         {
             get { return (bool)GetValue(clsButtonProperty); }
@@ -130,43 +163,52 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty clsButtonProperty =
             DependencyProperty.Register("clsButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
-        
+
+        #endregion
+
         #region Buttons
         #region clsDialog
         private void clsDialog()
         {
             transakcje = new Transakcje();
-            selectedIdTrans = 0;
+         
+            selectedIdTrans = null;
         }
         #endregion
 
         public void onClickAdd()
         {
-
-            //addButton = false;
             transakcje.Numer = numerTrans;
             transList.AddRow( transakcje);
-            transList.PropertyChanged += TransList_PropertyChanged;
+            
+            userControlDataGridRafALL.initItemSourceList();
 
-            int a = 13;
+            transakcje = itemSourceTrans.FirstOrDefault(row => row.Numer == numerTrans);
+            selectedIdTrans = transakcje.TransakcjeId.Value;
 
+            addButton = false;
         }
-
-        private void TransList_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            MessageBox.Show("DUPA Biskupa");
-        }
-
+        
         private void onClickCls()
         {
-            
-            MessageBox.Show( $"{transList.list.Count}\r\n" +
-                             $"{itemSourceTrans.Count.ToString()}");
-            //clsDialog();
+            clsDialog();
+            addButton = false;
+            modButton = false;
+            clsButton = false;
+        }
+
+        public void onClickMod()
+        {
+            transakcje.Numer = numerTrans;
+         
+            transList.ModRow( transakcje);
+
+            modButton = false;
         }
 
         public ICommand clickAdd { get; set; }
         public ICommand clickCls { get; set; }
+        public ICommand clickMod { get; set; }
         #endregion
 
         #region slowniki
@@ -193,6 +235,11 @@ namespace RejestrNieruchomosciNew.View
         {
             if ( transList != null )
                 itemSourceTrans = transList.list;
+        }
+
+        private void Transakcje_onChange(object sender, EventArgs e)
+        {
+            modButton = true;
         }
     }
 }

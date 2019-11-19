@@ -2,7 +2,7 @@
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows;
+using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -40,8 +40,17 @@ namespace RejestrNieruchomosciNew.Model
             }
             list.Add(newTrans);
         }
+       
+        public void ModRow(ITransakcje modTrans)
+        {
+            using (Context c = new Context())
+            {
+                c.Transakcje.Update((Transakcje)modTrans);
+                c.SaveChanges();
+            }
+        }
+
         public void DelRow(IWladanie wlad) { }
-        public void ModRow(IWladanie wlad) { }
 
     }
 }

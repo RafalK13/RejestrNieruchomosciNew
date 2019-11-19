@@ -9,7 +9,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 {
     public interface ITransakcje
     {
-        int TransakcjeId { get; set; }
+        int? TransakcjeId { get; set; }
         int? RodzajTransakcjiSloId { get; set; }
         int? NazwaCzynnosciSloId { get; set; }
         int? RodzajDokumentuSloId { get; set; }
@@ -17,6 +17,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         DateTime? Data { get; set; }
         string Tytul { get; set; }
         string Skan { get; set; }
+
+        event EventHandler onChange;
         
     }
 }

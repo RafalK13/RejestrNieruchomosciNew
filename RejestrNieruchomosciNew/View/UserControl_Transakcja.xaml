@@ -43,7 +43,7 @@
                     Margin="3,2,0,0"
                     x:Name="userControlDataGridRafALL"
                     VerticalAlignment="Top"
-                    itemSourceRafALL="{Binding itemSourceTrans, ElementName=Trans, Mode=TwoWay}"
+                    itemSourceRafALL="{Binding itemSourceTrans, ElementName=Trans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     TekstPropALL="{Binding numerTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
                     selectedIdRafALL="{Binding selectedIdTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
                     fontSizeRafALL="14"
@@ -88,13 +88,22 @@
                  Command="{Binding clickAdd}"
                  IsEnabled="{Binding addButton}"
                  Content="Dodaj"
-                 Width="60" 
+                 MaxWidth="100" 
+                 
+                 Margin="5"/>
+            <Button
+                 Command="{Binding clickMod}"
+                 IsEnabled="{Binding modButton}"
+                 Content="Zmień"
+                 MaxWidth="100" 
+                 
                  Margin="5"/>
             <Button
                  Command="{Binding clickCls}"
                  Content="Czyść"
                  IsEnabled="{Binding clsButton}"
-                 Width="60" 
+                 MaxWidth="100" 
+                
                  Margin="5"/>
         </StackPanel>
 

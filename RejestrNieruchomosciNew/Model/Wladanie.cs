@@ -59,7 +59,8 @@ namespace RejestrNieruchomosciNew
                    DzialkaId.Equals(other.DzialkaId) &&
                    PodmiotId.Equals(other.PodmiotId) &&
                    FormaWladaniaSloId.Equals(other.FormaWladaniaSloId) &&
-                   //TransakcjaId.Equals(other.TransakcjaId) &&
+                   TransK_Id.Equals(other.TransK_Id) &&
+                   TransS_Id.Equals(other.TransS_Id) &&
                    string.Equals( Udzial,other.Udzial) &&
                    NabycieId.Equals(other.NabycieId);
                    
