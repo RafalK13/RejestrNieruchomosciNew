@@ -26,8 +26,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Konstruktor
         public ChangeViewModel()
         {
-            //MessageBox.Show("CHANGEViewModel - Konstruktor");
-            
+           // userControl_AddDanePod = _userControl_AddDanePod;
+ 
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
         }

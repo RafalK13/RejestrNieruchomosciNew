@@ -14,6 +14,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand OnAddDzialka { get; set; }
         #endregion
 
+        public string tytulNr { get; set; }
+        public string tytulObr { get; set; }
+        public string tytulGm { get; set; }
+
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
                             UserControl_PreviewViewModel userPrev)
         {
@@ -24,7 +28,11 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
-            
+
+            tytulNr = userPodst.dzialka.Numer;
+            tytulObr = userPodst.obreb.obrebValue;
+            tytulGm = userPodst.obreb.gminaValue;
+
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
         }

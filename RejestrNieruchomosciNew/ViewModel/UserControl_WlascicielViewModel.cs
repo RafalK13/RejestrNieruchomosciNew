@@ -66,8 +66,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IDzialka dzialkaSel { get; set; }
         public IDzialkaList dzialkaList { get; set; }
 
-       
-
         private int dzialkaId;
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)

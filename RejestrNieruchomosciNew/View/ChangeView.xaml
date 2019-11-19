@@ -18,24 +18,69 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style TargetType="Button" x:Key="buttonRaf">
+            
             <Setter Property="Width" Value="100"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Margin" Value="50,5,5,5"></Setter>
         </Style>
+
+        <Style TargetType="TextBox" x:Key="tytulLabel">
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="tytulOpis">
+                <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Bottom"></Setter>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Height" Value="30"/>
+        </Style>
     </Window.Resources>
+
+    <!--<Setter Property="BorderThickness" Value="0"/>-->
 
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <TextBox  Grid.Row="0" 
-                  FontSize="20"
-                  TextAlignment="Center"
-                  VerticalAlignment="Center"
-                  Text="{Binding modeMessage, Mode=TwoWay}" BorderThickness="0"></TextBox>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left"
+                    Margin="20,0,0,0">
+            <StackPanel Orientation="Horizontal" >
+                <TextBox Text="numer działki:"
+                         Style="{StaticResource tytulLabel}"
+                         />
+                <TextBox Text="{Binding tytulNr}"
+                         Style="{StaticResource tytulOpis}"
+                         />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <TextBox Text="gmina:"
+                     Style="{StaticResource tytulLabel}"
+                     />
+                <TextBox Text="{Binding tytulObr}"
+                    Style="{StaticResource tytulOpis}"
+                     />
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <TextBox Text="obręb:"
+                     Style="{StaticResource tytulLabel}"
+                     />
+                <TextBox Text="{Binding tytulGm}"
+                    Style="{StaticResource tytulOpis}"
+                     />
+            </StackPanel>
+           
+        </StackPanel>
 
         <TabControl Grid.Row="1" Margin="20">
             

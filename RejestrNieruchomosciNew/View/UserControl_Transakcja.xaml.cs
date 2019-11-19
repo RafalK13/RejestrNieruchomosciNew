@@ -137,6 +137,9 @@ namespace RejestrNieruchomosciNew.View
                     u.transakcje.onChange += u.Transakcje_onChange;
                 }
             }
+            else
+                u.clsDialog();
+
         }
         #endregion
 
