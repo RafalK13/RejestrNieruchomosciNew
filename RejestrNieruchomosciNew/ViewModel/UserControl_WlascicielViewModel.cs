@@ -14,14 +14,25 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_WlascicielViewModel : ViewModelBase
     {
-        private string _tekstCls;
-        public string tekstCls
+        private string _podmiotName;
+        public string podmiotName
         {
-            get => _tekstCls;
+            get => _podmiotName;
             set
             {
-                _tekstCls = value;
-                RaisePropertyChanged("tekstCls");
+                _podmiotName = value;
+                RaisePropertyChanged("podmiotName");
+            }
+        }
+
+        private int _selectedPodmId;
+        public int selectedPodmId
+        {
+            get => _selectedPodmId;
+            set
+            {
+                _selectedPodmId = value;
+                RaisePropertyChanged("selectedPodmId");
             }
         }
 
@@ -32,18 +43,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IPodmiotList podmiotList { get; set; }
 
         public FormaWladaniaList sloFormWlad { get; set; }
-        
-
-        private int _wlascId;
-        public int wlascId
-        {
-            get => _wlascId;
-            set
-            {
-                _wlascId = value;
-                RaisePropertyChanged("wlascId");
-            }
-        }
 
         public ITransakcjeList transakcjeList { get; set; }
 
@@ -71,21 +70,20 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IDzialka dzialkaSel { get; set; }
         public IDzialkaList dzialkaList { get; set; }
 
+        public IPlatnoscUW platnosci { get; set; }
+
         private int dzialkaId;
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
-
             wlascCls = new RelayCommand(onWlascCls);
             wlascAdd = new RelayCommand(onWlascAdd);
             wlascProt = new RelayCommand(onWlascProt);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
             
-
             if (userPrev.dzialkaSel != null)
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-
         }
 
         private void onWlascProt()
@@ -109,13 +107,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotAdd()
         {
-            if (wlascId > 0)
+            if (selectedPodmId > 0)
             {
                 if (testWlascExist() == false)
                 {
                     wladanie.DzialkaId = dzialkaId;
-                    wladanie.PodmiotId = wlascId;
-                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == wlascId);
+                    wladanie.PodmiotId = selectedPodmId;
+                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == selectedPodmId);
 
                     wladanieList.list.Add(new Wladanie()
                     {
@@ -124,7 +122,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                         Podmiot = wladanie.Podmiot
                     });
 
-                    tekstCls = string.Empty;
+                    podmiotName = string.Empty;
                     wladanieSel = null;
                 }
             }
@@ -146,7 +144,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (wladanieList.list.Count == 0)
                 return false;
 
-            var v = wladanieList.list.Where(r => r.PodmiotId == wlascId).Count();
+            var v = wladanieList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
 
             return (v == 0) ? false : true;
         }

@@ -12,6 +12,7 @@ namespace RejestrNieruchomosciNew.Model
         int? DzialkaId { get; set; }
         double? Stawka { get; set; }
         int? Okres { get; set; }
+        double? Wysokosc { get; set; }
         double? Wartosc { get; set; }
 
         int rok1 { get; set; }

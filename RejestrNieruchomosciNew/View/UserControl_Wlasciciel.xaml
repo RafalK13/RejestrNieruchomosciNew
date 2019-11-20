@@ -109,13 +109,13 @@
                 <conRaf:DataGridRafALL     Margin="10,50,0,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
-                                        TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.tekstCls, ElementName=win, Mode=TwoWay}"
+                                        TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotName, ElementName=win, Mode=TwoWay}"
                                         itemSourceRafALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotList.listView, ElementName=win}"
                                         fontSizeRafALL="14"
                                         heightRafALL="25"
                                         HorizontalAlignment="Stretch"
                                         colNameRaf="nazwa"
-                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascId, ElementName=win,Mode=TwoWay}"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.selectedPodmId, ElementName=win,Mode=TwoWay}"
                                         />
                 <!--selectedValuePathRafALL="id"-->
                 <!--selectedItemRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascSel, Mode=TwoWay, ElementName=win}"-->
