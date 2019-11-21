@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -81,6 +82,17 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private Visibility _sellVisibility;
+        public Visibility sellVisibility
+        {
+            get => _sellVisibility;
+
+            set {
+                _sellVisibility = value;
+                RaisePropertyChanged("sellVisibility");
+            }
+        }
+
         #region Buttons
         public ICommand wlascAdd { get; set; }
         public ICommand wlascCls { get; set; }
@@ -88,6 +100,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotDel { get; set; }
         public ICommand wlascProt { get; set; }
         public ICommand onCzyscPlatnosci { get; set; }
+        public ICommand wlascSell{ get; set; }
         #endregion
 
         public IDzialka dzialkaSel { get; set; }
@@ -102,6 +115,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             initButtons();
             podmiotDetail = false;
+            sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)
             {
@@ -117,7 +131,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
             onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
+            wlascSell = new RelayCommand(onWlascSell);
 
+
+        }
+
+        private void onWlascSell()
+        {
+            sellVisibility = Visibility.Visible;
         }
 
         private void onCzyscPlatnosciClick()

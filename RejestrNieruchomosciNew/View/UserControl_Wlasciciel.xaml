@@ -267,17 +267,37 @@
                             <Label  Grid.Column="1" Grid.Row="6" 
                                         Content="Skan dokumentu"    
                                         Style="{StaticResource labelTab}"/>
+                            <Button Grid.Column="5" Grid.Row="1"
+                                    Content="Sprzedaż udziału"
+                                    Command="{Binding  userControl_Wlasciciel.wlascSell}">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=TransSell, Path=Visibility}" Value="Visible">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                            </DataTrigger>
 
-                            <TextBox
-                                       Text="{Binding userControl_Wlasciciel.wladanieSel.TransK_Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                       Grid.Column="5" Grid.Row="1"
-                                       Margin="3"/>
+                                        </Style.Triggers>
+                                    </Style>
+                                    
+                                </Button.Style>
+                                
+                                
+                            </Button>
 
-                            <TextBox
-                                       Text="{Binding userControl_Wlasciciel.numerTrans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                       Grid.Column="5" Grid.Row="2"
-                                       Margin="3"/>
-
+                            <userCon:UserControl_Transakcja
+                                       x:Name="TransSell"
+                                       Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Grid.Column="5" Grid.Row="1" Grid.RowSpan="7"
+                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
+                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
+                             />
+                            <!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
