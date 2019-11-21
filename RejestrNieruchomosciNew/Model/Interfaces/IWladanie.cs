@@ -19,7 +19,8 @@ namespace RejestrNieruchomosciNew.Model
 
          DateTime? DataOdbOd { get; set; }
          DateTime? DataOdbDo { get; set; }
-         string ProtPrzejecia { get; set; }
+         string NrProtPrzejecia { get; set; }
+         DateTime? DataProtPrzej { get; set; }
          string Scan { get; set; }
 
         //int? NabycieId { get; set; }

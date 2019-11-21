@@ -144,7 +144,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onCzyscPlatnosciClick()
         {
             platnosci.cleanObj();
-            int a = 13;
         }
 
         private void onWlascProt()
@@ -155,8 +154,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             DirectoryInfo dir = new DirectoryInfo(zalPath);
             if (!dir.Exists)
                 dir.Create();
-
-            int a = 13;
 
             Process.Start(zalPath);
         }

@@ -25,7 +25,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 if (userPrev.dzialkaSel != null)
                 {
-                    list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
+                    list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
+                                                                                                          && r.TransS_Id == null ));
 
                     listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 

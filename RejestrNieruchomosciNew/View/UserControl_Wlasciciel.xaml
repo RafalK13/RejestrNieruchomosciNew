@@ -320,7 +320,7 @@
 
             </ScrollViewer>
 
-            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -354,12 +354,31 @@
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1"
+                                IsEnabled="{Binding podmiotDetail}">
+                        <Label 
+                                      Content="Protokół przejęcia"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                       Margin="0,10,0,0"
+                                      Style="{StaticResource label}"/>
+
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Protokół przejęcia"                                       
+                            <Label Content="Numer"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Name="opisSkan"
-                                       Text="{Binding userControl_Wlasciciel.wladanieSel.ProtPrzejecia}"
+                                       Name="NumerProtokoluPrzejecia"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.NrProtPrzejecia}"
+                                       Style="{StaticResource tekst}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Data"                                       
+                                      Style="{StaticResource label1}"/>
+                            <TextBox
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataProtPrzej, Converter={StaticResource dateConvert}}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
@@ -368,18 +387,18 @@
                                       
                                       Style="{StaticResource label1}"/>
                             <Button
-                                       MaxWidth="{Binding ElementName=opisSkan, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       MinWidth="{Binding ElementName=opisSkan, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Width="{Binding ElementName=opisSkan, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Margin="{Binding ElementName=opisSkan, Path=Margin}"
+                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
                                        Content="Skan protokołu"
                                        Command="{Binding userControl_Wlasciciel.wlascProt}"
                                         />
                         </StackPanel>
 
                     </StackPanel>
-
-                    <StackPanel Grid.Row="1">
+                    
+                    <StackPanel Grid.Row="2">
                         <Label 
                            Content="Płatnośc z tytułu UW"
                            FontWeight="Bold"
@@ -461,10 +480,10 @@
                             <Label                   
                                       Style="{StaticResource label1}"/>
                             <Button
-                                       MaxWidth="{Binding ElementName=opisSkan, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       MinWidth="{Binding ElementName=opisSkan, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Width="{Binding ElementName=opisSkan, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Margin="{Binding ElementName=opisSkan, Path=Margin}"
+                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
                                        Content="Czyść wartości"
                                        Command="{Binding userControl_Wlasciciel.onCzyscPlatnosci}"
                                         />

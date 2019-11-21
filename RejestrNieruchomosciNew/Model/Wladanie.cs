@@ -17,7 +17,8 @@ namespace RejestrNieruchomosciNew
 
         public DateTime? DataOdbOd { get; set; }
         public DateTime? DataOdbDo { get; set; }
-        public string ProtPrzejecia { get; set; }
+        public string NrProtPrzejecia { get; set; }
+        public DateTime? DataProtPrzej { get; set; }
         public string Scan { get; set; }
         
         [ForeignKey("TransakcjeK")]
@@ -68,7 +69,8 @@ namespace RejestrNieruchomosciNew
                    string.Equals( Udzial,other.Udzial) &&
                    DataOdbOd.Equals(other.DataOdbOd) &&
                    DataOdbDo.Equals(other.DataOdbDo) &&
-                   string.Equals(ProtPrzejecia, other.ProtPrzejecia) &&
+                   string.Equals(NrProtPrzejecia, other.NrProtPrzejecia) &&
+                   string.Equals(DataProtPrzej, other.DataProtPrzej) &&
                    string.Equals(Scan, other.Scan);
                    
         }
