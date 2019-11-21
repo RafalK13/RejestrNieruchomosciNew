@@ -41,6 +41,7 @@ namespace RejestrNieruchomosciNew
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["conStrRaf"].ConnectionString);
+                //optionsBuilder.EnableSensitiveDataLogging(true);
             }
         }
 

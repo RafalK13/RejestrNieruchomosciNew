@@ -22,7 +22,17 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value == null ? null : string.Format("{0:0.00}", (decimal)value);
+
+            if (value == null)
+                return null;
+
+            string digit = value.ToString().Replace(",", ".");
+
+            decimal result;
+            if (decimal.TryParse(digit, out result))
+                return string.Format("{0:#,0.00}", result);
+
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -188,6 +198,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
     }
 
-    
+    #region
+    //22.02.1976
+    #endregion
     #endregion
 }

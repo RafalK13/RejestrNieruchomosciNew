@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -61,29 +62,46 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        #region Buttons
         public ICommand wlascAdd { get; set; }
         public ICommand wlascCls { get; set; }
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
         public ICommand wlascProt { get; set; }
+        public ICommand onTest { get; set; }
+        #endregion
 
         public IDzialka dzialkaSel { get; set; }
-        public IDzialkaList dzialkaList { get; set; }
-
         public IPlatnoscUW platnosci { get; set; }
+
+        public IDzialkaList dzialkaList { get; set; }
 
         private int dzialkaId;
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
+        {
+            initButtons();
+
+            if (userPrev.dzialkaSel != null)
+            {
+                dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+            }
+        }
+
+        private void initButtons()
         {
             wlascCls = new RelayCommand(onWlascCls);
             wlascAdd = new RelayCommand(onWlascAdd);
             wlascProt = new RelayCommand(onWlascProt);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
+            onTest = new RelayCommand( onTestClick);
+
+        }
+
+        private void onTestClick()
+        {
             
-            if (userPrev.dzialkaSel != null)
-                dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
         }
 
         private void onWlascProt()
@@ -136,6 +154,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
+            platnosci.save( );
             wladanieList.saveWladanie();
         }
 

@@ -15,8 +15,13 @@ namespace RejestrNieruchomosciNew.Model
         double? Wysokosc { get; set; }
         double? Wartosc { get; set; }
 
-        int rok1 { get; set; }
-        int rok2 { get; set; }
-        int rok3 { get; set; }
+        int? rok1 { get; set; }
+        int? rok2 { get; set; }
+        int? rok3 { get; set; }
+
+        void save();
+        bool isNull();
+
+        IPlatnoscUW clone();
     }
 }

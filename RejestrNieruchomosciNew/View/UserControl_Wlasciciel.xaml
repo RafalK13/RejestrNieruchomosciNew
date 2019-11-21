@@ -15,6 +15,7 @@
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
         <con:IntConverter x:Key="intConverter"/>
+        <con:stringToDecimal x:Key="convStrToDec"/>
         <sys:Double x:Key="widthMin">150</sys:Double>
         <sys:Double x:Key="widthMax">500</sys:Double>
         <Style x:Key="label" TargetType="Label">
@@ -370,8 +371,7 @@
                             <Label Content="Stawka [%]"                                       
                                        Style="{StaticResource label1}"/>
                             <TextBox
-                                       
-                                       Text="{Binding daneWlasc.wladanieSel[stawka] , Converter={StaticResource intConverter} }"                                        
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Stawka , Converter={StaticResource intConverter} }"                                        
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
@@ -379,23 +379,77 @@
                             <Label Content="Okres [lata]"                                       
                                        Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding daneWlasc.wladanieSel[okres], Converter={StaticResource intConverter} }"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Okres , Converter={StaticResource intConverter} }"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wysokośc opłaty"                                       
-                                    Style="{StaticResource label1}"/>
+                        <StackPanel    Orientation="Horizontal">
+                            <Label     Content="Wysokośc opłaty"                                       
+                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Style="{StaticResource tekst}"/>
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Wysokosc , Converter={StaticResource convStrToDec} }"
+                                        />
                         </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Wartość z wyceny"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding daneWlasc.wladanieSel[wartosc], Converter={StaticResource doubleConverter}}"
-                                       Style="{StaticResource tekst}"/>
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Wartosc , Converter={StaticResource convStrToDec} }"
+                                        />
                         </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Rok 1"                                       
+                                      Style="{StaticResource label1}"/>
+                            <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok1 , Converter={StaticResource convStrToDec} }"
+                                        />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Rok 2"  
+                                      Style="{StaticResource label1}"/>
+                            <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok2 , Converter={StaticResource convStrToDec} }"
+                                        />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Rok 3"   
+                                      Style="{StaticResource label1}"/>
+                            <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok3 , Converter={StaticResource convStrToDec} }"
+                                        />
+                        </StackPanel>
+
+
+
+
+
+
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Wartość z wyceny"                                       
+                                      Style="{StaticResource label1}"/>
+                            <Button
+                                       MaxWidth="{Binding ElementName=opisSkan, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=opisSkan, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=opisSkan, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=opisSkan, Path=Margin}"
+                                       Content="On Test"
+                                       Command="{Binding userControl_Wlasciciel.onTest}"
+                                        />
+                        </StackPanel>
+
+
+
 
                     </StackPanel>
                 </Grid>
@@ -416,8 +470,8 @@
                                     Margin="20,0,20,0"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
-                
-                       
+
+
                 <Button Content="Czyść"
                                     Width="130"
                                     Height="25"
