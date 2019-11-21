@@ -167,7 +167,8 @@
                 </DataGrid>
             </Grid>
 
-            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
+                          IsEnabled="{Binding podmiotDetail}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
@@ -202,7 +203,6 @@
                                        Text="{Binding userControl_Wlasciciel.wladanieSel.Udzial}" 
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
-
 
                     </StackPanel>
 
@@ -284,7 +284,6 @@
                                        transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
                                 />
@@ -310,7 +309,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0">
+                    <StackPanel Grid.Row="0"
+                                IsEnabled="{Binding podmiotDetail}">
                         <Label 
                                       Content="Data obowiązywania dokumentu"
                                       FontWeight="Bold"

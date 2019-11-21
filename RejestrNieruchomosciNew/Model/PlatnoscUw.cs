@@ -145,7 +145,6 @@ namespace RejestrNieruchomosciNew
             this.Wysokosc = null;
         }
 
-
         public bool isNull()
         {
             return (Stawka == null || Stawka.Value == 0) &&

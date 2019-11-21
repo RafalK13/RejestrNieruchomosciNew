@@ -1,5 +1,4 @@
-﻿using Castle.Core;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -8,7 +7,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -58,7 +56,28 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _wladanieSel = value;
+                testWladanieSel();
                 RaisePropertyChanged("wladanieSel");
+            }
+        }
+
+        private void testWladanieSel()
+        {
+            if (wladanieSel != null)
+                podmiotDetail = true;
+            else
+                podmiotDetail = false;
+
+        }
+
+        private bool _podmiotDetail;
+        public bool podmiotDetail
+        {
+            get => _podmiotDetail;
+
+            set {
+                _podmiotDetail = value;
+                RaisePropertyChanged("podmiotDetail");
             }
         }
 
@@ -82,6 +101,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
             initButtons();
+            podmiotDetail = false;
 
             if (userPrev.dzialkaSel != null)
             {
