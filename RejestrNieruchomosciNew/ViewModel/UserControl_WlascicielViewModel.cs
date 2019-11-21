@@ -68,10 +68,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
         public ICommand wlascProt { get; set; }
-        public ICommand onTest { get; set; }
+        public ICommand onCzyscPlatnosci { get; set; }
         #endregion
 
         public IDzialka dzialkaSel { get; set; }
+
         public IPlatnoscUW platnosci { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
@@ -95,25 +96,26 @@ namespace RejestrNieruchomosciNew.ViewModel
             wlascProt = new RelayCommand(onWlascProt);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
-            onTest = new RelayCommand( onTestClick);
+            onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
 
         }
 
-        private void onTestClick()
+        private void onCzyscPlatnosciClick()
         {
-            
+            platnosci.cleanObj();
+            int a = 13;
         }
 
         private void onWlascProt()
-        {   
-            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId+"\\Podmiot\\"+wladanieSel.PodmiotId;
+        {
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId + "\\Podmiot\\" + wladanieSel.PodmiotId;
             wladanieSel.Scan = zalPath;
 
             DirectoryInfo dir = new DirectoryInfo(zalPath);
             if (!dir.Exists)
                 dir.Create();
 
-           int a = 13;
+            int a = 13;
 
             Process.Start(zalPath);
         }
@@ -154,7 +156,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            platnosci.save( );
+            platnosci.save();
             wladanieList.saveWladanie();
         }
 

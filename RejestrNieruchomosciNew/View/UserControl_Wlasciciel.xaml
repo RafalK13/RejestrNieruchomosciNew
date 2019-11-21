@@ -371,7 +371,9 @@
                             <Label Content="Stawka [%]"                                       
                                        Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding userControl_Wlasciciel.platnosci.Stawka , Converter={StaticResource intConverter} }"                                        
+                                
+                                
+                                       Text="{Binding Path=DataContext.userControl_Wlasciciel.platnosci.Stawka , ElementName=win, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
@@ -436,15 +438,15 @@
 
 
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Wartość z wyceny"                                       
+                            <Label                   
                                       Style="{StaticResource label1}"/>
                             <Button
                                        MaxWidth="{Binding ElementName=opisSkan, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        MinWidth="{Binding ElementName=opisSkan, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Width="{Binding ElementName=opisSkan, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Margin="{Binding ElementName=opisSkan, Path=Margin}"
-                                       Content="On Test"
-                                       Command="{Binding userControl_Wlasciciel.onTest}"
+                                       Content="Czyść wartości"
+                                       Command="{Binding userControl_Wlasciciel.onCzyscPlatnosci}"
                                         />
                         </StackPanel>
 

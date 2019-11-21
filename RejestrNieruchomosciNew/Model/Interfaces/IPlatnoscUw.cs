@@ -20,8 +20,10 @@ namespace RejestrNieruchomosciNew.Model
         int? rok3 { get; set; }
 
         void save();
-        bool isNull();
 
+        void cleanObj();
+        bool isNull();
+        
         IPlatnoscUW clone();
     }
 }
