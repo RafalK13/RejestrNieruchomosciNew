@@ -98,8 +98,8 @@
             <TabItem Header="Inne prawa"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
-                <view:UserControl2>
-                </view:UserControl2>
+                <view:UserControl_InnePrawa>
+                </view:UserControl_InnePrawa>
             </TabItem>
             <TabItem Header="Inne prawa"
                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"

@@ -17,6 +17,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         DateTime? Data { get; set; }
         string Tytul { get; set; }
         string Skan { get; set; }
+        DateTime? WpisDoKW {get; set;} 
 
         event EventHandler onChange;
         

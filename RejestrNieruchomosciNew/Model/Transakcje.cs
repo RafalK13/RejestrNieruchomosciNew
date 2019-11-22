@@ -94,7 +94,7 @@ namespace RejestrNieruchomosciNew.Model
         private string _Skan;
         public string Skan
         {
-            get=> _Skan;
+            get => _Skan;
             set
             {
                 _Skan = value;
@@ -102,6 +102,19 @@ namespace RejestrNieruchomosciNew.Model
                 onChange(this, EventArgs.Empty);
             }
         }
+
+        private DateTime? _WpisDoKW;
+        public DateTime? WpisDoKW
+        {
+            get => _WpisDoKW;
+            set
+            {
+                _WpisDoKW = value;
+                RaisePropertyChanged("WpisDoKW");
+                onChange(this, EventArgs.Empty);
+            }
+        }
+
 
         [InverseProperty("TransakcjeK")]
         public ICollection<Wladanie> WladanieK { get; set; }
