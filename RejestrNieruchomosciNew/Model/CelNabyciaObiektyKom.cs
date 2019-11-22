@@ -3,7 +3,7 @@ using System;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class CelNabyciaObiekty : ICelNabyciaObiekty
+    public class CelNabyciaObiektyKom : ICelNabyciaObiektyKom
     {
         public int ID { get; set; }
         public Guid guid { get; set; }

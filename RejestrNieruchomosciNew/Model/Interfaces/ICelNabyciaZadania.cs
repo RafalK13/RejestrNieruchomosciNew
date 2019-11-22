@@ -8,7 +8,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 {
     interface ICelNabyciaZadania
     {
-        int CelNabyciaZadaniaId { get; set; }
+        int ID { get; set; }
+        Guid guid { get; set; }
         string Nazwa { get; set; }
     }
 }

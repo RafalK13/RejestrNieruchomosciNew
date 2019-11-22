@@ -20,7 +20,8 @@ namespace RejestrNieruchomosciNew
         public string NrProtPrzejecia { get; set; }
         public DateTime? DataProtPrzej { get; set; }
         public string Scan { get; set; }
-        
+        public int? CelNabyciaId { get; set; }
+
         [ForeignKey("TransakcjeK")]
         public int? TransK_Id { get; set; }
         public Transakcje TransakcjeK { get; set; }
@@ -30,6 +31,7 @@ namespace RejestrNieruchomosciNew
         public Transakcje TransakcjeS { get; set; }
 
         public Podmiot Podmiot { get; set; }
+        public CelNabycia CelNabycia { get; set; }
 
         public object Clone()
         {

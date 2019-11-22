@@ -23,7 +23,7 @@ namespace RejestrNieruchomosciNew.Model
         DateTime? DataProtPrzej { get; set; }
         string Scan { get; set; }
 
-        //int? NabycieId { get; set; }
+        int? CelNabyciaId { get; set; }
         string Udzial { get; set; }
 
         Podmiot Podmiot { get; set; }

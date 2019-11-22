@@ -31,7 +31,9 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbSet<Transakcje> Transakcje { get; set; }
         public virtual DbSet<NabyciePrawa> NabyciePrawa { get; set; }
-        
+
+        public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
+
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 
         //public virtual DbSet<InnePrawa> InnePrawa { get; set; }
@@ -47,7 +49,11 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+
+            //modelBuilder.Ignore<CelNabycia>();
+
+            modelBuilder.Query<CelNabycia>().ToView("CelNabycia");
+
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
                .WithMany(a => a.Dzialka)
