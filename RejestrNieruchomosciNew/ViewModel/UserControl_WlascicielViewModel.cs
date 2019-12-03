@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -49,6 +48,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public RodzajDokumentuList rodzDokSlo { get; set; }
 
         public NazwaCzynnosciList nazwaCzynSlo { get; set; }
+
+        public ICelNabyciaList celNabyciaList { get; set; }
 
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel
@@ -194,6 +195,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
+            int a = 13;
+
             platnosci.save();
             wladanieList.saveWladanie();
         }

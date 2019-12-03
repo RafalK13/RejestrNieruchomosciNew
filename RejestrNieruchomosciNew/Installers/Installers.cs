@@ -75,7 +75,10 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_TransViewModel>());
 
             container.Register(Component.For<IPlatnoscUW>().ImplementedBy<PlatnoscUW>().LifeStyle.Transient);
-            
+
+            container.Register(Component.For<ICelNabyciaList>().ImplementedBy<CelNabyciaList>());
+
+            container.Register(Component.For<UserControl_CelNabycia>());
         }
     }
 }

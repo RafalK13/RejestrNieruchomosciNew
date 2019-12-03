@@ -28,36 +28,36 @@ namespace RejestrNieruchomosciNew.Migrations
             //        table.PrimaryKey("PK_CelNabycia", x => x.Id);
             //    });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Wladanie_CelNabyciaId",
-                table: "Wladanie",
-                column: "CelNabyciaId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Wladanie_CelNabyciaId",
+            //    table: "Wladanie",
+            //    column: "CelNabyciaId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Wladanie_CelNabycia_CelNabyciaId",
-                table: "Wladanie",
-                column: "CelNabyciaId",
-                principalTable: "CelNabycia",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Wladanie_CelNabycia_CelNabyciaId",
+            //    table: "Wladanie",
+            //    column: "CelNabyciaId",
+            //    principalTable: "CelNabycia",
+            //    principalColumn: "Id",
+            //    onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Wladanie_CelNabycia_CelNabyciaId",
-                table: "Wladanie");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Wladanie_CelNabycia_CelNabyciaId",
+            //    table: "Wladanie");
 
-            migrationBuilder.DropTable(
-                name: "CelNabycia");
+            //migrationBuilder.DropTable(
+            //    name: "CelNabycia");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Wladanie_CelNabyciaId",
-                table: "Wladanie");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Wladanie_CelNabyciaId",
+            //    table: "Wladanie");
 
-            migrationBuilder.DropColumn(
-                name: "CelNabyciaId",
-                table: "Wladanie");
+            //migrationBuilder.DropColumn(
+            //    name: "CelNabyciaId",
+            //    table: "Wladanie");
         }
     }
 }

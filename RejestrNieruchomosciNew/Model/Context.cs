@@ -52,7 +52,7 @@ namespace RejestrNieruchomosciNew
 
             //modelBuilder.Ignore<CelNabycia>();
 
-            modelBuilder.Query<CelNabycia>().ToView("CelNabycia");
+            //modelBuilder.Query<CelNabycia>().ToView("CelNabycia");
 
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
@@ -64,7 +64,12 @@ namespace RejestrNieruchomosciNew
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
 
-           modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
+            //modelBuilder.Entity<Wladanie>()
+            //    .HasOne<CelNabycia>(a => a.CelNabycia)
+            //    .WithMany(a => a.Wladanie)
+            //    .HasForeignKey(a => a.CelNabyciaId);
+
+            modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 2, Nazwa = "Akt notarialny" },
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 3, Nazwa = "Postanowienie sądu" }

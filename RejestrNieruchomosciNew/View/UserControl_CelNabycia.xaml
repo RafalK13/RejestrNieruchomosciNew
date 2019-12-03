@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_CelNabycia"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+             mc:Ignorable="d" 
+             x:Name="Cel"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Loaded="StackPanel_Loaded">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="129"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <!--Height="{Binding ElementName=istnObName, Path=ActualHeight}"-->
+        <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"
+                     Height="55"
+                     TextWrapping="WrapWithOverflow"
+                     AcceptsReturn="True"
+                     AcceptsTab="True"
+                     Margin="7,0,25,3"
+                     
+                     Text="{Binding selectedName, ElementName=Cel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     IsReadOnly="True"/>
+        <Label       Grid.Column="0" Grid.Row="2"
+                     Margin="3"
+                     Content="Istniejące obiekty"/>
+        <conRaf:DataGridRafALL
+                    Grid.Column="1" Grid.Row="2"
+                    x:Name="istnObN"
+                    VerticalAlignment="Top"
+                    itemSourceRafALL="{Binding istnOb, ElementName=Cel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TekstPropALL="{Binding istObName, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    selectedIdRafALL="{Binding istnObSelId, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    heightRafALL="23"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="Id" 
+                    colNameRaf="Nazwa"
+                    Panel.ZIndex="130"
+                    Grid.RowSpan="10"
+                    clearTekstOnExit="True"
+                    />
+        <Label Grid.Column="0" Grid.Row="3"
+               Margin="3"
+                Content="Zadania inwestycyjne"/>
+        <conRaf:DataGridRafALL
+                    Grid.Column="1" Grid.Row="3"
+                    x:Name="zadInwestN"
+                    VerticalAlignment="Top"
+                    itemSourceRafALL="{Binding zadInwest, ElementName=Cel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TekstPropALL="{Binding zadInwestName, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    selectedIdRafALL="{Binding zadInwestSelId, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    heightRafALL="23"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="Id" 
+                    colNameRaf="Nazwa"
+                    Panel.ZIndex="120"
+                    Grid.RowSpan="6"
+                    clearTekstOnExit="True"
+                    />
+        <Label Grid.Column="0" Grid.Row="4"
+                Margin="3"
+                Content="Obiekty komercyjne"
+               />
+        <conRaf:DataGridRafALL
+                    Grid.Column="1" Grid.Row="4"
+                    x:Name="obKomN"
+                    VerticalAlignment="Top"
+                    itemSourceRafALL="{Binding obiektKom, ElementName=Cel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TekstPropALL="{Binding obiektKomName, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    selectedIdRafALL="{Binding obiektKomSelId, Mode=TwoWay, ElementName=Cel, UpdateSourceTrigger=PropertyChanged}"
+                    heightRafALL="23"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="Id" 
+                    colNameRaf="Nazwa"
+                    Panel.ZIndex="110"
+                    Grid.RowSpan="6"
+                    clearTekstOnExit="True"
+                    />
+        <Button Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
+                Content="Czyść"
+                Width="120"
+                Height="20"
+                Command="{Binding onCzysc}"/>
+    </Grid>
+</UserControl>

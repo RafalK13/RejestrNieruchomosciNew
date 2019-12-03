@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Name="win"
-             d:DesignHeight="660" d:DesignWidth="1146">
+             d:DesignHeight="660" d:DesignWidth="1450">
     <UserControl.Resources>
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
@@ -79,9 +79,16 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="350"/>
-                <ColumnDefinition MinWidth="9" MaxWidth="500" Width="450"/>
+                <!--<ColumnDefinition MinWidth="300"/>
+                <ColumnDefinition MinWidth="9" MaxWidth="500" Width="400"/>
+                <ColumnDefinition MinWidth="9" MaxWidth="500" Width="320"/>
+                <ColumnDefinition MinWidth="9" MaxWidth="500" Width="320"/>-->
+
                 <ColumnDefinition />
+                <ColumnDefinition MinWidth="9" />
+                <ColumnDefinition MinWidth="9" />
+                <ColumnDefinition MinWidth="9" />
+
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -91,12 +98,24 @@
                    Grid.Column ="0"  
                    Width="5"
                    HorizontalAlignment="Right" 
-                   VerticalAlignment="Stretch"/>
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+            <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
             <GridSplitter 
                    Grid.Column ="2"  
                    Width="5"
-                   HorizontalAlignment="Left" 
-                   VerticalAlignment="Stretch"/>
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
 
             <Grid Grid.Column="0" Margin="40,0">
                 <Label  Margin="10,10,0,0"
@@ -172,7 +191,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
-                        <RowDefinition Height="300"/>
+                        <RowDefinition Height="275"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -232,7 +251,7 @@
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
-                                <RowDefinition Height="30"/>
+                                
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="3" Grid.Row="0"
@@ -310,10 +329,13 @@
                             <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                         </Grid>
 
+                        
+
                     </StackPanel>
 
-                    <StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
-                            Orientation="Horizontal" />
+                    <!--<StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
+                             
+                                Orientation="Horizontal" />-->
 
                 </Grid>
 
@@ -334,7 +356,7 @@
                                       Content="Data obowiązywania dokumentu"
                                       FontWeight="Bold"
                                       FontSize="19"    
-                                       Margin="0,10,0,0"
+                                      Margin="0,10,0,0"
                                       Style="{StaticResource label}"/>
 
                         <StackPanel Orientation="Horizontal">
@@ -468,13 +490,6 @@
                                         />
                         </StackPanel>
 
-
-
-
-
-
-
-
                         <StackPanel Orientation="Horizontal">
                             <Label                   
                                       Style="{StaticResource label1}"/>
@@ -496,10 +511,36 @@
 
             </ScrollViewer>
 
+            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+                <Grid Margin="10,0,0,0">
+                    <StackPanel Grid.Row="2">
+                        <Label 
+                                   Content="Cel nabycia prawa"
+                                   FontWeight="Bold"
+                                   FontSize="19"         
+                                    Margin="0,10,0,0"
+                                   Style="{StaticResource label}"/>
+                        <userCon:UserControl_CelNabycia
+                            celNabyciaList="{Binding Path=DataContext.userControl_Wlasciciel.celNabyciaList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.CelNabyciaId, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            />
+                        
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
+                             
+                            Orientation="Horizontal" />
+
+
+
+                </Grid>
+
+            </ScrollViewer>
+
             <StackPanel 
                             Grid.Column="0"
                             Grid.Row="1"
-                            Grid.ColumnSpan="3"
+                            Grid.ColumnSpan="4"
                             Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"

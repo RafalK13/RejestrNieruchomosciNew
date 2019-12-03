@@ -246,7 +246,56 @@
     <Compile Include="Migrations\20191122132104_praca15.designer.cs">
       <DependentUpon>20191122132104_praca15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191128073248_praca16.cs" />
+    <Compile Include="Migrations\20191128073248_praca16.designer.cs">
+      <DependentUpon>20191128073248_praca16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128074216_praca17.cs" />
+    <Compile Include="Migrations\20191128074216_praca17.designer.cs">
+      <DependentUpon>20191128074216_praca17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128074841_praca18.cs" />
+    <Compile Include="Migrations\20191128074841_praca18.designer.cs">
+      <DependentUpon>20191128074841_praca18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128075044_praca19.cs" />
+    <Compile Include="Migrations\20191128075044_praca19.designer.cs">
+      <DependentUpon>20191128075044_praca19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128075409_praca20.cs" />
+    <Compile Include="Migrations\20191128075409_praca20.designer.cs">
+      <DependentUpon>20191128075409_praca20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128075623_praca21.cs" />
+    <Compile Include="Migrations\20191128075623_praca21.designer.cs">
+      <DependentUpon>20191128075623_praca21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128075741_praca22.cs" />
+    <Compile Include="Migrations\20191128075741_praca22.designer.cs">
+      <DependentUpon>20191128075741_praca22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128075926_praca23.cs" />
+    <Compile Include="Migrations\20191128075926_praca23.designer.cs">
+      <DependentUpon>20191128075926_praca23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128085534_praca24.cs" />
+    <Compile Include="Migrations\20191128085534_praca24.designer.cs">
+      <DependentUpon>20191128085534_praca24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128100350_praca25.cs" />
+    <Compile Include="Migrations\20191128100350_praca25.designer.cs">
+      <DependentUpon>20191128100350_praca25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191128100442_praca26.cs" />
+    <Compile Include="Migrations\20191128100442_praca26.designer.cs">
+      <DependentUpon>20191128100442_praca26.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191202093142_praca27.cs" />
+    <Compile Include="Migrations\20191202093142_praca27.designer.cs">
+      <DependentUpon>20191202093142_praca27.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
+    <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
     <Compile Include="Model\CelNabyciaZadania.cs" />
     <Compile Include="Model\CelNabyciaObiektyKom.cs" />
@@ -256,6 +305,7 @@
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
+    <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiektyKom.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaZadania.cs" />
@@ -324,6 +374,9 @@
     <Compile Include="View\UserControl2.xaml.cs">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_CelNabycia.xaml.cs">
+      <DependentUpon>UserControl_CelNabycia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_DanePodstawowe.xaml.cs">
       <DependentUpon>UserControl_DanePodstawowe.xaml</DependentUpon>
     </Compile>
@@ -372,6 +425,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_CelNabycia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

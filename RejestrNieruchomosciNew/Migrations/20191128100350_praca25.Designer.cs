@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191128100350_praca25")]
+    partial class praca25
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,6 +126,23 @@ namespace RejestrNieruchomosciNew.Migrations
                             GminaSloId = 7,
                             Nazwa = "gmina Kolbudy"
                         });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.CelNabycia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.Property<string>("Rodzaj");
+
+                    b.Property<Guid>("guid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CelNabyciaView");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.NabyciePrawa", b =>

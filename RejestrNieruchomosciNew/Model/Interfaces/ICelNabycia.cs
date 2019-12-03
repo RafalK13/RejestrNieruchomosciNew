@@ -2,7 +2,7 @@
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    interface ICelNabycia
+    public interface ICelNabycia
     {
         int Id { get; set; }
         Guid guid { get; set; }

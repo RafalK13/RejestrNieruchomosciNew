@@ -31,34 +31,11 @@ namespace RejestrNieruchomosciNew
         public Transakcje TransakcjeS { get; set; }
 
         public Podmiot Podmiot { get; set; }
-        public CelNabycia CelNabycia { get; set; }
 
         public object Clone()
         {
             return this.MemberwiseClone();
         }
-
-        //object ICloneable.Clone()
-        //{
-        //    Wladanie w = new Wladanie();
-
-        //    w.DzialkaId = DzialkaId;
-        //    w.PodmiotId = PodmiotId;
-        //    w.FormaWladaniaSloId = FormaWladaniaSloId;
-        //    w.TransakcjaId = TransakcjaId;
-        //    w.NabycieId = NabycieId;
-        //    w.Udzial = Udzial;
-
-        //    if (Podmiot != null)
-        //    {
-        //        Podmiot p = new Podmiot();
-        //        w.Podmiot = p;
-        //        p.PodmiotId = Podmiot.PodmiotId;
-        //        p.Name = Podmiot.Name;
-        //    }
-
-        //    return w;
-        //}
 
         bool IEquatable<IWladanie>.Equals(IWladanie other)
         {
@@ -73,7 +50,8 @@ namespace RejestrNieruchomosciNew
                    DataOdbDo.Equals(other.DataOdbDo) &&
                    string.Equals(NrProtPrzejecia, other.NrProtPrzejecia) &&
                    string.Equals(DataProtPrzej, other.DataProtPrzej) &&
-                   string.Equals(Scan, other.Scan);
+                   string.Equals(CelNabyciaId, other.CelNabyciaId) &&
+                   string.Equals(Scan, other.Scan); 
                    
         }
     }

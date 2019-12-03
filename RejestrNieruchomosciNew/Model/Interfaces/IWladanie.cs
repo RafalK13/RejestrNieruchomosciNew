@@ -28,29 +28,6 @@ namespace RejestrNieruchomosciNew.Model
 
         Podmiot Podmiot { get; set; }
 
-        //int WladanieId { get; set; }
-        //int? DzialkaId { get; set; }
-        //int? PodmiotId { get; set; }
 
-        //int? FormaWladaniaSloId { get; set; }
-
-        //int? TransK_Id { get; set; }
-        //int? TransS_Id { get; set; }
-
-        //DateTime? ObowPrawaOd { get; set; }
-        //DateTime? ObowPrawaDo { get; set; }
-
-        //string ProtPrzejNr { get; set; }
-        //DateTime? ProtPrzejData { get; set; }
-        //string ProtPrzejScan { get; set; }
-
-        //string ProtZwrotNr { get; set; }
-        //DateTime? ProtZwrotData { get; set; }
-        //string ProtZwrotScan { get; set; }
-
-        //DateTime? wizjaTerPrzek { get; set; }
-        //DateTime? wizjaTerZwrot { get; set; }
-
-        //Podmiot Podmiot { get; set; }
     }
 }

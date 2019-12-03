@@ -4,9 +4,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
-    public partial class praca15 : Migration
+    public partial class praca16 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Wladanie_CelNabycia_CelNabyciaId",
+            //    table: "Wladanie");
+
+            //migrationBuilder.DropTable(
+            //    name: "CelNabycia");
+
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Wladanie_CelNabyciaId",
+            //    table: "Wladanie");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             //migrationBuilder.CreateTable(
             //    name: "CelNabycia",
@@ -14,9 +28,9 @@ namespace RejestrNieruchomosciNew.Migrations
             //    {
             //        Id = table.Column<int>(nullable: false)
             //            .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-            //        guid = table.Column<Guid>(nullable: false),
             //        Nazwa = table.Column<string>(nullable: true),
-            //        Rodzaj = table.Column<string>(nullable: true)
+            //        Rodzaj = table.Column<string>(nullable: true),
+            //        guid = table.Column<Guid>(nullable: false)
             //    },
             //    constraints: table =>
             //    {
@@ -35,20 +49,6 @@ namespace RejestrNieruchomosciNew.Migrations
             //    principalTable: "CelNabycia",
             //    principalColumn: "Id",
             //    onDelete: ReferentialAction.Restrict);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            //migrationBuilder.DropForeignKey(
-            //    name: "FK_Wladanie_CelNabycia_CelNabyciaId",
-            //    table: "Wladanie");
-
-            //migrationBuilder.DropTable(
-            //    name: "CelNabycia");
-
-            //migrationBuilder.DropIndex(
-            //    name: "IX_Wladanie_CelNabyciaId",
-            //    table: "Wladanie");
         }
     }
 }
