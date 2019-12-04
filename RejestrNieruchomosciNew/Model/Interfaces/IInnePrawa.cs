@@ -26,10 +26,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         DateTime? wizjaTerPrzek { get; set; }
         DateTime? wizjaTerZwrot { get; set; }
 
-
-
         //int? NabycieId { get; set; }
-
 
         Podmiot Podmiot { get; set; }
     }

@@ -84,10 +84,10 @@
                 <ColumnDefinition MinWidth="9" MaxWidth="500" Width="320"/>
                 <ColumnDefinition MinWidth="9" MaxWidth="500" Width="320"/>-->
 
-                <ColumnDefinition />
-                <ColumnDefinition MinWidth="9" />
-                <ColumnDefinition MinWidth="9" />
-                <ColumnDefinition MinWidth="9" />
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*" MinWidth="9" />
+                <ColumnDefinition Width="4*" MinWidth="9" MaxWidth="320"/>
+                <ColumnDefinition Width="3*" MinWidth="9" />
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -117,7 +117,7 @@
                    Panel.ZIndex="13" 
                    />
 
-            <Grid Grid.Column="0" Margin="40,0">
+            <Grid Grid.Column="0">
                 <Label  Margin="10,10,0,0"
                         Content="Właściciel"
                         FontWeight="Bold"                      
@@ -126,7 +126,7 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
 
-                <conRaf:DataGridRafALL     Margin="10,50,0,0"
+                <conRaf:DataGridRafALL  Margin="10,50,0,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
                                         TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotName, ElementName=win, Mode=TwoWay}"
@@ -150,7 +150,7 @@
                             Command="{Binding userControl_Wlasciciel.podmiotAdd}" Grid.ColumnSpan="2"/>
                 <DataGrid 
                         VerticalAlignment="Top"
-                        Margin="10,160,0,0"
+                        Margin="3,160,10,0"
                         ItemsSource="{Binding userControl_Wlasciciel.wladanieList.list, Mode=TwoWay}"
                         SelectedItem="{Binding userControl_Wlasciciel.wladanieSel, Mode=TwoWay}"
                         CanUserSortColumns="False"
@@ -232,7 +232,7 @@
                                    FontSize="19"         
                                    Margin="0,0,0,0"
                                    Style="{StaticResource label}"/>
-                        <Grid Panel.ZIndex="1">
+                        <Grid Panel.ZIndex="1" Margin="0,0,10,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="5*"/>
@@ -240,7 +240,7 @@
                                 <ColumnDefinition Width="7*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="7*"/>
-                                <ColumnDefinition Width="*"/>
+                               
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -287,6 +287,7 @@
                                         Content="Skan dokumentu"    
                                         Style="{StaticResource labelTab}"/>
                             <Button Grid.Column="5" Grid.Row="1"
+                                    Margin="3"
                                     Content="Sprzedaż udziału"
                                     Command="{Binding  userControl_Wlasciciel.wlascSell}">
                                 <Button.Style>
@@ -518,7 +519,7 @@
                                    Content="Cel nabycia prawa"
                                    FontWeight="Bold"
                                    FontSize="19"         
-                                    Margin="0,10,0,0"
+                                   Margin="0,10,0,0"
                                    Style="{StaticResource label}"/>
                         <userCon:UserControl_CelNabycia
                             celNabyciaList="{Binding Path=DataContext.userControl_Wlasciciel.celNabyciaList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
