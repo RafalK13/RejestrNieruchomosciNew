@@ -27,8 +27,8 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new List<IPodmiot>( await c.Podmiot.ToListAsync());
-            
+                list = new List<IPodmiot>( await c.PodmiotView.ToListAsync());
+                
             }
         }
     }

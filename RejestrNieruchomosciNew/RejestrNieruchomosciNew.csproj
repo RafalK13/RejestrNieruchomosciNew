@@ -294,6 +294,18 @@
     <Compile Include="Migrations\20191202093142_praca27.designer.cs">
       <DependentUpon>20191202093142_praca27.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191204094238_praca28.cs" />
+    <Compile Include="Migrations\20191204094238_praca28.designer.cs">
+      <DependentUpon>20191204094238_praca28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191204100344_praca30.cs" />
+    <Compile Include="Migrations\20191204100344_praca30.designer.cs">
+      <DependentUpon>20191204100344_praca30.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191204101551_praca31.cs" />
+    <Compile Include="Migrations\20191204101551_praca31.designer.cs">
+      <DependentUpon>20191204101551_praca31.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />

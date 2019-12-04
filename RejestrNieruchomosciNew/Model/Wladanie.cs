@@ -29,8 +29,8 @@ namespace RejestrNieruchomosciNew
         [ForeignKey("TransakcjeS")]
         public int? TransS_Id { get; set; }
         public Transakcje TransakcjeS { get; set; }
-
-        public Podmiot Podmiot { get; set; }
+       
+        //public Podmiot Podmiot { get; set; }
 
         public object Clone()
         {

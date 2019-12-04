@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,8 @@ namespace RejestrNieruchomosciNew.Model
 
         int? CelNabyciaId { get; set; }
         string Udzial { get; set; }
-
-        Podmiot Podmiot { get; set; }
+       
+        //Podmiot Podmiot { get; set; }
 
 
     }

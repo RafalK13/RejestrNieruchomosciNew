@@ -12,6 +12,7 @@
              Name="win"
              d:DesignHeight="660" d:DesignWidth="1450">
     <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
         <con:IntConverter x:Key="intConverter"/>
@@ -167,8 +168,17 @@
                        >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
-                                            Binding="{Binding Podmiot.Name}"
-                                            Width="*"/>
+                                            Width="*">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding
+                                    Converter="{StaticResource parsonConvert}" >
+                                    <Binding Path="PodmiotId"/>
+                                    <Binding ElementName="win" Path="DataContext.userControl_Wlasciciel.podmiotList"/>
+                                </MultiBinding>
+
+                            
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
                         <DataGridTemplateColumn Header="Usun" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -187,7 +197,7 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
-                          IsEnabled="{Binding podmiotDetail}">
+                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
@@ -312,7 +322,7 @@
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
                                        transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
                              />
@@ -342,7 +352,8 @@
 
             </ScrollViewer>
 
-            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
+                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -512,7 +523,8 @@
 
             </ScrollViewer>
 
-            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top">
+            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
+                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
                     <StackPanel Grid.Row="2">
                         <Label 

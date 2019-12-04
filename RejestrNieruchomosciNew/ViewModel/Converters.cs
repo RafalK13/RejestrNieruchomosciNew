@@ -1,10 +1,67 @@
-﻿using System;
+﻿using RejestrNieruchomosciNew.Model;
+using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class personIdToPersonName : IMultiValueConverter
+    {
+        //public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        //{
+        //    if (value == null)
+        //        return 0;
+
+        //    if (parameter == null)
+        //        parameter = 1;
+
+        //    PodmiotList pl = parameter as PodmiotList;
+        //    int a = 13;
+        //    if (pl != null)
+        //    {
+        //        var v = pl.list.FirstOrDefault(row => row.PodmiotId == int.Parse(value.ToString()));
+
+        //        if (v != null)
+        //            return v.Name;
+        //    }
+
+        //    return null;
+        //}
+
+        //public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        //{
+        //    return false;
+        //}
+
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            int id = int.Parse(values[0].ToString());
+
+            PodmiotList pl = values[1] as PodmiotList;
+            if (pl != null)
+            {
+                var v = pl.list.FirstOrDefault(row => row.PodmiotId == id);
+                if (v != null)
+                    return v.Name;
+            }
+
+            return null;
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class resultCnvr : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

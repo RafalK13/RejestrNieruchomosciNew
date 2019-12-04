@@ -23,7 +23,7 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Dzialka> Dzialka { get; set; }
 
         public virtual DbSet<Wladanie> Wladanie { get; set; }
-        public virtual DbSet<Podmiot> Podmiot { get; set; }
+        public virtual DbQuery<Podmiot> PodmiotView { get; set; }
         public virtual DbSet<PlatnoscUW> PlatnoscUW { get; set; }
         public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
         public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }

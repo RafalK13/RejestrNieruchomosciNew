@@ -66,9 +66,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void testWladanieSel()
         {
             if (wladanieSel != null)
-                podmiotDetail = true;
+            {
+                if(wladanieSel.DzialkaId != null)
+                    podmiotDetail = true;
+            }
             else
                 podmiotDetail = false;
+            
 
         }
 
@@ -115,13 +119,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
             initButtons();
-            podmiotDetail = false;
+            
+           
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
             }
+
+            podmiotDetail = false;
+            int a = 13;
         }
 
         private void initButtons()
@@ -133,8 +141,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             podmiotDel = new RelayCommand(onPodmiotDel);
             onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
             wlascSell = new RelayCommand(onWlascSell);
-
-
         }
 
         private void onWlascSell()
@@ -172,13 +178,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = selectedPodmId;
-                    wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == selectedPodmId);
+                    //wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == selectedPodmId);
 
                     wladanieList.list.Add(new Wladanie()
                     {
                         DzialkaId = wladanie.DzialkaId,
                         PodmiotId = wladanie.PodmiotId,
-                        Podmiot = wladanie.Podmiot
+                        //Podmiot = wladanie.Podmiot
                     });
 
                     podmiotName = string.Empty;
@@ -195,7 +201,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            int a = 13;
 
             platnosci.save();
             wladanieList.saveWladanie();

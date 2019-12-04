@@ -25,8 +25,10 @@ namespace RejestrNieruchomosciNew.Model
             {
                 if (userPrev.dzialkaSel != null)
                 {
-                    list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                                                                                                          && r.TransS_Id == null ));
+                    //list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
+                    //                                                                                      && r.TransS_Id == null ));
+                    list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
+                                                                                                          && r.TransS_Id == null));
 
                     listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
@@ -99,7 +101,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
-                    i.Podmiot = null;
+                    //i.Podmiot = null;
                     c.Wladanie.Add((Wladanie)i);
                 }
                 c.SaveChanges();
