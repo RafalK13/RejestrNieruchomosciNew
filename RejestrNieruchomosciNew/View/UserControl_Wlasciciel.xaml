@@ -87,7 +87,7 @@
 
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*" MinWidth="9" />
-                <ColumnDefinition Width="4*" MinWidth="9" MaxWidth="320"/>
+                <ColumnDefinition Width="4*" MinWidth="9"/>
                 <ColumnDefinition Width="3*" MinWidth="9" />
 
             </Grid.ColumnDefinitions>

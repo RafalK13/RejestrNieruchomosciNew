@@ -25,6 +25,7 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Wladanie> Wladanie { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
         public virtual DbSet<PlatnoscUW> PlatnoscUW { get; set; }
+        public virtual DbSet<PlatnoscInnePrawa> PlatnoscInnePrawa { get; set; }
         public virtual DbSet<NazwaCzynnosciSlo> NazwaCzynnosciSlo { get; set; }
         public virtual DbSet<RodzajDokumentuSlo> RodzajDokumentuSlo { get; set; }
         public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
@@ -33,6 +34,12 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<NabyciePrawa> NabyciePrawa { get; set; }
 
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
+
+        public virtual DbSet<InnePrawa> InnePrawa { get; set; }
+
+        public virtual DbSet<DecyzjeAdministracyjne> DecyzjeAdministracyjne { get; set; }
+
+
 
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 

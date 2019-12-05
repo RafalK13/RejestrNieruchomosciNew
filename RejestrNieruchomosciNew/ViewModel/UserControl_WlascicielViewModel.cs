@@ -110,7 +110,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialka dzialkaSel { get; set; }
 
-        public IPlatnoscUW platnosci { get; set; }
+        public PlatnoscUW platnosci { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
 
@@ -129,7 +129,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
 
             podmiotDetail = false;
-            int a = 13;
+           
         }
 
         private void initButtons()
@@ -178,13 +178,11 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = selectedPodmId;
-                    //wladanie.Podmiot = (Podmiot)podmiotList.list.First(r => r.PodmiotId == selectedPodmId);
-
+                   
                     wladanieList.list.Add(new Wladanie()
                     {
                         DzialkaId = wladanie.DzialkaId,
                         PodmiotId = wladanie.PodmiotId,
-                        //Podmiot = wladanie.Podmiot
                     });
 
                     podmiotName = string.Empty;
@@ -201,7 +199,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-
             platnosci.save();
             wladanieList.saveWladanie();
         }

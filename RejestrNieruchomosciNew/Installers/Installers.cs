@@ -5,11 +5,6 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using RejestrNieruchomosciNew.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Installers
 {
@@ -74,7 +69,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Transakcja>());
             container.Register(Component.For<UserControl_TransViewModel>());
 
-            container.Register(Component.For<IPlatnoscUW>().ImplementedBy<PlatnoscUW>().LifeStyle.Transient);
+            container.Register(Component.For<PlatnoscUW>().LifeStyle.Transient);
 
             container.Register(Component.For<ICelNabyciaList>().ImplementedBy<CelNabyciaList>());
 

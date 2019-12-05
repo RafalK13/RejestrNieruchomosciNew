@@ -6,6 +6,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     {
         int InnePrawaId { get; set; }
         int? DzialkaId { get; set; }
+        
         int? PodmiotId { get; set; }
 
         int? RodzajInnegoPrawaSloId { get; set; }
@@ -15,10 +16,11 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 
         DateTime? DataObowOd { get; set; }
         DateTime? DataObowDo { get; set; }
-        string ProtPrzekNr { get; set; }
-        DateTime? ProtPrzekData { get; set; }
-        string ProtPrzekScan { get; set; }
 
+        string ProtPrzejkNr { get; set; }
+        DateTime? ProtPrzejData { get; set; }
+        string ProtPrzejScan { get; set; }
+        
         string ProtZwrotNr { get; set; }
         DateTime? ProtZwrotData { get; set; }
         string ProtZwrotScan { get; set; }
@@ -26,8 +28,13 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         DateTime? wizjaTerPrzek { get; set; }
         DateTime? wizjaTerZwrot { get; set; }
 
-        //int? NabycieId { get; set; }
+        int? CelNabyciaId { get; set; }
 
-        Podmiot Podmiot { get; set; }
+        //int? PlatnosciId { get; set; }
+
+        string WarunkiRealizacji { get; set; }
+
+        int? DecyzjeAdministracyjneId { get; set; }
+
     }
 }

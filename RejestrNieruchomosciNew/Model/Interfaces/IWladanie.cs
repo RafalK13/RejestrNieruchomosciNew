@@ -27,8 +27,5 @@ namespace RejestrNieruchomosciNew.Model
         int? CelNabyciaId { get; set; }
         string Udzial { get; set; }
        
-        //Podmiot Podmiot { get; set; }
-
-
     }
 }

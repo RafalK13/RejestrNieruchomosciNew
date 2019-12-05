@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191205081207_praca32")]
+    partial class praca32
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,82 +128,6 @@ namespace RejestrNieruchomosciNew.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.DecyzjeAdministracyjne", b =>
-                {
-                    b.Property<int>("DecyzjeAdministracyjneId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DataDecyzji");
-
-                    b.Property<string>("Numer");
-
-                    b.Property<int?>("PodmiotId");
-
-                    b.Property<string>("Przedmiot");
-
-                    b.Property<string>("Skan");
-
-                    b.HasKey("DecyzjeAdministracyjneId");
-
-                    b.ToTable("DecyzjeAdministracyjne");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
-                {
-                    b.Property<int>("InnePrawaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CelNabyciaId");
-
-                    b.Property<DateTime?>("DataObowDo");
-
-                    b.Property<DateTime?>("DataObowOd");
-
-                    b.Property<int?>("DecyzjeAdministracyjneId");
-
-                    b.Property<int?>("DzialkaId");
-
-                    b.Property<int?>("PodmiotId");
-
-                    b.Property<DateTime?>("ProtPrzejData");
-
-                    b.Property<string>("ProtPrzejScan");
-
-                    b.Property<string>("ProtPrzejkNr");
-
-                    b.Property<DateTime?>("ProtZwrotData");
-
-                    b.Property<string>("ProtZwrotNr");
-
-                    b.Property<string>("ProtZwrotScan");
-
-                    b.Property<int?>("RodzajInnegoPrawaSloId");
-
-                    b.Property<int?>("TransK_Id");
-
-                    b.Property<int?>("TransS_Id");
-
-                    b.Property<string>("WarunkiRealizacji");
-
-                    b.Property<DateTime?>("wizjaTerPrzek");
-
-                    b.Property<DateTime?>("wizjaTerZwrot");
-
-                    b.HasKey("InnePrawaId");
-
-                    b.HasIndex("DzialkaId");
-
-                    b.HasIndex("RodzajInnegoPrawaSloId");
-
-                    b.HasIndex("TransK_Id");
-
-                    b.HasIndex("TransS_Id");
-
-                    b.ToTable("InnePrawa");
-                });
-
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.NabyciePrawa", b =>
                 {
                     b.Property<int>("NabyciePrawaId")
@@ -219,37 +145,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("NabyciePrawaId");
 
                     b.ToTable("NabyciePrawa");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
-                {
-                    b.Property<int>("PlatnoscInnePrawaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("InnePrawaId");
-
-                    b.Property<int?>("Okres");
-
-                    b.Property<double?>("Stawka");
-
-                    b.Property<double?>("Wartosc");
-
-                    b.Property<double?>("Wysokosc");
-
-                    b.Property<int?>("rok1");
-
-                    b.Property<int?>("rok2");
-
-                    b.Property<int?>("rok3");
-
-                    b.HasKey("PlatnoscInnePrawaId");
-
-                    b.HasIndex("InnePrawaId")
-                        .IsUnique()
-                        .HasFilter("[InnePrawaId] IS NOT NULL");
-
-                    b.ToTable("PlatnoscInnePrawa");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajDokumentuSlo", b =>
@@ -280,19 +175,6 @@ namespace RejestrNieruchomosciNew.Migrations
                             RodzajDokumentuSloId = 3,
                             Nazwa = "Postanowienie sądu"
                         });
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajInnegoPrawaSlo", b =>
-                {
-                    b.Property<int>("RodzajInnegoPrawaSloId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Nazwa");
-
-                    b.HasKey("RodzajInnegoPrawaSloId");
-
-                    b.ToTable("RodzajInnegoPrawaSlo");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo", b =>
@@ -637,32 +519,6 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Dzialka")
-                        .WithMany("InnePrawa")
-                        .HasForeignKey("DzialkaId");
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.RodzajInnegoPrawaSlo", "RodzajInnegoPrawaSlo")
-                        .WithMany("InnePrawa")
-                        .HasForeignKey("RodzajInnegoPrawaSloId");
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeK_InnePr")
-                        .WithMany()
-                        .HasForeignKey("TransK_Id");
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeS_InnePr")
-                        .WithMany()
-                        .HasForeignKey("TransS_Id");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Model.InnePrawa", "InnePrawa")
-                        .WithOne("PlatnoscInnePrawa")
-                        .HasForeignKey("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", "InnePrawaId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>

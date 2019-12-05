@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191205122236_praca33")]
+    partial class praca33
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,6 +165,8 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("DzialkaId");
 
+                    b.Property<int?>("PlatnosciId");
+
                     b.Property<int?>("PodmiotId");
 
                     b.Property<DateTime?>("ProtPrzejData");
@@ -190,8 +194,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.Property<DateTime?>("wizjaTerZwrot");
 
                     b.HasKey("InnePrawaId");
-
-                    b.HasIndex("DzialkaId");
 
                     b.HasIndex("RodzajInnegoPrawaSloId");
 
@@ -641,10 +643,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
                 {
-                    b.HasOne("RejestrNieruchomosciNew.Dzialka")
-                        .WithMany("InnePrawa")
-                        .HasForeignKey("DzialkaId");
-
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajInnegoPrawaSlo", "RodzajInnegoPrawaSlo")
                         .WithMany("InnePrawa")
                         .HasForeignKey("RodzajInnegoPrawaSloId");

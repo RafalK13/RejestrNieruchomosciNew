@@ -1,24 +1,18 @@
 ﻿using GalaSoft.MvvmLight;
-using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Windows;
 
-namespace RejestrNieruchomosciNew
+namespace RejestrNieruchomosciNew.Model
 {
-    public partial class PlatnoscUW : ViewModelBase, IPlatnosc
+    public class PlatnoscInnePrawa : ViewModelBase, IPlatnosc
     {
-        public int PlatnoscUWId { get; set; }
-        public int? DzialkaId { get; set; }
+        public int PlatnoscInnePrawaId { get; set; }
+        public int? InnePrawaId { get; set; }
 
         private double? _Stawka;
         public double? Stawka
         {
-            get
-=> _Stawka; set
+            get=> _Stawka; set
             {
                 _Stawka = value;
                 RaisePropertyChanged("Stawka");
@@ -88,21 +82,20 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-        public Dzialka Dzialka { get; set; }
+        public InnePrawa InnePrawa{ get; set; }
 
-        public PlatnoscUW() { }
+        public PlatnoscInnePrawa() { }
 
-        public PlatnoscUW(UserControl_PreviewViewModel prev)
+        public PlatnoscInnePrawa(UserControl_PreviewViewModel prev)
         {
             if (prev.dzialkaSel != null)
             {
                 using (Context c = new Context())
                 {
-                    var p = c.PlatnoscUW.FirstOrDefault(row => row.DzialkaId == prev.dzialkaSel.DzialkaId);
+                    var p = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == prev.dzialkaSel.DzialkaId);
                     if (p != null)
                     {
-                        PlatnoscUWId = p.PlatnoscUWId;
-                        DzialkaId = p.DzialkaId;
+                        InnePrawaId = p.InnePrawaId;
                         Stawka = p.Stawka;
                         Okres = p.Okres;
                         Wartosc = p.Wartosc;
@@ -113,12 +106,12 @@ namespace RejestrNieruchomosciNew
                         rok3 = p.rok3;
                     }
                     else
-                        DzialkaId = prev.dzialkaSel.DzialkaId;
+                        InnePrawaId = prev.dzialkaSel.DzialkaId;
                 }
             }
         }
 
-        private bool isEqual(PlatnoscUW p)
+        private bool isEqual(PlatnoscInnePrawa p)
         {
             return this.Stawka == Stawka &&
                    this.Okres == Okres &&
@@ -129,14 +122,14 @@ namespace RejestrNieruchomosciNew
                    this.rok3 == rok3;
         }
 
-        public PlatnoscUW clone()
+        public PlatnoscInnePrawa clone()
         {
-            return (PlatnoscUW)this.MemberwiseClone();
+            return (PlatnoscInnePrawa)this.MemberwiseClone();
         }
 
         public void cleanObj()
         {
-            this.DzialkaId = null;
+            this.InnePrawaId = null;
             this.Okres = null;
             this.rok1 = null;
             this.rok2 = null;
@@ -159,7 +152,7 @@ namespace RejestrNieruchomosciNew
 
         public void save()
         {
-            if (PlatnoscUWId == 0)
+            if (PlatnoscInnePrawaId == 0)
             {
                 if (isNull() == false)
                     addRow(this);
@@ -170,12 +163,12 @@ namespace RejestrNieruchomosciNew
                 {
                     if (isNull())
                     {
-                        c.PlatnoscUW.Remove(this);
+                        c.PlatnoscInnePrawa.Remove(this);
                         c.SaveChanges();
                     }
                     else
                     {
-                        var v = c.PlatnoscUW.FirstOrDefault(row => row.PlatnoscUWId == PlatnoscUWId);
+                        var v = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == PlatnoscInnePrawaId);
 
                         if (v != null)
                         {
@@ -187,29 +180,29 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-        private void addRow(PlatnoscUW platnoscUW)
+        private void addRow(PlatnoscInnePrawa platnoscInnePrawa)
         {
             using (Context c = new Context())
             {
-                c.PlatnoscUW.Add((PlatnoscUW)platnoscUW);
+                c.PlatnoscInnePrawa.Add( platnoscInnePrawa);
                 c.SaveChanges();
             }
         }
 
-        private void modRow(PlatnoscUW platnoscUW)
+        private void modRow(PlatnoscInnePrawa platnoscInnePrawa)
         {
             using (Context c = new Context())
             {
-                c.PlatnoscUW.Update((PlatnoscUW)platnoscUW);
+                c.PlatnoscInnePrawa.Update(platnoscInnePrawa);
                 c.SaveChanges();
             }
         }
 
-        private void delRow(PlatnoscUW platnoscUW)
+        private void delRow(PlatnoscInnePrawa platnoscInnePrawa)
         {
             using (Context c = new Context())
             {
-                c.PlatnoscUW.Remove((PlatnoscUW)platnoscUW);
+                c.PlatnoscInnePrawa.Remove(platnoscInnePrawa);
                 c.SaveChanges();
             }
         }

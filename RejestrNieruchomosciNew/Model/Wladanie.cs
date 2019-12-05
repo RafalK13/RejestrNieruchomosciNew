@@ -22,13 +22,13 @@ namespace RejestrNieruchomosciNew
         public string Scan { get; set; }
         public int? CelNabyciaId { get; set; }
 
-        [ForeignKey("TransakcjeK")]
+        [ForeignKey("TransakcjeK_Wlad")]
         public int? TransK_Id { get; set; }
-        public Transakcje TransakcjeK { get; set; }
+        public Transakcje TransakcjeK_Wlad { get; set; }
 
-        [ForeignKey("TransakcjeS")]
+        [ForeignKey("TransakcjeS_Wlad")]
         public int? TransS_Id { get; set; }
-        public Transakcje TransakcjeS { get; set; }
+        public Transakcje TransakcjeS_Wlad { get; set; }
        
         //public Podmiot Podmiot { get; set; }
 
@@ -52,7 +52,6 @@ namespace RejestrNieruchomosciNew
                    string.Equals(DataProtPrzej, other.DataProtPrzej) &&
                    string.Equals(CelNabyciaId, other.CelNabyciaId) &&
                    string.Equals(Scan, other.Scan); 
-                   
         }
     }
 

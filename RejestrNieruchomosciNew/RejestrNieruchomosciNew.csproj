@@ -306,6 +306,22 @@
     <Compile Include="Migrations\20191204101551_praca31.designer.cs">
       <DependentUpon>20191204101551_praca31.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191205081207_praca32.cs" />
+    <Compile Include="Migrations\20191205081207_praca32.designer.cs">
+      <DependentUpon>20191205081207_praca32.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191205122236_praca33.cs" />
+    <Compile Include="Migrations\20191205122236_praca33.designer.cs">
+      <DependentUpon>20191205122236_praca33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191205124750_praca34.cs" />
+    <Compile Include="Migrations\20191205124750_praca34.designer.cs">
+      <DependentUpon>20191205124750_praca34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191205125410_praca35.cs" />
+    <Compile Include="Migrations\20191205125410_praca35.designer.cs">
+      <DependentUpon>20191205125410_praca35.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -314,9 +330,11 @@
     <Compile Include="Model\CelNabycia.cs" />
     <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
+    <Compile Include="Model\DecyzjeAdministracyjne.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
+    <Compile Include="Model\InnePrawa.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiektyKom.cs" />
@@ -324,18 +342,20 @@
     <Compile Include="Model\Interfaces\ICelNabycia.cs" />
     <Compile Include="Model\Interfaces\IChangeViewModel.cs" />
     <Compile Include="Model\Interfaces\IContrlosVisibling.cs" />
+    <Compile Include="Model\Interfaces\IDecyzjeAdministracyjne.cs" />
     <Compile Include="Model\Interfaces\IDzialka.cs" />
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
+    <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajPlatnosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajTransakcjiSlo.cs" />
     <Compile Include="Model\Interfaces\IObreb.cs" />
     <Compile Include="Model\Interfaces\IObrebClass.cs" />
     <Compile Include="Model\Interfaces\IObrebList.cs" />
-    <Compile Include="Model\Interfaces\IPlatnoscUW.cs" />
+    <Compile Include="Model\Interfaces\IPlatnosc.cs" />
     <Compile Include="Model\Interfaces\IPodmiot.cs" />
     <Compile Include="Model\Interfaces\IPodmiotList.cs" />
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
@@ -345,6 +365,8 @@
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
+    <Compile Include="Model\PlatnoscInnePrawa.cs" />
+    <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />
     <Compile Include="Model\NazwaCzynnosciList.cs" />
     <Compile Include="Model\NabyciePrawa.cs" />
@@ -419,7 +441,6 @@
     <Compile Include="Model\DzielnicaSlo.cs" />
     <Compile Include="Model\FormaWladaniaSlo.cs" />
     <Compile Include="Model\GminaSlo.cs" />
-    <Compile Include="Model\Interfaces\InnePrawa.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

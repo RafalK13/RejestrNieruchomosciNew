@@ -115,11 +115,10 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-
-        [InverseProperty("TransakcjeK")]
-        public ICollection<Wladanie> WladanieK { get; set; }
-        [InverseProperty("TransakcjeS")]
-        public ICollection<Wladanie> WladanieS { get; set; }
+        [InverseProperty("TransakcjeK_Wlad")]
+        public ICollection<Wladanie> TransakcjeK_Wlad { get; set; }
+        [InverseProperty("TransakcjeS_Wlad")]
+        public ICollection<Wladanie> TransakcjeS_Wlad { get; set; }
 
         public event EventHandler onChange;
 
