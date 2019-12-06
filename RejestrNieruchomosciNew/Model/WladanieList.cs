@@ -1,11 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.ViewModel;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -40,7 +37,6 @@ namespace RejestrNieruchomosciNew.Model
                 }
             }
         }
-
 
         public void saveWladanie()
         {
@@ -132,19 +128,6 @@ namespace RejestrNieruchomosciNew.Model
                 }
                 c.SaveChanges();
             }
-        }
-
-        public void AddRow(IWladanie wlad)
-        {
-            
-        }
-        public void DelRow(IWladanie wlad)
-        {
-
-        }
-        public void ModRow(IWladanie wlad)
-        {
-
         }
     }
 }

@@ -49,6 +49,7 @@
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="Margin" Value="15,30"></Setter>
         </Style>
+        
         <Style x:Key="comboBox" TargetType="ComboBox">
             <Setter Property="Margin" Value="10,5,0,0"></Setter>
             <Setter Property="Width" Value="150"></Setter>
@@ -119,7 +120,7 @@
                    />
 
             <Grid Grid.Column="0">
-                <Label  Margin="10,10,0,0"
+                <Label  Margin="10,10,10,0"
                         Content="Właściciel"
                         FontWeight="Bold"                      
                         FontSize="19"
@@ -549,8 +550,8 @@
                 </Grid>
 
             </ScrollViewer>
-
-            <StackPanel 
+        </Grid>
+        <StackPanel 
                             Grid.Column="0"
                             Grid.Row="1"
                             Grid.ColumnSpan="4"
@@ -559,21 +560,16 @@
                             VerticalAlignment="Bottom"
                             >
                 <Button Content="Add"
-                                    Width="130"
-                                    Height="25"
-                                    Margin="20,0,20,0"
+                                    Style="{StaticResource buttonCommon}"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
-
                 <Button Content="Czyść"
-                                    Width="130"
-                                    Height="25"
-                                    Margin="20,0,20,0"
+                                   Style="{StaticResource buttonCommon}"
                                     Command="{Binding userControl_Wlasciciel.wlascCls}"
                                     />
             </StackPanel>
-        </Grid>
+       
     </Grid>
 
 </UserControl>

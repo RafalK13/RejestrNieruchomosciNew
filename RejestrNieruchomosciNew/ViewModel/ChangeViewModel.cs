@@ -13,6 +13,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
         public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
         public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+        public UserControl_InnePrawaViewModel userControl_InnePrawa { get; set; }
 
         public bool tabsVisible { get; set; }
 

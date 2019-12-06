@@ -51,7 +51,23 @@ namespace RejestrNieruchomosciNew.Model
 
         bool IEquatable<IInnePrawa>.Equals(IInnePrawa other)
         {
-            throw new NotImplementedException();
+            return InnePrawaId.Equals(other.InnePrawaId) &&
+                   DzialkaId.Equals(other.DzialkaId) &&
+                   PodmiotId.Equals(other.PodmiotId) &&
+                   RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
+                   DataObowOd.Equals(other.DataObowOd) &&
+                   DataObowDo.Equals(other.DataObowDo) &&
+                   ProtPrzejkNr.Equals(other.ProtPrzejkNr) &&
+                   ProtPrzejData.Equals(other.ProtPrzejData) &&
+                   ProtPrzejData.Equals(other.ProtPrzejData) &&
+                   ProtZwrotNr.Equals(other.ProtZwrotNr) &&
+                   ProtZwrotData.Equals(other.ProtZwrotData) &&
+                   ProtZwrotScan.Equals(other.ProtZwrotScan) &&
+                   wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
+                   wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
+                   CelNabyciaId.Equals(other.CelNabyciaId) &&
+                   WarunkiRealizacji.Equals(other.WarunkiRealizacji) &&
+                   DecyzjeAdministracyjneId.Equals(other.DecyzjeAdministracyjneId);
         }
     }
 }

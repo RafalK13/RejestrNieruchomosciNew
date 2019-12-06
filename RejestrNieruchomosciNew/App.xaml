@@ -9,8 +9,17 @@
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <!--StartupUri="View/MainView.xaml" Startup="Application_Startup">-->
   <Application.Resources>
-    <ResourceDictionary>
-      <!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:RejestrNieruchomosciNew.ViewModel" />-->
-    </ResourceDictionary>
+       
+            <Style x:Key="buttonCommon" TargetType="Button">
+                <Setter Property="Width" Value="130"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Margin" Value="20,0,20,20"></Setter>
+            </Style>
+
+       
+
+    <!--<ResourceDictionary>
+      --><!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:RejestrNieruchomosciNew.ViewModel" />--><!--
+    </ResourceDictionary>-->
   </Application.Resources>
 </Application>

@@ -3,10 +3,203 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             Name="InnePrawa"
+             d:DesignHeight="660" d:DesignWidth="1450">
     <Grid>
+        <Grid.Resources>
+
+            <con:personIdToPersonName x:Key="parsonConvert"/>
+            <con:DateConverter x:Key="dateConvert"/>
+            <con:DoubleConverter x:Key="doubleConverter"/>
+            <con:IntConverter x:Key="intConverter"/>
+            <con:stringToDecimal x:Key="convStrToDec"/>
+
+            <Style x:Key="gridSplitter" TargetType="GridSplitter">
+                <Setter Property="Width" Value="5"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="Panel.ZIndex" Value="13"/>
+            </Style>
+            <Style x:Key="scrollViewer" TargetType="ScrollViewer">
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                <Setter Property="IsEnabled" Value="{Binding userControl_Wlasciciel.podmiotDetail}"/>
+            </Style>
+            <Style x:Key="label" TargetType="Label">
+                <Setter Property="Margin" Value="10,10,0,0"></Setter>
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="*" MinWidth="9"/>
+            <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="*" MinWidth="9" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Style="{StaticResource gridSplitter}"
+                   />
+        <GridSplitter 
+                   Grid.Column ="1"  
+                   Style="{StaticResource gridSplitter}"
+                   />
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Style="{StaticResource gridSplitter}"
+                   />
+        <GridSplitter 
+                   Grid.Column ="3"  
+                   Style="{StaticResource gridSplitter}"
+                   />
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label      Grid.Row="0"
+                        Content="Podmiot władający"
+                        FontWeight="Bold"                      
+                        FontSize="19"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
+            <conRaf:DataGridRafALL  
+                        Grid.Row="1"
+                        Margin="10,0,10,0"
+                        x:Name="conRaf1"
+                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                        TekstPropALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotName, ElementName=InnePrawa, Mode=TwoWay}"
+                        itemSourceRafALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotList.listView, ElementName=InnePrawa}"
+                        fontSizeRafALL="14"
+                        heightRafALL="25"
+                        HorizontalAlignment="Stretch"
+                        colNameRaf="nazwa"
+                        selectedIdRafALL="{Binding Path=DataContext.userControl_InnePrawa.selectedPodmId, ElementName=InnePrawa,Mode=TwoWay}"
+                        />
+            <Button     Grid.Row="1"
+                        Margin="0,50,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Content="Dodaj"
+                        Height="30"
+                        Width="100"
+                        Command="{Binding userControl_InnePrawa.podmiotAdd}"
+                        />
             
+            <DataGrid   Grid.Row="1"
+                        VerticalAlignment="Top"
+                        Margin="3,100,10,0"
+                        ItemsSource="{Binding userControl_InnePrawa.innePrawaList.list, Mode=TwoWay}"
+                        SelectedItem="{Binding userControl_InnePrawa.innePrawaSel, Mode=TwoWay}"
+                        CanUserSortColumns="False"
+                        FrozenColumnCount="1" 
+                        IsReadOnly="True"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False" 
+                        CanUserReorderColumns="False"
+                        HeadersVisibility="Column"
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        VerticalScrollBarVisibility="Auto"
+                        AutoGenerateColumns="False"
+                       >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Podmiot" 
+                                        Width="*">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding
+                                    Converter="{StaticResource parsonConvert}" >
+                                <Binding Path="PodmiotId"/>
+                                <Binding ElementName="InnePrawa" Path="DataContext.userControl_InnePrawa.podmiotList"/>
+                            </MultiBinding>
+
+
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                        <DataGridTemplateColumn Header="Usun" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button 
+                                            Height="20" 
+                                            Width="20" 
+                                            Content="x"                                                           
+                                            Foreground="Red"
+                                            BorderBrush="White"
+                                            Command="{Binding Path=DataContext.userControl_InnePrawa.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+
+        <ScrollViewer Grid.Column="1" 
+                      Style="{StaticResource scrollViewer}"
+                      >
+            <Grid>
+            </Grid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="2" 
+                      Style="{StaticResource scrollViewer}"
+                      >
+            <Grid>
+
+            </Grid>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="3" 
+                      Style="{StaticResource scrollViewer}"
+                      >
+            <Grid>
+
+            </Grid>
+        </ScrollViewer>
+        
+        <ScrollViewer Grid.Column="4" 
+                      Style="{StaticResource scrollViewer}"
+                      >
+            <Grid>
+
+            </Grid>
+        </ScrollViewer>
+
+        <StackPanel 
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="5"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            >
+            <Button Content="Add"
+                                    Style="{StaticResource buttonCommon}"
+                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"
+                                    com:CloseOnClickBehaviour.IsEnabled="True"/>
+
+            <Button Content="Czyść"
+                                   Style="{StaticResource buttonCommon}"
+                                    Command="{Binding userControl_Wlasciciel.wlascCls}"
+                                    />
+            <Button  Content="Anuluj"
+                                    Style="{StaticResource buttonCommon}"
+                                    IsCancel="True"
+                                    com:CloseOnClickBehaviour.IsEnabled="True"
+                                    />
+        </StackPanel>
     </Grid>
 </UserControl>

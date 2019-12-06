@@ -9,5 +9,7 @@ namespace RejestrNieruchomosciNew.View
         {
             InitializeComponent();
         }
+
+
     }
 }

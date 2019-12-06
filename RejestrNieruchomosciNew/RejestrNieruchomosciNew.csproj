@@ -328,13 +328,13 @@
     <Compile Include="Model\CelNabyciaZadania.cs" />
     <Compile Include="Model\CelNabyciaObiektyKom.cs" />
     <Compile Include="Model\CelNabycia.cs" />
-    <Compile Include="Model\Classes.cs" />
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DecyzjeAdministracyjne.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
     <Compile Include="Model\InnePrawa.cs" />
+    <Compile Include="Model\InnePrawaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiektyKom.cs" />
@@ -347,6 +347,7 @@
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
+    <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
@@ -369,7 +370,6 @@
     <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />
     <Compile Include="Model\NazwaCzynnosciList.cs" />
-    <Compile Include="Model\NabyciePrawa.cs" />
     <Compile Include="Model\ObrebClass.cs" />
     <Compile Include="Model\ObrebList.cs" />
     <Compile Include="Model\ObservableCon.cs" />
@@ -394,6 +394,7 @@
     <Compile Include="ViewModel\ModViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InnePrawaViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\UserControl_TransViewModel.cs" />
     <Compile Include="ViewModel\UserControl_WlascicielViewModel.cs" />
