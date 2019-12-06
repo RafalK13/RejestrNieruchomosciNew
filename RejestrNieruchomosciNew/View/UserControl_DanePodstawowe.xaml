@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="300"
+             d:DesignHeight="500" d:DesignWidth="1000"
              >
     <UserControl.Resources>
         <loc:resultCnvr x:Key="conv"/>
@@ -62,86 +63,115 @@
             </Grid>
         </ControlTemplate>
     </UserControl.Resources>
-
-    <Grid ShowGridLines="False" Margin="0,0,0,-35" >
+    <Grid ShowGridLines="False" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="510"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Numer działki"
-               Margin="0,0,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
-                 Margin="0,25,0,0"
+            <Label Grid.Column="0" Grid.Row="0"
+                Content="Działka"
+                FontWeight="Bold"                      
+                FontSize="19"
+                Height="35"
+                VerticalAlignment="Top"
+                Style="{StaticResource label}" HorizontalAlignment="Left"
+                />
+
+            <Label Grid.Row="1" Grid.Column="0"
+                Style="{StaticResource label}"
+                Content="Numer działki"
+                />
+            <TextBox Grid.Row="1" Grid.Column="1"
                  Template="{StaticResource textBoxTemp}"
                  Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                 >
-        </TextBox>
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Gmina"
-               Margin="0,55,0,0"/>
-        <ComboBox Grid.Row="1" Grid.Column="1"
-                Margin="0,80,0,0"
-                Height="30"
-                VerticalAlignment="Top"
-                  
-                SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}"
-                Template="{StaticResource comboBoxTemp}">
+                     Style="{StaticResource tekstBox}"
+                 />
 
-        </ComboBox>
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Obręb"
-               Margin="0,110,0,0"/>
-        <ComboBox Grid.Row="1" Grid.Column="1"
-                Margin="0,135,0,0"
-                Height="30"
-                VerticalAlignment="Top"
-                SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
-                Template="{StaticResource comboBoxTemp}"
-                >
-        </ComboBox>
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Numer KW zrob."
-               Margin="0,165,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"        
-                 Margin="0,190,0,0"
-                 Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
-                 Template="{StaticResource textBoxTemp}">
-        </TextBox>
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Numer KW akt."
-               Margin="0,220,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"                
-                Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
-                Margin="0,245,0,0"
-                Template="{StaticResource textBoxTemp}">
-        </TextBox>
-        <Label Grid.Row="1" Grid.Column="1"
-               Style="{StaticResource label}"
-               Content="Powierzchnia"
-               Margin="0,275,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
-                Style="{StaticResource tekstBox}"
-                Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource convStrToDec}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
-                Margin="0,300,0,0"
-                Template="{StaticResource textBoxTemp}">
+            <Label Grid.Row="2" Grid.Column="0"
+                   Style="{StaticResource label}"
+                   Content="Gmina"
+                   />
+        <ComboBox  Grid.Row="2" Grid.Column="1"
+                   Height="30"
+                   VerticalAlignment="Top"
+                   SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                   ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}"
+                   Template="{StaticResource comboBoxTemp}"
+                   />
+        <Label Grid.Row="3" Grid.Column="0"
+                   Style="{StaticResource label}"
+                   Content="Obręb"
+                   />
+        <ComboBox Grid.Row="3" Grid.Column="1"
+                  Height="30"
+                  VerticalAlignment="Top"
+                  SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
+                  Template="{StaticResource comboBoxTemp}"
+                  />
+
+        <Label     Grid.Row="4" Grid.Column="0"
+                    Style="{StaticResource label}"
+                    Content="Numer KW zrob."
+                    />
+        <TextBox    Grid.Row="4" Grid.Column="1"        
+                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                    Style="{StaticResource tekstBox}"
+                    Template="{StaticResource textBoxTemp}"
+                    />
+        <Label      Grid.Row="5" Grid.Column="0"
+                    Style="{StaticResource label}"
+                    Content="Numer KW akt."
+                    />
+        <TextBox    Grid.Row="5" Grid.Column="1"                
+                    Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                    Style="{StaticResource tekstBox}"
+                    Template="{StaticResource textBoxTemp}"/>
+        <Label      Grid.Row="6" Grid.Column="0"
+                    Style="{StaticResource label}"
+                    Content="Powierzchnia"/>
+        <TextBox    Grid.Row="6" Grid.Column="1"
+                    Style="{StaticResource tekstBox}"
+                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource convStrToDec}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                    Template="{StaticResource textBoxTemp}">
         </TextBox>
 
-    </Grid>
+        <StackPanel Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="3"
+                    Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                    <Button Content="Add"
+                            Style="{StaticResource buttonCommon}"
+                            IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
+                            Command="{Binding userControl_AddDanePod.OnAddDzialka}"
+                            com:CloseOnClickBehaviour.IsEnabled="True"/>
+
+                    <Button Content="Czyść"
+                            Style="{StaticResource buttonCommon}"
+                            Command="{Binding userControl_Wlasciciel.wlascCls}"/>
+                    <Button 
+                        Style="{StaticResource buttonCommon}"
+                        IsCancel="True"
+                        com:CloseOnClickBehaviour.IsEnabled="True"
+                        Content="Anuluj"/>  
+
+        </StackPanel>
+        </Grid>
 </UserControl>

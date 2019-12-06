@@ -55,11 +55,6 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            //modelBuilder.Ignore<CelNabycia>();
-
-            //modelBuilder.Query<CelNabycia>().ToView("CelNabycia");
-
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
                .WithMany(a => a.Dzialka)
@@ -69,11 +64,7 @@ namespace RejestrNieruchomosciNew
             modelBuilder.Entity<Dzialka>()
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
-
-            //modelBuilder.Entity<Wladanie>()
-            //    .HasOne<CelNabycia>(a => a.CelNabycia)
-            //    .WithMany(a => a.Wladanie)
-            //    .HasForeignKey(a => a.CelNabyciaId);
+            
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },

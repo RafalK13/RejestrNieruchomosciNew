@@ -322,6 +322,34 @@
     <Compile Include="Migrations\20191205125410_praca35.designer.cs">
       <DependentUpon>20191205125410_praca35.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191206131052_praca36.cs" />
+    <Compile Include="Migrations\20191206131052_praca36.designer.cs">
+      <DependentUpon>20191206131052_praca36.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206133236_praca37.cs" />
+    <Compile Include="Migrations\20191206133236_praca37.designer.cs">
+      <DependentUpon>20191206133236_praca37.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206133404_praca38.cs" />
+    <Compile Include="Migrations\20191206133404_praca38.designer.cs">
+      <DependentUpon>20191206133404_praca38.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206133451_praca39.cs" />
+    <Compile Include="Migrations\20191206133451_praca39.designer.cs">
+      <DependentUpon>20191206133451_praca39.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206133723_praca40.cs" />
+    <Compile Include="Migrations\20191206133723_praca40.designer.cs">
+      <DependentUpon>20191206133723_praca40.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206134327_praca41.cs" />
+    <Compile Include="Migrations\20191206134327_praca41.designer.cs">
+      <DependentUpon>20191206134327_praca41.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191206141848_praca42.cs" />
+    <Compile Include="Migrations\20191206141848_praca42.designer.cs">
+      <DependentUpon>20191206141848_praca42.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />

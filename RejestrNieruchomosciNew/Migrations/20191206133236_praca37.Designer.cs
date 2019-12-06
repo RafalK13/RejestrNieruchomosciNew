@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191206133236_praca37")]
+    partial class praca37
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,9 +23,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Dzialka", b =>
                 {
-                    b.Property<int>("DzialkaId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("DzialkaId");
 
                     b.Property<string>("Kwakt");
 
@@ -610,6 +610,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Dzialka", b =>
                 {
+                    b.HasOne("RejestrNieruchomosciNew.PlatnoscUW", "PlatnoscUW")
+                        .WithOne("Dzialka")
+                        .HasForeignKey("RejestrNieruchomosciNew.Dzialka", "DzialkaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RejestrNieruchomosciNew.Obreb", "Obreb")
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")

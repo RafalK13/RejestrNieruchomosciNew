@@ -16,9 +16,14 @@
                 <Setter Property="Margin" Value="20,0,20,20"></Setter>
             </Style>
 
-       
+        <Style x:Key="label" TargetType="Label">
+            <Setter Property="Margin" Value="10,10,0,0"></Setter>
+            <Setter Property="DockPanel.Dock" Value="Top"/>
+        </Style>
 
-    <!--<ResourceDictionary>
+
+
+        <!--<ResourceDictionary>
       --><!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:RejestrNieruchomosciNew.ViewModel" />--><!--
     </ResourceDictionary>-->
   </Application.Resources>

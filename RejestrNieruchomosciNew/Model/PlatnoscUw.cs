@@ -12,7 +12,8 @@ namespace RejestrNieruchomosciNew
     public partial class PlatnoscUW : ViewModelBase, IPlatnosc
     {
         public int PlatnoscUWId { get; set; }
-        public int? DzialkaId { get; set; }
+        //[ForeignKey("DzialkaId")]
+        
 
         private double? _Stawka;
         public double? Stawka
@@ -88,7 +89,8 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-        public Dzialka Dzialka { get; set; }
+        public int? DzialkaId { get; set; }
+        //public Dzialka Dzialka { get; set; }
 
         public PlatnoscUW() { }
 

@@ -19,10 +19,7 @@
         <con:stringToDecimal x:Key="convStrToDec"/>
         <sys:Double x:Key="widthMin">150</sys:Double>
         <sys:Double x:Key="widthMax">500</sys:Double>
-        <Style x:Key="label" TargetType="Label">
-            <Setter Property="Margin" Value="10,10,0,0"></Setter>
-            <Setter Property="DockPanel.Dock" Value="Top"/>
-        </Style>
+        
         <Style x:Key="label1" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
             <Setter Property="Width" Value="130"/>

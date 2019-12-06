@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191206133723_praca40")]
+    partial class praca40
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -562,6 +564,10 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasKey("PlatnoscUWId");
 
+                    b.HasIndex("DzialkaId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL");
+
                     b.ToTable("PlatnoscUW");
                 });
 
@@ -663,6 +669,13 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany()
                         .HasForeignKey("GminaSloId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUW", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithOne("PlatnoscUW")
+                        .HasForeignKey("RejestrNieruchomosciNew.PlatnoscUW", "DzialkaId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Wladanie", b =>

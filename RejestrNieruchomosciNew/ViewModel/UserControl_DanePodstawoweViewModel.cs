@@ -16,6 +16,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Properties
 
         public ChangeMode changeMode;
+        public UserControl_PreviewViewModel userPrev { get; set; }
 
         private IDzialka _dzialka;
         public IDzialka dzialka
@@ -56,6 +57,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public bool? canMod;
 
         public ICommand leftClick { get; set; }
+        public ICommand OnAddDzialka { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
 
@@ -66,6 +68,21 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_DanePodstawoweViewModel()
         {
             leftClick = new RelayCommand(onLeftClick);
+            OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
+        }
+
+        private void OnAddDzialkaClick()
+        {
+            switch (changeMode)
+            {
+                case ChangeMode.add:
+                    dzialkaList.AddRow(dzialka);
+                    break;
+                case ChangeMode.mod:
+                    dzialkaList.ModRow(dzialka);
+                    break;
+            }
+            userPrev.dzialkaView.Refresh();
         }
         #endregion
 
@@ -121,6 +138,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
             }
         }
+
+
 
         #endregion
     }
