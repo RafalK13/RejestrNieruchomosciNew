@@ -36,7 +36,7 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        public void saveWladanie()
+        public void save()
         {
             foreach (var r in list)
             {

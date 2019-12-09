@@ -72,8 +72,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
             else
                 podmiotDetail = false;
-            
-
         }
 
         private bool _podmiotDetail;
@@ -120,7 +118,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             initButtons();
             
-           
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)

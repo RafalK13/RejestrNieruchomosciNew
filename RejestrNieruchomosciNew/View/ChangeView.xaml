@@ -48,7 +48,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
-            <RowDefinition Height="70"/>
+            <!--<RowDefinition Height="70"/>-->
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left"
@@ -83,7 +83,7 @@
            
         </StackPanel>
 
-        <TabControl Grid.Row="1" Margin="20,20,20,0">
+        <TabControl Grid.Row="1" Margin="20,20,20,10">
             
             <TabItem Header="Dane podstawowe"
                     >
@@ -111,20 +111,20 @@
             </TabItem>
         </TabControl>
         
-        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button 
+        <!--<StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            --><!--<Button 
                 Style="{StaticResource buttonRaf}" 
                 IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
                 Command="{Binding OnAddDzialka}"
                 com:CloseOnClickBehaviour.IsEnabled="True"
-                Content="OK"></Button>
+                Content="OK"></Button>-->
             <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
-            <Button 
+            <!--<Button 
                 Style="{StaticResource buttonRaf}"
                 IsCancel="True"
                 com:CloseOnClickBehaviour.IsEnabled="True"
-                Content="Anuluj"></Button>
-        </StackPanel>
+                Content="Anuluj"></Button>--><!--
+        </StackPanel>-->
 
     </Grid>
 </Window>

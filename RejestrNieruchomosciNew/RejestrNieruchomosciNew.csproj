@@ -394,6 +394,10 @@
     <Compile Include="Migrations\20191209112905_praca53.designer.cs">
       <DependentUpon>20191209112905_praca53.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191209124727_praca54.cs" />
+    <Compile Include="Migrations\20191209124727_praca54.designer.cs">
+      <DependentUpon>20191209124727_praca54.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -439,6 +443,7 @@
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
+    <Compile Include="Model\RodzajInnegoPrawaList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />
     <Compile Include="Model\NazwaCzynnosciList.cs" />

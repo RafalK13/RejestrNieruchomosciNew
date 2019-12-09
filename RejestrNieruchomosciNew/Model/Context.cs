@@ -70,17 +70,16 @@ namespace RejestrNieruchomosciNew
                .WithMany(a=>a.Wladanie)
                .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder.Entity<Dzialka>()
-            //   .HasOne<PlatnoscUW>(a => a.PlatnoscUW)
-            //   .WithOne()
-            //   .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<InnePrawa>()
+              .HasOne<Dzialka>(a => a.Dzialka)
+              .WithMany(a => a.InnePrawa)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<PlatnoscUW>()
                .HasOne<Dzialka>(a => a.Dzialka)
                .WithOne(a => a.PlatnoscUW)
                .HasForeignKey("PlatnoscUW", "DzialkaId")
                .OnDelete(DeleteBehavior.Cascade);
-
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },

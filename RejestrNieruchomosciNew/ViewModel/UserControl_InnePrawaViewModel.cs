@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -11,6 +12,30 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_InnePrawaViewModel : ViewModelBase
     {
         private int dzialkaId;
+
+        private Visibility _sellVisibility;
+        public Visibility sellVisibility
+        {
+            get => _sellVisibility;
+
+            set
+            {
+                _sellVisibility = value;
+                RaisePropertyChanged("sellVisibility");
+            }
+        }
+
+        private bool _podmiotDetail;
+        public bool podmiotDetail
+        {
+            get => _podmiotDetail;
+
+            set
+            {
+                _podmiotDetail = value;
+                RaisePropertyChanged("podmiotDetail");
+            }
+        }
 
         private string _podmiotName;
         public string podmiotName
@@ -38,6 +63,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IInnePrawaList innePrawaList { get; set; }
 
+        public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
+
         private IInnePrawa _innePrawaSel;
         public IInnePrawa innePrawaSel
         {
@@ -45,7 +72,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _innePrawaSel = value;
-                //testWladanieSel();
+                testInnePrawaSel();
                 RaisePropertyChanged("innePrawaSel");
             }
         }
@@ -56,10 +83,25 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             initButtons();
 
+            sellVisibility = Visibility.Hidden;
+
             if (userPrev.dzialkaSel != null)
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
             }
+
+            
+        }
+
+        private void testInnePrawaSel()
+        {
+            if (innePrawaSel != null)
+            {
+                if (innePrawaSel.DzialkaId != null)
+                    podmiotDetail = true;
+            }
+            else
+                podmiotDetail = false;
         }
 
         private bool testWlascExist()
@@ -77,11 +119,18 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Buttons
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
+        public ICommand innePrawaAdd { get; set; }
 
         private void initButtons()
         {
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
+            innePrawaAdd = new RelayCommand(onInnePrawaAdd);
+        }
+
+        private void onInnePrawaAdd()
+        {
+            innePrawaList.save();
         }
 
         private void onPodmiotAdd()

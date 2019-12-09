@@ -6,6 +6,6 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     {
         ObservableCollection<IInnePrawa> list { get; set; }
 
-        void saveWladanie();
+        void save();
     }
 }

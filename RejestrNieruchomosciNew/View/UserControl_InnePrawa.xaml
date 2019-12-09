@@ -6,6 +6,7 @@
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
+             xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
              Name="InnePrawa"
              d:DesignHeight="660" d:DesignWidth="1450">
@@ -17,6 +18,8 @@
             <con:DoubleConverter x:Key="doubleConverter"/>
             <con:IntConverter x:Key="intConverter"/>
             <con:stringToDecimal x:Key="convStrToDec"/>
+            
+            
 
             <Style x:Key="gridSplitter" TargetType="GridSplitter">
                 <Setter Property="Width" Value="5"/>
@@ -32,14 +35,36 @@
                 <Setter Property="Margin" Value="10,10,0,0"></Setter>
                 <Setter Property="DockPanel.Dock" Value="Top"/>
             </Style>
+
+            <Style x:Key="label1" TargetType="Label">
+                <Setter Property="Margin" Value="10,0,0,0"></Setter>
+                <Setter Property="Width" Value="130"/>
+            </Style>
+
+            <Style x:Key="comboBox" TargetType="ComboBox">
+                <Setter Property="Margin" Value="10,5,0,0"></Setter>
+                <Setter Property="Width" Value="150"></Setter>
+            </Style>
+
+            <Style x:Key="tekst" TargetType="TextBox">
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Width"  Value="70"></Setter>
+                <Setter Property="Margin" Value="10,5,20,0"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+
+            <Style x:Key="labelTab" TargetType="Label">
+                <Setter Property="Margin" Value="3,0,0,0"></Setter>
+            </Style>
         </Grid.Resources>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*" MinWidth="9" />
-            <ColumnDefinition Width="*" MinWidth="9"/>
-            <ColumnDefinition Width="*" MinWidth="9" />
-            <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="400" MinWidth="9" />
+            <ColumnDefinition Width="2*" MinWidth="9"/>
+            <ColumnDefinition Width="2*" MinWidth="9" />
+            <ColumnDefinition Width="2*" MinWidth="9" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -152,6 +177,145 @@
                       Style="{StaticResource scrollViewer}"
                       >
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="275"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <Label 
+                                   Content="Forma władania"
+                                   FontWeight="Bold"
+                                   FontSize="19"     
+                                   Margin="0,10,0,0"
+                                   Style="{StaticResource label}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label 
+                                        Content="Rodzaj"                                       
+                                        Style="{StaticResource label1}"/>
+                        <ComboBox  
+                                        ItemsSource="{Binding  userControl_InnePrawa.rodzajInnegoPrawaSlo.list}"
+                                        SelectedValue="{Binding  userControl_InnePrawa.wladanieSel.FormaWladaniaSloId}"
+                                        SelectedValuePath="FormaWladaniaSloId"
+                                        DisplayMemberPath="Nazwa"  
+                                        Style="{StaticResource comboBox}"/>
+                    </StackPanel>
+                    
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <Label 
+                                   Content="Sposób nabycia prawa"
+                                   FontWeight="Bold"
+                                   FontSize="19"         
+                                   Margin="0,0,0,0"
+                                   Style="{StaticResource label}"/>
+                    <Grid Panel.ZIndex="1" Margin="0,0,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="3"/>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="7*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Column="3" Grid.Row="0"
+                                   Content="Kupno"
+                                   FontWeight="Bold"
+                                   FontSize="17"         
+                                   />
+                        <Label Grid.Column="5" Grid.Row="0"
+                                   Content="Sprzedaż"
+                                   FontWeight="Bold"
+                                   FontSize="17"         
+                                   />
+                        <Label Grid.Column="1" Grid.Row="1" 
+                                   Content=""                                       
+                                   Style="{StaticResource labelTab}"/>
+
+                        <Label Grid.Column="1" Grid.Row="1" 
+                                   Content="Numer dokumentu"                                       
+                                   Style="{StaticResource labelTab}"/>
+                        <Label Grid.Column="1" Grid.Row="2" 
+                                   Content="Rodzaj dokumentu"                                       
+                                   Style="{StaticResource labelTab}"/>
+                        <Label Grid.Column="1" Grid.Row="3" 
+                                    Content="Nazwa czynności"                                       
+                                    Style="{StaticResource labelTab}"/>
+                        <Label Grid.Column="1" Grid.Row="4" 
+                                    Content="Tytuł dokumentu"                                       
+                                    Style="{StaticResource labelTab}"/>
+                        <Label Grid.Column="1" Grid.Row="5" 
+                                    Content="Data"                                       
+                                    Style="{StaticResource labelTab}"/>
+                        <Label  Grid.Column="1" Grid.Row="6" 
+                                        Content="Skan dokumentu"    
+                                        Style="{StaticResource labelTab}"/>
+                        <Button Grid.Column="5" Grid.Row="1"
+                                    Margin="3"
+                                    Content="Sprzedaż udziału"
+                                    Command="{Binding  userControl_Wlasciciel.wlascSell}">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=TransSell, Path=Visibility}" Value="Visible">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+
+                            </Button.Style>
+
+                        </Button>
+
+                        <!--<userCon:UserControl_Transakcja
+                                       x:Name="TransSell"
+                                       Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Grid.Column="5" Grid.Row="1" Grid.RowSpan="7"
+                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
+                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
+                             />
+                        --><!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"--><!--
+                        <userCon:UserControl_Transakcja
+                                       Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
+                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
+                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
+                                />
+                        --><!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"-->
+                        <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                    </Grid>
+
+
+
+                </StackPanel>
+
             </Grid>
         </ScrollViewer>
 
@@ -188,12 +352,12 @@
                             >
             <Button Content="Add"
                                     Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"
+                                    Command="{Binding userControl_InnePrawa.innePrawaAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
             <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Wlasciciel.wlascCls}"
+                                    Command="{Binding userControl_InnePrawa.innePrawaCls}"
                                     />
             <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
