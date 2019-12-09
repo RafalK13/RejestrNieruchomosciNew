@@ -64,7 +64,23 @@ namespace RejestrNieruchomosciNew
             modelBuilder.Entity<Dzialka>()
                 .HasIndex("Numer", "ObrebId")
                 .IsUnique();
-            
+
+            modelBuilder.Entity<Wladanie>()
+               .HasOne<Dzialka>(a=>a.Dzialka)
+               .WithMany(a=>a.Wladanie)
+               .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Dzialka>()
+            //   .HasOne<PlatnoscUW>(a => a.PlatnoscUW)
+            //   .WithOne()
+            //   .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PlatnoscUW>()
+               .HasOne<Dzialka>(a => a.Dzialka)
+               .WithOne(a => a.PlatnoscUW)
+               .HasForeignKey("PlatnoscUW", "DzialkaId")
+               .OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },

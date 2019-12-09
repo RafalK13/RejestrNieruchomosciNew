@@ -11,6 +11,7 @@ namespace RejestrNieruchomosciNew
 {
     public partial class PlatnoscUW : ViewModelBase, IPlatnosc
     {
+       
         public int PlatnoscUWId { get; set; }
         //[ForeignKey("DzialkaId")]
         
@@ -89,8 +90,9 @@ namespace RejestrNieruchomosciNew
             }
         }
 
+
         public int? DzialkaId { get; set; }
-        //public Dzialka Dzialka { get; set; }
+        public Dzialka Dzialka { get; set; }
 
         public PlatnoscUW() { }
 
@@ -116,6 +118,7 @@ namespace RejestrNieruchomosciNew
                     }
                     else
                         DzialkaId = prev.dzialkaSel.DzialkaId;
+                        
                 }
             }
         }
@@ -138,7 +141,7 @@ namespace RejestrNieruchomosciNew
 
         public void cleanObj()
         {
-            this.DzialkaId = null;
+            //this.DzialkaId = null;
             this.Okres = null;
             this.rok1 = null;
             this.rok2 = null;

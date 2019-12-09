@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191209110946_praca48")]
+    partial class praca48
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,11 +35,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int>("ObrebId");
 
+                    b.Property<int?>("PlatnoscUWId");
+
                     b.Property<decimal?>("Pow");
 
                     b.HasKey("DzialkaId");
 
                     b.HasIndex("ObrebId");
+
+                    b.HasIndex("PlatnoscUWId");
 
                     b.HasIndex("Numer", "ObrebId")
                         .IsUnique()
@@ -618,6 +624,10 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.PlatnoscUW", "PlatnoscUW")
+                        .WithMany()
+                        .HasForeignKey("PlatnoscUWId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
@@ -672,7 +682,7 @@ namespace RejestrNieruchomosciNew.Migrations
             modelBuilder.Entity("RejestrNieruchomosciNew.PlatnoscUW", b =>
                 {
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
-                        .WithOne("PlatnoscUW")
+                        .WithOne()
                         .HasForeignKey("RejestrNieruchomosciNew.PlatnoscUW", "DzialkaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

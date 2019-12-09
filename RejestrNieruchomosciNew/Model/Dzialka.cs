@@ -30,7 +30,7 @@ namespace RejestrNieruchomosciNew
         public ICollection<Wladanie> Wladanie { get; set; }
         public ICollection<InnePrawa> InnePrawa { get; set; }
 
-        //public PlatnoscUW PlatnoscUW { get; set; }
+        public PlatnoscUW PlatnoscUW { get; set; }
 
         [NotMapped]
         public ProcessDzialka procDz { get; set; }
