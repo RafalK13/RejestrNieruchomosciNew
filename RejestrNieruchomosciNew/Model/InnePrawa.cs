@@ -55,8 +55,10 @@ namespace RejestrNieruchomosciNew.Model
         {
             return InnePrawaId.Equals(other.InnePrawaId) &&
                    DzialkaId.Equals(other.DzialkaId) &&
-                   PodmiotId.Equals(other.PodmiotId) ;
-            //RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
+                   PodmiotId.Equals(other.PodmiotId) &&
+                   RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
+                   TransK_Id.Equals(other.TransK_Id) &&
+                   TransS_Id.Equals(other.TransS_Id);
             //DataObowOd.Equals(other.DataObowOd) &&
             //DataObowDo.Equals(other.DataObowDo) &&
             //ProtPrzejkNr.Equals(other.ProtPrzejkNr) &&

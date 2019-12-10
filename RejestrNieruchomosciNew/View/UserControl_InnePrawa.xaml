@@ -8,7 +8,7 @@
              xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
-             Name="InnePrawa"
+             Name="InnePrawaWin"
              d:DesignHeight="660" d:DesignWidth="1450">
     <Grid>
         <Grid.Resources>
@@ -18,8 +18,6 @@
             <con:DoubleConverter x:Key="doubleConverter"/>
             <con:IntConverter x:Key="intConverter"/>
             <con:stringToDecimal x:Key="convStrToDec"/>
-            
-            
 
             <Style x:Key="gridSplitter" TargetType="GridSplitter">
                 <Setter Property="Width" Value="5"/>
@@ -29,7 +27,7 @@
             </Style>
             <Style x:Key="scrollViewer" TargetType="ScrollViewer">
                 <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-                <Setter Property="IsEnabled" Value="{Binding userControl_Wlasciciel.podmiotDetail}"/>
+                <Setter Property="IsEnabled" Value="{Binding userControl_InnePrawa.podmiotDetail}"/>
             </Style>
             <Style x:Key="label" TargetType="Label">
                 <Setter Property="Margin" Value="10,10,0,0"></Setter>
@@ -107,13 +105,13 @@
                         Margin="10,0,10,0"
                         x:Name="conRaf1"
                         VerticalAlignment="Top"   Panel.ZIndex="13"
-                        TekstPropALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotName, ElementName=InnePrawa, Mode=TwoWay}"
-                        itemSourceRafALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotList.listView, ElementName=InnePrawa}"
+                        TekstPropALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotName, ElementName=InnePrawaWin, Mode=TwoWay}"
+                        itemSourceRafALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotList.listView, ElementName=InnePrawaWin}"
                         fontSizeRafALL="14"
                         heightRafALL="25"
                         HorizontalAlignment="Stretch"
                         colNameRaf="nazwa"
-                        selectedIdRafALL="{Binding Path=DataContext.userControl_InnePrawa.selectedPodmId, ElementName=InnePrawa,Mode=TwoWay}"
+                        selectedIdRafALL="{Binding Path=DataContext.userControl_InnePrawa.selectedPodmId, ElementName=InnePrawaWin,Mode=TwoWay}"
                         />
             <Button     Grid.Row="1"
                         Margin="0,50,0,0"
@@ -149,7 +147,7 @@
                             <MultiBinding
                                     Converter="{StaticResource parsonConvert}" >
                                 <Binding Path="PodmiotId"/>
-                                <Binding ElementName="InnePrawa" Path="DataContext.userControl_InnePrawa.podmiotList"/>
+                                <Binding ElementName="InnePrawaWin" Path="DataContext.userControl_InnePrawa.podmiotList"/>
                             </MultiBinding>
 
 
@@ -198,8 +196,8 @@
                                         Style="{StaticResource label1}"/>
                         <ComboBox  
                                         ItemsSource="{Binding  userControl_InnePrawa.rodzajInnegoPrawaSlo.list}"
-                                        SelectedValue="{Binding  userControl_InnePrawa.wladanieSel.FormaWladaniaSloId}"
-                                        SelectedValuePath="FormaWladaniaSloId"
+                                        SelectedValue="{Binding  userControl_InnePrawa.innePrawaSel.RodzajInnegoPrawaSloId}"
+                                        SelectedValuePath="RodzajInnegoPrawaSloId"
                                         DisplayMemberPath="Nazwa"  
                                         Style="{StaticResource comboBox}"/>
                     </StackPanel>
@@ -271,7 +269,7 @@
                         <Button Grid.Column="5" Grid.Row="1"
                                     Margin="3"
                                     Content="Sprzedaż udziału"
-                                    Command="{Binding  userControl_Wlasciciel.wlascSell}">
+                                    Command="{Binding  userControl_InnePrawa.innePrawaSell}">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Visibility" Value="Visible"></Setter>
@@ -287,29 +285,29 @@
 
                         </Button>
 
-                        <!--<userCon:UserControl_Transakcja
+                        <userCon:UserControl_Transakcja
                                        x:Name="TransSell"
-                                       Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Visibility="{Binding  Path=DataContext.userControl_InnePrawa.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Grid.Column="5" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
-                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
-                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
-                             />
-                        --><!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"--><!--
+                                       transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransS_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}" 
+                        />
+                        <!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                         <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
-                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=win}" 
-                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=win}" 
-                                />
-                        --><!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=win}"-->
-                        <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=win, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                                       transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransK_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}" 
+                        />
+                        <!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=InnePrawaWin}"-->
+                        <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                     </Grid>
 
 

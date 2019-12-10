@@ -65,6 +65,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
 
+        public ITransakcjeList transakcjeList { get; set; }
+        public RodzajDokumentuList rodzDokSlo { get; set; }
+        public NazwaCzynnosciList nazwaCzynSlo { get; set; }
+
         private IInnePrawa _innePrawaSel;
         public IInnePrawa innePrawaSel
         {
@@ -89,8 +93,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
             }
-
-            
+            podmiotDetail = false;
         }
 
         private void testInnePrawaSel()
@@ -120,12 +123,19 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
         public ICommand innePrawaAdd { get; set; }
+        public ICommand innePrawaSell { get; set; }
 
         private void initButtons()
         {
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
             innePrawaAdd = new RelayCommand(onInnePrawaAdd);
+            innePrawaSell = new RelayCommand(onInnePrawaSell);
+        }
+
+        private void onInnePrawaSell()
+        {
+            sellVisibility = Visibility.Visible;
         }
 
         private void onInnePrawaAdd()
