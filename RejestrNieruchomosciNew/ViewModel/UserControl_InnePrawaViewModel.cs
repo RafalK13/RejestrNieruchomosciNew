@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -124,6 +127,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotDel { get; set; }
         public ICommand innePrawaAdd { get; set; }
         public ICommand innePrawaSell { get; set; }
+        public ICommand protPrzejScanClick { get; set; }
+        public ICommand protZwrotScanClick { get; set; }
 
         private void initButtons()
         {
@@ -131,6 +136,33 @@ namespace RejestrNieruchomosciNew.ViewModel
             podmiotDel = new RelayCommand(onPodmiotDel);
             innePrawaAdd = new RelayCommand(onInnePrawaAdd);
             innePrawaSell = new RelayCommand(onInnePrawaSell);
+            protPrzejScanClick = new RelayCommand(onProtPrzejScan);
+            protZwrotScanClick = new RelayCommand(onProtZwrotScan);
+        }
+
+        private void onProtZwrotScan()
+        {
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + innePrawaSel.DzialkaId + "\\InnePrawa\\Podmiot\\" + innePrawaSel.PodmiotId + "\\ProtokolZwrotnegoPrzekazania\\";
+            
+            innePrawaSel.ProtZwrotScan = zalPath;
+
+            DirectoryInfo dir = new DirectoryInfo(zalPath);
+            if (!dir.Exists)
+                dir.Create();
+
+            Process.Start(zalPath);
+        }
+
+        private void onProtPrzejScan()
+        {
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +  "\\Dzialka\\"+ innePrawaSel.DzialkaId + "\\InnePrawa\\Podmiot\\" + innePrawaSel.PodmiotId + "\\ProtokolPrzejecia\\";
+            innePrawaSel.ProtPrzejScan = zalPath;
+
+            DirectoryInfo dir = new DirectoryInfo(zalPath);
+            if (!dir.Exists)
+                dir.Create();
+
+            Process.Start(zalPath);
         }
 
         private void onInnePrawaSell()

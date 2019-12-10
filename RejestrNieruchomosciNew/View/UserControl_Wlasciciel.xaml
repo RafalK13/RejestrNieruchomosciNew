@@ -243,7 +243,7 @@
                         <Grid Panel.ZIndex="1" Margin="0,0,10,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3"/>
-                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="11"/>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="7*"/>
                                 <ColumnDefinition Width="*"/>

@@ -58,17 +58,18 @@ namespace RejestrNieruchomosciNew.Model
                    PodmiotId.Equals(other.PodmiotId) &&
                    RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
                    TransK_Id.Equals(other.TransK_Id) &&
-                   TransS_Id.Equals(other.TransS_Id);
-            //DataObowOd.Equals(other.DataObowOd) &&
-            //DataObowDo.Equals(other.DataObowDo) &&
-            //ProtPrzejkNr.Equals(other.ProtPrzejkNr) &&
-            //ProtPrzejData.Equals(other.ProtPrzejData) &&
-            //ProtPrzejData.Equals(other.ProtPrzejData) &&
-            //ProtZwrotNr.Equals(other.ProtZwrotNr) &&
-            //ProtZwrotData.Equals(other.ProtZwrotData) &&
-            //ProtZwrotScan.Equals(other.ProtZwrotScan) &&
-            //wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
-            //wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
+                   TransS_Id.Equals(other.TransS_Id) &&
+                   DataObowOd.Equals(other.DataObowOd) &&
+                   DataObowDo.Equals(other.DataObowDo) &&
+                   string.Equals( ProtPrzejkNr, other.ProtPrzejkNr) &&
+                   ProtPrzejData.Equals(other.ProtPrzejData) &&
+                   string.Equals(ProtPrzejScan, other.ProtPrzejScan) &&
+                   string.Equals( ProtZwrotNr, other.ProtZwrotNr) &&
+                   ProtZwrotData.Equals(other.ProtZwrotData) &&
+                   string.Equals( ProtZwrotScan, other.ProtZwrotScan) &&
+                   wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
+                   wizjaTerZwrot.Equals(other.wizjaTerZwrot);
+           
             //CelNabyciaId.Equals(other.CelNabyciaId
             //WarunkiRealizacji.Equals(other.WarunkiRealizacji) &&
             //DecyzjeAdministracyjneId.Equals(other.DecyzjeAdministracyjneId);

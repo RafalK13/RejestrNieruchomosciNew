@@ -227,6 +227,7 @@ namespace RejestrNieruchomosciNew.View
         //    if (string.IsNullOrEmpty(transakcje.Skan) == true)
             {
                 string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +"\\Transakcje\\" + transakcje.TransakcjeId;
+                
                 transakcje.Skan = zalPath;
 
                 DirectoryInfo dir = new DirectoryInfo(zalPath);

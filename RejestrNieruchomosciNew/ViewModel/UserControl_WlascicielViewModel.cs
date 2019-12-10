@@ -126,7 +126,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
 
             podmiotDetail = false;
-           
         }
 
         private void initButtons()
@@ -152,7 +151,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascProt()
         {
-            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId + "\\Podmiot\\" + wladanieSel.PodmiotId;
+            //string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId + "\\Podmiot\\" + wladanieSel.PodmiotId;
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + wladanieSel.DzialkaId + "\\Wladanie\\Podmiot\\" + wladanieSel.PodmiotId + "\\ProtokolPrzejecia\\";
             wladanieSel.Scan = zalPath;
 
             DirectoryInfo dir = new DirectoryInfo(zalPath);

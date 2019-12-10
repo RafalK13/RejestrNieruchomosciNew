@@ -58,11 +58,11 @@
         </Grid.Resources>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="400" MinWidth="9" />
-            <ColumnDefinition Width="2*" MinWidth="9"/>
-            <ColumnDefinition Width="2*" MinWidth="9" />
-            <ColumnDefinition Width="2*" MinWidth="9" />
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="1.2*" MinWidth="9" />
+            <ColumnDefinition Width="0.8*" MinWidth="9"/>
+            <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="*" MinWidth="9" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -215,11 +215,11 @@
                     <Grid Panel.ZIndex="1" Margin="0,0,10,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3"/>
-                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="113"/>
                             <ColumnDefinition Width="3"/>
-                            <ColumnDefinition Width="7*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="8*"/>
 
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -309,9 +309,6 @@
                         <!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=InnePrawaWin}"-->
                         <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                     </Grid>
-
-
-
                 </StackPanel>
 
             </Grid>
@@ -320,10 +317,295 @@
         <ScrollViewer Grid.Column="2" 
                       Style="{StaticResource scrollViewer}"
                       >
-            <Grid>
+            <Grid Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Row="0" Grid.ColumnSpan="2"
+                                      Content="Data obowiązywania prawa"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                      Margin="0,10,0,0"
+                                      Style="{StaticResource label}"/>
+                <Label              Grid.Column="0" Grid.Row="1" 
+                                    Content="Od"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="1" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowOd, Converter={StaticResource dateConvert}}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="2" 
+                                    Content="Do"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="2" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowDo, Converter={StaticResource dateConvert}}" 
+                                    />
+                <Label              Grid.Row="3" Grid.ColumnSpan="2"
+                                      Content="Protokół przejęcia"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                      Margin="0,10,0,0"
+                                      Style="{StaticResource label}"/>
+                <Label              Grid.Column="0" Grid.Row="4" 
+                                    Content="Data, wizja terenowa"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="4" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerPrzek,  Converter={StaticResource dateConvert}}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="5" 
+                                    Content="Numer"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="5" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejkNr}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="6" 
+                                    Content="Data"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="6" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejData, Converter={StaticResource dateConvert}}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="7" 
+                                    Content="Skan"  
+                                    Style="{StaticResource labelTab}"/>
+                <Button             Grid.Column="1" Grid.Row="7" 
+                                    Margin="3"
+                                    Content="Skan protokołu"
+                                    Command="{Binding userControl_InnePrawa.protPrzejScanClick}"
+                                    />
+
+                <Label               Grid.Row="8" Grid.ColumnSpan="2"
+                                     Content="Protokół zwrotnego przekazania"
+                                     FontWeight="Bold"
+                                     FontSize="19"    
+                                     Margin="0,10,0,0"
+                                     Style="{StaticResource label}"/>
+
+                <Label              Grid.Column="0" Grid.Row="9" 
+                                    Content="Data, wizja terenowa"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="9" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerZwrot,  Converter={StaticResource dateConvert}}" 
+                                    />
+
+                <Label              Grid.Column="0" Grid.Row="10" 
+                                    Content="Numer"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="10" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotNr}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="11" 
+                                    Content="Data"  
+                                    Style="{StaticResource labelTab}"/>
+                <TextBox            Grid.Column="1" Grid.Row="11" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotData, Converter={StaticResource dateConvert}}" 
+                                    />
+                <Label              Grid.Column="0" Grid.Row="12" 
+                                    Content="Skan"  
+                                    Style="{StaticResource labelTab}"/>
+                <Button             Grid.Column="1" Grid.Row="12" 
+                                    Margin="3"
+                                    Content="Skan protokołu"
+                                    Command="{Binding userControl_InnePrawa.protZwrotScanClick}"
+                                    />
+
+
 
             </Grid>
+            <!--<Grid Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0"
+                                IsEnabled="{Binding podmiotDetail}">
+                    <Label 
+                                      Content="Data obowiązywania prawa"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                      Margin="0,10,0,0"
+                                      Style="{StaticResource label}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Od"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Text="{Binding userControl_Wlasciciel.DataObowOd, Converter={StaticResource dateConvert}}"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Do"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Text="{Binding userControl_Wlasciciel.DataObowDo, Converter={StaticResource dateConvert}}"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                                IsEnabled="{Binding podmiotDetail}">
+                    <Label 
+                                      Content="Protokół przejęcia"
+                                      FontWeight="Bold"
+                                      FontSize="19"    
+                                       Margin="0,10,0,0"
+                                      Style="{StaticResource label}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Numer"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Name="NumerProtokoluPrzejecia"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.NrProtPrzejecia}"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Data"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataProtPrzej, Converter={StaticResource dateConvert}}"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label    Content="Skan protokołu" 
+                                      
+                                      Style="{StaticResource label1}"/>
+                        <Button
+                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
+                                       Content="Skan protokołu"
+                                       Command="{Binding userControl_Wlasciciel.wlascProt}"
+                                        />
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <Label 
+                           Content="Płatnośc z tytułu UW"
+                           FontWeight="Bold"
+                           FontSize="19"     
+                           Margin="0,20,0,0"
+                           Style="{StaticResource label}"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Stawka [%]"                                       
+                                       Style="{StaticResource label1}"/>
+                        <TextBox
+                                
+                                
+                                       Text="{Binding Path=DataContext.userControl_Wlasciciel.platnosci.Stawka , ElementName=WladanieWin, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Okres [lata]"                                       
+                                       Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Okres , Converter={StaticResource intConverter} }"
+                                       Style="{StaticResource tekst}"/>
+                    </StackPanel>
+
+                    <StackPanel    Orientation="Horizontal">
+                        <Label     Content="Wysokośc opłaty"                                       
+                                       Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Wysokosc , Converter={StaticResource convStrToDec} }"
+                                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Wartość z wyceny"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.Wartosc , Converter={StaticResource convStrToDec} }"
+                                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Rok 1"                                       
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok1 , Converter={StaticResource convStrToDec} }"
+                                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Rok 2"  
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok2 , Converter={StaticResource convStrToDec} }"
+                                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Rok 3"   
+                                      Style="{StaticResource label1}"/>
+                        <TextBox
+                                       Style="{StaticResource tekst}"
+                                       Text="{Binding userControl_Wlasciciel.platnosci.rok3 , Converter={StaticResource convStrToDec} }"
+                                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label                   
+                                      Style="{StaticResource label1}"/>
+                        <Button
+                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
+                                       Content="Czyść wartości"
+                                       Command="{Binding userControl_Wlasciciel.onCzyscPlatnosci}"
+                                        />
+                    </StackPanel>
+
+
+
+
+                </StackPanel>
+            </Grid>-->
         </ScrollViewer>
+        
+        
         <ScrollViewer Grid.Column="3" 
                       Style="{StaticResource scrollViewer}"
                       >
