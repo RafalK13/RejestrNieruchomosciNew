@@ -524,7 +524,8 @@
             <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
                           IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
-                    <StackPanel Grid.Row="2">
+                    <StackPanel>
+                      
                         <Label 
                                    Content="Cel nabycia prawa"
                                    FontWeight="Bold"
@@ -535,17 +536,8 @@
                             celNabyciaList="{Binding Path=DataContext.userControl_Wlasciciel.celNabyciaList, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.CelNabyciaId, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             />
-                        
                     </StackPanel>
-
-                    <StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
-                             
-                            Orientation="Horizontal" />
-
-
-
                 </Grid>
-
             </ScrollViewer>
         </Grid>
         <StackPanel 

@@ -68,10 +68,9 @@ namespace RejestrNieruchomosciNew.Model
                    ProtZwrotData.Equals(other.ProtZwrotData) &&
                    string.Equals( ProtZwrotScan, other.ProtZwrotScan) &&
                    wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
-                   wizjaTerZwrot.Equals(other.wizjaTerZwrot);
-           
-            //CelNabyciaId.Equals(other.CelNabyciaId
-            //WarunkiRealizacji.Equals(other.WarunkiRealizacji) &&
+                   wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
+                   CelNabyciaId.Equals(other.CelNabyciaId) &&
+                   string.Equals( WarunkiRealizacji, other.WarunkiRealizacji);
             //DecyzjeAdministracyjneId.Equals(other.DecyzjeAdministracyjneId);
         }
     }

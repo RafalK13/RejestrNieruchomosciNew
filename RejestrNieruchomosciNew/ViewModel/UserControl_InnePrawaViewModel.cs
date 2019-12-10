@@ -71,6 +71,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ITransakcjeList transakcjeList { get; set; }
         public RodzajDokumentuList rodzDokSlo { get; set; }
         public NazwaCzynnosciList nazwaCzynSlo { get; set; }
+        public ICelNabyciaList celNabyciaList { get; set; }
+
 
         private IInnePrawa _innePrawaSel;
         public IInnePrawa innePrawaSel
