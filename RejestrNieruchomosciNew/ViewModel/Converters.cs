@@ -133,7 +133,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             try
             {
-                if (string.IsNullOrEmpty(value.ToString()))
+                //if (string.IsNullOrEmpty(value.ToString()))  - bardzo wolne działenie
+                if (value == null)
                     return null;
                 else
                 {

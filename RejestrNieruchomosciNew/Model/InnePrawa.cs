@@ -6,9 +6,9 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class InnePrawa : IInnePrawa
     {
-        public int InnePrawaId { get; set; }
-        public int? DzialkaId { get; set; }
-        public int? PodmiotId { get; set; }
+        //public int InnePrawaId { get; set; }
+        public int DzialkaId { get; set; }
+        public int PodmiotId { get; set; }
 
         public int? RodzajInnegoPrawaSloId { get; set; }
        
@@ -39,7 +39,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public RodzajInnegoPrawaSlo RodzajInnegoPrawaSlo { get; set; }
 
-        //public int? PlatnosciId { get; set; }
         public PlatnoscInnePrawa PlatnoscInnePrawa { get; set; }
 
         public Dzialka Dzialka { get; set; }
@@ -53,7 +52,7 @@ namespace RejestrNieruchomosciNew.Model
 
         bool IEquatable<IInnePrawa>.Equals(IInnePrawa other)
         {
-            return InnePrawaId.Equals(other.InnePrawaId) &&
+            return //InnePrawaId.Equals(other.InnePrawaId) &&
                    DzialkaId.Equals(other.DzialkaId) &&
                    PodmiotId.Equals(other.PodmiotId) &&
                    RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&

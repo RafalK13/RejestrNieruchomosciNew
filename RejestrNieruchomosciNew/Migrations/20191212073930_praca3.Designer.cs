@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20191212073930_praca3")]
+    partial class praca3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,9 +151,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
                 {
-                    b.Property<int>("PodmiotId");
-
-                    b.Property<int>("DzialkaId");
+                    b.Property<int>("InnePrawaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("CelNabyciaId");
 
@@ -160,6 +162,10 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.Property<DateTime?>("DataObowOd");
 
                     b.Property<int?>("DecyzjeAdministracyjneId");
+
+                    b.Property<int>("DzialkaId");
+
+                    b.Property<int>("PodmiotId");
 
                     b.Property<DateTime?>("ProtPrzejData");
 
@@ -185,7 +191,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<DateTime?>("wizjaTerZwrot");
 
-                    b.HasKey("PodmiotId", "DzialkaId");
+                    b.HasKey("InnePrawaId");
 
                     b.HasIndex("DzialkaId");
 
@@ -628,14 +634,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasOne("RejestrNieruchomosciNew.Model.Transakcje", "TransakcjeS_InnePr")
                         .WithMany()
                         .HasForeignKey("TransS_Id");
-                });
-
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
-                {
-                    b.HasOne("RejestrNieruchomosciNew.Model.InnePrawa", "InnePrawa")
-                        .WithOne("PlatnoscInnePrawa")
-                        .HasForeignKey("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>

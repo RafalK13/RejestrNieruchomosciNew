@@ -1,13 +1,17 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.ViewModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
 {
     public class PlatnoscInnePrawa : ViewModelBase, IPlatnosc
     {
-        public int PlatnoscInnePrawaId { get; set; }
-        public int? InnePrawaId { get; set; }
+        //public int PlatnoscInnePrawaId { get; set; }
+        //public int? InnePrawaId { get; set; }
+
+        public int DzialkaId { get; set; }
+        public int PodmiotId { get; set; }
 
         private double? _Stawka;
         public double? Stawka
@@ -88,27 +92,27 @@ namespace RejestrNieruchomosciNew.Model
 
         public PlatnoscInnePrawa(UserControl_PreviewViewModel prev)
         {
-            if (prev.dzialkaSel != null)
-            {
-                using (Context c = new Context())
-                {
-                    var p = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == prev.dzialkaSel.DzialkaId);
-                    if (p != null)
-                    {
-                        InnePrawaId = p.InnePrawaId;
-                        Stawka = p.Stawka;
-                        Okres = p.Okres;
-                        Wartosc = p.Wartosc;
-                        Wysokosc = p.Wysokosc;
+            //if (prev.dzialkaSel != null)
+            //{
+            //    using (Context c = new Context())
+            //    {
+            //        var p = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == prev.dzialkaSel.DzialkaId);
+            //        if (p != null)
+            //        {
+            //            InnePrawaId = p.InnePrawaId;
+            //            Stawka = p.Stawka;
+            //            Okres = p.Okres;
+            //            Wartosc = p.Wartosc;
+            //            Wysokosc = p.Wysokosc;
 
-                        rok1 = p.rok1;
-                        rok2 = p.rok2;
-                        rok3 = p.rok3;
-                    }
-                    else
-                        InnePrawaId = prev.dzialkaSel.DzialkaId;
-                }
-            }
+            //            rok1 = p.rok1;
+            //            rok2 = p.rok2;
+            //            rok3 = p.rok3;
+            //        }
+            //        else
+            //            InnePrawaId = prev.dzialkaSel.DzialkaId;
+            //    }
+            //}
         }
 
         private bool isEqual(PlatnoscInnePrawa p)
@@ -129,7 +133,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public void cleanObj()
         {
-            this.InnePrawaId = null;
+            //this.InnePrawaId = null;
             this.Okres = null;
             this.rok1 = null;
             this.rok2 = null;
@@ -152,32 +156,32 @@ namespace RejestrNieruchomosciNew.Model
 
         public void save()
         {
-            if (PlatnoscInnePrawaId == 0)
-            {
-                if (isNull() == false)
-                    addRow(this);
-            }
-            else
-            {
-                using (Context c = new Context())
-                {
-                    if (isNull())
-                    {
-                        c.PlatnoscInnePrawa.Remove(this);
-                        c.SaveChanges();
-                    }
-                    else
-                    {
-                        var v = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == PlatnoscInnePrawaId);
+            //if (PlatnoscInnePrawaId == 0)
+            //{
+            //    if (isNull() == false)
+            //        addRow(this);
+            //}
+            //else
+            //{
+            //    using (Context c = new Context())
+            //    {
+            //        if (isNull())
+            //        {
+            //            c.PlatnoscInnePrawa.Remove(this);
+            //            c.SaveChanges();
+            //        }
+            //        else
+            //        {
+            //            var v = c.PlatnoscInnePrawa.FirstOrDefault(row => row.PlatnoscInnePrawaId == PlatnoscInnePrawaId);
 
-                        if (v != null)
-                        {
-                            c.Entry(v).CurrentValues.SetValues(this);
-                            c.SaveChanges();
-                        }
-                    }
-                }
-            }
+            //            if (v != null)
+            //            {
+            //                c.Entry(v).CurrentValues.SetValues(this);
+            //                c.SaveChanges();
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void addRow(PlatnoscInnePrawa platnoscInnePrawa)

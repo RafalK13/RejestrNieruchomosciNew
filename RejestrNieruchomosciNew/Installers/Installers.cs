@@ -83,6 +83,8 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<ICelNabyciaList>().ImplementedBy<CelNabyciaList>());
 
             container.Register(Component.For<UserControl_CelNabycia>());
+
+            container.Register(Component.For<PlatnoscInnePrawaList>());
         }
     }
 }

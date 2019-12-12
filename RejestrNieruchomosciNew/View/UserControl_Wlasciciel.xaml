@@ -441,8 +441,6 @@
                             <Label Content="Stawka [%]"                                       
                                        Style="{StaticResource label1}"/>
                             <TextBox
-                                
-                                
                                        Text="{Binding Path=DataContext.userControl_Wlasciciel.platnosci.Stawka , ElementName=WladanieWin, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>

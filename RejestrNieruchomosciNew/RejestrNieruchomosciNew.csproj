@@ -198,205 +198,29 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191108074647_praca1.cs" />
-    <Compile Include="Migrations\20191108074647_praca1.designer.cs">
-      <DependentUpon>20191108074647_praca1.cs</DependentUpon>
+    <Compile Include="Migrations\20191211135042_praca1.cs" />
+    <Compile Include="Migrations\20191211135042_praca1.designer.cs">
+      <DependentUpon>20191211135042_praca1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191108094002_praca2.cs" />
-    <Compile Include="Migrations\20191108094002_praca2.designer.cs">
-      <DependentUpon>20191108094002_praca2.cs</DependentUpon>
+    <Compile Include="Migrations\20191211135349_praca2.cs" />
+    <Compile Include="Migrations\20191211135349_praca2.designer.cs">
+      <DependentUpon>20191211135349_praca2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191108094416_praca3.cs" />
-    <Compile Include="Migrations\20191108094416_praca3.designer.cs">
-      <DependentUpon>20191108094416_praca3.cs</DependentUpon>
+    <Compile Include="Migrations\20191212073416_praca61.cs" />
+    <Compile Include="Migrations\20191212073416_praca61.designer.cs">
+      <DependentUpon>20191212073416_praca61.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191108094814_praca4.cs" />
-    <Compile Include="Migrations\20191108094814_praca4.designer.cs">
-      <DependentUpon>20191108094814_praca4.cs</DependentUpon>
+    <Compile Include="Migrations\20191212073930_praca3.cs" />
+    <Compile Include="Migrations\20191212073930_praca3.designer.cs">
+      <DependentUpon>20191212073930_praca3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191119122519_praca5.cs" />
-    <Compile Include="Migrations\20191119122519_praca5.designer.cs">
-      <DependentUpon>20191119122519_praca5.cs</DependentUpon>
+    <Compile Include="Migrations\20191212090306_praca4.cs" />
+    <Compile Include="Migrations\20191212090306_praca4.designer.cs">
+      <DependentUpon>20191212090306_praca4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191120073059_praca6.cs" />
-    <Compile Include="Migrations\20191120073059_praca6.designer.cs">
-      <DependentUpon>20191120073059_praca6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191120124404_praca8.cs" />
-    <Compile Include="Migrations\20191120124404_praca8.designer.cs">
-      <DependentUpon>20191120124404_praca8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191121104000_praca9.cs" />
-    <Compile Include="Migrations\20191121104000_praca9.designer.cs">
-      <DependentUpon>20191121104000_praca9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191122090147_praca11.cs" />
-    <Compile Include="Migrations\20191122090147_praca11.designer.cs">
-      <DependentUpon>20191122090147_praca11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191122130530_praca13.cs" />
-    <Compile Include="Migrations\20191122130530_praca13.designer.cs">
-      <DependentUpon>20191122130530_praca13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191122131310_praca14.cs" />
-    <Compile Include="Migrations\20191122131310_praca14.designer.cs">
-      <DependentUpon>20191122131310_praca14.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191122132104_praca15.cs" />
-    <Compile Include="Migrations\20191122132104_praca15.designer.cs">
-      <DependentUpon>20191122132104_praca15.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128073248_praca16.cs" />
-    <Compile Include="Migrations\20191128073248_praca16.designer.cs">
-      <DependentUpon>20191128073248_praca16.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128074216_praca17.cs" />
-    <Compile Include="Migrations\20191128074216_praca17.designer.cs">
-      <DependentUpon>20191128074216_praca17.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128074841_praca18.cs" />
-    <Compile Include="Migrations\20191128074841_praca18.designer.cs">
-      <DependentUpon>20191128074841_praca18.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128075044_praca19.cs" />
-    <Compile Include="Migrations\20191128075044_praca19.designer.cs">
-      <DependentUpon>20191128075044_praca19.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128075409_praca20.cs" />
-    <Compile Include="Migrations\20191128075409_praca20.designer.cs">
-      <DependentUpon>20191128075409_praca20.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128075623_praca21.cs" />
-    <Compile Include="Migrations\20191128075623_praca21.designer.cs">
-      <DependentUpon>20191128075623_praca21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128075741_praca22.cs" />
-    <Compile Include="Migrations\20191128075741_praca22.designer.cs">
-      <DependentUpon>20191128075741_praca22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128075926_praca23.cs" />
-    <Compile Include="Migrations\20191128075926_praca23.designer.cs">
-      <DependentUpon>20191128075926_praca23.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128085534_praca24.cs" />
-    <Compile Include="Migrations\20191128085534_praca24.designer.cs">
-      <DependentUpon>20191128085534_praca24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128100350_praca25.cs" />
-    <Compile Include="Migrations\20191128100350_praca25.designer.cs">
-      <DependentUpon>20191128100350_praca25.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191128100442_praca26.cs" />
-    <Compile Include="Migrations\20191128100442_praca26.designer.cs">
-      <DependentUpon>20191128100442_praca26.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191202093142_praca27.cs" />
-    <Compile Include="Migrations\20191202093142_praca27.designer.cs">
-      <DependentUpon>20191202093142_praca27.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191204094238_praca28.cs" />
-    <Compile Include="Migrations\20191204094238_praca28.designer.cs">
-      <DependentUpon>20191204094238_praca28.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191204100344_praca30.cs" />
-    <Compile Include="Migrations\20191204100344_praca30.designer.cs">
-      <DependentUpon>20191204100344_praca30.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191204101551_praca31.cs" />
-    <Compile Include="Migrations\20191204101551_praca31.designer.cs">
-      <DependentUpon>20191204101551_praca31.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191205081207_praca32.cs" />
-    <Compile Include="Migrations\20191205081207_praca32.designer.cs">
-      <DependentUpon>20191205081207_praca32.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191205122236_praca33.cs" />
-    <Compile Include="Migrations\20191205122236_praca33.designer.cs">
-      <DependentUpon>20191205122236_praca33.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191205124750_praca34.cs" />
-    <Compile Include="Migrations\20191205124750_praca34.designer.cs">
-      <DependentUpon>20191205124750_praca34.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191205125410_praca35.cs" />
-    <Compile Include="Migrations\20191205125410_praca35.designer.cs">
-      <DependentUpon>20191205125410_praca35.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206131052_praca36.cs" />
-    <Compile Include="Migrations\20191206131052_praca36.designer.cs">
-      <DependentUpon>20191206131052_praca36.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206133236_praca37.cs" />
-    <Compile Include="Migrations\20191206133236_praca37.designer.cs">
-      <DependentUpon>20191206133236_praca37.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206133404_praca38.cs" />
-    <Compile Include="Migrations\20191206133404_praca38.designer.cs">
-      <DependentUpon>20191206133404_praca38.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206133451_praca39.cs" />
-    <Compile Include="Migrations\20191206133451_praca39.designer.cs">
-      <DependentUpon>20191206133451_praca39.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206133723_praca40.cs" />
-    <Compile Include="Migrations\20191206133723_praca40.designer.cs">
-      <DependentUpon>20191206133723_praca40.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206134327_praca41.cs" />
-    <Compile Include="Migrations\20191206134327_praca41.designer.cs">
-      <DependentUpon>20191206134327_praca41.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191206141848_praca42.cs" />
-    <Compile Include="Migrations\20191206141848_praca42.designer.cs">
-      <DependentUpon>20191206141848_praca42.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209093127_praca43.cs" />
-    <Compile Include="Migrations\20191209093127_praca43.designer.cs">
-      <DependentUpon>20191209093127_praca43.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209095458_praca44.cs" />
-    <Compile Include="Migrations\20191209095458_praca44.designer.cs">
-      <DependentUpon>20191209095458_praca44.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209095913_praca45.cs" />
-    <Compile Include="Migrations\20191209095913_praca45.designer.cs">
-      <DependentUpon>20191209095913_praca45.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209100634_praca46.cs" />
-    <Compile Include="Migrations\20191209100634_praca46.designer.cs">
-      <DependentUpon>20191209100634_praca46.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209105347_praca47.cs" />
-    <Compile Include="Migrations\20191209105347_praca47.designer.cs">
-      <DependentUpon>20191209105347_praca47.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209110946_praca48.cs" />
-    <Compile Include="Migrations\20191209110946_praca48.designer.cs">
-      <DependentUpon>20191209110946_praca48.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209111806_praca49.cs" />
-    <Compile Include="Migrations\20191209111806_praca49.designer.cs">
-      <DependentUpon>20191209111806_praca49.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209112025_praca50.cs" />
-    <Compile Include="Migrations\20191209112025_praca50.designer.cs">
-      <DependentUpon>20191209112025_praca50.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209112509_praca51.cs" />
-    <Compile Include="Migrations\20191209112509_praca51.designer.cs">
-      <DependentUpon>20191209112509_praca51.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209112733_praca52.cs" />
-    <Compile Include="Migrations\20191209112733_praca52.designer.cs">
-      <DependentUpon>20191209112733_praca52.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209112905_praca53.cs" />
-    <Compile Include="Migrations\20191209112905_praca53.designer.cs">
-      <DependentUpon>20191209112905_praca53.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191209124727_praca54.cs" />
-    <Compile Include="Migrations\20191209124727_praca54.designer.cs">
-      <DependentUpon>20191209124727_praca54.cs</DependentUpon>
+    <Compile Include="Migrations\20191212100228_praca5.cs" />
+    <Compile Include="Migrations\20191212100228_praca5.designer.cs">
+      <DependentUpon>20191212100228_praca5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
@@ -443,6 +267,7 @@
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
+    <Compile Include="Model\PlatnoscInnePrawaList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 
@@ -44,12 +45,20 @@ namespace RejestrNieruchomosciNew.Model
                     listOrg.Remove(r);
                 else
                 {
-                    if (listOrg.Exists(row => row.InnePrawaId == r.InnePrawaId) == true)
+                    //if (listOrg.Exists(row => row.InnePrawaId == r.InnePrawaId) == true)
+                    //{
+                    //    listToMod.Add((IInnePrawa)r.Clone());
+                    //    var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
+                    //    listOrg.Remove(rToDel);
+                    //}
+                    if (listOrg.Exists(row => (row.PodmiotId == r.PodmiotId) && (row.DzialkaId == r.DzialkaId)) == true)
                     {
                         listToMod.Add((IInnePrawa)r.Clone());
-                        var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
+                        //var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
+                        var rToDel = listOrg.Find(d => (d.DzialkaId == r.DzialkaId) && ( d.PodmiotId == r.PodmiotId));
                         listOrg.Remove(rToDel);
                     }
+
                     else
                     {
                         listToAdd.Add((IInnePrawa)r.Clone());
@@ -89,7 +98,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToMod)
                 {
-                    var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+                    //var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+                    var v = c.InnePrawa.First(r => ( r.PodmiotId == i.PodmiotId) &&(r.DzialkaId==i.DzialkaId));
                     c.Entry(v).CurrentValues.SetValues(i);
                 }
                 c.SaveChanges();
@@ -102,7 +112,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToDel)
                 {
-                    var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+                    //var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+                    var v = c.InnePrawa.First(r => (r.DzialkaId == i.DzialkaId) && (r.PodmiotId==i.PodmiotId));
                     c.InnePrawa.Remove(v);
                 }
                 c.SaveChanges();

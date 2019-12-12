@@ -71,6 +71,9 @@ namespace RejestrNieruchomosciNew
                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<InnePrawa>()
+                .HasKey(k => new { k.PodmiotId, k.DzialkaId });
+
+            modelBuilder.Entity<InnePrawa>()
               .HasOne<Dzialka>(a => a.Dzialka)
               .WithMany(a => a.InnePrawa)
               .OnDelete(DeleteBehavior.Cascade);
@@ -79,6 +82,15 @@ namespace RejestrNieruchomosciNew
                .HasOne<Dzialka>(a => a.Dzialka)
                .WithOne(a => a.PlatnoscUW)
                .HasForeignKey("PlatnoscUW", "DzialkaId")
+               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<PlatnoscInnePrawa>()
+                .HasKey(k => new { k.DzialkaId, k.PodmiotId });
+
+            modelBuilder.Entity<InnePrawa>()
+               .HasOne<PlatnoscInnePrawa>(a => a.PlatnoscInnePrawa)
+               .WithOne(a => a.InnePrawa)
+               .HasForeignKey("PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(

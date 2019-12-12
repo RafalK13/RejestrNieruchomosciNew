@@ -97,7 +97,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
-                    //i.Podmiot = null;
+                    
                     c.Wladanie.Add((Wladanie)i);
                 }
                 c.SaveChanges();

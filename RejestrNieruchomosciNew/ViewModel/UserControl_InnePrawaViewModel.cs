@@ -28,18 +28,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        private bool _podmiotDetail;
-        public bool podmiotDetail
-        {
-            get => _podmiotDetail;
-
-            set
-            {
-                _podmiotDetail = value;
-                RaisePropertyChanged("podmiotDetail");
-            }
-        }
-
         private string _podmiotName;
         public string podmiotName
         {
@@ -66,13 +54,15 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IInnePrawaList innePrawaList { get; set; }
 
+        public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
+        public PlatnoscInnePrawaList platnoscInnePrawaList { get; set; }
+
         public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
 
         public ITransakcjeList transakcjeList { get; set; }
         public RodzajDokumentuList rodzDokSlo { get; set; }
         public NazwaCzynnosciList nazwaCzynSlo { get; set; }
         public ICelNabyciaList celNabyciaList { get; set; }
-
 
         private IInnePrawa _innePrawaSel;
         public IInnePrawa innePrawaSel
@@ -88,6 +78,18 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IPodmiotList podmiotList { get; set; }
 
+        private bool _podmiotDetail;
+        public bool podmiotDetail
+        {
+            get => _podmiotDetail;
+
+            set
+            {
+                _podmiotDetail = value;
+                RaisePropertyChanged("podmiotDetail");
+            }
+        }
+
         public UserControl_InnePrawaViewModel(UserControl_PreviewViewModel userPrev)
         {
             initButtons();
@@ -98,6 +100,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
             }
+
             podmiotDetail = false;
         }
 
@@ -105,7 +108,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (innePrawaSel != null)
             {
-                if (innePrawaSel.DzialkaId != null)
+                
+                if (innePrawaSel.DzialkaId != 0)
                     podmiotDetail = true;
             }
             else
@@ -131,6 +135,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand innePrawaSell { get; set; }
         public ICommand protPrzejScanClick { get; set; }
         public ICommand protZwrotScanClick { get; set; }
+        public ICommand innePrawaCls { get; set; }
 
         private void initButtons()
         {
@@ -140,6 +145,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             innePrawaSell = new RelayCommand(onInnePrawaSell);
             protPrzejScanClick = new RelayCommand(onProtPrzejScan);
             protZwrotScanClick = new RelayCommand(onProtZwrotScan);
+            innePrawaCls = new RelayCommand(onInnePrawaCls);
+        }
+
+        private void onInnePrawaCls()
+        {
+            innePrawaSel = null;
         }
 
         private void onProtZwrotScan()
@@ -195,7 +206,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                     podmiotName = string.Empty;
                     innePrawaSel = null;
                 }
+
+                calcPlatnosc();
             }
+        }
+
+        private void calcPlatnosc()
+        {
+            
         }
 
         private void onPodmiotDel()

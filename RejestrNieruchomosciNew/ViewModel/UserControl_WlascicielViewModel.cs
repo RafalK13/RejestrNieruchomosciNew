@@ -175,13 +175,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = selectedPodmId;
-                   
+
                     wladanieList.list.Add(new Wladanie()
                     {
                         DzialkaId = wladanie.DzialkaId,
                         PodmiotId = wladanie.PodmiotId,
                     });
-
+                    
                     podmiotName = string.Empty;
                     wladanieSel = null;
                 }
