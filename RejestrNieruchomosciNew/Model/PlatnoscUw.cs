@@ -175,8 +175,8 @@ namespace RejestrNieruchomosciNew
                 {
                     if (isNull())
                     {
-                        c.PlatnoscUW.Remove(this);
-                        c.SaveChanges();
+                        //c.PlatnoscUW.Remove(this);
+                        //c.SaveChanges();
                     }
                     else
                     {

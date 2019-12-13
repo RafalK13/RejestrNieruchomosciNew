@@ -4,7 +4,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 {
     public interface IInnePrawa : IEquatable<IInnePrawa>, ICloneable
     {
-        //int InnePrawaId { get; set; }
+        int InnePrawaId { get; set; }
 
         int DzialkaId { get; set; }
         int PodmiotId { get; set; }

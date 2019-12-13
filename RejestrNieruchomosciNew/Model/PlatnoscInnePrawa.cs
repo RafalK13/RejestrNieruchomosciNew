@@ -7,11 +7,11 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class PlatnoscInnePrawa : ViewModelBase, IPlatnosc
     {
-        //public int PlatnoscInnePrawaId { get; set; }
+        public int PlatnoscInnePrawaId { get; set; }
         //public int? InnePrawaId { get; set; }
 
-        public int DzialkaId { get; set; }
-        public int PodmiotId { get; set; }
+        public int? DzialkaId { get; set; }
+        public int? PodmiotId { get; set; }
 
         private double? _Stawka;
         public double? Stawka
@@ -117,13 +117,15 @@ namespace RejestrNieruchomosciNew.Model
 
         private bool isEqual(PlatnoscInnePrawa p)
         {
-            return this.Stawka == Stawka &&
-                   this.Okres == Okres &&
-                   this.Wartosc == Wartosc &&
-                   this.Wysokosc == Wysokosc &&
-                   this.rok1 == rok1 &&
-                   this.rok2 == rok2 &&
-                   this.rok3 == rok3;
+            return  this.DzialkaId == DzialkaId &&
+                    this.PodmiotId == PodmiotId &&
+                    this.Stawka == Stawka &&
+                    this.Okres == Okres &&
+                    this.Wartosc == Wartosc &&
+                    this.Wysokosc == Wysokosc &&
+                    this.rok1 == rok1 &&
+                    this.rok2 == rok2 &&
+                    this.rok3 == rok3;
         }
 
         public PlatnoscInnePrawa clone()

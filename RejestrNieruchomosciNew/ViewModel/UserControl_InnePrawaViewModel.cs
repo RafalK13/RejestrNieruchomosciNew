@@ -50,11 +50,20 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public IInnePrawa innePrawa{ get; set; }
+        public IInnePrawa innePrawa { get; set; }
 
         public IInnePrawaList innePrawaList { get; set; }
 
-        public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
+        private PlatnoscInnePrawa _platnoscInnePrawa;
+        public PlatnoscInnePrawa platnoscInnePrawa
+        {
+            get => _platnoscInnePrawa;
+            set
+            {
+                _platnoscInnePrawa = value;
+                RaisePropertyChanged("platnoscInnePrawa");
+            }
+        }
         public PlatnoscInnePrawaList platnoscInnePrawaList { get; set; }
 
         public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
@@ -108,24 +117,35 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (innePrawaSel != null)
             {
-                
                 if (innePrawaSel.DzialkaId != 0)
+                {
                     podmiotDetail = true;
+                    setPlatnoscKey();
+                }
             }
             else
                 podmiotDetail = false;
         }
 
+        private void setPlatnoscKey()
+        {
+            platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault(r => r.DzialkaId == innePrawaSel.DzialkaId &&
+                                                                               r.PodmiotId == innePrawaSel.PodmiotId);
+
+            //platnoscInnePrawa.DzialkaId = innePrawaSel.DzialkaId;
+            //platnoscInnePrawa.PodmiotId = innePrawaSel.PodmiotId;
+        }
+
         private bool testWlascExist()
         {
-         
+
             if (innePrawaList.list.Count == 0)
                 return false;
 
             var v = innePrawaList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
 
             return (v == 0) ? false : true;
-        
+
         }
 
         #region Buttons
@@ -156,7 +176,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onProtZwrotScan()
         {
             string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + innePrawaSel.DzialkaId + "\\InnePrawa\\Podmiot\\" + innePrawaSel.PodmiotId + "\\ProtokolZwrotnegoPrzekazania\\";
-            
+
             innePrawaSel.ProtZwrotScan = zalPath;
 
             DirectoryInfo dir = new DirectoryInfo(zalPath);
@@ -168,7 +188,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onProtPrzejScan()
         {
-            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +  "\\Dzialka\\"+ innePrawaSel.DzialkaId + "\\InnePrawa\\Podmiot\\" + innePrawaSel.PodmiotId + "\\ProtokolPrzejecia\\";
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + innePrawaSel.DzialkaId + "\\InnePrawa\\Podmiot\\" + innePrawaSel.PodmiotId + "\\ProtokolPrzejecia\\";
             innePrawaSel.ProtPrzejScan = zalPath;
 
             DirectoryInfo dir = new DirectoryInfo(zalPath);
@@ -186,6 +206,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onInnePrawaAdd()
         {
             innePrawaList.save();
+            platnoscInnePrawaList.save();
         }
 
         private void onPodmiotAdd()
@@ -206,16 +227,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                     podmiotName = string.Empty;
                     innePrawaSel = null;
                 }
-
-                calcPlatnosc();
+                platnoscInnePrawaList.list.Add(new PlatnoscInnePrawa()
+                {
+                    DzialkaId = innePrawa.DzialkaId,
+                    PodmiotId = innePrawa.PodmiotId,
+                });
+                
             }
         }
-
-        private void calcPlatnosc()
-        {
-            
-        }
-
         private void onPodmiotDel()
         {
             innePrawaList.list.Remove(innePrawaSel);

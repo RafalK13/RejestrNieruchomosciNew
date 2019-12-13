@@ -6,7 +6,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class InnePrawa : IInnePrawa
     {
-        //public int InnePrawaId { get; set; }
+        public int InnePrawaId { get; set; }
         public int DzialkaId { get; set; }
         public int PodmiotId { get; set; }
 

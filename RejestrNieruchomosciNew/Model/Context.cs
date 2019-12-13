@@ -1,7 +1,5 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using RejestrNieruchomosciNew.Model;
 
 
@@ -39,7 +37,7 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
-        
+
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 
         //public virtual DbSet<InnePrawa> InnePrawa { get; set; }
@@ -70,28 +68,47 @@ namespace RejestrNieruchomosciNew
                .WithMany(a=>a.Wladanie)
                .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<InnePrawa>()
-                .HasKey(k => new { k.PodmiotId, k.DzialkaId });
-
-            modelBuilder.Entity<InnePrawa>()
-              .HasOne<Dzialka>(a => a.Dzialka)
-              .WithMany(a => a.InnePrawa)
-              .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<PlatnoscUW>()
+                .HasKey(k=>k.PlatnoscUWId);
 
             modelBuilder.Entity<PlatnoscUW>()
-               .HasOne<Dzialka>(a => a.Dzialka)
-               .WithOne(a => a.PlatnoscUW)
-               .HasForeignKey("PlatnoscUW", "DzialkaId")
-               .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<PlatnoscInnePrawa>()
-                .HasKey(k => new { k.DzialkaId, k.PodmiotId });
+              .HasOne<Dzialka>(a => a.Dzialka)
+              .WithOne(a => a.PlatnoscUW)
+              .HasForeignKey("PlatnoscUW", "DzialkaId")
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<InnePrawa>()
-               .HasOne<PlatnoscInnePrawa>(a => a.PlatnoscInnePrawa)
-               .WithOne(a => a.InnePrawa)
-               .HasForeignKey("PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
-               .OnDelete(DeleteBehavior.Cascade);
+                .HasKey(k => new { k.DzialkaId, k.PodmiotId });
+
+            //modelBuilder.Entity<InnePrawa>()
+            //    .HasKey(k => k.InnePrawaId);
+
+            modelBuilder.Entity<PlatnoscInnePrawa>()
+                .HasKey(k => k.PlatnoscInnePrawaId);
+
+            modelBuilder.Entity<InnePrawa>()
+                .HasOne<PlatnoscInnePrawa>(a => a.PlatnoscInnePrawa)
+                .WithOne(a => a.InnePrawa)
+                .HasForeignKey<PlatnoscInnePrawa>("DzialkaId", "PodmiotId")
+                //.HasForeignKey(  "PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+
+
+
+            //modelBuilder.Entity<PlatnoscInnePrawa>()
+            //    .HasKey(k => new { k.DzialkaId, k.PodmiotId });
+
+
+            //modelBuilder.Entity<PlatnoscInnePrawa>()
+            //    .HasOne<InnePrawa>(a => a.InnePrawa)
+            //    .WithOne(a => a.PlatnoscInnePrawa)
+            //    .HasForeignKey<InnePrawa>("DzialkaId", "PodmiotId");
+
+            //.HasForeignKey(  "PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
+            //.OnDelete(DeleteBehavior.Cascade);
+
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },

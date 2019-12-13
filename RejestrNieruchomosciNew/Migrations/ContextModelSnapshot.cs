@@ -149,9 +149,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
                 {
-                    b.Property<int>("PodmiotId");
-
                     b.Property<int>("DzialkaId");
+
+                    b.Property<int>("PodmiotId");
 
                     b.Property<int?>("CelNabyciaId");
 
@@ -160,6 +160,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.Property<DateTime?>("DataObowOd");
 
                     b.Property<int?>("DecyzjeAdministracyjneId");
+
+                    b.Property<int>("InnePrawaId");
 
                     b.Property<DateTime?>("ProtPrzejData");
 
@@ -185,9 +187,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<DateTime?>("wizjaTerZwrot");
 
-                    b.HasKey("PodmiotId", "DzialkaId");
-
-                    b.HasIndex("DzialkaId");
+                    b.HasKey("DzialkaId", "PodmiotId");
 
                     b.HasIndex("RodzajInnegoPrawaSloId");
 
@@ -200,11 +200,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
                 {
-                    b.Property<int>("DzialkaId");
+                    b.Property<int>("PlatnoscInnePrawaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PodmiotId");
+                    b.Property<int?>("DzialkaId");
 
                     b.Property<int?>("Okres");
+
+                    b.Property<int?>("PodmiotId");
 
                     b.Property<double?>("Stawka");
 
@@ -218,7 +222,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("rok3");
 
-                    b.HasKey("DzialkaId", "PodmiotId");
+                    b.HasKey("PlatnoscInnePrawaId");
+
+                    b.HasIndex("DzialkaId", "PodmiotId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL AND [PodmiotId] IS NOT NULL");
 
                     b.ToTable("PlatnoscInnePrawa");
                 });

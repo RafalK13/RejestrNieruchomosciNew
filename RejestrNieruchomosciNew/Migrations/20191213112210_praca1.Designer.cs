@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191212100228_praca5")]
-    partial class praca5
+    [Migration("20191213112210_praca1")]
+    partial class praca1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,9 +151,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
                 {
-                    b.Property<int>("PodmiotId");
-
                     b.Property<int>("DzialkaId");
+
+                    b.Property<int>("PodmiotId");
 
                     b.Property<int?>("CelNabyciaId");
 
@@ -162,6 +162,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.Property<DateTime?>("DataObowOd");
 
                     b.Property<int?>("DecyzjeAdministracyjneId");
+
+                    b.Property<int>("InnePrawaId");
 
                     b.Property<DateTime?>("ProtPrzejData");
 
@@ -187,9 +189,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<DateTime?>("wizjaTerZwrot");
 
-                    b.HasKey("PodmiotId", "DzialkaId");
-
-                    b.HasIndex("DzialkaId");
+                    b.HasKey("DzialkaId", "PodmiotId");
 
                     b.HasIndex("RodzajInnegoPrawaSloId");
 
@@ -202,11 +202,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
                 {
-                    b.Property<int>("DzialkaId");
+                    b.Property<int>("PlatnoscInnePrawaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("PodmiotId");
+                    b.Property<int?>("DzialkaId");
 
                     b.Property<int?>("Okres");
+
+                    b.Property<int?>("PodmiotId");
 
                     b.Property<double?>("Stawka");
 
@@ -220,7 +224,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int?>("rok3");
 
-                    b.HasKey("DzialkaId", "PodmiotId");
+                    b.HasKey("PlatnoscInnePrawaId");
+
+                    b.HasIndex("DzialkaId", "PodmiotId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL AND [PodmiotId] IS NOT NULL");
 
                     b.ToTable("PlatnoscInnePrawa");
                 });
@@ -636,8 +644,7 @@ namespace RejestrNieruchomosciNew.Migrations
                 {
                     b.HasOne("RejestrNieruchomosciNew.Model.InnePrawa", "InnePrawa")
                         .WithOne("PlatnoscInnePrawa")
-                        .HasForeignKey("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", "DzialkaId", "PodmiotId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Transakcje", b =>

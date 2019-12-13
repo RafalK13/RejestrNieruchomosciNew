@@ -198,29 +198,13 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191211135042_praca1.cs" />
-    <Compile Include="Migrations\20191211135042_praca1.designer.cs">
-      <DependentUpon>20191211135042_praca1.cs</DependentUpon>
+    <Compile Include="Migrations\20191213112210_praca1.cs" />
+    <Compile Include="Migrations\20191213112210_praca1.designer.cs">
+      <DependentUpon>20191213112210_praca1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20191211135349_praca2.cs" />
-    <Compile Include="Migrations\20191211135349_praca2.designer.cs">
-      <DependentUpon>20191211135349_praca2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191212073416_praca61.cs" />
-    <Compile Include="Migrations\20191212073416_praca61.designer.cs">
-      <DependentUpon>20191212073416_praca61.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191212073930_praca3.cs" />
-    <Compile Include="Migrations\20191212073930_praca3.designer.cs">
-      <DependentUpon>20191212073930_praca3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191212090306_praca4.cs" />
-    <Compile Include="Migrations\20191212090306_praca4.designer.cs">
-      <DependentUpon>20191212090306_praca4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20191212100228_praca5.cs" />
-    <Compile Include="Migrations\20191212100228_praca5.designer.cs">
-      <DependentUpon>20191212100228_praca5.cs</DependentUpon>
+    <Compile Include="Migrations\20191213134701_praca2.cs" />
+    <Compile Include="Migrations\20191213134701_praca2.designer.cs">
+      <DependentUpon>20191213134701_praca2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
