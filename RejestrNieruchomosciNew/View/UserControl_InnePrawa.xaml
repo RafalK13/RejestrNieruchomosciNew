@@ -327,7 +327,7 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="0"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -432,6 +432,7 @@
                                     Content="Skan protokołu"
                                     Command="{Binding userControl_InnePrawa.protZwrotScanClick}"
                                     />
+                
             </Grid>
         </ScrollViewer>
 
@@ -491,6 +492,7 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -499,6 +501,9 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                
+                   
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"/>
@@ -540,7 +545,7 @@
                                     Text="{Binding userControl_InnePrawa.platnoscInnePrawa.Wysokosc}" 
                                     />
                 <Label          Grid.Column="0" Grid.Row="5" 
-                                    Content="Rok "  
+                                    Content="Rok 1"  
                                     Style="{StaticResource labelTab}"/>
                 <TextBox        Grid.Column="1" Grid.Row="5" 
                                     Margin="3"
@@ -559,6 +564,67 @@
                 <TextBox        Grid.Column="1" Grid.Row="7" 
                                     Margin="3"
                                     Text="{Binding userControl_InnePrawa.platnoscInnePrawa.rok3}" 
+                                    />
+
+                <Label          Grid.Row="8" Grid.ColumnSpan="2"
+                                    Content="Decyzje Administracyjne"
+                                    FontWeight="Bold"
+                                    FontSize="19"    
+                                    Margin="0,10,0,0"
+                                    Style="{StaticResource label}"/>
+
+                <Label          Grid.Column="0" Grid.Row="9" 
+                                    Content="Organ wydający"  
+                                    Style="{StaticResource labelTab}"/>
+
+                <conRaf:DataGridRafALL  
+                        Grid.Column="1" Grid.Row="9"  Grid.RowSpan="10"
+                        Margin="3,2,0,0"
+                        x:Name="conRaf2"
+                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                        fontSizeRafALL="13"
+                        heightRafALL="25"
+                        HorizontalAlignment="Stretch"
+                        colNameRaf="nazwa"
+                        itemSourceRafALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotList.listView, ElementName=InnePrawaWin}"
+                        />
+
+                <!--TekstPropALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotName, ElementName=InnePrawaWin, Mode=TwoWay}"
+                        
+                        selectedIdRafALL="{Binding Path=DataContext.userControl_InnePrawa.selectedPodmId, ElementName=InnePrawaWin,Mode=TwoWay}"-->
+
+                <Label             Grid.Column="0" Grid.Row="10" 
+                                   Content="Data"  
+                                   Style="{StaticResource labelTab}"/>
+                <TextBox           Grid.Column="1" Grid.Row="10" 
+                                   Margin="3"
+                                   Text="{}" 
+                                   />
+                <Label             Grid.Column="0" Grid.Row="11" 
+                                   Content="Numer"  
+                                   Style="{StaticResource labelTab}"/>
+                <TextBox           Grid.Column="1" Grid.Row="11" 
+                                   Margin="3"
+                                   Text="" 
+                                   />
+                <Label             Grid.Column="0" Grid.Row="12" 
+                                   Content="Przedmiot"  
+                                   Style="{StaticResource labelTab}"/>
+                <TextBox           Grid.Column="1" Grid.Row="12" Grid.RowSpan="4" 
+                                   TextWrapping="WrapWithOverflow"
+                                   AcceptsReturn="True"
+                                   AcceptsTab="True"
+                                   Height="150"
+                                   Margin="3"
+                                   Text="{}" 
+                                   VerticalScrollBarVisibility="Auto"
+                                    />
+                <Label              Grid.Column="0" Grid.Row="16" 
+                                    Content="Skan"  
+                                    Style="{StaticResource labelTab}"/>
+                <Button             Grid.Column="1" Grid.Row="16" 
+                                    Margin="3"
+                                    Content="Skan decyzji"
                                     />
             </Grid>
 

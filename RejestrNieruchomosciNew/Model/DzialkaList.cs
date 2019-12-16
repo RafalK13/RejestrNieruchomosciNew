@@ -57,6 +57,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                dz.DzialkaId = 0;
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }
