@@ -256,6 +256,7 @@
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />
+    <Compile Include="Model\PlatnoscList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />
@@ -285,6 +286,7 @@
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InnePrawaViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_PlatnoscUWViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\UserControl_TransViewModel.cs" />
     <Compile Include="ViewModel\UserControl_WlascicielViewModel.cs" />
@@ -307,6 +309,12 @@
     </Compile>
     <Compile Include="View\UserControl_InnePrawa.xaml.cs">
       <DependentUpon>UserControl_InnePrawa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Platnosc.xaml.cs">
+      <DependentUpon>UserControl_Platnosc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_PlatnoscUW.xaml.cs">
+      <DependentUpon>UserControl_PlatnoscUW.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
@@ -361,6 +369,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\UserControl_InnePrawa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Platnosc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_PlatnoscUW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

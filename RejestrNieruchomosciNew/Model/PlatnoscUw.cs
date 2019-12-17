@@ -11,16 +11,12 @@ namespace RejestrNieruchomosciNew
 {
     public partial class PlatnoscUW : ViewModelBase, IPlatnosc
     {
-       
         public int PlatnoscUWId { get; set; }
-        //[ForeignKey("DzialkaId")]
         
-
         private double? _Stawka;
         public double? Stawka
         {
-            get
-=> _Stawka; set
+            get => _Stawka; set
             {
                 _Stawka = value;
                 RaisePropertyChanged("Stawka");
@@ -90,38 +86,70 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-
         public int? DzialkaId { get; set; }
         public Dzialka Dzialka { get; set; }
 
         public PlatnoscUW() { }
 
-        public PlatnoscUW(UserControl_PreviewViewModel prev)
+        public void save(PlatnoscUW p)
         {
-            if (prev.dzialkaSel != null)
+            using (var c = new Context())
             {
-                using (Context c = new Context())
-                {
-                    var p = c.PlatnoscUW.FirstOrDefault(row => row.DzialkaId == prev.dzialkaSel.DzialkaId);
-                    if (p != null)
-                    {
-                        PlatnoscUWId = p.PlatnoscUWId;
-                        DzialkaId = p.DzialkaId;
-                        Stawka = p.Stawka;
-                        Okres = p.Okres;
-                        Wartosc = p.Wartosc;
-                        Wysokosc = p.Wysokosc;
-
-                        rok1 = p.rok1;
-                        rok2 = p.rok2;
-                        rok3 = p.rok3;
-                    }
-                    else
-                        DzialkaId = prev.dzialkaSel.DzialkaId;
-                        
-                }
+                c.PlatnoscUW.Update(p);
+                c.SaveChanges();
             }
         }
+
+        //public PlatnoscUW(Dzialka d)
+        //{
+        //    if (d != null)
+        //    {
+        //        using (Context c = new Context())
+        //        {
+        //            var p = c.PlatnoscUW.FirstOrDefault(row => row.DzialkaId == d.DzialkaId);
+        //            if (p != null)
+        //            {
+        //                PlatnoscUWId = p.PlatnoscUWId;
+        //                DzialkaId = p.DzialkaId;
+        //                Stawka = p.Stawka;
+        //                Okres = p.Okres;
+        //                Wartosc = p.Wartosc;
+        //                Wysokosc = p.Wysokosc;
+
+        //                rok1 = p.rok1;
+        //                rok2 = p.rok2;
+        //                rok3 = p.rok3;
+        //            }
+        //        }
+        //    }
+        //}
+
+        //public PlatnoscUW(UserControl_PreviewViewModel prev)
+        //{
+        //    if (prev.dzialkaSel != null)
+        //    {
+        //        using (Context c = new Context())
+        //        {
+        //            var p = c.PlatnoscUW.FirstOrDefault(row => row.DzialkaId == prev.dzialkaSel.DzialkaId);
+        //            if (p != null)
+        //            {
+        //                PlatnoscUWId = p.PlatnoscUWId;
+        //                DzialkaId = p.DzialkaId;
+        //                Stawka = p.Stawka;
+        //                Okres = p.Okres;
+        //                Wartosc = p.Wartosc;
+        //                Wysokosc = p.Wysokosc;
+
+        //                rok1 = p.rok1;
+        //                rok2 = p.rok2;
+        //                rok3 = p.rok3;
+        //            }
+        //            else
+        //                DzialkaId = prev.dzialkaSel.DzialkaId;
+
+        //        }
+        //    }
+        //}
 
         private bool isEqual(PlatnoscUW p)
         {
@@ -162,61 +190,61 @@ namespace RejestrNieruchomosciNew
                    (rok3 == null || rok3.Value == 0);
         }
 
-        public void save()
-        {
-            if (PlatnoscUWId == 0)
-            {
-                if (isNull() == false)
-                    addRow(this);
-            }
-            else
-            {
-                using (Context c = new Context())
-                {
-                    if (isNull())
-                    {
-                        //c.PlatnoscUW.Remove(this);
-                        //c.SaveChanges();
-                    }
-                    else
-                    {
-                        var v = c.PlatnoscUW.FirstOrDefault(row => row.PlatnoscUWId == PlatnoscUWId);
+        //public void save()
+        //{
+        //    if (PlatnoscUWId == 0)
+        //    {
+        //        if (isNull() == false)
+        //            addRow(this);
+        //    }
+        //    else
+        //    {
+        //        using (Context c = new Context())
+        //        {
+        //            if (isNull())
+        //            {
+        //                //c.PlatnoscUW.Remove(this);
+        //                //c.SaveChanges();
+        //            }
+        //            else
+        //            {
+        //                var v = c.PlatnoscUW.FirstOrDefault(row => row.PlatnoscUWId == PlatnoscUWId);
 
-                        if (v != null)
-                        {
-                            c.Entry(v).CurrentValues.SetValues(this);
-                            c.SaveChanges();
-                        }
-                    }
-                }
-            }
-        }
+        //                if (v != null)
+        //                {
+        //                    c.Entry(v).CurrentValues.SetValues(this);
+        //                    c.SaveChanges();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
-        private void addRow(PlatnoscUW platnoscUW)
-        {
-            using (Context c = new Context())
-            {
-                c.PlatnoscUW.Add((PlatnoscUW)platnoscUW);
-                c.SaveChanges();
-            }
-        }
+    //    private void addRow(PlatnoscUW platnoscUW)
+    //    {
+    //        using (Context c = new Context())
+    //        {
+    //            c.PlatnoscUW.Add((PlatnoscUW)platnoscUW);
+    //            c.SaveChanges();
+    //        }
+    //    }
 
-        private void modRow(PlatnoscUW platnoscUW)
-        {
-            using (Context c = new Context())
-            {
-                c.PlatnoscUW.Update((PlatnoscUW)platnoscUW);
-                c.SaveChanges();
-            }
-        }
+    //    private void modRow(PlatnoscUW platnoscUW)
+    //    {
+    //        using (Context c = new Context())
+    //        {
+    //            c.PlatnoscUW.Update((PlatnoscUW)platnoscUW);
+    //            c.SaveChanges();
+    //        }
+    //    }
 
-        private void delRow(PlatnoscUW platnoscUW)
-        {
-            using (Context c = new Context())
-            {
-                c.PlatnoscUW.Remove((PlatnoscUW)platnoscUW);
-                c.SaveChanges();
-            }
-        }
+    //    private void delRow(PlatnoscUW platnoscUW)
+    //    {
+    //        using (Context c = new Context())
+    //        {
+    //            c.PlatnoscUW.Remove((PlatnoscUW)platnoscUW);
+    //            c.SaveChanges();
+    //        }
+    //    }
     }
 }

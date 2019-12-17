@@ -38,6 +38,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public string modeMessage { get; set; }
 
         public IPodmiotList podmiotList { get; set; }
+        public PlatnoscList platnoscList { get; set; }
+
         #endregion
 
         #region Konstruktor

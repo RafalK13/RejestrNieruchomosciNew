@@ -196,7 +196,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            platnosci.save();
+            //platnosci.save();
             wladanieList.saveWladanie();
         }
 

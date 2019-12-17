@@ -54,18 +54,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IInnePrawaList innePrawaList { get; set; }
 
-        private PlatnoscInnePrawa _platnoscInnePrawa;
-        public PlatnoscInnePrawa platnoscInnePrawa
-        {
-            get => _platnoscInnePrawa;
-            set
-            {
-                _platnoscInnePrawa = value;
-                RaisePropertyChanged("platnoscInnePrawa");
-            }
-        }
-        public PlatnoscInnePrawaList platnoscInnePrawaList { get; set; }
-
         public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
 
         public ITransakcjeList transakcjeList { get; set; }
@@ -129,8 +117,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void setPlatnoscKey()
         {
-            platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault(r => r.DzialkaId == innePrawaSel.DzialkaId &&
-                                                                               r.PodmiotId == innePrawaSel.PodmiotId);
+            //platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault(r => r.DzialkaId == innePrawaSel.DzialkaId &&
+            //                                                                   r.PodmiotId == innePrawaSel.PodmiotId);
 
             //platnoscInnePrawa.DzialkaId = innePrawaSel.DzialkaId;
             //platnoscInnePrawa.PodmiotId = innePrawaSel.PodmiotId;
@@ -206,7 +194,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onInnePrawaAdd()
         {
             innePrawaList.save();
-            platnoscInnePrawaList.save();
+            //platnoscInnePrawaList.save();
         }
 
         private void onPodmiotAdd()
@@ -227,11 +215,11 @@ namespace RejestrNieruchomosciNew.ViewModel
                     podmiotName = string.Empty;
                     innePrawaSel = null;
                 }
-                platnoscInnePrawaList.list.Add(new PlatnoscInnePrawa()
-                {
-                    DzialkaId = innePrawa.DzialkaId,
-                    PodmiotId = innePrawa.PodmiotId,
-                });
+                //platnoscInnePrawaList.list.Add(new PlatnoscInnePrawa()
+                //{
+                //    DzialkaId = innePrawa.DzialkaId,
+                //    PodmiotId = innePrawa.PodmiotId,
+                //});
                 
             }
         }

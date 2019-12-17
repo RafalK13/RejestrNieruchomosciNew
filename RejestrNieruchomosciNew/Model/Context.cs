@@ -19,7 +19,7 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<GminaSlo> GminaSlo { get; set; }
         public virtual DbSet<Obreb> Obreb { get; set; }
         public virtual DbSet<Dzialka> Dzialka { get; set; }
-
+        
         public virtual DbSet<Wladanie> Wladanie { get; set; }
         public virtual DbSet<InnePrawa> InnePrawa { get; set; }
 

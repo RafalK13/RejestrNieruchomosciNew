@@ -102,7 +102,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 testDzialkaToAdd();
             if (changeMode == ChangeMode.mod)
                 testDzialkaToMod();
-
         }
 
         private void testDzialkaToAdd()
@@ -138,9 +137,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
             }
         }
-
-
-
+        
         #endregion
     }
 }

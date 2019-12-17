@@ -57,7 +57,6 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                dz.DzialkaId = 0;
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }
@@ -70,7 +69,11 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                c.Update(dz);
+                Dzialka d = (Dzialka)dz;
+
+                d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
+                
+                c.Update( d);
                 c.SaveChanges();
             }
 

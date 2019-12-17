@@ -10,8 +10,8 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class ModViewModel : ChangeViewModel
     {
         #region ICommand
-        public ICommand OnCloseWindow { get; set; }
-        public ICommand OnAddDzialka { get; set; }
+        //public ICommand OnCloseWindow { get; set; }
+        //public ICommand OnAddDzialka { get; set; }
         #endregion
 
         public string tytulNr { get; set; }
@@ -33,14 +33,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             tytulObr = userPodst.obreb.obrebValue;
             tytulGm = userPodst.obreb.gminaValue;
 
-            OnCloseWindow = new RelayCommand(onCloseWindow);
-            OnAddDzialka = new RelayCommand(onAddDzialka);
+            //OnCloseWindow = new RelayCommand(onCloseWindow);
+            //OnAddDzialka = new RelayCommand(onAddDzialka);
         }
 
         public override void onAddDzialka()
         {
-            userControl_prevModel.dzialkiBase.ModRow( userControl_AddDanePod.dzialka);
-            userControl_prevModel.dzialkaView.Refresh();
+            //MessageBox.Show("Mod");
+            //userControl_prevModel.dzialkiBase.ModRow( userControl_AddDanePod.dzialka);
+            //userControl_prevModel.dzialkaView.Refresh();
         }
 
         public override void onCloseWindow()

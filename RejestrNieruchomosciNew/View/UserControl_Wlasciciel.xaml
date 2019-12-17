@@ -429,92 +429,7 @@
 
                     </StackPanel>
                     
-                    <StackPanel Grid.Row="2">
-                        <Label 
-                           Content="Płatnośc z tytułu UW"
-                           FontWeight="Bold"
-                           FontSize="19"     
-                           Margin="0,20,0,0"
-                           Style="{StaticResource label}"/>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Stawka [%]"                                       
-                                       Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Text="{Binding Path=DataContext.userControl_Wlasciciel.platnosci.Stawka , ElementName=WladanieWin, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Style="{StaticResource tekst}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Okres [lata]"                                       
-                                       Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Text="{Binding userControl_Wlasciciel.platnosci.Okres , Converter={StaticResource intConverter} }"
-                                       Style="{StaticResource tekst}"/>
-                        </StackPanel>
-
-                        <StackPanel    Orientation="Horizontal">
-                            <Label     Content="Wysokośc opłaty"                                       
-                                       Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Style="{StaticResource tekst}"
-                                       Text="{Binding userControl_Wlasciciel.platnosci.Wysokosc , Converter={StaticResource convStrToDec} }"
-                                        />
-                        </StackPanel>
-                        
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Wartość z wyceny"                                       
-                                      Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Style="{StaticResource tekst}"
-                                       Text="{Binding userControl_Wlasciciel.platnosci.Wartosc , Converter={StaticResource convStrToDec} }"
-                                        />
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Rok 1"                                       
-                                      Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Style="{StaticResource tekst}"
-                                       Text="{Binding userControl_Wlasciciel.platnosci.rok1 , Converter={StaticResource convStrToDec} }"
-                                        />
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Rok 2"  
-                                      Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Style="{StaticResource tekst}"
-                                       Text="{Binding userControl_Wlasciciel.platnosci.rok2 , Converter={StaticResource convStrToDec} }"
-                                        />
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="Rok 3"   
-                                      Style="{StaticResource label1}"/>
-                            <TextBox
-                                       Style="{StaticResource tekst}"
-                                       Text="{Binding userControl_Wlasciciel.platnosci.rok3 , Converter={StaticResource convStrToDec} }"
-                                        />
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <Label                   
-                                      Style="{StaticResource label1}"/>
-                            <Button
-                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
-                                       Content="Czyść wartości"
-                                       Command="{Binding userControl_Wlasciciel.onCzyscPlatnosci}"
-                                        />
-                        </StackPanel>
-
-
-
-
-                    </StackPanel>
+               
                 </Grid>
 
             </ScrollViewer>
@@ -555,7 +470,13 @@
                                    Style="{StaticResource buttonCommon}"
                                     Command="{Binding userControl_Wlasciciel.wlascCls}"
                                     />
-            </StackPanel>
+
+            <Button  Content="Anuluj"
+                                    Style="{StaticResource buttonCommon}"
+                                    IsCancel="True"
+                                    com:CloseOnClickBehaviour.IsEnabled="True"
+                                    />
+        </StackPanel>
        
     </Grid>
 

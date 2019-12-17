@@ -12,16 +12,16 @@ namespace RejestrNieruchomosciNew.ViewModel
         //public IDzialkaList dzialkaList;
 
         #region ICommand
-        public ICommand OnCloseWindow { get; set; }
-        public ICommand OnAddDzialka { get; set; }
+        //public ICommand OnCloseWindow { get; set; }
+        //public ICommand OnAddDzialka { get; set; }
         #endregion
 
         public AddViewModel(UserControl_DanePodstawoweViewModel userPodst)
         {
             userControl_AddDanePod = userPodst;
 
-            OnCloseWindow = new RelayCommand(onCloseWindow);
-            OnAddDzialka = new RelayCommand(onAddDzialka);
+            //OnCloseWindow = new RelayCommand(onCloseWindow);
+            //OnAddDzialka = new RelayCommand(onAddDzialka);
 
             tabsVisible = false;
 
@@ -31,8 +31,9 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region initCommands
         public override  void onAddDzialka()
         {
-            userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
-            userControl_prevModel.dzialkaView.Refresh();
+            //MessageBox.Show("Add Model");
+            //userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
+            //userControl_prevModel.dzialkaView.Refresh();
         }
 
         public override void onCloseWindow()
