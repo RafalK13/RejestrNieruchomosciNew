@@ -75,6 +75,59 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
     }
 
+    class stringToInt : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return null;
+
+            string digit = value.ToString();
+
+            int result;
+            if (int.TryParse(digit, out result))
+                return string.Format("{0:#,0}", result);
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            decimal result;
+
+            if (decimal.TryParse(value?.ToString(), out result) == true)
+                return result;
+
+            return null;
+        }
+    }
+
+    class stringToDouble : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return null;
+
+            string digit = value.ToString().Replace(",", ".");
+
+            double result;
+            if (double.TryParse(digit, out result))
+                return string.Format("{0:#,0.00}", result);
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            double result;
+
+            if (double.TryParse(value?.ToString(), out result) == true)
+                return result;
+
+            return null;
+        }
+    }
+
+
     class stringToDecimal : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -87,7 +140,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             decimal result;
             if (decimal.TryParse(digit, out result))
-                return string.Format("{0:#,0.00}", result);
+                return string.Format("{0:#,0}", result);
+                //return string.Format("{0:#,0.00}", result);
 
             return null;
         }
@@ -160,7 +214,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
     public class DoubleConverter : IValueConverter
     {
-        double convFun(object value)
+        object convFun(object value)
         {
             double decResult;
             try
@@ -168,14 +222,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (value == null)
                 {
 
-                    return 0;
+                    return null;
                 }
                 else
                 {
                     if (Double.TryParse(value.ToString(), out decResult) == true)
                         return decResult;
                     else
-                        return 0;
+                        return null;
                 }
             }
             catch (Exception ex)

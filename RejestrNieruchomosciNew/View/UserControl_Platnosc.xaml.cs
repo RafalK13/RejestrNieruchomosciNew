@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using RejestrNieruchomosciNew.Model;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RejestrNieruchomosciNew.View
@@ -11,14 +12,14 @@ namespace RejestrNieruchomosciNew.View
             DataContext = this;
         }
         
-        public PlatnoscUW platnoscUW
+        public IPlatnosc platnosc
         {
-            get { return (PlatnoscUW)GetValue(platnoscUWProperty); }
-            set { SetValue(platnoscUWProperty, value); }
+            get { return (IPlatnosc)GetValue(platnoscProperty); }
+            set { SetValue(platnoscProperty, value); }
         }
 
-        public static readonly DependencyProperty platnoscUWProperty =
-            DependencyProperty.Register("platnoscUW", typeof(PlatnoscUW), typeof(UserControl_Platnosc));
+        public static readonly DependencyProperty platnoscProperty =
+            DependencyProperty.Register("platnosc", typeof(IPlatnosc), typeof(UserControl_Platnosc));
 
 
     }

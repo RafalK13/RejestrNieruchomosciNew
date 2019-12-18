@@ -515,56 +515,6 @@
                                     FontSize="19"    
                                     Margin="0,10,0,0"
                                     Style="{StaticResource label}"/>
-                <Label          Grid.Column="0" Grid.Row="1" 
-                                    Content="Stawka [%]"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox         Grid.Column="1" Grid.Row="1" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.Stawka}"
-                                    />
-                <Label          Grid.Column="0" Grid.Row="2" 
-                                    Content="Okres [lata]"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="2" 
-                                    Margin="3,0,3,3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.Okres}"
-                                    Height="25" 
-                                    />
-                <Label          Grid.Column="0" Grid.Row="3" 
-                                    Content="Wysokość opłaty"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="3" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.Wartosc}" 
-                                    />
-                <Label          Grid.Column="0" Grid.Row="4" 
-                                    Content="Wartość z wyceny"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="4" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.Wysokosc}" 
-                                    />
-                <Label          Grid.Column="0" Grid.Row="5" 
-                                    Content="Rok 1"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="5" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.rok1}" 
-                                    />
-                <Label          Grid.Column="0" Grid.Row="6" 
-                                    Content="Rok 2"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="6" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.rok2}" 
-                                    />
-                <Label          Grid.Column="0" Grid.Row="7" 
-                                    Content="Rok 3"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox        Grid.Column="1" Grid.Row="7" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.platnoscInnePrawa.rok3}" 
-                                    />
 
                 <Label          Grid.Row="8" Grid.ColumnSpan="2"
                                     Content="Decyzje Administracyjne"

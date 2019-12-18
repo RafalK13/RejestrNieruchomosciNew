@@ -11,11 +11,8 @@
     <Grid Margin="0,0,10,0">
         <Grid.Resources>
 
-        <con:personIdToPersonName x:Key="parsonConvert"/>
-        <con:DateConverter x:Key="dateConvert"/>
-        <con:DoubleConverter x:Key="doubleConverter"/>
-        <con:IntConverter x:Key="intConverter"/>
-        <con:stringToDecimal x:Key="convStrToDec"/>
+        <con:stringToDouble x:Key="doubleConverter"/>
+        <con:stringToInt x:Key="intConverter"/>
 
         <Style x:Key="gridSplitter" TargetType="GridSplitter">
             <Setter Property="Width" Value="5"/>
@@ -82,14 +79,14 @@
                                     Style="{StaticResource labelTab}"/>
         <TextBox         Grid.Column="1" Grid.Row="0" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.Stawka, Converter={StaticResource convStrToDec}}"
+                                    Text="{Binding platnosc.Stawka, Converter={StaticResource doubleConverter}}"
                                     />
         <Label          Grid.Column="0" Grid.Row="1" 
                                     Content="Okres [lata]"  
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="1" 
                                     Margin="3,0,3,3"
-                                    Text="{Binding platnoscUW.Okres , Converter={StaticResource intConverter}}"
+                                    Text="{Binding platnosc.Okres , Converter={StaticResource intConverter}}"
                                     Height="25" 
                                     />
         <Label          Grid.Column="0" Grid.Row="2" 
@@ -97,35 +94,35 @@
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="2" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.Wartosc, Converter={StaticResource doubleConverter}}" 
+                                    Text="{Binding platnosc.Wartosc, Converter={StaticResource doubleConverter}}" 
                                     />
         <Label          Grid.Column="0" Grid.Row="3" 
                                     Content="Wartość z wyceny"  
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="3" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.Wysokosc, Converter={StaticResource doubleConverter}}"
+                                    Text="{Binding platnosc.Wysokosc, Converter={StaticResource doubleConverter}}"
                                     />
         <Label          Grid.Column="0" Grid.Row="4" 
                                     Content="Rok 1"  
                                     Style="{StaticResource labelTab }"/>
         <TextBox        Grid.Column="1" Grid.Row="4" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.rok1 , Converter={StaticResource doubleConverter}}"
+                                    Text="{Binding platnosc.rok1 , Converter={StaticResource intConverter}}"
                                     />
         <Label          Grid.Column="0" Grid.Row="5" 
                                     Content="Rok 2"  
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="5" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.rok2 , Converter={StaticResource doubleConverter}}"
+                                    Text="{Binding platnosc.rok2 , Converter={StaticResource intConverter}}"
                                     />
         <Label          Grid.Column="0" Grid.Row="6" 
                                     Content="Rok 3"  
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="6" 
                                     Margin="3"
-                                    Text="{Binding platnoscUW.rok3  , Converter={StaticResource doubleConverter}}"
+                                    Text="{Binding platnosc.rok3  , Converter={StaticResource intConverter}}"
                                     />
 
         
