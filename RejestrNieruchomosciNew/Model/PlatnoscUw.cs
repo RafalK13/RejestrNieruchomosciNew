@@ -86,7 +86,7 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-        public int? DzialkaId { get; set; }
+        public int DzialkaId { get; set; }
         public Dzialka Dzialka { get; set; }
 
         public PlatnoscUW() { }

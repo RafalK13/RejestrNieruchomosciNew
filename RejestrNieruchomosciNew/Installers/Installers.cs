@@ -82,12 +82,12 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_CelNabycia>());
 
-            container.Register(Component.For<PlatnoscUW>());
+            container.Register(Component.For<PlatnoscUW>().LifeStyle.Transient);
+            container.Register(Component.For<PlatnoscList>().LifeStyle.Transient);
+
             container.Register(Component.For<PlatnoscInnePrawa>());
-            container.Register(Component.For<PlatnoscList>());
 
             container.Register(Component.For< UserControl_PlatnoscUWViewModel>().LifeStyle.Transient);
-
         }
     }
 }

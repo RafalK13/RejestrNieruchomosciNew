@@ -92,9 +92,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            decimal result;
+            int result;
 
-            if (decimal.TryParse(value?.ToString(), out result) == true)
+            if (int.TryParse(value?.ToString(), out result) == true)
                 return result;
 
             return null;

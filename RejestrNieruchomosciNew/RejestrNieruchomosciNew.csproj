@@ -210,6 +210,14 @@
     <Compile Include="Migrations\20191216073958_praca3.designer.cs">
       <DependentUpon>20191216073958_praca3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20191219113414_praca4.cs" />
+    <Compile Include="Migrations\20191219113414_praca4.designer.cs">
+      <DependentUpon>20191219113414_praca4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20191219113723_praca5.cs" />
+    <Compile Include="Migrations\20191219113723_praca5.designer.cs">
+      <DependentUpon>20191219113723_praca5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
