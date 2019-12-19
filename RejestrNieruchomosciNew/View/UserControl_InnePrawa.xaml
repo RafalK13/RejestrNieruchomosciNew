@@ -510,11 +510,14 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label  Grid.Row="0" Grid.ColumnSpan="2"
-                                    Content="Płatność"
+                                    Content="Płatność z tytułu innego prawa"
                                     FontWeight="Bold"
                                     FontSize="19"    
                                     Margin="0,10,0,0"
                                     Style="{StaticResource label}"/>
+
+                <userCon:UserControl_Platnosc Grid.Column="0" Grid.Row="1" Grid.RowSpan="10" Grid.ColumnSpan="2"
+                                platnosc="{Binding Path=DataContext.userControl_PlatnoscUW.platnoscUW, ElementName=PlatnosciUW, Mode=TwoWay}"/>
 
                 <Label          Grid.Row="8" Grid.ColumnSpan="2"
                                     Content="Decyzje Administracyjne"
