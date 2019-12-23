@@ -517,7 +517,7 @@
                                     Style="{StaticResource label}"/>
 
                 <userCon:UserControl_Platnosc Grid.Column="0" Grid.Row="1" Grid.RowSpan="10" Grid.ColumnSpan="2"
-                                platnosc="{Binding Path=DataContext.userControl_PlatnoscUW.platnoscUW, ElementName=PlatnosciUW, Mode=TwoWay}"/>
+                                    platnosc="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.PlatnoscInnePrawa, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label          Grid.Row="8" Grid.ColumnSpan="2"
                                     Content="Decyzje Administracyjne"

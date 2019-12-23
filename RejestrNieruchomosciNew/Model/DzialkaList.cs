@@ -38,7 +38,8 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo).ToListAsync());
+                list = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo)
+                                                         .Include( r=> r.PlatnoscUW).ToListAsync());
             }
         }
 
@@ -57,6 +58,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                int a = 13;
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }

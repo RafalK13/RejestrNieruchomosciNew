@@ -40,8 +40,6 @@ namespace RejestrNieruchomosciNew
 
         //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
 
-        //public virtual DbSet<InnePrawa> InnePrawa { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -77,38 +75,14 @@ namespace RejestrNieruchomosciNew
               .HasForeignKey("PlatnoscUW", "DzialkaId")
               .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<InnePrawa>()
-                .HasKey(k => new { k.DzialkaId, k.PodmiotId });
-
-            //modelBuilder.Entity<InnePrawa>()
-            //    .HasKey(k => k.InnePrawaId);
-
             modelBuilder.Entity<PlatnoscInnePrawa>()
                 .HasKey(k => k.PlatnoscInnePrawaId);
 
-            modelBuilder.Entity<InnePrawa>()
-                .HasOne<PlatnoscInnePrawa>(a => a.PlatnoscInnePrawa)
-                .WithOne(a => a.InnePrawa)
-                .HasForeignKey<PlatnoscInnePrawa>("DzialkaId", "PodmiotId")
-                //.HasForeignKey(  "PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
-                .OnDelete(DeleteBehavior.Cascade);
-
-
-
-
-
-            //modelBuilder.Entity<PlatnoscInnePrawa>()
-            //    .HasKey(k => new { k.DzialkaId, k.PodmiotId });
-
-
-            //modelBuilder.Entity<PlatnoscInnePrawa>()
-            //    .HasOne<InnePrawa>(a => a.InnePrawa)
-            //    .WithOne(a => a.PlatnoscInnePrawa)
-            //    .HasForeignKey<InnePrawa>("DzialkaId", "PodmiotId");
-
-            //.HasForeignKey(  "PlatnoscInnePrawa", "DzialkaId", "PodmiotId")
-            //.OnDelete(DeleteBehavior.Cascade);
-
+            modelBuilder.Entity<PlatnoscInnePrawa>()
+              .HasOne<InnePrawa>(a => a.InnePrawa)
+              .WithOne(a => a.PlatnoscInnePrawa)
+              .HasForeignKey("PlatnoscInnePrawa", "InnePrawaId")
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<RodzajDokumentuSlo>().HasData(
                 new RodzajDokumentuSlo() { RodzajDokumentuSloId = 1, Nazwa = "-" },

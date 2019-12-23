@@ -11,7 +11,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public PlatnoscList()
         {
-            initPaltnosciUW();
+            //initPaltnosciUW();
         }
 
         private void initPaltnosciUW()

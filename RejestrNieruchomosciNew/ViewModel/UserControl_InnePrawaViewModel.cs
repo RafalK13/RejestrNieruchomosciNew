@@ -16,6 +16,20 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         private int dzialkaId;
 
+        //private PlatnoscInnePrawa _platnoscInnePrawa;
+        //public PlatnoscInnePrawa platnoscInnePrawa
+        //{
+        //    get => _platnoscInnePrawa;
+        //    set
+        //    {
+
+        //        _platnoscInnePrawa = value;
+        //        RaisePropertyChanged("platnoscInnePrawa");
+        //    }
+        //}
+
+        public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
+
         private Visibility _sellVisibility;
         public Visibility sellVisibility
         {
@@ -68,7 +82,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _innePrawaSel = value;
-                testInnePrawaSel();
+                testInnePrawaSel();    
                 RaisePropertyChanged("innePrawaSel");
             }
         }
@@ -133,7 +147,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             var v = innePrawaList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
 
             return (v == 0) ? false : true;
-
         }
 
         #region Buttons
@@ -193,6 +206,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
+            int a = 13;
+            //MessageBox.Show(innePrawaSel.PlatnoscInnePrawa.Okres.ToString());
             innePrawaList.save();
             //platnoscInnePrawaList.save();
         }
@@ -210,11 +225,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                     {
                         DzialkaId = innePrawa.DzialkaId,
                         PodmiotId = innePrawa.PodmiotId,
+                        PlatnoscInnePrawa = platnoscInnePrawa.clone()
                     });
 
                     podmiotName = string.Empty;
                     innePrawaSel = null;
                 }
+
                 //platnoscInnePrawaList.list.Add(new PlatnoscInnePrawa()
                 //{
                 //    DzialkaId = innePrawa.DzialkaId,

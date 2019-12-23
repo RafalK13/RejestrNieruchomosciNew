@@ -30,11 +30,11 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 
         int? CelNabyciaId { get; set; }
 
-        //int? PlatnosciId { get; set; }
-
         string WarunkiRealizacji { get; set; }
 
         int? DecyzjeAdministracyjneId { get; set; }
+
+        PlatnoscInnePrawa PlatnoscInnePrawa { get; set; }
 
     }
 }

@@ -16,7 +16,7 @@
 
         //void cleanObj();
         //bool isNull();
-        
+
         //IPlatnosc clone();
     }
 }

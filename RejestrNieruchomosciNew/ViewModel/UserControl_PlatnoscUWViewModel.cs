@@ -35,11 +35,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel userPrev,
                                                PlatnoscList platnoscList)
         {
-            
 
             if (userPrev.dzialkaSel != null)
             {
-                platnoscUW = platnoscList.listPlatnoscUW.FirstOrDefault(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId);
+                platnoscUW = userPrev.dzialkaSel.PlatnoscUW;
             }
 
             initButtons();

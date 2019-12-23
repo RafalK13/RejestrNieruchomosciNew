@@ -17,7 +17,6 @@ namespace RejestrNieruchomosciNew.Model
             {
                 list.Add((T)r.Clone());
             }
-
             return list;
         }
     }

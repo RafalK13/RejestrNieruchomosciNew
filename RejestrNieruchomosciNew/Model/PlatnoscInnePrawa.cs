@@ -2,6 +2,7 @@
 using RejestrNieruchomosciNew.ViewModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -10,8 +11,8 @@ namespace RejestrNieruchomosciNew.Model
         public int PlatnoscInnePrawaId { get; set; }
         //public int? InnePrawaId { get; set; }
 
-        public int? DzialkaId { get; set; }
-        public int? PodmiotId { get; set; }
+        //public int? DzialkaId { get; set; }
+        //public int? PodmiotId { get; set; }
 
         private double? _Stawka;
         public double? Stawka
@@ -86,12 +87,16 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public int InnePrawaId { get; set; }
         public InnePrawa InnePrawa{ get; set; }
 
-        public PlatnoscInnePrawa() { }
+        public PlatnoscInnePrawa() {
+            //MessageBox.Show("1");
+        }
 
         public PlatnoscInnePrawa(UserControl_PreviewViewModel prev)
         {
+            //MessageBox.Show("2");
             //if (prev.dzialkaSel != null)
             //{
             //    using (Context c = new Context())
@@ -117,8 +122,8 @@ namespace RejestrNieruchomosciNew.Model
 
         private bool isEqual(PlatnoscInnePrawa p)
         {
-            return  this.DzialkaId == DzialkaId &&
-                    this.PodmiotId == PodmiotId &&
+            return  //this.DzialkaId == DzialkaId &&
+                    //this.PodmiotId == PodmiotId &&
                     this.Stawka == Stawka &&
                     this.Okres == Okres &&
                     this.Wartosc == Wartosc &&
@@ -130,7 +135,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public PlatnoscInnePrawa clone()
         {
-            return (PlatnoscInnePrawa)this.MemberwiseClone();
+           return (PlatnoscInnePrawa)this.MemberwiseClone();
         }
 
         public void cleanObj()

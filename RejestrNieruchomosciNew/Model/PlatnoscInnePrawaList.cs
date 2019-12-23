@@ -11,11 +11,11 @@ namespace RejestrNieruchomosciNew.Model
 
         public PlatnoscInnePrawaList(UserControl_PreviewViewModel userPrev )
         {
-            using (Context c = new Context())
-            {
-                if(userPrev.dzialkaSel != null)
-                    list = new ObservableCollection<PlatnoscInnePrawa>( c.PlatnoscInnePrawa.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
-            }
+            //using (Context c = new Context())
+            //{
+            //    if(userPrev.dzialkaSel != null)
+            //        list = new ObservableCollection<PlatnoscInnePrawa>( c.PlatnoscInnePrawa.Where(r => r.InnePrawaId == userPrev.dzialkaSel..DzialkaId));
+            //}
         }
 
         public void AddRow(PlatnoscInnePrawa i)
@@ -49,24 +49,24 @@ namespace RejestrNieruchomosciNew.Model
 
         public void save()
         {
-            foreach (var item in list)
-            {
-                if (item.PlatnoscInnePrawaId == 0)
-                    AddRow(item);
-                else
-                {
+            //foreach (var item in list)
+            //{
+            //    if (item.PlatnoscInnePrawaId == 0)
+            //        AddRow(item);
+            //    else
+            //    {
 
-                    var v = list.FirstOrDefault(r => r.DzialkaId == item.DzialkaId &&
-                                                     r.PodmiotId == item.PodmiotId);
-                    int a = 14;
-                    if (v != null)
-                    {
-                        int b = 13;
-                        if (v.Equals(item) == false)
-                            ModRow(item);
-                    }
-                }
-            }
+            //        var v = list.FirstOrDefault(r => r.DzialkaId == item.DzialkaId &&
+            //                                         r.PodmiotId == item.PodmiotId);
+            //        int a = 14;
+            //        if (v != null)
+            //        {
+            //            int b = 13;
+            //            if (v.Equals(item) == false)
+            //                ModRow(item);
+            //        }
+            //    }
+            //}
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 
@@ -24,7 +25,8 @@ namespace RejestrNieruchomosciNew.Model
                 if (userPrev.dzialkaSel != null)
                 {
                     list = new ObservableCollection<IInnePrawa>(c.InnePrawa.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                                                                                                          && r.TransS_Id == null));
+                                                                                                          && r.TransS_Id == null).
+                                                                                                          Include(a=>a.PlatnoscInnePrawa));
 
                     listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
@@ -45,19 +47,19 @@ namespace RejestrNieruchomosciNew.Model
                     listOrg.Remove(r);
                 else
                 {
-                    //if (listOrg.Exists(row => row.InnePrawaId == r.InnePrawaId) == true)
-                    //{
-                    //    listToMod.Add((IInnePrawa)r.Clone());
-                    //    var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
-                    //    listOrg.Remove(rToDel);
-                    //}
-                    if (listOrg.Exists(row => (row.PodmiotId == r.PodmiotId) && (row.DzialkaId == r.DzialkaId)) == true)
+                    if (listOrg.Exists(row => row.InnePrawaId == r.InnePrawaId) == true)
                     {
                         listToMod.Add((IInnePrawa)r.Clone());
-                        //var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
-                        var rToDel = listOrg.Find(d => (d.DzialkaId == r.DzialkaId) && ( d.PodmiotId == r.PodmiotId));
+                        var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
                         listOrg.Remove(rToDel);
                     }
+                    //if (listOrg.Exists(row => (row.PodmiotId == r.PodmiotId) && (row.DzialkaId == r.DzialkaId)) == true)
+                    //{
+                    //    listToMod.Add((IInnePrawa)r.Clone());
+                    //    //var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
+                    //    var rToDel = listOrg.Find(d => (d.DzialkaId == r.DzialkaId) && ( d.PodmiotId == r.PodmiotId));
+                    //    listOrg.Remove(rToDel);
+                    //}
 
                     else
                     {
@@ -84,8 +86,10 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                
                 foreach (var i in listToAdd)
                 {
+                    int a = 13;
                     c.InnePrawa.Add((InnePrawa)i);
                 }
                 c.SaveChanges();
@@ -98,9 +102,12 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToMod)
                 {
-                    //var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
-                    var v = c.InnePrawa.First(r => ( r.PodmiotId == i.PodmiotId) &&(r.DzialkaId==i.DzialkaId));
+                    var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
                     c.Entry(v).CurrentValues.SetValues(i);
+
+                    var v1 = c.PlatnoscInnePrawa.First(r => r.PlatnoscInnePrawaId == i.PlatnoscInnePrawa.PlatnoscInnePrawaId);
+                    c.Entry(v1).CurrentValues.SetValues(i.PlatnoscInnePrawa);
+
                 }
                 c.SaveChanges();
             }
@@ -112,8 +119,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToDel)
                 {
-                    //var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
-                    var v = c.InnePrawa.First(r => (r.DzialkaId == i.DzialkaId) && (r.PodmiotId==i.PodmiotId));
+                    var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+                    //var v = c.InnePrawa.First(r => (r.DzialkaId == i.DzialkaId) && (r.PodmiotId==i.PodmiotId));
                     c.InnePrawa.Remove(v);
                 }
                 c.SaveChanges();

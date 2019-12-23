@@ -45,32 +45,70 @@ namespace RejestrNieruchomosciNew.Model
 
         //public DecyzjeAdministracyjne DecyzjeAdministracyjne { get; set; }
 
-        object ICloneable.Clone()
+        public InnePrawa()
         {
-            return this.MemberwiseClone();
+
+        }
+
+        public object Clone()
+        {
+            InnePrawa inne = (InnePrawa)this.MemberwiseClone();
+
+            if (this.PlatnoscInnePrawa != null)
+                inne.PlatnoscInnePrawa = (PlatnoscInnePrawa)this.PlatnoscInnePrawa.clone();
+            
+            return inne;
         }
 
         bool IEquatable<IInnePrawa>.Equals(IInnePrawa other)
         {
-            return //InnePrawaId.Equals(other.InnePrawaId) &&
-                   DzialkaId.Equals(other.DzialkaId) &&
-                   PodmiotId.Equals(other.PodmiotId) &&
-                   RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
-                   TransK_Id.Equals(other.TransK_Id) &&
-                   TransS_Id.Equals(other.TransS_Id) &&
-                   DataObowOd.Equals(other.DataObowOd) &&
-                   DataObowDo.Equals(other.DataObowDo) &&
-                   string.Equals( ProtPrzejkNr, other.ProtPrzejkNr) &&
-                   ProtPrzejData.Equals(other.ProtPrzejData) &&
-                   string.Equals(ProtPrzejScan, other.ProtPrzejScan) &&
-                   string.Equals( ProtZwrotNr, other.ProtZwrotNr) &&
-                   ProtZwrotData.Equals(other.ProtZwrotData) &&
-                   string.Equals( ProtZwrotScan, other.ProtZwrotScan) &&
-                   wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
-                   wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
-                   CelNabyciaId.Equals(other.CelNabyciaId) &&
-                   string.Equals( WarunkiRealizacji, other.WarunkiRealizacji);
-            //DecyzjeAdministracyjneId.Equals(other.DecyzjeAdministracyjneId);
+            //return //InnePrawaId.Equals(other.InnePrawaId) &&
+            //       DzialkaId.Equals(other.DzialkaId) &&
+            //       PodmiotId.Equals(other.PodmiotId) &&
+            //       RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
+            //       TransK_Id.Equals(other.TransK_Id) &&
+            //       TransS_Id.Equals(other.TransS_Id) &&
+            //       DataObowOd.Equals(other.DataObowOd) &&
+            //       DataObowDo.Equals(other.DataObowDo) &&
+            //       string.Equals(ProtPrzejkNr, other.ProtPrzejkNr) &&
+            //       ProtPrzejData.Equals(other.ProtPrzejData) &&
+            //       string.Equals(ProtPrzejScan, other.ProtPrzejScan) &&
+            //       string.Equals(ProtZwrotNr, other.ProtZwrotNr) &&
+            //       ProtZwrotData.Equals(other.ProtZwrotData) &&
+            //       string.Equals(ProtZwrotScan, other.ProtZwrotScan) &&
+            //       wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
+            //       wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
+            //       CelNabyciaId.Equals(other.CelNabyciaId) &&
+            //       string.Equals(WarunkiRealizacji, other.WarunkiRealizacji) &&
+            //       PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
+            ////DecyzjeAdministracyjneId.Equals(other.DecyzjeAdministracyjneId);
+
+
+
+            bool a = InnePrawaId.Equals(other.InnePrawaId) &&
+                  DzialkaId.Equals(other.DzialkaId) &&
+                  PodmiotId.Equals(other.PodmiotId) &&
+                  RodzajInnegoPrawaSloId.Equals(other.RodzajInnegoPrawaSloId) &&
+                  TransK_Id.Equals(other.TransK_Id) &&
+                  TransS_Id.Equals(other.TransS_Id) &&
+                  DataObowOd.Equals(other.DataObowOd) &&
+                  DataObowDo.Equals(other.DataObowDo) &&
+                  string.Equals(ProtPrzejkNr, other.ProtPrzejkNr) &&
+                  ProtPrzejData.Equals(other.ProtPrzejData) &&
+                  string.Equals(ProtPrzejScan, other.ProtPrzejScan) &&
+                  string.Equals(ProtZwrotNr, other.ProtZwrotNr) &&
+                  ProtZwrotData.Equals(other.ProtZwrotData) &&
+                  string.Equals(ProtZwrotScan, other.ProtZwrotScan) &&
+                  wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
+                  wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
+                  CelNabyciaId.Equals(other.CelNabyciaId) &&
+                  string.Equals(WarunkiRealizacji, other.WarunkiRealizacji) &&
+                  PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
+
+            return a;
+            
+
+
         }
     }
 }

@@ -17,6 +17,8 @@ namespace RejestrNieruchomosciNew.Model
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
 
+        PlatnoscUW PlatnoscUW { get; set; }
+
         void clone( IDzialka d);
         void copy( IDzialka dzDest, IDzialka dzSource);
 

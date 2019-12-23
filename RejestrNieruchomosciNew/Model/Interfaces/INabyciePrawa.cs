@@ -9,5 +9,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         DateTime ObowiazywanieDo { get; set; }
         string ProtokolPrzejecia { get; set; }
         int Skan { get; set; }
+
+        object Clone();
     }
 }
