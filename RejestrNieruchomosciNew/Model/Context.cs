@@ -38,8 +38,6 @@ namespace RejestrNieruchomosciNew
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
 
-        //public virtual DbSet<DzielnicaSlo> DzielnicaSlo { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

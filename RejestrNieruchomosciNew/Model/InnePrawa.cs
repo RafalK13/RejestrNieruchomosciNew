@@ -27,8 +27,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public string WarunkiRealizacji { get; set; }
 
-        public int? DecyzjeAdministracyjneId { get; set; }
-
         [ForeignKey("TransakcjeK_InnePr")]
         public int? TransK_Id { get; set; }
         public Transakcje TransakcjeK_InnePr { get; set; }
@@ -43,7 +41,8 @@ namespace RejestrNieruchomosciNew.Model
 
         public Dzialka Dzialka { get; set; }
 
-        //public DecyzjeAdministracyjne DecyzjeAdministracyjne { get; set; }
+        public int? DecyzjeAdministracyjneId { get; set; }
+        public DecyzjeAdministracyjne DecyzjeAdministracyjne { get; set; }
 
         public InnePrawa()
         {

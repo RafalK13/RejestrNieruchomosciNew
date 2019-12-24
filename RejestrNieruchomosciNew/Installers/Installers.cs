@@ -87,6 +87,9 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<PlatnoscInnePrawa>().LifeStyle.Transient);
             container.Register(Component.For< UserControl_PlatnoscUWViewModel>().LifeStyle.Transient);
+
+            container.Register(Component.For<DecyzjeAdministracyjne>().LifeStyle.Transient);
+            container.Register(Component.For<DecyzjeAdministracyjneList>());
         }
     }
 }

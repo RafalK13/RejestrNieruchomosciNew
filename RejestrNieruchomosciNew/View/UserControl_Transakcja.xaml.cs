@@ -23,7 +23,6 @@ namespace RejestrNieruchomosciNew.View
             clickCls = new RelayCommand(onClickCls);
             clickMod = new RelayCommand(onClickMod);
             clickZal = new RelayCommand(onClickZalacznik);
-
         }
         
         #region Transakcje

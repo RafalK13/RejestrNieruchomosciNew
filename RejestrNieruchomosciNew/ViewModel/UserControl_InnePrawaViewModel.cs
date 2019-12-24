@@ -68,6 +68,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IInnePrawaList innePrawaList { get; set; }
 
+        public DecyzjeAdministracyjne decyzjeAdmin { get; set; }
+        public DecyzjeAdministracyjneList decyzjeAdminList { get; set; }
+
         public RodzajInnegoPrawaList rodzajInnegoPrawaSlo { get; set; }
 
         public ITransakcjeList transakcjeList { get; set; }
@@ -104,7 +107,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_InnePrawaViewModel(UserControl_PreviewViewModel userPrev)
         {
             initButtons();
-
+            
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)

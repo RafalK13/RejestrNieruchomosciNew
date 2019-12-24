@@ -210,6 +210,7 @@
     <Compile Include="Model\CelNabycia.cs" />
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\DecyzjeAdministracyjne.cs" />
+    <Compile Include="Model\DecyzjeAdministracyjneList.cs" />
     <Compile Include="Model\DzialkaList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
@@ -299,6 +300,9 @@
     <Compile Include="View\UserControl_DanePodstawowe.xaml.cs">
       <DependentUpon>UserControl_DanePodstawowe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_DecyzjeAdmin.xaml.cs">
+      <DependentUpon>UserControl_DecyzjeAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_InnePrawa.xaml.cs">
       <DependentUpon>UserControl_InnePrawa.xaml</DependentUpon>
     </Compile>
@@ -359,6 +363,10 @@
     <Page Include="View\UserControl_DanePodstawowe.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControl_DecyzjeAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_InnePrawa.xaml">
       <SubType>Designer</SubType>
