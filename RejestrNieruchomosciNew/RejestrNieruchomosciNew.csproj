@@ -315,6 +315,9 @@
     <Compile Include="View\UserControl_PreviewView.xaml.cs">
       <DependentUpon>UserControl_PreviewView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_Test.xaml.cs">
+      <DependentUpon>UserControl_Test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_Transakcja.xaml.cs">
       <DependentUpon>UserControl_Transakcja.xaml</DependentUpon>
     </Compile>
@@ -381,6 +384,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_PreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

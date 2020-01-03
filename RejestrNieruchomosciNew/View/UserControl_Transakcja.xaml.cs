@@ -223,7 +223,7 @@ namespace RejestrNieruchomosciNew.View
 
         public void onClickZalacznik()
         {
-        //    if (string.IsNullOrEmpty(transakcje.Skan) == true)
+        //  if (string.IsNullOrEmpty(transakcje.Skan) == true)
             {
                 string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +"\\Transakcje\\" + transakcje.TransakcjeId;
                 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
 

@@ -530,11 +530,8 @@
                                     Style="{StaticResource label}"/>
 
                 <userCon:UserControl_DecyzjeAdmin Grid.Column="0" Grid.Row="9" Grid.RowSpan="9" Grid.ColumnSpan="2"
-                                     decyzjeList="{Binding Path=DataContext.userControl_InnePrawa.decyzjeAdminList.list, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     selectedIdDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.DecyzjeAdministracyjneId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                  />
-
-
+                                    decyzjeAdminList="{Binding Path=DataContext.userControl_InnePrawa.decyzjeAdminList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    selectedIdDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.DecyzjeAdministracyjneId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
         </ScrollViewer>
