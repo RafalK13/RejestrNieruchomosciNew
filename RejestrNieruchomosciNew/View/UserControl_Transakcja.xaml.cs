@@ -206,6 +206,7 @@ namespace RejestrNieruchomosciNew.View
         private void onClickCls()
         {
             clsDialog();
+            numerTrans = null;
             addButton = false;
             modButton = false;
             clsButton = false;

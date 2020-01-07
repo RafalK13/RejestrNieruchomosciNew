@@ -78,14 +78,12 @@ namespace RejestrNieruchomosciNew.View
             throw new NotImplementedException();
         }
 
-        private void onClickMod()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         private void onClickCls()
         {
             clsDialog();
+            NumerDecAdmin = null;
             addButtonDec = false;
             modButtonDec = false;
             clsButtonDec = false;
@@ -94,8 +92,24 @@ namespace RejestrNieruchomosciNew.View
 
         private void onClickAdd()
         {
-            int a = 13;
+            decyzjeAdmin.Numer = NumerDecAdmin;
             decyzjeAdminList.AddRow(decyzjeAdmin);
+
+            userControlDataGridRafALLDec.initItemSourceList();
+
+            decyzjeAdmin = decyzjeAdminList.list.FirstOrDefault(row => row.Numer == NumerDecAdmin);
+            selectedIdDec =decyzjeAdmin.DecyzjeAdministracyjneId;
+
+            addButtonDec = false;
+        }
+
+        private void onClickMod()
+        {
+            decyzjeAdmin.Numer = NumerDecAdmin;
+
+            decyzjeAdminList.ModRow(decyzjeAdmin);
+
+            modButtonDec = false;
         }
         #endregion
 

@@ -118,22 +118,26 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void testDzialkaToMod()
         {
             var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
-
+            
             dz.ObrebId = obreb.getId().Value;
-
+            
             if (!string.IsNullOrEmpty(dzialka.Numer))
             {
                 if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
                            dz.ObrebId == dzialka.ObrebId)
                 {
+            
                     canAdd = true;
                 }
                 else
                 {
-                    int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
-                                                 r.Numer == dzialka.Numer).Count();
-                    
-                    canAdd = c == 0 ? true : false;
+                    //int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
+                    //                             r.Numer == dzialka.Numer).Count();
+                    int obrID = obreb.getId().Value;
+
+                    var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
+                                                 r.Numer == dzialka.Numer);
+                    canAdd = c ==null ? true : false;
                 }
             }
         }
