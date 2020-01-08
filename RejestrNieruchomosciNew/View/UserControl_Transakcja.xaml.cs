@@ -123,13 +123,14 @@ namespace RejestrNieruchomosciNew.View
                     string s = u.numerTrans;
                     u.transakcje = new Transakcje();
                     u.transakcje.Numer = s;
-                    u.selectedIdTrans = null;
+                    u.selectedIdTrans = 0;
                     u.addButton = true;
                     u.zalButton = false;
                 }
                 else
                 {
-                    u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == u.selectedIdTrans.Value);
+                    int selIdTrans = u.selectedIdTrans.Value;
+                    u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == selIdTrans);
                     u.zalButton = true;
                     u.transakcje.onChange += u.Transakcje_onChange;
                 }
@@ -187,6 +188,7 @@ namespace RejestrNieruchomosciNew.View
             transakcje = new Transakcje();
          
             selectedIdTrans = null;
+            numerTrans = string.Empty;
         }
         #endregion
 

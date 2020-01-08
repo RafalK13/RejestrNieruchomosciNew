@@ -86,7 +86,7 @@
                     HorizontalAlignment="Stretch"
                     colNameIdRaf="DecyzjeAdministracyjneId" 
                     colNameRaf="Numer"
-                    Panel.ZIndex="130"
+                    Panel.ZIndex="1300"
                     Grid.RowSpan="6"
                     clearTekstOnExit="False" Loaded="userControlDataGridRafALL_Loaded"
                     />
@@ -95,11 +95,26 @@
         <Label          Grid.Column="0" Grid.Row="1" 
                                     Content="Podmiot wydający"  
                                     Style="{StaticResource labelTab}"/>
-        <TextBox        Grid.Column="1" Grid.Row="1" 
-                                    Margin="3,0,3,3"
-                                    Text="{Binding platnosc.Okres }"
-                                    Height="25" 
-                                    />
+        <conRaf:DataGridRafALL
+                    Grid.Column="1"
+                    Grid.Row="1" 
+                    Margin="3,2,0,0"
+                    x:Name="userControlDataGridRafALLDecPodm"
+                    VerticalAlignment="Top"
+                    
+                    itemSourceRafALL="{Binding podmiotList.list, ElementName=Decyzje, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    selectedIdRafALL="{Binding selectedIdPodm, ElementName=Decyzje, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TekstPropALL="{Binding PodmiotNazwa, ElementName=Decyzje, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    
+                    heightRafALL="23"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="PodmiotId" 
+                    colNameRaf="Name"
+                    Panel.ZIndex="130"
+                    Grid.RowSpan="6"
+                    clearTekstOnExit="False" 
+                    />
+        
         <Label          Grid.Column="0" Grid.Row="2" 
                                     Content="Data"  
                                     Style="{StaticResource labelTab}"/>
@@ -148,9 +163,8 @@
                      Margin="5"/>
         </StackPanel>
         <TextBox Grid.Column="0" Grid.Row="8"
-                 Text="{Binding selectedIdDec}"/>
+                 Text="{Binding selectedIdDec}" Margin="0,1,0,29" Grid.RowSpan="2"/>
         <TextBox Grid.Column="1" Grid.Row="8"
-                 Text="{Binding NumerDecAdmin}"/>
-
+                 Text="{Binding selectedIdPodm}"/>
     </Grid>
 </UserControl>
