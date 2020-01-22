@@ -156,7 +156,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-
         public void deleteDzialka()
         {
             if( dzialkaSel != null)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 
 namespace RejestrNieruchomosciNew
 {
@@ -31,6 +32,30 @@ namespace RejestrNieruchomosciNew
         public Transakcje TransakcjeS_Wlad { get; set; }
 
         public Dzialka Dzialka { get; set; }
+
+        public string ZalPath
+        {
+            get {
+                if (DzialkaId != null && PodmiotId != null)
+                {
+                    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\" + PodmiotId;
+                }
+                return null;
+            }
+        }
+
+        public string ZalPathOld
+        {
+            get
+            {
+                if (ZalPath != null)
+                {
+                    DateTime d = DateTime.Now;
+                    return ZalPath + $"_{d.ToShortDateString()}_{d.ToLongTimeString().Replace(':', '.')}";
+                }
+                return null;
+            }
+        }
 
         //public Podmiot Podmiot { get; set; }
 

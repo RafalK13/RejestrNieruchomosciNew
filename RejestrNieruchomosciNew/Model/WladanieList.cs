@@ -2,6 +2,7 @@
 using RejestrNieruchomosciNew.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
@@ -22,8 +23,6 @@ namespace RejestrNieruchomosciNew.Model
             {
                 if (userPrev.dzialkaSel != null)
                 {
-                    //list = new ObservableCollection<IWladanie>(c.Wladanie.Include(r => r.Podmiot).Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                    //                                                                                      && r.TransS_Id == null ));
                     list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
                                                                                                           && r.TransS_Id == null));
 
@@ -74,20 +73,6 @@ namespace RejestrNieruchomosciNew.Model
 
             #region ListResults
 
-
-            //foreach (var r in listToAdd)
-            //{
-            //    result += ($"listToAdd:\t{r.WladanieId}\t{r.PodmiotId},\t{r.Podmiot.Name}\r\n");
-            //}
-            //foreach (var r in listToMod)
-            //{
-            //    result += ($"listToMod:\t{r.WladanieId}\t{r.PodmiotId},\t{r.Podmiot.Name}\r\n");
-            //}
-            //foreach (var r in listToDel)
-            //{
-            //    result += ($"listToDel:\t{r.WladanieId}\t{r.PodmiotId},\t{r.Podmiot.Name}\r\n");
-            //}
-            //MessageBox.Show(result);
             #endregion
         }
 
@@ -97,7 +82,6 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
-                    
                     c.Wladanie.Add((Wladanie)i);
                 }
                 c.SaveChanges();
@@ -124,9 +108,20 @@ namespace RejestrNieruchomosciNew.Model
                 foreach (var i in listToDel)
                 {
                     var v = c.Wladanie.First(r => r.WladanieId == i.WladanieId);
+
+                    RemaneDirs(v);
+
                     c.Wladanie.Remove(v);
                 }
                 c.SaveChanges();
+            }
+        }
+
+        private void RemaneDirs( Wladanie w)
+        {
+            if (Directory.Exists(w.ZalPath))
+            {
+                Directory.Move(w.ZalPath, w.ZalPathOld);
             }
         }
     }

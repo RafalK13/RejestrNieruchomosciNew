@@ -144,15 +144,13 @@
                     <DataGridTextColumn Header="Podmiot" 
                                         Width="*">
                         <DataGridTextColumn.Binding>
-                            <MultiBinding
-                                    Converter="{StaticResource parsonConvert}" >
-                                <Binding Path="PodmiotId"/>
-                                <Binding ElementName="InnePrawaWin" Path="DataContext.userControl_InnePrawa.podmiotList"/>
+                            <MultiBinding Converter="{StaticResource parsonConvert}" >
+                                <Binding  Path="PodmiotId"/>
+                                <Binding  ElementName="InnePrawaWin" Path="DataContext.userControl_InnePrawa.podmiotList"/>
                             </MultiBinding>
-
-
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
+                    
                     <DataGridTemplateColumn Header="Usun" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
