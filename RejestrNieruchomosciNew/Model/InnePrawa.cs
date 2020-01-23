@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 using RejestrNieruchomosciNew.Model.Interfaces;
 
 namespace RejestrNieruchomosciNew.Model
@@ -43,6 +44,56 @@ namespace RejestrNieruchomosciNew.Model
 
         public int? DecyzjeAdministracyjneId { get; set; }
         public DecyzjeAdministracyjne DecyzjeAdministracyjne { get; set; }
+
+        public string ProtPrzejPath
+        {
+            get
+            {
+                //if (DzialkaId != null && PodmiotId != null)
+                {
+                    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\InnePrawa\\ProtokolPrzejecia\\" + PodmiotId;
+                }
+                //return null;
+            }
+        }
+
+        public string ProtPrzejPathOld
+        {
+            get
+            {
+                if (ProtPrzejPath != null)
+                {
+                    DateTime d = DateTime.Now;
+                    return ProtPrzejPath + $"_{d.ToShortDateString()}_{d.ToLongTimeString().Replace(':', '.')}";
+                }
+                return null;
+            }
+        }
+
+        public string ProtZwrotPath
+        {
+            get
+            {
+                //if (DzialkaId != null && PodmiotId != null)
+                {
+                    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\InnePrawa\\ProtokolZwrotny\\" + PodmiotId;
+                }
+                //return null;
+            }
+        }
+
+        public string ProtZwrotPathOld
+        {
+            get
+            {
+                if (ProtPrzejPath != null)
+                {
+                    DateTime d = DateTime.Now;
+                    return ProtZwrotPath + $"_{d.ToShortDateString()}_{d.ToLongTimeString().Replace(':', '.')}";
+                }
+                return null;
+            }
+        }
 
         public InnePrawa()
         {

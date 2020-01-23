@@ -374,6 +374,7 @@
                                     Content="Numer"  
                                     Style="{StaticResource labelTab}"/>
                 <TextBox            Grid.Column="1" Grid.Row="5" 
+                                    Name="ProtPrzejeciaNumer"
                                     Margin="3"
                                     Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejkNr}" 
                                     />
@@ -387,11 +388,19 @@
                 <Label              Grid.Column="0" Grid.Row="7" 
                                     Content="Skan"  
                                     Style="{StaticResource labelTab}"/>
-                <Button             Grid.Column="1" Grid.Row="7" 
+
+                <userCon:UserControl_Attachment
+                                       Grid.Column="1" Grid.Row="7" 
+                                       Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+                                       Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+                                       Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
+                                       pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtPrzejPath, ElementName=InnePrawaWin}"
+                                       />
+                <!--<Button             Grid.Column="1" Grid.Row="7" 
                                     Margin="3"
                                     Content="Skan protokołu"
                                     Command="{Binding userControl_InnePrawa.protPrzejScanClick}"
-                                    />
+                                    />-->
 
                 <Label               Grid.Row="8" Grid.ColumnSpan="2"
                                      Content="Protokół zwrotnego przekazania"
@@ -425,12 +434,14 @@
                 <Label              Grid.Column="0" Grid.Row="12" 
                                     Content="Skan"  
                                     Style="{StaticResource labelTab}"/>
-                <Button             Grid.Column="1" Grid.Row="12" 
-                                    Margin="3"
-                                    Content="Skan protokołu"
-                                    Command="{Binding userControl_InnePrawa.protZwrotScanClick}"
-                                    />
-                
+                <userCon:UserControl_Attachment
+                                       Grid.Column="1" Grid.Row="12" 
+                                       Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+                                       Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+                                       Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
+                                       pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtZwrotPath, ElementName=InnePrawaWin}"
+                                       />
+
             </Grid>
         </ScrollViewer>
 

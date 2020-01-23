@@ -2,6 +2,7 @@
 using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,7 +63,16 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty zalButtonDecProperty =
             DependencyProperty.Register("zalButtonDec", typeof(bool), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(false));
+        
+        public string zalPath
+        {
+            get { return (string)GetValue(zalPathProperty); }
+            set { SetValue(zalPathProperty, value); }
+        }
 
+        public static readonly DependencyProperty zalPathProperty =
+            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_DecyzjeAdmin));
+        
         #endregion
 
         private void initButtons()
@@ -257,6 +267,8 @@ namespace RejestrNieruchomosciNew.View
                 u.PodmiotNazwa = string.Empty;
                 u.NumerDecAdmin = string.Empty;
             }
+
+            u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\" + u.selectedIdDec;
         }
 
         private void DecyzjeAdmin_onChange(object sender, EventArgs e)

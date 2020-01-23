@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
@@ -120,10 +121,21 @@ namespace RejestrNieruchomosciNew.Model
                 foreach (var i in listToDel)
                 {
                     var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
+
+                    RemaneDirs( v);
                     //var v = c.InnePrawa.First(r => (r.DzialkaId == i.DzialkaId) && (r.PodmiotId==i.PodmiotId));
                     c.InnePrawa.Remove(v);
                 }
                 c.SaveChanges();
+            }
+        }
+
+        private void RemaneDirs(InnePrawa w)
+        {
+            if (Directory.Exists(w.ProtPrzejPath))
+            {
+                Directory.Move(w.ProtPrzejPath, w.ProtPrzejPathOld);
+                Directory.Move(w.ProtZwrotPath, w.ProtZwrotPathOld);
             }
         }
     }
