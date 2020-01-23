@@ -24,7 +24,42 @@ namespace RejestrNieruchomosciNew.View
             clickMod = new RelayCommand(onClickMod);
             clickZal = new RelayCommand(onClickZalacznik);
         }
-        
+
+
+
+        public string zalPath
+        {
+            get { return (string)GetValue(zalPathProperty); }
+            set { SetValue(zalPathProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for zalPath.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty zalPathProperty =
+            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null));
+
+
+
+        //private string _zalPath;
+        //public string zalPath
+        //{
+        //    get 
+        //    {
+        //        return _zalPath;
+        //    }
+
+        //    set {
+        //        _zalPath = value; //ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + selectedIdTrans;
+
+        //        //MessageBox.Show(zalPath);
+        //    }
+
+        //    //get
+        //    //{
+        //    //    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + selectedIdTrans;
+        //    //}
+        //}
+
+        //zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
         #region Transakcje
         public ITransakcje transakcje
         {
@@ -68,7 +103,7 @@ namespace RejestrNieruchomosciNew.View
             set { SetValue(numerTransProperty, value); }
         }
         public static readonly DependencyProperty numerTransProperty =
-            DependencyProperty.Register("numerTrans", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata( null, new PropertyChangedCallback(onNumerTransChange)));
+            DependencyProperty.Register("numerTrans", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null, new PropertyChangedCallback(onNumerTransChange)));
 
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -138,6 +173,10 @@ namespace RejestrNieruchomosciNew.View
             else
                 u.clsDialog();
 
+            u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + u.selectedIdTrans;
+
+            //MessageBox.Show( u.selectedIdTrans.ToString());
+
         }
         #endregion
 
@@ -151,7 +190,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty addButtonProperty =
             DependencyProperty.Register("addButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
-        
+
         public bool modButton
         {
             get { return (bool)GetValue(modButtonProperty); }
@@ -160,7 +199,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty modButtonProperty =
             DependencyProperty.Register("modButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
-        
+
         public bool clsButton
         {
             get { return (bool)GetValue(clsButtonProperty); }
@@ -169,7 +208,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty clsButtonProperty =
             DependencyProperty.Register("clsButton", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
-        
+
         public bool zalButton
         {
             get { return (bool)GetValue(zalButtonProperty); }
@@ -186,7 +225,7 @@ namespace RejestrNieruchomosciNew.View
         private void clsDialog()
         {
             transakcje = new Transakcje();
-         
+
             selectedIdTrans = null;
             numerTrans = string.Empty;
         }
@@ -195,8 +234,8 @@ namespace RejestrNieruchomosciNew.View
         public void onClickAdd()
         {
             transakcje.Numer = numerTrans;
-            transList.AddRow( transakcje);
-            
+            transList.AddRow(transakcje);
+
             userControlDataGridRafALL.initItemSourceList();
 
             transakcje = itemSourceTrans.FirstOrDefault(row => row.Numer == numerTrans);
@@ -204,7 +243,7 @@ namespace RejestrNieruchomosciNew.View
 
             addButton = false;
         }
-        
+
         private void onClickCls()
         {
             clsDialog();
@@ -218,26 +257,23 @@ namespace RejestrNieruchomosciNew.View
         public void onClickMod()
         {
             transakcje.Numer = numerTrans;
-         
-            transList.ModRow( transakcje);
+
+            transList.ModRow(transakcje);
 
             modButton = false;
         }
 
         public void onClickZalacznik()
         {
-        //  if (string.IsNullOrEmpty(transakcje.Skan) == true)
-            {
-                string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] +"\\Transakcje\\" + transakcje.TransakcjeId;
-                
-                transakcje.Skan = zalPath;
+            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
 
-                DirectoryInfo dir = new DirectoryInfo(zalPath);
-                if (!dir.Exists)
-                    dir.Create();
+            transakcje.Skan = zalPath;
 
-                Process.Start(zalPath);
-            }
+            DirectoryInfo dir = new DirectoryInfo(zalPath);
+            if (!dir.Exists)
+                dir.Create();
+
+            Process.Start(zalPath);
         }
 
         public ICommand clickAdd { get; set; }
@@ -269,7 +305,7 @@ namespace RejestrNieruchomosciNew.View
         #region Events
         private void Trans_Loaded(object sender, RoutedEventArgs e)
         {
-            if ( transList != null )
+            if (transList != null)
                 itemSourceTrans = transList.list;
         }
 

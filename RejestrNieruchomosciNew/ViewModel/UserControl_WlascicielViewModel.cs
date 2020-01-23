@@ -101,7 +101,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand wlascCls { get; set; }
         public ICommand podmiotAdd { get; set; }
         public ICommand podmiotDel { get; set; }
-        public ICommand wlascProt { get; set; }
         public ICommand onCzyscPlatnosci { get; set; }
         public ICommand wlascSell{ get; set; }
         #endregion
@@ -132,7 +131,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             wlascCls = new RelayCommand(onWlascCls);
             wlascAdd = new RelayCommand(onWlascAdd);
-            wlascProt = new RelayCommand(onWlascProt);
             podmiotAdd = new RelayCommand(onPodmiotAdd);
             podmiotDel = new RelayCommand(onPodmiotDel);
             onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
@@ -147,19 +145,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onCzyscPlatnosciClick()
         {
             platnosci.cleanObj();
-        }
-
-        private void onWlascProt()
-        {
-            //string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\ProtokolPrzejecia\\Dzialka\\" + wladanieSel.DzialkaId + "\\Podmiot\\" + wladanieSel.PodmiotId;
-            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + wladanieSel.DzialkaId + "\\Wladanie\\Podmiot\\" + wladanieSel.PodmiotId + "\\ProtokolPrzejecia\\";
-            wladanieSel.Scan = zalPath;
-
-            DirectoryInfo dir = new DirectoryInfo(zalPath);
-            if (!dir.Exists)
-                dir.Create();
-
-            Process.Start(zalPath);
         }
 
         private void onWlascCls()

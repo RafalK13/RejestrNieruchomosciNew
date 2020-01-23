@@ -136,9 +136,7 @@
                                         colNameRaf="nazwa"
                                         selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.selectedPodmId, ElementName=WladanieWin,Mode=TwoWay}"
                                         />
-                <!--selectedValuePathRafALL="id"-->
-                <!--selectedItemRafALL="{Binding Path=DataContext.userControl_Wlasciciel.wlascSel, Mode=TwoWay, ElementName=WladanieWin}"-->
-
+               
                 <Button     Grid.Column="0"
                             Margin="10,100,0,0"
                             HorizontalAlignment="Center"
@@ -243,7 +241,7 @@
                         <Grid Panel.ZIndex="1" Margin="0,0,10,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3"/>
-                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition Width="113"/>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="7*"/>
                                 <ColumnDefinition Width="*"/>
@@ -324,7 +322,6 @@
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
                              />
-                            <!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,20,0"
@@ -334,18 +331,10 @@
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
                                 />
-                            <!--itemSourceTrans="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList.list, ElementName=WladanieWin}"-->
-                            <!--selectedId="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                         </Grid>
 
-                        
-
                     </StackPanel>
-
-                    <!--<StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
-                             
-                                Orientation="Horizontal" />-->
-
+                  
                 </Grid>
 
             </ScrollViewer>
@@ -413,19 +402,6 @@
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
-                        <StackPanel   Orientation="Horizontal">
-                            <Label    Content="Skan protokołu" 
-                                      
-                                      Style="{StaticResource label1}"/>
-                            <Button
-                                       MaxWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MaxWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       MinWidth="{Binding ElementName=NumerProtokoluPrzejecia, Path=MinWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Width="{Binding ElementName=NumerProtokoluPrzejecia, Path=Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
-                                       Content="Skan protokołu"
-                                       Command="{Binding userControl_Wlasciciel.wlascProt}"
-                                        />
-                        </StackPanel>
                         <StackPanel    Orientation="Horizontal">
                             <Label     Content="Skan protokołu" 
                                        Style="{StaticResource label1}"/>

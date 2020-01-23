@@ -38,7 +38,7 @@ namespace RejestrNieruchomosciNew
             get {
                 if (DzialkaId != null && PodmiotId != null)
                 {
-                    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\" + PodmiotId;
+                    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\ProtokolPrzejecia\\" + PodmiotId;
                 }
                 return null;
             }
@@ -57,9 +57,7 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-        //public Podmiot Podmiot { get; set; }
-
-        public object Clone()
+      public object Clone()
         {
             return this.MemberwiseClone();
         }

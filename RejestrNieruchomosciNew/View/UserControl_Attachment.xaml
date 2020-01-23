@@ -15,12 +15,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Column="0" Grid.Row="0"
+        <Button 
+                Name="btAdd"
+                Grid.Column="0"
                 Content="Dodaj" Click="Button_Add"/>
         <Button Grid.Column="1" Grid.Row="0"
+                Height="{Binding ElementName=btAdd, Path=ActualHeight}"
                 VerticalAlignment="Top"
                 Margin="5,0,0,0"
                 Content="Przeglądaj"
-                Height="25" Click="Button_Prev"/>
+                Click="Button_Prev"/>
     </Grid>
 </UserControl>
