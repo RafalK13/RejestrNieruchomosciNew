@@ -92,6 +92,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (obreb.getId().HasValue)
             {
                 dzialka.ObrebId = obreb.getId().Value;
+                MessageBox.Show("1");
                 testDzialka();
             }
         }
@@ -99,7 +100,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public void testDzialka()
         {
             if (changeMode == ChangeMode.add)
+            {
+                MessageBox.Show("2");
                 testDzialkaToAdd();
+            }
             if (changeMode == ChangeMode.mod)
                 testDzialkaToMod();
         }
@@ -108,8 +112,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
-                int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
+                MessageBox.Show("33");
+                int obrebId = obreb.getId().Value;
+
+                int c = dzialkaList.list.Where(r => r.ObrebId == obrebId &&
                                                     r.Numer == dzialka.Numer).Count();
+                MessageBox.Show("44");
 
                 canAdd = c == 0 ? true : false;
             }
@@ -117,8 +125,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testDzialkaToMod()
         {
+            MessageBox.Show("3");
             var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
-            
+            MessageBox.Show("4");
             dz.ObrebId = obreb.getId().Value;
             
             if (!string.IsNullOrEmpty(dzialka.Numer))

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -10,6 +11,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public ObrebList()
         {
+           
             using (var c = new Context())
             {
                 obrebList = c.Obreb.Include("GminaSlo").ToList();
