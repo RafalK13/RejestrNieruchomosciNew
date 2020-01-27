@@ -1,12 +1,8 @@
-﻿using Castle.Core;
-using CommonServiceLocator;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -59,6 +55,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand leftClick { get; set; }
         public ICommand OnAddDzialka { get; set; }
 
+        public ICommand test { get; set; }
+
         public IDzialkaList dzialkaList { get; set; }
 
         #endregion
@@ -69,6 +67,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
+            test = new RelayCommand(onTest);
+        }
+
+        private void onTest()
+        {
+            DateTime dn = DateTime.Now;
+            Dzialka d = new Dzialka() { Numer = $"{dn.ToShortDateString()}_{dn.ToLongTimeString()}", ObrebId = 270, PlatnoscUW = new PlatnoscUW() };
+            
+            int a = 12;
+
+            dzialkaList.AddRow(d);
         }
 
         private void OnAddDzialkaClick()
@@ -92,7 +101,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (obreb.getId().HasValue)
             {
                 dzialka.ObrebId = obreb.getId().Value;
-                MessageBox.Show("1");
                 testDzialka();
             }
         }
@@ -101,7 +109,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (changeMode == ChangeMode.add)
             {
-                MessageBox.Show("2");
                 testDzialkaToAdd();
             }
             if (changeMode == ChangeMode.mod)
@@ -112,22 +119,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
             {
-                MessageBox.Show("33");
                 int obrebId = obreb.getId().Value;
 
                 int c = dzialkaList.list.Where(r => r.ObrebId == obrebId &&
                                                     r.Numer == dzialka.Numer).Count();
-                MessageBox.Show("44");
-
                 canAdd = c == 0 ? true : false;
             }
         }
 
         private void testDzialkaToMod()
         {
-            MessageBox.Show("3");
             var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
-            MessageBox.Show("4");
             dz.ObrebId = obreb.getId().Value;
             
             if (!string.IsNullOrEmpty(dzialka.Numer))

@@ -153,6 +153,10 @@
                     Template="{StaticResource textBoxTemp}">
         </TextBox>
 
+        <Button Grid.Row="8" Grid.Column="1"
+                Content="Test"
+                Command="{Binding userControl_AddDanePod.test}"/>
+
         <StackPanel Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="3"
                     Orientation="Horizontal"
                             HorizontalAlignment="Center"
