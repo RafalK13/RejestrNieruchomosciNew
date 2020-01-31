@@ -199,9 +199,29 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20191220110940_praca1.cs" />
-    <Compile Include="Migrations\20191220110940_praca1.designer.cs">
-      <DependentUpon>20191220110940_praca1.cs</DependentUpon>
+    <Compile Include="Migrations\20200128091246_praca-1.cs" />
+    <Compile Include="Migrations\20200128091246_praca-1.designer.cs">
+      <DependentUpon>20200128091246_praca-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200128091330_praca-2.cs" />
+    <Compile Include="Migrations\20200128091330_praca-2.designer.cs">
+      <DependentUpon>20200128091330_praca-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200128100131_praca-3.cs" />
+    <Compile Include="Migrations\20200128100131_praca-3.designer.cs">
+      <DependentUpon>20200128100131_praca-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200128115048_praca-4.cs" />
+    <Compile Include="Migrations\20200128115048_praca-4.designer.cs">
+      <DependentUpon>20200128115048_praca-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200131102247_praca-5.cs" />
+    <Compile Include="Migrations\20200131102247_praca-5.designer.cs">
+      <DependentUpon>20200131102247_praca-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200131102848_praca-6.cs" />
+    <Compile Include="Migrations\20200131102848_praca-6.designer.cs">
+      <DependentUpon>20200131102848_praca-6.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
@@ -209,6 +229,7 @@
     <Compile Include="Model\CelNabyciaZadania.cs" />
     <Compile Include="Model\CelNabyciaObiektyKom.cs" />
     <Compile Include="Model\CelNabycia.cs" />
+    <Compile Include="Model\Class1Raf.cs" />
     <Compile Include="Model\Context.cs" />
     <Compile Include="Model\CopyFiles.cs" />
     <Compile Include="Model\DecyzjeAdministracyjne.cs" />
@@ -232,6 +253,7 @@
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
+    <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajPlatnosciSlo.cs" />
@@ -245,10 +267,18 @@
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
     <Compile Include="Model\Interfaces\ITransakcje.cs" />
     <Compile Include="Model\Interfaces\ITransakcjeList.cs" />
+    <Compile Include="Model\Interfaces\IUzytki.cs" />
+    <Compile Include="Model\Interfaces\IUzytkiList.cs" />
+    <Compile Include="Model\Interfaces\IUzytkiSlo.cs" />
+    <Compile Include="Model\Interfaces\IUzytkiSloList.cs" />
     <Compile Include="Model\Interfaces\IView.cs" />
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
+    <Compile Include="Model\Interfaces\IZagospodarowanie.cs" />
+    <Compile Include="Model\Interfaces\IZagospodarowanieFunkcjaSlo.cs" />
+    <Compile Include="Model\Interfaces\IZagospodarowanieStatusSlo.cs" />
+    <Compile Include="Model\NadzorKonserwSlo.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />
     <Compile Include="Model\PlatnoscList.cs" />
@@ -268,8 +298,14 @@
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Transakcje.cs" />
     <Compile Include="Model\TransakcjeList.cs" />
+    <Compile Include="Model\Uzytki.cs" />
+    <Compile Include="Model\UzytkiList.cs" />
+    <Compile Include="Model\UzytkiSlo.cs" />
+    <Compile Include="Model\UzytkiSloList.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
+    <Compile Include="Model\ZagospodarowanieFunckjaSlo.cs" />
+    <Compile Include="Model\ZagospodarowanieStatusSlo.cs" />
     <Compile Include="UserControls\Transakcja.xaml.cs">
       <DependentUpon>Transakcja.xaml</DependentUpon>
     </Compile>
@@ -278,6 +314,7 @@
     <Compile Include="ViewModel\ChangeViewModel.cs" />
     <Compile Include="ViewModel\Converters.cs" />
     <Compile Include="ViewModel\ModViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_DaneDodatkoweViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InnePrawaViewModel.cs" />
@@ -296,11 +333,17 @@
     <Compile Include="View\UserControl2.xaml.cs">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl3.xaml.cs">
+      <DependentUpon>UserControl3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_Attachment.xaml.cs">
       <DependentUpon>UserControl_Attachment.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_CelNabycia.xaml.cs">
       <DependentUpon>UserControl_CelNabycia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_DaneDodatkowe.xaml.cs">
+      <DependentUpon>UserControl_DaneDodatkowe.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_DanePodstawowe.xaml.cs">
       <DependentUpon>UserControl_DanePodstawowe.xaml</DependentUpon>
@@ -325,6 +368,9 @@
     </Compile>
     <Compile Include="View\UserControl_Transakcja.xaml.cs">
       <DependentUpon>UserControl_Transakcja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Uzytki.xaml.cs">
+      <DependentUpon>UserControl_Uzytki.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_Wlasciciel.xaml.cs">
       <DependentUpon>UserControl_Wlasciciel.xaml</DependentUpon>
@@ -364,11 +410,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControl3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl_Attachment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_CelNabycia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_DaneDodatkowe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,6 +455,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Transakcja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Uzytki.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

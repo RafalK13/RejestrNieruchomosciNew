@@ -12,6 +12,7 @@
     <UserControl.Resources>
         <loc:resultCnvr x:Key="conv"/>
         <loc:stringToDecimal x:Key="convStrToDec"/>
+        <loc:stringToDouble x:Key="strToDouble"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -149,7 +150,7 @@
                     Content="Powierzchnia"/>
         <TextBox    Grid.Row="6" Grid.Column="1"
                     Style="{StaticResource tekstBox}"
-                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource convStrToDec}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                     Template="{StaticResource textBoxTemp}">
         </TextBox>
 

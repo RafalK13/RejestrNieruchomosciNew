@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_Uzytki"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:dane="clr-namespace:RejestrNieruchomosciNew.Model"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             d:DesignHeight="200" d:DesignWidth="300"
+             mc:Ignorable="d" 
+             >
+    <!--d:DesignHeight="300" d:DesignWidth="300"-->
+
+    <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:DateConverter x:Key="dateConvert"/>
+        <con:DoubleConverter x:Key="doubleConverter"/>
+        <con:IntConverter x:Key="intConverter"/>
+        <con:stringToDecimal x:Key="convStrToDec"/>
+        <con:stringToDouble x:Key="strToDouble"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+                  x:Name="gridRaf"
+                  IsReadOnly="False"
+                  CanUserAddRows="True" 
+                  CanUserDeleteRows="True"
+                  SelectionMode="Single"
+                  RowDetailsVisibilityMode="Visible"
+                  RowHeaderWidth="13"
+                  AutoGenerateColumns="False" Loaded="gridRaf_Loaded" 
+                  
+                  >
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn Header="Użytek" 
+                                        x:Name="gridColRaf"
+                                        SelectedValueBinding="{Binding UzytkiSloId}"
+                                        SelectedValuePath="UzytkiSloId"
+                                        DisplayMemberPath="Nazwa"
+                                        IsReadOnly="False"
+                                        Width="*">
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="IsEditable" Value="True"/>
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Powierzchnia" 
+                                    Binding="{Binding Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }" 
+                                    Width="*"/>
+                <!--<DataGridTextColumn Header="Id" Binding="{Binding UzytkiSloId}" 
+                                    Width="*"/>-->
+
+                <!--ItemsSource="{Binding Source={StaticResource uzytkiSloList}, Path=list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                ItemsSource="{Binding Source={StaticResource uzytkiSloList}, Path=list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        
+    </Grid>
+</UserControl>

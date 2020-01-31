@@ -97,6 +97,12 @@
                 <view:UserControl_PlatnoscUW/>
             </TabItem>
 
+            <TabItem Header="Dane Dodatkowe"
+                     >
+            <view:UserControl_DaneDodatkowe/>
+                <!--Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"-->
+                   
+            </TabItem>
 
             <TabItem Header="Własność"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"

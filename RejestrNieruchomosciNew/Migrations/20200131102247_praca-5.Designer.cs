@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191220110940_praca1")]
-    partial class praca1
+    [Migration("20200131102247_praca-5")]
+    partial class praca5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,13 +31,29 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Kwzrob");
 
+                    b.Property<int?>("NadzorKonserwSloId");
+
                     b.Property<string>("Numer");
 
                     b.Property<int>("ObrebId");
 
                     b.Property<decimal?>("Pow");
 
+                    b.Property<string>("dostDoDrogi");
+
+                    b.Property<string>("ksztalt");
+
+                    b.Property<string>("lokalizacja");
+
+                    b.Property<string>("rodzNaw");
+
+                    b.Property<string>("sasiedztwo");
+
+                    b.Property<string>("uzbrojenie");
+
                     b.HasKey("DzialkaId");
+
+                    b.HasIndex("NadzorKonserwSloId");
 
                     b.HasIndex("ObrebId");
 
@@ -193,6 +209,8 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasKey("InnePrawaId");
 
+                    b.HasIndex("DecyzjeAdministracyjneId");
+
                     b.HasIndex("DzialkaId");
 
                     b.HasIndex("RodzajInnegoPrawaSloId");
@@ -202,6 +220,36 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("TransS_Id");
 
                     b.ToTable("InnePrawa");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.NadzorKonserwSlo", b =>
+                {
+                    b.Property<int>("NadzorKonserwSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("NadzorKonserwSloId");
+
+                    b.ToTable("NadzorKonserwSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            NadzorKonserwSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            NadzorKonserwSloId = 2,
+                            Nazwa = "Nie"
+                        },
+                        new
+                        {
+                            NadzorKonserwSloId = 3,
+                            Nazwa = "Tak"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.PlatnoscInnePrawa", b =>
@@ -275,6 +323,43 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("RodzajInnegoPrawaSloId");
 
                     b.ToTable("RodzajInnegoPrawaSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 2,
+                            Nazwa = "dzierżawa"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 3,
+                            Nazwa = "najem"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 4,
+                            Nazwa = "użyczenie"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 5,
+                            Nazwa = "służebność"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 6,
+                            Nazwa = "czasowe zajęcie"
+                        },
+                        new
+                        {
+                            RodzajInnegoPrawaSloId = 7,
+                            Nazwa = "bezumowne"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo", b =>
@@ -338,6 +423,222 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("RodzajTransakcjiSloId");
 
                     b.ToTable("Transakcje");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>
+                {
+                    b.Property<int>("UzytkiId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DzialkaId");
+
+                    b.Property<decimal?>("Pow");
+
+                    b.Property<int>("UzytkiSloId");
+
+                    b.HasKey("UzytkiId");
+
+                    b.HasIndex("DzialkaId");
+
+                    b.HasIndex("UzytkiSloId");
+
+                    b.ToTable("Uzytki");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UzytkiSlo", b =>
+                {
+                    b.Property<int>("UzytkiSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("UzytkiSloId");
+
+                    b.ToTable("UzytkiSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            UzytkiSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 2,
+                            Nazwa = "R"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 3,
+                            Nazwa = "S"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 4,
+                            Nazwa = "Ł"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 5,
+                            Nazwa = "Ps"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 6,
+                            Nazwa = "Br"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 7,
+                            Nazwa = "Wsr"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 8,
+                            Nazwa = "W"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 9,
+                            Nazwa = "Lzr"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 10,
+                            Nazwa = "N"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 11,
+                            Nazwa = "Ls"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 12,
+                            Nazwa = "Lz"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 13,
+                            Nazwa = "B"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 14,
+                            Nazwa = "Ba"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 15,
+                            Nazwa = "Bi"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 16,
+                            Nazwa = "Bp"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 17,
+                            Nazwa = "Bz"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 18,
+                            Nazwa = "K"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 19,
+                            Nazwa = "dr"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 20,
+                            Nazwa = "Tk"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 21,
+                            Nazwa = "Ti"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 22,
+                            Nazwa = "Tp"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 23,
+                            Nazwa = "E-Ws"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 24,
+                            Nazwa = "E-Wp"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 25,
+                            Nazwa = "E-Ls"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 26,
+                            Nazwa = "E-Lz"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 27,
+                            Nazwa = "E-N"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 28,
+                            Nazwa = "E-Ps"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 29,
+                            Nazwa = "E-R"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 30,
+                            Nazwa = "E-Ł"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 31,
+                            Nazwa = "E-Lzr"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 32,
+                            Nazwa = "E-W"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 33,
+                            Nazwa = "Wm"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 34,
+                            Nazwa = "Wp"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 35,
+                            Nazwa = "Ws"
+                        },
+                        new
+                        {
+                            UzytkiSloId = 36,
+                            Nazwa = "Tr"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
@@ -614,6 +915,10 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Dzialka", b =>
                 {
+                    b.HasOne("RejestrNieruchomosciNew.Model.NadzorKonserwSlo", "NadzorKonserwSlo")
+                        .WithMany("Dzialka")
+                        .HasForeignKey("NadzorKonserwSloId");
+
                     b.HasOne("RejestrNieruchomosciNew.Obreb", "Obreb")
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
@@ -622,6 +927,10 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
                 {
+                    b.HasOne("RejestrNieruchomosciNew.Model.DecyzjeAdministracyjne", "DecyzjeAdministracyjne")
+                        .WithMany("InnePrawa")
+                        .HasForeignKey("DecyzjeAdministracyjneId");
+
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
                         .WithMany("InnePrawa")
                         .HasForeignKey("DzialkaId")
@@ -661,6 +970,19 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasOne("RejestrNieruchomosciNew.Model.RodzajTransakcjiSlo")
                         .WithMany("Transakcje")
                         .HasForeignKey("RodzajTransakcjiSloId");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithMany("Uzytki")
+                        .HasForeignKey("DzialkaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.UzytkiSlo", "UzytkiSlo")
+                        .WithMany()
+                        .HasForeignKey("UzytkiSloId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Obreb", b =>

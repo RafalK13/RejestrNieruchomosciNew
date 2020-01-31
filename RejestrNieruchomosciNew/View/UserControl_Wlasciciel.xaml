@@ -175,7 +175,8 @@
                             
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
-                        <DataGridTemplateColumn Header="Usun" >
+                        <DataGridTemplateColumn         
+ >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button 

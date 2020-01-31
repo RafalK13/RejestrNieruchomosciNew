@@ -14,10 +14,10 @@ namespace RejestrNieruchomosciNew.Model
         int? PodmiotId { get; set; }
 
         int? FormaWladaniaSloId { get; set; }
-
+    
         int? TransK_Id { get; set; }
         int? TransS_Id { get; set; }
-
+    
         DateTime? DataOdbOd { get; set; }
         DateTime? DataOdbDo { get; set; }
         string NrProtPrzejecia { get; set; }
@@ -26,6 +26,5 @@ namespace RejestrNieruchomosciNew.Model
 
         int? CelNabyciaId { get; set; }
         string Udzial { get; set; }
-       
     }
 }

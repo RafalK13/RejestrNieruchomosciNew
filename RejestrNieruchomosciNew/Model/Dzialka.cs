@@ -13,7 +13,19 @@ namespace RejestrNieruchomosciNew
 
         public string Kwakt { get; set; }
         public string Kwzrob { get; set; }
-        public decimal? Pow { get; set; }
+        public double? Pow { get; set; }
+
+        public string lokalizacja { get; set; }
+        public string uzbrojenie { get; set; }
+        public string ksztalt { get; set; }
+        public string sasiedztwo { get; set; }
+        public string dostDoDrogi { get; set; }
+        public string rodzNaw { get; set; }
+
+        public int? NadzorKonserwSloId { get; set; }
+        public NadzorKonserwSlo NadzorKonserwSlo { get; set; }
+
+        public ICollection<Uzytki> Uzytki { get; set; }
 
         private int _ObrebId;
         public int ObrebId
@@ -38,7 +50,7 @@ namespace RejestrNieruchomosciNew
         {
         }
 
-        public Dzialka( string _numer, int _ObrebId, string _kwA=null, string _kwZ=null, decimal? _Pow=null  )
+        public Dzialka( string _numer, int _ObrebId, string _kwA=null, string _kwZ=null, double? _Pow=null  )
         {
             Numer = _numer;
             ObrebId = _ObrebId;

@@ -15,6 +15,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PreviewViewModel userControl_prevModel { get; set; }
         public UserControl_InnePrawaViewModel userControl_InnePrawa { get; set; }
         public UserControl_PlatnoscUWViewModel userControl_PlatnoscUW { get; set; }
+        public UserControl_DaneDodatkoweViewModel userControl_DaneDod { get; set; }
 
         public bool tabsVisible { get; set; }
 

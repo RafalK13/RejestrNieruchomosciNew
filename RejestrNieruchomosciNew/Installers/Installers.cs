@@ -94,6 +94,15 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Test>());
 
             container.Register(Component.For<UserControl_DecyzjeAdmin>());
+
+            container.Register(Component.For<IUzytki>().ImplementedBy<Uzytki>());
+            container.Register(Component.For<IUzytkiSlo>().ImplementedBy<UzytkiSlo>());
+            container.Register(Component.For<IUzytkiList>().ImplementedBy<UzytkiList>());
+            container.Register(Component.For<IUzytkiSloList>().ImplementedBy<UzytkiSloList>());
+            container.Register(Component.For<UserControl_Uzytki>());
+
+            container.Register(Component.For<UserControl_DaneDodatkowe>().LifeStyle.Transient);
+            container.Register(Component.For<UserControl_DaneDodatkoweViewModel>().LifeStyle.Transient);
         }
     }
 }

@@ -31,6 +31,11 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<FormaWladaniaSlo> FormaWladaniaSlo { get; set; }
         public virtual DbSet<RodzajInnegoPrawaSlo> RodzajInnegoPrawaSlo { get; set; }
 
+        public virtual DbSet<Uzytki> Uzytki { get; set; }
+        public virtual DbSet<UzytkiSlo> UzytkiSlo { get; set; }
+
+        public virtual DbSet<NadzorKonserwSlo> NadzorKonserwSlo { get; set; }
+
         public virtual DbSet<Transakcje> Transakcje { get; set; }
         
         public virtual DbSet<DecyzjeAdministracyjne> DecyzjeAdministracyjne { get; set; }
@@ -100,11 +105,66 @@ namespace RejestrNieruchomosciNew
               new FormaWladaniaSlo() { FormaWladaniaSloId = 3, Nazwa = "UW" }
           );
 
+            modelBuilder.Entity<NadzorKonserwSlo>().HasData(
+              new NadzorKonserwSlo() { NadzorKonserwSloId = 1, Nazwa = "-" },
+              new NadzorKonserwSlo() { NadzorKonserwSloId = 2, Nazwa = "Nie" },
+              new NadzorKonserwSlo() { NadzorKonserwSloId = 3, Nazwa = "Tak" }
+          );
+
             modelBuilder.Entity<NazwaCzynnosciSlo>().HasData(
              new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 1, Nazwa = "-" },
              new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 2, Nazwa = "Zakup" },
              new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 3, Nazwa = "Aport" }
          );
+
+            modelBuilder.Entity<RodzajInnegoPrawaSlo>().HasData(
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 1, Nazwa = "-" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 2, Nazwa = "dzierżawa" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 3, Nazwa = "najem" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 4, Nazwa = "użyczenie" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 5, Nazwa = "służebność" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 6, Nazwa = "czasowe zajęcie" },
+            new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 7, Nazwa = "bezumowne" }
+        );
+
+            modelBuilder.Entity<UzytkiSlo>().HasData(
+             new UzytkiSlo() { UzytkiSloId = 1, Nazwa = "-" },
+             new UzytkiSlo() { UzytkiSloId = 2, Nazwa = "R" },
+             new UzytkiSlo() { UzytkiSloId = 3, Nazwa = "S" },
+             new UzytkiSlo() { UzytkiSloId = 4, Nazwa = "Ł" },
+             new UzytkiSlo() { UzytkiSloId = 5, Nazwa = "Ps" },
+             new UzytkiSlo() { UzytkiSloId = 6, Nazwa = "Br" },
+             new UzytkiSlo() { UzytkiSloId = 7, Nazwa = "Wsr" },
+             new UzytkiSlo() { UzytkiSloId = 8, Nazwa = "W" },
+             new UzytkiSlo() { UzytkiSloId = 9, Nazwa = "Lzr" },
+             new UzytkiSlo() { UzytkiSloId = 10, Nazwa = "N" },
+             new UzytkiSlo() { UzytkiSloId = 11, Nazwa = "Ls" },
+             new UzytkiSlo() { UzytkiSloId = 12, Nazwa = "Lz" },
+             new UzytkiSlo() { UzytkiSloId = 13, Nazwa = "B" },
+             new UzytkiSlo() { UzytkiSloId = 14, Nazwa = "Ba" },
+             new UzytkiSlo() { UzytkiSloId = 15, Nazwa = "Bi" },
+             new UzytkiSlo() { UzytkiSloId = 16, Nazwa = "Bp" },
+             new UzytkiSlo() { UzytkiSloId = 17, Nazwa = "Bz" },
+             new UzytkiSlo() { UzytkiSloId = 18, Nazwa = "K" },
+             new UzytkiSlo() { UzytkiSloId = 19, Nazwa = "dr" },
+             new UzytkiSlo() { UzytkiSloId = 20, Nazwa = "Tk" },
+             new UzytkiSlo() { UzytkiSloId = 21, Nazwa = "Ti" },
+             new UzytkiSlo() { UzytkiSloId = 22, Nazwa = "Tp" },
+             new UzytkiSlo() { UzytkiSloId = 23, Nazwa = "E-Ws" },
+             new UzytkiSlo() { UzytkiSloId = 24, Nazwa = "E-Wp" },
+             new UzytkiSlo() { UzytkiSloId = 25, Nazwa = "E-Ls" },
+             new UzytkiSlo() { UzytkiSloId = 26, Nazwa = "E-Lz" },
+             new UzytkiSlo() { UzytkiSloId = 27, Nazwa = "E-N" },
+             new UzytkiSlo() { UzytkiSloId = 28, Nazwa = "E-Ps" },
+             new UzytkiSlo() { UzytkiSloId = 29, Nazwa = "E-R" },
+             new UzytkiSlo() { UzytkiSloId = 30, Nazwa = "E-Ł" },
+             new UzytkiSlo() { UzytkiSloId = 31, Nazwa = "E-Lzr" },
+             new UzytkiSlo() { UzytkiSloId = 32, Nazwa = "E-W" },
+             new UzytkiSlo() { UzytkiSloId = 33, Nazwa = "Wm" },
+             new UzytkiSlo() { UzytkiSloId = 34, Nazwa = "Wp" },
+             new UzytkiSlo() { UzytkiSloId = 35, Nazwa = "Ws" },
+             new UzytkiSlo() { UzytkiSloId = 36, Nazwa = "Tr" }
+        );
 
             modelBuilder.Entity<GminaSlo>().HasData(
                new GminaSlo() { GminaSloId = 1, Nazwa = "miasto Gdańsk" },
