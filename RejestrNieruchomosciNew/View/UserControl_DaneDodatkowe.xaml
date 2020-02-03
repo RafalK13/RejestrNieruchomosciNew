@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              x:Name="DaneDodWin"
-             d:DesignHeight="660" d:DesignWidth="1450">
+             d:DesignHeight="960" d:DesignWidth="1450">
     <Grid>
         <Grid.Resources>
             <con:personIdToPersonName x:Key="parsonConvert"/>
@@ -25,7 +27,6 @@
             </Style>
             <Style x:Key="scrollViewer" TargetType="ScrollViewer">
                 <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-                <Setter Property="IsEnabled" Value="{Binding userControl_InnePrawa.podmiotDetail}"/>
             </Style>
             <Style x:Key="label" TargetType="Label">
                 <Setter Property="Margin" Value="10,10,0,0"></Setter>
@@ -53,14 +54,25 @@
             <Style x:Key="labelTab" TargetType="Label">
                 <Setter Property="Margin" Value="3,0,0,0"></Setter>
             </Style>
+
+            <Style x:Key="tekskBoxOpis" TargetType="TextBox">
+                <Setter Property="MinLines" Value="10"/>
+                <Setter Property="AcceptsReturn" Value="True"/>
+                <Setter Property="AcceptsTab" Value="True"/>
+            </Style>
+            <Style x:Key="LabelOpis" TargetType="Label">
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+                <Setter Property="Margin" Value="10,0,10,0"/>
+            </Style>
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1.2*" MinWidth="9" />
-            <ColumnDefinition Width="0.8*" MinWidth="9"/>
+            <ColumnDefinition Width="0.6*"/>
             <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="*" MinWidth="9"/>
             <ColumnDefinition Width="*" MinWidth="9" />
+           
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -84,19 +96,138 @@
                    Grid.Column ="3"  
                    Style="{StaticResource gridSplitter}"
                    />
-
-        <Grid Grid.Column="0">
-            <Label  Margin="10,10,10,0"
+        <ScrollViewer Grid.Column="0" 
+                      Style="{StaticResource scrollViewer}">
+            <Grid Grid.Column="0">
+                <Label  Margin="10,10,10,0"
                         Content="Spis użytków gruntowych"
                         FontWeight="Bold"                      
                         FontSize="19"
                         Height="35"
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
-            <userCon:UserControl_Uzytki 
+                <userCon:UserControl_Uzytki 
                         uzytkiSloList="{Binding Path=DataContext.userControl_DaneDod.uzytkiSloList, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        uzytkiList="{Binding Path=DataContext.userControl_DaneDod.uzytkiList, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        uzytkiListRaf="{Binding Path=DataContext.userControl_DaneDod.uzytkiList.list, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        dzialka="{Binding Path=DataContext.userControl_DaneDod.userPrev.dzialkaSel, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         Margin="10,50,10,0"/>
-        </Grid>
+            </Grid>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="2" 
+                      Style="{StaticResource scrollViewer}">
+        <Grid Grid.Column="2">
+            <StackPanel>
+                <Label  Margin="10,10,10,0"
+                        Content=" "
+                        FontWeight="Bold"                      
+                        FontSize="19"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
+
+                    <Label  
+                        Content="Sąsiedztwo"
+                        Style="{StaticResource LabelOpis}" />
+                    <TextBox
+                         Margin="10,5,10,0"
+                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.sasiedztwo}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+                    <Label  
+                        Content="Dostęp do drogi publicznej"
+                        Style="{StaticResource LabelOpis}"/>
+                    <TextBox
+                         Margin="10,5,10,0"
+                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.dostDoDrogi}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+                    <Label  
+                        Content="Nawierzchnia drogi dojazdowej"
+                        Style="{StaticResource LabelOpis}"/>
+                    <TextBox
+                         Margin="10,5,10,0"
+                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.rodzNaw}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+            </StackPanel>
     </Grid>
+        </ScrollViewer>
+    <ScrollViewer Grid.Column="1" 
+                  Style="{StaticResource scrollViewer}">
+    <Grid Grid.Column="1">
+        <StackPanel>
+            <Label  Margin="10,10,10,0"
+                        Content="Ogólne informacje o działce"
+                        FontWeight="Bold"                      
+                        FontSize="19"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
+            <Label      
+                        Content="Lokalizacja"
+                        Style="{StaticResource LabelOpis}" />
+            <TextBox
+                         Margin="10,5,10,0"
+                Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.lokalizacja}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+
+            <Label      
+                        Content="Uzbrojenie"
+                        Style="{StaticResource LabelOpis}" />
+            <TextBox
+                         Margin="10,5,10,0"
+                Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.uzbrojenie}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+
+            <Label  
+                        Content="Kształt"
+                        Style="{StaticResource LabelOpis}" />
+            <TextBox
+                         Margin="10,5,10,0"
+                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.kształt}"
+                         Style="{StaticResource tekskBoxOpis}"/>
+        </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+    
+          
+            <Grid Grid.Column="3">
+            <StackPanel>
+                <Label  Margin="10,10,10,0"
+                        Content="Nadzór konserwatora zabytków"
+                        FontWeight="Bold"                      
+                        FontSize="19"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
+                <ComboBox Margin="20,10,10,10"
+                          HorizontalAlignment="Left"
+                          ItemsSource="{Binding userControl_DaneDod.nadzorKons.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedValue="{Binding  userControl_DaneDod.userPrev.dzialkaSel.NadzorKonserwSloId}"
+                          SelectedValuePath="NadzorKonserwSloId"
+                          DisplayMemberPath="Nazwa"  
+                          Width="200"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel 
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="5"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            >
+            <Button Content="Add"
+                    Style="{StaticResource buttonCommon}"
+                    Command="{Binding userControl_DaneDod.daneDodAdd}"
+                    com:CloseOnClickBehaviour.IsEnabled="True"/>
+
+            <Button  Content="Anuluj"
+                                    Style="{StaticResource buttonCommon}"
+                                    IsCancel="True"
+                                    com:CloseOnClickBehaviour.IsEnabled="True"
+                                    />
+        </StackPanel>
+    </Grid>
+        
+        
+        
 </UserControl>

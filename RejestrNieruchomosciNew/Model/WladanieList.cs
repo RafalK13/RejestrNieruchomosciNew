@@ -71,9 +71,6 @@ namespace RejestrNieruchomosciNew.Model
             if (listToMod.Count() > 0)
                 ModRows();
 
-            #region ListResults
-
-            #endregion
         }
 
         public void AddRows()

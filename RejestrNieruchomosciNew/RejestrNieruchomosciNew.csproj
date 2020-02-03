@@ -223,6 +223,18 @@
     <Compile Include="Migrations\20200131102848_praca-6.designer.cs">
       <DependentUpon>20200131102848_praca-6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200131110719_praca-7.cs" />
+    <Compile Include="Migrations\20200131110719_praca-7.designer.cs">
+      <DependentUpon>20200131110719_praca-7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200203113413_praca-8.cs" />
+    <Compile Include="Migrations\20200203113413_praca-8.designer.cs">
+      <DependentUpon>20200203113413_praca-8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200203131303_praca-9.cs" />
+    <Compile Include="Migrations\20200203131303_praca-9.designer.cs">
+      <DependentUpon>20200203131303_praca-9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -253,6 +265,7 @@
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
+    <Compile Include="Model\Interfaces\INadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
@@ -278,6 +291,7 @@
     <Compile Include="Model\Interfaces\IZagospodarowanie.cs" />
     <Compile Include="Model\Interfaces\IZagospodarowanieFunkcjaSlo.cs" />
     <Compile Include="Model\Interfaces\IZagospodarowanieStatusSlo.cs" />
+    <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />

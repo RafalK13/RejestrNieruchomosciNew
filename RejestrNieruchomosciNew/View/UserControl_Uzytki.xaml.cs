@@ -1,6 +1,8 @@
 ﻿using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,8 +13,17 @@ namespace RejestrNieruchomosciNew.View
         public UserControl_Uzytki()
         {
             InitializeComponent();
-            DataContext = this;            
+            DataContext = this;
         }
+
+        public ObservableCollection<Uzytki> uzytkiListRaf
+        {
+            get { return (ObservableCollection<Uzytki>)GetValue(uzytkiListRafProperty); }
+            set { SetValue(uzytkiListRafProperty, value); }
+        }
+
+        public static readonly DependencyProperty uzytkiListRafProperty =
+            DependencyProperty.Register("uzytkiListRaf", typeof(ObservableCollection<Uzytki>), typeof(UserControl_Uzytki));
 
         public UzytkiList uzytkiList
         {
@@ -34,8 +45,32 @@ namespace RejestrNieruchomosciNew.View
 
         private void gridRaf_Loaded(object sender, RoutedEventArgs e)
         {
-            gridRaf.ItemsSource = uzytkiList.list;
+            //gridRaf.ItemsSource = uzytkiListRaf;
             gridColRaf.ItemsSource = uzytkiSloList.list;
+
+            uzytkiListRaf.CollectionChanged += UzytkiListRaf_CollectionChanged;
+
         }
+
+        private void UzytkiListRaf_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add)
+                {
+                    uzytkiListRaf[e.NewStartingIndex].DzialkaId = dzialka.DzialkaId;
+                }
+            }
+        }
+
+        public IDzialka dzialka
+        {
+            get { return (IDzialka)GetValue(dzialkaProperty); }
+            set { SetValue(dzialkaProperty, value); }
+        }
+
+        public static readonly DependencyProperty dzialkaProperty =
+            DependencyProperty.Register("dzialka", typeof(IDzialka), typeof(UserControl_Uzytki));
+       
     }
 }

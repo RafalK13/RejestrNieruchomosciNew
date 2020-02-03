@@ -9,6 +9,7 @@ namespace RejestrNieruchomosciNew.Model
         public int NadzorKonserwSloId { get; set; }
         public string Nazwa { get; set; }
 
+
         public ICollection<Dzialka> Dzialka { get; set; }
 
     }
