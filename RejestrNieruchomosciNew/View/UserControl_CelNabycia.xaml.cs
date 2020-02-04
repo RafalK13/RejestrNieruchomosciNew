@@ -1,8 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -231,7 +229,7 @@ namespace RejestrNieruchomosciNew.View
                 istnOb = celNabyciaList.list.Where(r => r.Rodzaj == "Obiekt").ToList();
                 zadInwest = celNabyciaList.list.Where(r => r.Rodzaj == "Zadanie").ToList();
                 obiektKom = celNabyciaList.list.Where(r => r.Rodzaj == "ObKom").ToList();
-                int a = 13;
+                
                 //MessageBox.Show( $"{istnOb.Count}\r\n{zadInwest.Count}\r\n{obiektKom.Count}");
             }
         }

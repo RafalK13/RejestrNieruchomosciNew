@@ -235,6 +235,10 @@
     <Compile Include="Migrations\20200203131303_praca-9.designer.cs">
       <DependentUpon>20200203131303_praca-9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200204082816_praca11.cs" />
+    <Compile Include="Migrations\20200204082816_praca11.designer.cs">
+      <DependentUpon>20200204082816_praca11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -288,9 +292,9 @@
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
-    <Compile Include="Model\Interfaces\IZagospodarowanie.cs" />
-    <Compile Include="Model\Interfaces\IZagospodarowanieFunkcjaSlo.cs" />
-    <Compile Include="Model\Interfaces\IZagospodarowanieStatusSlo.cs" />
+    <Compile Include="Model\Interfaces\IZagosp.cs" />
+    <Compile Include="Model\Interfaces\IZagospFunkcjaSlo.cs" />
+    <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
@@ -318,8 +322,9 @@
     <Compile Include="Model\UzytkiSloList.cs" />
     <Compile Include="Model\Wladanie.cs" />
     <Compile Include="Model\WladanieList.cs" />
-    <Compile Include="Model\ZagospodarowanieFunckjaSlo.cs" />
-    <Compile Include="Model\ZagospodarowanieStatusSlo.cs" />
+    <Compile Include="Model\Zagosp.cs" />
+    <Compile Include="Model\ZagospFunkcjaSlo.cs" />
+    <Compile Include="Model\ZagospStatusSlo.cs" />
     <Compile Include="UserControls\Transakcja.xaml.cs">
       <DependentUpon>Transakcja.xaml</DependentUpon>
     </Compile>
@@ -336,6 +341,7 @@
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
     <Compile Include="ViewModel\UserControl_TransViewModel.cs" />
     <Compile Include="ViewModel\UserControl_WlascicielViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_ZagospViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\Window2ViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
@@ -388,6 +394,9 @@
     </Compile>
     <Compile Include="View\UserControl_Wlasciciel.xaml.cs">
       <DependentUpon>UserControl_Wlasciciel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Zagosp.xaml.cs">
+      <DependentUpon>UserControl_Zagosp.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
@@ -477,6 +486,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Wlasciciel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Zagosp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

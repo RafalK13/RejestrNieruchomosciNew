@@ -1,8 +1,8 @@
 ﻿namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface IZagospodarowanieFunkcjaSlo
+    public interface IZagospStatusSlo
     {
-        int ZagospodarowanieFunkcjaSloId { get; set; }
+        int ZagospStatusSloId { get; set; }
         string Nazwa { get; set; }
     }
 }

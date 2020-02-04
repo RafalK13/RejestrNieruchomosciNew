@@ -106,6 +106,13 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<INadzorKonserwSlo>().ImplementedBy<NadzorKonserwSlo>());
             container.Register(Component.For<INadzorKonserwatoraSloList>().ImplementedBy<NadzorKonserwatoraSloList>());
+
+            container.Register(Component.For<IZagosp>().ImplementedBy<Zagosp>().LifeStyle.Transient);
+            container.Register(Component.For<IZagospFunkcjaSlo>().ImplementedBy<ZagospFunkcjaSlo>());
+            container.Register(Component.For<IZagospStatusSlo>().ImplementedBy<ZagospStatusSlo>());
+
+            container.Register(Component.For<UserControl_Zagosp>().LifeStyle.Transient);
+            container.Register(Component.For<UserControl_ZagospViewModel>().LifeStyle.Transient);
         }
     }
 }

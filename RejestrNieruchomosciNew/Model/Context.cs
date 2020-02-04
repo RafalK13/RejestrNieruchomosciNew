@@ -34,6 +34,10 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Uzytki> Uzytki { get; set; }
         public virtual DbSet<UzytkiSlo> UzytkiSlo { get; set; }
 
+        public virtual DbSet<Zagosp> Zagosp { get; set; }
+        public virtual DbSet<ZagospStatusSlo> ZagospStatusSlo { get; set; }
+        public virtual DbSet<ZagospFunkcjaSlo> ZagospFunkcjaSlo { get; set; }
+        
         public virtual DbSet<NadzorKonserwSlo> NadzorKonserwSlo { get; set; }
 
         public virtual DbSet<Transakcje> Transakcje { get; set; }

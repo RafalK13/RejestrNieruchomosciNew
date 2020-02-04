@@ -100,7 +100,6 @@
             <TabItem Header="Dane Dodatkowe"
                      >
             <view:UserControl_DaneDodatkowe/>
-                <!--Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"-->
                    
             </TabItem>
 
@@ -116,29 +115,14 @@
                 <view:UserControl_InnePrawa>
                 </view:UserControl_InnePrawa>
             </TabItem>
-            <TabItem Header="Inne prawa"
+            <TabItem Header="Zagospodarowanie działki"
                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
-                <StackPanel>
-                    <Button Height="39"/>
-                </StackPanel>
+                <view:UserControl_Zagosp/>
             </TabItem>
         </TabControl>
         
-        <!--<StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            --><!--<Button 
-                Style="{StaticResource buttonRaf}" 
-                IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
-                Command="{Binding OnAddDzialka}"
-                com:CloseOnClickBehaviour.IsEnabled="True"
-                Content="OK"></Button>-->
-            <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
-            <!--<Button 
-                Style="{StaticResource buttonRaf}"
-                IsCancel="True"
-                com:CloseOnClickBehaviour.IsEnabled="True"
-                Content="Anuluj"></Button>--><!--
-        </StackPanel>-->
+      
 
     </Grid>
 </Window>
