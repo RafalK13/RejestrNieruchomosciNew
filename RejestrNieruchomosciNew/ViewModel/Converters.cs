@@ -9,32 +9,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     class personIdToPersonName : IMultiValueConverter
     {
-        //public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        //{
-        //    if (value == null)
-        //        return 0;
-
-        //    if (parameter == null)
-        //        parameter = 1;
-
-        //    PodmiotList pl = parameter as PodmiotList;
-        //    int a = 13;
-        //    if (pl != null)
-        //    {
-        //        var v = pl.list.FirstOrDefault(row => row.PodmiotId == int.Parse(value.ToString()));
-
-        //        if (v != null)
-        //            return v.Name;
-        //    }
-
-        //    return null;
-        //}
-
-        //public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        //{
-        //    return false;
-        //}
-
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values[0] == null)
@@ -62,6 +36,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
     }
 
+    
     class resultCnvr : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

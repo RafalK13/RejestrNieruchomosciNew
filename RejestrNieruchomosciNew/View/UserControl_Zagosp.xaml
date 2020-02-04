@@ -50,6 +50,7 @@
         <Style x:Key="comboBox" TargetType="ComboBox">
             <Setter Property="Margin" Value="10,5,0,0"></Setter>
             <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         </Style>
         <Style x:Key="textBox" TargetType="TextBlock">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
@@ -90,6 +91,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*" MinWidth="9" />
                 <ColumnDefinition Width="4*" MinWidth="9" />
                 
             </Grid.ColumnDefinitions>
@@ -105,97 +107,128 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
+            <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
 
             <ScrollViewer Grid.Column="0" 
-                      Style="{StaticResource scrollViewer}">
-
+                          Style="{StaticResource scrollViewer}">
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
 
                         <RowDefinition/>
+                       
+                    </Grid.RowDefinitions>
+
+                    <Label      Grid.Row="0"
+                                Content="Nazwa"
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
+                    <TextBox 
+                                Grid.Row="1"
+                                Style="{StaticResource tekskBoxOpis}"
+                                Text="{Binding userControl_Zagosp.nazwa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                />
+                    <Button     Grid.Row="1"
+                                Margin="0,90,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Content="Dodaj"
+                                Height="30"
+                                Width="100"
+                                Command="{Binding userControl_Zagosp.nazwaAdd}"
+                        />
+
+                    <DataGrid   Grid.Row="2"
+                                VerticalAlignment="Top"
+                                Margin="3,140,10,0"
+                                ItemsSource="{Binding userControl_Zagosp.zagospList.list, Mode=TwoWay}"
+                                SelectedItem="{Binding userControl_Zagosp.zagospSel, Mode=TwoWay}"
+                                CanUserSortColumns="False"
+                                FrozenColumnCount="1" 
+                                IsReadOnly="True"
+                                CanUserAddRows="False"
+                                CanUserDeleteRows="False" 
+                                CanUserReorderColumns="False"
+                                HeadersVisibility="Column"
+                                SelectionMode="Single"
+                                SelectionUnit="FullRow"
+                                VerticalScrollBarVisibility="Auto"
+                                AutoGenerateColumns="False"
+                                >
+                                <DataGrid.Columns>
+                                     <DataGridTextColumn Header="Nazwa" 
+                                                         Width="*"
+                                                         Binding="{Binding Nazwa}"
+                                                         >
+                                         
+                                     </DataGridTextColumn>
+
+                                     <DataGridTemplateColumn Header="Usun" >
+                                         <DataGridTemplateColumn.CellTemplate>
+                                             <DataTemplate>
+                                                 <Button 
+                                                                 Height="20" 
+                                                                 Width="20" 
+                                                                 Content="x"                                                           
+                                                                 Foreground="Red"
+                                                                 BorderBrush="White"
+                                                                 Command="{Binding Path=DataContext.userControl_Zagosp.nazwaDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                             </DataTemplate>
+                                         </DataGridTemplateColumn.CellTemplate>
+                                     </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Column="1" 
+                          Style="{StaticResource scrollViewer}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <Label      Grid.Row="0"
-                        Content="Podmiot władający"
-                        FontWeight="Bold"                      
-                        FontSize="19"
-                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
-                    <conRaf:DataGridRafALL  
-                        Grid.Row="1"
-                        Margin="10,0,10,0"
-                        x:Name="conRaf1"
-                        VerticalAlignment="Top"   Panel.ZIndex="13"
-                        TekstPropALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotName, ElementName=InnePrawaWin, Mode=TwoWay}"
-                        itemSourceRafALL="{Binding Path=DataContext.userControl_InnePrawa.podmiotList.listView, ElementName=InnePrawaWin}"
-                        fontSizeRafALL="14"
-                        heightRafALL="25"
-                        HorizontalAlignment="Stretch"
-                        colNameRaf="nazwa"
-                        selectedIdRafALL="{Binding Path=DataContext.userControl_InnePrawa.selectedPodmId, ElementName=InnePrawaWin,Mode=TwoWay}"
-                        />
-                    <Button     Grid.Row="1"
-                        Margin="0,50,0,0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top"
-                        Content="Dodaj"
-                        Height="30"
-                        Width="100"
-                        Command="{Binding userControl_InnePrawa.podmiotAdd}"
-                        />
+                                Content="Status"
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
+                    <ComboBox
+                               Grid.Row="1"
+                               ItemsSource="{Binding userControl_Zagosp.zagStaList.list}"
+                               SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospStatusSloId}"
+                               SelectedValuePath="ZagospStatusSloId"
+                               DisplayMemberPath="Nazwa"
+                               Style="{StaticResource comboBox}"/>
 
-                    <DataGrid   Grid.Row="1"
-                        VerticalAlignment="Top"
-                        Margin="3,100,10,0"
-                        ItemsSource="{Binding userControl_InnePrawa.innePrawaList.list, Mode=TwoWay}"
-                        SelectedItem="{Binding userControl_InnePrawa.innePrawaSel, Mode=TwoWay}"
-                        CanUserSortColumns="False"
-                        FrozenColumnCount="1" 
-                        IsReadOnly="True"
-                        CanUserAddRows="False"
-                        CanUserDeleteRows="False" 
-                        CanUserReorderColumns="False"
-                        HeadersVisibility="Column"
-                        SelectionMode="Single"
-                        SelectionUnit="FullRow"
-                        VerticalScrollBarVisibility="Auto"
-                        AutoGenerateColumns="False"
-                       >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Podmiot" 
-                                        Width="*">
-                                <DataGridTextColumn.Binding>
-                                    <MultiBinding Converter="{StaticResource parsonConvert}" >
-                                        <Binding  Path="PodmiotId"/>
-                                        <Binding  ElementName="InnePrawaWin" Path="DataContext.userControl_InnePrawa.podmiotList"/>
-                                    </MultiBinding>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-
-                            <DataGridTemplateColumn Header="Usun" >
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button 
-                                            Height="20" 
-                                            Width="20" 
-                                            Content="x"                                                           
-                                            Foreground="Red"
-                                            BorderBrush="White"
-                                            Command="{Binding Path=DataContext.userControl_InnePrawa.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Label      Grid.Row="2"
+                                Content="Funkcja"
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
+                    <ComboBox
+                               Grid.Row="3"
+                               ItemsSource="{Binding userControl_Zagosp.zagFunList.list}"
+                               SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospFunkcjaSloId}"
+                               SelectedValuePath="ZagospFunkcjaSloId"
+                               DisplayMemberPath="Nazwa"
+                               Style="{StaticResource comboBox}"/>
 
                 </Grid>
-
-
-            </ScrollViewer>
-
-            <ScrollViewer Grid.Column="1" 
-                      Style="{StaticResource scrollViewer}">
             </ScrollViewer>
         </Grid>
         <StackPanel 
@@ -208,7 +241,7 @@
                             >
             <Button Content="Add"
                     Style="{StaticResource buttonCommon}"
-                    Command="{Binding userControl_InnePrawa.innePrawaAdd}"
+                    Command="{Binding userControl_Zagosp.zagospAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
             <Button Content="Czyść"

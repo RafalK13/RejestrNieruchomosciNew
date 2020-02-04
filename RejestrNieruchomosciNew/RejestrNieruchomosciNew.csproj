@@ -239,6 +239,14 @@
     <Compile Include="Migrations\20200204082816_praca11.designer.cs">
       <DependentUpon>20200204082816_praca11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200204122810_praca-12.cs" />
+    <Compile Include="Migrations\20200204122810_praca-12.designer.cs">
+      <DependentUpon>20200204122810_praca-12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200204130008_praca-13.cs" />
+    <Compile Include="Migrations\20200204130008_praca-13.designer.cs">
+      <DependentUpon>20200204130008_praca-13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -294,6 +302,7 @@
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\Interfaces\IZagosp.cs" />
     <Compile Include="Model\Interfaces\IZagospFunkcjaSlo.cs" />
+    <Compile Include="Model\Interfaces\IZagospList.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
@@ -324,7 +333,10 @@
     <Compile Include="Model\WladanieList.cs" />
     <Compile Include="Model\Zagosp.cs" />
     <Compile Include="Model\ZagospFunkcjaSlo.cs" />
+    <Compile Include="Model\ZagospFunkcjaSloList.cs" />
+    <Compile Include="Model\ZagospList.cs" />
     <Compile Include="Model\ZagospStatusSlo.cs" />
+    <Compile Include="Model\ZagospStatusSloList.cs" />
     <Compile Include="UserControls\Transakcja.xaml.cs">
       <DependentUpon>Transakcja.xaml</DependentUpon>
     </Compile>

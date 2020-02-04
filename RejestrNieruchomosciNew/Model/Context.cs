@@ -131,6 +131,22 @@ namespace RejestrNieruchomosciNew
             new RodzajInnegoPrawaSlo() { RodzajInnegoPrawaSloId = 7, Nazwa = "bezumowne" }
         );
 
+            modelBuilder.Entity<ZagospFunkcjaSlo>().HasData(
+                new ZagospFunkcjaSlo() {  ZagospFunkcjaSloId = 1, Nazwa = "-"},
+                new ZagospFunkcjaSlo() {  ZagospFunkcjaSloId = 2, Nazwa = "społeczna" },
+                new ZagospFunkcjaSlo() {  ZagospFunkcjaSloId = 3, Nazwa = "użytkowa" },
+                new ZagospFunkcjaSlo() {  ZagospFunkcjaSloId = 4, Nazwa = "finansowa" },
+                new ZagospFunkcjaSlo() { ZagospFunkcjaSloId = 5, Nazwa = "mieszana" }
+        );
+
+            modelBuilder.Entity<ZagospStatusSlo>().HasData(
+                new ZagospStatusSlo() { ZagospStatusSloId = 1, Nazwa = "-" },
+                new ZagospStatusSlo() { ZagospStatusSloId = 2, Nazwa = "wodociągowa" },
+                new ZagospStatusSlo() { ZagospStatusSloId = 3, Nazwa = "sanitarna" },
+                new ZagospStatusSlo() { ZagospStatusSloId = 4, Nazwa = "komercyjna" },
+                new ZagospStatusSlo() { ZagospStatusSloId = 5, Nazwa = "mieszana" }
+        );
+            
             modelBuilder.Entity<UzytkiSlo>().HasData(
              new UzytkiSlo() { UzytkiSloId = 1, Nazwa = "-" },
              new UzytkiSlo() { UzytkiSloId = 2, Nazwa = "R" },
