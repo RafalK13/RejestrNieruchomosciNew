@@ -21,7 +21,42 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ZagospFunkcjaSloList zagFunList { get; set; }
         public ZagospStatusSloList zagStaList { get; set; }
 
-        public IZagosp zagospSel { get; set; }
+        private bool _podmiotDetail;
+        public bool podmiotDetail
+        {
+            get => _podmiotDetail;
+
+            set
+            {
+                _podmiotDetail = value;
+                RaisePropertyChanged("podmiotDetail");
+            }
+        }
+
+        private IZagosp _zagospSel;
+        public IZagosp zagospSel
+        {
+            get => _zagospSel;
+            set
+            {
+                _zagospSel = value;
+                RaisePropertyChanged();
+
+                testPodmiotDetail();
+            }
+        }
+
+        private void testPodmiotDetail()
+        {
+            if (zagospSel != null)
+            {
+                if (zagospSel.DzialkaId != 0)
+                    podmiotDetail = true;
+            }
+            else
+                podmiotDetail = false;
+        }
+
         public IZagospList zagospList { get; set; }
 
         private string _nazwa;
@@ -35,15 +70,27 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        public IPodmiotList podmList { get; set; }
+
         public ICommand nazwaAdd { get; set; }
         public ICommand nazwaDel { get; set; }
         public ICommand zagospAdd { get; set; }
+        public ICommand zagospCls { get; set; }
 
         public UserControl_ZagospViewModel()
         {
             nazwaAdd = new RelayCommand(onNazwaAll);
             nazwaDel = new RelayCommand(onNazwaDel);
             zagospAdd = new RelayCommand(onZagospAdd);
+            zagospCls = new RelayCommand(onZagospCls);
+
+            podmiotDetail = false;
+
+        }
+
+        private void onZagospCls()
+        {
+            zagospSel = null;
         }
 
         private void onZagospAdd()
@@ -62,6 +109,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 zagospList.list.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
                 nazwa = string.Empty;
+                zagospSel = null;
             }
         }
 
@@ -69,5 +117,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             return zagospList.list.FirstOrDefault(r => r.Nazwa == nazwa) == null ? true : false;
         }
+
     }
 }

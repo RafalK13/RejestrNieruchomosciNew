@@ -9,7 +9,8 @@
              xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
-              d:DesignHeight="660" d:DesignWidth="1450">
+             x:Name="ZagospWin"
+             d:DesignHeight="660" d:DesignWidth="1450">
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
@@ -19,7 +20,7 @@
 
         <Style x:Key="scrollViewer" TargetType="ScrollViewer">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="IsEnabled" Value="{Binding userControl_Zagosp.podmiotDetail}"/>
+            
         </Style>
 
         <Style x:Key="label1" TargetType="Label">
@@ -120,9 +121,7 @@
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
-
                         <RowDefinition/>
-                       
                     </Grid.RowDefinitions>
 
                     <Label      Grid.Row="0"
@@ -149,7 +148,7 @@
                                 VerticalAlignment="Top"
                                 Margin="3,140,10,0"
                                 ItemsSource="{Binding userControl_Zagosp.zagospList.list, Mode=TwoWay}"
-                                SelectedItem="{Binding userControl_Zagosp.zagospSel, Mode=TwoWay}"
+                                SelectedItem="{Binding userControl_Zagosp.zagospSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 CanUserSortColumns="False"
                                 FrozenColumnCount="1" 
                                 IsReadOnly="True"
@@ -190,15 +189,15 @@
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="1" 
-                          Style="{StaticResource scrollViewer}">
-
+                          Style="{StaticResource scrollViewer}"
+                          IsEnabled="{Binding userControl_Zagosp.podmiotDetail}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
@@ -208,26 +207,45 @@
                                 FontSize="19"
                                 Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
                     <ComboBox
-                               Grid.Row="1"
-                               ItemsSource="{Binding userControl_Zagosp.zagStaList.list}"
-                               SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospStatusSloId}"
-                               SelectedValuePath="ZagospStatusSloId"
-                               DisplayMemberPath="Nazwa"
-                               Style="{StaticResource comboBox}"/>
-
+                                Grid.Row="1"
+                                ItemsSource="{Binding userControl_Zagosp.zagStaList.list}"
+                                SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospStatusSloId}"
+                                SelectedValuePath="ZagospStatusSloId"
+                                DisplayMemberPath="Nazwa"
+                                Style="{StaticResource comboBox}"/>
                     <Label      Grid.Row="2"
                                 Content="Funkcja"
                                 FontWeight="Bold"                      
                                 FontSize="19"
                                 Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
                     <ComboBox
-                               Grid.Row="3"
-                               ItemsSource="{Binding userControl_Zagosp.zagFunList.list}"
-                               SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospFunkcjaSloId}"
-                               SelectedValuePath="ZagospFunkcjaSloId"
-                               DisplayMemberPath="Nazwa"
-                               Style="{StaticResource comboBox}"/>
+                                Grid.Row="3"
+                                ItemsSource="{Binding userControl_Zagosp.zagFunList.list}"
+                                SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospFunkcjaSloId}"
+                                SelectedValuePath="ZagospFunkcjaSloId"
+                                DisplayMemberPath="Nazwa"
+                                Style="{StaticResource comboBox}"/>
 
+                    <Label      Grid.Row="4"
+                                Content="Przedstawiciel"
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
+
+                    <conRaf:DataGridRafALL  
+                                        Grid.Row="5"
+                                        Margin="10,10,10,0"
+                                        x:Name="conRaf1"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Zagosp.podmList.listView, ElementName=ZagospWin}"
+                                        fontSizeRafALL="14"
+                                        heightRafALL="25"
+                                        HorizontalAlignment="Stretch"
+                                        colNameRaf="nazwa"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.przedstSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        clearTekstOnExit="False"
+                                        />
+                    <!--TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotName, ElementName=WladanieWin, Mode=TwoWay}"-->
                 </Grid>
             </ScrollViewer>
         </Grid>
@@ -246,7 +264,7 @@
 
             <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_InnePrawa.innePrawaCls}"
+                                    Command="{Binding userControl_Zagosp.zagospCls}"
                                     />
             <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
