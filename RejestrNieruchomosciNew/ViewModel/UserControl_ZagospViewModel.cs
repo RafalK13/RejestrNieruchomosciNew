@@ -2,11 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,7 +10,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_ZagospViewModel : ViewModelBase
     {
-        public ICelNabyciaList celNabyciaList { get; set; }
+        private ICelNabyciaList _celNabList;
+        public ICelNabyciaList celNabList { get => _celNabList;
+            set {
+                _celNabList = value;
+                RaisePropertyChanged();
+            } }
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
@@ -85,12 +86,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             zagospCls = new RelayCommand(onZagospCls);
 
             podmiotDetail = false;
-
         }
 
         private void onZagospCls()
         {
-            zagospSel = null;
+            int a = 13;
+            //MessageBox.Show( $"{zagospSel.istObiektySloId.ToString()}\r\n{zagospSel.obiektyKomSloId.ToString()}\r\n{zagospSel.zadInwestSloId.ToString()}\r\n{zagospSel.celeKomSloId.ToString()}");
+
+            //zagospSel = null;
         }
 
         private void onZagospAdd()

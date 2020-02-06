@@ -9,10 +9,13 @@ namespace RejestrNieruchomosciNew.Model
         public string Nazwa { get; set; }
         public int? ZagospStatusSloId { get; set; }
         public int? ZagospFunkcjaSloId { get; set; }
+
         public int? istObiektySloId { get; set; }
         public int? obiektyKomSloId { get; set; }
         public int? zadInwestSloId { get; set; }
         public int? celeKomSloId { get; set; }
+
+        
         public int? przedstSloId { get; set; }
 
         public Dzialka Dzialka { get; set; }

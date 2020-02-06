@@ -153,6 +153,7 @@ namespace RejestrNieruchomosciNew.View
             UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
 
             //if (u.decyzjeAdmin.PodmiotId > 0)
+            if( u.decyzjeAdmin != null)
             {
                 u.decyzjeAdmin.PodmiotId = u.selectedIdPodm;
             }
