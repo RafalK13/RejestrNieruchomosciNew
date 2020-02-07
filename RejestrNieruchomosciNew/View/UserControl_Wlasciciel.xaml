@@ -191,8 +191,9 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
-                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
-                <Grid>
+                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}"
+                          >
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
                         <RowDefinition Height="275"/>
@@ -222,7 +223,7 @@
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Udział"                                       
                                        Style="{StaticResource label1}"/>
-                            <TextBox
+                            <TextBox 
                                        Text="{Binding userControl_Wlasciciel.wladanieSel.Udzial}" 
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
@@ -230,7 +231,7 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1">
-                        <Label 
+                        <Label
                                    Content="Sposób nabycia prawa"
                                    FontWeight="Bold"
                                    FontSize="19"         

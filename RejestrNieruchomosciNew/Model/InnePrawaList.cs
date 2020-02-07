@@ -28,7 +28,6 @@ namespace RejestrNieruchomosciNew.Model
                     list = new ObservableCollection<IInnePrawa>(c.InnePrawa.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
                                                                                                           && r.TransS_Id == null).
                                                                                                           Include(a=>a.PlatnoscInnePrawa));
-
                     listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
                     listToAdd = new List<IInnePrawa>();
@@ -135,7 +134,7 @@ namespace RejestrNieruchomosciNew.Model
             if (Directory.Exists(w.ProtPrzejPath))
             {
                 Directory.Move(w.ProtPrzejPath, w.ProtPrzejPathOld);
-                Directory.Move(w.ProtZwrotPath, w.ProtZwrotPathOld);
+                //Directory.Move(w.ProtZwrotPath, w.ProtZwrotPathOld);
             }
         }
     }

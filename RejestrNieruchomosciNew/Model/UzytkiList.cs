@@ -3,6 +3,7 @@ using RejestrNieruchomosciNew.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -18,7 +19,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public UzytkiList(UserControl_PreviewViewModel userPrev)
         {
-            int a = 13;
             using (Context c = new Context())
             {
                 if (userPrev.dzialkaSel != null)
@@ -31,10 +31,9 @@ namespace RejestrNieruchomosciNew.Model
                     listToDel = new List<Uzytki>();
 
                     result = string.Empty;
-                }
+                }   
             }
         }
-
 
         public void saveUzytki()
         {

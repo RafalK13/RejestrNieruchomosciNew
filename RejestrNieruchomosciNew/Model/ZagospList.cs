@@ -19,17 +19,21 @@ namespace RejestrNieruchomosciNew.Model
 
         public ZagospList(UserControl_PreviewViewModel userPrev)
         {
-            using ( var c = new Context())
+            if (userPrev.dzialkaSel != null)
             {
-                list = new ObservableCollection<IZagosp>( c.Zagosp.Where( r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
+                using (var c = new Context())
+                {
 
-                listOrg = ObservableCon<IZagosp>.ObservableToList(list);
+                    list = new ObservableCollection<IZagosp>(c.Zagosp.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
 
-                listToAdd = new List<IZagosp>();
-                listToMod = new List<IZagosp>();
-                listToDel = new List<IZagosp>();
+                    listOrg = ObservableCon<IZagosp>.ObservableToList(list);
 
-                result = string.Empty;
+                    listToAdd = new List<IZagosp>();
+                    listToMod = new List<IZagosp>();
+                    listToDel = new List<IZagosp>();
+
+                    result = string.Empty;
+                }
             }
         }
 

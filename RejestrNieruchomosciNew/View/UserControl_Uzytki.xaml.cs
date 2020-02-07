@@ -46,9 +46,13 @@ namespace RejestrNieruchomosciNew.View
         private void gridRaf_Loaded(object sender, RoutedEventArgs e)
         {
             //gridRaf.ItemsSource = uzytkiListRaf;
-            gridColRaf.ItemsSource = uzytkiSloList.list;
+            if (uzytkiListRaf != null)
 
-            uzytkiListRaf.CollectionChanged += UzytkiListRaf_CollectionChanged;
+            {
+                gridColRaf.ItemsSource = uzytkiSloList.list;
+
+                uzytkiListRaf.CollectionChanged += UzytkiListRaf_CollectionChanged;
+            }
 
         }
 
