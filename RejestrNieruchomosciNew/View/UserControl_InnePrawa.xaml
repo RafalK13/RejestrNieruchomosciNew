@@ -232,12 +232,12 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Column="3" Grid.Row="0"
-                                   Content="Kupno"
+                                   Content="Nabycie"
                                    FontWeight="Bold"
                                    FontSize="17"         
                                    />
                         <Label Grid.Column="5" Grid.Row="0"
-                                   Content="Sprzedaż"
+                                   Content="Zbycie"
                                    FontWeight="Bold"
                                    FontSize="17"         
                                    />
