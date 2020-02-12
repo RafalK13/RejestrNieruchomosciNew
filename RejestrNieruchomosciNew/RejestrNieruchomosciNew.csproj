@@ -246,6 +246,22 @@
     <Compile Include="Migrations\20200204130008_praca-13.designer.cs">
       <DependentUpon>20200204130008_praca-13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200210101128_praca-14.cs" />
+    <Compile Include="Migrations\20200210101128_praca-14.designer.cs">
+      <DependentUpon>20200210101128_praca-14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200210103219_praca-15.cs" />
+    <Compile Include="Migrations\20200210103219_praca-15.designer.cs">
+      <DependentUpon>20200210103219_praca-15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200210121858_praca17.cs" />
+    <Compile Include="Migrations\20200210121858_praca17.designer.cs">
+      <DependentUpon>20200210121858_praca17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200211101257_praca18.cs" />
+    <Compile Include="Migrations\20200211101257_praca18.designer.cs">
+      <DependentUpon>20200211101257_praca18.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
@@ -303,6 +319,8 @@
     <Compile Include="Model\Interfaces\IZagospFunkcjaSlo.cs" />
     <Compile Include="Model\Interfaces\IZagospList.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
+    <Compile Include="Model\Interfaces\MyEventHandler.cs" />
+    <Compile Include="Model\MyEventArgs.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
@@ -324,6 +342,8 @@
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Transakcje.cs" />
     <Compile Include="Model\TransakcjeList.cs" />
+    <Compile Include="Model\UliceSlo.cs" />
+    <Compile Include="Model\UliceSloList.cs" />
     <Compile Include="Model\Uzytki.cs" />
     <Compile Include="Model\UzytkiList.cs" />
     <Compile Include="Model\UzytkiSlo.cs" />
@@ -399,6 +419,9 @@
     </Compile>
     <Compile Include="View\UserControl_Transakcja.xaml.cs">
       <DependentUpon>UserControl_Transakcja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Ulice.xaml.cs">
+      <DependentUpon>UserControl_Ulice.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_Uzytki.xaml.cs">
       <DependentUpon>UserControl_Uzytki.xaml</DependentUpon>
@@ -489,6 +512,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Transakcja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Ulice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -116,6 +116,10 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_ZagospViewModel>().LifeStyle.Transient);
+
+            container.Register(Component.For<UliceSlo>().LifeStyle.Transient);
+            container.Register(Component.For<UliceSloList>());
+            container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
         }
     }
 }

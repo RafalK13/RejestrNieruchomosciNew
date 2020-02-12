@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_Ulice"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+             xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
+             d:DesignHeight="{Binding HeightRaf }" d:DesignWidth="300"
+             x:Name="userControlUlice"
+             >
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+               
+              
+            </Grid.ColumnDefinitions>
+
+   
+        <conRaf:DataGridRafALL          Margin="0,0,0,0"
+                                        x:Name="addPodst1"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+                                        
+                                        itemSourceRafALL="{Binding uliceSloList.list, ElementName=userControlUlice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        fontSizeRafALL="14"
+                                        heightRafALL="27"
+                                        HorizontalAlignment="Stretch"
+                                        colNameIdRaf="UliceSloId" 
+                                        colNameRaf="Nazwa"
+                                        />
+
+        <!--<Button Grid.Column="1"
+                    Content="+"
+                    Foreground="Red"
+                    
+                    FontWeight="Bold"
+                 />-->
+
+            <!--<Button Grid.Column="2"
+                    Content="Cls"
+                    FontWeight="Bold"
+                 />-->
+        </Grid>
+</UserControl>

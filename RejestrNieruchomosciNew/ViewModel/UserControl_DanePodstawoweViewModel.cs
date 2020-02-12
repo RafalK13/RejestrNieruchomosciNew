@@ -1,8 +1,10 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -10,10 +12,10 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_DanePodstawoweViewModel : ViewModelBase
     {
         #region Properties
-
         public ChangeMode changeMode;
         public UserControl_PreviewViewModel userPrev { get; set; }
 
+        
         private IDzialka _dzialka;
         public IDzialka dzialka
         {
@@ -21,8 +23,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _dzialka = value;
-                RaisePropertyChanged("dzialka");
+                RaisePropertyChanged();
+
+                if(dzialka != null)
+                    dzialka.zmiana += Dzialka_zmiana;
             }
+        }
+
+        private void Dzialka_zmiana(object sender, EventArgs e)
+        {
+            testDzialka();
         }
 
         private ObrebClass _obreb;
@@ -55,33 +65,32 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand leftClick { get; set; }
         public ICommand OnAddDzialka { get; set; }
 
-        public ICommand test { get; set; }
-
         public IDzialkaList dzialkaList { get; set; }
+
+        private UliceSloList _UliceSloList;
+        public UliceSloList UliceSloList
+        {
+            get => _UliceSloList;
+            set
+            {
+                _UliceSloList = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
 
         #region Konstructor
 
-        public UserControl_DanePodstawoweViewModel()
+        public UserControl_DanePodstawoweViewModel( IDzialka dzialkaR)
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
-            test = new RelayCommand(onTest);
-        }
-
-        private void onTest()
-        {
-            DateTime dn = DateTime.Now;
-            Dzialka d = new Dzialka() { Numer = $"{dn.ToShortDateString()}_{dn.ToLongTimeString()}", ObrebId = 270, PlatnoscUW = new PlatnoscUW() };
-            
-            int a = 12;
-
-            dzialkaList.AddRow(d);
         }
 
         private void OnAddDzialkaClick()
         {
+           
             switch (changeMode)
             {
                 case ChangeMode.add:
@@ -131,13 +140,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
             dz.ObrebId = obreb.getId().Value;
-            
+
             if (!string.IsNullOrEmpty(dzialka.Numer))
             {
                 if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
                            dz.ObrebId == dzialka.ObrebId)
                 {
-            
+
                     canAdd = true;
                 }
                 else
@@ -148,11 +157,11 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                     var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
                                                  r.Numer == dzialka.Numer);
-                    canAdd = c ==null ? true : false;
+                    canAdd = c == null ? true : false;
                 }
             }
         }
-        
+
         #endregion
     }
 }

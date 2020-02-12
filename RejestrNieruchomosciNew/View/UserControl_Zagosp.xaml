@@ -281,7 +281,6 @@
                         <RowDefinition Height="200"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-
                     
                     <Label      Grid.Row="0"
                                 Content="Aktualne zagospodatowanie"
@@ -310,7 +309,6 @@
                     <Label      Grid.Row="3"
                                 Content="Komercyjne obiekty"
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1"/>
-
 
                     <conRaf:DataGridRafALL  
                                         Grid.Row="4" Grid.RowSpan="20"

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200210101128_praca-14")]
+    partial class praca14
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<double?>("Pow");
 
-                    b.Property<int?>("UliceSloId");
-
                     b.Property<string>("dostDoDrogi");
 
                     b.Property<string>("ksztalt");
@@ -56,8 +56,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("NadzorKonserwSloId");
 
                     b.HasIndex("ObrebId");
-
-                    b.HasIndex("UliceSloId");
 
                     b.HasIndex("Numer", "ObrebId")
                         .IsUnique()
@@ -1053,10 +1051,6 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("RejestrNieruchomosciNew.Model.UliceSlo")
-                        .WithMany("Dzialka")
-                        .HasForeignKey("UliceSloId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>

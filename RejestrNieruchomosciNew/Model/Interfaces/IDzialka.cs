@@ -1,4 +1,7 @@
-﻿namespace RejestrNieruchomosciNew.Model
+﻿using GalaSoft.MvvmLight;
+using System;
+
+namespace RejestrNieruchomosciNew.Model
 {
     public interface IDzialka
     {
@@ -7,6 +10,7 @@
         string Kwakt { get; set; }
         string Kwzrob { get; set; }
         double? Pow { get; set; }
+        int? UliceSloId { get; set; }
 
         string lokalizacja { get; set; }
         string uzbrojenie { get; set; }
@@ -28,5 +32,7 @@
         IDzialka copy(IDzialka dzSource);
 
         ProcessDzialka procDz { get; set; }
+
+        event EventHandler zmiana;
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200210103219_praca-15")]
+    partial class praca15
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1054,7 +1056,7 @@ namespace RejestrNieruchomosciNew.Migrations
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("RejestrNieruchomosciNew.Model.UliceSlo")
+                    b.HasOne("RejestrNieruchomosciNew.Model.UliceSlo", "UlicaSlo")
                         .WithMany("Dzialka")
                         .HasForeignKey("UliceSloId");
                 });
