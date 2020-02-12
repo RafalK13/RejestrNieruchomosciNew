@@ -160,11 +160,19 @@
                     Content="Ulica"/>
 
         <conRaf:DataGridRafALL  
-                  
+                    Grid.Row="7"  Grid.Column="1" Grid.RowSpan="10"
+                    Margin="0,0,0,0"
+                    x:Name="dPod1"
+                    VerticalAlignment="Top"   Panel.ZIndex="13"
+                    itemSourceRafALL="{Binding Path=DataContext.userControl_AddDanePod.UliceSloList.list, ElementName=userControlDanePod}"
+                    selectedIdRafALL="{Binding Path=DataContext.userControl_AddDanePod.dzialka.UliceSloId, ElementName=userControlDanePod,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    fontSizeRafALL="14"
+                    heightRafALL="25"
+                    HorizontalAlignment="Stretch"
+                    colNameIdRaf="UliceSloId" 
+                    colNameRaf="Nazwa"
+                    clearTekstOnExit="False"
                     />
-
-        <TextBox    Grid.Row="8" Grid.Column="1"
-                    Text="{Binding userControl_AddDanePod.dzialka.UliceSloId }"/>
 
         <StackPanel Grid.Column="0" Grid.Row="13" Grid.ColumnSpan="3"
                     Orientation="Horizontal"
