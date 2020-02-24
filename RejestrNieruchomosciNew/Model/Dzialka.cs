@@ -50,13 +50,17 @@ namespace RejestrNieruchomosciNew
         }
 
         private double? _Pow;
-        public double? Pow { get => _Pow; set {
+        public double? Pow
+        {
+            get => _Pow; set
+            {
                 _Pow = value;
                 RaisePropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
 
-            } }
+            }
+        }
 
         public string lokalizacja { get; set; }
         public string uzbrojenie { get; set; }
@@ -69,9 +73,13 @@ namespace RejestrNieruchomosciNew
         public int? UliceSloId
         {
             get => _UliceSloId;
+
             set
             {
                 _UliceSloId = value;
+
+                if (_UliceSloId <= 0)
+                    _UliceSloId = 1;
                 RaisePropertyChanged("UliceSloId");
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);

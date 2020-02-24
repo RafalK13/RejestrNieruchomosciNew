@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200131102247_praca-5")]
-    partial class praca5
+    [Migration("20200224081610_praca-1")]
+    partial class praca1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,9 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int>("ObrebId");
 
-                    b.Property<decimal?>("Pow");
+                    b.Property<double?>("Pow");
+
+                    b.Property<int?>("UliceSloId");
 
                     b.Property<string>("dostDoDrogi");
 
@@ -56,6 +58,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("NadzorKonserwSloId");
 
                     b.HasIndex("ObrebId");
+
+                    b.HasIndex("UliceSloId");
 
                     b.HasIndex("Numer", "ObrebId")
                         .IsUnique()
@@ -425,6 +429,19 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.ToTable("Transakcje");
                 });
 
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UliceSlo", b =>
+                {
+                    b.Property<int>("UliceSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("UliceSloId");
+
+                    b.ToTable("UliceSlo");
+                });
+
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>
                 {
                     b.Property<int>("UzytkiId")
@@ -433,7 +450,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<int>("DzialkaId");
 
-                    b.Property<decimal?>("Pow");
+                    b.Property<double?>("Pow");
 
                     b.Property<int>("UzytkiSloId");
 
@@ -638,6 +655,121 @@ namespace RejestrNieruchomosciNew.Migrations
                         {
                             UzytkiSloId = 36,
                             Nazwa = "Tr"
+                        });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Zagosp", b =>
+                {
+                    b.Property<int>("ZagospId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DzialkaId");
+
+                    b.Property<string>("Nazwa");
+
+                    b.Property<int?>("ZagospFunkcjaSloId");
+
+                    b.Property<int?>("ZagospStatusSloId");
+
+                    b.Property<int?>("celeKomSloId");
+
+                    b.Property<int?>("istObiektySloId");
+
+                    b.Property<int?>("obiektyKomSloId");
+
+                    b.Property<int?>("przedstSloId");
+
+                    b.Property<int?>("zadInwestSloId");
+
+                    b.HasKey("ZagospId");
+
+                    b.HasIndex("DzialkaId");
+
+                    b.HasIndex("ZagospFunkcjaSloId");
+
+                    b.HasIndex("ZagospStatusSloId");
+
+                    b.ToTable("Zagosp");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospFunkcjaSlo", b =>
+                {
+                    b.Property<int>("ZagospFunkcjaSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("ZagospFunkcjaSloId");
+
+                    b.ToTable("ZagospFunkcjaSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            ZagospFunkcjaSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 2,
+                            Nazwa = "społeczna"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 3,
+                            Nazwa = "użytkowa"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 4,
+                            Nazwa = "finansowa"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 5,
+                            Nazwa = "mieszana"
+                        });
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatusSlo", b =>
+                {
+                    b.Property<int>("ZagospStatusSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("ZagospStatusSloId");
+
+                    b.ToTable("ZagospStatusSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            ZagospStatusSloId = 1,
+                            Nazwa = "-"
+                        },
+                        new
+                        {
+                            ZagospStatusSloId = 2,
+                            Nazwa = "wodociągowa"
+                        },
+                        new
+                        {
+                            ZagospStatusSloId = 3,
+                            Nazwa = "sanitarna"
+                        },
+                        new
+                        {
+                            ZagospStatusSloId = 4,
+                            Nazwa = "komercyjna"
+                        },
+                        new
+                        {
+                            ZagospStatusSloId = 5,
+                            Nazwa = "mieszana"
                         });
                 });
 
@@ -923,6 +1055,10 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.UliceSlo")
+                        .WithMany("Dzialka")
+                        .HasForeignKey("UliceSloId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.InnePrawa", b =>
@@ -983,6 +1119,22 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany()
                         .HasForeignKey("UzytkiSloId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Zagosp", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithMany("Zagosp")
+                        .HasForeignKey("DzialkaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.ZagospFunkcjaSlo", "ZagospFunkcjaSlo")
+                        .WithMany("Zagosp")
+                        .HasForeignKey("ZagospFunkcjaSloId");
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.ZagospStatusSlo", "ZagospStatusSlo")
+                        .WithMany("Zagosp")
+                        .HasForeignKey("ZagospStatusSloId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Obreb", b =>
