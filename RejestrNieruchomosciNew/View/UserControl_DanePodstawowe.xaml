@@ -67,6 +67,7 @@
             </Grid>
         </ControlTemplate>
     </UserControl.Resources>
+    
     <Grid ShowGridLines="False" >
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
