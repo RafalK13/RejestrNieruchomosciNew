@@ -9,18 +9,10 @@ namespace RejestrNieruchomosciNew.Model
         private int _UliceSloId;
         public int UliceSloId
         {
-            get
-            {
-               
-                if (_UliceSloId <= 0)
-                    return 1;
-                else
-                    return _UliceSloId;
-            }
+            get => _UliceSloId;
 
             set
             {
-               
                 _UliceSloId = value;
                 RaisePropertyChanged();
             }
