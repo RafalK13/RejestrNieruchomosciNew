@@ -32,8 +32,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
-
-            int a = 13;
         }
        
         public virtual void onAddDzialka()

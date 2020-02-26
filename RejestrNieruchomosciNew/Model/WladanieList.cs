@@ -12,50 +12,90 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class WladanieList : ViewModelBase, IWladanieList
     {
-        public ObservableCollection<IWladanie> list { get; set; }
+        public ObservableCollection<IWladanie> listAll { get; set; }
+
+        private ObservableCollection<IWladanie> _list;
+        public ObservableCollection<IWladanie> list
+        {
+            get => _list; set
+            {
+                _list = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private List<IWladanie> listOrg { get; set; }
         private List<IWladanie> listToAdd { get; set; }
         private List<IWladanie> listToMod { get; set; }
         private List<IWladanie> listToDel { get; set; }
-        
-        public string result;
 
-        public WladanieList(UserControl_PreviewViewModel userPrev)
+        public string result;
+        private IDzialka dzialkaPrv;
+
+        private void initListAll()
         {
             using (Context c = new Context())
             {
-                if (userPrev.dzialkaSel != null)
-                {
-                    list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                                                                                                          && r.TransS_Id == null)
-                                                                                     );
-                    listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+                listAll = new ObservableCollection<IWladanie>(c.Wladanie.Include(f => f.FormaWladaniaSlo));
+                #region Old version
+                //list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
+                //                                                                                      && r.TransS_Id == null)
+                //                                                            );
+                //listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
-                    listToAdd = new List<IWladanie>();
-                    listToMod = new List<IWladanie>();
-                    listToDel = new List<IWladanie>();
-                    result = string.Empty;
-                }
+                //listToAdd = new List<IWladanie>();
+                //listToMod = new List<IWladanie>();
+                //listToDel = new List<IWladanie>();
+                //result = string.Empty;
+                #endregion
             }
+        }
+
+        private void initList(IDzialka dzialka)
+        {
+
+            if (dzialka != null)
+                list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
+                                                                                     && r.TransS_Id == null).ToList());
+
+            listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+
+            listToAdd = new List<IWladanie>();
+            listToMod = new List<IWladanie>();
+            listToDel = new List<IWladanie>();
+            result = string.Empty;
+        }
+
+        public WladanieList(UserControl_PreviewViewModel userPrev)
+        {
+            list = new ObservableCollection<IWladanie>();
+            if (userPrev.dzialkaSel != null)
+                initListAll();
         }
 
         public void getList(IDzialka dzialkaSel)
         {
-            using (Context c = new Context())
-            {
-                if (dzialkaSel != null)
-                {
-                    list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == dzialkaSel.DzialkaId
-                                                                                                 && r.TransS_Id == null)
-                                                                                                 
-                                                                         .Include(f=>f.FormaWladaniaSlo));
-                }
-            }
+            dzialkaPrv = dzialkaSel;
+
+            initList(dzialkaPrv);
+
+            #region Old version
+            //using (Context c = new Context())
+            //{
+            //    if (dzialkaSel != null)
+            //    {
+            //        list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == dzialkaSel.DzialkaId
+            //                                                                                     && r.TransS_Id == null)
+
+            //                                                             .Include(f=>f.FormaWladaniaSlo));
+            //    }
+            //}
+            #endregion
         }
 
         public void saveWladanie()
         {
+
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
@@ -88,6 +128,8 @@ namespace RejestrNieruchomosciNew.Model
             if (listToMod.Count() > 0)
                 ModRows();
 
+            initListAll();
+            initList(dzialkaPrv);
         }
 
         public void AddRows()
@@ -131,7 +173,7 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        private void RemaneDirs( Wladanie w)
+        private void RemaneDirs(Wladanie w)
         {
             if (Directory.Exists(w.ZalPath))
             {

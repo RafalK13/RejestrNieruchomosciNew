@@ -115,8 +115,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
+            int r = 13;
             initButtons();
-            
+
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)
@@ -154,6 +155,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotAdd()
         {
+            
             if (selectedPodmId > 0)
             {
                 if (testWlascExist() == false)

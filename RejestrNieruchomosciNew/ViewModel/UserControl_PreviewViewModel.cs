@@ -1,19 +1,12 @@
 ﻿using Castle.Core;
-using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -123,7 +116,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _wladanieList;
             set
             {
-                       _wladanieList = value;
+                _wladanieList = value;
                 RaisePropertyChanged();
             }
         }
@@ -135,7 +128,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _innePrawaList = value;
-                int r = 123;
                 RaisePropertyChanged();
             }
         }
@@ -173,27 +165,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             wladanieList?.list.Clear();
             innePrawaList?.list.Clear();
 
-        }
-
-        public void refreshLists()
-        {
-            wladanieList.list.Clear();
-            //innePrawaList.list.Clear();
-            
-            wladanieList.getList(dzialkaSel);
-            //innePrawaList.getList(dzialkaSel);
-            //wladanieList?.getList(dzialkaSel);
-            //RaisePropertyChanged("wladanieList");
-
-            //innePrawaList?.getList(dzialkaSel);
-            //RaisePropertyChanged("innePrawaList");
-            //MessageBox.Show( wladanieList.list.Count.ToString());
-            
-        }
-
-        private void List_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            
         }
 
         private void onUnSelectClick()

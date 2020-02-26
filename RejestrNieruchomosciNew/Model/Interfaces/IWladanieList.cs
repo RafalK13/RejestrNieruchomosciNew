@@ -5,6 +5,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public interface IWladanieList
     {
+        ObservableCollection<IWladanie> listAll { get; set; }
         ObservableCollection<IWladanie> list { get; set; }
 
         void saveWladanie();
