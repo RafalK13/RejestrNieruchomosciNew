@@ -39,6 +39,19 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public void getList(IDzialka dzialkaSel)
+        {
+            using (Context c = new Context())
+            {
+                if (dzialkaSel != null)
+                {
+                    list = new ObservableCollection<IInnePrawa>(c.InnePrawa.Where(r => r.DzialkaId == dzialkaSel.DzialkaId
+                                                                                                 && r.TransS_Id == null)
+                                                                         .Include(f => f.RodzajInnegoPrawaSlo));
+                }
+            }
+        }
+
         public void save()
         {
             foreach (var r in list)

@@ -16,6 +16,7 @@
             <i:InvokeCommandAction Command="{Binding OnCloseWindow}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 

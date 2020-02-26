@@ -18,6 +18,9 @@ namespace RejestrNieruchomosciNew.ViewModel
         public string tytulObr { get; set; }
         public string tytulGm { get; set; }
 
+        public UserControl_PreviewViewModel userPrev { get; set; }
+
+
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
                             UserControl_PreviewViewModel userPrev)
         {
@@ -46,6 +49,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public override void onCloseWindow()
         {
+           
         }
     }
 }

@@ -1,15 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
     public class WladanieList : ViewModelBase, IWladanieList
     {
         public ObservableCollection<IWladanie> list { get; set; }
+
         private List<IWladanie> listOrg { get; set; }
         private List<IWladanie> listToAdd { get; set; }
         private List<IWladanie> listToMod { get; set; }
@@ -24,15 +28,28 @@ namespace RejestrNieruchomosciNew.Model
                 if (userPrev.dzialkaSel != null)
                 {
                     list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                                                                                                          && r.TransS_Id == null));
-
+                                                                                                          && r.TransS_Id == null)
+                                                                                     );
                     listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
                     listToAdd = new List<IWladanie>();
                     listToMod = new List<IWladanie>();
                     listToDel = new List<IWladanie>();
-
                     result = string.Empty;
+                }
+            }
+        }
+
+        public void getList(IDzialka dzialkaSel)
+        {
+            using (Context c = new Context())
+            {
+                if (dzialkaSel != null)
+                {
+                    list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == dzialkaSel.DzialkaId
+                                                                                                 && r.TransS_Id == null)
+                                                                                                 
+                                                                         .Include(f=>f.FormaWladaniaSlo));
                 }
             }
         }

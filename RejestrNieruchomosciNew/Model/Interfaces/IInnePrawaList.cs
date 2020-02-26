@@ -7,5 +7,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ObservableCollection<IInnePrawa> list { get; set; }
 
         void save();
+
+        void getList(IDzialka dzialkaSel);
     }
 }

@@ -12,5 +12,6 @@ namespace RejestrNieruchomosciNew.Model
         void AddRow(IDzialka dz);
         void DelRow(IDzialka dz);
         void ModRow(IDzialka dzialka);
+
     }
 }

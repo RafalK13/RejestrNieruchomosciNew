@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-   
+
     public class UserControl_PreviewViewModel : ViewModelBase
     {
         #region Properties
@@ -29,6 +30,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand clsClick { get; set; }
         public ICommand unselectClick { get; set; }
         #endregion
+
+        private int _selectedIndeks;
+        public int selectedIndeks
+        {
+            get => _selectedIndeks;
+            set
+            {
+                _selectedIndeks = value;
+                RaisePropertyChanged();
+            }
+        }
 
         [DoNotWire]
         public IDzialkaList dzialkiBase { get; set; }
@@ -46,8 +58,18 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 _dzialkaSel = value;
                 RaisePropertyChanged("dzialkaSel");
+
+                clearLists();
+
+                wladanieList?.getList(dzialkaSel);
+                RaisePropertyChanged("wladanieList");
+
+                innePrawaList?.getList(dzialkaSel);
+                RaisePropertyChanged("innePrawaList");
             }
         }
+
+        public IPodmiot podmiotList { get; set; }
 
         private ObrebClass _obreb;
         public ObrebClass obreb
@@ -71,7 +93,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 setFilter();
             }
         }
-        
+
         private string _result;
         public string result
         {
@@ -95,6 +117,29 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private IWladanieList _wladanieList;
+        public IWladanieList wladanieList
+        {
+            get => _wladanieList;
+            set
+            {
+                       _wladanieList = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private IInnePrawaList _innePrawaList;
+        public IInnePrawaList innePrawaList
+        {
+            get => _innePrawaList;
+            set
+            {
+                _innePrawaList = value;
+                int r = 123;
+                RaisePropertyChanged();
+            }
+        }
+
         public IViewFactory factory { get; set; }
 
         #endregion
@@ -106,6 +151,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             initCommands();
             allowDelete = false;
+
+           
         }
         #endregion
 
@@ -119,15 +166,47 @@ namespace RejestrNieruchomosciNew.ViewModel
             unselectClick = new RelayCommand(onUnSelectClick);
         }
 
+        private void clearLists()
+        {
+
+            selectedIndeks = -1;
+            wladanieList?.list.Clear();
+            innePrawaList?.list.Clear();
+
+        }
+
+        public void refreshLists()
+        {
+            wladanieList.list.Clear();
+            //innePrawaList.list.Clear();
+            
+            wladanieList.getList(dzialkaSel);
+            //innePrawaList.getList(dzialkaSel);
+            //wladanieList?.getList(dzialkaSel);
+            //RaisePropertyChanged("wladanieList");
+
+            //innePrawaList?.getList(dzialkaSel);
+            //RaisePropertyChanged("innePrawaList");
+            //MessageBox.Show( wladanieList.list.Count.ToString());
+            
+        }
+
+        private void List_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            
+        }
+
         private void onUnSelectClick()
         {
             dzialkaSel = null;
+            clearLists();
         }
 
         private void onClsClick()
         {
             dzialkaNr = String.Empty;
             obreb.clsObreb();
+            clearLists();
         }
 
         private void onLeftClick()
@@ -135,9 +214,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
-        public void addDzialka( IDzialka dz)
+        public void addDzialka(IDzialka dz)
         {
-            dzialkiBase.AddRow( dz);
+            dzialkiBase.AddRow(dz);
             dzialkaView.Refresh();
         }
 
@@ -158,17 +237,21 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public void deleteDzialka()
         {
-            if( dzialkaSel != null)
-            if (dzialkaSel.Numer != null)
-            {
-                dzialkiBase.DelRow(dzialkaSel);
-                dzialkaView.Refresh();
-            }
+            if (dzialkaSel != null)
+                if (dzialkaSel.Numer != null)
+                {
+                    dzialkiBase.DelRow(dzialkaSel);
+                    dzialkaView.Refresh();
+                }
         }
 
         public void setFilter()
         {
             string s = String.Empty;
+
+            
+            clearLists();
+
 
             dzialkaView.Filter = row =>
             {

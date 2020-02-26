@@ -142,7 +142,7 @@ namespace RejestrNieruchomosciNew.Model
                   TransK_Id.Equals(other.TransK_Id) &&
                   TransS_Id.Equals(other.TransS_Id) &&
                   DataObowOd.Equals(other.DataObowOd) &&
-                  DataObowDo.Equals(other.DataObowDo) &&
+                   DataObowDo.Equals(other.DataObowDo) &&
                   string.Equals(ProtPrzejkNr, other.ProtPrzejkNr) &&
                   ProtPrzejData.Equals(other.ProtPrzejData) &&
                   string.Equals(ProtPrzejScan, other.ProtPrzejScan) &&
@@ -152,13 +152,10 @@ namespace RejestrNieruchomosciNew.Model
                   wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
                   wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
                   CelNabyciaId.Equals(other.CelNabyciaId) &&
-                  string.Equals(WarunkiRealizacji, other.WarunkiRealizacji) &&
-                  PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
+                  string.Equals(WarunkiRealizacji, other.WarunkiRealizacji);
+                  //PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
 
             return a;
-            
-
-
         }
     }
 }

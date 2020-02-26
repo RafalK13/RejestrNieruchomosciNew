@@ -4,11 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:localViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="886.5"
+             x:Name="PreviewWin"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              >
+    
     <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
         <localViewModel:resultCnvr x:Key="conv"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
@@ -120,6 +124,7 @@
         <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="10,0,10,20"
                   ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"
                   SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"
+                  SelectedIndex="{Binding userControl_prev.selectedIndeks, UpdateSourceTrigger=PropertyChanged}" 
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   SelectionMode="Single">
@@ -135,17 +140,9 @@
                 <MouseBinding   Gesture="LeftDoubleClick" 
                                 Command="{Binding userControl_prev.doubleClick}"/>
 
+                <MouseBinding   Gesture="LeftClick" 
+                                Command="{Binding userControl_prev.oneClick}"/>
             </DataGrid.InputBindings>
-            <!--<DataGrid.Style>
-                <Style TargetType="DataGrid">
-                    <Setter Property="Background" Value="Aqua"></Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=checkBox, Path=IsChecked}" Value="True">
-                            <Setter Property="Background" Value="Bisque"></Setter>
-                         </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.Style>-->
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Setter Property="Background" Value="White"></Setter>
@@ -156,6 +153,12 @@
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
+
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding userControl_prev.onGotFocus}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
 
         </DataGrid>
 
@@ -178,36 +181,58 @@
                Margin="0,0,0,0"/>
 
         <DataGrid Grid.Row="1" Grid.Column="4" Margin="5,0,10,20"
-                  ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" 
-                  SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"
+                  ItemsSource="{Binding userControl_prev.wladanieList.list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"></DataGridTextColumn>
-                <DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
-                <DataGridTextColumn Header="KW Zrob" Binding="{Binding Kwzrob}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Pow}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Podmiot" 
+                                            Width="*">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding
+                                     Converter="{StaticResource parsonConvert}" >
+                            <Binding Path="PodmiotId"/>
+                            <Binding ElementName="PreviewWin" Path="DataContext.podmiotList"/>
+                        </MultiBinding>
+
+
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FormaWladaniaSlo.Nazwa}" Header="Forma wladania"/>
+                <DataGridTextColumn Binding="{Binding Udzial}" Header="Udział"/>
             </DataGrid.Columns>
-            <DataGrid.InputBindings>
-                <MouseBinding   Gesture="LeftDoubleClick" 
-                                Command="{Binding userControl_prev.doubleClick}"/>
-
-            </DataGrid.InputBindings>
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="White"></Setter>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=checkBox, Path=IsChecked}" Value="True">
-                            <Setter Property="Background" Value="#FFFFBFD4"></Setter>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-
         </DataGrid>
+
+        <Label Grid.Row="0" Grid.Column="5"
+               Style="{StaticResource label1}"
+               Content="Inne Prawa"
+               Margin="0,0,0,0"/>
+
+        <DataGrid Grid.Row="1" Grid.Column="5" Margin="5,0,10,20"
+                  ItemsSource="{Binding userControl_prev.innePrawaList.list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Podmiot" 
+                                            Width="*">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding
+                                     Converter="{StaticResource parsonConvert}" >
+                            <Binding Path="PodmiotId"/>
+                            <Binding ElementName="PreviewWin" Path="DataContext.podmiotList"/>
+                            
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                    
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding RodzajInnegoPrawaSlo.Nazwa}" Header="Rodzaj prawa"/>
+               
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--<DataGridTextColumn Binding="{Binding FormaWladaniaSlo.Nazwa}" Header="Forma wladania"/>
+        <DataGridTextColumn Binding="{Binding Udzial}" Header="Udział"/>-->
 
     </Grid>
 </UserControl>

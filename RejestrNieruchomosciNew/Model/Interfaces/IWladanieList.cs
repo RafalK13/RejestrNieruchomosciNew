@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -7,5 +8,7 @@ namespace RejestrNieruchomosciNew.Model
         ObservableCollection<IWladanie> list { get; set; }
 
         void saveWladanie();
+        void getList(IDzialka dzialkaSel);
+        
     }
 }

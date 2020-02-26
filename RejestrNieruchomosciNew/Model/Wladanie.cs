@@ -1,6 +1,5 @@
 ﻿using RejestrNieruchomosciNew.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Configuration;
 
@@ -13,6 +12,8 @@ namespace RejestrNieruchomosciNew
         public int? PodmiotId { get; set; }
 
         public int? FormaWladaniaSloId { get; set; }
+        
+        public FormaWladaniaSlo FormaWladaniaSlo { get; set; }
 
         public string Udzial { get; set; }
 
