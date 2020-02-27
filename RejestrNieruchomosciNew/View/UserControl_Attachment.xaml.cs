@@ -31,7 +31,8 @@ namespace RejestrNieruchomosciNew.View
 
             Directory.CreateDirectory( pathRaf);
 
-            File.Copy(p, pathRaf+$"\\{copyFiles.fileName}", true);
+            if( p != null)
+                File.Copy(p, pathRaf+$"\\{copyFiles.fileName}", true);
         }
 
         private void Button_Prev(object sender, RoutedEventArgs e)

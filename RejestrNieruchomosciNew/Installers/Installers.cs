@@ -54,7 +54,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IWladanieList>().ImplementedBy<WladanieList>());
 
             container.Register(Component.For<IInnePrawa>().ImplementedBy<InnePrawa>().LifeStyle.Transient);
-            container.Register(Component.For<IInnePrawaList>().ImplementedBy<InnePrawaList>().LifeStyle.Transient);
+            container.Register(Component.For<IInnePrawaList>().ImplementedBy<InnePrawaList>());
 
             container.Register(Component.For<IFormaWladaniaSlo>().ImplementedBy<FormaWladaniaSlo>());
             container.Register(Component.For<FormaWladaniaList>());

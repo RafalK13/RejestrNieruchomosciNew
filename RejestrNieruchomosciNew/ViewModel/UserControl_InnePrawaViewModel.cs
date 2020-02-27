@@ -16,19 +16,18 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         private int dzialkaId;
 
-        //private PlatnoscInnePrawa _platnoscInnePrawa;
-        //public PlatnoscInnePrawa platnoscInnePrawa
-        //{
-        //    get => _platnoscInnePrawa;
-        //    set
-        //    {
+        private PlatnoscInnePrawa _platnoscInnePrawa;
+        public PlatnoscInnePrawa platnoscInnePrawa
+        {
+            get => _platnoscInnePrawa;
+            set
+            {
+                _platnoscInnePrawa = value;
+                RaisePropertyChanged();
+            }
+        }
 
-        //        _platnoscInnePrawa = value;
-        //        RaisePropertyChanged("platnoscInnePrawa");
-        //    }
-        //}
-
-        public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
+        //public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
 
         private Visibility _sellVisibility;
         public Visibility sellVisibility
@@ -125,7 +124,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (innePrawaSel.DzialkaId != 0)
                 {
                     podmiotDetail = true;
-                    setPlatnoscKey();
+                    ////setPlatnoscKey();
                 }
             }
             else
@@ -134,6 +133,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void setPlatnoscKey()
         {
+            ////platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault( r=>r.InnePrawaId==innePrawaSel.InnePrawaId);
+
             //platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault(r => r.DzialkaId == innePrawaSel.DzialkaId &&
             //                                                                   r.PodmiotId == innePrawaSel.PodmiotId);
 
@@ -209,8 +210,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
-            int a = 13;
-            //MessageBox.Show(innePrawaSel.PlatnoscInnePrawa.Okres.ToString());
+           //MessageBox.Show(innePrawaSel.PlatnoscInnePrawa.Okres.ToString());
             innePrawaList.save();
             //platnoscInnePrawaList.save();
         }

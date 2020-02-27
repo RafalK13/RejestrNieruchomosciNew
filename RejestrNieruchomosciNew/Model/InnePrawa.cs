@@ -152,8 +152,8 @@ namespace RejestrNieruchomosciNew.Model
                   wizjaTerPrzek.Equals(other.wizjaTerPrzek) &&
                   wizjaTerZwrot.Equals(other.wizjaTerZwrot) &&
                   CelNabyciaId.Equals(other.CelNabyciaId) &&
-                  string.Equals(WarunkiRealizacji, other.WarunkiRealizacji);
-                  //PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
+                  string.Equals(WarunkiRealizacji, other.WarunkiRealizacji) &&
+                  PlatnoscInnePrawa.Equals(other.PlatnoscInnePrawa);
 
             return a;
         }

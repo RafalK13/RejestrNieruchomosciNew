@@ -115,7 +115,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
         {
-            int r = 13;
             initButtons();
 
             sellVisibility = Visibility.Hidden;

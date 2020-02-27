@@ -2,54 +2,72 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Windows;
+using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class InnePrawaList : IInnePrawaList
+    public class InnePrawaList : ViewModelBase, IInnePrawaList
     {
-        public ObservableCollection<IInnePrawa> list { get; set; }
+        public ObservableCollection<IInnePrawa> listAll { get; set; }
+
+        private ObservableCollection<IInnePrawa> _list;
+        public ObservableCollection<IInnePrawa> list
+        {
+            get => _list;
+            set
+            {
+                _list = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private List<IInnePrawa> listOrg { get; set; }
         private List<IInnePrawa> listToAdd { get; set; }
         private List<IInnePrawa> listToMod { get; set; }
         private List<IInnePrawa> listToDel { get; set; }
 
         public string result;
+        private IDzialka dzialkaPrv;
 
-        public InnePrawaList(UserControl_PreviewViewModel userPrev)
+        private void initListAll()
         {
             using (Context c = new Context())
             {
-                if (userPrev.dzialkaSel != null)
-                {
-                    list = new ObservableCollection<IInnePrawa>(c.InnePrawa.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                                                                                                          && r.TransS_Id == null).
-                                                                                                          Include(a=>a.PlatnoscInnePrawa));
-                    listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
-
-                    listToAdd = new List<IInnePrawa>();
-                    listToMod = new List<IInnePrawa>();
-                    listToDel = new List<IInnePrawa>();
-
-                    result = string.Empty;
-                }
+                listAll = new ObservableCollection<IInnePrawa>(c.InnePrawa.Include(a => a.RodzajInnegoPrawaSlo)
+                                                                          .Include(i=>i.PlatnoscInnePrawa));
             }
+        }
+
+        private void initList(IDzialka dzialka)
+        {
+            if (dzialka != null)
+                list = new ObservableCollection<IInnePrawa>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
+                                                                                     && r.TransS_Id == null)
+                                                                                     .ToList());
+
+            listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
+
+            listToAdd = new List<IInnePrawa>();
+            listToMod = new List<IInnePrawa>();
+            listToDel = new List<IInnePrawa>();
+            result = string.Empty;
+        }
+
+        public InnePrawaList(UserControl_PreviewViewModel userPrev)
+        {
+            list = new ObservableCollection<IInnePrawa>();
+            if (userPrev.dzialkaSel != null)
+                initListAll();
         }
 
         public void getList(IDzialka dzialkaSel)
         {
-            using (Context c = new Context())
-            {
-                if (dzialkaSel != null)
-                {
-                    list = new ObservableCollection<IInnePrawa>(c.InnePrawa.Where(r => r.DzialkaId == dzialkaSel.DzialkaId
-                                                                                                 && r.TransS_Id == null)
-                                                                         .Include(f => f.RodzajInnegoPrawaSlo));
-                }
-            }
+            dzialkaPrv = dzialkaSel;
+
+            initList(dzialkaPrv);
         }
 
         public void save()
@@ -66,14 +84,6 @@ namespace RejestrNieruchomosciNew.Model
                         var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
                         listOrg.Remove(rToDel);
                     }
-                    //if (listOrg.Exists(row => (row.PodmiotId == r.PodmiotId) && (row.DzialkaId == r.DzialkaId)) == true)
-                    //{
-                    //    listToMod.Add((IInnePrawa)r.Clone());
-                    //    //var rToDel = listOrg.Find(d => d.InnePrawaId == r.InnePrawaId);
-                    //    var rToDel = listOrg.Find(d => (d.DzialkaId == r.DzialkaId) && ( d.PodmiotId == r.PodmiotId));
-                    //    listOrg.Remove(rToDel);
-                    //}
-
                     else
                     {
                         listToAdd.Add((IInnePrawa)r.Clone());
@@ -93,6 +103,10 @@ namespace RejestrNieruchomosciNew.Model
 
             if (listToMod.Count() > 0)
                 ModRows();
+
+            initListAll();
+            initList(dzialkaPrv);
+
         }
 
         public void AddRows()
@@ -102,8 +116,7 @@ namespace RejestrNieruchomosciNew.Model
                 
                 foreach (var i in listToAdd)
                 {
-                    int a = 13;
-                    c.InnePrawa.Add((InnePrawa)i);
+                   c.InnePrawa.Add((InnePrawa)i);
                 }
                 c.SaveChanges();
             }
@@ -118,8 +131,11 @@ namespace RejestrNieruchomosciNew.Model
                     var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
                     c.Entry(v).CurrentValues.SetValues(i);
 
-                    var v1 = c.PlatnoscInnePrawa.First(r => r.PlatnoscInnePrawaId == i.PlatnoscInnePrawa.PlatnoscInnePrawaId);
-                    c.Entry(v1).CurrentValues.SetValues(i.PlatnoscInnePrawa);
+                    //if (i.PlatnoscInnePrawa != null)
+                    {
+                        var v1 = c.PlatnoscInnePrawa.First(r => r.PlatnoscInnePrawaId == i.PlatnoscInnePrawa.PlatnoscInnePrawaId);
+                        c.Entry(v1).CurrentValues.SetValues(i.PlatnoscInnePrawa);
+                    }
 
                 }
                 c.SaveChanges();
@@ -135,7 +151,6 @@ namespace RejestrNieruchomosciNew.Model
                     var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
 
                     RemaneDirs( v);
-                    //var v = c.InnePrawa.First(r => (r.DzialkaId == i.DzialkaId) && (r.PodmiotId==i.PodmiotId));
                     c.InnePrawa.Remove(v);
                 }
                 c.SaveChanges();
@@ -147,7 +162,6 @@ namespace RejestrNieruchomosciNew.Model
             if (Directory.Exists(w.ProtPrzejPath))
             {
                 Directory.Move(w.ProtPrzejPath, w.ProtPrzejPathOld);
-                //Directory.Move(w.ProtZwrotPath, w.ProtZwrotPathOld);
             }
         }
     }

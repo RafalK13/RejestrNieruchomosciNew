@@ -53,7 +53,6 @@ namespace RejestrNieruchomosciNew.Model
 
         private void initList(IDzialka dzialka)
         {
-
             if (dzialka != null)
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                                      && r.TransS_Id == null).ToList());

@@ -141,7 +141,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 return string.IsNullOrEmpty(value.ToString()) ? false : true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -171,7 +171,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                     return newDate.ToString("yyyy/MM/dd");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
        
                 return null;
@@ -207,7 +207,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                         return null;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return 0;
             }
@@ -239,7 +239,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 else
                     return 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -273,7 +273,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 else
                     return false;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return null;
             }

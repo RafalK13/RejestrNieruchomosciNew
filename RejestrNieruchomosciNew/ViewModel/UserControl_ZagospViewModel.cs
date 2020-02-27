@@ -90,7 +90,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onZagospCls()
         {
-            int a = 13;
             //MessageBox.Show( $"{zagospSel.istObiektySloId.ToString()}\r\n{zagospSel.obiektyKomSloId.ToString()}\r\n{zagospSel.zadInwestSloId.ToString()}\r\n{zagospSel.celeKomSloId.ToString()}");
 
             //zagospSel = null;

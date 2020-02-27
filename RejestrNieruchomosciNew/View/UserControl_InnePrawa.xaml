@@ -441,6 +441,10 @@
                                        Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
                                        pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtZwrotPath, ElementName=InnePrawaWin}"
                                        />
+                <TextBox            Grid.Column="1" Grid.Row="13" 
+                                    Margin="3"
+                                    Text="{Binding userControl_InnePrawa.innePrawaSel.PlatnoscInnePrawa.Stawka}" 
+                                    />
 
             </Grid>
         </ScrollViewer>
