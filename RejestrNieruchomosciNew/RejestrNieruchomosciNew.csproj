@@ -263,6 +263,7 @@
     <Compile Include="Model\MyEventArgs.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
+    <Compile Include="Model\PerformMode.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />
     <Compile Include="Model\PlatnoscList.cs" />

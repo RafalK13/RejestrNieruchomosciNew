@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
         xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
+        xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Title="AddView" Height="900" Width="1400"
+        x:Name="AddView_Win"
         >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closed" >
@@ -19,6 +21,7 @@
     
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <con:uliceIdToUliceName x:Key="uliceCon"/>
 
         <Style TargetType="Button" x:Key="buttonRaf">
             
@@ -59,7 +62,7 @@
                 <TextBox Text="numer działki:"
                          Style="{StaticResource tytulLabel}"
                          />
-                <TextBox Text="{Binding tytulNr}"
+                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Numer}"
                          Style="{StaticResource tytulOpis}"
                          />
             </StackPanel>
@@ -68,7 +71,7 @@
                 <TextBox Text="gmina:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding tytulObr}"
+                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Obreb.GminaSlo.Nazwa}"
                     Style="{StaticResource tytulOpis}"
                      />
             </StackPanel>
@@ -78,17 +81,39 @@
                 <TextBox Text="obręb:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding tytulGm}"
+                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Obreb.Nazwa}"
                     Style="{StaticResource tytulOpis}"
+                    x:Name="obrebRaf1"
+
                      />
             </StackPanel>
-           
+
+            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <TextBox Text="ulica:"
+                     Style="{StaticResource tytulLabel}"
+                     />
+                <TextBox 
+                        Style="{StaticResource tytulOpis}"
+                       Text="{Binding userControl_AddDanePod.dzialka.UliceSloId}"/>
+                    
+                    
+
+                <!--<TextBox.Text>
+                        <MultiBinding Converter="{StaticResource uliceCon}" UpdateSourceTrigger="PropertyChanged">
+                            <Binding  Path="userControl_AddDanePod.dzialkaSel.UliceSloId"/>
+                            <Binding  Path="userControl_AddDanePod.UliceSloList"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                    
+                </TextBox>-->
+
+            </StackPanel>
+
         </StackPanel>
 
         <TabControl Grid.Row="1" Margin="20,20,20,10">
             
-            <TabItem Header="Dane podstawowe"
-                    >
+            <TabItem Header="Dane podstawowe">
                 <view:UserControl_DanePodstawowe/>
             </TabItem>
 

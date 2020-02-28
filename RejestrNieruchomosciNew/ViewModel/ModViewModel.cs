@@ -18,16 +18,18 @@ namespace RejestrNieruchomosciNew.ViewModel
         public string tytulObr { get; set; }
         public string tytulGm { get; set; }
 
+        public PerformMode mode { get; set; }
+
         public UserControl_PreviewViewModel userPrev { get; set; }
 
 
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
-                            UserControl_PreviewViewModel userPrev)
+                            UserControl_PreviewViewModel _userPrev)
         {
             tabsVisible = true;
 
-            userPodst.dzialka.copy(userPrev.dzialkaSel);
-            userPodst.obreb.fillValues(userPrev.dzialkaSel);
+            userPodst.dzialka.copy(_userPrev.dzialkaSel);
+            userPodst.obreb.fillValues(_userPrev.dzialkaSel);
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
@@ -49,7 +51,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public override void onCloseWindow()
         {
-           
+            mode.appMod = PerformMode.appMode.main;
         }
     }
 }

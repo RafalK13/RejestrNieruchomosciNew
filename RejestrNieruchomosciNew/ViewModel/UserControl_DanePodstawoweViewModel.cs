@@ -12,10 +12,11 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_DanePodstawoweViewModel : ViewModelBase
     {
         #region Properties
+
         public ChangeMode changeMode;
         public UserControl_PreviewViewModel userPrev { get; set; }
 
-        
+
         private IDzialka _dzialka;
         public IDzialka dzialka
         {
@@ -25,7 +26,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _dzialka = value;
                 RaisePropertyChanged();
 
-                if(dzialka != null)
+                if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
             }
         }
@@ -82,7 +83,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #region Konstructor
 
-        public UserControl_DanePodstawoweViewModel( IDzialka dzialkaR)
+        public UserControl_DanePodstawoweViewModel(IDzialka dzialkaR)
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
@@ -90,7 +91,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void OnAddDzialkaClick()
         {
-           
+
             switch (changeMode)
             {
                 case ChangeMode.add:

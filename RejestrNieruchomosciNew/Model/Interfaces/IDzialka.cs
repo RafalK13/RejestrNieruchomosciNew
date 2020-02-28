@@ -24,6 +24,8 @@ namespace RejestrNieruchomosciNew.Model
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
 
+        string ulica  { get; set; }
+
         PlatnoscUW PlatnoscUW { get; set; }
 
         void clone( IDzialka d);
@@ -31,7 +33,7 @@ namespace RejestrNieruchomosciNew.Model
 
         IDzialka copy(IDzialka dzSource);
 
-        ProcessDzialka procDz { get; set; }
+        //ProcessDzialka procDz { get; set; }
 
         event EventHandler zmiana;
     }

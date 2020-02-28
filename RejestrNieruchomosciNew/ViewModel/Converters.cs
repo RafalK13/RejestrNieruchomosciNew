@@ -7,6 +7,35 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class uliceIdToUliceName : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            int id = int.Parse(values[0].ToString());
+
+            UliceSloList pl = values[1] as UliceSloList;
+            if (pl != null)
+            {
+                var v = pl.list.FirstOrDefault(row => row.UliceSloId == id);
+                if (v != null)
+                    return v.Nazwa;
+            }
+
+            return null;
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class personIdToPersonName : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

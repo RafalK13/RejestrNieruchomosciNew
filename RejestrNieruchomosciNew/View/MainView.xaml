@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:locViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-        xmlns:localView="clr-namespace:RejestrNieruchomosciNew.View"
-        xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
-        x:Class="RejestrNieruchomosciNew.View.MainView"
+    xmlns:localView="clr-namespace:RejestrNieruchomosciNew.View"
+    x:Class="RejestrNieruchomosciNew.View.MainView"
         mc:Ignorable="d"
         Title="MainView" Width="1000" WindowState="Maximized"
         >
@@ -36,7 +34,8 @@
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
-        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      >
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Aktualizuj" ></Button>

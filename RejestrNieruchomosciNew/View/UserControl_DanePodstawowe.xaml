@@ -108,6 +108,7 @@
             <TextBox Grid.Row="1" Grid.Column="1"
                      Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      Style="{StaticResource tekstBox}"
+                     x:Name="TekstRaf1"
                  />
 
             <Label Grid.Row="2" Grid.Column="0"
@@ -141,6 +142,7 @@
                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                    Style="{StaticResource tekstBox}"
                    />
+
             <Label     Grid.Row="5" Grid.Column="0"
                    Style="{StaticResource label}"
                    Content="Numer KW akt."

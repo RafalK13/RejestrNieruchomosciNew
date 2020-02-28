@@ -120,6 +120,8 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UliceSlo>().LifeStyle.Transient);
             container.Register(Component.For<UliceSloList>());
             container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
+
+            container.Register(Component.For<PerformMode>());
         }
     }
 }

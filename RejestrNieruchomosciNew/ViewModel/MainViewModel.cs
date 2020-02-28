@@ -2,12 +2,14 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
+using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
     public enum ChangeMode { add, mod}
-
+    
     public class MainViewModel : ViewModelBase
     {
         #region Properties
@@ -31,11 +33,14 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand addNewDzialka { get; set; }
         public ICommand delDzialka { get; set; }
         public ICommand modDzialka { get; set; }
+        public ICommand doubleClick { get; set; }
 
         public string modeMessage { get; set; }
 
         public IPodmiotList podmiotList { get; set; }
         public PlatnoscList platnoscList { get; set; }
+
+        public PerformMode mode { get; set; }
 
         #endregion
 
@@ -54,12 +59,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             addNewDzialka = new RelayCommand(onAddNewDzialka);
             delDzialka = new RelayCommand(onDeleteDzialka);
             modDzialka = new RelayCommand(onModifyDzialka);
+            doubleClick = new RelayCommand(onDoubleClick);
+        }
+
+        private void onDoubleClick()
+        {
+            onModifyDzialka();
         }
 
         private void onModifyDzialka()
         {
-            if (userControl_prev.dzialkaSel != null)
+            if (userControl_prev.dzialkaSel != null && mode.appMod == PerformMode.appMode.main)
             {
+                mode.appMod = PerformMode.appMode.dod;
                 var v = factory.CreateView<ChangeView>();
                 v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
                 v.Show();

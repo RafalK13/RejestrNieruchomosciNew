@@ -42,7 +42,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public virtual void onCloseWindow()
         {
             
-            
         }
         #endregion
     }

@@ -7,12 +7,12 @@ using RejestrNieruchomosciNew.View;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
-
     public class UserControl_PreviewViewModel : ViewModelBase
     {
         #region Properties
@@ -104,7 +104,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _allowDelete;
             set
             {
-
                 _allowDelete = value;
                 RaisePropertyChanged("allowDelete");
             }
@@ -191,12 +190,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzialkaView.Refresh();
         }
 
-        private void onDoubleClicked()
+        public void onDoubleClicked()
         {
             if (allowDelete == true)
                 deleteDzialka();
             else
             {
+
                 if (dzialkaSel != null)
                 {
                     var v = factory.CreateView<ChangeView>();
@@ -220,9 +220,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             string s = String.Empty;
 
-            
             clearLists();
-
 
             dzialkaView.Filter = row =>
             {
