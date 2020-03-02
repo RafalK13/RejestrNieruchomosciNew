@@ -1,10 +1,8 @@
-﻿using Castle.Core;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using System;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -14,8 +12,24 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Properties
 
         public ChangeMode changeMode;
-        public UserControl_PreviewViewModel userPrev { get; set; }
 
+        //public UserControl_PreviewViewModel userPrev { get; set; }
+        private UserControl_PreviewViewModel _userPrev;
+        public UserControl_PreviewViewModel userPrev
+        {
+            get => _userPrev;
+            set
+            {
+                _userPrev = value;
+                RaisePropertyChanged();
+                userPrev.zmianaDzialkaSel += UserPrev_zmianaDzialkaSel;
+            }
+        }
+
+        private void UserPrev_zmianaDzialkaSel(object sender, EventArgs e)
+        {
+            dzialka = userPrev.dzialkaSel;
+        }
 
         private IDzialka _dzialka;
         public IDzialka dzialka
@@ -83,7 +97,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #region Konstructor
 
-        public UserControl_DanePodstawoweViewModel(IDzialka dzialkaR)
+        public UserControl_DanePodstawoweViewModel()
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);

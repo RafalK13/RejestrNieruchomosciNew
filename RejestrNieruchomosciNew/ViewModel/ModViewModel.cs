@@ -2,10 +2,12 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace RejestrNieruchomosciNew.ViewModel 
+namespace RejestrNieruchomosciNew.ViewModel
 {
     public class ModViewModel : ChangeViewModel
     {
@@ -20,27 +22,48 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public PerformMode mode { get; set; }
 
-        public UserControl_PreviewViewModel userPrev { get; set; }
-
+        //private UserControl_PreviewViewModel _userPrev;
+        //public UserControl_PreviewViewModel userPrev
+        //{
+        //    get => _userPrev;
+        //    set
+        //    {
+        //        _userPrev = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
 
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
-                            UserControl_PreviewViewModel _userPrev)
+                            UserControl_PreviewViewModel userPrev1)
         {
             tabsVisible = true;
 
-            userPodst.dzialka.copy(_userPrev.dzialkaSel);
-            userPodst.obreb.fillValues(_userPrev.dzialkaSel);
+            userPodst.dzialka.copy(userPrev1.dzialkaSel);
+            userPodst.obreb.fillValues(userPrev1.dzialkaSel);
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
-
-            tytulNr = userPodst.dzialka.Numer;
-            tytulObr = userPodst.obreb.obrebValue;
-            tytulGm = userPodst.obreb.gminaValue;
-
-            //OnCloseWindow = new RelayCommand(onCloseWindow);
-            //OnAddDzialka = new RelayCommand(onAddDzialka);
         }
+
+
+        //public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
+        //                    UserControl_PreviewViewModel userPrevKon)
+        //{
+        //    tabsVisible = true;
+
+        //    userPodst.dzialka.copy(userPrevKon.dzialkaSel);
+        //    userPodst.obreb.fillValues(userPrevKon.dzialkaSel);
+
+        //    userControl_AddDanePod = userPodst;
+        //    userControl_AddDanePod.changeMode = ChangeMode.mod;
+
+        //    //tytulNr = userPodst.dzialka.Numer;
+        //    //tytulObr = userPodst.obreb.obrebValue;
+        //    //tytulGm = userPodst.obreb.gminaValue;
+
+        //    //OnCloseWindow = new RelayCommand(onCloseWindow);
+        //    //OnAddDzialka = new RelayCommand(onAddDzialka);
+        //}
 
         public override void onAddDzialka()
         {

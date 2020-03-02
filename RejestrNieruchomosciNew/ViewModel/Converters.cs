@@ -17,14 +17,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (values[1] == null)
                 return 0;
 
-            int id = int.Parse(values[0].ToString());
-
-            UliceSloList pl = values[1] as UliceSloList;
-            if (pl != null)
+            if (int.TryParse(values[0].ToString(), out int id))
             {
-                var v = pl.list.FirstOrDefault(row => row.UliceSloId == id);
-                if (v != null)
-                    return v.Nazwa;
+                UliceSloList pl = values[1] as UliceSloList;
+                if (pl != null)
+                {
+                    var v = pl.list.FirstOrDefault(row => row.UliceSloId == id);
+                    if (v != null)
+                        return v.Nazwa;
+                }
             }
 
             return null;

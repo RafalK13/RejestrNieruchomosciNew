@@ -93,19 +93,14 @@
                      Style="{StaticResource tytulLabel}"
                      />
                 <TextBox 
-                        Style="{StaticResource tytulOpis}"
-                       Text="{Binding userControl_AddDanePod.dzialka.UliceSloId}"/>
-                    
-                    
-
-                <!--<TextBox.Text>
-                        <MultiBinding Converter="{StaticResource uliceCon}" UpdateSourceTrigger="PropertyChanged">
-                            <Binding  Path="userControl_AddDanePod.dzialkaSel.UliceSloId"/>
+                        Style="{StaticResource tytulOpis}">
+                    <MultiBinding Converter="{StaticResource uliceCon}" UpdateSourceTrigger="PropertyChanged">
+                            <Binding  Path="userControl_AddDanePod.dzialka.UliceSloId"/>
                             <Binding  Path="userControl_AddDanePod.UliceSloList"/>
                         </MultiBinding>
-                    </TextBox.Text>
+                </TextBox>
                     
-                </TextBox>-->
+                
 
             </StackPanel>
 

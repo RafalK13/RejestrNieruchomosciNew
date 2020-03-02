@@ -33,7 +33,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             OnCloseWindow = new RelayCommand(onCloseWindow);
             OnAddDzialka = new RelayCommand(onAddDzialka);
         }
-       
+
         public virtual void onAddDzialka()
         {
             MessageBox.Show("ChangeView");
@@ -41,7 +41,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public virtual void onCloseWindow()
         {
-            
+
         }
         #endregion
     }

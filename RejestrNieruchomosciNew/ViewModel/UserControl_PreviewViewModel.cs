@@ -43,6 +43,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => CollectionViewSource.GetDefaultView(dzialkiBase.list);
         }
 
+
+        public event EventHandler zmianaDzialkaSel;
+
         public IDzialka _dzialkaSel;
         public IDzialka dzialkaSel
         {
@@ -59,6 +62,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 innePrawaList?.getList(dzialkaSel);
                 RaisePropertyChanged("innePrawaList");
+
+                if (zmianaDzialkaSel != null)
+                    zmianaDzialkaSel(null, EventArgs.Empty);
             }
         }
 
@@ -197,12 +203,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             else
             {
 
-                if (dzialkaSel != null)
-                {
-                    var v = factory.CreateView<ChangeView>();
-                    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                    v.Show();
-                }
+                //if (dzialkaSel != null)
+                //{
+                //    var v = factory.CreateView<ChangeView>();
+                //    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
+                //    v.Show();
+                //}
             }
         }
 

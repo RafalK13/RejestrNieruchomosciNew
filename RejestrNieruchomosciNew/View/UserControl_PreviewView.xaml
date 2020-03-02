@@ -138,10 +138,10 @@
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding   Gesture="LeftDoubleClick" 
-                                Command="{Binding userControl_prev.doubleClick}"/>
+                                Command="{Binding doubleClick}"/>
 
-                <MouseBinding   Gesture="LeftClick" 
-                                Command="{Binding userControl_prev.oneClick}"/>
+                <!--<MouseBinding   Gesture="LeftClick" 
+                                Command="{Binding userControl_prev.oneClick}"/>-->
             </DataGrid.InputBindings>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
