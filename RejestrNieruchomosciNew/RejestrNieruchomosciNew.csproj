@@ -308,6 +308,9 @@
     <Compile Include="ViewModel\UserControl_DaneDodatkoweViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoDanePodstViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoMainViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoWladanieViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InnePrawaViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PlatnoscUWViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
@@ -342,6 +345,30 @@
     </Compile>
     <Compile Include="View\UserControl_DecyzjeAdmin.xaml.cs">
       <DependentUpon>UserControl_DecyzjeAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_ElementInfo.xaml.cs">
+      <DependentUpon>UserControl_ElementInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoDaneDodat.xaml.cs">
+      <DependentUpon>UserControl_InfoDaneDodat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoDanePodst.xaml.cs">
+      <DependentUpon>UserControl_InfoDanePodst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoInnePrawa.xaml.cs">
+      <DependentUpon>UserControl_InfoInnePrawa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoMain.xaml.cs">
+      <DependentUpon>UserControl_InfoMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoPlatnoscUW.xaml.cs">
+      <DependentUpon>UserControl_InfoPlatnoscUW.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoWladanie.xaml.cs">
+      <DependentUpon>UserControl_InfoWladanie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoZagosp.xaml.cs">
+      <DependentUpon>UserControl_InfoZagosp.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_InnePrawa.xaml.cs">
       <DependentUpon>UserControl_InnePrawa.xaml</DependentUpon>
@@ -429,6 +456,38 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\UserControl_DecyzjeAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_ElementInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoDaneDodat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoDanePodst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoInnePrawa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoPlatnoscUW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoWladanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoZagosp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

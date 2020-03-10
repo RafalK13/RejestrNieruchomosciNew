@@ -81,9 +81,6 @@ namespace RejestrNieruchomosciNew.Model
         }
         #endregion
 
-        //#region Konstructor
-
-        //#endregion
         #region Methods
 
         public void fillValues(IDzialka d)

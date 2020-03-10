@@ -11,7 +11,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public ObrebList()
         {
-           
             using (var c = new Context())
             {
                 obrebList = c.Obreb.Include("GminaSlo").ToList();

@@ -12,7 +12,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     
     public class MainViewModel : ViewModelBase
     {
-        #region Properties
         private bool _btActivity;
         public bool btActivity
         {
@@ -29,6 +28,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IChangeViewModel model { get; set; }
 
         public UserControl_PreviewViewModel userControl_prev { get; set; }
+        public UserControl_InfoMainViewModel infoMain { get; set; }
 
         public ICommand addNewDzialka { get; set; }
         public ICommand delDzialka { get; set; }
@@ -42,12 +42,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public PerformMode mode { get; set; }
 
-        #endregion
-
         #region Konstruktor
         public MainViewModel()
         {
-            modeMessage = "Przegl¹danie podstawowe";
+            modeMessage = "Przegl¹danie bazy dzia³ek";
             initButtonCommand();
             btActivity = true;
         }

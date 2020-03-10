@@ -122,6 +122,16 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
 
             container.Register(Component.For<PerformMode>());
+
+            //container.Register(Component.For<UserControl_InfoMain>());
+            container.Register(Component.For<UserControl_InfoMainViewModel>());
+
+            //container.Register(Component.For<UserControl_InfoDanePodst>());
+            container.Register(Component.For<UserControl_InfoDanePodstViewModel>());
+
+            //container.Register( Component.For<UserControl_InfoWladanie>());
+            container.Register( Component.For<UserControl_InfoWladanieViewModel>());
+
         }
     }
 }

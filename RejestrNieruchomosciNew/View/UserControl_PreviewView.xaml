@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:localViewModel="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="886.5"
@@ -13,7 +13,7 @@
     
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
-        <localViewModel:resultCnvr x:Key="conv"/>
+        <con:resultCnvr x:Key="conv"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -54,10 +54,9 @@
             <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="410" MinWidth="50"/>
             <ColumnDefinition Width="1*" MinWidth="50"/>
-            <ColumnDefinition Width="1*" MinWidth="50"/>
-            <ColumnDefinition Width="1*" MinWidth="50"/>
+            <ColumnDefinition Width="2*" MinWidth="50"/>
+           
         </Grid.ColumnDefinitions>
 
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
@@ -118,7 +117,7 @@
 
         <Label Grid.Row="0" Grid.Column="3"
                Style="{StaticResource label1}"
-               Content="Dane podstawowe działki"
+               Content="Dane działki"
                Margin="0,0,0,0"/>
 
         <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="10,0,10,20"
@@ -177,62 +176,10 @@
 
         <Label Grid.Row="0" Grid.Column="4"
                Style="{StaticResource label1}"
-               Content="Właściciel"
-               Margin="0,0,0,0"/>
+               Content="Info"
+               Margin="10,0,0,0"/>
 
-        <DataGrid Grid.Row="1" Grid.Column="4" Margin="5,0,10,20"
-                  ItemsSource="{Binding userControl_prev.wladanieList.list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                  IsReadOnly="True"
-                  AutoGenerateColumns="False"
-                  SelectionMode="Single">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Podmiot" 
-                                            Width="*">
-                    <DataGridTextColumn.Binding>
-                        <MultiBinding
-                                     Converter="{StaticResource parsonConvert}" >
-                            <Binding Path="PodmiotId"/>
-                            <Binding ElementName="PreviewWin" Path="DataContext.podmiotList"/>
-                        </MultiBinding>
-
-
-                    </DataGridTextColumn.Binding>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding FormaWladaniaSlo.Nazwa}" Header="Forma wladania"/>
-                <DataGridTextColumn Binding="{Binding Udzial}" Header="Udział"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <Label Grid.Row="0" Grid.Column="5"
-               Style="{StaticResource label1}"
-               Content="Inne Prawa"
-               Margin="0,0,0,0"/>
-
-        <DataGrid Grid.Row="1" Grid.Column="5" Margin="5,0,10,20"
-                  ItemsSource="{Binding userControl_prev.innePrawaList.list, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                  IsReadOnly="True"
-                  AutoGenerateColumns="False"
-                  SelectionMode="Single">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Podmiot" 
-                                            Width="*">
-                    <DataGridTextColumn.Binding>
-                        <MultiBinding
-                                     Converter="{StaticResource parsonConvert}" >
-                            <Binding Path="PodmiotId"/>
-                            <Binding ElementName="PreviewWin" Path="DataContext.podmiotList"/>
-                            
-                        </MultiBinding>
-                    </DataGridTextColumn.Binding>
-                    
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding RodzajInnegoPrawaSlo.Nazwa}" Header="Rodzaj prawa"/>
-               
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <!--<DataGridTextColumn Binding="{Binding FormaWladaniaSlo.Nazwa}" Header="Forma wladania"/>
-        <DataGridTextColumn Binding="{Binding Udzial}" Header="Udział"/>-->
-
+        <view:UserControl_InfoMain
+              Grid.Row="1" Grid.Column="4"/>
     </Grid>
 </UserControl>

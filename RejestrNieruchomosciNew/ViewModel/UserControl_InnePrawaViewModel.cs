@@ -14,6 +14,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InnePrawaViewModel : ViewModelBase
     {
+
+        public UserControl_InfoMainViewModel infoMain { get; set; }
+
         private int dzialkaId;
 
         private PlatnoscInnePrawa _platnoscInnePrawa;
