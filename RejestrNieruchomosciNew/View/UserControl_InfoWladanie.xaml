@@ -12,9 +12,15 @@
     
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
+        <con:slownikIdToName x:Key="slowConvert"/>
         <Style TargetType="Label" x:Key="labelRaf">
-         
-            <Setter Property="FontWeight" Value="Bold"></Setter>
+         <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="110"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
         </Style>
     </UserControl.Resources>
 
@@ -77,45 +83,65 @@
                 />
 
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Rodzaj"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.FormaWladaniaSlo.Nazwa, ElementName=InfoWlasciciel}"/>
 
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Udział"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.Udzial, ElementName=InfoWlasciciel}"/>
 
             <Label
+                Name="t1"
                 Style="{StaticResource labelRaf}"
                 Content="Sposób nabycia prawa"
                 />
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Numer dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
+                >
+                <view:UserControl_ElementInfo.tekstRaf>
+                    <MultiBinding Converter="{StaticResource rodzDokConvert}">
+                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
+                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
+                    </MultiBinding>
+                </view:UserControl_ElementInfo.tekstRaf>
+                
+            </view:UserControl_ElementInfo>
+
+            <TextBox>
+                <TextBox.Text>
+                    <MultiBinding Converter="{StaticResource slowConvert}">
+                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
+                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
 
             <view:UserControl_ElementInfo
-                Margin="0,1,0,1"
-                labelRaf="Rodzaj dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
-
-            <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Nazwa czynności"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
 
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Tytuł dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Tytul, ElementName=InfoWlasciciel}"/>
 
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Data dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Data, ElementName=InfoWlasciciel}"/>
 
             <view:UserControl_ElementInfo
+                Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Skan"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>

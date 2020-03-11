@@ -1,8 +1,8 @@
 ﻿using RejestrNieruchomosciNew.Model;
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -66,7 +66,64 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
     }
 
-    
+    public class slownikIdToName : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            if (int.TryParse(values[0].ToString(), out int id) == true)
+            {
+                var t = values[1].GetType();
+
+                var v = t.GetElementType();
+                int r = 14;
+                
+            }
+            
+           return null;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
+    }
+
+    public class NabycieRodzDokIdToName : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            if (int.TryParse(values[0].ToString(), out int id) == true)
+            {
+                RodzajDokumentuList wladList = values[1] as RodzajDokumentuList;
+
+                if (wladList != null)
+                {
+                    var v = wladList.list.FirstOrDefault(row => row.RodzajDokumentuSloId == id);
+                    if (v != null)
+                        return v.Nazwa;
+                }
+            }
+            return null;
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class resultCnvr : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -131,7 +188,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             return null;
         }
     }
-
 
     class stringToDecimal : IValueConverter
     {

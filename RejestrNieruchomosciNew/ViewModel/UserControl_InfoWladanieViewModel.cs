@@ -6,7 +6,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoWladanieViewModel : ViewModelBase
     {
-        public IPodmiotList podmiotList { get; set; }
+      
+        public RodzajDokumentuList rodzDokList { get; set; }
 
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel
