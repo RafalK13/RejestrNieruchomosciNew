@@ -1,0 +1,52 @@
+﻿<Window x:Class="RejestrNieruchomosciNew.View.WindowTestRaf"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+        xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+        mc:Ignorable="d"
+        Title="WindowTestRaf" Height="450" Width="800"
+        x:Name="TestRafWindow"
+        >
+    <Window.Resources>
+        <convert:slownikIdToName x:Key="idToName"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid 
+                ItemsSource="{Binding wladanie}"
+                VerticalScrollBarVisibility="Auto"
+                AutoGenerateColumns="False"
+                >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Dzialka"
+                                        Binding="{Binding DzialkaId}"/>
+                    <DataGridTextColumn Header="Numer działki">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource idToName}">
+                                <Binding Path="DzialkaId"/>
+                                <Binding Path="DataContext.dzialkaList.list" ElementName="TestRafWindow"/>
+                                <Binding Source="DzialkaId" />
+                                <Binding Source="Numer" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+
+                    </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="Podmiot"
+                                        Binding="{Binding PodmiotId}"/>
+
+                    <DataGridTextColumn Header="Forma Władania"
+                                        Binding="{Binding FormaWladaniaSloId}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

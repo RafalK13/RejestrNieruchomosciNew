@@ -319,6 +319,7 @@
     <Compile Include="ViewModel\UserControl_ZagospViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\Window2ViewModel.cs" />
+    <Compile Include="ViewModel\WindowTestRafViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
       <DependentUpon>ChangeView.xaml</DependentUpon>
     </Compile>
@@ -402,6 +403,9 @@
     </Compile>
     <Compile Include="View\Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WindowTestRaf.xaml.cs">
+      <DependentUpon>WindowTestRaf.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -532,6 +536,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WindowTestRaf.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

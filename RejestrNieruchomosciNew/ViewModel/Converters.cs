@@ -70,22 +70,34 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
+
+            int r13 = 1;
             if (values[0] == null)
                 return 0;
 
             if (values[1] == null)
                 return 0;
 
-            if (int.TryParse(values[0].ToString(), out int id) == true)
-            {
-                var t = values[1].GetType();
+            if (values[2] == null)
+                return 0;
 
-                var v = t.GetElementType();
-                int r = 14;
-                
+            if (values[3] == null)
+                return 0;
+
+            IEnumerable e = values[1] as IEnumerable;
+
+            if (e != null)
+            {
+                var v = e.Cast<object>().FirstOrDefault(row => row.GetType().GetProperty(values[2].ToString()).GetValue(row).ToString() == values[0].ToString());
+
+                if (v != null)
+                    return v.GetType().GetProperty(values[3].ToString()).GetValue(v);
+                else
+                    return null;
             }
-            
-           return null;
+            else
+                return null;
+
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

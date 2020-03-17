@@ -10,6 +10,5 @@ namespace RejestrNieruchomosciNew.Model
 
         void saveWladanie();
         void getList(IDzialka dzialkaSel);
-        
     }
 }

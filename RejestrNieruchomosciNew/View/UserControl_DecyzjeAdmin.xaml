@@ -67,7 +67,7 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="90"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -93,9 +93,9 @@
                     />
         <!--TekstPropALL="{Binding numerDec, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
                     selectedIdRafALL="{Binding selectedIdDec, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"-->
-        <Label          Grid.Column="0" Grid.Row="1" 
-                                    Content="Podmiot wydający"  
-                                    Style="{StaticResource labelTab}"/>
+        <TextBlock          Grid.Column="0" Grid.Row="1" 
+                                    Text="Podmiot wydający"  
+                                    TextWrapping="Wrap"/>
         <conRaf:DataGridRafALL
                     Grid.Column="1"
                     Grid.Row="1" 

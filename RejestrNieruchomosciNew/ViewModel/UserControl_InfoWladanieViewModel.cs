@@ -1,13 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoWladanieViewModel : ViewModelBase
     {
-      
+        public ICommand onClick { get; set; }
+
         public RodzajDokumentuList rodzDokList { get; set; }
+        public NazwaCzynnosciList nazwaCzynList { get; set; }
 
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel
@@ -50,22 +56,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        //public UserControl_InfoWladanieViewModel(UserControl_PreviewViewModel p,
-        //                                         IWladanieList w)
-        //{
-        //    MessageBox.Show("Konstriktor2");
+        public UserControl_InfoWladanieViewModel()
+        {
+            onClick = new RelayCommand( onClickSkan);
+        }
 
-        //    wladanieList = w;
-        //    p.zmianaDzialkaSel += P_zmianaDzialkaSel;
-        //    prev = p;
-        //}
-
-        //private void P_zmianaDzialkaSel(object sender, System.EventArgs e)
-        //{
-        //    if (prev != null)
-        //    {
-        //        wladanieList.getList(prev.dzialkaSel);
-        //    }
-        //}
+        private void onClickSkan()
+        {
+            MessageBox.Show("Rafałek");
+        }
     }
 }

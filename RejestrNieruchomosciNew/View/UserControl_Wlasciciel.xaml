@@ -22,10 +22,10 @@
         
         <Style x:Key="label1" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
-            <Setter Property="Width" Value="130"/>
+            <Setter Property="Width" Value="100"/>
         </Style>
         <Style x:Key="labelTab" TargetType="Label">
-            <Setter Property="Margin" Value="3,0,0,0"></Setter>
+            <Setter Property="Margin" Value="1,0,0,0"></Setter>
         </Style>
         <Style x:Key="label2" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
@@ -80,8 +80,8 @@
             <Grid.ColumnDefinitions>
 
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="4*" MinWidth="9" />
-                <ColumnDefinition Width="4*" MinWidth="9"/>
+                <ColumnDefinition Width="3*" MinWidth="9" />
+                <ColumnDefinition Width="3*" MinWidth="9"/>
                 <ColumnDefinition Width="3*" MinWidth="9" />
 
             </Grid.ColumnDefinitions>
@@ -195,7 +195,7 @@
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="110"/>
-                        <RowDefinition Height="275"/>
+                        <RowDefinition Height="550"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -242,8 +242,7 @@
                                 <ColumnDefinition Width="113"/>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="7*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="7*"/>
+                               
                                
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -255,19 +254,24 @@
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
                                 <RowDefinition Height="30"/>
-                                
+
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+
                             </Grid.RowDefinitions>
 
                             <Label Grid.Column="3" Grid.Row="0"
                                    Content="Nabycie"
                                    FontWeight="Bold"
-                                   FontSize="17"         
+                                   FontSize="15"         
                                    />
-                            <Label Grid.Column="5" Grid.Row="0"
-                                   Content="Zbycie"
-                                   FontWeight="Bold"
-                                   FontSize="17"         
-                                   />
+                          
                             <Label Grid.Column="1" Grid.Row="1" 
                                    Content=""                                       
                                    Style="{StaticResource labelTab}"/>
@@ -290,7 +294,8 @@
                             <Label  Grid.Column="1" Grid.Row="6" 
                                         Content="Skan dokumentu"    
                                         Style="{StaticResource labelTab}"/>
-                            <Button Grid.Column="5" Grid.Row="1"
+                         
+                             <Button Grid.Column="3" Grid.Row="9"
                                     Margin="3"
                                     Content="Sprzedaż udziału"
                                     Command="{Binding  userControl_Wlasciciel.wlascSell}">
@@ -309,29 +314,66 @@
                              
                             </Button>
 
-                            <userCon:UserControl_Transakcja
-                                       x:Name="TransSell"
-                                       Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Grid.Column="5" Grid.Row="1" Grid.RowSpan="7"
-                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
-                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
-                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
-                             />
+                           
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
-                                       Grid.ColumnSpan="2" Margin="1,0,20,0"
+                                       Grid.ColumnSpan="2" Margin="1,0,0,0"
                                        transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
                                 />
+
+                            <Label Grid.Column="3" Grid.Row="8"
+                                   Content="Zbycie"
+                                   FontWeight="Bold"
+                                   FontSize="15"         
+                                   />
+
+                            <Label Grid.Column="1" Grid.Row="9" 
+                                   Content="Numer dokumentu"
+                                   Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource labelTab}"/>
+                            <Label Grid.Column="1" Grid.Row="10" 
+                                   Content="Rodzaj dokumentu"  
+                                   Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Style="{StaticResource labelTab}"/>
+                            <Label Grid.Column="1" Grid.Row="11" 
+                                    Content="Nazwa czynności"
+                                   Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource labelTab}"/>
+                            <Label Grid.Column="1" Grid.Row="12" 
+                                    Content="Tytuł dokumentu"   
+                                   Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource labelTab}"/>
+                            <Label Grid.Column="1" Grid.Row="13" 
+                                    Content="Data"       
+                                   Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Style="{StaticResource labelTab}"/>
+                            <Label  Grid.Column="1" Grid.Row="14" 
+                                        Content="Skan dokumentu"    
+                                    Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource labelTab}"/>
+
+                            <userCon:UserControl_Transakcja
+                                       x:Name="TransSell"
+                                       Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       Grid.Column="3" Grid.Row="9" Grid.RowSpan="7"
+                                       Grid.ColumnSpan="2" Margin="1,0,0,0"
+                                       transList="{Binding Path=DataContext.userControl_Wlasciciel.transakcjeList, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       numerTrans="{Binding Path=DataContext.userControl_Wlasciciel.numerTrans, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
+                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
+                             />
+
+
                         </Grid>
 
                     </StackPanel>
+                    
+                    
                   
                 </Grid>
 

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -47,7 +48,7 @@ namespace RejestrNieruchomosciNew.Model
                 list = new ObservableCollection<IInnePrawa>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                                      && r.TransS_Id == null)
                                                                                      .ToList());
-
+           
             listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
             listToAdd = new List<IInnePrawa>();
@@ -56,12 +57,24 @@ namespace RejestrNieruchomosciNew.Model
             result = string.Empty;
         }
 
-        public InnePrawaList(UserControl_PreviewViewModel userPrev)
+        public InnePrawaList()
         {
+            //MessageBox.Show("KONSTRUKTOR InnePrawaList");
             list = new ObservableCollection<IInnePrawa>();
-            if (userPrev.dzialkaSel != null)
-                initListAll();
+            initListAll();
         }
+
+        //public InnePrawaList(UserControl_PreviewViewModel userPrev)
+        //{
+        //    //MessageBox.Show("2");
+        //    list = new ObservableCollection<IInnePrawa>();
+        //    int r = 15;
+        //    if ( listAll == null)
+        //        initListAll();
+        //    else
+        //        initList(userPrev.dzialkaSel);
+
+        //}
 
         public void getList(IDzialka dzialkaSel)
         {

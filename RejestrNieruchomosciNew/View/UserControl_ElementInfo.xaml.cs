@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.View
 {
@@ -9,10 +12,26 @@ namespace RejestrNieruchomosciNew.View
         {
             InitializeComponent();
             DataContext = this;
+
+            onClickZal = new RelayCommand( zalClicked);
         }
 
+        private void zalClicked()
+        {
+            
+        }
 
-        
+        public ICommand onClickZal { get; set; }
+
+        public Visibility buttonVisibility
+        {
+            get { return (Visibility)GetValue(buttonVisibilityProperty); }
+            set { SetValue(buttonVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty buttonVisibilityProperty =
+            DependencyProperty.Register("buttonVisibility", typeof(Visibility), typeof(UserControl_ElementInfo), new PropertyMetadata( Visibility.Hidden));
+
         public int hightRaf
         {
             get { return (int)GetValue(hightRafProperty); }
@@ -66,6 +85,15 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty tekstRafProperty =
             DependencyProperty.Register("tekstRaf", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
-        
+
+        public string zalPath
+        {
+            get { return (string)GetValue(zalPathProperty); }
+            set { SetValue(zalPathProperty, value); }
+        }
+
+        public static readonly DependencyProperty zalPathProperty =
+            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
+
     }
 }

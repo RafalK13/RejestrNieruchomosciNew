@@ -128,12 +128,12 @@
                   AutoGenerateColumns="False"
                   SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}"></DataGridTextColumn>
-                <DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}" Width="*"></DataGridTextColumn>
+                <!--<DataGridTextColumn Header="KW Akt" Binding="{Binding Kwakt}"></DataGridTextColumn>
                 <DataGridTextColumn Header="KW Zrob" Binding="{Binding Kwzrob}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Pow}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Powierzchnia" Binding="{Binding Pow}"></DataGridTextColumn>-->
+                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding   Gesture="LeftDoubleClick" 

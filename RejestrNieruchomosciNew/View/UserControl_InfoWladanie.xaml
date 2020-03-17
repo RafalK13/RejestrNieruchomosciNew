@@ -22,11 +22,12 @@
             <Setter Property="widthLabelRaf" Value="110"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
         </Style>
+
     </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -113,20 +114,32 @@
                 
             </view:UserControl_ElementInfo>
 
-            <TextBox>
+            <!--<TextBox>
                 <TextBox.Text>
                     <MultiBinding Converter="{StaticResource slowConvert}">
                         <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
                         <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
                     </MultiBinding>
                 </TextBox.Text>
-            </TextBox>
+            </TextBox>-->
 
-            <view:UserControl_ElementInfo
+            <view:UserControl_ElementInfo 
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
-                labelRaf="Nazwa czynności"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
+                labelRaf="Nazwa czynności">
+                <!--tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>-->
+                <view:UserControl_ElementInfo.tekstRaf>
+                    <MultiBinding Converter="{StaticResource slowConvert}">
+                        <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
+                                 ElementName="InfoWlasciciel"/>
+                        <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
+                                 ElementName="InfoWlasciciel"/>
+                        <Binding Source="NazwaCzynnosciSloId"/>
+                        <Binding Source="Nazwa"/>
+                    </MultiBinding>
+                </view:UserControl_ElementInfo.tekstRaf>
+                
+            </view:UserControl_ElementInfo>
 
             <view:UserControl_ElementInfo
                 Style="{StaticResource userInfo}"
@@ -144,10 +157,11 @@
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Skan"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
-
+                buttonVisibility="Visible"
+                IsHitTestVisible="True"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
 
         </StackPanel>
-    
+                
     </Grid>
 </UserControl>

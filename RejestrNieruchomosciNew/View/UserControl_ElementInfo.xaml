@@ -6,17 +6,25 @@
              xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <StackPanel Orientation="Horizontal">
-        <Label Content="{Binding labelRaf}"
-               Width="{Binding widthLabelRaf}"
-               Height="{Binding hightRaf}"
-               
-               />
-
-        <TextBox Text="{Binding tekstRaf}"
-                 Width="{Binding widthTextRaf}"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding widthLabelRaf}"/>
+            <ColumnDefinition Width="{Binding widthTextRaf}"/>
+        </Grid.ColumnDefinitions>
+        <Label   Grid.Column="0"
+                 Content="{Binding labelRaf}"
                  Height="{Binding hightRaf}"
                  />
 
-    </StackPanel>
+        <TextBox Grid.Column="1"
+                 Text="{Binding tekstRaf}"
+                 Height="{Binding hightRaf}"
+                 />
+
+        <Button  Grid.Column="1"
+                 Height="{Binding hightRaf}"
+                 Visibility="{Binding buttonVisibility}"
+                 Command="{Binding onClickZal}"/>
+
+    </Grid>
 </UserControl>

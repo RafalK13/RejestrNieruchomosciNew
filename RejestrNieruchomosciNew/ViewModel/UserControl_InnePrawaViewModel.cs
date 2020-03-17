@@ -15,8 +15,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_InnePrawaViewModel : ViewModelBase
     {
 
-        public UserControl_InfoMainViewModel infoMain { get; set; }
-
         private int dzialkaId;
 
         private PlatnoscInnePrawa _platnoscInnePrawa;
@@ -29,8 +27,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
-
-        //public PlatnoscInnePrawa platnoscInnePrawa { get; set; }
 
         private Visibility _sellVisibility;
         public Visibility sellVisibility
@@ -106,7 +102,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public UserControl_InnePrawaViewModel(UserControl_PreviewViewModel userPrev)
+        public UserControl_InnePrawaViewModel(UserControl_PreviewViewModel userPrev,
+                                             IInnePrawaList _innePrawaList)
         {
             initButtons();
             
@@ -115,6 +112,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (userPrev.dzialkaSel != null)
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+                _innePrawaList.getList(userPrev.dzialkaSel);
             }
 
             podmiotDetail = false;
@@ -127,27 +125,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (innePrawaSel.DzialkaId != 0)
                 {
                     podmiotDetail = true;
-                    ////setPlatnoscKey();
                 }
             }
             else
                 podmiotDetail = false;
         }
-
-        private void setPlatnoscKey()
-        {
-            ////platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault( r=>r.InnePrawaId==innePrawaSel.InnePrawaId);
-
-            //platnoscInnePrawa = platnoscInnePrawaList.list.FirstOrDefault(r => r.DzialkaId == innePrawaSel.DzialkaId &&
-            //                                                                   r.PodmiotId == innePrawaSel.PodmiotId);
-
-            //platnoscInnePrawa.DzialkaId = innePrawaSel.DzialkaId;
-            //platnoscInnePrawa.PodmiotId = innePrawaSel.PodmiotId;
-        }
-
+        
         private bool testWlascExist()
         {
-
             if (innePrawaList.list.Count == 0)
                 return false;
 
@@ -213,9 +198,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
-           //MessageBox.Show(innePrawaSel.PlatnoscInnePrawa.Okres.ToString());
             innePrawaList.save();
-            //platnoscInnePrawaList.save();
         }
 
         private void onPodmiotAdd()

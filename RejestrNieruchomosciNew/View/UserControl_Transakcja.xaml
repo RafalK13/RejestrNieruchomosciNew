@@ -98,21 +98,21 @@
                  Content="Dodaj"
                  MaxWidth="100" 
                  
-                 Margin="5"/>
+                 Margin="2,5,2,5"/>
             <Button
                  Command="{Binding clickMod}"
                  IsEnabled="{Binding modButton}"
                  Content="Zmień"
                  MaxWidth="100" 
                  
-                 Margin="5"/>
+                 Margin="2,5,2,5"/>
             <Button
                  Command="{Binding clickCls}"
                  Content="Czyść"
                  IsEnabled="{Binding clsButton}"
                  MaxWidth="100" 
                 
-                 Margin="5"/>
+                 Margin="2,5,2,5"/>
         </StackPanel>
 
     </Grid>
