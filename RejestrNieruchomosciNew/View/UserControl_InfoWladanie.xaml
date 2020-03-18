@@ -27,7 +27,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -76,84 +76,99 @@
             </DataGrid.Columns>
         </DataGrid>
 
-         <StackPanel Grid.Column="1">
+        <ScrollViewer Grid.Column="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
 
-            <Label
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
                 Style="{StaticResource labelRaf}"
                 Content="Forma Władania"
                 />
 
-            <view:UserControl_ElementInfo
+                <view:UserControl_ElementInfo
+                Grid.Row="1"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Rodzaj"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.FormaWladaniaSlo.Nazwa, ElementName=InfoWlasciciel}"/>
 
-            <view:UserControl_ElementInfo
+                <view:UserControl_ElementInfo
+                Grid.Row="2"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Udział"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.Udzial, ElementName=InfoWlasciciel}"/>
 
-            <Label
+                <Label
+                Grid.Row="3"
                 Name="t1"
                 Style="{StaticResource labelRaf}"
                 Content="Sposób nabycia prawa"
                 />
-            <view:UserControl_ElementInfo
+                <view:UserControl_ElementInfo
+                Grid.Row="4"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Numer dokumentu"
                 >
-                <view:UserControl_ElementInfo.tekstRaf>
-                    <MultiBinding Converter="{StaticResource rodzDokConvert}">
-                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
-                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
-                    </MultiBinding>
-                </view:UserControl_ElementInfo.tekstRaf>
-                
-            </view:UserControl_ElementInfo>
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource rodzDokConvert}">
+                            <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
+                            <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
 
-            <!--<TextBox>
-                <TextBox.Text>
-                    <MultiBinding Converter="{StaticResource slowConvert}">
-                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
-                        <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
-                    </MultiBinding>
-                </TextBox.Text>
-            </TextBox>-->
+                </view:UserControl_ElementInfo>
 
-            <view:UserControl_ElementInfo 
+                <view:UserControl_ElementInfo 
+                Grid.Row="5"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Nazwa czynności">
-                <!--tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>-->
-                <view:UserControl_ElementInfo.tekstRaf>
-                    <MultiBinding Converter="{StaticResource slowConvert}">
-                        <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
+                    <!--tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>-->
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
                                  ElementName="InfoWlasciciel"/>
-                        <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
+                            <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
                                  ElementName="InfoWlasciciel"/>
-                        <Binding Source="NazwaCzynnosciSloId"/>
-                        <Binding Source="Nazwa"/>
-                    </MultiBinding>
-                </view:UserControl_ElementInfo.tekstRaf>
-                
-            </view:UserControl_ElementInfo>
+                            <Binding Source="NazwaCzynnosciSloId"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
 
-            <view:UserControl_ElementInfo
+                </view:UserControl_ElementInfo>
+
+                <view:UserControl_ElementInfo
+                Grid.Row="6"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Tytuł dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Tytul, ElementName=InfoWlasciciel}"/>
 
-            <view:UserControl_ElementInfo
+                <view:UserControl_ElementInfo
+                Grid.Row="7"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Data dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Data, ElementName=InfoWlasciciel}"/>
 
-            <view:UserControl_ElementInfo
+                <view:UserControl_ElementInfo
+                Grid.Row="8"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Skan"
@@ -161,7 +176,8 @@
                 IsHitTestVisible="True"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
 
-        </StackPanel>
-                
+            </Grid>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

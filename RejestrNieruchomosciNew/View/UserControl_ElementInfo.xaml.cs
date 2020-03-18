@@ -18,7 +18,7 @@ namespace RejestrNieruchomosciNew.View
 
         private void zalClicked()
         {
-            
+            MessageBox.Show("OK");
         }
 
         public ICommand onClickZal { get; set; }

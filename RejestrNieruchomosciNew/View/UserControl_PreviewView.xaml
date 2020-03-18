@@ -6,7 +6,7 @@
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="886.5"
+             d:DesignHeight="300" d:DesignWidth="1300"
              x:Name="PreviewWin"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              >
@@ -54,8 +54,8 @@
             <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="1*" MinWidth="50"/>
-            <ColumnDefinition Width="2*" MinWidth="50"/>
+            <ColumnDefinition Width="300" MinWidth="50"/>
+            <ColumnDefinition Width="*" MinWidth="50"/>
            
         </Grid.ColumnDefinitions>
 

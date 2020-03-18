@@ -33,33 +33,11 @@ namespace RejestrNieruchomosciNew.View
             set { SetValue(zalPathProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for zalPath.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty zalPathProperty =
             DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null));
 
 
 
-        //private string _zalPath;
-        //public string zalPath
-        //{
-        //    get 
-        //    {
-        //        return _zalPath;
-        //    }
-
-        //    set {
-        //        _zalPath = value; //ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + selectedIdTrans;
-
-        //        //MessageBox.Show(zalPath);
-        //    }
-
-        //    //get
-        //    //{
-        //    //    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + selectedIdTrans;
-        //    //}
-        //}
-
-        //zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
         #region Transakcje
         public ITransakcje transakcje
         {
@@ -108,7 +86,7 @@ namespace RejestrNieruchomosciNew.View
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Transakcja u = d as UserControl_Transakcja;
-
+            int r = 13;
             if (u.numerTrans != null)
             {
                 if (u.selectedIdTrans > 0)
@@ -132,8 +110,11 @@ namespace RejestrNieruchomosciNew.View
                     }
                 }
             }
-            else
+            if (u.numerTrans == "")
+            {
                 u.selectedIdTrans = null;
+                u.zalButton = false;
+            }
 
         }
         #endregion
@@ -155,6 +136,7 @@ namespace RejestrNieruchomosciNew.View
             {
                 if (u.selectedIdTrans.Value <= 0)
                 {
+                    int r = 13;
                     string s = u.numerTrans;
                     u.transakcje = new Transakcje();
                     u.transakcje.Numer = s;
@@ -164,6 +146,7 @@ namespace RejestrNieruchomosciNew.View
                 }
                 else
                 {
+                    int r = 13;
                     int selIdTrans = u.selectedIdTrans.Value;
                     u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == selIdTrans);
                     u.zalButton = true;

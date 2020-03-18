@@ -37,8 +37,12 @@ namespace RejestrNieruchomosciNew.View
 
         private void Button_Prev(object sender, RoutedEventArgs e)
         {
-            if( Directory.Exists(pathRaf))
-                Process.Start(pathRaf);
+
+            if (Directory.Exists(pathRaf) )
+            {
+                if (Directory.GetFiles(pathRaf).Length > 0)
+                    Process.Start(pathRaf);
+            }
         }
     }
 }
