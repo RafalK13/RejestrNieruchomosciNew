@@ -32,7 +32,9 @@ namespace RejestrNieruchomosciNew.Model
         public string result;
         private IDzialka dzialkaPrv;
 
-        private void initListAll()
+        
+
+        public void initListAll()
         {
             using (Context c = new Context())
             {
@@ -148,6 +150,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToMod)
                 {
+                    if (i.TransK_Id == 0)
+                        i.TransK_Id = null;
                     var v = c.Wladanie.First(r => r.WladanieId == i.WladanieId);
                     c.Entry(v).CurrentValues.SetValues(i);
                 }

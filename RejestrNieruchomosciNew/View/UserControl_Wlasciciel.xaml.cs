@@ -10,6 +10,5 @@ namespace RejestrNieruchomosciNew.View
             InitializeComponent();
         }
 
-
     }
 }

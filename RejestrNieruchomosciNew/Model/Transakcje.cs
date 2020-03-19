@@ -17,7 +17,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _TransakcjeId = value;
                 RaisePropertyChanged("TransakcjeId");
-                onChange(this, EventArgs.Empty);
+                
+                if( onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -29,7 +31,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _RodzajTransakcjiSloId = value;
                 RaisePropertyChanged("RodzajTransakcjiSloId");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
         private int? _NazwaCzynnosciSloId;
@@ -40,7 +44,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _NazwaCzynnosciSloId = value;
                 RaisePropertyChanged("NazwaCzynnosciSloId");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -52,7 +58,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _RodzajDokumentuSloId = value;
                 RaisePropertyChanged("RodzajDokumentuSloId");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -64,7 +72,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _Numer = value;
                 RaisePropertyChanged("Numer");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -76,7 +86,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _Data = value;
                 RaisePropertyChanged("Data");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -88,7 +100,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _Tytul = value;
                 RaisePropertyChanged("Tytul");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
         private string _Skan;
@@ -99,7 +113,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _Skan = value;
                 RaisePropertyChanged("Skan");
-                onChange(this, EventArgs.Empty);
+
+                if (onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -111,7 +127,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _WpisDoKW = value;
                 RaisePropertyChanged("WpisDoKW");
-                onChange(this, EventArgs.Empty);
+
+                if( onChange != null)
+                    onChange(this, EventArgs.Empty);
             }
         }
 
@@ -122,15 +140,17 @@ namespace RejestrNieruchomosciNew.Model
 
         public event EventHandler onChange;
 
-        public virtual void Transakcje_onChange(object sender, EventArgs e)
-        {
+        //public virtual void Transakcje_onChange(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        public Transakcje()
-        {
-            onChange += Transakcje_onChange;
-        }
+        //public Transakcje()
+        //{
+        //    onChange += Transakcje_onChange;
+        //}
+
+
 
     }
 }

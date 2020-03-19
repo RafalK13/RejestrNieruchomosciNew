@@ -10,7 +10,12 @@
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Name="WladanieWin"
-             d:DesignHeight="660" d:DesignWidth="1450">
+             d:DesignHeight="660" d:DesignWidth="1450"
+             
+             >
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{Binding userControl_Wlasciciel.onCancel}"/>
+    </UserControl.CommandBindings>
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
@@ -495,11 +500,14 @@
                                     Command="{Binding userControl_Wlasciciel.wlascCls}"
                                     />
 
-            <Button  Content="Anuluj"
+                <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
                                     IsCancel="True"
                                     com:CloseOnClickBehaviour.IsEnabled="True"
+                                    Command="{Binding userControl_Wlasciciel.onCancel}"
+                                    
                                     />
+            <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
         </StackPanel>
        
     </Grid>

@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -103,6 +104,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand podmiotDel { get; set; }
         public ICommand onCzyscPlatnosci { get; set; }
         public ICommand wlascSell{ get; set; }
+        public ICommand onCancel { get; set; }
         #endregion
 
         public IDzialka dzialkaSel { get; set; }
@@ -135,6 +137,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             podmiotDel = new RelayCommand(onPodmiotDel);
             onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
             wlascSell = new RelayCommand(onWlascSell);
+            onCancel = new RelayCommand(onCancelClick);
+        }
+
+        private void onCancelClick()
+        {
+            //var w = Application.Current.Windows[1];
+
+            MessageBox.Show("DUPA");
         }
 
         private void onWlascSell()
