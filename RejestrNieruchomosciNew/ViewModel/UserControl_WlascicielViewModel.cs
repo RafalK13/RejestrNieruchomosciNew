@@ -143,8 +143,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onCancelClick()
         {
             //var w = Application.Current.Windows[1];
-
-            MessageBox.Show("DUPA");
         }
 
         private void onWlascSell()
