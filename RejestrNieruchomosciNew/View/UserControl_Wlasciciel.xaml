@@ -10,12 +10,7 @@
              mc:Ignorable="d" 
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Name="WladanieWin"
-             d:DesignHeight="660" d:DesignWidth="1450"
-             
              >
-    <UserControl.CommandBindings>
-        <CommandBinding Command="{Binding userControl_Wlasciciel.onCancel}"/>
-    </UserControl.CommandBindings>
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
@@ -24,13 +19,13 @@
         <con:stringToDecimal x:Key="convStrToDec"/>
         <sys:Double x:Key="widthMin">150</sys:Double>
         <sys:Double x:Key="widthMax">500</sys:Double>
-        
+
         <Style x:Key="label1" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
-            <Setter Property="Width" Value="100"/>
+            <Setter Property="Width" Value="130"/>
         </Style>
         <Style x:Key="labelTab" TargetType="Label">
-            <Setter Property="Margin" Value="1,0,0,0"></Setter>
+            <Setter Property="Margin" Value="3,0,0,0"></Setter>
         </Style>
         <Style x:Key="label2" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
@@ -51,7 +46,7 @@
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="Margin" Value="15,30"></Setter>
         </Style>
-        
+
         <Style x:Key="comboBox" TargetType="ComboBox">
             <Setter Property="Margin" Value="10,5,0,0"></Setter>
             <Setter Property="Width" Value="150"></Setter>
@@ -74,7 +69,6 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
