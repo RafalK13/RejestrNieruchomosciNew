@@ -52,12 +52,17 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-            <Button Content="Add"
+            <Button Content="Dodaj"
+                    Style="{StaticResource buttonCommon}"
+                    Command="{Binding userControl_PlatnoscUW.platnosciUWAdd}"
+                    />
+
+            <Button Content="Dosaj i zamknij"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_PlatnoscUW.platnosciUWAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
-           
+
             <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
                                     IsCancel="True"

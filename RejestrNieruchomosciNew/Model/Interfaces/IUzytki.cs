@@ -6,5 +6,7 @@
         int DzialkaId { get; set; }
         int UzytkiSloId { get; set; }
         double? Pow { get; set; }
+
+
     }
 }

@@ -382,10 +382,16 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-            <Button Content="Add"
+            <Button Content="Dodaj"
+                    Style="{StaticResource buttonCommon}"
+                    Command="{Binding userControl_Zagosp.zagospAdd}"
+                    />
+            
+            <Button Content="Dodaj i zamknij"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_Zagosp.zagospAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>
+
 
             <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"

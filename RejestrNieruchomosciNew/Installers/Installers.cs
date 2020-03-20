@@ -97,7 +97,7 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<IUzytki>().ImplementedBy<Uzytki>().LifeStyle.Transient);
             container.Register(Component.For<IUzytkiSlo>().ImplementedBy<UzytkiSlo>());
-            container.Register(Component.For<IUzytkiList>().ImplementedBy<UzytkiList>().LifeStyle.Transient);
+            container.Register(Component.For<IUzytkiList>().ImplementedBy<UzytkiList>());
             container.Register(Component.For<IUzytkiSloList>().ImplementedBy<UzytkiSloList>());
             container.Register(Component.For<UserControl_Uzytki>());
 

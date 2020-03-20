@@ -18,5 +18,17 @@ namespace RejestrNieruchomosciNew.Model
         {
             return this.MemberwiseClone();
         }
+        public Uzytki()
+        {
+
+        }
+
+        public Uzytki( IUzytki u)
+        {
+            UzytkiId = u.UzytkiId;
+            DzialkaId = u.DzialkaId;
+            UzytkiSloId = u.UzytkiSloId;
+            Pow = u.Pow;
+        }
     }
 }

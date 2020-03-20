@@ -38,7 +38,6 @@ namespace RejestrNieruchomosciNew.Model
             {
                 listAll = new ObservableCollection<IWladanie>(c.Wladanie.Include(f => f.FormaWladaniaSlo)
                                                                         .Include(t => t.TransakcjeK_Wlad));
-               
                 #region Old version
                 //list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
                 //                                                                                      && r.TransS_Id == null)
@@ -61,12 +60,12 @@ namespace RejestrNieruchomosciNew.Model
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                                      && r.TransS_Id == null).ToList());
 
-            listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+                listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
-            listToAdd = new List<IWladanie>();
-            listToMod = new List<IWladanie>();
-            listToDel = new List<IWladanie>();
-            result = string.Empty;
+                listToAdd = new List<IWladanie>();
+                listToMod = new List<IWladanie>();
+                listToDel = new List<IWladanie>();
+                result = string.Empty;
         }
 
         public WladanieList()
@@ -75,7 +74,7 @@ namespace RejestrNieruchomosciNew.Model
             //MessageBox.Show("1");
 
             list = new ObservableCollection<IWladanie>();
-            //initListAll();
+            
         }
 
         public WladanieList(UserControl_PreviewViewModel userPrev)

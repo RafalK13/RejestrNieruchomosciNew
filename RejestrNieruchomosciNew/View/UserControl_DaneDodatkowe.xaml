@@ -108,7 +108,7 @@
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
                 <userCon:UserControl_Uzytki 
                         uzytkiSloList="{Binding Path=DataContext.userControl_DaneDod.uzytkiSloList, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        uzytkiListRaf="{Binding Path=DataContext.userControl_DaneDod.uzytkiList.list, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        uzytkiListRaf="{Binding Path=DataContext.userControl_DaneDod.uzytkiListLok, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         dzialka="{Binding Path=DataContext.userControl_DaneDod.userPrev.dzialkaSel, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         Margin="10,50,10,0"/>
             </Grid>
@@ -215,7 +215,11 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-            <Button Content="Add"
+            <Button Content="Dodaj"
+                    Style="{StaticResource buttonCommon}"
+                    Command="{Binding userControl_DaneDod.daneDodAdd}"/>
+
+            <Button Content="Dodaj i zamknij"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_DaneDod.daneDodAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>

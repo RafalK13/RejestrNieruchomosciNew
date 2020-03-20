@@ -21,7 +21,6 @@ namespace RejestrNieruchomosciNew.Model
             {
                 _list = value;
                 RaisePropertyChanged();
-                
             }
         }
 
@@ -89,11 +88,8 @@ namespace RejestrNieruchomosciNew.Model
 
             list[v] = dz;//.copy(dz);
 
-            int rq = 1;
-
             if (zmianaDzialkiList != null)
                 zmianaDzialkiList(null, EventArgs.Empty);
-
 
         }
     }

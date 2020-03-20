@@ -1,4 +1,5 @@
-﻿using RejestrNieruchomosciNew.Model.Interfaces;
+﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,36 +8,76 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class UzytkiList : IUzytkiList
+    public class UzytkiList : ViewModelBase, IUzytkiList
     {
-        public ObservableCollection<Uzytki> list { get; set; }
+        public ObservableCollection<Uzytki> listAll { get; set; }
+
+        private ObservableCollection<Uzytki> _list;
+        public ObservableCollection<Uzytki> list
+        {
+            get => _list; set
+            {
+                _list = value;
+                RaisePropertyChanged();
+            }
+        }
         private List<Uzytki> listOrg { get; set; }
         private List<Uzytki> listToAdd { get; set; }
         private List<Uzytki> listToMod { get; set; }
         private List<Uzytki> listToDel { get; set; }
 
         public string result;
+        private IDzialka dzialkaPrv;
 
-        public UzytkiList(UserControl_PreviewViewModel userPrev)
+        public void initListAll()
         {
             using (Context c = new Context())
             {
-                if (userPrev.dzialkaSel != null)
-                {
-                    list = new ObservableCollection<Uzytki>( c.Uzytki.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
-                    listOrg = ObservableCon<Uzytki>.ObservableToList(list);
-
-                    listToAdd = new List<Uzytki>();
-                    listToMod = new List<Uzytki>();
-                    listToDel = new List<Uzytki>();
-
-                    result = string.Empty;
-                }   
+                listAll = new ObservableCollection<Uzytki>(c.Uzytki);
             }
+        }
+
+        public void initList( IDzialka dz)
+        {
+            
+            list = new ObservableCollection<Uzytki>( listAll.Where(r => r.DzialkaId == dz.DzialkaId));
+            listOrg = ObservableCon<Uzytki>.ObservableToList(list);
+           
+            listToAdd = new List<Uzytki>();
+            listToMod = new List<Uzytki>();
+            listToDel = new List<Uzytki>();
+
+            result = string.Empty;
+            
+        }
+
+        public UzytkiList()
+        {
+            list = new ObservableCollection<Uzytki>();
+        }
+
+        public UzytkiList(UserControl_PreviewViewModel userPrev)
+        {
+            list = new ObservableCollection<Uzytki>();
+
+            if (userPrev.dzialkaSel != null)
+            {
+                int r = 1;
+                initListAll();
+            }
+        }
+
+        public void getList(IDzialka dzialkaSel)
+        {
+            dzialkaPrv = dzialkaSel;
+
+            initList(dzialkaPrv);
         }
 
         public void saveUzytki()
         {
+           
+
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
@@ -68,6 +109,9 @@ namespace RejestrNieruchomosciNew.Model
 
             if (listToMod.Count() > 0)
                 ModRows();
+
+            initListAll();
+            initList(dzialkaPrv);
         }
 
         public void AddRows()
