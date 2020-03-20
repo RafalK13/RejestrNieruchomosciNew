@@ -131,7 +131,7 @@
             <DataGrid   Grid.Row="1"
                         VerticalAlignment="Top"
                         Margin="3,100,10,0"
-                        ItemsSource="{Binding userControl_InnePrawa.innePrawaList.list, Mode=TwoWay}"
+                        ItemsSource="{Binding userControl_InnePrawa.inneListLok, Mode=TwoWay}"
                         SelectedItem="{Binding userControl_InnePrawa.innePrawaSel, Mode=TwoWay}"
                         CanUserSortColumns="False"
                         FrozenColumnCount="1" 
@@ -598,10 +598,15 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-            <Button Content="Add"
+            <Button Content="Dodaj"
+                    Style="{StaticResource buttonCommon}"
+                    Command="{Binding userControl_InnePrawa.innePrawaAdd}"/>
+
+            <Button Content="Dodaj i zamknij"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_InnePrawa.innePrawaAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>
+
 
             <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"

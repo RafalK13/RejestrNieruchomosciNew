@@ -34,6 +34,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand delDzialka { get; set; }
         public ICommand modDzialka { get; set; }
         public ICommand doubleClick { get; set; }
+        public ICommand testClick { get; set; }
 
         public string modeMessage { get; set; }
 
@@ -41,6 +42,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public PlatnoscList platnoscList { get; set; }
 
         public PerformMode mode { get; set; }
+
+        public IDzialkaList dzialkaList { get; set; }
 
         #region Konstruktor
         public MainViewModel()
@@ -58,6 +61,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             delDzialka = new RelayCommand(onDeleteDzialka);
             modDzialka = new RelayCommand(onModifyDzialka);
             doubleClick = new RelayCommand(onDoubleClick);
+            testClick = new RelayCommand( onTestClick);
+        }
+
+        private void onTestClick()
+        {
+            int r = 1;
         }
 
         private void onDoubleClick()
@@ -72,7 +81,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                 mode.appMod = PerformMode.appMode.dod;
                 var v = factory.CreateView<ChangeView>();
                 v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                v.Show();
+                //v.Show();
+                v.ShowDialog();
             }
         }
 

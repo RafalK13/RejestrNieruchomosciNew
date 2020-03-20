@@ -131,6 +131,14 @@ namespace RejestrNieruchomosciNew
             UliceSloId = _UliceSloId;
         }
 
+        public object clone()
+        {
+            Dzialka d = (Dzialka)this.MemberwiseClone();
+            d.PlatnoscUW = PlatnoscUW.clone();
+
+            return d;
+        }
+
         public void clone(IDzialka d)
         {
             var t = d.GetType();

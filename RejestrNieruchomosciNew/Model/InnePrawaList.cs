@@ -141,6 +141,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToMod)
                 {
+                    if (i.TransK_Id == 0)
+                        i.TransK_Id = null;
+
                     var v = c.InnePrawa.First(r => r.InnePrawaId == i.InnePrawaId);
                     c.Entry(v).CurrentValues.SetValues(i);
 

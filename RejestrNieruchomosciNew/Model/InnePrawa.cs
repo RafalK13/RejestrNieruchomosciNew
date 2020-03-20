@@ -12,7 +12,7 @@ namespace RejestrNieruchomosciNew.Model
         public int PodmiotId { get; set; }
 
         public int? RodzajInnegoPrawaSloId { get; set; }
-       
+
         public DateTime? DataObowOd { get; set; }
         public DateTime? DataObowDo { get; set; }
         public string ProtPrzejkNr { get; set; }
@@ -95,6 +95,27 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public InnePrawa(IInnePrawa inne)
+        {
+            InnePrawaId = inne.InnePrawaId;
+            DzialkaId = inne.DzialkaId;
+            PodmiotId = inne.PodmiotId;
+            RodzajInnegoPrawaSloId = inne.RodzajInnegoPrawaSloId;
+            DataObowOd = inne.DataObowOd;
+            DataObowDo = inne.DataObowDo;
+            ProtPrzejkNr = inne.ProtPrzejkNr;
+            ProtPrzejData = inne.ProtPrzejData;
+            ProtZwrotNr = inne.ProtZwrotNr;
+            ProtZwrotData = inne.ProtZwrotData;
+            wizjaTerPrzek = inne.wizjaTerPrzek;
+            wizjaTerZwrot = inne.wizjaTerZwrot;
+            CelNabyciaId = inne.CelNabyciaId;
+            WarunkiRealizacji = inne.WarunkiRealizacji;
+            TransK_Id = inne.TransK_Id;
+            TransS_Id = inne.TransS_Id;
+            PlatnoscInnePrawa = inne.PlatnoscInnePrawa.clone();
+        }
+
         public InnePrawa()
         {
 
@@ -106,7 +127,7 @@ namespace RejestrNieruchomosciNew.Model
 
             if (this.PlatnoscInnePrawa != null)
                 inne.PlatnoscInnePrawa = (PlatnoscInnePrawa)this.PlatnoscInnePrawa.clone();
-            
+
             return inne;
         }
 

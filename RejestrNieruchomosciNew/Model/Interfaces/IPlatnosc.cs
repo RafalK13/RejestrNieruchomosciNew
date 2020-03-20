@@ -12,6 +12,8 @@
         int? rok2 { get; set; }
         int? rok3 { get; set; }
 
+
+        //object clone();
         //void save();
 
         //void cleanObj();

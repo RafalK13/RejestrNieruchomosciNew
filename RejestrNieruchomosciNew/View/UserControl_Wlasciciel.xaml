@@ -13,9 +13,7 @@
              d:DesignHeight="660" d:DesignWidth="1450"
              
              >
-    <UserControl.CommandBindings>
-        <CommandBinding Command="{Binding userControl_Wlasciciel.onCancel}"/>
-    </UserControl.CommandBindings>
+   
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
@@ -149,7 +147,7 @@
                 <DataGrid 
                         VerticalAlignment="Top"
                         Margin="3,160,10,0"
-                        ItemsSource="{Binding userControl_Wlasciciel.wladanieList.list, Mode=TwoWay}"
+                        ItemsSource="{Binding userControl_Wlasciciel.wladListLok, Mode=TwoWay}"
                         SelectedItem="{Binding userControl_Wlasciciel.wladanieSel, Mode=TwoWay}"
                         CanUserSortColumns="False"
                         FrozenColumnCount="1" 
@@ -490,7 +488,12 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-                <Button Content="Add"
+            <Button Content="Dodaj"
+                                    Style="{StaticResource buttonCommon}"
+                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"/>
+
+
+            <Button Content="Dodaj i zamknij"
                                     Style="{StaticResource buttonCommon}"
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>

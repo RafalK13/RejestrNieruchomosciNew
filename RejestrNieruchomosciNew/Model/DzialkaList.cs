@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,6 +12,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class DzialkaList : ViewModelBase, IDzialkaList
     {
+        public event EventHandler zmianaDzialkiList;
         private List<IDzialka> _list;
         public List<IDzialka> list
         {
@@ -17,7 +20,8 @@ namespace RejestrNieruchomosciNew.Model
             set
             {
                 _list = value;
-                RaisePropertyChanged("list");
+                RaisePropertyChanged();
+                
             }
         }
 
@@ -73,14 +77,23 @@ namespace RejestrNieruchomosciNew.Model
                 Dzialka d = (Dzialka)dz;
 
                 d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
-                
-                c.Update( d);
+
+                var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
+                c.Entry(v1).CurrentValues.SetValues(d);
                 c.SaveChanges();
             }
 
             var v =list.FindIndex( r=>r.DzialkaId == dz.DzialkaId);
             dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-            list[v] = dz;
+            //list[v] = (IDzialka)dz.clone();
+
+            list[v] = dz;//.copy(dz);
+
+            int rq = 1;
+
+            if (zmianaDzialkiList != null)
+                zmianaDzialkiList(null, EventArgs.Empty);
+
 
         }
     }

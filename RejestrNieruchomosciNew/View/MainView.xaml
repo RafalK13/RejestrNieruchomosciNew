@@ -36,6 +36,13 @@
 
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                       >
+
+            <Button 
+                Style="{StaticResource buttonRaf}"
+                Content="Test" 
+                Command="{Binding testClick}"
+                />
+
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Aktualizuj" ></Button>

@@ -32,8 +32,6 @@ namespace RejestrNieruchomosciNew.Model
         public string result;
         private IDzialka dzialkaPrv;
 
-        
-
         public void initListAll()
         {
             using (Context c = new Context())
@@ -58,6 +56,7 @@ namespace RejestrNieruchomosciNew.Model
         private void initList(IDzialka dzialka)
         {
             int rr = 1;
+
             if (dzialka != null)
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                                      && r.TransS_Id == null).ToList());
@@ -73,13 +72,16 @@ namespace RejestrNieruchomosciNew.Model
         public WladanieList()
         {
             int r = 1;
+            //MessageBox.Show("1");
+
             list = new ObservableCollection<IWladanie>();
-            initListAll();
+            //initListAll();
         }
 
         public WladanieList(UserControl_PreviewViewModel userPrev)
         {
             int r = 2;
+            //MessageBox.Show("2");
 
             list = new ObservableCollection<IWladanie>();
             if (userPrev.dzialkaSel != null)
@@ -88,14 +90,14 @@ namespace RejestrNieruchomosciNew.Model
 
         public void getList(IDzialka dzialkaSel)
         {
+            int r =-13;
             dzialkaPrv = dzialkaSel;
 
             initList(dzialkaPrv);
         }
 
-        public void saveWladanie()
+        public void saveWladanie( )
         {
-
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))

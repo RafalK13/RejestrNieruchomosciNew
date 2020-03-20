@@ -29,6 +29,8 @@ namespace RejestrNieruchomosciNew.Model
         PlatnoscUW PlatnoscUW { get; set; }
 
         void clone( IDzialka d);
+        object clone();
+
         void copy( IDzialka dzDest, IDzialka dzSource);
 
         IDzialka copy(IDzialka dzSource);

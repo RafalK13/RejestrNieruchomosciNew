@@ -2,8 +2,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
-using RejestrNieruchomosciNew.Model.Interfaces;
-using RejestrNieruchomosciNew.View;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -15,26 +13,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_PreviewViewModel : ViewModelBase
     {
-        
-
         #region ICommand
         public ICommand doubleClick { get; set; }
         public ICommand leftClick { get; set; }
         public ICommand clsClick { get; set; }
         public ICommand unselectClick { get; set; }
         #endregion
-
-        //public UserControl_InfoMainViewModel infoMain { get; set; }
-        //private UserControl_InfoMainViewModel _infoMain;
-        //public UserControl_InfoMainViewModel infoMain
-        //{
-        //    get => _infoMain;
-        //    set
-        //    {
-        //        _infoMain = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
 
         private int _selectedIndeks;
         public int selectedIndeks
@@ -68,18 +52,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 clearLists();
 
-                //wladanieList?.getList(dzialkaSel);
-                //RaisePropertyChanged("wladanieList");
-
-                //innePrawaList?.getList(dzialkaSel);
-                //RaisePropertyChanged("innePrawaList");
-
                 if (zmianaDzialkaSel != null)
                     zmianaDzialkaSel(null, EventArgs.Empty);
             }
         }
-
-        public IPodmiot podmiotList { get; set; }
 
         private ObrebClass _obreb;
         public ObrebClass obreb
@@ -126,28 +102,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        //private IWladanieList _wladanieList;
-        //public IWladanieList wladanieList
-        //{
-        //    get => _wladanieList;
-        //    set
-        //    {
-        //        _wladanieList = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-        //private IInnePrawaList _innePrawaList;
-        //public IInnePrawaList innePrawaList
-        //{
-        //    get => _innePrawaList;
-        //    set
-        //    {
-        //        _innePrawaList = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
         public IViewFactory factory { get; set; }
 
         #region Konstructor
@@ -155,10 +109,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             dzialkiBase = _dzialkiBase;
 
+            dzialkiBase.zmianaDzialkiList += DzialkiBase_zmianaDzialkiList;
+
             initCommands();
             allowDelete = false;
+        }
 
-
+        private void DzialkiBase_zmianaDzialkiList(object sender, EventArgs e)
+        {
+            dzialkaView.Refresh();
         }
         #endregion
 
@@ -174,11 +133,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void clearLists()
         {
-
             selectedIndeks = -1;
-            //wladanieList?.list.Clear();
-            //innePrawaList?.list.Clear();
-
         }
 
         private void onUnSelectClick()
@@ -199,11 +154,11 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
-        public void addDzialka(IDzialka dz)
-        {
-            dzialkiBase.AddRow(dz);
-            dzialkaView.Refresh();
-        }
+        //public void addDzialka(IDzialka dz)
+        //{
+        //    //dzialkiBase.AddRow(dz);
+        //    //dzialkaView.Refresh();
+        //}
 
         public void onDoubleClicked()
         {

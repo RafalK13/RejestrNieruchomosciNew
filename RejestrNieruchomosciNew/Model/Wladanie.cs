@@ -12,7 +12,7 @@ namespace RejestrNieruchomosciNew
         public int? PodmiotId { get; set; }
 
         public int? FormaWladaniaSloId { get; set; }
-        
+
         public FormaWladaniaSlo FormaWladaniaSlo { get; set; }
 
         public string Udzial { get; set; }
@@ -36,7 +36,8 @@ namespace RejestrNieruchomosciNew
 
         public string ZalPath
         {
-            get {
+            get
+            {
                 if (DzialkaId != null && PodmiotId != null)
                 {
                     return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\ProtokolPrzejecia\\" + PodmiotId;
@@ -58,7 +59,30 @@ namespace RejestrNieruchomosciNew
             }
         }
 
-      public object Clone()
+        public Wladanie()
+        {
+
+        }
+
+        public Wladanie(IWladanie w)
+        {
+            WladanieId = w.WladanieId;
+            DzialkaId = w.DzialkaId;
+            PodmiotId = w.PodmiotId;
+            FormaWladaniaSloId = w.FormaWladaniaSloId;
+            Udzial = w.Udzial;
+            DataOdbOd = w.DataOdbOd;
+            DataOdbDo = w.DataOdbDo;
+            NrProtPrzejecia = w.NrProtPrzejecia;
+            DataProtPrzej = w.DataProtPrzej;
+            Scan = w.Scan;
+            CelNabyciaId = w.CelNabyciaId;
+            TransK_Id = w.TransK_Id;
+            TransS_Id = w.TransS_Id;
+
+        }
+
+        public object Clone()
         {
             return this.MemberwiseClone();
         }
@@ -71,13 +95,13 @@ namespace RejestrNieruchomosciNew
                    FormaWladaniaSloId.Equals(other.FormaWladaniaSloId) &&
                    TransK_Id.Equals(other.TransK_Id) &&
                    TransS_Id.Equals(other.TransS_Id) &&
-                   string.Equals( Udzial,other.Udzial) &&
+                   string.Equals(Udzial, other.Udzial) &&
                    DataOdbOd.Equals(other.DataOdbOd) &&
                    DataOdbDo.Equals(other.DataOdbDo) &&
                    string.Equals(NrProtPrzejecia, other.NrProtPrzejecia) &&
                    string.Equals(DataProtPrzej, other.DataProtPrzej) &&
                    string.Equals(CelNabyciaId, other.CelNabyciaId) &&
-                   string.Equals(Scan, other.Scan); 
+                   string.Equals(Scan, other.Scan);
         }
     }
 

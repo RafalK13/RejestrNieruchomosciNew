@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -64,6 +65,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IInnePrawa innePrawa { get; set; }
 
+        public ObservableCollection<IInnePrawa> inneListLok { get; set; }
         public IInnePrawaList innePrawaList { get; set; }
 
         public DecyzjeAdministracyjne decyzjeAdmin { get; set; }
@@ -113,6 +115,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _innePrawaList.getList(userPrev.dzialkaSel);
+
+                inneListLok = new ObservableCollection<IInnePrawa>(_innePrawaList.list.Select(r => new InnePrawa(r)).ToList());
             }
 
             podmiotDetail = false;
@@ -198,6 +202,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
+            innePrawaList.list = new ObservableCollection<IInnePrawa>(inneListLok.Select(r => new InnePrawa(r)).ToList());
             innePrawaList.save();
         }
 
@@ -210,7 +215,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                     innePrawa.DzialkaId = dzialkaId;
                     innePrawa.PodmiotId = selectedPodmId;
 
-                    innePrawaList.list.Add(new InnePrawa()
+                    //innePrawaList.list.Add(new InnePrawa()
+                    inneListLok.Add( new InnePrawa()
                     {
                         DzialkaId = innePrawa.DzialkaId,
                         PodmiotId = innePrawa.PodmiotId,
@@ -231,7 +237,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
         private void onPodmiotDel()
         {
-            innePrawaList.list.Remove(innePrawaSel);
+            inneListLok.Remove(innePrawaSel);
+            //innePrawaList.list.Remove(innePrawaSel);
             innePrawaSel = null;
         }
         #endregion

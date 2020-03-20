@@ -1,8 +1,10 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -37,6 +39,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         public IWladanie wladanie { get; set; }
+
+        public ObservableCollection<IWladanie> wladListLok { get; set; }
 
         public IWladanieList wladanieList { get; set; }
 
@@ -115,7 +119,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private int dzialkaId;
 
-        public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev)
+        public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev,
+                                               IWladanieList _wladanieList)
         {
             initButtons();
 
@@ -124,6 +129,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (userPrev.dzialkaSel != null)
             {
                 dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+                _wladanieList.getList(userPrev.dzialkaSel);
+
+                wladListLok = new ObservableCollection<IWladanie>(_wladanieList.list.Select(r => new Wladanie(r)).ToList());
             }
 
             podmiotDetail = false;
@@ -170,7 +178,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                     wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = selectedPodmId;
 
-                    wladanieList.list.Add(new Wladanie()
+                    //wladanieList.list.Add(new Wladanie()
+                    wladListLok.Add(new Wladanie()
                     {
                         DzialkaId = wladanie.DzialkaId,
                         PodmiotId = wladanie.PodmiotId,
@@ -184,23 +193,27 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotDel()
         {
-            wladanieList.list.Remove(wladanieSel);
+            //wladanieList.list.Remove(wladanieSel);
+            wladListLok.Remove(wladanieSel);
             wladanieSel = null;
         }
 
         private void onWlascAdd()
         {
-         
             //platnosci.save();
+
+            wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
             wladanieList.saveWladanie();
         }
 
         private bool testWlascExist()
         {
-            if (wladanieList.list.Count == 0)
+            //if (wladanieList.list.Count == 0)
+            if(wladListLok.Count() == 0 )
                 return false;
 
-            var v = wladanieList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
+            //var v = wladanieList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
+            var v = wladListLok.Where(r => r.PodmiotId == selectedPodmId).Count();
 
             return (v == 0) ? false : true;
         }

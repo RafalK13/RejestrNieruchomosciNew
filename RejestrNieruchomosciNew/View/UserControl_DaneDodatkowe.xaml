@@ -130,21 +130,21 @@
                         Style="{StaticResource LabelOpis}" />
                     <TextBox
                          Margin="10,5,10,0"
-                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.sasiedztwo}"
+                         Text="{Binding userControl_DaneDod.dzialka.sasiedztwo}"
                          Style="{StaticResource tekskBoxOpis}"/>
                     <Label  
                         Content="Dostęp do drogi publicznej"
                         Style="{StaticResource LabelOpis}"/>
                     <TextBox
                          Margin="10,5,10,0"
-                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.dostDoDrogi}"
+                         Text="{Binding userControl_DaneDod.dzialka.dostDoDrogi}"
                          Style="{StaticResource tekskBoxOpis}"/>
                     <Label  
                         Content="Nawierzchnia drogi dojazdowej"
                         Style="{StaticResource LabelOpis}"/>
                     <TextBox
                          Margin="10,5,10,0"
-                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.rodzNaw}"
+                         Text="{Binding userControl_DaneDod.dzialka.rodzNaw}"
                          Style="{StaticResource tekskBoxOpis}"/>
             </StackPanel>
     </Grid>
@@ -165,7 +165,7 @@
                         Style="{StaticResource LabelOpis}" />
             <TextBox
                          Margin="10,5,10,0"
-                Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.lokalizacja}"
+                         Text="{Binding userControl_DaneDod.dzialka.lokalizacja, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource tekskBoxOpis}"/>
 
             <Label      
@@ -173,7 +173,7 @@
                         Style="{StaticResource LabelOpis}" />
             <TextBox
                          Margin="10,5,10,0"
-                Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.uzbrojenie}"
+                         Text="{Binding userControl_DaneDod.dzialka.uzbrojenie}"
                          Style="{StaticResource tekskBoxOpis}"/>
 
             <Label  
@@ -181,7 +181,7 @@
                         Style="{StaticResource LabelOpis}" />
             <TextBox
                          Margin="10,5,10,0"
-                         Text="{Binding userControl_DaneDod.userPrev.dzialkaSel.kształt}"
+                         Text="{Binding userControl_DaneDod.dzialka.ksztalt}"
                          Style="{StaticResource tekskBoxOpis}"/>
         </StackPanel>
 
@@ -201,7 +201,7 @@
                 <ComboBox Margin="20,10,10,10"
                           HorizontalAlignment="Left"
                           ItemsSource="{Binding userControl_DaneDod.nadzorKons.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          SelectedValue="{Binding  userControl_DaneDod.userPrev.dzialkaSel.NadzorKonserwSloId}"
+                          SelectedValue="{Binding  userControl_DaneDod.dzialka.NadzorKonserwSloId}"
                           SelectedValuePath="NadzorKonserwSloId"
                           DisplayMemberPath="Nazwa"  
                           Width="200"/>

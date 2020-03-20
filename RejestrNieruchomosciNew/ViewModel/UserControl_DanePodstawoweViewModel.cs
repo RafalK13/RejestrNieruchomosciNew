@@ -28,7 +28,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void UserPrev_zmianaDzialkaSel(object sender, EventArgs e)
         {
-            dzialka = userPrev.dzialkaSel;
+            //dzialka = userPrev.dzialkaSel;
         }
 
         private IDzialka _dzialka;
@@ -105,7 +105,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void OnAddDzialkaClick()
         {
-
             switch (changeMode)
             {
                 case ChangeMode.add:
