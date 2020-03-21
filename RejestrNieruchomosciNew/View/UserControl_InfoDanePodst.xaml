@@ -4,27 +4,198 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBox Grid.Column="0"
-                  Text="{Binding userControl_prev.infoMain.prev.dzialkaSel.Numer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  />
+             d:DesignHeight="300" d:DesignWidth="1300"
+             x:Name="InfoDanePodstawowe"
+             >
+    <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
+        <con:slownikIdToName x:Key="slowConvert"/>
+        <con:uliceIdToUliceName x:Key="uliceCon"/>
+        <Style TargetType="Label" x:Key="labelRaf">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="110"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
+        </Style>
+    </UserControl.Resources>
 
-        <TextBox Grid.Column="0"
-                  Text="{Binding infoMain.infoPodst.p.dzialkaSel.Numer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="0"
-                  Text="{Binding infoMain.name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  />
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
 
-        <TextBox Grid.Column="0"
-                  Text="{Binding userControl_prev.name1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  />
+        <ScrollViewer Grid.Column="0" 
+                      VerticalScrollBarVisibility="Auto"
+                      >
 
-        <TextBox Grid.Column="0"
-                  Text="{Binding modeMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  />
-    </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label  Grid.Row="0"
+                        Style="{StaticResource labelRaf}"
+                        Content="Dane podstawowe działki"
+                        />
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="2"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Obreb"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Obreb.Nazwa, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="3"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Gmina"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Obreb.GminaSlo.Nazwa, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="4"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="KW aktualne"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Kwakt, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="5"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="KW zrob."
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="6"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Powierzchnia"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.00}'}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="7"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Ulica">
+
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource uliceCon}" >
+                            <Binding  Path="DataContext.infoMain.infoPodst.prev.dzialkaSel.UliceSloId" ElementName="InfoDanePodstawowe"/>
+                            <Binding  Path="DataContext.infoMain.infoPodst.uliceSloList" ElementName="InfoDanePodstawowe"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--<view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Numer działki"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>-->
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

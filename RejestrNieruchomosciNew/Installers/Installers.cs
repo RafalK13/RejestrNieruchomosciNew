@@ -129,6 +129,8 @@ namespace RejestrNieruchomosciNew.Installers
             //container.Register(Component.For<UserControl_InfoDanePodst>());
             container.Register(Component.For<UserControl_InfoDanePodstViewModel>());
 
+            container.Register(Component.For<UserControl_InfoDaneDodViewModel>());
+
             //container.Register( Component.For<UserControl_InfoWladanie>());
             container.Register( Component.For<UserControl_InfoWladanieViewModel>());
 

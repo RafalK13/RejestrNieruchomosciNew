@@ -308,6 +308,7 @@
     <Compile Include="ViewModel\UserControl_DaneDodatkoweViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoDaneDodViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoDanePodstViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoMainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoWladanieViewModel.cs" />

@@ -11,11 +11,15 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
+
+
             if (values[0] == null)
                 return 0;
 
             if (values[1] == null)
                 return 0;
+
+            int R = 1;
 
             if (int.TryParse(values[0].ToString(), out int id))
             {
@@ -71,7 +75,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
 
-            int r13 = 1;
             if (values[0] == null)
                 return 0;
 
@@ -83,6 +86,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (values[3] == null)
                 return 0;
+
+            int r13 = 1;
 
             IEnumerable e = values[1] as IEnumerable;
 
