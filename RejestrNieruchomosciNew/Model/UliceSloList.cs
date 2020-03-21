@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -10,7 +12,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var v = new Context())
             {
-                list = new ObservableCollection<UliceSlo>( v.UliceSlo);
+                try
+                {
+                    list = new ObservableCollection<UliceSlo>(v.UliceSlo);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"UliceSloList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
 

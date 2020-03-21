@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -16,7 +17,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using ( var c = new Context())
             {
-                list = new ObservableCollection<INadzorKonserwSlo>( c.NadzorKonserwSlo.ToList());
+                try
+                {
+                    list = new ObservableCollection<INadzorKonserwSlo>(c.NadzorKonserwSlo.ToList());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"NadzorKonserwatoraList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
     }

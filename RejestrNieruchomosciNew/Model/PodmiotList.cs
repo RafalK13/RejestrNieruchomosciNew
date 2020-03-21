@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfControlLibraryRaf;
 
 namespace RejestrNieruchomosciNew.Model
@@ -27,8 +29,16 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new List<IPodmiot>( await c.PodmiotView.ToListAsync());
-                
+                try
+                {
+                    list = new List<IPodmiot>(await c.PodmiotView.ToListAsync());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"PodmiotList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
+
             }
         }
     }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -24,7 +26,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                listPlatnoscUW = new ObservableCollection<PlatnoscUW>( await c.PlatnoscUW.ToListAsync());
+                try
+                {
+                    listPlatnoscUW = new ObservableCollection<PlatnoscUW>(await c.PlatnoscUW.ToListAsync());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"PlatnoscList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
     }

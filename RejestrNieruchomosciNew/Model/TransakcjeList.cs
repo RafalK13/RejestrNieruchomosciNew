@@ -3,6 +3,7 @@ using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -28,7 +29,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (Context c = new Context())
             {
-                list = new ObservableCollection<ITransakcje>(c.Transakcje);
+                try
+                {
+                    list = new ObservableCollection<ITransakcje>(c.Transakcje);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"TransakcjeList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
 

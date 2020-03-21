@@ -181,13 +181,21 @@
                     Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
-                    <Button Content="Add"
+                    <Button Content="Zapisz"
+                            Style="{StaticResource buttonCommon}"
+                            IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
+                            Command="{Binding userControl_AddDanePod.OnAddDzialka}"
+                            />
+
+
+            <Button Content="Zapisz i zamknij"
                             Style="{StaticResource buttonCommon}"
                             IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
                             Command="{Binding userControl_AddDanePod.OnAddDzialka}"
                             com:CloseOnClickBehaviour.IsEnabled="True"/>
 
-                    <Button Content="Czyść"
+
+            <Button Content="Czyść"
                             Style="{StaticResource buttonCommon}"
                             Command="{Binding userControl_Wlasciciel.wlascCls}"/>
                     <Button 

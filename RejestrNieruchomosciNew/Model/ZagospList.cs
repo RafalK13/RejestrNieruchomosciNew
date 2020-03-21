@@ -1,40 +1,84 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class ZagospList : IZagospList
+    public class ZagospList : ViewModelBase,  IZagospList
     {
-        public ObservableCollection<IZagosp> list { get; set; }
+        public ObservableCollection<IZagosp> listAll { get; set; }
+
+        private ObservableCollection<IZagosp> _list;
+        public ObservableCollection<IZagosp> list
+        {
+            get => _list; set
+            {
+                _list = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private List<IZagosp> listOrg { get; set; }
         private List<IZagosp> listToAdd { get; set; }
         private List<IZagosp> listToMod { get; set; }
         private List<IZagosp> listToDel { get; set; }
 
         public string result;
+        private IDzialka dzialkaPrv;
+
+        public void initListAll()
+        {
+            using (Context c = new Context())
+            {
+                try
+                {
+                    listAll = new ObservableCollection<IZagosp>(c.Zagosp);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"ZagospodatowanieList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        private void initList(IDzialka dzialka)
+        {
+            if (dzialka != null)
+                list = new ObservableCollection<IZagosp>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId).ToList());
+
+            listOrg = ObservableCon<IZagosp>.ObservableToList(list);
+
+            listToAdd = new List<IZagosp>();
+            listToMod = new List<IZagosp>();
+            listToDel = new List<IZagosp>();
+            result = string.Empty;
+        }
+
+        public ZagospList()
+        {
+            list = new ObservableCollection<IZagosp>();
+        }
 
         public ZagospList(UserControl_PreviewViewModel userPrev)
         {
+           
+            list = new ObservableCollection<IZagosp>();
             if (userPrev.dzialkaSel != null)
-            {
-                using (var c = new Context())
-                {
+                initListAll();
+        }
 
-                    list = new ObservableCollection<IZagosp>(c.Zagosp.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId));
+        public void getList(IDzialka dzialkaSel)
+        {
+            dzialkaPrv = dzialkaSel;
 
-                    listOrg = ObservableCon<IZagosp>.ObservableToList(list);
-
-                    listToAdd = new List<IZagosp>();
-                    listToMod = new List<IZagosp>();
-                    listToDel = new List<IZagosp>();
-
-                    result = string.Empty;
-                }
-            }
+            initList(dzialkaPrv);
         }
 
         public void saveZagosp()
@@ -71,6 +115,8 @@ namespace RejestrNieruchomosciNew.Model
             if (listToMod.Count() > 0)
                 ModRows();
 
+            initListAll();
+            initList(dzialkaPrv);
         }
 
         public void AddRows()

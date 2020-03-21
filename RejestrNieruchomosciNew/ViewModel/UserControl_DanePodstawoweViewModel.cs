@@ -112,6 +112,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                     break;
                 case ChangeMode.mod:
                     dzialkaList.ModRow(dzialka);
+
+                    userPrev.dzialkaSel = dzialka;
                     break;
             }
             userPrev.dzialkaView.Refresh();

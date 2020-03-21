@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -10,7 +12,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new ObservableCollection<DecyzjeAdministracyjne>(c.DecyzjeAdministracyjne);
+                try
+                {
+                    list = new ObservableCollection<DecyzjeAdministracyjne>(c.DecyzjeAdministracyjne);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"DecyzjeAdministracyjneList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
 

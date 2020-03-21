@@ -33,8 +33,17 @@ namespace RejestrNieruchomosciNew.Model
 
         private void initDzialkaList()
         {
-            Task task = Task.Run(() => fillDzialkaList());
-            task.Wait();
+            try
+            {
+                Task task = Task.Run(() => fillDzialkaList());
+                task.Wait();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show( $"DzialkaList\r\n{e.Message}");
+                Environment.Exit(0);
+            }
+
         }
 
         private async Task fillDzialkaList()

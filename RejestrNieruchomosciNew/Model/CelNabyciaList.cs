@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -19,7 +20,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new ObservableCollection<ICelNabycia>(c.CelNabyciaView);
+                try
+                {
+                    list = new ObservableCollection<ICelNabycia>(c.CelNabyciaView);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"CelNabyciaList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
 
             obIstnList = new ObservableCollection<ICelNabycia>( list.Where( r=>r.Rodzaj == "Obiekt"));

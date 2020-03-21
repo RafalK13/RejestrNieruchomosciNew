@@ -1,6 +1,8 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using RejestrNieruchomosciNew.Installers;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
@@ -20,8 +22,21 @@ namespace RejestrNieruchomosciNew
            
             container.Install(FromAssembly.This());
 
-            //var view = container.Resolve<WindowTestRaf>();
-            var view = container.Resolve<MainView>();
+            using (var c = new Context())
+            {
+                try
+                {
+                    c.Database.CanConnect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show( $"Błąd podłączenia z bazą danych\r\n{ ex.Message}");
+                    Environment.Exit(0);
+                }
+            }
+
+                //var view = container.Resolve<WindowTestRaf>();
+                var view = container.Resolve<MainView>();
             //var view = container.Resolve<Window2>();
             view.Show();
 

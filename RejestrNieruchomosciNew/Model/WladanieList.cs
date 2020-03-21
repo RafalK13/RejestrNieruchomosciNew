@@ -36,8 +36,16 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (Context c = new Context())
             {
-                listAll = new ObservableCollection<IWladanie>(c.Wladanie.Include(f => f.FormaWladaniaSlo)
-                                                                        .Include(t => t.TransakcjeK_Wlad));
+                try
+                {
+                    listAll = new ObservableCollection<IWladanie>(c.Wladanie.Include(f => f.FormaWladaniaSlo)
+                                                                            .Include(t => t.TransakcjeK_Wlad));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"WladanieList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
                 #region Old version
                 //list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
                 //                                                                                      && r.TransS_Id == null)

@@ -1,4 +1,5 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 
@@ -17,7 +18,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new ObservableCollection<UzytkiSlo>(c.UzytkiSlo);
+                try
+                {
+                    list = new ObservableCollection<UzytkiSlo>(c.UzytkiSlo);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"UzytkiSloLIst\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
     }

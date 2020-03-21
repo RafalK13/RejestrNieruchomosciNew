@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -60,6 +61,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IZagospList zagospList { get; set; }
 
+        public ObservableCollection<IZagosp> zagospListLok { get; set; }
+
         private string _nazwa;
         public string nazwa
         {
@@ -78,14 +81,27 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand zagospAdd { get; set; }
         public ICommand zagospCls { get; set; }
 
-        public UserControl_ZagospViewModel()
+        public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev,
+                                           IZagospList _zagospList)
+        {
+            initButtons();
+
+            if (userPrev.dzialkaSel != null)
+            {
+                _zagospList.getList(userPrev.dzialkaSel);
+
+                zagospListLok = new ObservableCollection<IZagosp>(_zagospList.list.Select(r => new Zagosp(r)).ToList());
+            }
+
+            podmiotDetail = false;
+        }
+
+        private void initButtons()
         {
             nazwaAdd = new RelayCommand(onNazwaAll);
             nazwaDel = new RelayCommand(onNazwaDel);
             zagospAdd = new RelayCommand(onZagospAdd);
             zagospCls = new RelayCommand(onZagospCls);
-
-            podmiotDetail = false;
         }
 
         private void onZagospCls()
@@ -97,6 +113,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onZagospAdd()
         {
+            zagospList.list = new ObservableCollection<IZagosp>(zagospListLok.Select(r => new Zagosp(r)).ToList());
             zagospList.saveZagosp();
         }
 
@@ -109,7 +126,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (testIfExist())
             {
-                zagospList.list.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
+                zagospListLok.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
+                //zagospList.list.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
                 nazwa = string.Empty;
                 zagospSel = null;
             }

@@ -161,7 +161,7 @@
                     <DataGrid   Grid.Row="2"
                                 VerticalAlignment="Top"
                                 Margin="3,140,10,0"
-                                ItemsSource="{Binding userControl_Zagosp.zagospList.list, Mode=TwoWay}"
+                                ItemsSource="{Binding userControl_Zagosp.zagospListLok, Mode=TwoWay}"
                                 SelectedItem="{Binding userControl_Zagosp.zagospSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 CanUserSortColumns="False"
                                 FrozenColumnCount="1" 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -37,8 +38,16 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (Context c = new Context())
             {
-                listAll = new ObservableCollection<IInnePrawa>(c.InnePrawa.Include(a => a.RodzajInnegoPrawaSlo)
-                                                                          .Include(i=>i.PlatnoscInnePrawa));
+                try
+                {
+                    listAll = new ObservableCollection<IInnePrawa>(c.InnePrawa.Include(a => a.RodzajInnegoPrawaSlo)
+                                                                          .Include(i => i.PlatnoscInnePrawa));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"InnePrawaList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
 

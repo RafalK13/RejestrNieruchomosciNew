@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -33,7 +34,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (Context c = new Context())
             {
-                listAll = new ObservableCollection<Uzytki>(c.Uzytki);
+                try
+                {
+                    listAll = new ObservableCollection<Uzytki>(c.Uzytki);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"UzytkiList\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
 

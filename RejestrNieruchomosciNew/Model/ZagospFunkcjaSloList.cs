@@ -1,6 +1,8 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -12,7 +14,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new ObservableCollection<IZagospFunkcjaSlo>(c.ZagospFunkcjaSlo.ToList());
+                try
+                {
+                    list = new ObservableCollection<IZagospFunkcjaSlo>(c.ZagospFunkcjaSlo.ToList());
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"ZAgospodatowanieFunkcjaLIst\r\n{e.Message}");
+                    Environment.Exit(0);
+                }
             }
         }
     }

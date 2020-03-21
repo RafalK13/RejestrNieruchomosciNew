@@ -15,7 +15,7 @@ namespace RejestrNieruchomosciNew.Model
         public int? zadInwestSloId { get; set; }
         public int? celeKomSloId { get; set; }
 
-        
+
         public int? przedstSloId { get; set; }
 
         public Dzialka Dzialka { get; set; }
@@ -25,6 +25,25 @@ namespace RejestrNieruchomosciNew.Model
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public Zagosp()
+        {
+
+        }
+
+        public Zagosp(IZagosp z)
+        {
+            ZagospId = z.ZagospId;
+            DzialkaId = z.DzialkaId;
+            Nazwa = z.Nazwa;
+            ZagospStatusSloId = z.ZagospStatusSloId;
+            ZagospFunkcjaSloId = z.ZagospFunkcjaSloId;
+            istObiektySloId = z.istObiektySloId;
+            obiektyKomSloId = z.obiektyKomSloId;
+            zadInwestSloId = z.zadInwestSloId;
+            celeKomSloId = z.celeKomSloId;
+            przedstSloId = z.przedstSloId;
         }
     }
 }
