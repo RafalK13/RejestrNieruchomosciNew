@@ -215,11 +215,11 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             >
-            <Button Content="Dodaj"
+            <Button Content="Zapisz"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_DaneDod.daneDodAdd}"/>
 
-            <Button Content="Dodaj i zamknij"
+            <Button Content="Zapisz i zamknij"
                     Style="{StaticResource buttonCommon}"
                     Command="{Binding userControl_DaneDod.daneDodAdd}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>

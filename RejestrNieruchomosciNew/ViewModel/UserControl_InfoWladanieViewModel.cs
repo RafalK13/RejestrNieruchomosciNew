@@ -14,6 +14,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public RodzajDokumentuList rodzDokList { get; set; }
         public NazwaCzynnosciList nazwaCzynList { get; set; }
+        public ICelNabyciaList celNabyciaList { get; set; }
 
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel

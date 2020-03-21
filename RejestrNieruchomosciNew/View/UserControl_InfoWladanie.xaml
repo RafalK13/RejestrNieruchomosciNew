@@ -6,7 +6,7 @@
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="813"
+             d:DesignHeight="600" d:DesignWidth="1300"
              x:Name="InfoWlasciciel"
              >
     
@@ -27,7 +27,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="500"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -92,8 +92,16 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
-
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                
+                 
                 <Label Grid.Row="0"
                 Style="{StaticResource labelRaf}"
                 Content="Forma Władania"
@@ -158,14 +166,14 @@
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Tytuł dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Tytul, ElementName=InfoWlasciciel}"/>
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Tytul , ElementName=InfoWlasciciel}"/>
 
                 <view:UserControl_ElementInfo
                 Grid.Row="7"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Data dokumentu"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Data, ElementName=InfoWlasciciel}"/>
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Data, ElementName=InfoWlasciciel, StringFormat='{}{0:dd.MM.yyyy}'}"/>
 
                 <view:UserControl_ElementInfo
                 Grid.Row="8"
@@ -175,6 +183,77 @@
                 buttonVisibility="Visible"
                 IsHitTestVisible="True"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
+
+                <Label Grid.Row="0" Grid.Column="1"
+                Style="{StaticResource labelRaf}"
+                Content="Data obowiązywania dokumentu"
+                />
+
+                <view:UserControl_ElementInfo
+                 Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource userInfo}"
+                Margin="0,1,0,1"
+                labelRaf="Od"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.DataOdbOd, ElementName=InfoWlasciciel, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+
+                <view:UserControl_ElementInfo
+                 Grid.Row="2" Grid.Column="1"
+                Style="{StaticResource userInfo}"
+                Margin="0,1,0,1"
+                labelRaf="Do"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.DataOdbDo, ElementName=InfoWlasciciel, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+
+                <Label Grid.Row="3" Grid.Column="1"
+                Style="{StaticResource labelRaf}"
+                Content="Protokół przejęcia"
+                />
+
+                <view:UserControl_ElementInfo
+                 Grid.Row="4" Grid.Column="1"
+                Style="{StaticResource userInfo}"
+                Margin="0,1,0,1"
+                labelRaf="Numer"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.NrProtPrzejecia, ElementName=InfoWlasciciel}"/>
+
+                <view:UserControl_ElementInfo
+                 Grid.Row="5" Grid.Column="1"
+                Style="{StaticResource userInfo}"
+                Margin="0,1,0,1"
+                labelRaf="Data"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.DataProtPrzej, ElementName=InfoWlasciciel, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+
+                <view:UserControl_ElementInfo
+                Grid.Row="6" Grid.Column="1"
+                Style="{StaticResource userInfo}"
+                Margin="0,1,0,1"
+                labelRaf="Skan"
+                buttonVisibility="Visible"
+                IsHitTestVisible="True"
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
+
+                <Label Grid.Row="9" Grid.Column="0"
+                Style="{StaticResource labelRaf}"
+                Content="Cel nabycia prawa"
+                />
+                <TextBox Grid.Row="10" Grid.Column="0"
+                         Margin="5,0,0,0"
+                         Grid.RowSpan="3"
+                         TextWrapping="Wrap"
+                         >
+
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.CelNabyciaId"
+                                     ElementName="InfoWlasciciel"/>
+                            <Binding Path="DataContext.infoMain.infoWlad.celNabyciaList.list"
+                                     ElementName="InfoWlasciciel"/>
+                            <Binding Source="Id" Mode="OneWay"/>
+                            <Binding Source="Nazwa" Mode="OneWay"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                   
+                </TextBox>
+                        
 
             </Grid>
         </ScrollViewer>
