@@ -405,7 +405,7 @@
                             <Label Content="Od"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbOd, Converter={StaticResource dateConvert}}"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbOd, StringFormat='{}{0:dd.MM.yyyy}'}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
@@ -413,7 +413,7 @@
                             <Label Content="Do"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbDo, Converter={StaticResource dateConvert}}"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataOdbDo, StringFormat='{}{0:dd.MM.yyyy}'}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 
@@ -441,7 +441,7 @@
                             <Label Content="Data"                                       
                                       Style="{StaticResource label1}"/>
                             <TextBox
-                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataProtPrzej, Converter={StaticResource dateConvert}}"
+                                       Text="{Binding userControl_Wlasciciel.wladanieSel.DataProtPrzej, StringFormat='{}{0:dd.MM.yyyy}'}"
                                        Style="{StaticResource tekst}"/>
                         </StackPanel>
 

@@ -85,7 +85,7 @@ namespace RejestrNieruchomosciNew.Model
             set
             {
                 _Data = value;
-                RaisePropertyChanged("Data");
+                RaisePropertyChanged();
 
                 if (onChange != null)
                     onChange(this, EventArgs.Empty);

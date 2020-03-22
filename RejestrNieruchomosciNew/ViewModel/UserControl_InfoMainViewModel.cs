@@ -8,6 +8,8 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public UserControl_InfoWladanieViewModel infoWlad { get; set; }
 
+        public UserControl_InfoInnePrawaViewModel infoInnePrawa { get; set; }
+
         public UserControl_InfoDanePodstViewModel infoPodst { get; set; }
 
         public UserControl_InfoDaneDodViewModel infoDod { get; set; }

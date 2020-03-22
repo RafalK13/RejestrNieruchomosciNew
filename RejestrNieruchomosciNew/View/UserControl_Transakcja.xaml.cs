@@ -25,8 +25,6 @@ namespace RejestrNieruchomosciNew.View
             clickZal = new RelayCommand(onClickZalacznik);
         }
 
-
-
         public string zalPath
         {
             get { return (string)GetValue(zalPathProperty); }
@@ -35,8 +33,6 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty zalPathProperty =
             DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null));
-
-
 
         #region Transakcje
         public ITransakcje transakcje

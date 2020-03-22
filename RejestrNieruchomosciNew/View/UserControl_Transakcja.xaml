@@ -23,7 +23,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <convert:DateConverter x:Key="cnvData"/>
+          
     </UserControl.Resources>
 
     <Grid >
@@ -77,14 +77,14 @@
         
         <TextBox Grid.Row="4" 
                  Margin="3"
-                 Text="{Binding transakcje.Data, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Text="{Binding transakcje.Data, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat='{}{0:dd.MM.yyyy}'}"/>
 
         <userCon:UserControl_Attachment Grid.Row="5"
                                         Margin="3"
                                         IsEnabled="{Binding zalButton}"
                                         pathRaf="{Binding zalPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         />
-
+        <!--, StringFormat='{}{0:dd.MM.yyyy}'-->
         <!--<Button  Grid.Row="5" 
                  Content="Zalczniki"
                  Command="{Binding clickZal}"
