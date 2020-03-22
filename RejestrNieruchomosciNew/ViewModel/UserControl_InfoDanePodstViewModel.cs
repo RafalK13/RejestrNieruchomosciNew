@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoDanePodstViewModel : ViewModelBase
     {
-        public UserControl_PreviewViewModel prev { get; set; }
-
         public UliceSloList uliceSloList { get; set; }
+        public INadzorKonserwatoraSloList nadzorList { get; set; }
 
         public UserControl_InfoDanePodstViewModel()
         {

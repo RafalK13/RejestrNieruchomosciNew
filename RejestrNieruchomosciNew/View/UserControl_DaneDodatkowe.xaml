@@ -133,7 +133,7 @@
                          Text="{Binding userControl_DaneDod.dzialka.sasiedztwo}"
                          Style="{StaticResource tekskBoxOpis}"/>
                     <Label  
-                        Content="Dostęp do drogi publicznej"
+                        Content="Dostęp do drogi"
                         Style="{StaticResource LabelOpis}"/>
                     <TextBox
                          Margin="10,5,10,0"
@@ -153,7 +153,7 @@
                   Style="{StaticResource scrollViewer}">
     <Grid Grid.Column="1">
         <StackPanel>
-            <Label  Margin="10,10,10,0"
+            <Label      Margin="10,10,10,0"
                         Content="Ogólne informacje o działce"
                         FontWeight="Bold"                      
                         FontSize="19"
@@ -165,7 +165,7 @@
                         Style="{StaticResource LabelOpis}" />
             <TextBox
                          Margin="10,5,10,0"
-                         Text="{Binding userControl_DaneDod.dzialka.lokalizacja, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding userControl_DaneDod.dzialka.lokalizacja}"
                          Style="{StaticResource tekskBoxOpis}"/>
 
             <Label      

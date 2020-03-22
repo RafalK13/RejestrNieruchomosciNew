@@ -5,11 +5,204 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel >
-        <view:UserControl_ElementInfo
-                Margin="10,10,10,5"/>
-        
-        
-    </StackPanel>
+             x:Name="InfoDaneDodatkowe"
+             d:DesignHeight="1000" d:DesignWidth="1000">
+    <UserControl.Resources>
+
+        <Style TargetType="Label" x:Key="labelRaf">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="tekskBoxOpis" TargetType="TextBox">
+            <Setter Property="MinLines" Value="8"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+        </Style>
+
+        <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="110"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
+        </Style>
+
+        <Style x:Key="label" TargetType="Label">
+            <Setter Property="Margin" Value="10,10,0,0"></Setter>
+            
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="19"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <ScrollViewer Grid.Column="0" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label  Grid.Row="0"
+                        Style="{StaticResource labelRaf}"
+                        Content="Dane opisowe działki"/>
+                <Label  Grid.Row="1"
+                        Content="Lokalizacja"/>
+                <TextBox
+                        Grid.Row="2" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.lokalizacja}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+                <Label  Grid.Row="6"
+                        Content="Uzbrojenie"/>
+                <TextBox
+                        Grid.Row="7" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.uzbrojenie}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+
+                <Label  Grid.Row="11"
+                        Content="Kształt"/>
+                <TextBox
+                        Grid.Row="12" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.ksztalt}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+            </Grid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label  Grid.Row="1"
+                        Content="Sąsiedztwo"/>
+                <TextBox
+                        Grid.Row="2" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.sasiedztwo}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+                <Label  Grid.Row="6"
+                        Content="Uzbrojenie"/>
+                <TextBox
+                        Grid.Row="7" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.uzbrojenie}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+
+                <Label  Grid.Row="11"
+                        Content="ksztalt"/>
+                <TextBox
+                        Grid.Row="12" Grid.RowSpan="4"
+                        Margin="5,0,10,0"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.ksztalt}"
+                        Style="{StaticResource tekskBoxOpis}"/>
+            </Grid>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="2" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label  Grid.Row="0"
+                        Style="{StaticResource labelRaf}"
+                        Content="Użytki gruntowe"/>
+                <DataGrid Grid.Row="1"
+                          Width="180"
+                          Margin="5,0,10,5"
+                          ItemsSource="{Binding infoMain.infoDod.uzytki.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                        
+                          IsReadOnly="True"
+                          CanUserAddRows="True" 
+                          CanUserDeleteRows="True"
+                          SelectionMode="Single"
+                          RowDetailsVisibilityMode="Visible"
+                          RowHeaderWidth="13"
+                          AutoGenerateColumns="False"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Użytek"
+                                            Binding="{ Binding UzytkiSlo.Nazwa}"
+                                            Width="*"
+                                            />
+                        <DataGridTextColumn Header="Powierzchnia"
+                                            Binding="{ Binding Pow, StringFormat='{}{0:#,0.00}'}"
+                                            Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+
 </UserControl>

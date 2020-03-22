@@ -11,10 +11,14 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_InfoDanePodstViewModel infoPodst { get; set; }
 
         public UserControl_InfoDaneDodViewModel infoDod { get; set; }
-        
+            
+        public UserControl_PreviewViewModel prevModel { get; set; }
+
+        public UserControl_InfoPlatnoscUWViewModel infoPlat { get; set; }
+
         public UserControl_InfoMainViewModel()
         {
-            // obrebList.obrebValue
+           
         }
     }
 }

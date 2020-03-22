@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
@@ -22,6 +23,7 @@ namespace RejestrNieruchomosciNew.Model
                 RaisePropertyChanged();
             }
         }
+
         private List<Uzytki> listOrg { get; set; }
         private List<Uzytki> listToAdd { get; set; }
         private List<Uzytki> listToMod { get; set; }
@@ -36,7 +38,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<Uzytki>(c.Uzytki);
+                    listAll = new ObservableCollection<Uzytki>(c.Uzytki.Include( r=>r.UzytkiSlo ));
                 }
                 catch (Exception e)
                 {
@@ -47,8 +49,7 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public void initList( IDzialka dz)
-        {
-            
+        {       
             list = new ObservableCollection<Uzytki>( listAll.Where(r => r.DzialkaId == dz.DzialkaId));
             listOrg = ObservableCon<Uzytki>.ObservableToList(list);
            

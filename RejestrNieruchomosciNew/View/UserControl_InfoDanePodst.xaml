@@ -7,7 +7,7 @@
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="1300"
+             d:DesignHeight="900" d:DesignWidth="1300"
              x:Name="InfoDanePodstawowe"
              >
     <UserControl.Resources>
@@ -19,14 +19,14 @@
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
-            <Setter Property="widthLabelRaf" Value="110"/>
+            <Setter Property="widthLabelRaf" Value="130"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
         </Style>
     </UserControl.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="270"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -68,50 +68,49 @@
 
                 <Label  Grid.Row="0"
                         Style="{StaticResource labelRaf}"
-                        Content="Dane podstawowe działki"
-                        />
+                        Content="Dane podstawowe działki"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="1"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="2"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Obreb"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Obreb.Nazwa, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.Nazwa, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="3"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Gmina"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Obreb.GminaSlo.Nazwa, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.GminaSlo.Nazwa, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="4"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="KW aktualne"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Kwakt, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwakt, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="5"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="KW zrob."
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="6"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Powierzchnia"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.00}'}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.00}'}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="7"
@@ -121,37 +120,29 @@
 
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource uliceCon}" >
-                            <Binding  Path="DataContext.infoMain.infoPodst.prev.dzialkaSel.UliceSloId" ElementName="InfoDanePodstawowe"/>
+                            <Binding  Path="DataContext.infoMain.prevModel.dzialkaSel.UliceSloId" ElementName="InfoDanePodstawowe"/>
                             <Binding  Path="DataContext.infoMain.infoPodst.uliceSloList" ElementName="InfoDanePodstawowe"/>
                         </MultiBinding>
                     </view:UserControl_ElementInfo.tekstRaf>
                 </view:UserControl_ElementInfo>
 
+                <view:UserControl_ElementInfo
+                        Grid.Row="8"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Nadzór konserwatora">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}" >
+                            <Binding  Path="DataContext.infoMain.prevModel.dzialkaSel.NadzorKonserwSloId" 
+                                      ElementName="InfoDanePodstawowe"/>
+                            <Binding  Path="DataContext.infoMain.infoPodst.nadzorList.list" 
+                                      ElementName="InfoDanePodstawowe"/>
+                            <Binding Source="NadzorKonserwSloId"/>
+                            <Binding Source="Nazwa" />
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
 
                 <!--<view:UserControl_ElementInfo
                         Grid.Row="1"

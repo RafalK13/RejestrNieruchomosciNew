@@ -85,8 +85,7 @@ namespace RejestrNieruchomosciNew
                     zmiana(null, EventArgs.Empty);
             }
         }
-        //public UliceSlo UlicaSlo { get; set; }
-
+       
         public int? NadzorKonserwSloId { get; set; }
         public NadzorKonserwSlo NadzorKonserwSlo { get; set; }
 

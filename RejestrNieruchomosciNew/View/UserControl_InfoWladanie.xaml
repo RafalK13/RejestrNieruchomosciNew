@@ -143,22 +143,20 @@
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo 
-                Grid.Row="5"
-                Style="{StaticResource userInfo}"
-                Margin="0,1,0,1"
-                labelRaf="Nazwa czynności">
-                    <!--tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>-->
-                    <view:UserControl_ElementInfo.tekstRaf>
-                        <MultiBinding Converter="{StaticResource slowConvert}">
-                            <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
-                                 ElementName="InfoWlasciciel"/>
-                            <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
-                                 ElementName="InfoWlasciciel"/>
-                            <Binding Source="NazwaCzynnosciSloId"/>
-                            <Binding Source="Nazwa"/>
-                        </MultiBinding>
+                        Grid.Row="5"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Nazwa czynności"> 
+                        <view:UserControl_ElementInfo.tekstRaf>
+                            <MultiBinding Converter="{StaticResource slowConvert}">
+                                <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
+                                         ElementName="InfoWlasciciel"/>
+                                <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
+                                         ElementName="InfoWlasciciel"/>
+                                <Binding Source="NazwaCzynnosciSloId"/>
+                                <Binding Source="Nazwa"/>
+                            </MultiBinding>
                     </view:UserControl_ElementInfo.tekstRaf>
-
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo

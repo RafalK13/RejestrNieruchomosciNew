@@ -10,9 +10,14 @@
     <Grid>
         <TabControl Grid.Row="1" Margin="10,0,20,20">
 
+            <TabItem Header="Płatkość UW">
+                <view:UserControl_InfoPlatnoscUW/>
+            </TabItem>
+
             <TabItem Header="Dane podstawowe">
                 <view:UserControl_InfoDanePodst/>
             </TabItem>
+            
 
             <TabItem Header="Dane dodatkowe">
                 <view:UserControl_InfoDaneDodat/>
@@ -20,10 +25,6 @@
 
             <TabItem Header="Własność">
                 <view:UserControl_InfoWladanie/>
-            </TabItem>
-
-            <TabItem Header="Płatkość UW">
-                <view:UserControl_InfoPlatnoscUW/>
             </TabItem>
 
             <TabItem Header="Inne Prawa">
