@@ -119,6 +119,7 @@
             </TabItem>
 
             <TabItem Header="Dane Dodatkowe"
+                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
             <view:UserControl_DaneDodatkowe/>
                    

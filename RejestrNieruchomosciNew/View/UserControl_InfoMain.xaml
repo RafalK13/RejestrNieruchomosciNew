@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TabControl Grid.Row="1" Margin="10,0,20,20">
+        <TabControl Grid.Row="1" Margin="10,0,20,20" Name="TabControlMain">
 
             <TabItem Header="Inne Prawa">
                 <view:UserControl_InfoInnePrawa/>
@@ -30,11 +30,12 @@
                 <view:UserControl_InfoWladanie/>
             </TabItem>
 
-            
-            
             <TabItem Header="Zagospodarowanie działki">
                 <view:UserControl_InfoZagosp/>
             </TabItem>
         </TabControl>
+
+       
+
     </Grid>
 </UserControl>

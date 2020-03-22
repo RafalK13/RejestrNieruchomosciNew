@@ -15,6 +15,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public DateTime? DataObowOd { get; set; }
         public DateTime? DataObowDo { get; set; }
+
         public string ProtPrzejkNr { get; set; }
         public DateTime? ProtPrzejData { get; set; }
         public string ProtPrzejScan { get; set; }
@@ -101,6 +102,7 @@ namespace RejestrNieruchomosciNew.Model
             DzialkaId = inne.DzialkaId;
             PodmiotId = inne.PodmiotId;
             RodzajInnegoPrawaSloId = inne.RodzajInnegoPrawaSloId;
+            DecyzjeAdministracyjneId = inne.DecyzjeAdministracyjneId;
             DataObowOd = inne.DataObowOd;
             DataObowDo = inne.DataObowDo;
             ProtPrzejkNr = inne.ProtPrzejkNr;

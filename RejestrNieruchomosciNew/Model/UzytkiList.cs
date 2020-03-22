@@ -50,7 +50,8 @@ namespace RejestrNieruchomosciNew.Model
 
         public void initList( IDzialka dz)
         {       
-            list = new ObservableCollection<Uzytki>( listAll.Where(r => r.DzialkaId == dz.DzialkaId));
+            if( dz!= null)
+                list = new ObservableCollection<Uzytki>( listAll.Where(r => r.DzialkaId == dz.DzialkaId));
             listOrg = ObservableCon<Uzytki>.ObservableToList(list);
            
             listToAdd = new List<Uzytki>();

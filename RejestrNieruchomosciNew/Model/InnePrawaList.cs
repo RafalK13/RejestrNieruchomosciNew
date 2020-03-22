@@ -41,7 +41,10 @@ namespace RejestrNieruchomosciNew.Model
                 try
                 {
                     listAll = new ObservableCollection<IInnePrawa>(c.InnePrawa.Include(a => a.RodzajInnegoPrawaSlo)
-                                                                          .Include(i => i.PlatnoscInnePrawa));
+                                                                              .Include(t => t.TransakcjeK_InnePr)
+                                                                              .Include(i => i.PlatnoscInnePrawa)
+                                                                              .Include(d => d.DecyzjeAdministracyjne)
+                                                                              );
                 }
                 catch (Exception e)
                 {

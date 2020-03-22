@@ -94,6 +94,7 @@
         <!--TekstPropALL="{Binding numerDec, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
                     selectedIdRafALL="{Binding selectedIdDec, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"-->
         <TextBlock          Grid.Column="0" Grid.Row="1" 
+                            Margin="7,0,0,0"
                                     Text="Podmiot wydający"  
                                     TextWrapping="Wrap"/>
         <conRaf:DataGridRafALL
@@ -121,7 +122,7 @@
                                     Style="{StaticResource labelTab}"/>
         <TextBox        Grid.Column="1" Grid.Row="2" 
                                     Margin="3"
-                                    Text="{Binding decyzjeAdmin.DataDecyzji, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Text="{Binding decyzjeAdmin.DataDecyzji, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat='{}{0:dd.MM.yyyy}'}" 
                                     />
         <Label          Grid.Column="0" Grid.Row="3" 
                                     Content="Przedmiot"  

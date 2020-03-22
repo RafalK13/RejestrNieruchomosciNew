@@ -27,7 +27,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -46,10 +46,12 @@
                    Panel.ZIndex="13" 
                    />
 
-         <DataGrid Grid.Column="0"
-                  ItemsSource="{Binding infoMain.infoWlad.wladanieList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding infoMain.infoWlad.wladanieSel, Mode=TwoWay}"
-                  CanUserSortColumns="False"
+         <DataGrid
+                        Name="DataGridWladanie"
+                        Grid.Column="0"
+                        ItemsSource="{Binding infoMain.infoWlad.wladanieList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding infoMain.infoWlad.wladanieSel, Mode=TwoWay}"
+                        CanUserSortColumns="False"
                         FrozenColumnCount="1" 
                         IsReadOnly="True"
                         CanUserAddRows="False"
@@ -64,6 +66,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Podmiot" 
                                             Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
                     <DataGridTextColumn.Binding>
                         <MultiBinding
                                      Converter="{StaticResource parsonConvert}" >
@@ -81,6 +88,9 @@
                       HorizontalScrollBarVisibility="Auto">
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -132,18 +142,23 @@
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Numer dokumentu"
-                >
+                tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Numer, ElementName=InfoWlasciciel}"/>
+
+                <view:UserControl_ElementInfo 
+                        Grid.Row="5"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Nazwa czynności">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource rodzDokConvert}">
                             <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.RodzajDokumentuSloId"/>
                             <Binding  ElementName="InfoWlasciciel" Path="DataContext.infoMain.infoWlad.rodzDokList"/>
                         </MultiBinding>
                     </view:UserControl_ElementInfo.tekstRaf>
-
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo 
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Nazwa czynności"> 
@@ -160,21 +175,21 @@
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo
-                Grid.Row="6"
+                Grid.Row="7"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Tytuł dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Tytul , ElementName=InfoWlasciciel}"/>
 
                 <view:UserControl_ElementInfo
-                Grid.Row="7"
+                Grid.Row="8"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Data dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Data, ElementName=InfoWlasciciel, StringFormat='{}{0:dd.MM.yyyy}'}"/>
 
                 <view:UserControl_ElementInfo
-                Grid.Row="8"
+                Grid.Row="9"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Skan"
@@ -229,11 +244,11 @@
                 IsHitTestVisible="True"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
 
-                <Label Grid.Row="9" Grid.Column="0"
+                <Label Grid.Row="10" Grid.Column="0"
                 Style="{StaticResource labelRaf}"
                 Content="Cel nabycia prawa"
                 />
-                <TextBox Grid.Row="10" Grid.Column="0"
+                <TextBox Grid.Row="11" Grid.Column="0"
                          Margin="5,0,0,0"
                          Grid.RowSpan="3"
                          TextWrapping="Wrap"
@@ -251,7 +266,11 @@
                     </TextBox.Text>
                    
                 </TextBox>
-                        
+
+                <!--<TextBox
+                Grid.Row="11" Grid.Column="1"
+                Text="{Binding ElementName=DataGridWladanie, Path=ActualWidth, Mode=OneWay}"/>-->
+
 
             </Grid>
         </ScrollViewer>

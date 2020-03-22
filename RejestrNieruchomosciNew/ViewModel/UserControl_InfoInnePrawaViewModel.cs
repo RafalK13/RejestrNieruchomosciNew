@@ -61,6 +61,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (prev != null)
             {
                 innePrawaList.getList(prev.dzialkaSel);
+
+                int r = 13;
             }
         }
 

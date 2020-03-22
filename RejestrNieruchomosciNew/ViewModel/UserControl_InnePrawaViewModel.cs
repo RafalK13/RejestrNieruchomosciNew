@@ -202,6 +202,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
+
+            int r1 = 13;
+            //    DecyzjeAdministracyjneId
             innePrawaList.list = new ObservableCollection<IInnePrawa>(inneListLok.Select(r => new InnePrawa(r)).ToList());
             innePrawaList.save();
         }
