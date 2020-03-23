@@ -164,14 +164,17 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
                                             Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
                             <DataGridTextColumn.Binding>
                                 <MultiBinding
-                                    Converter="{StaticResource parsonConvert}" >
+                                     Converter="{StaticResource parsonConvert}" >
                                     <Binding Path="PodmiotId"/>
                                     <Binding ElementName="WladanieWin" Path="DataContext.userControl_Wlasciciel.podmiotList"/>
                                 </MultiBinding>
-
-                            
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>
                         <DataGridTemplateColumn         

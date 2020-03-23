@@ -3,10 +3,226 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-       
-    </StackPanel>
+             x:Name="infoZagospWin"
+             d:DesignHeight="900" d:DesignWidth="1300">
+    <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
+        <con:slownikIdToName x:Key="slowConvert"/>
+        <Style TargetType="Label" x:Key="labelRaf">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="110"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <DataGrid   Grid.Column="0"
+                    ItemsSource="{Binding infoMain.infoZagosp.zagospList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding infoMain.infoZagosp.zagospSel, Mode=TwoWay}"
+                    CanUserSortColumns="False"
+                    FrozenColumnCount="1" 
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    CanUserDeleteRows="False" 
+                    CanUserReorderColumns="False"
+                    HeadersVisibility="Column"
+                    SelectionMode="Single"
+                    SelectionUnit="FullRow"
+                    VerticalScrollBarVisibility="Auto"
+                    AutoGenerateColumns="False"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Podmiot" 
+                                    Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="ZagospId"/>
+                            <Binding Path="DataContext.infoMain.infoZagosp.zagospList.list"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Source="ZagospId"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <ScrollViewer Grid.Column="1" 
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Row="0"
+                        Style="{StaticResource labelRaf}"
+                        Content=""
+                        />
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="1"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Status"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoZagosp.zagospSel.ZagospStatusSlo.Nazwa, ElementName=infoZagospWin}"/>
+
+                <view:UserControl_ElementInfo
+                        Grid.Row="2"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Funkcja"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoZagosp.zagospSel.ZagospFunkcjaSlo.Nazwa, ElementName=infoZagospWin}"/>
+
+                <view:UserControl_ElementInfo 
+                        Grid.Row="3"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Przedstawiciel">
+                    <view:UserControl_ElementInfo.tekstRaf>
+                            <MultiBinding Converter="{StaticResource parsonConvert}" >
+                            <Binding ElementName="infoZagospWin" Path="DataContext.infoMain.infoZagosp.zagospSel.przedstSloId"/>
+                            <Binding ElementName="infoZagospWin" Path="DataContext.infoMain.infoZagosp.podmiotList"/>
+                            </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+                <Label Grid.Row="0" Grid.Column="1"
+                Style="{StaticResource labelRaf}"
+                Content="Aktualne zagospodarowanie"/>
+                
+                <view:UserControl_ElementInfo
+                    Grid.Row="1" Grid.Column="1"
+                    Style="{StaticResource userInfo}"
+                    Margin="0,1,0,1"
+                    labelRaf="Istniejące obiekty">
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoZagosp.zagospSel.istObiektySloId"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Path="DataContext.infoMain.infoZagosp.celNabList.obIstnList"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Source="Id"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+                <view:UserControl_ElementInfo
+                    Grid.Row="2" Grid.Column="1"
+                    Style="{StaticResource userInfo}"
+                    Margin="0,1,0,1"
+                    labelRaf="Obiekty komercyjne">
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoZagosp.zagospSel.obiektyKomSloId"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Path="DataContext.infoMain.infoZagosp.celNabList.obKomList"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Source="Id"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+                <view:UserControl_ElementInfo
+                    Grid.Row="3" Grid.Column="1"
+                    Style="{StaticResource userInfo}"
+                    Margin="0,1,0,1"
+                    labelRaf="Zadania inwestycyjne">
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoZagosp.zagospSel.zadInwestSloId"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Path="DataContext.infoMain.infoZagosp.celNabList.zadInwestList"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Source="Id"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+                <view:UserControl_ElementInfo
+                    Grid.Row="4" Grid.Column="1"
+                    Style="{StaticResource userInfo}"
+                    Margin="0,1,0,1"
+                    labelRaf="Cele komercyjne">
+                    <view:UserControl_ElementInfo.tekstRaf>
+                        <MultiBinding Converter="{StaticResource slowConvert}">
+                            <Binding Path="DataContext.infoMain.infoZagosp.zagospSel.celeKomSloId"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Path="DataContext.infoMain.infoZagosp.celNabList.CelKomList"
+                                     ElementName="infoZagospWin"/>
+                            <Binding Source="Id"/>
+                            <Binding Source="Nazwa"/>
+                        </MultiBinding>
+                    </view:UserControl_ElementInfo.tekstRaf>
+                </view:UserControl_ElementInfo>
+
+
+
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
 </UserControl>

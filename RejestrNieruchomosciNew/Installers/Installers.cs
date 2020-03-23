@@ -133,8 +133,10 @@ namespace RejestrNieruchomosciNew.Installers
            
             container.Register( Component.For<UserControl_InfoWladanieViewModel>());
             container.Register(Component.For<UserControl_InfoInnePrawaViewModel>());
-
+            
             container.Register(Component.For<UserControl_InfoPlatnoscUWViewModel>());
+
+            container.Register(Component.For<UserControl_InfoZagospViewModel>());
 
             container.Register(Component.For<WindowTestRaf>());
             container.Register(Component.For<WindowTestRafViewModel>());

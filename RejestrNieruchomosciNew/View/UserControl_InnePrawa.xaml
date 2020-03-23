@@ -148,6 +148,11 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Podmiot" 
                                         Width="*">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
                         <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource parsonConvert}" >
                                 <Binding  Path="PodmiotId"/>

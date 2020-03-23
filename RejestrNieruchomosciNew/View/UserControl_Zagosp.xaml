@@ -180,8 +180,13 @@
                                                          Width="*"
                                                          Binding="{Binding Nazwa}"
                                                          >
-                                         
-                                     </DataGridTextColumn>
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+
+                            </DataGridTextColumn>
 
                                      <DataGridTemplateColumn Header="Usun" >
                                          <DataGridTemplateColumn.CellTemplate>

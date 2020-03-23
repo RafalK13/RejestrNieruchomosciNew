@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using GalaSoft.MvvmLight;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 
@@ -38,7 +39,9 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IZagosp>(c.Zagosp);
+                    listAll = new ObservableCollection<IZagosp>(c.Zagosp
+                                                                 .Include( s=>s.ZagospStatusSlo)
+                                                                 .Include( f=>f.ZagospFunkcjaSlo));
                 }
                 catch (Exception e)
                 {

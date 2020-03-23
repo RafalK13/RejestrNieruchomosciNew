@@ -51,14 +51,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (values[1] == null)
                 return 0;
 
-            int id = int.Parse(values[0].ToString());
-
-            PodmiotList pl = values[1] as PodmiotList;
-            if (pl != null)
+            if (int.TryParse(values[0].ToString(), out int id) == true)
             {
-                var v = pl.list.FirstOrDefault(row => row.PodmiotId == id);
-                if (v != null)
-                    return v.Name;
+
+                PodmiotList pl = values[1] as PodmiotList;
+                if (pl != null)
+                {
+                    var v = pl.list.FirstOrDefault(row => row.PodmiotId == id);
+                    if (v != null)
+                        return v.Name;
+                }
             }
 
             return null;

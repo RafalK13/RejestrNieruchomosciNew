@@ -314,6 +314,7 @@
     <Compile Include="ViewModel\UserControl_InfoMainViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoPlatnoscUWViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoWladanieViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoZagospViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InnePrawaViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PlatnoscUWViewModel.cs" />
     <Compile Include="ViewModel\UserControl_PreviewViewModel.cs" />
