@@ -1,4 +1,5 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using Castle.Facilities.TypedFactory;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using RejestrNieruchomosciNew.Model;
@@ -12,11 +13,17 @@ namespace RejestrNieruchomosciNew.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            //container.AddFacility<TypedFactoryFacility>();
             container.Register(Component.For<IWindsorContainer>().Instance(container));
             container.Register(Component.For<IViewFactory>().ImplementedBy<WindsorViewFactory>());
 
             container.Register(Component.For<MainView>());
             container.Register(Component.For<MainViewModel>());
+
+            //container.Register(Component.For<IWindow_Factory>().AsFactory());
+            container.Register(Component.For<IWindow_ZalacznikViewModel>().ImplementedBy<Window_ZalacznikViewModel>().LifeStyle.Transient);
+
+            //container.Register(Component.For<Window_Zalacznik>().LifeStyle.Transient);
 
             container.Register(Component.For<ChangeViewModel>());
 

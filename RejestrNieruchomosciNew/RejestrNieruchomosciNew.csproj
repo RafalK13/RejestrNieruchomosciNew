@@ -253,6 +253,8 @@
     <Compile Include="Model\Interfaces\IUzytkiSloList.cs" />
     <Compile Include="Model\Interfaces\IView.cs" />
     <Compile Include="Model\Interfaces\IViewFactory.cs" />
+    <Compile Include="Model\Interfaces\IWindow_Factory.cs" />
+    <Compile Include="Model\Interfaces\IWindow_ZalacznikViewModel.cs" />
     <Compile Include="Model\Interfaces\IWladanie.cs" />
     <Compile Include="Model\Interfaces\IWladanieList.cs" />
     <Compile Include="Model\Interfaces\IZagosp.cs" />
@@ -324,6 +326,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\Window2ViewModel.cs" />
     <Compile Include="ViewModel\WindowTestRafViewModel.cs" />
+    <Compile Include="ViewModel\Window_ZalacznikViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
       <DependentUpon>ChangeView.xaml</DependentUpon>
     </Compile>
@@ -410,6 +413,9 @@
     </Compile>
     <Compile Include="View\WindowTestRaf.xaml.cs">
       <DependentUpon>WindowTestRaf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window_Zalacznik.xaml.cs">
+      <DependentUpon>Window_Zalacznik.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -544,6 +550,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WindowTestRaf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window_Zalacznik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

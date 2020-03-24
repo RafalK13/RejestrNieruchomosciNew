@@ -7,12 +7,23 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class pathTofileName : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return  value.ToString().Split('\\', '/').ToList().Last();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return false;
+        }
+    }
+
     class uliceIdToUliceName : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-
-
             if (values[0] == null)
                 return 0;
 

@@ -23,8 +23,10 @@
 
         <Button  Grid.Column="1"
                  Height="{Binding hightRaf}"
+                 IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"
                  Visibility="{Binding buttonVisibility}"
-                 Command="{Binding onClickZal}"/>
-
+                 Command="{Binding onClickZal}"
+                 Content="{Binding buttonOpis, Mode=TwoWay}"
+                 />
     </Grid>
 </UserControl>

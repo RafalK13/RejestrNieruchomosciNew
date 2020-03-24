@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using RejestrNieruchomosciNew.View;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -10,7 +11,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoWladanieViewModel : ViewModelBase
     {
-        public ICommand onClick { get; set; }
 
         public RodzajDokumentuList rodzDokList { get; set; }
         public NazwaCzynnosciList nazwaCzynList { get; set; }
@@ -59,12 +59,23 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_InfoWladanieViewModel()
         {
-            onClick = new RelayCommand( onClickSkan);
         }
 
-        private void onClickSkan()
-        {
-            MessageBox.Show("Rafałek");
-        }
+        //public IViewFactory factory { get; set; }
+
+        //public IWindow_Factory zal { get; set; }
+        //public IWindow_ZalacznikViewModel viewModel { get; set; }
+
+        //private void onClickSkan()
+        //{
+
+        //    viewModel = zal.create( "Rafałek13");
+        //    Window view = factory.CreateView<Window_Zalacznik>();
+        //    view.DataContext = viewModel;
+
+        //    view.ShowDialog();
+        //    zal.relase(viewModel);
+
+        //}
     }
 }

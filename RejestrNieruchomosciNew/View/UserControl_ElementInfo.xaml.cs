@@ -1,7 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.ViewModel;
 using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.View
@@ -18,10 +23,62 @@ namespace RejestrNieruchomosciNew.View
 
         private void zalClicked()
         {
-            MessageBox.Show("OK");
+             var view = new Window_Zalacznik();
+             Window_ZalacznikViewModel m = new Window_ZalacznikViewModel(pathZal);
+             view.DataContext = m;
+             view.ShowDialog();
         }
 
-        public ICommand onClickZal { get; set; }
+        public string buttonOpis
+        {
+            get { return (string)GetValue(buttonOpisProperty); }
+            set { SetValue(buttonOpisProperty, value); }
+        }
+
+        public static readonly DependencyProperty buttonOpisProperty =
+            DependencyProperty.Register("buttonOpis", typeof(string), typeof(UserControl_ElementInfo));
+
+        public bool buttonEnabled
+        {
+            get { return (bool)GetValue(buttonEnabledProperty); }
+            set { SetValue(buttonEnabledProperty, value); }
+        }
+
+        public static readonly DependencyProperty buttonEnabledProperty =
+            DependencyProperty.Register("buttonEnabled", typeof(bool), typeof(UserControl_ElementInfo));
+
+        public string pathZal
+        {
+            get { return (string)GetValue(pathZalProperty); }
+            set { SetValue(pathZalProperty, value); }
+        }
+
+        public static readonly DependencyProperty pathZalProperty =
+            DependencyProperty.Register("pathZal", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(null, new PropertyChangedCallback( onChangePath)));
+
+        private static void onChangePath(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_ElementInfo u = d as UserControl_ElementInfo;
+            if (Directory.Exists(u.pathZal) == false)
+            {
+                u.buttonOpis = "Empty";
+                u.buttonEnabled = false;
+            }
+            else
+            {
+                u.buttonOpis = "";
+                u.buttonEnabled = true;
+            }
+        }
+
+        public ICommand onClickZal
+        {
+            get { return (ICommand)GetValue(onClickZalProperty); }
+            set { SetValue(onClickZalProperty, value); }
+        }
+
+        public static readonly DependencyProperty onClickZalProperty =
+            DependencyProperty.Register("onClickZal", typeof(ICommand), typeof(UserControl_ElementInfo));
 
         public Visibility buttonVisibility
         {
@@ -86,14 +143,14 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty tekstRafProperty =
             DependencyProperty.Register("tekstRaf", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
 
-        public string zalPath
-        {
-            get { return (string)GetValue(zalPathProperty); }
-            set { SetValue(zalPathProperty, value); }
-        }
+        //public string zalPath
+        //{
+        //    get { return (string)GetValue(zalPathProperty); }
+        //    set { SetValue(zalPathProperty, value); }
+        //}
 
-        public static readonly DependencyProperty zalPathProperty =
-            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
+        //public static readonly DependencyProperty zalPathProperty =
+        //    DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
 
     }
 }
