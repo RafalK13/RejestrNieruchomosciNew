@@ -22,7 +22,7 @@ namespace RejestrNieruchomosciNew.View
             clickAdd = new RelayCommand(onClickAdd);
             clickCls = new RelayCommand(onClickCls);
             clickMod = new RelayCommand(onClickMod);
-            clickZal = new RelayCommand(onClickZalacznik);
+            //clickZal = new RelayCommand(onClickZalacznik);
         }
 
         public string zalPath
@@ -242,23 +242,23 @@ namespace RejestrNieruchomosciNew.View
             modButton = false;
         }
 
-        public void onClickZalacznik()
-        {
-            string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
+        //public void onClickZalacznik()
+        //{
+        //    string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
 
-            transakcje.Skan = zalPath;
+        //    //transakcje.Skan = zalPath;
 
-            DirectoryInfo dir = new DirectoryInfo(zalPath);
-            if (!dir.Exists)
-                dir.Create();
+        //    DirectoryInfo dir = new DirectoryInfo(zalPath);
+        //    if (!dir.Exists)
+        //        dir.Create();
 
-            Process.Start(zalPath);
-        }
+        //    Process.Start(zalPath);
+        //}
 
         public ICommand clickAdd { get; set; }
         public ICommand clickCls { get; set; }
         public ICommand clickMod { get; set; }
-        public ICommand clickZal { get; set; }
+        //public ICommand clickZal { get; set; }
         #endregion
 
         #region Slowniki

@@ -195,7 +195,7 @@
                     labelRaf="Skan"
                     buttonVisibility="Visible"
                     IsHitTestVisible="True"
-                    tekstRaf="DUPAS"/>
+                    pathZal="{Binding Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>
 
                 <Label Grid.Row="0" Grid.Column="1"
                     Style="{StaticResource labelRaf}"

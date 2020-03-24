@@ -27,12 +27,21 @@ namespace RejestrNieruchomosciNew.ViewModel
             doubleClick = new RelayCommand( onDoubleClick);
 
             pathFiles = _pathFiles;
-            filesList = new List<string>(Directory.GetFiles(pathFiles).ToList());
+            filesList = new List<string>(Directory.GetFiles(pathFiles ).ToList()
+                                        .Where(a => File.GetAttributes(a) == FileAttributes.Archive));
+
         }
 
         private void onDoubleClick()
         {
-            Process.Start(fileSel);
+            try
+            {
+                Process.Start(fileSel);
+            }
+            catch
+            {
+                MessageBox.Show( "Problem z siecią");
+            }
         }
     }
 }

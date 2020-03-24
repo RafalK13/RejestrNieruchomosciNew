@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Configuration;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -105,18 +106,23 @@ namespace RejestrNieruchomosciNew.Model
                     onChange(this, EventArgs.Empty);
             }
         }
-        private string _Skan;
+        //private string _Skan;
         public string Skan
         {
-            get => _Skan;
-            set
+            get
             {
-                _Skan = value;
-                RaisePropertyChanged("Skan");
-
-                if (onChange != null)
-                    onChange(this, EventArgs.Empty);
+                return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + TransakcjeId;
             }
+            //set
+            //{
+
+            //    u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + u.selectedIdTrans;
+            //    _Skan = value;
+            //    RaisePropertyChanged("Skan");
+
+            //    if (onChange != null)
+            //        onChange(this, EventArgs.Empty);
+            //}
         }
 
         private DateTime? _WpisDoKW;
