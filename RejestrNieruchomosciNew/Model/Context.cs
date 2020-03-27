@@ -19,7 +19,9 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<GminaSlo> GminaSlo { get; set; }
         public virtual DbSet<Obreb> Obreb { get; set; }
         public virtual DbSet<Dzialka> Dzialka { get; set; }
-        
+
+        public virtual DbSet<Budynek> Budynek { get; set; }
+        public virtual DbSet<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         public virtual DbSet<Wladanie> Wladanie { get; set; }
         public virtual DbSet<InnePrawa> InnePrawa { get; set; }
 
@@ -60,6 +62,17 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Dzialka_Budynek>()
+                .HasKey(bc => new { bc.DzialkaId, bc.BudynekId });
+            modelBuilder.Entity<Dzialka_Budynek>()
+                .HasOne(bc => bc.Dzialka)
+                .WithMany(b => b.Dzialka_Budynek)
+                .HasForeignKey(bc => bc.DzialkaId);
+            modelBuilder.Entity<Dzialka_Budynek>()
+                .HasOne(bc => bc.Budynek)
+                .WithMany(c => c.Dzialka_Budynek)
+                .HasForeignKey(bc => bc.BudynekId);
+
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
                .WithMany(a => a.Dzialka)

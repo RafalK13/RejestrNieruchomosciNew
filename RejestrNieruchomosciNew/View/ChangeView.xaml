@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="AddView" Height="900" Width="1400"
+        Title="Modyfikacja" Height="900" Width="1400"
         x:Name="AddView_Win"
         >
     <i:Interaction.Triggers>
@@ -107,7 +107,12 @@
         </StackPanel>
 
         <TabControl Grid.Row="1" Margin="20,20,20,10">
-            
+
+            <TabItem Header="Budynki"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
+                <view:UserControl_Budynek/>
+            </TabItem>
+
             <TabItem Header="Dane podstawowe">
                 <view:UserControl_DanePodstawowe/>
             </TabItem>

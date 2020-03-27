@@ -178,7 +178,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                     wladanie.DzialkaId = dzialkaId;
                     wladanie.PodmiotId = selectedPodmId;
 
-                    //wladanieList.list.Add(new Wladanie()
                     wladListLok.Add(new Wladanie()
                     {
                         DzialkaId = wladanie.DzialkaId,
@@ -193,26 +192,21 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onPodmiotDel()
         {
-            //wladanieList.list.Remove(wladanieSel);
             wladListLok.Remove(wladanieSel);
             wladanieSel = null;
         }
 
         private void onWlascAdd()
         {
-            //platnosci.save();
-
             wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
             wladanieList.saveWladanie();
         }
 
         private bool testWlascExist()
         {
-            //if (wladanieList.list.Count == 0)
             if(wladListLok.Count() == 0 )
                 return false;
 
-            //var v = wladanieList.list.Where(r => r.PodmiotId == selectedPodmId).Count();
             var v = wladListLok.Where(r => r.PodmiotId == selectedPodmId).Count();
 
             return (v == 0) ? false : true;

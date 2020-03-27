@@ -202,7 +202,13 @@
     <Compile Include="Migrations\20200224081610_praca-1.designer.cs">
       <DependentUpon>20200224081610_praca-1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200326150004_dom1.cs" />
+    <Compile Include="Migrations\20200326150004_dom1.designer.cs">
+      <DependentUpon>20200326150004_dom1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
+    <Compile Include="Model\Adres.cs" />
+    <Compile Include="Model\Budynek.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
     <Compile Include="Model\CelNabyciaObiekty.cs" />
     <Compile Include="Model\CelNabyciaZadania.cs" />
@@ -214,10 +220,14 @@
     <Compile Include="Model\DecyzjeAdministracyjne.cs" />
     <Compile Include="Model\DecyzjeAdministracyjneList.cs" />
     <Compile Include="Model\DzialkaList.cs" />
+    <Compile Include="Model\Dzialka_Budynek.cs" />
+    <Compile Include="Model\Dzialka_BudynekList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
     <Compile Include="Model\InnePrawa.cs" />
     <Compile Include="Model\InnePrawaList.cs" />
+    <Compile Include="Model\Interfaces\IAdres.cs" />
+    <Compile Include="Model\Interfaces\IBudynkiList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiektyKom.cs" />
@@ -227,14 +237,21 @@
     <Compile Include="Model\Interfaces\IContrlosVisibling.cs" />
     <Compile Include="Model\Interfaces\IDecyzjeAdministracyjne.cs" />
     <Compile Include="Model\Interfaces\IDzialka.cs" />
+    <Compile Include="Model\Interfaces\IDzialka_Budynek.cs" />
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
+    <Compile Include="Model\Interfaces\IDzialka_BudynekList.cs" />
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
+    <Compile Include="Model\Interfaces\ILokale.cs" />
+    <Compile Include="Model\Interfaces\ILokaleList.cs" />
+    <Compile Include="Model\Interfaces\IMedia.cs" />
+    <Compile Include="Model\Interfaces\IMediaList.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
+    <Compile Include="Model\Interfaces\IBudynek.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajPlatnosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajTransakcjiSlo.cs" />
@@ -262,6 +279,8 @@
     <Compile Include="Model\Interfaces\IZagospList.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\Interfaces\MyEventHandler.cs" />
+    <Compile Include="Model\Lokale.cs" />
+    <Compile Include="Model\Media.cs" />
     <Compile Include="Model\MyEventArgs.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
@@ -307,6 +326,7 @@
     <Compile Include="ViewModel\ChangeViewModel.cs" />
     <Compile Include="ViewModel\Converters.cs" />
     <Compile Include="ViewModel\ModViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_BudynekViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DaneDodatkoweViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -341,6 +361,9 @@
     </Compile>
     <Compile Include="View\UserControl_Attachment.xaml.cs">
       <DependentUpon>UserControl_Attachment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Budynek.xaml.cs">
+      <DependentUpon>UserControl_Budynek.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_CelNabycia.xaml.cs">
       <DependentUpon>UserControl_CelNabycia.xaml</DependentUpon>
@@ -454,6 +477,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Attachment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Budynek.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

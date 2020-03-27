@@ -108,6 +108,8 @@ namespace RejestrNieruchomosciNew
         public PlatnoscUW PlatnoscUW { get; set; }
         public ICollection<Zagosp> Zagosp { get; set; }
 
+        public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
+
         //[NotMapped]
         //public ProcessDzialka procDz { get; set; }
 

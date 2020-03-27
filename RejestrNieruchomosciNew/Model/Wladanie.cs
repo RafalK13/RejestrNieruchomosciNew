@@ -79,8 +79,7 @@ namespace RejestrNieruchomosciNew
             CelNabyciaId = w.CelNabyciaId;
             TransK_Id = w.TransK_Id;
             TransS_Id = w.TransS_Id;
-
-        }
+    }
 
         public object Clone()
         {
