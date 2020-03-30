@@ -52,23 +52,41 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public ObservableCollection<IDzialka_Budynek> dzBudListLok { get; set; }
-        public IDzialka_BudynekList dzBudList { get; set; }
+        public ObservableCollection<IBudynek> budListLok { get; set; }
 
-        private IDzialka_Budynek _dzBudSel;
-        public IDzialka_Budynek dzBudSel
+        public IBudynkiList budList { get; set; }
+
+        private IBudynek _budSel;
+        public IBudynek budSel
         {
-            get { return _dzBudSel; }
+            get { return _budSel; }
             set
             {
-                _dzBudSel = value;
+                _budSel = value;
                 testBudynekSel();
                 RaisePropertyChanged();
             }
         }
 
+
+
+        //public ObservableCollection<IDzialka_Budynek> dzBudListLok { get; set; }
+        //public IDzialka_BudynekList dzBudList { get; set; }
+
+        //private IDzialka_Budynek _dzBudSel;
+        //public IDzialka_Budynek dzBudSel
+        //{
+        //    get { return _dzBudSel; }
+        //    set
+        //    {
+        //        _dzBudSel = value;
+        //        testBudynekSel();
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
-                                           IDzialka_BudynekList _dzialBudynekList)
+                                           IBudynkiList _budList)
         {
             initButtons();
 
@@ -77,20 +95,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (userPrev.dzialkaSel != null)
             {
                 //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-                _dzialBudynekList.getList(userPrev.dzialkaSel);
-                
-
-                dzBudListLok = new ObservableCollection<IDzialka_Budynek>(_dzialBudynekList.list.Select(r => new Dzialka_Budynek(r)).ToList());
+                _budList.getList(userPrev.dzialkaSel);
+                int r1 = 1;
+                budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
             }
-
+            int r2 = 2;
             podmiotDetail = false;
         }
 
         private void testBudynekSel()
         {
-            if (dzBudSel != null)
+            if (budSel != null)
             {
-                if (dzBudSel.DzialkaId != 0)
+                if (budSel.DzialkaId != 0)
                 {
                     podmiotDetail = true;
                 }
@@ -101,11 +118,11 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private bool testWlascExist()
         {
-            if (dzBudListLok.Count == 0)
+            if (budListLok.Count == 0)
                 return false;
 
-            var v = dzBudListLok.Where(r => r.BudynekId == dzBudSel.BudynekId
-                                         && r.DzialkaId == dzBudSel.DzialkaId).Count();
+            var v = budListLok.Where(r => r.BudynekId == budSel.BudynekId
+                                         && r.DzialkaId == budSel.DzialkaId).Count();
 
             return (v == 0) ? false : true;
         }
@@ -127,14 +144,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onBudynektDel()
         {
-            dzBudListLok.Remove( dzBudSel);
+            budListLok.Remove(budSel);
         }
 
         private void onDzialkaBudynekCls()
         {
-            dzBudSel = null;
+            budSel = null;
         }
-
 
         private void onDzialkaBudynekSell()
         {
@@ -143,11 +159,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaBudynekAdd()
         {
-
-            dzBudList.list = new ObservableCollection<IDzialka_Budynek>(dzBudListLok.Select(r => new Dzialka_Budynek(r)).ToList());
-
-           
-            dzBudList.save();
+            budList.list = new ObservableCollection<IBudynek>(budListLok.Select(r => new Budynek(r)).ToList());
+            int r2 = 14;
+            budList.saveBudynki();
         }
 
         private void onBudynekAdd()
@@ -156,16 +170,18 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 Budynek bud = new Budynek() { Nazwa = budynekName };
 
-                dzBudListLok.Add(new Dzialka_Budynek() { Budynek = bud, DzialkaId = userPrev.dzialkaSel.DzialkaId });
-                dzBudList.list.Add(new Dzialka_Budynek() { Budynek = bud, DzialkaId = userPrev.dzialkaSel.DzialkaId });
+                budListLok.Add( bud);
+                budList.list.Add( bud);
+               
                 budynekName = string.Empty;
-                dzBudSel = null;
+                budSel = null;
+            
             }
         }
 
         private bool testIfExist()
         {
-            return dzBudList.list.FirstOrDefault(r => r.Budynek.Nazwa == budynekName) == null ? true : false;
+            return budList.list.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
         }
 
 

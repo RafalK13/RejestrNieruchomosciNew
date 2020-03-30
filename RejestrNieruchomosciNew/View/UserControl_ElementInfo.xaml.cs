@@ -21,6 +21,15 @@ namespace RejestrNieruchomosciNew.View
             onClickZal = new RelayCommand( zalClicked);
         }
 
+        public bool isReadOnlyRaf
+        {
+            get { return (bool)GetValue(isReadOnlyRafProperty); }
+            set { SetValue(isReadOnlyRafProperty, value); }
+        }
+
+        public static readonly DependencyProperty isReadOnlyRafProperty =
+            DependencyProperty.Register("isReadOnlyRaf", typeof(bool), typeof(UserControl_ElementInfo), new PropertyMetadata(false));
+
         private void zalClicked()
         {
              var view = new Window_Zalacznik();

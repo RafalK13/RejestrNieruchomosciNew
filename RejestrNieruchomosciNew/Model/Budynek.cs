@@ -30,22 +30,22 @@ namespace RejestrNieruchomosciNew.Model
 
         public Budynek(IBudynek budynek)
         {
-            int BudynekId = budynek.BudynekId;
-            int DzialkaId = budynek.DzialkaId;
+             BudynekId = budynek.BudynekId;
+             DzialkaId = budynek.DzialkaId;
 
-            string Nazwa = budynek.Nazwa;
+             Nazwa = budynek.Nazwa;
  
-            double powBezPiwnic = budynek.powBezPiwnic;
-            double powPiwnic = budynek.powPiwnic;
-            double powCalk = budynek.powCalk;
-            double powZabud = budynek.powZabud;
-            double kubatura = budynek.kubatura;
-            int iloscKond = budynek.iloscKond;
-            double numerEwid = budynek.numerEwid;
-            bool wpisRejZab = budynek.wpisRejZab;
-            int MediaId = budynek.MediaId;
-            string stanTech = budynek.stanTech;
-    }
+             powBezPiwnic = budynek.powBezPiwnic;
+             powPiwnic = budynek.powPiwnic;
+             powCalk = budynek.powCalk;
+             powZabud = budynek.powZabud;
+             kubatura = budynek.kubatura;
+             iloscKond = budynek.iloscKond;
+             numerEwid = budynek.numerEwid;
+             wpisRejZab = budynek.wpisRejZab;
+             MediaId = budynek.MediaId;
+             stanTech = budynek.stanTech;
+        }
 
         public object Clone()
         {

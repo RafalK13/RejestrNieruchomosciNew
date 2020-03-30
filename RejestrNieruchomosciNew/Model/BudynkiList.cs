@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using RejestrNieruchomosciNew.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class BudynkiList : ViewModelBase, IBudynkiList
     {
-        public ObservableCollection<IDzialka> listAll { get; set; }
+        public ObservableCollection<IBudynek> listAll { get; set; }
 
         private ObservableCollection<IBudynek> _list;
         public ObservableCollection<IBudynek> list
@@ -46,69 +47,60 @@ namespace RejestrNieruchomosciNew.Model
                     MessageBox.Show($"BudynekList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
-               
             }
         }
 
-        private void initList(IBudynek dzialka)
+        private void initList(IDzialka dzialka)
         {
-            int rr = 1;
-
             if (dzialka != null)
-                list = new ObservableCollection<IBudynek>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId).ToList());
+                list = new ObservableCollection<IBudynek>( listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
 
             listOrg = ObservableCon<IBudynek>.ObservableToList(list);
-
-            listToAdd = new List<IWladanie>();
-            listToMod = new List<IWladanie>();
-            listToDel = new List<IWladanie>();
+            listToAdd = new List<IBudynek>();
+            listToMod = new List<IBudynek>();
+            listToDel = new List<IBudynek>();
             result = string.Empty;
         }
 
-        public WladanieList()
+        public BudynkiList()
         {
-            int r = 1;
-            //MessageBox.Show("1");
-
-            list = new ObservableCollection<IWladanie>();
-
+            list = new ObservableCollection<IBudynek>();
         }
 
-        public WladanieList(UserControl_PreviewViewModel userPrev)
+        public BudynkiList(UserControl_PreviewViewModel userPrev)
         {
-            int r = 2;
-            //MessageBox.Show("2");
-
-            list = new ObservableCollection<IWladanie>();
+         
+            list = new ObservableCollection<IBudynek>();
             if (userPrev.dzialkaSel != null)
                 initListAll();
         }
 
         public void getList(IDzialka dzialkaSel)
         {
-            int r = -13;
             dzialkaPrv = dzialkaSel;
-
-            initList(dzialkaPrv);
+            int r1 = 1;
+            initList(dzialkaSel);
+            int r2 = 2;
         }
 
-        public void saveWladanie()
+        public void saveBudynki()
         {
+            int r1 = 13;
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
                     listOrg.Remove(r);
                 else
                 {
-                    if (listOrg.Exists(row => row.WladanieId == r.WladanieId) == true)
+                    if (listOrg.Exists(row => row.BudynekId == r.BudynekId) == true)
                     {
-                        listToMod.Add((IWladanie)r.Clone());
-                        var rToDel = listOrg.Find(d => d.WladanieId == r.WladanieId);
+                        listToMod.Add((IBudynek)r.Clone());
+                        var rToDel = listOrg.Find(d => d.BudynekId == r.BudynekId);
                         listOrg.Remove(rToDel);
                     }
                     else
                     {
-                        listToAdd.Add((IWladanie)r.Clone());
+                        listToAdd.Add((IBudynek)r.Clone());
                     }
                 }
             }
@@ -136,7 +128,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
-                    c.Wladanie.Add((Wladanie)i);
+                    c.Dzialka_Budynek.Add(new Dzialka_Budynek() { DzialkaId = dzialkaPrv.DzialkaId, Budynek = (Budynek)i });
+                    //c.Budynek.Add((Budynek)i);
                 }
                 c.SaveChanges();
             }
@@ -148,9 +141,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToMod)
                 {
-                    if (i.TransK_Id == 0)
-                        i.TransK_Id = null;
-                    var v = c.Wladanie.First(r => r.WladanieId == i.WladanieId);
+                    var v = c.Budynek.First(r => r.BudynekId == i.BudynekId);
                     c.Entry(v).CurrentValues.SetValues(i);
                 }
                 c.SaveChanges();
@@ -163,21 +154,11 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToDel)
                 {
-                    var v = c.Wladanie.First(r => r.WladanieId == i.WladanieId);
+                    var v = c.Budynek.First(r => r.BudynekId == i.BudynekId);
 
-                    RemaneDirs(v);
-
-                    c.Wladanie.Remove(v);
+                    c.Budynek.Remove(v);
                 }
                 c.SaveChanges();
-            }
-        }
-
-        private void RemaneDirs(Wladanie w)
-        {
-            if (Directory.Exists(w.ZalPath))
-            {
-                Directory.Move(w.ZalPath, w.ZalPathOld);
             }
         }
     }

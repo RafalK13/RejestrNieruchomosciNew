@@ -19,6 +19,7 @@
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
             <Setter Property="widthLabelRaf" Value="110"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
+            <Setter Property="isReadOnlyRaf" Value="True"/>
         </Style>
     </UserControl.Resources>
 
@@ -193,6 +194,7 @@
                          Margin="5,0,10,0"
                          Grid.RowSpan="2"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          VerticalScrollBarVisibility="Auto"
                          >
                     <!--Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Tytul , ElementName=infoInnePrawa}"/>-->
@@ -218,6 +220,7 @@
                          Grid.RowSpan="3"
                          TextWrapping="Wrap"
                          VerticalScrollBarVisibility="Auto"
+                          IsReadOnly="True"
                          Text="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.WarunkiRealizacji, ElementName=infoInnePrawa}"/>
 
 
@@ -361,6 +364,7 @@
                          Margin="5,0,10,0"
                          Grid.RowSpan="3"
                          TextWrapping="Wrap"
+                         IsReadOnly="True"
                          VerticalScrollBarVisibility="Auto"
                          Text="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.DecyzjeAdministracyjne.Przedmiot,
                                         ElementName=infoInnePrawa}"/>

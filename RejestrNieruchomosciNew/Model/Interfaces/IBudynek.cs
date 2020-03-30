@@ -26,5 +26,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         int MediaId { get; set; }
 
         string stanTech { get; set; }
+
+        ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
     }
 }

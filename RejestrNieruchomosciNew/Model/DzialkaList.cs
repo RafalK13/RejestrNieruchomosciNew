@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿
+using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,6 @@ namespace RejestrNieruchomosciNew.Model
                 MessageBox.Show( $"DzialkaList\r\n{e.Message}");
                 Environment.Exit(0);
             }
-
         }
 
         private async Task fillDzialkaList()
@@ -61,6 +61,24 @@ namespace RejestrNieruchomosciNew.Model
 
             using (var c = new Context())
             {
+                var r1 = c.Dzialka_Budynek.Where(n => n.DzialkaId == dz.DzialkaId);
+                foreach (var item in r1)
+                {
+                    if (c.Budynek.Where(r2 => r2.BudynekId == item.BudynekId).Count() == 1)
+                    {
+                        try
+                        {
+                            c.Budynek.Remove(c.Budynek.FirstOrDefault(d => d.BudynekId == item.BudynekId));
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+
+
+
                 c.Dzialka.Remove((Dzialka)dz);
                 c.SaveChanges();
             }

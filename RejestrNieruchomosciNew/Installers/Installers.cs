@@ -149,18 +149,16 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<WindowTestRafViewModel>());
 
             container.Register(Component.For<IAdres>().ImplementedBy<Adres>().LifeStyle.Transient);
-            container.Register(Component.For<IBudynek>().ImplementedBy<Budynek>().LifeStyle.Transient);
             container.Register(Component.For<IMedia>().ImplementedBy<Media>().LifeStyle.Transient);
             container.Register(Component.For<ILokale>().ImplementedBy<Lokale>().LifeStyle.Transient);
 
-            container.Register(Component.For<IDzialka_Budynek>().ImplementedBy<Dzialka_Budynek>().LifeStyle.Transient);
-            container.Register(Component.For<IDzialka_BudynekList>().ImplementedBy<Dzialka_BudynekList>());
+            //container.Register(Component.For<IDzialka_Budynek>().ImplementedBy<Dzialka_Budynek>().LifeStyle.Transient);
+            //container.Register(Component.For<IDzialka_BudynekList>().ImplementedBy<Dzialka_BudynekList>());
+            //container.Register(Component.For<UserControl_BudynekViewModel>().LifeStyle.Transient);
 
-            //container.Register(Component.For<Dzialka_BudynekList>());
-
+            container.Register(Component.For<IBudynek>().ImplementedBy<Budynek>().LifeStyle.Transient);
+            container.Register(Component.For<IBudynkiList>().ImplementedBy<BudynkiList>());
             container.Register(Component.For<UserControl_BudynekViewModel>().LifeStyle.Transient);
-
-
 
 
 

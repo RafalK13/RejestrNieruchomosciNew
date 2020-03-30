@@ -92,7 +92,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
-
         #endregion
 
         #region Konstructor

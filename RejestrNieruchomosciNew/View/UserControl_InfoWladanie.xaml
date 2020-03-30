@@ -21,6 +21,7 @@
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
             <Setter Property="widthLabelRaf" Value="110"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
+            <Setter Property="isReadOnlyRaf" Value="True"/>
         </Style>
 
     </UserControl.Resources>
@@ -253,6 +254,7 @@
                 <TextBox Grid.Row="11" Grid.Column="0"
                          Margin="5,0,0,0"
                          Grid.RowSpan="3"
+                         IsReadOnly="True"
                          TextWrapping="Wrap"
                          >
 

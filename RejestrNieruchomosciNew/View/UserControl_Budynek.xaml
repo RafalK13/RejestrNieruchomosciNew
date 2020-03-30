@@ -152,8 +152,8 @@
                         Grid.Row="1"
                         VerticalAlignment="Top"
                         Margin="3,140,10,0"
-                        ItemsSource="{Binding userControl_Budynek.dzBudListLok, Mode=TwoWay}"
-                        SelectedItem="{Binding userControl_Budynek.dzBudSel, Mode=TwoWay}"
+                        ItemsSource="{Binding userControl_Budynek.budListLok, Mode=TwoWay}"
+                        SelectedItem="{Binding userControl_Budynek.budSel, Mode=TwoWay}"
                         CanUserSortColumns="False"
                         FrozenColumnCount="1" 
                         IsReadOnly="True"
@@ -170,7 +170,7 @@
 
                         <DataGridTextColumn
                                             Header="Nazwa"
-                                            Binding="{Binding Budynek.Nazwa}"
+                                            Binding="{Binding Nazwa}"
                             Width="*"
                             />
                         <!--<DataGridTextColumn Header="Nazwa" 
@@ -207,13 +207,13 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
-                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}"
+                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}"
                           >
 
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
-                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
+                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -227,7 +227,7 @@
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
-                          IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
+                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
              
                 </Grid>

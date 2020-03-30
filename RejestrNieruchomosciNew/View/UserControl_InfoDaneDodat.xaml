@@ -11,12 +11,15 @@
 
         <Style TargetType="Label" x:Key="labelRaf">
             <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="IsHitTestVisible" Value="False"></Setter>
         </Style>
 
         <Style x:Key="tekskBoxOpis" TargetType="TextBox">
             <Setter Property="MinLines" Value="8"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="IsReadOnly" Value="True"/>
         </Style>
 
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
@@ -26,7 +29,6 @@
 
         <Style x:Key="label" TargetType="Label">
             <Setter Property="Margin" Value="10,10,0,0"></Setter>
-            
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="19"/>
         </Style>
@@ -65,7 +67,7 @@
 
         <ScrollViewer Grid.Column="0" 
                       VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto">
+                      >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -89,6 +91,7 @@
 
                 <Label  Grid.Row="0"
                         Style="{StaticResource labelRaf}"
+                        Margin="5,0,10,0"
                         Content="Dane opisowe działki"/>
                 <Label  Grid.Row="1"
                         Content="Lokalizacja"/>

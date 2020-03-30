@@ -19,6 +19,7 @@
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
             <Setter Property="widthLabelRaf" Value="130"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
+            <Setter Property="isReadOnlyRaf" Value="True"/>
         </Style>
     </UserControl.Resources>
 
