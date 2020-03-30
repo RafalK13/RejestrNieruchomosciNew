@@ -31,7 +31,7 @@
         <!--Height="{Binding ElementName=istnObName, Path=ActualHeight}"-->
         <TextBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3"
                      
-                     TextWrapping="WrapWithOverflow"
+                     TextWrapping="Wrap"
                      AcceptsReturn="True"
                      AcceptsTab="True"
                      Margin="7,0,10,3"

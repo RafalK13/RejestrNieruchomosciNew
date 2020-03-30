@@ -11,6 +11,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         int BudynekId { get; set; }
         int DzialkaId { get; set; }
 
+        string Nazwa { get; set; }
+
         double powBezPiwnic { get; set; }
         double powPiwnic { get; set; }
         double powCalk { get; set; }
@@ -18,7 +20,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         double kubatura { get; set; }
 
         int iloscKond { get; set; }
-        double NumerEwid { get; set; }
+        double numerEwid { get; set; }
         bool wpisRejZab { get; set; }
 
         int MediaId { get; set; }

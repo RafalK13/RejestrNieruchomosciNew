@@ -156,6 +156,8 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IDzialka_Budynek>().ImplementedBy<Dzialka_Budynek>().LifeStyle.Transient);
             container.Register(Component.For<IDzialka_BudynekList>().ImplementedBy<Dzialka_BudynekList>());
 
+            //container.Register(Component.For<Dzialka_BudynekList>());
+
             container.Register(Component.For<UserControl_BudynekViewModel>());
 
 

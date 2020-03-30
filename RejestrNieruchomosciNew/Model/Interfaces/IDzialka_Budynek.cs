@@ -10,5 +10,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     {
          int DzialkaId { get; set; }
          int BudynekId { get; set; }
+
+        Dzialka Dzialka { get; set; }
+        Budynek Budynek { get; set; }
     }
 }

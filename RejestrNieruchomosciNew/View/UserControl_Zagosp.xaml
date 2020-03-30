@@ -158,7 +158,7 @@
                                 Command="{Binding userControl_Zagosp.nazwaAdd}"
                         />
 
-                    <DataGrid   Grid.Row="2"
+                    <DataGrid   Grid.Row="1"
                                 VerticalAlignment="Top"
                                 Margin="3,140,10,0"
                                 ItemsSource="{Binding userControl_Zagosp.zagospListLok, Mode=TwoWay}"

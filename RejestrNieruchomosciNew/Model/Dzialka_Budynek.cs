@@ -14,8 +14,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public int BudynekId { get; set; }
         public Budynek Budynek { get; set; }
-
-
+        
         public Dzialka_Budynek()
         {
 

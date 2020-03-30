@@ -10,7 +10,7 @@ using RejestrNieruchomosciNew.ViewModel;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    class Dzialka_BudynekList : ViewModelBase,  IDzialka_BudynekList
+    public class Dzialka_BudynekList : ViewModelBase,  IDzialka_BudynekList
     {
         public ObservableCollection<IDzialka_Budynek> listAll { get; set; }
 
