@@ -238,6 +238,18 @@
     <Compile Include="Migrations\20200330091324_dom2.designer.cs">
       <DependentUpon>20200330091324_dom2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200330145749_dom3.cs" />
+    <Compile Include="Migrations\20200330145749_dom3.designer.cs">
+      <DependentUpon>20200330145749_dom3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200330152614_dom4.cs" />
+    <Compile Include="Migrations\20200330152614_dom4.designer.cs">
+      <DependentUpon>20200330152614_dom4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200330160230_dom5.cs" />
+    <Compile Include="Migrations\20200330160230_dom5.designer.cs">
+      <DependentUpon>20200330160230_dom5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\Budynek.cs" />

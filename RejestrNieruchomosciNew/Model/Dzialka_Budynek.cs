@@ -24,6 +24,8 @@ namespace RejestrNieruchomosciNew.Model
         {
             DzialkaId = d.DzialkaId;
             BudynekId = d.BudynekId;
+
+            Budynek = (Budynek)d.Budynek.Clone();
         }
 
         public object Clone()

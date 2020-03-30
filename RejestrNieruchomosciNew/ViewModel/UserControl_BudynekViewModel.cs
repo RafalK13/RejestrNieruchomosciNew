@@ -12,7 +12,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
-        private int dzialkaId;
+        //private int dzialkaId;
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
@@ -76,8 +76,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (userPrev.dzialkaSel != null)
             {
-                dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+                //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _dzialBudynekList.getList(userPrev.dzialkaSel);
+                
 
                 dzBudListLok = new ObservableCollection<IDzialka_Budynek>(_dzialBudynekList.list.Select(r => new Dzialka_Budynek(r)).ToList());
             }
@@ -104,7 +105,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 return false;
 
             var v = dzBudListLok.Where(r => r.BudynekId == dzBudSel.BudynekId
-                                                  && r.DzialkaId == dzBudSel.DzialkaId).Count();
+                                         && r.DzialkaId == dzBudSel.DzialkaId).Count();
 
             return (v == 0) ? false : true;
         }
@@ -126,7 +127,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onBudynektDel()
         {
-            throw new NotImplementedException();
+            dzBudListLok.Remove( dzBudSel);
         }
 
         private void onDzialkaBudynekCls()
@@ -143,9 +144,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onDzialkaBudynekAdd()
         {
 
+            dzBudList.list = new ObservableCollection<IDzialka_Budynek>(dzBudListLok.Select(r => new Dzialka_Budynek(r)).ToList());
 
-            //innePrawaList.list = new ObservableCollection<IInnePrawa>(inneListLok.Select(r => new InnePrawa(r)).ToList());
-            //innePrawaList.save();
+           
+            dzBudList.save();
         }
 
         private void onBudynekAdd()

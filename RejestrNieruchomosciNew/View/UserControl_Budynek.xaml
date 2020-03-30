@@ -164,10 +164,16 @@
                         SelectionMode="Single"
                         SelectionUnit="FullRow"
                         VerticalScrollBarVisibility="Auto"
-                        AutoGenerateColumns="True"
+                        AutoGenerateColumns="False"
                        >
-                    <!--<DataGrid.Columns>
-                        <DataGridTextColumn Header="Nazwa" 
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn
+                                            Header="Nazwa"
+                                            Binding="{Binding Budynek.Nazwa}"
+                            Width="*"
+                            />
+                        <!--<DataGridTextColumn Header="Nazwa" 
                                             Width="*">
                             <DataGridTextColumn.ElementStyle>
                                 <Style>
@@ -181,7 +187,7 @@
                                     <Binding ElementName="WladanieWin" Path="DataContext.userControl_Wlasciciel.podmiotList"/>
                                 </MultiBinding>
                             </DataGridTextColumn.Binding>
-                        </DataGridTextColumn>
+                        </DataGridTextColumn>-->
                         <DataGridTemplateColumn         
  >
                             <DataGridTemplateColumn.CellTemplate>
@@ -192,11 +198,11 @@
                                             Content="x"                                                           
                                             Foreground="Red"
                                             BorderBrush="White"
-                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                            Command="{Binding Path=DataContext.userControl_Budynek.budynekDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                    </DataGrid.Columns>-->
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
 
@@ -239,25 +245,23 @@
                             >
             <Button Content="Zapisz"
                                     Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"/>
+                                    Command="{Binding userControl_Budynek.dzialakBudynekAdd}"/>
 
 
             <Button Content="Zapisz i zamknij"
                                     Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Wlasciciel.wlascAdd}"
+                                    Command="{Binding userControl_Budynek.dzialakBudynekAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
             <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Wlasciciel.wlascCls}"
+                                    Command="{Binding userControl_Budynek.dzialakBudynekCls}"
                                     />
 
             <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
                                     IsCancel="True"
                                     com:CloseOnClickBehaviour.IsEnabled="True"
-                                    Command="{Binding userControl_Wlasciciel.onCancel}"
-                                    
                                     />
             <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
         </StackPanel>

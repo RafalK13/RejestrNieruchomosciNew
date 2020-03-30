@@ -64,14 +64,17 @@ namespace RejestrNieruchomosciNew
         {
             modelBuilder.Entity<Dzialka_Budynek>()
                 .HasKey(bc => new { bc.DzialkaId, bc.BudynekId });
+
             modelBuilder.Entity<Dzialka_Budynek>()
                 .HasOne(bc => bc.Dzialka)
                 .WithMany(b => b.Dzialka_Budynek)
                 .HasForeignKey(bc => bc.DzialkaId);
+
             modelBuilder.Entity<Dzialka_Budynek>()
                 .HasOne(bc => bc.Budynek)
                 .WithMany(c => c.Dzialka_Budynek)
-                .HasForeignKey(bc => bc.BudynekId);
+                .HasForeignKey(bc => bc.BudynekId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Dzialka>()
                .HasOne<Obreb>(a => a.Obreb)
