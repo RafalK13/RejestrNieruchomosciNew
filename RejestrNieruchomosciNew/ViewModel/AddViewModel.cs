@@ -1,11 +1,4 @@
-﻿using Castle.Core;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using RejestrNieruchomosciNew.Model;
-using System.Windows;
-using System.Windows.Input;
-
-namespace RejestrNieruchomosciNew.ViewModel
+﻿namespace RejestrNieruchomosciNew.ViewModel
 {
     public class AddViewModel : ChangeViewModel
     {

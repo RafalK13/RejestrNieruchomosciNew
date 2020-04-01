@@ -46,9 +46,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (_prev?.dzialkaSel != null)
             {
+                int rr = 13;
                 dzialka = (IDzialka)_prev.dzialkaSel.clone();
 
-                _prev.dzialkaView.Refresh();
+                //_prev.dzialkaSel.Kwzrob = "NowyNr";
+
+
+                //_prev.dzialkaView.Refresh();
             }
 
             _uzytkiList.getList(_prev.dzialkaSel);
@@ -62,9 +66,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             uzytkiList.list = new ObservableCollection<Uzytki>(uzytkiListLok.Select(r => new Uzytki(r)).ToList());
             uzytkiList.saveUzytki();
 
+            //userPrev.dzialkaView.Refresh();
+            //dzialka = userPrev.dzialkaSel;
+            int r1 = 14;
             dzialkaList.ModRow(dzialka);
 
-            userPrev.dzialkaSel = dzialka;
+            //userPrev.dzialkaSel = (IDzialka)dzialka.clone();
+            userPrev.dzialkaView.Refresh();
         }
     }
 }

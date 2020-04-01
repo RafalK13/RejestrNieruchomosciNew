@@ -115,7 +115,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public PlatnoscUW platnosci { get; set; }
 
-        public IDzialkaList dzialkaList { get; set; }
+        //public IDzialkaList dzialkaList { get; set; }
 
         private int dzialkaId;
 

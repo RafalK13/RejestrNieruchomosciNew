@@ -14,11 +14,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         [DoNotWire]
         public PlatnoscUW platnoscUW { get; set; }
 
-        //public PlatnoscUW platnoscUW { get; set; }
-        //public PlatnoscList platnoscList { get; set; }
-
         public ICommand platnosciUWAdd { get; set; }
-
 
         private Visibility _sellVisibility;
         public Visibility sellVisibility
@@ -32,35 +28,28 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel userPrev,
+        public UserControl_PreviewViewModel userPrev { get; set; }
+
+        public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel _userPrev,
                                                PlatnoscList platnoscList)
         {
-
-            if (userPrev.dzialkaSel != null)
+            if (_userPrev.dzialkaSel != null)
             {
-                platnoscUW = userPrev.dzialkaSel.PlatnoscUW;
+                platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;
             }
 
             initButtons();
-
-            //sellVisibility = Visibility.Hidden;
-
-            //if (userPrev.dzialkaSel != null)
-            //{
-            //    dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-            //}
-
-            //podmiotDetail = false;
         }
 
         private void initButtons()
         {
             platnosciUWAdd = new RelayCommand(clickPlatnosciAdd);
-            
         }
         
         private void clickPlatnosciAdd()
         {
+            platnoscUW.Dzialka = userPrev.dzialkaSel as Dzialka;
+
             platnoscUW.save( platnoscUW);
         }
     }

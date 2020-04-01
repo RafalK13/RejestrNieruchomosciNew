@@ -133,24 +133,24 @@
                   ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
                   Template="{StaticResource comboBoxTemp}"
                   />
-
-            <Label     Grid.Row="4" Grid.Column="0"
+        <Label     Grid.Row="4" Grid.Column="0"
+                   Style="{StaticResource label}"
+                   Content="Numer KW akt."
+                   />
+        <TextBox   Grid.Row="4" Grid.Column="1"                
+                   Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
+                   Style="{StaticResource tekstBox}"
+                   />
+        <Label     Grid.Row="5" Grid.Column="0"
                    Style="{StaticResource label}"
                    Content="Numer KW zrob."
                    />
-            <TextBox   Grid.Row="4" Grid.Column="1"        
+            <TextBox   Grid.Row="5" Grid.Column="1"        
                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
                    Style="{StaticResource tekstBox}"
                    />
 
-            <Label     Grid.Row="5" Grid.Column="0"
-                   Style="{StaticResource label}"
-                   Content="Numer KW akt."
-                   />
-            <TextBox   Grid.Row="5" Grid.Column="1"                
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
-                   Style="{StaticResource tekstBox}"
-                   />
+
 
         <Label      Grid.Row="6" Grid.Column="0"
                     Style="{StaticResource label}"

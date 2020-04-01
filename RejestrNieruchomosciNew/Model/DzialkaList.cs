@@ -76,9 +76,6 @@ namespace RejestrNieruchomosciNew.Model
                         }
                     }
                 }
-
-
-
                 c.Dzialka.Remove((Dzialka)dz);
                 c.SaveChanges();
             }

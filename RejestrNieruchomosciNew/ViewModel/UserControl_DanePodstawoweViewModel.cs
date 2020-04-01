@@ -13,7 +13,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ChangeMode changeMode;
 
-        //public UserControl_PreviewViewModel userPrev { get; set; }
         private UserControl_PreviewViewModel _userPrev;
         public UserControl_PreviewViewModel userPrev
         {
@@ -166,8 +165,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
                 else
                 {
-                    //int c = dzialkaList.list.Where(r => r.ObrebId == obreb.getId().Value &&
-                    //                             r.Numer == dzialka.Numer).Count();
                     int obrID = obreb.getId().Value;
 
                     var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
