@@ -46,19 +46,16 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (_prev?.dzialkaSel != null)
             {
-                int rr = 13;
-                dzialka = (IDzialka)_prev.dzialkaSel.clone();
-
+                //dzialka = (IDzialka)_prev.dzialkaSel.clone();
                 //_prev.dzialkaSel.Kwzrob = "NowyNr";
-
-
                 //_prev.dzialkaView.Refresh();
+                _uzytkiList.getList(_prev.dzialkaSel);
+                uzytkiListLok = new ObservableCollection<Uzytki>(_uzytkiList.list.Select(r => new Uzytki(r)).ToList());
             }
 
-            _uzytkiList.getList(_prev.dzialkaSel);
-            uzytkiListLok = new ObservableCollection<Uzytki>(_uzytkiList.list.Select(r => new Uzytki(r)).ToList());
-
             daneDodAdd = new RelayCommand( onDaneDodAdd);
+
+            int r1 = 13;
         }
 
         private void onDaneDodAdd()
@@ -66,13 +63,18 @@ namespace RejestrNieruchomosciNew.ViewModel
             uzytkiList.list = new ObservableCollection<Uzytki>(uzytkiListLok.Select(r => new Uzytki(r)).ToList());
             uzytkiList.saveUzytki();
 
-            //userPrev.dzialkaView.Refresh();
-            //dzialka = userPrev.dzialkaSel;
-            int r1 = 14;
+            //IDzialka dz = userPrev.dzialkaSel;
+
+            //if (dz.Equals(dzialka) == false)
+            //    dzialkaList.ModRow(dz);
+            int r1 = 1;
             dzialkaList.ModRow(dzialka);
 
-            //userPrev.dzialkaSel = (IDzialka)dzialka.clone();
+            
+            
+            //userPrev.dzialkaSel=dzialka;
             userPrev.dzialkaView.Refresh();
+            //userPrev.dzialkaSel = dzialka;
         }
     }
 }

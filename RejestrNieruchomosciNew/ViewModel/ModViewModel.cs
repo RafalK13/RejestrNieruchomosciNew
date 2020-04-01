@@ -23,17 +23,39 @@ namespace RejestrNieruchomosciNew.ViewModel
         public PerformMode mode { get; set; }
 
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
-                            UserControl_PreviewViewModel userPrev1)
+                            UserControl_DaneDodatkoweViewModel userDod,
+                            UserControl_PreviewViewModel userPrev1,
+                            IDzialka dzialkaSel)
         {
             tabsVisible = true;
+            int r = 1;
+            dzialkaSel.copy(userPrev1.dzialkaSel);
 
-            userPodst.dzialka.copy(userPrev1.dzialkaSel);
-            userPodst.obreb.fillValues(userPrev1.dzialkaSel);
+            userPodst.dzialka = dzialkaSel;
+            userPodst.obreb.fillValues(dzialkaSel);
+
+            userDod.dzialka = dzialkaSel;
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
+
+            userControl_DaneDod = userDod;
+
+
+            //tabsVisible = true;
+
+            ////userPodst.dzialka.copy(userPrev1.dzialkaSel);
+            //userPodst.dzialka=userPrev1.dzialkaSel;
+            //userPodst.obreb.fillValues(userPrev1.dzialkaSel);
+
+            //userDod.dzialka = userPrev1.dzialkaSel;
+
+            //userControl_AddDanePod = userPodst;
+            //userControl_AddDanePod.changeMode = ChangeMode.mod;
+
+            //userControl_DaneDod = userDod;
         }
-               
+
         public override void onAddDzialka()
         {
             MessageBox.Show("Mod");

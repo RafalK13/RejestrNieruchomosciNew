@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -113,23 +114,41 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onZagospAdd()
         {
-            zagospList.list = new ObservableCollection<IZagosp>(zagospListLok.Select(r => new Zagosp(r)).ToList());
-            zagospList.saveZagosp();
+            try
+            {
+                
+                zagospList.list = new ObservableCollection<IZagosp>(zagospListLok.Select(r => new Zagosp(r)).ToList());
+                zagospList.saveZagosp();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show( $@"{ex.Message}" +
+                                  $"{ex.Source}" +
+                                  $"{ex.StackTrace}");
+            }
         }
 
         private void onNazwaDel()
         {
-            zagospList.list.Remove(zagospSel);
+            zagospListLok.Remove(zagospSel);
         }
 
         private void onNazwaAll()
         {
             if (testIfExist())
             {
-                zagospListLok.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
-                //zagospList.list.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
-                nazwa = string.Empty;
-                zagospSel = null;
+                try
+                {
+                    zagospListLok.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
+                    nazwa = string.Empty;
+                    zagospSel = null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($@"{ex.Message}" +
+                                      $"{ex.Source}" +
+                                      $"{ex.StackTrace}");
+                }
             }
         }
 

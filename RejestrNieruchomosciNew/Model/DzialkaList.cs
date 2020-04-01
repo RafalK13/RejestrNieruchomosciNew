@@ -110,7 +110,7 @@ namespace RejestrNieruchomosciNew.Model
             dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
             //list[v] = (IDzialka)dz.clone();
 
-            list[v] = dz;//.copy(dz);
+            list[v].copy(dz);
 
             if (zmianaDzialkiList != null)
                 zmianaDzialkiList(null, EventArgs.Empty);

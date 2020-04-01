@@ -11,21 +11,22 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         [DoNotWire]
         public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+
+        [DoNotWire]
+        public UserControl_DaneDodatkoweViewModel userControl_DaneDod { get; set; }
+
+        [DoNotWire]
+        public IDzialka dzialka { get; set; }
+
         public UserControl_WlascicielViewModel userControl_Wlasciciel { get; set; }
         public UserControl_InnePrawaViewModel userControl_InnePrawa { get; set; }
         public UserControl_PlatnoscUWViewModel userControl_PlatnoscUW { get; set; }
-        public UserControl_DaneDodatkoweViewModel userControl_DaneDod { get; set; }
         public UserControl_ZagospViewModel userControl_Zagosp { get; set; }
         public UserControl_BudynekViewModel userControl_Budynek { get; set; }
-
         public UserControl_PreviewViewModel userControl_prevModel { get; set; }
-
-        public IDzialka dzialka { get; set; }
-
         public bool tabsVisible { get; set; }
-
         public string modeMessage { get; set; }
-        
+
         #region ICommand
         public ICommand OnCloseWindow { get; set; }
         public ICommand OnAddDzialka { get; set; }

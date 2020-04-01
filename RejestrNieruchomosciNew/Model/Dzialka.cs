@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace RejestrNieruchomosciNew
 {
@@ -110,6 +112,24 @@ namespace RejestrNieruchomosciNew
 
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
 
+        bool IEquatable<IDzialka>.Equals(IDzialka other)
+        {
+            return DzialkaId.Equals(other.DzialkaId) &&
+                   string.Equals(Numer, other.Numer) &&
+                   string.Equals(Kwakt, other.Kwakt) &&
+                   string.Equals(Kwzrob, other.Kwzrob) &&
+                   Pow.Equals(other.Pow) &&
+                   string.Equals(lokalizacja, other.lokalizacja) &&
+                   string.Equals(uzbrojenie, other.uzbrojenie) &&
+                   string.Equals(ksztalt, other.ksztalt) &&
+                   string.Equals(sasiedztwo, other.sasiedztwo) &&
+                   string.Equals(dostDoDrogi, other.dostDoDrogi) &&
+                   string.Equals(rodzNaw, other.rodzNaw) &&
+                   UliceSloId.Equals(other.UliceSloId) &&
+                   ObrebId.Equals(other.ObrebId) &&
+                   NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
+        }
+
         //[NotMapped]
         //public ProcessDzialka procDz { get; set; }
 
@@ -123,6 +143,7 @@ namespace RejestrNieruchomosciNew
 
         public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _UliceSloId = null)
         {
+            MessageBox.Show("Dzialka KON");
             Numer = _numer;
             ObrebId = _ObrebId;
             Kwakt = _kwA;
@@ -163,7 +184,13 @@ namespace RejestrNieruchomosciNew
             dzDest.Pow = dzSource.Pow;
             dzDest.NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
             dzDest.UliceSloId = dzSource.UliceSloId;
-        }
+            dzDest.lokalizacja = dzSource.lokalizacja;
+            dzDest.uzbrojenie = dzSource.uzbrojenie;
+            dzDest.ksztalt = dzSource.ksztalt;
+            dzDest.sasiedztwo = dzSource.sasiedztwo;
+            dzDest.dostDoDrogi = dzSource.dostDoDrogi;
+            dzDest.rodzNaw = dzSource.rodzNaw;
+    }
 
         public IDzialka copy(IDzialka dzSource)
         {
@@ -175,6 +202,12 @@ namespace RejestrNieruchomosciNew
             Pow = dzSource.Pow;
             NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
             UliceSloId = dzSource.UliceSloId;
+            lokalizacja = dzSource.lokalizacja;
+            uzbrojenie = dzSource.uzbrojenie;
+            ksztalt = dzSource.ksztalt;
+            sasiedztwo = dzSource.sasiedztwo;
+            dostDoDrogi = dzSource.dostDoDrogi;
+            rodzNaw = dzSource.rodzNaw;
 
             return this;
         }

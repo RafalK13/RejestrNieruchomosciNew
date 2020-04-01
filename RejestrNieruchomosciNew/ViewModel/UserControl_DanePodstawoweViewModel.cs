@@ -99,7 +99,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
+
+            int r = 13;
         }
+
+        #endregion
 
         private void OnAddDzialkaClick()
         {
@@ -109,14 +113,19 @@ namespace RejestrNieruchomosciNew.ViewModel
                     dzialkaList.AddRow(dzialka);
                     break;
                 case ChangeMode.mod:
-                    dzialkaList.ModRow(dzialka);
-
-                    userPrev.dzialkaSel = dzialka;
-                    break;
+                    {
+                        dzialkaList.ModRow(dzialka);
+                        //userPrev.dzialkaSel = dzialka;
+                        
+                        break;
+                    }
             }
+            int r = 1;
             userPrev.dzialkaView.Refresh();
+            r = 2;
+            //userPrev.dzialkaSel = dzialka;
         }
-        #endregion
+       
 
         #region Metods
         private void onLeftClick()

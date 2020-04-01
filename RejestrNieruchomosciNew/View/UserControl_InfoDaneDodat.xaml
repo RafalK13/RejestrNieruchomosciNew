@@ -150,19 +150,19 @@
                         Text="{Binding infoMain.prevModel.dzialkaSel.sasiedztwo}"
                         Style="{StaticResource tekskBoxOpis}"/>
                 <Label  Grid.Row="6"
-                        Content="Uzbrojenie"/>
+                        Content="Dostęp do drogi"/>
                 <TextBox
                         Grid.Row="7" Grid.RowSpan="4"
                         Margin="5,0,10,0"
-                        Text="{Binding infoMain.prevModel.dzialkaSel.uzbrojenie}"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.dostDoDrogi}"
                         Style="{StaticResource tekskBoxOpis}"/>
 
                 <Label  Grid.Row="11"
-                        Content="ksztalt"/>
+                        Content="Nawierzchnia drogi dojazdowej"/>
                 <TextBox
                         Grid.Row="12" Grid.RowSpan="4"
                         Margin="5,0,10,0"
-                        Text="{Binding infoMain.prevModel.dzialkaSel.ksztalt}"
+                        Text="{Binding infoMain.prevModel.dzialkaSel.rodzNaw}"
                         Style="{StaticResource tekskBoxOpis}"/>
             </Grid>
         </ScrollViewer>

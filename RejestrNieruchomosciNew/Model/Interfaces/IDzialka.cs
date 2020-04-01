@@ -3,7 +3,7 @@ using System;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IDzialka
+    public interface IDzialka : IEquatable<IDzialka>
     {
         int DzialkaId { get; set; }
         string Numer { get; set; }
