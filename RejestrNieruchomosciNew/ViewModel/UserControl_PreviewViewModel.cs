@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.View;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -167,12 +168,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             else
             {
 
-                //if (dzialkaSel != null)
-                //{
-                //    var v = factory.CreateView<ChangeView>();
-                //    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                //    v.Show();
-                //}
+                if (dzialkaSel != null)
+                {
+                    var v = factory.CreateView<ChangeView>();
+                    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
+                    v.Show();
+                }
             }
         }
 

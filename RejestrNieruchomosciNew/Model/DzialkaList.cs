@@ -36,6 +36,8 @@ namespace RejestrNieruchomosciNew.Model
         {
             try
             {
+
+                MessageBox.Show("DzialkaList");
                 Task task = Task.Run(() => fillDzialkaList());
                 task.Wait();
             }
@@ -95,26 +97,32 @@ namespace RejestrNieruchomosciNew.Model
 
         public void ModRow(IDzialka dz)
         {
-            using (var c = new Context())
+            try
             {
-                Dzialka d = (Dzialka)dz;
+                using (var c = new Context())
+                {
+                    Dzialka d = (Dzialka)dz;
 
-                d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
+                    d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
 
-                var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
-                c.Entry(v1).CurrentValues.SetValues(d);
-                c.SaveChanges();
+                    var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
+                    c.Entry(v1).CurrentValues.SetValues(d);
+                    c.SaveChanges();
+                }
+
+                var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
+                dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
+                //list[v] = (IDzialka)dz.clone();
+
+                list[v].copy(dz);
+
+                if (zmianaDzialkiList != null)
+                    zmianaDzialkiList(null, EventArgs.Empty);
             }
-
-            var v =list.FindIndex( r=>r.DzialkaId == dz.DzialkaId);
-            dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-            //list[v] = (IDzialka)dz.clone();
-
-            list[v].copy(dz);
-
-            if (zmianaDzialkiList != null)
-                zmianaDzialkiList(null, EventArgs.Empty);
-
+            catch (Exception ex)
+            {
+                MessageBox.Show( $"Błąd modyfikacji działki\r\n{ex.Message}\r\n{ex.Source}");
+            }
         }
     }
 }

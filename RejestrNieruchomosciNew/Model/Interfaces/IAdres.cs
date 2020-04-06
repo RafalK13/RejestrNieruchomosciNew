@@ -9,7 +9,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     public interface IAdres
     {
         int AdresId { get; set; }
-        int UlicaId { get; set; }
+        int UliceSloId { get; set; }
         int BudynekId { get; set; }
         string Numer { get; set; }
 

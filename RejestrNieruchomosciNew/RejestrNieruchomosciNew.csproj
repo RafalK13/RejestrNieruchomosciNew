@@ -17,7 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>publishRafal\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,7 +27,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -226,29 +227,9 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20200224081610_praca-1.cs" />
-    <Compile Include="Migrations\20200224081610_praca-1.designer.cs">
-      <DependentUpon>20200224081610_praca-1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200326150004_dom1.cs" />
-    <Compile Include="Migrations\20200326150004_dom1.designer.cs">
-      <DependentUpon>20200326150004_dom1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200330091324_dom2.cs" />
-    <Compile Include="Migrations\20200330091324_dom2.designer.cs">
-      <DependentUpon>20200330091324_dom2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200330145749_dom3.cs" />
-    <Compile Include="Migrations\20200330145749_dom3.designer.cs">
-      <DependentUpon>20200330145749_dom3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200330152614_dom4.cs" />
-    <Compile Include="Migrations\20200330152614_dom4.designer.cs">
-      <DependentUpon>20200330152614_dom4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200330160230_dom5.cs" />
-    <Compile Include="Migrations\20200330160230_dom5.designer.cs">
-      <DependentUpon>20200330160230_dom5.cs</DependentUpon>
+    <Compile Include="Migrations\20200404130134_dom1.cs" />
+    <Compile Include="Migrations\20200404130134_dom1.designer.cs">
+      <DependentUpon>20200404130134_dom1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
@@ -309,6 +290,8 @@
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
     <Compile Include="Model\Interfaces\ITransakcje.cs" />
     <Compile Include="Model\Interfaces\ITransakcjeList.cs" />
+    <Compile Include="Model\Interfaces\IUliceSlo.cs" />
+    <Compile Include="Model\Interfaces\IUliceSloList.cs" />
     <Compile Include="Model\Interfaces\IUzytki.cs" />
     <Compile Include="Model\Interfaces\IUzytkiList.cs" />
     <Compile Include="Model\Interfaces\IUzytkiSlo.cs" />
@@ -676,6 +659,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

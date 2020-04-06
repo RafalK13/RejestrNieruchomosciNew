@@ -204,7 +204,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             double result;
             if (double.TryParse(digit, out result))
-                return string.Format("{0:#,0.00}", result);
+                return string.Format("{0:#,0.0000}", result);
             return null;
         }
 

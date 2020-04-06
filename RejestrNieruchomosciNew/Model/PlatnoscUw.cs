@@ -90,6 +90,10 @@ namespace RejestrNieruchomosciNew
         {
             using (var c = new Context())
             {
+                int r = 13;
+                //if (p.isNull() == false)
+                //    c.PlatnoscUW.Add(p);
+
                 c.Update(p);
                 c.SaveChanges();
             }

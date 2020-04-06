@@ -70,11 +70,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             int r1 = 1;
             dzialkaList.ModRow(dzialka);
 
-            
-            
-            //userPrev.dzialkaSel=dzialka;
-            userPrev.dzialkaView.Refresh();
             //userPrev.dzialkaSel = dzialka;
+            userPrev.dzialkaView.Refresh();
         }
     }
 }

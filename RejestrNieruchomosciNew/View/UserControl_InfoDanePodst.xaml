@@ -111,7 +111,7 @@
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
                         labelRaf="Powierzchnia"
-                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.00}'}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.0000}'}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="7"

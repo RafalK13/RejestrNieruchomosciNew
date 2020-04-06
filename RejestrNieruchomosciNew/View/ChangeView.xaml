@@ -9,7 +9,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        
+        WindowState="Maximized"
         Title="Modyfikacja" Height="600" Width="800"
         x:Name="AddView_Win"
         >

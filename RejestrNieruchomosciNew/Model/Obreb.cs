@@ -10,6 +10,7 @@ namespace RejestrNieruchomosciNew
     {
         public int ObrebId { get; set; }
         public string Nazwa { get; set; }
+        public string Numer { get; set; }
 
         public GminaSlo GminaSlo { get; set; }
 

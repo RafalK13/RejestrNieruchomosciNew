@@ -31,13 +31,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PreviewViewModel userPrev { get; set; }
 
         public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel _userPrev,
-                                               PlatnoscList platnoscList)
+                                               PlatnoscList platnoscList,
+                                               PlatnoscUW _platnoscUW)
         {
-            if (_userPrev.dzialkaSel != null)
+
+            int a = 4;
+            if (_userPrev.dzialkaSel.PlatnoscUW != null)
             {
-                platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;
+                _platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;
             }
 
+            platnoscUW = _platnoscUW;
             initButtons();
         }
 
@@ -48,9 +52,18 @@ namespace RejestrNieruchomosciNew.ViewModel
         
         private void clickPlatnosciAdd()
         {
+          
             platnoscUW.Dzialka = userPrev.dzialkaSel as Dzialka;
 
-            platnoscUW.save( platnoscUW);
+            platnoscUW.save(platnoscUW);
+
+            //userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
+            //userPrev.dzialkaView.Refresh();
+            //int a = 4;
+
+
+
+
         }
     }
 }       

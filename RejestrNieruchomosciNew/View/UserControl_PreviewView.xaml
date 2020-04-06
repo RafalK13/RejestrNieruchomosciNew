@@ -135,7 +135,7 @@
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding   Gesture="LeftDoubleClick" 
-                                Command="{Binding doubleClick}"/>
+                                Command="{Binding userControl_prev.doubleClick}"/>
             </DataGrid.InputBindings>
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">

@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System.Collections.Generic;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class UliceSlo : ViewModelBase
+    public class UliceSlo : ViewModelBase, IUliceSlo
     {
         private int _UliceSloId;
         public int UliceSloId
@@ -19,6 +20,9 @@ namespace RejestrNieruchomosciNew.Model
         }
         public string  Nazwa { get; set; }
 
+        public int GminaSloId { get; set; }
+
         public ICollection<Dzialka> Dzialka { get; set; }
+        public GminaSlo GminaSlo { get; set; }
     }
 }
