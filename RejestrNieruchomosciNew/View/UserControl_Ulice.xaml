@@ -26,8 +26,9 @@
                                         fontSizeRafALL="14"
                                         heightRafALL="27"
                                         HorizontalAlignment="Stretch"
-                                        colNameIdRaf="UliceSloId" 
-                                        colNameRaf="Nazwa"
+                                        colNameIdRaf="UliceSloId1" 
+                                        colNameRaf="Nazwa1"
+                                        
                                         />
 
         <!--<Button Grid.Column="1"

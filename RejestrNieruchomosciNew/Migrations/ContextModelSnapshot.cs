@@ -37,8 +37,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<double?>("Pow");
 
-                    b.Property<int?>("UliceSloId");
-
                     b.Property<string>("dostDoDrogi");
 
                     b.Property<string>("ksztalt");
@@ -56,8 +54,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("NadzorKonserwSloId");
 
                     b.HasIndex("ObrebId");
-
-                    b.HasIndex("UliceSloId");
 
                     b.HasIndex("Numer", "ObrebId")
                         .IsUnique()
@@ -107,6 +103,33 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("GminaSloId");
 
                     b.ToTable("GminaSlo");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Adres", b =>
+                {
+                    b.Property<int>("AdresId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DzialkaId");
+
+                    b.Property<int>("MiejscowoscSloId");
+
+                    b.Property<string>("Numer");
+
+                    b.Property<int>("UlicaSloId");
+
+                    b.HasKey("AdresId");
+
+                    b.HasIndex("DzialkaId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL");
+
+                    b.HasIndex("MiejscowoscSloId");
+
+                    b.HasIndex("UlicaSloId");
+
+                    b.ToTable("Adres");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Budynek", b =>
@@ -233,6 +256,23 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("TransS_Id");
 
                     b.ToTable("InnePrawa");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.MiejscowoscSlo", b =>
+                {
+                    b.Property<int>("MiejscowoscSloId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GminaSloId");
+
+                    b.Property<int>("MiejscowoscUlice");
+
+                    b.Property<string>("Nazwa");
+
+                    b.HasKey("MiejscowoscSloId");
+
+                    b.ToTable("MiejscowoscSlo");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.NadzorKonserwSlo", b =>
@@ -436,17 +476,19 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.ToTable("Transakcje");
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UliceSlo", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UlicaSlo", b =>
                 {
-                    b.Property<int>("UliceSloId")
+                    b.Property<int>("UlicaSloId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("GminaSloId");
+                    b.Property<int?>("GminaSloId");
+
+                    b.Property<int>("MiejscowoscUlice");
 
                     b.Property<string>("Nazwa");
 
-                    b.HasKey("UliceSloId");
+                    b.HasKey("UlicaSloId");
 
                     b.HasIndex("GminaSloId");
 
@@ -916,10 +958,24 @@ namespace RejestrNieruchomosciNew.Migrations
                         .WithMany("Dzialka")
                         .HasForeignKey("ObrebId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("RejestrNieruchomosciNew.Model.UliceSlo")
-                        .WithMany("Dzialka")
-                        .HasForeignKey("UliceSloId");
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.Adres", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithOne("Adres")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "DzialkaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.MiejscowoscSlo", "MiejscowoscSlo")
+                        .WithMany("Adres")
+                        .HasForeignKey("MiejscowoscSloId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("RejestrNieruchomosciNew.Model.UlicaSlo", "UlicaSlo")
+                        .WithMany("Adres")
+                        .HasForeignKey("UlicaSloId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Dzialka_Budynek", b =>
@@ -982,12 +1038,11 @@ namespace RejestrNieruchomosciNew.Migrations
                         .HasForeignKey("RodzajTransakcjiSloId");
                 });
 
-            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UliceSlo", b =>
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.UlicaSlo", b =>
                 {
-                    b.HasOne("RejestrNieruchomosciNew.GminaSlo", "GminaSlo")
+                    b.HasOne("RejestrNieruchomosciNew.GminaSlo")
                         .WithMany("UliceSlo")
-                        .HasForeignKey("GminaSloId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("GminaSloId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>

@@ -20,7 +20,6 @@ namespace RejestrNieruchomosciNew.Model
 
         private void initPodmiotList()
         {
-            MessageBox.Show("PodmiotList");
             Task task = Task.Run(() => fillPodmiotListAsync());
 
             task.Wait();

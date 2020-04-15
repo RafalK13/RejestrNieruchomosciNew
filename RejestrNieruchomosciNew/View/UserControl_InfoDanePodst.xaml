@@ -65,6 +65,8 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+
                 </Grid.RowDefinitions>
 
                 <Label  Grid.Row="0"
@@ -145,47 +147,12 @@
                     </view:UserControl_ElementInfo.tekstRaf>
                 </view:UserControl_ElementInfo>
 
-                <!--<view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
-
-                <view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
-
-                <view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
-
-                <view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
-
-                <view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
-
-                <view:UserControl_ElementInfo
-                        Grid.Row="1"
-                        Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
-                        labelRaf="Numer działki"
-                        tekstRaf="{Binding Path=DataContext.infoMain.infoPodst.prev.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>-->
+                <!--<view:UserControl_Adres
+                     Grid.Row="9"
+                     Grid.RowSpan="7"
+                    />-->
+                <!--miejscList="{Binding DataContext.infoMain.infoPodst.miejscList, ElementName=InfoDanePodstawowe}"
+                    ulicaList="{Binding DataContext.infoMain.infoPodst.ulicaList, ElementName=InfoDanePodstawowe}"-->
 
             </Grid>
         </ScrollViewer>

@@ -10,7 +10,7 @@ namespace RejestrNieruchomosciNew.Model
         string Kwakt { get; set; }
         string Kwzrob { get; set; }
         double? Pow { get; set; }
-        int? UliceSloId { get; set; }
+        //int? UliceSloId { get; set; }
 
         string lokalizacja { get; set; }
         string uzbrojenie { get; set; }

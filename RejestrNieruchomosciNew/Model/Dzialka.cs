@@ -71,23 +71,8 @@ namespace RejestrNieruchomosciNew
         public string dostDoDrogi { get; set; }
         public string rodzNaw { get; set; }
 
-        private int? _UliceSloId;
-        public int? UliceSloId
-        {
-            get => _UliceSloId;
+        public Adres Adres { get; set; }
 
-            set
-            {
-                _UliceSloId = value;
-
-                if (_UliceSloId <= 0)
-                    _UliceSloId = 1;
-                RaisePropertyChanged("UliceSloId");
-                if (zmiana != null)
-                    zmiana(null, EventArgs.Empty);
-            }
-        }
-       
         public int? NadzorKonserwSloId { get; set; }
         public NadzorKonserwSlo NadzorKonserwSlo { get; set; }
 
@@ -125,7 +110,7 @@ namespace RejestrNieruchomosciNew
                    string.Equals(sasiedztwo, other.sasiedztwo) &&
                    string.Equals(dostDoDrogi, other.dostDoDrogi) &&
                    string.Equals(rodzNaw, other.rodzNaw) &&
-                   UliceSloId.Equals(other.UliceSloId) &&
+                   //UliceSloId.Equals(other.UliceSloId) &&
                    ObrebId.Equals(other.ObrebId) &&
                    NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
         }
@@ -150,7 +135,7 @@ namespace RejestrNieruchomosciNew
             Kwzrob = _kwZ;
             Pow = _Pow;
             NadzorKonserwSloId = _NadzorKonserwSloId;
-            UliceSloId = _UliceSloId;
+            //UlicaSloId = _UliceSloId;
         }
 
         public object clone()
@@ -183,7 +168,7 @@ namespace RejestrNieruchomosciNew
             dzDest.Kwzrob = dzSource.Kwzrob;
             dzDest.Pow = dzSource.Pow;
             dzDest.NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            dzDest.UliceSloId = dzSource.UliceSloId;
+            //dzDest.UliceSloId = dzSource.UliceSloId;
             dzDest.lokalizacja = dzSource.lokalizacja;
             dzDest.uzbrojenie = dzSource.uzbrojenie;
             dzDest.ksztalt = dzSource.ksztalt;
@@ -201,7 +186,7 @@ namespace RejestrNieruchomosciNew
             Kwzrob = dzSource.Kwzrob;
             Pow = dzSource.Pow;
             NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            UliceSloId = dzSource.UliceSloId;
+            //UliceSloId = dzSource.UliceSloId;
             lokalizacja = dzSource.lokalizacja;
             uzbrojenie = dzSource.uzbrojenie;
             ksztalt = dzSource.ksztalt;

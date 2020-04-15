@@ -23,14 +23,14 @@ namespace RejestrNieruchomosciNew.View
             DependencyProperty.Register("HeightRaf", typeof(int), typeof(UserControl_Ulice), new PropertyMetadata(10));
 
 
-        public UliceSloList uliceSloList
+        public UlicaSloList uliceSloList
         {
-            get { return (UliceSloList)GetValue(uliceSloListProperty); }
+            get { return (UlicaSloList)GetValue(uliceSloListProperty); }
             set { SetValue(uliceSloListProperty, value); }
         }
 
         public static readonly DependencyProperty uliceSloListProperty =
-            DependencyProperty.Register("uliceSloList", typeof(UliceSloList), typeof(UserControl_Ulice));
+            DependencyProperty.Register("uliceSloList", typeof(UlicaSloList), typeof(UserControl_Ulice));
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {

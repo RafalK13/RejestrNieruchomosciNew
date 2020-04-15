@@ -13,5 +13,10 @@ namespace RejestrNieruchomosciNew.View
         {
             InitializeComponent();
         }
+
+        private void UserControl_Adres_AccessKeyPressed(object sender, System.Windows.Input.AccessKeyPressedEventArgs e)
+        {
+
+        }
     }
 }

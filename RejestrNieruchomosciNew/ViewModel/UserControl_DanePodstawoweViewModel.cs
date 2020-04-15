@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Linq;
 using System.Windows.Input;
@@ -41,6 +42,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
+
+                int r = 123;
             }
         }
 
@@ -81,14 +84,15 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialkaList dzialkaList { get; set; }
 
-        private UliceSloList _UliceSloList;
-        public UliceSloList UliceSloList
+        private IAdres _aders;
+        public IAdres adres
         {
-            get => _UliceSloList;
+            get => _aders;
             set
             {
-                _UliceSloList = value;
+                _aders = value;
                 RaisePropertyChanged();
+                int r = 123;
             }
         }
         #endregion
@@ -97,10 +101,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_DanePodstawoweViewModel()
         {
+
+
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
-
-            int r = 13;
         }
 
         #endregion
@@ -116,16 +120,11 @@ namespace RejestrNieruchomosciNew.ViewModel
                     {
                         dzialkaList.ModRow(dzialka);
                         //userPrev.dzialkaSel = dzialka;
-                        
                         break;
                     }
             }
-            int r = 1;
             userPrev.dzialkaView.Refresh();
-            r = 2;
-            //userPrev.dzialkaSel = dzialka;
         }
-       
 
         #region Metods
         private void onLeftClick()

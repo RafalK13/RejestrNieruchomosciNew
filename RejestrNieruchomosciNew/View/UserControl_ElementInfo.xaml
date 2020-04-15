@@ -29,5 +29,20 @@
                  Command="{Binding onClickZal}"
                  Content="{Binding buttonOpis, Mode=TwoWay}"
                  />
+
+        <!--<ComboBox Grid.Column="1"
+                  Height="{Binding hightRaf}"
+                  IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"
+                  Visibility="{Binding comboVisibility}"
+                  ItemsSource="{Binding comboList.listAll}"
+                  DisplayMemberPath="{Binding comboDispMember}"
+                  IsEditable="True"
+                  />-->
+        
+
+                 <!--DisplayMemberPath="{Binding comboDispMember}"
+                  SelectedValue="{Binding comboSelValue}"
+                  SelectedValuePath="{Binding comboValPath}"-->
+
     </Grid>
 </UserControl>

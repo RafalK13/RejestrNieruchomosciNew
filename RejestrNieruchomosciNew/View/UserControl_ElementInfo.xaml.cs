@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -152,14 +154,52 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty tekstRafProperty =
             DependencyProperty.Register("tekstRaf", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
 
-        //public string zalPath
+        public Visibility comboVisibility
+        {
+            get { return (Visibility)GetValue(comboVisibilityProperty); }
+            set { SetValue(comboVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty comboVisibilityProperty =
+            DependencyProperty.Register("comboVisibility", typeof(Visibility), typeof(UserControl_ElementInfo), new PropertyMetadata(Visibility.Hidden));
+
+        //#region COMBO
+        //public IEnumerable comboList
         //{
-        //    get { return (string)GetValue(zalPathProperty); }
-        //    set { SetValue(zalPathProperty, value); }
+        //    get { return (IEnumerable)GetValue(comboListProperty); }
+        //    set { SetValue(comboListProperty, value); }
         //}
 
-        //public static readonly DependencyProperty zalPathProperty =
-        //    DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
+        //public static readonly DependencyProperty comboListProperty =
+        //    DependencyProperty.Register("comboList", typeof(IEnumerable), typeof(UserControl_ElementInfo));
+
+        //public string comboDispMember
+        //{
+        //    get { return (string)GetValue(comboDispMemberProperty); }
+        //    set { SetValue(comboDispMemberProperty, value); }
+        //}
+
+        //public static readonly DependencyProperty comboDispMemberProperty =
+        //    DependencyProperty.Register("comboDispMember", typeof(string), typeof(UserControl_ElementInfo));
+
+        //public object comboSelValue
+        //{
+        //    get { return (object)GetValue(comboSelValueProperty); }
+        //    set { SetValue(comboSelValueProperty, value); }
+        //}
+
+        //public static readonly DependencyProperty comboSelValueProperty =
+        //    DependencyProperty.Register("comboSelValue", typeof(object), typeof(UserControl_ElementInfo));
+
+        //public string comboSelValPath
+        //{
+        //    get { return (string)GetValue(comboSelValPathProperty); }
+        //    set { SetValue(comboSelValPathProperty, value); }
+        //}
+
+        //public static readonly DependencyProperty comboSelValPathProperty =
+        //    DependencyProperty.Register("comboSelValPath", typeof(string), typeof(UserControl_ElementInfo));
+        //#endregion
 
     }
 }

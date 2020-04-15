@@ -8,6 +8,7 @@
 
         //ICollection<Dzialka> Dzialka { get; set; }
         int GminaSloId { get; set; }
-         GminaSlo GminaSlo { get; set; }
+
+        GminaSlo GminaSlo { get; set; }
     }
 }

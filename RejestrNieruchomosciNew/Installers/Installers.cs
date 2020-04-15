@@ -124,9 +124,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_ZagospViewModel>().LifeStyle.Transient);
 
-            container.Register(Component.For<UliceSlo>().LifeStyle.Transient);
-            container.Register(Component.For<UliceSloList>());
-            container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
+            
 
             container.Register(Component.For<PerformMode>());
 
@@ -151,6 +149,14 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IAdres>().ImplementedBy<Adres>().LifeStyle.Transient);
             container.Register(Component.For<IMedia>().ImplementedBy<Media>().LifeStyle.Transient);
             container.Register(Component.For<ILokale>().ImplementedBy<Lokale>().LifeStyle.Transient);
+            container.Register(Component.For<IMiejscowoscSlo>().ImplementedBy<MiejscowoscSlo>().LifeStyle.Transient);
+
+            container.Register(Component.For<IAdresList>().ImplementedBy<AdresList>());
+            container.Register(Component.For<IMiejscowoscSloList>().ImplementedBy<MiejscowoscSloList>());
+            container.Register(Component.For<IUlicaSloList>().ImplementedBy<UlicaSloList>());
+
+            container.Register(Component.For<IUlicaSlo>().ImplementedBy<UlicaSlo>().LifeStyle.Transient);
+            container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
 
             //container.Register(Component.For<IDzialka_Budynek>().ImplementedBy<Dzialka_Budynek>().LifeStyle.Transient);
             //container.Register(Component.For<IDzialka_BudynekList>().ImplementedBy<Dzialka_BudynekList>());
@@ -159,8 +165,6 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IBudynek>().ImplementedBy<Budynek>().LifeStyle.Transient);
             container.Register(Component.For<IBudynkiList>().ImplementedBy<BudynkiList>());
             container.Register(Component.For<UserControl_BudynekViewModel>().LifeStyle.Transient);
-
-
 
         }
     }

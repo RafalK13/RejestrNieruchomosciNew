@@ -1,4 +1,5 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
+using System.Collections.Generic;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -7,5 +8,6 @@ namespace RejestrNieruchomosciNew.Model
         public int UzytkiSloId { get; set; }
         public string Nazwa { get; set; }
 
+        //public ICollection<Adres> Adres { get; set; }
     }
 }

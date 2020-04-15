@@ -36,8 +36,6 @@ namespace RejestrNieruchomosciNew.Model
         {
             try
             {
-
-                MessageBox.Show("DzialkaList");
                 Task task = Task.Run(() => fillDzialkaList());
                 task.Wait();
             }

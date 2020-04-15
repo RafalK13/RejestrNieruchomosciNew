@@ -207,9 +207,10 @@
             </Grid>
 
             <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
-                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}"
+                          
                           >
-
+                <!--IsEnabled="{Binding userControl_Budynek.podmiotDetail}"-->
+                <userCon:UserControl_Adres/>
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"

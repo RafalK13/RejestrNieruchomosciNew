@@ -34,10 +34,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (int.TryParse(values[0].ToString(), out int id))
             {
-                UliceSloList pl = values[1] as UliceSloList;
+                UlicaSloList pl = values[1] as UlicaSloList;
                 if (pl != null)
                 {
-                    var v = pl.list.FirstOrDefault(row => row.UliceSloId == id);
+                    var v = pl.list.FirstOrDefault(row => row.UlicaSloId == id);
                     if (v != null)
                         return v.Nazwa;
                 }

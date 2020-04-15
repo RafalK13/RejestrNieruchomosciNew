@@ -21,15 +21,15 @@
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>2</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -64,6 +64,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ikona3_qUN_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -231,8 +240,17 @@
     <Compile Include="Migrations\20200404130134_dom1.designer.cs">
       <DependentUpon>20200404130134_dom1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200409201943_dom2.cs" />
+    <Compile Include="Migrations\20200409201943_dom2.designer.cs">
+      <DependentUpon>20200409201943_dom2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200409202903_dom3.cs" />
+    <Compile Include="Migrations\20200409202903_dom3.designer.cs">
+      <DependentUpon>20200409202903_dom3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
+    <Compile Include="Model\AdresList.cs" />
     <Compile Include="Model\Budynek.cs" />
     <Compile Include="Model\BudynkiList.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
@@ -253,6 +271,7 @@
     <Compile Include="Model\InnePrawa.cs" />
     <Compile Include="Model\InnePrawaList.cs" />
     <Compile Include="Model\Interfaces\IAdres.cs" />
+    <Compile Include="Model\Interfaces\IAdresList.cs" />
     <Compile Include="Model\Interfaces\IBudynkiList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />
@@ -273,6 +292,8 @@
     <Compile Include="Model\Interfaces\ILokaleList.cs" />
     <Compile Include="Model\Interfaces\IMedia.cs" />
     <Compile Include="Model\Interfaces\IMediaList.cs" />
+    <Compile Include="Model\Interfaces\IMiejscowoscSloList.cs" />
+    <Compile Include="Model\Interfaces\IMiejscowoscSlo.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
@@ -290,8 +311,8 @@
     <Compile Include="Model\Interfaces\IRodzajDokumentuSlo.cs" />
     <Compile Include="Model\Interfaces\ITransakcje.cs" />
     <Compile Include="Model\Interfaces\ITransakcjeList.cs" />
-    <Compile Include="Model\Interfaces\IUliceSlo.cs" />
-    <Compile Include="Model\Interfaces\IUliceSloList.cs" />
+    <Compile Include="Model\Interfaces\IUlicaSlo.cs" />
+    <Compile Include="Model\Interfaces\IUlicaSloList.cs" />
     <Compile Include="Model\Interfaces\IUzytki.cs" />
     <Compile Include="Model\Interfaces\IUzytkiList.cs" />
     <Compile Include="Model\Interfaces\IUzytkiSlo.cs" />
@@ -309,6 +330,8 @@
     <Compile Include="Model\Interfaces\MyEventHandler.cs" />
     <Compile Include="Model\Lokale.cs" />
     <Compile Include="Model\Media.cs" />
+    <Compile Include="Model\MiejscowoscSlo.cs" />
+    <Compile Include="Model\MiejscowoscSloList.cs" />
     <Compile Include="Model\MyEventArgs.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
@@ -332,8 +355,8 @@
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Transakcje.cs" />
     <Compile Include="Model\TransakcjeList.cs" />
-    <Compile Include="Model\UliceSlo.cs" />
-    <Compile Include="Model\UliceSloList.cs" />
+    <Compile Include="Model\UlicaSlo.cs" />
+    <Compile Include="Model\UlicaSloList.cs" />
     <Compile Include="Model\Uzytki.cs" />
     <Compile Include="Model\UzytkiList.cs" />
     <Compile Include="Model\UzytkiSlo.cs" />
@@ -386,6 +409,9 @@
     </Compile>
     <Compile Include="View\UserControl3.xaml.cs">
       <DependentUpon>UserControl3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Adres.xaml.cs">
+      <DependentUpon>UserControl_Adres.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_Attachment.xaml.cs">
       <DependentUpon>UserControl_Attachment.xaml</DependentUpon>
@@ -444,6 +470,9 @@
     <Compile Include="View\UserControl_Test.xaml.cs">
       <DependentUpon>UserControl_Test.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_TestRaf.xaml.cs">
+      <DependentUpon>UserControl_TestRaf.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_Transakcja.xaml.cs">
       <DependentUpon>UserControl_Transakcja.xaml</DependentUpon>
     </Compile>
@@ -501,6 +530,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Adres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -580,6 +613,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControl_TestRaf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl_Transakcja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -636,6 +673,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -659,7 +697,24 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ikona1_ooF_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikona3_6fx_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikona4_ZGc_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikona6_ZQa_1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikona6_5fS_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ikona3_qUN_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

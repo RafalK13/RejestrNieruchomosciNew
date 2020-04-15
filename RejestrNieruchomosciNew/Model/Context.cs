@@ -36,7 +36,11 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Uzytki> Uzytki { get; set; }
         public virtual DbSet<UzytkiSlo> UzytkiSlo { get; set; }
 
-        public virtual DbSet<UliceSlo> UliceSlo { get; set; }
+        public virtual DbSet<UlicaSlo> UliceSlo { get; set; }
+
+        public virtual DbSet<Adres> Adres { get; set; }
+
+        public virtual DbSet<MiejscowoscSlo> MiejscowoscSlo { get; set; }
 
         public virtual DbSet<Zagosp> Zagosp { get; set; }
         public virtual DbSet<ZagospStatusSlo> ZagospStatusSlo { get; set; }
@@ -62,6 +66,33 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Adres>()
+                  .HasOne<Dzialka>(a => a.Dzialka)
+                  .WithOne(a => a.Adres)
+                  .HasForeignKey("Adres", "DzialkaId")
+                  .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<MiejscowoscSlo>()
+            //    .HasKey(km => km.MiejscowoscSYM);
+
+            modelBuilder.Entity<Adres>()
+                .HasOne(m => m.MiejscowoscSlo)
+                .WithMany(a => a.Adres)
+                .HasForeignKey(am => am.MiejscowoscSloId);
+
+            modelBuilder.Entity<Adres>()
+                .HasOne(m => m.UlicaSlo)
+                .WithMany(a => a.Adres)
+                .HasForeignKey(am => am.UlicaSloId);
+
+            //modelBuilder.Entity<MiejscowoscSlo>()
+            //   .HasKey(km => km.MiejscowoscSYM);
+
+            //modelBuilder.Entity<Adres>()
+            //    .HasOne(m => m.MiejscowoscSlo)
+            //    .WithMany(a => a.Adres)
+            //    .HasForeignKey(am => am.MiejscowoscSYM);
+
             modelBuilder.Entity<Dzialka_Budynek>()
                 .HasKey(bc => new { bc.DzialkaId, bc.BudynekId });
 
