@@ -48,9 +48,9 @@
             <ComboBox 
                   Grid.Column="1"  
                   Style="{StaticResource comboRaf}"
-                  ItemsSource="{Binding miejscList.list}"
+                  ItemsSource="{Binding miejscList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
-                  SelectedValue="{Binding miejscSelVal}"
+                  SelectedValue="{Binding miejscSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
         </Grid>
 
@@ -64,9 +64,9 @@
         <ComboBox 
                   Grid.Column="1"  
                   Style="{StaticResource comboRaf}"
-                  ItemsSource="{Binding ulicaList.listAll}"
+                  ItemsSource="{Binding ulicaList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
-                  SelectedValue="{Binding ulicaSelVal}"
+                  SelectedValue="{Binding ulicaSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
     </Grid>
     
@@ -75,6 +75,7 @@
                 Grid.Row="3"
                 labelRaf="Numer"
                 Style="{StaticResource elemInfo}"
+                tekstRaf="{Binding NumerUlicy, ElementName=AdresControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
 
        

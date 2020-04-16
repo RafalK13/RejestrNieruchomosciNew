@@ -71,6 +71,7 @@ namespace RejestrNieruchomosciNew
         public string dostDoDrogi { get; set; }
         public string rodzNaw { get; set; }
 
+        public int? AdresId { get; set; }
         public Adres Adres { get; set; }
 
         public int? NadzorKonserwSloId { get; set; }
@@ -110,7 +111,7 @@ namespace RejestrNieruchomosciNew
                    string.Equals(sasiedztwo, other.sasiedztwo) &&
                    string.Equals(dostDoDrogi, other.dostDoDrogi) &&
                    string.Equals(rodzNaw, other.rodzNaw) &&
-                   //UliceSloId.Equals(other.UliceSloId) &&
+                   AdresId == other.AdresId &&                    
                    ObrebId.Equals(other.ObrebId) &&
                    NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
         }
@@ -118,15 +119,15 @@ namespace RejestrNieruchomosciNew
         //[NotMapped]
         //public ProcessDzialka procDz { get; set; }
 
-        [NotMapped]
-        public string  ulica { get; set; }
+        //[NotMapped]
+        //public string  ulica { get; set; }
 
         public Dzialka()
         {
 
         }
 
-        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _UliceSloId = null)
+        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _AdresId=null )
         {
             MessageBox.Show("Dzialka KON");
             Numer = _numer;
@@ -135,7 +136,7 @@ namespace RejestrNieruchomosciNew
             Kwzrob = _kwZ;
             Pow = _Pow;
             NadzorKonserwSloId = _NadzorKonserwSloId;
-            //UlicaSloId = _UliceSloId;
+            AdresId = _AdresId;
         }
 
         public object clone()
@@ -168,7 +169,7 @@ namespace RejestrNieruchomosciNew
             dzDest.Kwzrob = dzSource.Kwzrob;
             dzDest.Pow = dzSource.Pow;
             dzDest.NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            //dzDest.UliceSloId = dzSource.UliceSloId;
+            dzDest.AdresId = dzSource.AdresId;
             dzDest.lokalizacja = dzSource.lokalizacja;
             dzDest.uzbrojenie = dzSource.uzbrojenie;
             dzDest.ksztalt = dzSource.ksztalt;
@@ -186,13 +187,20 @@ namespace RejestrNieruchomosciNew
             Kwzrob = dzSource.Kwzrob;
             Pow = dzSource.Pow;
             NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            //UliceSloId = dzSource.UliceSloId;
+            AdresId = dzSource.AdresId;
             lokalizacja = dzSource.lokalizacja;
             uzbrojenie = dzSource.uzbrojenie;
             ksztalt = dzSource.ksztalt;
             sasiedztwo = dzSource.sasiedztwo;
             dostDoDrogi = dzSource.dostDoDrogi;
             rodzNaw = dzSource.rodzNaw;
+            if (dzSource.Obreb != null)
+            {
+                if (Obreb == null)
+                    Obreb = new Obreb();
+
+                Obreb.copy(dzSource.Obreb);
+            }
 
             return this;
         }

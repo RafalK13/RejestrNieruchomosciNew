@@ -41,7 +41,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public IAdres getAdres(IDzialka dzialkaSel)
         {
-            return listAll.FirstOrDefault(r => r.DzialkaId == dzialkaSel.DzialkaId);
+            return listAll.FirstOrDefault(r => r.AdresId == dzialkaSel.AdresId);
         }
 
         public void save()

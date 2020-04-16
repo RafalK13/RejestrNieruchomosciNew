@@ -44,7 +44,7 @@ namespace RejestrNieruchomosciNew.Model
         private void initList(IDzialka dzialka)
         {
             if (dzialka != null)
-                list = new ObservableCollection<IMiejscowoscSlo>(listAll.Where(r => r.GminaSloId == dzialka.DzialkaId));
+                list = new ObservableCollection<IMiejscowoscSlo>(listAll.Where(r => r.GminaSloId == dzialka.Obreb.GminaSloId));
         }
 
         public void getList(IDzialka dzialkaSel)

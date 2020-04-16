@@ -21,7 +21,11 @@ namespace RejestrNieruchomosciNew.View
 
         private void UserControl_Adres_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            if (adres != null)
+            {
+                adres.miejscList.getList(adres.Dzialka);
+                miejscList = adres.miejscList;
+            }
         }
 
         #region Dimensions
@@ -89,7 +93,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onMiejscList(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            int r = 13;
+           
         }
 
         public IMiejscowoscSlo miejscSelVal
@@ -99,7 +103,17 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty miejscSelValProperty =
-            DependencyProperty.Register("miejscSelVal", typeof(IMiejscowoscSlo), typeof(UserControl_Adres));
+            DependencyProperty.Register("miejscSelVal", typeof(IMiejscowoscSlo), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( onSelectMiejsc)));
+
+        private static void onSelectMiejsc(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Adres u = d as UserControl_Adres;
+            u.adres.ulicaList.getList(u.miejscSelVal);
+            u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
+
+            u.ulicaList = null;
+            u.ulicaList = u.adres.ulicaList;
+        }
 
         public string miejscSelValPath
         {
@@ -122,7 +136,6 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty ulicaListProperty =
             DependencyProperty.Register("ulicaList", typeof(IUlicaSloList), typeof(UserControl_Adres));
 
-       
         public IUlicaSlo ulicaSelVal
         {
             get { return (IUlicaSlo)GetValue(ulicaSelValProperty); }
@@ -130,7 +143,13 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty ulicaSelValProperty =
-            DependencyProperty.Register("ulicaSelVal", typeof(IUlicaSlo), typeof(UserControl_Adres));
+            DependencyProperty.Register("ulicaSelVal", typeof(IUlicaSlo), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( onUliceChange)));
+
+        private static void onUliceChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Adres u = d as UserControl_Adres;
+            u.adres.UlicaSloId = u.ulicaSelVal.UlicaSloId;
+        }
 
         public string ulicaSelValPath
         {
@@ -151,7 +170,13 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty NumerUlicyProperty =
-            DependencyProperty.Register("NumerUlicy", typeof(string), typeof(UserControl_Adres));
+            DependencyProperty.Register("NumerUlicy", typeof(string), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( numerChange)));
+
+        private static void numerChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_Adres u = d as UserControl_Adres;
+            u.adres.Numer = u.NumerUlicy;
+        }
         #endregion
 
         public IAdres adres
@@ -165,7 +190,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onAdres(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            int r = 13;
+           
         }
 
         public IDzialka dzialka
@@ -176,10 +201,6 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty dzialkaProperty =
             DependencyProperty.Register("dzialka", typeof(IDzialka), typeof(UserControl_Adres));
-
-
-
-
 
     }
 }

@@ -18,5 +18,20 @@ namespace RejestrNieruchomosciNew
 
         public int GminaSloId { get; set; }
         //public GminaSlo GminaSlo { get; set; }    
+
+        public IObreb copy(IObreb obSource)
+        {
+            ObrebId = obSource.ObrebId;
+            Nazwa = obSource.Nazwa;
+            Numer = obSource.Numer;
+            GminaSloId = obSource.GminaSloId;
+
+            if (GminaSlo == null)
+                GminaSlo = new GminaSlo();
+
+            GminaSlo.copy(obSource.GminaSlo);
+
+            return this;
+        }
     }
 }

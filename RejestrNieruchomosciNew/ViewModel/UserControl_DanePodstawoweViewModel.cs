@@ -43,7 +43,10 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
 
-                int r = 123;
+                if (adres != null)
+                {
+                    adres.Dzialka = (Dzialka)dzialka;
+                }
             }
         }
 
@@ -55,7 +58,9 @@ namespace RejestrNieruchomosciNew.ViewModel
         private ObrebClass _obreb;
         public ObrebClass obreb
         {
-            get => _obreb; set
+            get => _obreb;
+
+            set
             {
                 _obreb = value;
                 RaisePropertyChanged("obreb");
@@ -84,16 +89,23 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialkaList dzialkaList { get; set; }
 
-        private IAdres _aders;
+        private IAdres _adres;
         public IAdres adres
         {
-            get => _aders;
+            get => _adres;
             set
             {
-                _aders = value;
+                _adres = value;
                 RaisePropertyChanged();
-                int r = 123;
+
+                if (adres != null)
+                    adres.zmiana += Adres_zmiana;
             }
+        }
+
+        private void Adres_zmiana(object sender, EventArgs e)
+        {
+            testDzialka();
         }
         #endregion
 
@@ -101,12 +113,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_DanePodstawoweViewModel()
         {
-
-
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
         }
-
+      
         #endregion
 
         private void OnAddDzialkaClick()
@@ -118,8 +128,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                     break;
                 case ChangeMode.mod:
                     {
+                       
                         dzialkaList.ModRow(dzialka);
-                        //userPrev.dzialkaSel = dzialka;
                         break;
                     }
             }

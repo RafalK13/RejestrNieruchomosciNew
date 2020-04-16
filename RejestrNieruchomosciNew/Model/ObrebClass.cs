@@ -122,10 +122,12 @@ namespace RejestrNieruchomosciNew.Model
             int? n = null;
             if (!string.IsNullOrEmpty(obrebValue) && !string.IsNullOrEmpty(gminaValue))
             {
-                using (var c = new Context())
-                {
-                    n = c.Obreb.FirstOrDefault(o => o.Nazwa == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;
-                }
+
+                n =  obrebList.obrebList.FirstOrDefault(o => o.Nazwa == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;
+                //using (var c = new Context())
+                //{
+                //    n = c.Obreb.FirstOrDefault(o => o.Nazwa == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;
+                //}
             }
             return n;
         }

@@ -6,5 +6,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
     {
         ObservableCollection<IUlicaSlo> listAll { get; set; }
         ObservableCollection<IUlicaSlo> list { get; set; }
+
+        void getList(IMiejscowoscSlo miejscowosc);
     }
 }

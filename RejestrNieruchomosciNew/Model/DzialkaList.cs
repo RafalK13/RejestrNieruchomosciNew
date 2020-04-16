@@ -85,6 +85,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                int r = 13;
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }
@@ -100,7 +101,7 @@ namespace RejestrNieruchomosciNew.Model
                 using (var c = new Context())
                 {
                     Dzialka d = (Dzialka)dz;
-
+                    int a = 14;
                     d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
 
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);

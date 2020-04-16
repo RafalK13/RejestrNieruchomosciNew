@@ -28,7 +28,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                             IDzialka dzialkaSel)
         {
             tabsVisible = true;
-            int r = 1;
+           
             dzialkaSel.copy(userPrev1.dzialkaSel);
 
             userPodst.dzialka = dzialkaSel;

@@ -166,8 +166,9 @@
                     column1Width="150"
                     column2Width="200"
                     adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    
                     />
+        <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 
 
         <StackPanel Grid.Column="0" Grid.Row="13" Grid.ColumnSpan="3"
