@@ -87,6 +87,8 @@ namespace RejestrNieruchomosciNew
             {
                 _ObrebId = value;
                 RaisePropertyChanged();
+                if (zmianaObreb != null)
+                    zmianaObreb(null, EventArgs.Empty);
             }
         }
         public Obreb Obreb { get; set; }
@@ -129,7 +131,6 @@ namespace RejestrNieruchomosciNew
 
         public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _AdresId=null )
         {
-            MessageBox.Show("Dzialka KON");
             Numer = _numer;
             ObrebId = _ObrebId;
             Kwakt = _kwA;
@@ -202,9 +203,19 @@ namespace RejestrNieruchomosciNew
                 Obreb.copy(dzSource.Obreb);
             }
 
+            if (dzSource.Adres != null)
+            {
+                if (Adres == null)
+                    Adres = new Adres();
+
+                Adres.copy(dzSource.Adres);
+            }
+
+            int r = 1;
             return this;
         }
 
         public event EventHandler zmiana;
+        public event EventHandler zmianaObreb;
     }
 }

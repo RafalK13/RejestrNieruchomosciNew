@@ -10,6 +10,7 @@ namespace RejestrNieruchomosciNew.Model
         private string _numer;
         private int _miejscowoscSloId;
         private int _ulicaSloId;
+        private IMiejscowoscSloList _miejscList;
 
         public int AdresId { get; set; }
 
@@ -53,7 +54,16 @@ namespace RejestrNieruchomosciNew.Model
         public UlicaSlo UlicaSlo { get; set; }
 
         [NotMapped]
-        public IMiejscowoscSloList miejscList { get; set; }
+        public IMiejscowoscSloList miejscList
+        {
+            get => _miejscList;
+            set
+            {
+                Set(ref _miejscList, value);
+                if (zmiana != null)
+                    zmiana( null, EventArgs.Empty);
+            }
+        }
         [NotMapped]
         public IUlicaSloList ulicaList { get; set; }
 
@@ -64,5 +74,21 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public event EventHandler zmiana;
+
+        bool IEquatable<IAdres>.Equals(IAdres other)
+        {
+            return Numer == other.Numer &&
+                   MiejscowoscSloId == other.MiejscowoscSloId &&
+                   UlicaSloId == other.UlicaSloId;
+        }
+
+        public IAdres copy(IAdres adrSource)
+        {
+            Numer = adrSource.Numer;
+            MiejscowoscSloId = adrSource.MiejscowoscSloId;
+            UlicaSloId = adrSource.UlicaSloId;
+
+            return this;
+        }
     }
 }

@@ -4,6 +4,7 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -43,15 +44,22 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
 
-                if (adres != null)
-                {
-                    adres.Dzialka = (Dzialka)dzialka;
-                }
+            }
+        }
+
+        public string Numer
+        {
+            get => _numer;
+            set
+            {
+                _numer = value;
+                RaisePropertyChanged();
             }
         }
 
         private void Dzialka_zmiana(object sender, EventArgs e)
         {
+
             testDzialka();
         }
 
@@ -64,6 +72,22 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 _obreb = value;
                 RaisePropertyChanged("obreb");
+                obreb.PropertyChanged += Obreb_PropertyChanged;
+            }
+        }
+
+        private void Obreb_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            int r = 13;
+            dzialka.Obreb = obreb.getObreb();
+           
+            //if (dzialka.Obreb != null)
+            {
+                
+                RaisePropertyChanged( "adres");
+               
+            //    adres.miejscList.getList(adres.Dzialka);
+            //    //MessageBox.Show(adres.miejscList.list.Count.ToString());
             }
         }
 
@@ -86,10 +110,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICommand leftClick { get; set; }
         public ICommand OnAddDzialka { get; set; }
+        public ICommand clsClick { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
 
         private IAdres _adres;
+        private string _numer;
+
         public IAdres adres
         {
             get => _adres;
@@ -99,14 +126,12 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
 
                 if (adres != null)
-                    adres.zmiana += Adres_zmiana;
+                {
+                    adres.Dzialka = (Dzialka)dzialka;
+                }
             }
         }
 
-        private void Adres_zmiana(object sender, EventArgs e)
-        {
-            testDzialka();
-        }
         #endregion
 
         #region Konstructor
@@ -115,20 +140,33 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
+            clsClick = new RelayCommand(onClsClick);
         }
-      
+
         #endregion
+
+        private void onClsClick()
+        {
+            obreb.clsObreb();
+
+            //if( dzialka.Obreb != null)
+            dzialka.ObrebId = 0;
+            testDzialka();
+
+        }
 
         private void OnAddDzialkaClick()
         {
             switch (changeMode)
             {
                 case ChangeMode.add:
-                    dzialkaList.AddRow(dzialka);
-                    break;
+                    {
+                        int r = 13;
+                        dzialkaList.AddRow(dzialka);
+                        break;
+                    }
                 case ChangeMode.mod:
                     {
-                       
                         dzialkaList.ModRow(dzialka);
                         break;
                     }
@@ -146,10 +184,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private void getMiejscList()
+        {
+            if (dzialka.Adres != null)
+            {
+                dzialka.Adres.miejscList.getList(dzialka);
+            }
+        }
+
         public void testDzialka()
         {
             if (changeMode == ChangeMode.add)
             {
+                int r = 13;
                 testDzialkaToAdd();
             }
             if (changeMode == ChangeMode.mod)
@@ -164,30 +211,35 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 int c = dzialkaList.list.Where(r => r.ObrebId == obrebId &&
                                                     r.Numer == dzialka.Numer).Count();
+
                 canAdd = c == 0 ? true : false;
             }
         }
 
         private void testDzialkaToMod()
         {
-            var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
-            dz.ObrebId = obreb.getId().Value;
-
-            if (!string.IsNullOrEmpty(dzialka.Numer))
+            if (dzialka.ObrebId == 0)
+                canAdd = false;
+            else
             {
-                if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
-                           dz.ObrebId == dzialka.ObrebId)
-                {
+                var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
+                dz.ObrebId = obreb.getId().Value;
 
-                    canAdd = true;
-                }
-                else
+                if (!string.IsNullOrEmpty(dzialka.Numer))
                 {
-                    int obrID = obreb.getId().Value;
+                    if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
+                                       dz.ObrebId == dzialka.ObrebId)
+                    {
+                        canAdd = true;
+                    }
+                    else
+                    {
+                        int obrID = obreb.getId().Value;
 
-                    var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
-                                                 r.Numer == dzialka.Numer);
-                    canAdd = c == null ? true : false;
+                        var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
+                                                                     r.Numer == dzialka.Numer);
+                        canAdd = c == null ? true : false;
+                    }
                 }
             }
         }

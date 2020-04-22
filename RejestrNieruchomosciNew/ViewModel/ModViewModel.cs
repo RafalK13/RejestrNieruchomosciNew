@@ -31,7 +31,7 @@ namespace RejestrNieruchomosciNew.ViewModel
            
             dzialkaSel.copy(userPrev1.dzialkaSel);
 
-            userPodst.dzialka = dzialkaSel;
+            userPodst.dzialka.copy( dzialkaSel);
             userPodst.obreb.fillValues(dzialkaSel);
 
             userDod.dzialka = dzialkaSel;
@@ -40,7 +40,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             userControl_AddDanePod.changeMode = ChangeMode.mod;
 
             userControl_DaneDod = userDod;
-
 
             //tabsVisible = true;
 

@@ -62,7 +62,7 @@
                 <TextBox Text="numer działki:"
                          Style="{StaticResource tytulLabel}"
                          />
-                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Numer}"
+                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Numer}"
                          Style="{StaticResource tytulOpis}"
                          />
             </StackPanel>
@@ -71,17 +71,16 @@
                 <TextBox Text="gmina:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Obreb.GminaSlo.Nazwa}"
+                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.GminaSlo.Nazwa}"
                     Style="{StaticResource tytulOpis}"
                      />
             </StackPanel>
-
 
             <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
                 <TextBox Text="obręb:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding userControl_prevModel.dzialkaSel.Obreb.Nazwa}"
+                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.Nazwa}"
                     Style="{StaticResource tytulOpis}"
                     x:Name="obrebRaf1"
 

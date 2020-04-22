@@ -14,5 +14,7 @@ namespace RejestrNieruchomosciNew.Model
 
         string obrebValue { get; set; }
         string gminaValue { get; set; }
+
+        Obreb getObreb();
     }
 }

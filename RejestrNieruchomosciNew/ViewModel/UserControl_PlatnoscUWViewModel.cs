@@ -36,7 +36,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
 
             int a = 4;
-            if (_userPrev.dzialkaSel.PlatnoscUW != null)
+            if (_userPrev?.dzialkaSel?.PlatnoscUW != null)
             {
                 _platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;
             }

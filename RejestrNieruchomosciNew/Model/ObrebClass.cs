@@ -83,6 +83,13 @@ namespace RejestrNieruchomosciNew.Model
 
         #region Methods
 
+        public Obreb getObreb()
+        {
+            int? n = getId();
+           
+            return n != null ? obrebList.obrebList.FirstOrDefault(r => r.ObrebId == n) : null;
+        }
+
         public void fillValues(IDzialka d)
         {
             try

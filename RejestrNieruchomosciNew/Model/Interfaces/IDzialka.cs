@@ -40,5 +40,6 @@ namespace RejestrNieruchomosciNew.Model
         //ProcessDzialka procDz { get; set; }
 
         event EventHandler zmiana;
+        event EventHandler zmianaObreb;
     }
 }

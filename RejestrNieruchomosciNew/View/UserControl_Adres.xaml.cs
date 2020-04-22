@@ -1,8 +1,5 @@
-﻿using RejestrNieruchomosciNew.Model;
-using RejestrNieruchomosciNew.Model.Interfaces;
+﻿using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,6 +22,18 @@ namespace RejestrNieruchomosciNew.View
             {
                 adres.miejscList.getList(adres.Dzialka);
                 miejscList = adres.miejscList;
+                ulicaList = adres.ulicaList;
+                adres.Dzialka.zmianaObreb += Dzialka_zmianaObreb;
+            }
+        }
+
+        private void Dzialka_zmianaObreb(object sender, EventArgs e)
+        {
+            miejscList.list = null;
+
+            if (adres.Dzialka?.Obreb != null)
+            {
+                miejscList.getList(adres.Dzialka);
             }
         }
 
@@ -93,7 +102,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onMiejscList(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-           
+            //MessageBox.Show("Zmiana IMiejscowoscSloList");
         }
 
         public IMiejscowoscSlo miejscSelVal
@@ -108,11 +117,15 @@ namespace RejestrNieruchomosciNew.View
         private static void onSelectMiejsc(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Adres u = d as UserControl_Adres;
-            u.adres.ulicaList.getList(u.miejscSelVal);
-            u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
+           
+            if (u.miejscSelVal != null)
+            {
+                u.adres.ulicaList.getList(u.miejscSelVal);
+                u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
 
-            u.ulicaList = null;
-            u.ulicaList = u.adres.ulicaList;
+                u.ulicaList = null;
+                u.ulicaList = u.adres.ulicaList;
+            }
         }
 
         public string miejscSelValPath
@@ -190,17 +203,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onAdres(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-           
+            
         }
-
-        public IDzialka dzialka
-        {
-            get { return (IDzialka)GetValue(dzialkaProperty); }
-            set { SetValue(dzialkaProperty, value); }
-        }
-
-        public static readonly DependencyProperty dzialkaProperty =
-            DependencyProperty.Register("dzialka", typeof(IDzialka), typeof(UserControl_Adres));
-
     }
 }

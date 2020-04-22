@@ -166,7 +166,6 @@
                     column1Width="150"
                     column2Width="200"
                     adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    
                     />
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 
@@ -189,9 +188,9 @@
                             com:CloseOnClickBehaviour.IsEnabled="True"/>
 
 
-            <Button Content="Czyść"
+            <Button Content="Czyść gmina/obręb"
                             Style="{StaticResource buttonCommon}"
-                            Command="{Binding userControl_Wlasciciel.wlascCls}"/>
+                            Command="{Binding userControl_AddDanePod.clsClick}"/>
                     <Button 
                         Style="{StaticResource buttonCommon}"
                         IsCancel="True"

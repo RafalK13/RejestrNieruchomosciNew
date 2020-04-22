@@ -24,6 +24,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_ZagospViewModel userControl_Zagosp { get; set; }
         public UserControl_BudynekViewModel userControl_Budynek { get; set; }
         public UserControl_PreviewViewModel userControl_prevModel { get; set; }
+
         public bool tabsVisible { get; set; }
         public string modeMessage { get; set; }
 

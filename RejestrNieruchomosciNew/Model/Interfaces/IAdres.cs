@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface IAdres
+    public interface IAdres : IEquatable<IAdres>
     {
         int AdresId { get; set; }
 
-        //int? DzialkaId { get; set; }
         int MiejscowoscSloId { get; set; }
         int UlicaSloId { get; set; }
 
@@ -21,6 +16,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         UlicaSlo UlicaSlo { get; set; }
 
         bool testAdres();
+        IAdres copy(IAdres adrSource);
 
         IMiejscowoscSloList miejscList { get; set; }
         IUlicaSloList ulicaList { get; set; }

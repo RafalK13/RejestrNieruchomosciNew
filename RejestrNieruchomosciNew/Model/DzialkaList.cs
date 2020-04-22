@@ -51,7 +51,8 @@ namespace RejestrNieruchomosciNew.Model
             using (var c = new Context())
             {
                 list = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo)
-                                                         .Include( r=> r.PlatnoscUW).ToListAsync());
+                                                         .Include( r=> r.PlatnoscUW)
+                                                         .Include( adr=>adr.Adres).ToListAsync());
             }
         }
 
@@ -83,9 +84,11 @@ namespace RejestrNieruchomosciNew.Model
 
         public void AddRow(IDzialka dz)
         {
+           
             using (var c = new Context())
             {
-                int r = 13;
+                dz.Obreb = null;
+                
                 c.Dzialka.Add((Dzialka)dz);
                 c.SaveChanges();
             }

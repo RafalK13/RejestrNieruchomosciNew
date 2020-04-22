@@ -27,6 +27,8 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<ChangeViewModel>());
 
+            //container.Register(Component.For<IObreb>().ImplementedBy<Obreb>());
+
             container.Register(Component.For<IObrebList>().ImplementedBy<ObrebList>());
 
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().LifeStyle.Transient);
