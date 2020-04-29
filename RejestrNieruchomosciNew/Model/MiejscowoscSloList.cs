@@ -49,6 +49,11 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public void getList(int gminaId)
+        {
+            list = new ObservableCollection<IMiejscowoscSlo>(listAll.Where(r => r.GminaSloId == gminaId));
+        }
+
         private void initList(IDzialka dzialka)
         {
             if (dzialka?.Obreb != null)

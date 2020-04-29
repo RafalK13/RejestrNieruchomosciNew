@@ -1,12 +1,20 @@
-﻿using RejestrNieruchomosciNew.Model;
+﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
 
 namespace RejestrNieruchomosciNew
 {
-    public partial class GminaSlo
+    public partial class GminaSlo : ViewModelBase
     {
-        public int GminaSloId { get; set; }
+        private int _gminaSloId;
+
+        public int GminaSloId
+        {
+            get => _gminaSloId;
+            set => Set(ref _gminaSloId, value);
+        }
+
         public string Nazwa { get; set; }
 
         //public ICollection<UlicaSlo> UliceSlo { get; set; }

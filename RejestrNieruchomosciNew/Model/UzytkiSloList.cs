@@ -1,13 +1,20 @@
-﻿using RejestrNieruchomosciNew.Model.Interfaces;
+﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class UzytkiSloList : IUzytkiSloList
+    public class UzytkiSloList : ViewModelBase, IUzytkiSloList
     {
-        public ObservableCollection<UzytkiSlo> list { get; set; }
+        private ObservableCollection<UzytkiSlo> _list;
+
+        public ObservableCollection<UzytkiSlo> list
+        {
+            get => _list;
+            set =>  Set(ref _list, value);
+        }
 
         public UzytkiSloList()
         {

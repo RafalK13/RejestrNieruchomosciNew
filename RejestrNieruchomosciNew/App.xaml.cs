@@ -1,10 +1,5 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.Windsor;
+﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
-using RejestrNieruchomosciNew.Installers;
-using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.View;
 using System;
 using System.Collections.Generic;

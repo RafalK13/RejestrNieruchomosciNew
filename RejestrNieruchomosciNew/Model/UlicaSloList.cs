@@ -11,8 +11,14 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class UlicaSloList : ViewModelBase, IUlicaSloList
     {
+        private ObservableCollection<IUlicaSlo> _list;
+
         public ObservableCollection<IUlicaSlo> listAll { get; set; }
-        public ObservableCollection<IUlicaSlo> list { get; set; }
+        public ObservableCollection<IUlicaSlo> list
+        {
+            get => _list;
+            set => Set(ref _list, value);
+        }
 
         public UlicaSloList()
         {

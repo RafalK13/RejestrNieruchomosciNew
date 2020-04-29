@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -13,97 +14,81 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         #region Properties
 
+        #region private
+        private IAdres _adres;
+        private bool _adresChanged;
+        private UserControl_PreviewViewModel _userPrev;
+        private IDzialka _dzialka;
+        private ObrebClass _obreb;
+        private bool _canAdd;
+        #endregion
+
         public ChangeMode changeMode;
 
-        private UserControl_PreviewViewModel _userPrev;
+        public bool adresChanged
+        {
+            get => _adresChanged;
+            set
+            {
+                Set(ref _adresChanged, value);
+                canAdd = true;
+                testDzialka();
+            }
+        }
+
         public UserControl_PreviewViewModel userPrev
         {
             get => _userPrev;
             set
             {
-                _userPrev = value;
-                RaisePropertyChanged();
-                userPrev.zmianaDzialkaSel += UserPrev_zmianaDzialkaSel;
+                Set ( ref _userPrev, value);
+                //userPrev.zmianaDzialkaSel += UserPrev_zmianaDzialkaSel;
             }
         }
 
-        private void UserPrev_zmianaDzialkaSel(object sender, EventArgs e)
-        {
-            //dzialka = userPrev.dzialkaSel;
-        }
+        //private void UserPrev_zmianaDzialkaSel(object sender, EventArgs e)
+        //{
+        //    MessageBox.Show("1");
+        //    dzialka = userPrev.dzialkaSel;
+        //}
 
-        private IDzialka _dzialka;
         public IDzialka dzialka
         {
             get => _dzialka;
             set
             {
-                _dzialka = value;
-                RaisePropertyChanged();
+                Set( ref _dzialka, value);
 
                 if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
-
-            }
-        }
-
-        public string Numer
-        {
-            get => _numer;
-            set
-            {
-                _numer = value;
-                RaisePropertyChanged();
             }
         }
 
         private void Dzialka_zmiana(object sender, EventArgs e)
         {
-
             testDzialka();
         }
-
-        private ObrebClass _obreb;
+  
         public ObrebClass obreb
         {
             get => _obreb;
-
             set
             {
-                _obreb = value;
-                RaisePropertyChanged("obreb");
+                Set( ref _obreb, value);
                 obreb.PropertyChanged += Obreb_PropertyChanged;
             }
         }
 
         private void Obreb_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            int r = 13;
             dzialka.Obreb = obreb.getObreb();
-           
-            //if (dzialka.Obreb != null)
-            {
-                
-                RaisePropertyChanged( "adres");
-               
-            //    adres.miejscList.getList(adres.Dzialka);
-            //    //MessageBox.Show(adres.miejscList.list.Count.ToString());
-            }
+            RaisePropertyChanged();
         }
-
-        private bool _canAdd;
+        
         public bool canAdd
         {
-            get
-            {
-                return _canAdd;
-            }
-
-            set
-            {
-                _canAdd = value;
-                RaisePropertyChanged("canAdd");
-            }
+            get => _canAdd;
+            set => Set(ref _canAdd, value);
         }
 
         public bool? canMod;
@@ -114,24 +99,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialkaList dzialkaList { get; set; }
 
-        private IAdres _adres;
-        private string _numer;
 
         public IAdres adres
         {
             get => _adres;
             set
             {
-                _adres = value;
-                RaisePropertyChanged();
-
-                if (adres != null)
-                {
-                    adres.Dzialka = (Dzialka)dzialka;
-                }
+                Set(ref _adres, value);              
             }
-        }
 
+        }
         #endregion
 
         #region Konstructor
@@ -141,6 +118,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
             clsClick = new RelayCommand(onClsClick);
+            canAdd = false;
         }
 
         #endregion
@@ -148,12 +126,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onClsClick()
         {
             obreb.clsObreb();
-
-            //if( dzialka.Obreb != null)
             dzialka.ObrebId = 0;
             testDzialka();
-
         }
+
 
         private void OnAddDzialkaClick()
         {
@@ -161,17 +137,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 case ChangeMode.add:
                     {
-                        int r = 13;
                         dzialkaList.AddRow(dzialka);
                         break;
                     }
                 case ChangeMode.mod:
-                    {
+                    {                        
                         dzialkaList.ModRow(dzialka);
+                        canAdd = false;
                         break;
                     }
             }
+
             userPrev.dzialkaView.Refresh();
+
         }
 
         #region Metods
@@ -180,7 +158,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (obreb.getId().HasValue)
             {
                 dzialka.ObrebId = obreb.getId().Value;
-                testDzialka();
             }
         }
 
@@ -196,7 +173,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (changeMode == ChangeMode.add)
             {
-                int r = 13;
                 testDzialkaToAdd();
             }
             if (changeMode == ChangeMode.mod)
@@ -218,29 +194,37 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testDzialkaToMod()
         {
+           
+            
             if (dzialka.ObrebId == 0)
                 canAdd = false;
             else
             {
-                var dz = dzialkaList.list.First(n => n.DzialkaId == dzialka.DzialkaId);
-                dz.ObrebId = obreb.getId().Value;
-
                 if (!string.IsNullOrEmpty(dzialka.Numer))
                 {
-                    if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
-                                       dz.ObrebId == dzialka.ObrebId)
-                    {
-                        canAdd = true;
-                    }
+                    var dz = dzialkaList.list.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId);
+                    int r2 = 13;
+                    if (dzialka.Equals(dz) && adresChanged == false)
+                        canAdd = false;
                     else
                     {
-                        int obrID = obreb.getId().Value;
-
-                        var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == obrID &&
-                                                                     r.Numer == dzialka.Numer);
-                        canAdd = c == null ? true : false;
+                        // zmiana kw, pow .. oprócz obrebu i gminy
+                        if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
+                                           dz.ObrebId == dzialka.ObrebId)
+                        {
+                            canAdd = true;
+                           
+                        }
+                        else // zmiana obrebu i/lub gminy
+                        {
+                            var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == dzialka.ObrebId
+                                                                  && r.Numer == dzialka.Numer);
+                            canAdd = c == null ? true : false;
+                        }
+                        
                     }
                 }
+                //canAdd &= adresChanged;
             }
         }
 

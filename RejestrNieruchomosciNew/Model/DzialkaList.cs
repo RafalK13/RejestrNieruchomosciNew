@@ -29,7 +29,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public DzialkaList()
         {
-            initDzialkaList();
+            initDzialkaList();          
         }
 
         private void initDzialkaList()
@@ -112,14 +112,15 @@ namespace RejestrNieruchomosciNew.Model
                     c.SaveChanges();
                 }
 
+                int r1 = 1;
                 var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
-                dz.Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-                //list[v] = (IDzialka)dz.clone();
-
                 list[v].copy(dz);
-
-                if (zmianaDzialkiList != null)
-                    zmianaDzialkiList(null, EventArgs.Empty);
+                int r2 = 1;
+                list[v].Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
+                int r3 = 3;
+                
+                //if (zmianaDzialkiList != null)
+                //    zmianaDzialkiList(null, EventArgs.Empty);
             }
             catch (Exception ex)
             {

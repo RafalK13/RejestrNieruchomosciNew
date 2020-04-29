@@ -13,6 +13,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ObservableCollection<IMiejscowoscSlo> list { get; set; }
 
         void getList(IDzialka dzialkaSel);
+        void getList(int gminaId);
         //event EventHandler listZmiana;
     }
 }

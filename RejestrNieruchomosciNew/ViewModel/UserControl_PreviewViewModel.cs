@@ -33,11 +33,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         [DoNotWire]
-        public IDzialkaList dzialkiBase { get; set; }
+        public IDzialkaList dzialkiList { get; set; }
 
         public ICollectionView dzialkaView
         {
-            get => CollectionViewSource.GetDefaultView(dzialkiBase.list);
+            get => CollectionViewSource.GetDefaultView(dzialkiList.list);
         }
 
         public event EventHandler zmianaDzialkaSel;
@@ -106,11 +106,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IViewFactory factory { get; set; }
 
         #region Konstructor
-        public UserControl_PreviewViewModel(IDzialkaList _dzialkiBase)
+        public UserControl_PreviewViewModel(IDzialkaList _dzialkiList)
         {
-            dzialkiBase = _dzialkiBase;
+            dzialkiList = _dzialkiList;
 
-            dzialkiBase.zmianaDzialkiList += DzialkiBase_zmianaDzialkiList;
+            dzialkiList.zmianaDzialkiList += DzialkiBase_zmianaDzialkiList;
 
             initCommands();
             allowDelete = false;
@@ -157,7 +157,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         //public void addDzialka(IDzialka dz)
         //{
-        //    //dzialkiBase.AddRow(dz);
+        //    //dzialkiList.AddRow(dz);
         //    //dzialkaView.Refresh();
         //}
 
@@ -167,7 +167,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 deleteDzialka();
             else
             {
-
                 if (dzialkaSel != null)
                 {
                     var v = factory.CreateView<ChangeView>();
@@ -182,7 +181,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (dzialkaSel != null)
                 if (dzialkaSel.Numer != null)
                 {
-                    dzialkiBase.DelRow(dzialkaSel);
+                    dzialkiList.DelRow(dzialkaSel);
                     dzialkaView.Refresh();
                 }
         }

@@ -11,6 +11,7 @@ namespace RejestrNieruchomosciNew.Model
         private int _miejscowoscSloId;
         private int _ulicaSloId;
         private IMiejscowoscSloList _miejscList;
+        private IUlicaSloList _ulicaList;
 
         public int AdresId { get; set; }
 
@@ -61,11 +62,16 @@ namespace RejestrNieruchomosciNew.Model
             {
                 Set(ref _miejscList, value);
                 if (zmiana != null)
-                    zmiana( null, EventArgs.Empty);
+                    zmiana(null, EventArgs.Empty);
             }
         }
         [NotMapped]
-        public IUlicaSloList ulicaList { get; set; }
+        public IUlicaSloList ulicaList
+        {
+            get => _ulicaList;
+
+            set => Set(ref _ulicaList, value);
+        }
 
         public bool testAdres()
         {

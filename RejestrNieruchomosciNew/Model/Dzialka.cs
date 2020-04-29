@@ -83,12 +83,13 @@ namespace RejestrNieruchomosciNew
         public int ObrebId
         {
             get => _ObrebId;
-            set
+            set 
             {
-                _ObrebId = value;
+                Set( ref _ObrebId, value);
+
                 RaisePropertyChanged();
-                if (zmianaObreb != null)
-                    zmianaObreb(null, EventArgs.Empty);
+                if (zmiana != null)
+                    zmiana(null, EventArgs.Empty);
             }
         }
         public Obreb Obreb { get; set; }
@@ -195,23 +196,22 @@ namespace RejestrNieruchomosciNew
             sasiedztwo = dzSource.sasiedztwo;
             dostDoDrogi = dzSource.dostDoDrogi;
             rodzNaw = dzSource.rodzNaw;
-            if (dzSource.Obreb != null)
-            {
-                if (Obreb == null)
-                    Obreb = new Obreb();
+            //if (dzSource.Obreb != null)
+            //{
+            //    if (Obreb == null)
+            //        Obreb = new Obreb();
 
-                Obreb.copy(dzSource.Obreb);
-            }
+            //    Obreb.copy(dzSource.Obreb);
+            //}
 
-            if (dzSource.Adres != null)
-            {
-                if (Adres == null)
-                    Adres = new Adres();
+            //if (dzSource.Adres != null)
+            //{
+            //    if (Adres == null)
+            //        Adres = new Adres();
 
-                Adres.copy(dzSource.Adres);
-            }
+            //    Adres.copy(dzSource.Adres);
+            //}
 
-            int r = 1;
             return this;
         }
 

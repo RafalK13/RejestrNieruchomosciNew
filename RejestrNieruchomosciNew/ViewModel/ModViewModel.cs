@@ -28,11 +28,25 @@ namespace RejestrNieruchomosciNew.ViewModel
                             IDzialka dzialkaSel)
         {
             tabsVisible = true;
-           
-            dzialkaSel.copy(userPrev1.dzialkaSel);
 
-            userPodst.dzialka.copy( dzialkaSel);
+            //dzialkaSel.copy(userPrev1.dzialkaSel);
+
+            //userPodst.dzialka.copy(dzialkaSel);
+            //userPodst.obreb.fillValues(dzialkaSel);
+
+
+            //dzialkaSel = userPrev1.dzialkaSel;
+
+            //userPodst.dzialka= dzialkaSel;
+            //userPodst.obreb.fillValues(dzialkaSel);
+
+            int r = 1;
+            dzialkaSel = userPrev1.dzialkaSel;
+           
+            userPodst.dzialka.copy(dzialkaSel);
             userPodst.obreb.fillValues(dzialkaSel);
+
+            
 
             userDod.dzialka = dzialkaSel;
 
