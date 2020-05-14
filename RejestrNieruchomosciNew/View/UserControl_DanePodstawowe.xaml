@@ -166,10 +166,12 @@
                     column1Width="150"
                     column2Width="200"
                     adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    
-                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                   
                     />
+        <!--adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+        <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+        
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 

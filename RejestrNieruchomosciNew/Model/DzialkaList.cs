@@ -107,6 +107,8 @@ namespace RejestrNieruchomosciNew.Model
                     int a = 14;
                     d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
 
+
+
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
                     c.Entry(v1).CurrentValues.SetValues(d);
                     c.SaveChanges();

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
+using System.Runtime.Serialization;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -10,7 +11,6 @@ namespace RejestrNieruchomosciNew.Model
         string Kwakt { get; set; }
         string Kwzrob { get; set; }
         double? Pow { get; set; }
-        //int? UliceSloId { get; set; }
 
         string lokalizacja { get; set; }
         string uzbrojenie { get; set; }
@@ -26,7 +26,6 @@ namespace RejestrNieruchomosciNew.Model
 
         int? AdresId { get; set; }
         Adres Adres { get; set; }
-        //string ulica  { get; set; }
 
         PlatnoscUW PlatnoscUW { get; set; }
 
@@ -36,8 +35,6 @@ namespace RejestrNieruchomosciNew.Model
         void copy( IDzialka dzDest, IDzialka dzSource);
 
         IDzialka copy(IDzialka dzSource);
-
-        //ProcessDzialka procDz { get; set; }
 
         event EventHandler zmiana;
         event EventHandler zmianaObreb;

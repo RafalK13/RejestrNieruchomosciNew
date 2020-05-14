@@ -2,105 +2,136 @@
 using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace RejestrNieruchomosciNew
 {
-    public partial class Dzialka : ViewModelBase, IDzialka
+    //[Serializable]
+    [DataContract]
+    public partial class Dzialka : INotifyPropertyChanged, IDzialka
     {
+        [DataMember]
         public int DzialkaId { get; set; }
 
         private string _Numer;
+        [DataMember]
         public string Numer
         {
             get => _Numer; set
             {
                 _Numer = value;
-                RaisePropertyChanged();
-                if (zmiana != null)
-                    zmiana(null, EventArgs.Empty);
+                //RaisePropertyChanged();
+                //NotifyPropertyChanged();
+                //if (zmiana != null)
+                //    zmiana(null, EventArgs.Empty);
             }
         }
 
         private string _Kwakt;
+        [DataMember]
         public string Kwakt
         {
             get => _Kwakt;
             set
             {
                 _Kwakt = value;
-                RaisePropertyChanged();
+                //RaisePropertyChanged();
+                NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
             }
         }
         private string _Kwzrob;
+        [DataMember]
         public string Kwzrob
         {
             get => _Kwzrob;
             set
             {
                 _Kwzrob = value;
-                RaisePropertyChanged();
+                //RaisePropertyChanged();
+                NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
             }
         }
 
         private double? _Pow;
+        [DataMember]
         public double? Pow
         {
             get => _Pow; set
             {
                 _Pow = value;
-                RaisePropertyChanged();
+                //RaisePropertyChanged();
+                NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
 
             }
         }
-
+        [DataMember]
         public string lokalizacja { get; set; }
+        [DataMember]
         public string uzbrojenie { get; set; }
+        [DataMember]
         public string ksztalt { get; set; }
+        [DataMember]
         public string sasiedztwo { get; set; }
+        [DataMember]
         public string dostDoDrogi { get; set; }
+        [DataMember]
         public string rodzNaw { get; set; }
-
+        [DataMember]
         public int? AdresId { get; set; }
+        //[field: NonSerialized]
+        [DataMember]
         public Adres Adres { get; set; }
-
+        [DataMember]
         public int? NadzorKonserwSloId { get; set; }
+        //[field: NonSerialized]
+
         public NadzorKonserwSlo NadzorKonserwSlo { get; set; }
 
+        //[field: NonSerialized]
         public ICollection<Uzytki> Uzytki { get; set; }
 
         private int _ObrebId;
+        [DataMember]
         public int ObrebId
         {
             get => _ObrebId;
             set 
             {
-                Set( ref _ObrebId, value);
+                _ObrebId = value;
+                //Set( ref _ObrebId, value);
 
-                RaisePropertyChanged();
+                //RaisePropertyChanged();
+                NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
             }
         }
+        [DataMember]
         public Obreb Obreb { get; set; }
 
+        //[field: NonSerialized]
         public ICollection<Wladanie> Wladanie { get; set; }
+        //[field: NonSerialized]
         public ICollection<InnePrawa> InnePrawa { get; set; }
+        //[field: NonSerialized]
         public PlatnoscUW PlatnoscUW { get; set; }
         public ICollection<Zagosp> Zagosp { get; set; }
-
+       
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
-
+        //[field: NonSerialized]
         bool IEquatable<IDzialka>.Equals(IDzialka other)
         {
             return DzialkaId.Equals(other.DzialkaId) &&
@@ -140,7 +171,7 @@ namespace RejestrNieruchomosciNew
             NadzorKonserwSloId = _NadzorKonserwSloId;
             AdresId = _AdresId;
         }
-
+       
         public object clone()
         {
             Dzialka d = (Dzialka)this.MemberwiseClone();
@@ -148,7 +179,7 @@ namespace RejestrNieruchomosciNew
 
             return d;
         }
-
+        
         public void clone(IDzialka d)
         {
             var t = d.GetType();
@@ -161,7 +192,7 @@ namespace RejestrNieruchomosciNew
                 }
             }
         }
-
+       
         public void copy(IDzialka dzDest, IDzialka dzSource)
         {
             dzDest.Numer = dzSource.Numer;
@@ -179,7 +210,7 @@ namespace RejestrNieruchomosciNew
             dzDest.dostDoDrogi = dzSource.dostDoDrogi;
             dzDest.rodzNaw = dzSource.rodzNaw;
     }
-
+       
         public IDzialka copy(IDzialka dzSource)
         {
             Numer = dzSource.Numer;
@@ -196,6 +227,8 @@ namespace RejestrNieruchomosciNew
             sasiedztwo = dzSource.sasiedztwo;
             dostDoDrogi = dzSource.dostDoDrogi;
             rodzNaw = dzSource.rodzNaw;
+
+           
             //if (dzSource.Obreb != null)
             //{
             //    if (Obreb == null)
@@ -214,8 +247,16 @@ namespace RejestrNieruchomosciNew
 
             return this;
         }
-
+       
         public event EventHandler zmiana;
         public event EventHandler zmianaObreb;
+
+        //[field: NonSerializedAttribute()]
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

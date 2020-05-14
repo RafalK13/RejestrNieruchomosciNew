@@ -55,6 +55,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 if (zmianaDzialkaSel != null)
                     zmianaDzialkaSel(null, EventArgs.Empty);
+
             }
         }
 
@@ -168,7 +169,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             else
             {
                 if (dzialkaSel != null)
-                {
+                {                  
                     var v = factory.CreateView<ChangeView>();
                     v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
                     v.Show();

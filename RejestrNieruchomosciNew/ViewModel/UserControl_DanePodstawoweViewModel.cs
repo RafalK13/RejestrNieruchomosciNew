@@ -52,6 +52,22 @@ namespace RejestrNieruchomosciNew.ViewModel
         //    dzialka = userPrev.dzialkaSel;
         //}
 
+        public IAdres adres
+        {
+            get => _adres;
+            set
+            {
+                Set(ref _adres, value);
+                adres.zmiana += Adres_zmiana;
+            }
+        }
+
+        private void Adres_zmiana(object sender, EventArgs e)
+        {
+            RaisePropertyChanged();
+           // MessageBox.Show("IAdres adres");
+        }
+
         public IDzialka dzialka
         {
             get => _dzialka;
@@ -59,7 +75,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 Set( ref _dzialka, value);
 
-                if (dzialka != null)
+               if (dzialka != null)
                     dzialka.zmiana += Dzialka_zmiana;
             }
         }
@@ -75,6 +91,10 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 Set( ref _obreb, value);
+                
+                if (dzialka.AdresId.HasValue)
+                    adres.AdresId = dzialka.AdresId.Value;
+
                 obreb.PropertyChanged += Obreb_PropertyChanged;
             }
         }
@@ -82,6 +102,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void Obreb_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             dzialka.Obreb = obreb.getObreb();
+
+            if (dzialka.Obreb != null) 
+                adres.MiejscowoscSlo.GminaSloId = dzialka.Obreb.GminaSloId;
+
             RaisePropertyChanged();
         }
         
@@ -99,16 +123,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialkaList dzialkaList { get; set; }
 
-
-        public IAdres adres
-        {
-            get => _adres;
-            set
-            {
-                Set(ref _adres, value);              
-            }
-
-        }
+       
         #endregion
 
         #region Konstructor
@@ -128,6 +143,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             obreb.clsObreb();
             dzialka.ObrebId = 0;
             testDzialka();
+            adres.AdresCls();
         }
 
 
@@ -141,7 +157,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                         break;
                     }
                 case ChangeMode.mod:
-                    {                        
+                    {
+                        int a = 1;
                         dzialkaList.ModRow(dzialka);
                         canAdd = false;
                         break;

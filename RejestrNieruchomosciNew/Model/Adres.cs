@@ -1,11 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class Adres : ViewModelBase, IAdres
+    [Serializable]
+    public class Adres : INotifyPropertyChanged, IAdres
     {
         private string _numer;
         private int _miejscowoscSloId;
@@ -21,7 +24,7 @@ namespace RejestrNieruchomosciNew.Model
             set
             {
                 _numer = value;
-                RaisePropertyChanged();
+                NotifyPropertyChanged(); 
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
 
@@ -30,10 +33,11 @@ namespace RejestrNieruchomosciNew.Model
 
         public int MiejscowoscSloId
         {
-            get => _miejscowoscSloId; set
+            get => _miejscowoscSloId;
+            set
             {
                 _miejscowoscSloId = value;
-                RaisePropertyChanged();
+                NotifyPropertyChanged(); 
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
 
@@ -41,10 +45,13 @@ namespace RejestrNieruchomosciNew.Model
         }
         public int UlicaSloId
         {
-            get => _ulicaSloId; set
+            get => _ulicaSloId;
+            set
             {
+                //Set(ref _ulicaSloId, value);
                 _ulicaSloId = value;
-                RaisePropertyChanged();
+                NotifyPropertyChanged();
+
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
             }
@@ -60,7 +67,9 @@ namespace RejestrNieruchomosciNew.Model
             get => _miejscList;
             set
             {
-                Set(ref _miejscList, value);
+                //Set(ref _miejscList, value);
+                _miejscList = value;
+                NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
             }
@@ -70,7 +79,11 @@ namespace RejestrNieruchomosciNew.Model
         {
             get => _ulicaList;
 
-            set => Set(ref _ulicaList, value);
+            set {
+                _ulicaList = value;
+                NotifyPropertyChanged();
+            }
+            //set => Set(ref _ulicaList, value);
         }
 
         public bool testAdres()
@@ -78,8 +91,6 @@ namespace RejestrNieruchomosciNew.Model
             return MiejscowoscSloId != 0 &&
                    UlicaSloId != 0;
         }
-
-        public event EventHandler zmiana;
 
         bool IEquatable<IAdres>.Equals(IAdres other)
         {
@@ -95,6 +106,21 @@ namespace RejestrNieruchomosciNew.Model
             UlicaSloId = adrSource.UlicaSloId;
 
             return this;
+        }
+
+        public void AdresCls()
+        {
+            MiejscowoscSloId = 0;
+            UlicaSloId = 0;
+            Numer = string.Empty;
+        }
+
+        public event EventHandler zmiana;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

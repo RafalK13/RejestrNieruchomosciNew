@@ -148,16 +148,19 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<WindowTestRaf>());
             container.Register(Component.For<WindowTestRafViewModel>());
 
+            //container.Register(Component.For<Adres>().LifeStyle.Transient);
             container.Register(Component.For<IAdres>().ImplementedBy<Adres>().LifeStyle.Transient);
             container.Register(Component.For<IMedia>().ImplementedBy<Media>().LifeStyle.Transient);
             container.Register(Component.For<ILokale>().ImplementedBy<Lokale>().LifeStyle.Transient);
-            container.Register(Component.For<IMiejscowoscSlo>().ImplementedBy<MiejscowoscSlo>().LifeStyle.Transient);
+            //container.Register(Component.For<IMiejscowoscSlo>().ImplementedBy<MiejscowoscSlo>().LifeStyle.Transient);
+            container.Register(Component.For<MiejscowoscSlo>().LifeStyle.Transient);
 
             container.Register(Component.For<IAdresList>().ImplementedBy<AdresList>());
             container.Register(Component.For<IMiejscowoscSloList>().ImplementedBy<MiejscowoscSloList>());
             container.Register(Component.For<IUlicaSloList>().ImplementedBy<UlicaSloList>());
 
-            container.Register(Component.For<IUlicaSlo>().ImplementedBy<UlicaSlo>().LifeStyle.Transient);
+            //container.Register(Component.For<IUlicaSlo>().ImplementedBy<UlicaSlo>().LifeStyle.Transient);
+            container.Register(Component.For<IUlicaSlo>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_Ulice>().LifeStyle.Transient);
 
             //container.Register(Component.For<IDzialka_Budynek>().ImplementedBy<Dzialka_Budynek>().LifeStyle.Transient);

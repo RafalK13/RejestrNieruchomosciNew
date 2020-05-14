@@ -14,10 +14,10 @@ namespace RejestrNieruchomosciNew.View
             InitializeComponent();
         
             DataContext = this;
-
+            
             Loaded += UserControl_Adres_Loaded;
         }
-
+               
         public bool correctAdr
         {
             get { return (bool)GetValue(correctAdrProperty); }
@@ -29,6 +29,8 @@ namespace RejestrNieruchomosciNew.View
 
         private void UserControl_Adres_Loaded(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show("UserControl_Adres_Loaded");
+            int a = 1;
             if (adres != null)
             {
                 //adres.miejscList.getList(adres.Dzialka);
@@ -40,7 +42,15 @@ namespace RejestrNieruchomosciNew.View
                 dzialka.zmiana += Dzialka_zmiana;
 
                 //adres.Dzialka.zmianaObreb += Dzialka_zmianaObreb;
+
+                adres.zmiana += Adres_zmiana;
             }
+        }
+
+        private void Adres_zmiana(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Zmiana");
+            calculateMiejsc();
         }
 
         private void Dzialka_zmiana(object sender, EventArgs e)
@@ -48,13 +58,10 @@ namespace RejestrNieruchomosciNew.View
             calculateMiejsc();
         }
 
-        //private void Dzialka_zmianaObreb(object sender, EventArgs e)
-        //{
-        //    calculateMiejsc();
-        //}
-
-
-
+        private void Dzialka_zmianaObreb(object sender, EventArgs e)
+        {
+            calculateMiejsc();
+        }
 
         public IDzialka dzialka
         {
@@ -303,7 +310,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onAdesChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-           
+            //MessageBox.Show("AdresDB");
         }
     }
 }

@@ -18,6 +18,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         bool testAdres();
         IAdres copy(IAdres adrSource);
 
+        void AdresCls();
+
         IMiejscowoscSloList miejscList { get; set; }
         IUlicaSloList ulicaList { get; set; }
 
