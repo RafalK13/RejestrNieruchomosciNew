@@ -3,6 +3,7 @@ using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace RejestrNieruchomosciNew.Model
@@ -12,9 +13,9 @@ namespace RejestrNieruchomosciNew.Model
     {
         private string _numer;
         private int _miejscowoscSloId;
-        private int _ulicaSloId;
-        private IMiejscowoscSloList _miejscList;
-        private IUlicaSloList _ulicaList;
+        private int? _ulicaSloId;
+        //private IMiejscowoscSloList _miejscList;
+        //private IUlicaSloList _ulicaList;
 
         public int AdresId { get; set; }
 
@@ -43,7 +44,7 @@ namespace RejestrNieruchomosciNew.Model
 
             }
         }
-        public int UlicaSloId
+        public int? UlicaSloId
         {
             get => _ulicaSloId;
             set
@@ -57,34 +58,36 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public int? DzialkaId { get; set; }
+        [field: NonSerialized]
         public Dzialka Dzialka { get; set; }
         public MiejscowoscSlo MiejscowoscSlo { get; set; }
         public UlicaSlo UlicaSlo { get; set; }
 
-        [NotMapped]
-        public IMiejscowoscSloList miejscList
-        {
-            get => _miejscList;
-            set
-            {
-                //Set(ref _miejscList, value);
-                _miejscList = value;
-                NotifyPropertyChanged();
-                if (zmiana != null)
-                    zmiana(null, EventArgs.Empty);
-            }
-        }
-        [NotMapped]
-        public IUlicaSloList ulicaList
-        {
-            get => _ulicaList;
+        //[NotMapped]
+        //public IMiejscowoscSloList miejscList
+        //{
+        //    get => _miejscList;
+        //    set
+        //    {
+        //        //Set(ref _miejscList, value);
+        //        _miejscList = value;
+        //        NotifyPropertyChanged();
+        //        if (zmiana != null)
+        //            zmiana(null, EventArgs.Empty);
+        //    }
+        //}
+        //[NotMapped]
+        //public IUlicaSloList ulicaList
+        //{
+        //    get => _ulicaList;
 
-            set {
-                _ulicaList = value;
-                NotifyPropertyChanged();
-            }
-            //set => Set(ref _ulicaList, value);
-        }
+        //    set {
+        //        _ulicaList = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //    //set => Set(ref _ulicaList, value);
+        //}
 
         public bool testAdres()
         {
@@ -101,6 +104,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public IAdres copy(IAdres adrSource)
         {
+            AdresId = adrSource.AdresId;
             Numer = adrSource.Numer;
             MiejscowoscSloId = adrSource.MiejscowoscSloId;
             UlicaSloId = adrSource.UlicaSloId;
@@ -115,9 +119,42 @@ namespace RejestrNieruchomosciNew.Model
             Numer = string.Empty;
         }
 
-        public event EventHandler zmiana;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public void save(IAdres adr)
+        {
+            if (adr.AdresId >= 0 && adr.MiejscowoscSloId > 0)
+            {
+                using (var c = new Context())
+                {
+                    var v1 = c.Adres.FirstOrDefault(r => r.AdresId == adr.AdresId);
+                    if (v1 == null)
+                    {
+                        adr.AdresId = 0;
+                        c.Adres.Add((Adres)adr);
+                    }
+                    else
+                    c.Entry(v1).CurrentValues.SetValues(adr);
+                    
+                    c.SaveChanges();
+                }
+            }
+            else
+            {
+                if (adr.AdresId > 0 && adr.MiejscowoscSloId == 0)
+                {
+                    using (var c = new Context())
+                    {
+                        c.Remove(adr);
+                        c.SaveChanges();
+                    }
+                }
+            }
+        }
 
+        [field: NonSerialized]
+        public event EventHandler zmiana;
+        [field: NonSerialized]
+        public event PropertyChangedEventHandler PropertyChanged;
+ 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

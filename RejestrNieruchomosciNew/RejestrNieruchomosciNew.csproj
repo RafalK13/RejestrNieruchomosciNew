@@ -255,9 +255,18 @@
     <Compile Include="Migrations\20200416095506_dom4.designer.cs">
       <DependentUpon>20200416095506_dom4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200526110113_dom5.cs" />
+    <Compile Include="Migrations\20200526110113_dom5.designer.cs">
+      <DependentUpon>20200526110113_dom5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200527082015_dom6.cs" />
+    <Compile Include="Migrations\20200527082015_dom6.designer.cs">
+      <DependentUpon>20200527082015_dom6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
+    <Compile Include="Model\AdresSloList.cs" />
     <Compile Include="Model\Budynek.cs" />
     <Compile Include="Model\BudynkiList.cs" />
     <Compile Include="Model\CelNabyciaList.cs" />
@@ -279,6 +288,7 @@
     <Compile Include="Model\InnePrawaList.cs" />
     <Compile Include="Model\Interfaces\IAdres.cs" />
     <Compile Include="Model\Interfaces\IAdresList.cs" />
+    <Compile Include="Model\Interfaces\IAdresSloList.cs" />
     <Compile Include="Model\Interfaces\IBudynkiList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaList.cs" />
     <Compile Include="Model\Interfaces\ICelNabyciaObiekty.cs" />

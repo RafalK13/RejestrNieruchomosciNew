@@ -7,7 +7,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         int AdresId { get; set; }
 
         int MiejscowoscSloId { get; set; }
-        int UlicaSloId { get; set; }
+        int? UlicaSloId { get; set; }
 
         string Numer { get; set; }
 
@@ -20,8 +20,10 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 
         void AdresCls();
 
-        IMiejscowoscSloList miejscList { get; set; }
-        IUlicaSloList ulicaList { get; set; }
+        void save(IAdres adr);
+
+        //IMiejscowoscSloList miejscList { get; set; }
+        //IUlicaSloList ulicaList { get; set; }
 
         event EventHandler zmiana;
     }

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using XAct;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -39,13 +40,65 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        public IAdres getAdres(IDzialka dzialkaSel)
+        //public IAdres getAdres(IDzialka dzialkaSel)
+        //{
+        //    return null;// listAll.FirstOrDefault(r => r.AdresId == dzialkaSel.AdresId);
+        //}
+
+        public void save(IAdres adr)
         {
-            return listAll.FirstOrDefault(r => r.AdresId == dzialkaSel.AdresId);
+            using (var c = new Context())
+            {
+
+                c.Update(adr);
+                c.SaveChanges();
+                //var a = c.Adres.FirstOrDefault(r => r.AdresId == adr.AdresId);
+
+                //if (a == null)
+                //    AddRow(adr);
+                //else
+                //    ModRow(adr);
+            }
         }
 
-        public void save()
+        public void DelRow(IAdres adr)
         {
+            listAll.Remove(adr);
+            using (var c = new Context())
+            {
+                c.Adres.Remove((Adres)adr);
+                c.SaveChanges();
+            }
+        }
+
+        public void AddRow(IAdres adr)
+        {
+            using (var c = new Context())
+            {
+                c.Adres.Add((Adres)adr);
+                c.SaveChanges();
+            }
+            listAll.Add(adr);
+        }
+
+        public void ModRow(IAdres adr)
+        {
+            try
+            {
+                using (var c = new Context())
+                {
+                   var a = c.Adres.First(r => r.AdresId == adr.AdresId);
+                    c.Entry(a).CurrentValues.SetValues(adr);
+                    c.SaveChanges();
+                }
+
+                var v = listAll.IndexOf(r => r.AdresId == adr.AdresId);
+                listAll[v].copy(adr);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd modyfikacji działki\r\n{ex.Message}\r\n{ex.Source}");
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class PlatnoscList
     {
-        public ObservableCollection<PlatnoscUW> listPlatnoscUW { get; set; }
-        public ObservableCollection<PlatnoscInnePrawa> listPlatnoscInnePr { get; set; }
+        //public ObservableCollection<PlatnoscUW> listPlatnoscUW { get; set; }
+        //public ObservableCollection<PlatnoscInnePrawa> listPlatnoscInnePr { get; set; }
 
         public PlatnoscList()
         {
@@ -28,7 +28,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listPlatnoscUW = new ObservableCollection<PlatnoscUW>(await c.PlatnoscUW.ToListAsync());
+                    //listPlatnoscUW = new ObservableCollection<PlatnoscUW>(await c.PlatnoscUW.ToListAsync());
                 }
                 catch (Exception e)
                 {

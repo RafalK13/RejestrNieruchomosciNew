@@ -1,9 +1,11 @@
-﻿using RejestrNieruchomosciNew.Model;
+﻿using GalaSoft.MvvmLight.Command;
+using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.View
 {
@@ -12,12 +14,32 @@ namespace RejestrNieruchomosciNew.View
         public UserControl_Adres()
         {
             InitializeComponent();
-        
+
             DataContext = this;
             
+            onCzyscClick = new RelayCommand(onCzysc);
             Loaded += UserControl_Adres_Loaded;
         }
-               
+
+        private void onCzysc()
+        {
+            //MessageBox.Show( "onClcked");
+
+            miejscSelVal = null;
+            ulicaSelVal = null;
+            NumerUlicy = string.Empty;
+
+            adres.MiejscowoscSloId = 0;
+            adres.UlicaSloId = null;
+            adres.Numer = string.Empty;
+
+            correctAdr = true;
+
+        }
+
+        public ICommand  onCzyscClick   { get; set; }
+
+        #region correctAdr
         public bool correctAdr
         {
             get { return (bool)GetValue(correctAdrProperty); }
@@ -26,60 +48,68 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty correctAdrProperty =
             DependencyProperty.Register("correctAdr", typeof(bool), typeof(UserControl_Adres), new PropertyMetadata(true));
+        #endregion
 
+        #region Loaded
         private void UserControl_Adres_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("UserControl_Adres_Loaded");
-            int a = 1;
-            if (adres != null)
+            if (adresSlo != null)
             {
-                //adres.miejscList.getList(adres.Dzialka);
-                miejscList = adres.miejscList;
-                ulicaList = adres.ulicaList;
+                if (adres == null)
+                {
+                    adres = new Adres();
+                    adres.AdresId = 0;
+                }
+
+                miejscList = adresSlo.miejscList;
+                ulicaList = adresSlo.ulicaList;
+           
                 calculateMiejsc();
+                
+                miejscSelVal = miejscList.list.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId);
+                ulicaSelVal = ulicaList?.list?.FirstOrDefault(r => r.UlicaSloId == adres.UlicaSloId);
+                NumerUlicy = adres.Numer;
+
                 correctAdr = true;
-
-                dzialka.zmiana += Dzialka_zmiana;
-
-                //adres.Dzialka.zmianaObreb += Dzialka_zmianaObreb;
-
-                adres.zmiana += Adres_zmiana;
+               
             }
         }
 
-        private void Adres_zmiana(object sender, EventArgs e)
+        
+        #endregion
+
+        #region adres
+        public IAdres adres
         {
-            //MessageBox.Show("Zmiana");
-            calculateMiejsc();
+            get { return (IAdres)GetValue(adresProperty); }
+            set { SetValue(adresProperty, value); }
         }
 
-        private void Dzialka_zmiana(object sender, EventArgs e)
+        public static readonly DependencyProperty adresProperty =
+            DependencyProperty.Register("adres", typeof(IAdres), typeof(UserControl_Adres));
+
+        
+        #endregion
+
+        #region gminaId
+        public int? gminaId
         {
-            calculateMiejsc();
+            get { return (int?)GetValue(gminaIdProperty); }
+            set { SetValue(gminaIdProperty, value); }
         }
 
-        private void Dzialka_zmianaObreb(object sender, EventArgs e)
+        public static readonly DependencyProperty gminaIdProperty =
+            DependencyProperty.Register("gminaId", typeof(int?), typeof(UserControl_Adres), new PropertyMetadata(new PropertyChangedCallback(onGminaIdChanged)));
+        private static void onGminaIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            calculateMiejsc();
+           UserControl_Adres u = d as UserControl_Adres;
+            u.calculateMiejsc();
+            //gminaId = adresSlo.miejscList.listAll.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId).GminaSloId;
         }
-
-        public IDzialka dzialka
-        {
-            get { return (IDzialka)GetValue(dzialkaProperty); }
-            set { SetValue(dzialkaProperty, value); }
-        }
-
-        public static readonly DependencyProperty dzialkaProperty =
-            DependencyProperty.Register("dzialka", typeof(IDzialka), typeof(UserControl_Adres), new PropertyMetadata(null, new PropertyChangedCallback( onDzialkaChange)));
-
-        private static void onDzialkaChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //MessageBox.Show("Dzilaka CHange");
-        }
+        #endregion
 
         private void calculateMiejsc()
         {
-            int? gminaId = dzialka?.Obreb?.GminaSloId;
             if (gminaId != null)
             {
                 if (miejscList != null)
@@ -91,32 +121,6 @@ namespace RejestrNieruchomosciNew.View
                 ulicaList.list = null;
             }
         }
-
-        //public int? gminaId
-        //{
-        //    get { return (int?)GetValue(gminaIdProperty); }
-        //    set { SetValue(gminaIdProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty gminaIdProperty =
-        //    DependencyProperty.Register("gminaId", typeof(int?), typeof(UserControl_Adres), new PropertyMetadata(null, new PropertyChangedCallback(onGminaChanged)));
-
-        //private static void onGminaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    UserControl_Adres u = d as UserControl_Adres;
-        //    u.calculateMiejsc();
-            
-        //}
-
-        //private void Dzialka_zmianaObreb(object sender, EventArgs e)
-        //{
-        //    miejscList.list = null;
-
-        //    if (adres.Dzialka?.Obreb != null)
-        //    {
-        //        miejscList.getList(adres.Dzialka);
-        //    }
-        //}
 
         #region Dimensions
         public int rowHight
@@ -181,9 +185,6 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty miejscListProperty =
             DependencyProperty.Register("miejscList", typeof(IMiejscowoscSloList), typeof(UserControl_Adres));
 
-
-
-
         public IMiejscowoscSlo miejscSelVal
         {
             get { return (IMiejscowoscSlo)GetValue(miejscSelValProperty); }
@@ -191,23 +192,21 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty miejscSelValProperty =
-            DependencyProperty.Register("miejscSelVal", typeof(IMiejscowoscSlo), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( onSelectMiejsc)));
+            DependencyProperty.Register("miejscSelVal", typeof(IMiejscowoscSlo), typeof(UserControl_Adres), new PropertyMetadata(new PropertyChangedCallback(onSelectMiejsc)));
 
         private static void onSelectMiejsc(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Adres u = d as UserControl_Adres;
-           
+
             if (u.miejscSelVal != null)
             {
-                u.adres.ulicaList.getList(u.miejscSelVal);
+                u.adresSlo.ulicaList.getList(u.miejscSelVal);
                 u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
 
                 u.ulicaList = null;
-                u.adres.UlicaSloId = 0;
-                u.ulicaList = u.adres.ulicaList;
-
-                u.correctAdr =true;
-                //MessageBox.Show("correctAdr");
+                //u.adres.UlicaSloId = 0;
+                u.ulicaList = u.adresSlo.ulicaList;
+                u.correctAdr = true;              
             }
             else
                 u.correctAdr = false;
@@ -230,14 +229,14 @@ namespace RejestrNieruchomosciNew.View
         //    return false;
         //}
 
-        public string miejscSelValPath
-        {
-            get { return (string)GetValue(miejscSelValPathProperty); }
-            set { SetValue(miejscSelValPathProperty, value); }
-        }
+        //public string miejscSelValPath
+        //{
+        //    get { return (string)GetValue(miejscSelValPathProperty); }
+        //    set { SetValue(miejscSelValPathProperty, value); }
+        //}
 
-        public static readonly DependencyProperty miejscSelValPathProperty =
-            DependencyProperty.Register("miejscSelValPath", typeof(string), typeof(UserControl_Adres));
+        //public static readonly DependencyProperty miejscSelValPathProperty =
+        //    DependencyProperty.Register("miejscSelValPath", typeof(string), typeof(UserControl_Adres));
 
         #endregion
 
@@ -258,13 +257,15 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty ulicaSelValProperty =
-            DependencyProperty.Register("ulicaSelVal", typeof(IUlicaSlo), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( onUliceChange)));
+            DependencyProperty.Register("ulicaSelVal", typeof(IUlicaSlo), typeof(UserControl_Adres), new PropertyMetadata(null, new PropertyChangedCallback(onUliceChange)));
 
         private static void onUliceChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            UserControl_Adres u = d as UserControl_Adres;
+           UserControl_Adres u = d as UserControl_Adres;
             if (u.ulicaSelVal != null)
                 u.adres.UlicaSloId = u.ulicaSelVal.UlicaSloId;
+
+            u.correctAdr = true;
 
             //u.correctAdr = u.validate();
         }
@@ -288,7 +289,7 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty NumerUlicyProperty =
-            DependencyProperty.Register("NumerUlicy", typeof(string), typeof(UserControl_Adres), new PropertyMetadata( null, new PropertyChangedCallback( numerChange)));
+            DependencyProperty.Register("NumerUlicy", typeof(string), typeof(UserControl_Adres), new PropertyMetadata(null, new PropertyChangedCallback(numerChange)));
 
         private static void numerChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -299,18 +300,16 @@ namespace RejestrNieruchomosciNew.View
         }
         #endregion
 
-        public IAdres adres
+        #region adresSlo
+        public IAdresSloList adresSlo
         {
-            get { return (IAdres)GetValue(adresProperty); }
-            set { SetValue(adresProperty, value); }
+            get { return (IAdresSloList)GetValue(adresSloProperty); }
+            set { SetValue(adresSloProperty, value); }
         }
 
-        public static readonly DependencyProperty adresProperty =
-            DependencyProperty.Register("adres", typeof(IAdres), typeof(UserControl_Adres), new PropertyMetadata(null, new PropertyChangedCallback(onAdesChange)));
+        public static readonly DependencyProperty adresSloProperty =
+            DependencyProperty.Register("adresSlo", typeof(IAdresSloList), typeof(UserControl_Adres));
 
-        private static void onAdesChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //MessageBox.Show("AdresDB");
-        }
+        #endregion
     }
 }

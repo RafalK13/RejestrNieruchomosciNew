@@ -6,7 +6,7 @@
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
              x:Name="AdresControl"
-             d:DesignHeight="150" d:DesignWidth="333"
+             d:DesignHeight="190" d:DesignWidth="333"
             >
             <!--Height="{Binding userHeight}" Width="{Binding userWidth}"-->
     
@@ -25,6 +25,7 @@
         
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
@@ -50,8 +51,11 @@
                   Style="{StaticResource comboRaf}"
                   ItemsSource="{Binding miejscList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
-                  SelectedValue="{Binding miejscSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="MiejscowoscSloId"
+                  SelectedValue="{Binding miejscSelVal.MiejscowoscSloId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding miejscSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
+            <!--SelectedValuePath="{Binding  dzialka.Adres.MiejscowoscSloId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         </Grid>
 
         <Grid Grid.Row="2">
@@ -66,7 +70,9 @@
                   Style="{StaticResource comboRaf}"
                   ItemsSource="{Binding ulicaList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
-                  SelectedValue="{Binding ulicaSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="UlicaSloId"
+                  SelectedValue="{Binding ulicaSelVal.UlicaSloId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding ulicaSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
     </Grid>
     
@@ -77,8 +83,19 @@
                 Style="{StaticResource elemInfo}"
                 tekstRaf="{Binding NumerUlicy, ElementName=AdresControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthLabelRaf}"/>
+                <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthTextRaf}"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1"
+                Margin="0,5,0,5"
+                Width="130"
+                Command="{Binding onCzyscClick}"
+                Content="Czyść"/>
+        </Grid>
 
-       
+
 
         <!--<view:UserControl_ElementInfo
                 Grid.Row="2"

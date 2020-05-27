@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.Model
@@ -86,7 +87,6 @@ namespace RejestrNieruchomosciNew.Model
         public Obreb getObreb()
         {
             int? n = getId();
-           
             return n != null ? obrebList.obrebList.FirstOrDefault(r => r.ObrebId == n) : null;
         }
 
@@ -94,10 +94,15 @@ namespace RejestrNieruchomosciNew.Model
         {
             try
             {
-                obrebValue = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First().Nazwa;
-                gminaValue = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First().GminaSlo.Nazwa;
+                if (gminaView != null && obrebView != null)
+                {
+                    var v = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First();
+
+                    obrebValue = v.Nazwa;
+                    gminaValue = v.GminaSlo.Nazwa;
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 obrebValue = null;
                 gminaValue = null;
@@ -109,8 +114,11 @@ namespace RejestrNieruchomosciNew.Model
         {
             try
             {
-                obrebValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().Nazwa;
-                gminaValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
+                if (gminaView != null && obrebView != null)
+                {
+                    obrebValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().Nazwa;
+                    gminaValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
+                }
             }
             catch (Exception)
             {

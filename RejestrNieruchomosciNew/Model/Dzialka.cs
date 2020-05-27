@@ -28,9 +28,9 @@ namespace RejestrNieruchomosciNew
             {
                 _Numer = value;
                 //RaisePropertyChanged();
-                //NotifyPropertyChanged();
-                //if (zmiana != null)
-                //    zmiana(null, EventArgs.Empty);
+                NotifyPropertyChanged();
+                if (zmiana != null)
+                    zmiana(null, EventArgs.Empty);
             }
         }
 
@@ -89,8 +89,8 @@ namespace RejestrNieruchomosciNew
         public string dostDoDrogi { get; set; }
         [DataMember]
         public string rodzNaw { get; set; }
-        [DataMember]
-        public int? AdresId { get; set; }
+        //[DataMember]
+        //public int? AdresId { get; set; }
         //[field: NonSerialized]
         [DataMember]
         public Adres Adres { get; set; }
@@ -115,8 +115,8 @@ namespace RejestrNieruchomosciNew
 
                 //RaisePropertyChanged();
                 NotifyPropertyChanged();
-                if (zmiana != null)
-                    zmiana(null, EventArgs.Empty);
+                if (zmianaObreb != null)
+                    zmianaObreb(null, EventArgs.Empty);
             }
         }
         [DataMember]
@@ -145,7 +145,7 @@ namespace RejestrNieruchomosciNew
                    string.Equals(sasiedztwo, other.sasiedztwo) &&
                    string.Equals(dostDoDrogi, other.dostDoDrogi) &&
                    string.Equals(rodzNaw, other.rodzNaw) &&
-                   AdresId == other.AdresId &&                    
+                   //AdresId == other.AdresId &&                    
                    ObrebId.Equals(other.ObrebId) &&
                    NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
         }
@@ -161,7 +161,7 @@ namespace RejestrNieruchomosciNew
 
         }
 
-        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _AdresId=null )
+        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null)//, int? _AdresId=null )
         {
             Numer = _numer;
             ObrebId = _ObrebId;
@@ -169,7 +169,7 @@ namespace RejestrNieruchomosciNew
             Kwzrob = _kwZ;
             Pow = _Pow;
             NadzorKonserwSloId = _NadzorKonserwSloId;
-            AdresId = _AdresId;
+            //AdresId = _AdresId;
         }
        
         public object clone()
@@ -202,7 +202,7 @@ namespace RejestrNieruchomosciNew
             dzDest.Kwzrob = dzSource.Kwzrob;
             dzDest.Pow = dzSource.Pow;
             dzDest.NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            dzDest.AdresId = dzSource.AdresId;
+            //dzDest.AdresId = dzSource.AdresId;
             dzDest.lokalizacja = dzSource.lokalizacja;
             dzDest.uzbrojenie = dzSource.uzbrojenie;
             dzDest.ksztalt = dzSource.ksztalt;
@@ -220,7 +220,7 @@ namespace RejestrNieruchomosciNew
             Kwzrob = dzSource.Kwzrob;
             Pow = dzSource.Pow;
             NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
-            AdresId = dzSource.AdresId;
+            //AdresId = dzSource.AdresId;
             lokalizacja = dzSource.lokalizacja;
             uzbrojenie = dzSource.uzbrojenie;
             ksztalt = dzSource.ksztalt;
@@ -228,7 +228,13 @@ namespace RejestrNieruchomosciNew
             dostDoDrogi = dzSource.dostDoDrogi;
             rodzNaw = dzSource.rodzNaw;
 
-           
+            if (dzSource.Adres != null)
+                if (Adres == null)
+                    Adres = new Adres();
+                Adres.copy( dzSource.Adres);
+
+
+
             //if (dzSource.Obreb != null)
             //{
             //    if (Obreb == null)
@@ -247,11 +253,13 @@ namespace RejestrNieruchomosciNew
 
             return this;
         }
-       
+
+        [field: NonSerialized]
         public event EventHandler zmiana;
+        [field: NonSerialized]
         public event EventHandler zmianaObreb;
 
-        //[field: NonSerializedAttribute()]
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

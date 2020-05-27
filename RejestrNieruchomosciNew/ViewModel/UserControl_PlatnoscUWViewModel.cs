@@ -31,11 +31,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_PreviewViewModel userPrev { get; set; }
 
         public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel _userPrev,
-                                               PlatnoscList platnoscList,
+                                           
                                                PlatnoscUW _platnoscUW)
         {
 
-            int a = 4;
             if (_userPrev?.dzialkaSel?.PlatnoscUW != null)
             {
                 _platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;

@@ -15,7 +15,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region Properties
 
         #region private
-        private IAdres _adres;
+        private IAdresSloList _adresSloList;
         private bool _adresChanged;
         private UserControl_PreviewViewModel _userPrev;
         private IDzialka _dzialka;
@@ -41,32 +41,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _userPrev;
             set
             {
-                Set ( ref _userPrev, value);
-                //userPrev.zmianaDzialkaSel += UserPrev_zmianaDzialkaSel;
+                Set(ref _userPrev, value);
             }
         }
 
-        //private void UserPrev_zmianaDzialkaSel(object sender, EventArgs e)
-        //{
-        //    MessageBox.Show("1");
-        //    dzialka = userPrev.dzialkaSel;
-        //}
-
-        public IAdres adres
+        public IAdresSloList adresSloList
         {
-            get => _adres;
-            set
-            {
-                Set(ref _adres, value);
-                adres.zmiana += Adres_zmiana;
-            }
+            get => _adresSloList;
+            set { Set(ref _adresSloList, value); }
         }
 
-        private void Adres_zmiana(object sender, EventArgs e)
-        {
-            RaisePropertyChanged();
-           // MessageBox.Show("IAdres adres");
-        }
 
         public IDzialka dzialka
         {
@@ -75,14 +59,23 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 Set( ref _dzialka, value);
 
-               if (dzialka != null)
+                if (dzialka != null)
+                {
                     dzialka.zmiana += Dzialka_zmiana;
+
+                    dzialka.zmianaObreb += Dzialka_zmianaObreb;
+                }
             }
+        }
+
+        private void Dzialka_zmianaObreb(object sender, EventArgs e)
+        {
+            testDzialka();
         }
 
         private void Dzialka_zmiana(object sender, EventArgs e)
         {
-            testDzialka();
+                       testDzialka();
         }
   
         public ObrebClass obreb
@@ -91,24 +84,25 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 Set( ref _obreb, value);
-                
-                if (dzialka.AdresId.HasValue)
-                    adres.AdresId = dzialka.AdresId.Value;
-
                 obreb.PropertyChanged += Obreb_PropertyChanged;
             }
         }
 
+        private int? _gminaId;
+
+        public int? gminaId
+        {
+            get { return _gminaId; }
+            set => Set(ref _gminaId, value);
+        }
+
+
         private void Obreb_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             dzialka.Obreb = obreb.getObreb();
-
-            if (dzialka.Obreb != null) 
-                adres.MiejscowoscSlo.GminaSloId = dzialka.Obreb.GminaSloId;
-
-            RaisePropertyChanged();
+            gminaId = dzialka?.Obreb?.GminaSloId;          
         }
-        
+
         public bool canAdd
         {
             get => _canAdd;
@@ -123,7 +117,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IDzialkaList dzialkaList { get; set; }
 
-       
         #endregion
 
         #region Konstructor
@@ -140,12 +133,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onClsClick()
         {
-            obreb.clsObreb();
+            obreb.clsObreb();      
             dzialka.ObrebId = 0;
             testDzialka();
-            adres.AdresCls();
-        }
 
+            if(dzialka.Adres != null)
+                dzialka.Adres.AdresCls();
+        }
 
         private void OnAddDzialkaClick()
         {
@@ -158,15 +152,15 @@ namespace RejestrNieruchomosciNew.ViewModel
                     }
                 case ChangeMode.mod:
                     {
-                        int a = 1;
+                        dzialka.Adres.DzialkaId = dzialka.DzialkaId;
+                        dzialka.Adres.save(dzialka.Adres);
+
                         dzialkaList.ModRow(dzialka);
                         canAdd = false;
                         break;
                     }
             }
-
             userPrev.dzialkaView.Refresh();
-
         }
 
         #region Metods
@@ -175,14 +169,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (obreb.getId().HasValue)
             {
                 dzialka.ObrebId = obreb.getId().Value;
-            }
-        }
-
-        private void getMiejscList()
-        {
-            if (dzialka.Adres != null)
-            {
-                dzialka.Adres.miejscList.getList(dzialka);
             }
         }
 
@@ -211,8 +197,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testDzialkaToMod()
         {
-           
-            
             if (dzialka.ObrebId == 0)
                 canAdd = false;
             else

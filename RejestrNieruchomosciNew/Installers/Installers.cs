@@ -150,12 +150,14 @@ namespace RejestrNieruchomosciNew.Installers
 
             //container.Register(Component.For<Adres>().LifeStyle.Transient);
             container.Register(Component.For<IAdres>().ImplementedBy<Adres>().LifeStyle.Transient);
+            container.Register(Component.For<IAdresSloList>().ImplementedBy<AdresSloList>());
+
             container.Register(Component.For<IMedia>().ImplementedBy<Media>().LifeStyle.Transient);
             container.Register(Component.For<ILokale>().ImplementedBy<Lokale>().LifeStyle.Transient);
             //container.Register(Component.For<IMiejscowoscSlo>().ImplementedBy<MiejscowoscSlo>().LifeStyle.Transient);
             container.Register(Component.For<MiejscowoscSlo>().LifeStyle.Transient);
 
-            container.Register(Component.For<IAdresList>().ImplementedBy<AdresList>());
+            //container.Register(Component.For<IAdresList>().ImplementedBy<AdresList>());
             container.Register(Component.For<IMiejscowoscSloList>().ImplementedBy<MiejscowoscSloList>());
             container.Register(Component.For<IUlicaSloList>().ImplementedBy<UlicaSloList>());
 

@@ -23,6 +23,7 @@ namespace RejestrNieruchomosciNew.Model
                     MessageBox.Show($"ObrebList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
+           
             }
         }
     }

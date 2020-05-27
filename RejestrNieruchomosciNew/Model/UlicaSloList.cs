@@ -49,14 +49,12 @@ namespace RejestrNieruchomosciNew.Model
 
         private void initList(IMiejscowoscSlo miejscowosc)
         {
-            int r1 = 13;
             if (miejscowosc != null)
                 list = new ObservableCollection<IUlicaSlo>(listAll.Where(r => r.MiejscowoscUlice == miejscowosc.MiejscowoscUlice));
         }
 
         public void getList(IMiejscowoscSlo miejscowosc)
         {
-            int r = 13;
             initList(miejscowosc);
         }
 

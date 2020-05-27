@@ -24,7 +24,7 @@ namespace RejestrNieruchomosciNew.Model
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
 
-        int? AdresId { get; set; }
+        //int? AdresId { get; set; }
         Adres Adres { get; set; }
 
         PlatnoscUW PlatnoscUW { get; set; }

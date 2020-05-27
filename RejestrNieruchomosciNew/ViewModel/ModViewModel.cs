@@ -71,7 +71,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public static T Clone1<T>(T obj) where T : class
         {
             //var knownTypes = new List<Type> { typeof(Dzialka), typeof(Uzytki), typeof(Wladanie), typeof(InnePrawa), typeof(Zagosp), typeof(Dzialka_Budynek)};
-            var knownTypes = new List<Type> { typeof(Dzialka), typeof(Adres)};
+            var knownTypes = new List<Type> { typeof(Dzialka), typeof(Adres), typeof(MiejscowoscSloList), typeof(MiejscowoscSlo), typeof(UlicaSloList), typeof(UlicaSlo) };
             var serializer = new DataContractSerializer(typeof(T), knownTypes);//, int.MaxValue, false, true, null);
             using (var ms = new System.IO.MemoryStream())
             {
@@ -125,6 +125,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             userControl_AddDanePod.changeMode = ChangeMode.mod;
 
             userControl_DaneDod = userDod;
+            a = 4;
             #endregion
 
             //tabsVisible = true;

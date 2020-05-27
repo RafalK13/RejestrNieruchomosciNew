@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200526110113_dom5")]
+    partial class dom5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +119,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Numer");
 
-                    b.Property<int?>("UlicaSloId");
+                    b.Property<int>("UlicaSloId");
 
                     b.HasKey("AdresId");
 
@@ -970,7 +972,8 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Model.UlicaSlo", "UlicaSlo")
                         .WithMany("Adres")
-                        .HasForeignKey("UlicaSloId");
+                        .HasForeignKey("UlicaSloId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Dzialka_Budynek", b =>

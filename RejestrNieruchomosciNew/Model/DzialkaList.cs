@@ -54,6 +54,8 @@ namespace RejestrNieruchomosciNew.Model
                                                          .Include( r=> r.PlatnoscUW)
                                                          .Include( adr=>adr.Adres).ToListAsync());
             }
+
+            int a13 = 13;
         }
 
         public void DelRow(IDzialka dz)
@@ -106,7 +108,7 @@ namespace RejestrNieruchomosciNew.Model
                     Dzialka d = (Dzialka)dz;
                     int a = 14;
                     d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
-
+                    //d.AdresId = dz.Adres.AdresId;
 
 
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
