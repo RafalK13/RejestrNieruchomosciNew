@@ -29,6 +29,7 @@ namespace RejestrNieruchomosciNew.View
             ulicaSelVal = null;
             NumerUlicy = string.Empty;
 
+            //adres = null;
             adres.MiejscowoscSloId = 0;
             adres.UlicaSloId = null;
             adres.Numer = string.Empty;
@@ -63,14 +64,17 @@ namespace RejestrNieruchomosciNew.View
 
                 miejscList = adresSlo.miejscList;
                 ulicaList = adresSlo.ulicaList;
-           
-                calculateMiejsc();
-                
-                miejscSelVal = miejscList.list.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId);
-                ulicaSelVal = ulicaList?.list?.FirstOrDefault(r => r.UlicaSloId == adres.UlicaSloId);
-                NumerUlicy = adres.Numer;
 
-                correctAdr = true;
+                if (gminaId != null)
+                {
+                    calculateMiejsc();
+
+                    miejscSelVal = miejscList.list.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId);
+                    ulicaSelVal = ulicaList?.list?.FirstOrDefault(r => r.UlicaSloId == adres.UlicaSloId);
+                    NumerUlicy = adres.Numer;
+
+                    correctAdr = true;
+                }
                
             }
         }
@@ -295,6 +299,7 @@ namespace RejestrNieruchomosciNew.View
         {
             UserControl_Adres u = d as UserControl_Adres;
             u.adres.Numer = u.NumerUlicy;
+            u.correctAdr = true;
 
             //u.correctAdr = u.validate();
         }

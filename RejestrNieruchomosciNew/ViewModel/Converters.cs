@@ -7,6 +7,43 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class AdresConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            Adres adr = values[0] as Adres;
+            AdresSloList adrList = values[1] as AdresSloList;
+            string miejsc = "";
+            string ulica = "";
+            string numer = "";
+
+            if (adr == null || adrList==null)
+                return null;
+
+             miejsc = adrList.miejscList.listAll.FirstOrDefault(r => r.MiejscowoscSloId == adr.MiejscowoscSloId).Nazwa;
+            
+             if( adr.UlicaSloId != null)
+                ulica = ", "+adrList.ulicaList.listAll.FirstOrDefault(r => r.UlicaSloId == adr.UlicaSloId).Nazwa;
+
+             if (string.IsNullOrEmpty(adr.Numer) == false)
+                numer = ", " + adr.Numer;
+
+             return $"{miejsc}{ulica}{numer}";
+            
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class pathTofileName : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

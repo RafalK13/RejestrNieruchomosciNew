@@ -51,18 +51,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         
         private void clickPlatnosciAdd()
         {
-          
             platnoscUW.Dzialka = userPrev.dzialkaSel as Dzialka;
-
+            platnoscUW.DzialkaId = userPrev.dzialkaSel.DzialkaId;
             platnoscUW.save(platnoscUW);
 
-            //userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
-            //userPrev.dzialkaView.Refresh();
-            //int a = 4;
-
-
-
-
+            userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
+            userPrev.dzialkaView.Refresh();
         }
     }
 }       

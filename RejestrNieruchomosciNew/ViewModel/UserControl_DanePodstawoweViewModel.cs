@@ -148,14 +148,21 @@ namespace RejestrNieruchomosciNew.ViewModel
                 case ChangeMode.add:
                     {
                         dzialkaList.AddRow(dzialka);
+                        canAdd = false;
                         break;
                     }
                 case ChangeMode.mod:
                     {
                         dzialka.Adres.DzialkaId = dzialka.DzialkaId;
-                        dzialka.Adres.save(dzialka.Adres);
+                      
+                        var res = dzialka.Adres.save( dzialka.Adres);
+
+                        if (res == null)
+                            dzialka.Adres = null;
+                        int a = 13;
 
                         dzialkaList.ModRow(dzialka);
+                        int  b = 13;
                         canAdd = false;
                         break;
                     }

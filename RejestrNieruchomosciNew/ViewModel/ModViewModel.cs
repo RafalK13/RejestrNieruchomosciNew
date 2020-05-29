@@ -68,20 +68,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        public static T Clone1<T>(T obj) where T : class
-        {
-            //var knownTypes = new List<Type> { typeof(Dzialka), typeof(Uzytki), typeof(Wladanie), typeof(InnePrawa), typeof(Zagosp), typeof(Dzialka_Budynek)};
-            var knownTypes = new List<Type> { typeof(Dzialka), typeof(Adres), typeof(MiejscowoscSloList), typeof(MiejscowoscSlo), typeof(UlicaSloList), typeof(UlicaSlo) };
-            var serializer = new DataContractSerializer(typeof(T), knownTypes);//, int.MaxValue, false, true, null);
-            using (var ms = new System.IO.MemoryStream())
-            {
-
-                    serializer.WriteObject(ms, obj);
-                    ms.Position = 0;
-                    var v = (T)serializer.ReadObject(ms);
-                    return v;
-            }
-        }
+        
 
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
                         UserControl_DaneDodatkoweViewModel userDod,
@@ -90,13 +77,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             tabsVisible = true;
 
-            #region testSolution
-            int a = 1;
-            //dzialkaSel = userPrev1.dzialkaSel;
-            a = 1;
+            #region testSoluti
+            //dzialkaSel = userPrev1.dzialkaSel;          
             //dzialkaSel = (Dzialka)CloneObject1(userPrev1.dzialkaSel);
             #endregion
-            a = 3;
+          
             #region Old solution
             //dzialkaSel.copy(userPrev1.dzialkaSel);
 
@@ -113,33 +98,15 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             #region New Solution
             dzialkaSel = userPrev1.dzialkaSel;
-            a = 3;
-            userPodst.dzialka = Clone1(dzialkaSel);
-            a = 4;
-            //userPodst.dzialka.copy(dzialkaSel);
+            userPodst.dzialka = StaticFunctions.Clone1(dzialkaSel);
             userPodst.obreb.fillValues(dzialkaSel);
-
             userDod.dzialka = dzialkaSel;
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
 
             userControl_DaneDod = userDod;
-            a = 4;
             #endregion
-
-            //tabsVisible = true;
-
-            ////userPodst.dzialka.copy(userPrev1.dzialkaSel);
-            //userPodst.dzialka=userPrev1.dzialkaSel;
-            //userPodst.obreb.fillValues(userPrev1.dzialkaSel);
-
-            //userDod.dzialka = userPrev1.dzialkaSel;
-
-            //userControl_AddDanePod = userPodst;
-            //userControl_AddDanePod.changeMode = ChangeMode.mod;
-
-            //userControl_DaneDod = userDod;
         }
 
         public override void onAddDzialka()

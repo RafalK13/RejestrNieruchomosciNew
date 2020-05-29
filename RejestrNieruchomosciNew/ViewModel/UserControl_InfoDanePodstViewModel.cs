@@ -14,10 +14,7 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public INadzorKonserwatoraSloList nadzorList { get; set; }
 
-        public IMiejscowoscSloList miejscList { get; set; }
-
-        public IUlicaSloList ulicaList { get; set; }
-
+        public IAdresSloList adresSloList { get; set; }
 
         public UserControl_InfoDanePodstViewModel()
         {

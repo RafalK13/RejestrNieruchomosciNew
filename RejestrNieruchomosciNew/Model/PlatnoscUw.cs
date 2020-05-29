@@ -90,8 +90,27 @@ namespace RejestrNieruchomosciNew
         {
             using (var c = new Context())
             {
-                c.Update(p);
-                c.SaveChanges();
+                p.Dzialka = null;
+                if (isNull())
+                {
+                    c.Remove(p);
+                    c.SaveChanges();
+                }
+                else
+                {
+                    var v = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == p.DzialkaId);
+
+                    if (v == null)
+                    {
+                        p.PlatnoscUWId = 0;
+                        c.PlatnoscUW.Add(p);
+                    }
+                    else
+                    {
+                        c.Entry(v).CurrentValues.SetValues(p);
+                    }
+                    c.SaveChanges();
+                }
             }
         }
 

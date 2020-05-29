@@ -369,6 +369,7 @@
     <Compile Include="Model\RodzajTransakcjiSlo.cs" />
     <Compile Include="Model\RodzajDokumentuSlo.cs" />
     <Compile Include="Model\SelectorModel.cs" />
+    <Compile Include="Model\StaticFunctions.cs" />
     <Compile Include="Model\StatusSlo.cs" />
     <Compile Include="Model\Transakcje.cs" />
     <Compile Include="Model\TransakcjeList.cs" />
@@ -386,9 +387,6 @@
     <Compile Include="Model\ZagospList.cs" />
     <Compile Include="Model\ZagospStatusSlo.cs" />
     <Compile Include="Model\ZagospStatusSloList.cs" />
-    <Compile Include="UserControls\Transakcja.xaml.cs">
-      <DependentUpon>Transakcja.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />
@@ -412,7 +410,6 @@
     <Compile Include="ViewModel\UserControl_WlascicielViewModel.cs" />
     <Compile Include="ViewModel\UserControl_ZagospViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="ViewModel\Window2ViewModel.cs" />
     <Compile Include="ViewModel\WindowTestRafViewModel.cs" />
     <Compile Include="ViewModel\Window_ZalacznikViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
@@ -505,9 +502,6 @@
     <Compile Include="View\UserControl_Zagosp.xaml.cs">
       <DependentUpon>UserControl_Zagosp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\WindowTestRaf.xaml.cs">
       <DependentUpon>WindowTestRaf.xaml</DependentUpon>
     </Compile>
@@ -530,10 +524,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\Transakcja.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ChangeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -651,10 +641,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Zagosp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

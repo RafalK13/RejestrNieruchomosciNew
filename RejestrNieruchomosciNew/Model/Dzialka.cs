@@ -227,13 +227,16 @@ namespace RejestrNieruchomosciNew
             sasiedztwo = dzSource.sasiedztwo;
             dostDoDrogi = dzSource.dostDoDrogi;
             rodzNaw = dzSource.rodzNaw;
-
+          
             if (dzSource.Adres != null)
+            {
                 if (Adres == null)
                     Adres = new Adres();
-                Adres.copy( dzSource.Adres);
-
-
+                
+                Adres.copy(dzSource.Adres);
+            }
+            else
+                Adres = null;
 
             //if (dzSource.Obreb != null)
             //{

@@ -11,6 +11,7 @@
              x:Name="InfoDanePodstawowe"
              >
     <UserControl.Resources>
+        <con:AdresConverter x:Key="adresConvert"/>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
         <con:slownikIdToName x:Key="slowConvert"/>
@@ -20,6 +21,7 @@
         </Style>
         <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
             <Setter Property="widthLabelRaf" Value="130"/>
+            <Setter Property="widthTextRaf" Value="200"/>
             <Setter Property="IsHitTestVisible" Value="false"/>
             <Setter Property="isReadOnlyRaf" Value="True"/>
         </Style>
@@ -27,7 +29,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="370"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -119,12 +121,14 @@
                         Grid.Row="7"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
-                        labelRaf="Ulica">
-
+                        labelRaf="Adres">
                     <view:UserControl_ElementInfo.tekstRaf>
-                        <MultiBinding Converter="{StaticResource uliceCon}" >
-                            <Binding  Path="DataContext.infoMain.prevModel.dzialkaSel.UliceSloId" ElementName="InfoDanePodstawowe"/>
-                            <Binding  Path="DataContext.infoMain.infoPodst.uliceSloList" ElementName="InfoDanePodstawowe"/>
+                        <MultiBinding Converter="{StaticResource adresConvert}" >
+                            <Binding  Path="DataContext.infoMain.prevModel.dzialkaSel.Adres" 
+                                  ElementName="InfoDanePodstawowe"/>
+                            <Binding  Path="DataContext.infoMain.infoPodst.adresSloList" 
+                                  ElementName="InfoDanePodstawowe"/>
+
                         </MultiBinding>
                     </view:UserControl_ElementInfo.tekstRaf>
                 </view:UserControl_ElementInfo>

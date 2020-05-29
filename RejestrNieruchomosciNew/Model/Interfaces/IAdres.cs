@@ -15,12 +15,12 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         MiejscowoscSlo MiejscowoscSlo { get; set; }
         UlicaSlo UlicaSlo { get; set; }
 
-        bool testAdres();
+        IAdres testAdres();
         IAdres copy(IAdres adrSource);
 
         void AdresCls();
 
-        void save(IAdres adr);
+        IAdres save(IAdres adr);
 
         //IMiejscowoscSloList miejscList { get; set; }
         //IUlicaSloList ulicaList { get; set; }

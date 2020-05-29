@@ -90,8 +90,9 @@ namespace RejestrNieruchomosciNew.Model
             using (var c = new Context())
             {
                 dz.Obreb = null;
-                
+                dz.Adres= (Adres)dz.Adres.testAdres();
                 c.Dzialka.Add((Dzialka)dz);
+                
                 c.SaveChanges();
             }
             
@@ -106,30 +107,28 @@ namespace RejestrNieruchomosciNew.Model
                 using (var c = new Context())
                 {
                     Dzialka d = (Dzialka)dz;
-                    int a = 14;
-                    d.PlatnoscUW = c.PlatnoscUW.FirstOrDefault(r => r.DzialkaId == dz.DzialkaId);
-                    //d.AdresId = dz.Adres.AdresId;
-
-
+                 
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
                     c.Entry(v1).CurrentValues.SetValues(d);
                     c.SaveChanges();
                 }
 
-                int r1 = 1;
                 var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
+
                 list[v].copy(dz);
-                int r2 = 1;
-                list[v].Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-                int r3 = 3;
+
+                if(list[v].Adres != null)
+                    list[v].Adres.DzialkaId = dz.DzialkaId;
                 
-                //if (zmianaDzialkiList != null)
-                //    zmianaDzialkiList(null, EventArgs.Empty);
+                list[v].Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show( $"Błąd modyfikacji działki\r\n{ex.Message}\r\n{ex.Source}");
             }
         }
+
+
     }
 }

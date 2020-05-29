@@ -81,9 +81,6 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IRodzajInnegoPrawaSlo>().ImplementedBy<RodzajInnegoPrawaSlo>());
             container.Register(Component.For<RodzajInnegoPrawaList>());
 
-            container.Register(Component.For<Window2>());
-            container.Register(Component.For<Window2ViewModel>());
-
             container.Register(Component.For<UserControl_Transakcja>());
             container.Register(Component.For<UserControl_TransViewModel>());
 

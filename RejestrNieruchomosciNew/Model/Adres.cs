@@ -89,10 +89,12 @@ namespace RejestrNieruchomosciNew.Model
         //    //set => Set(ref _ulicaList, value);
         //}
 
-        public bool testAdres()
+        public IAdres testAdres()
         {
-            return MiejscowoscSloId != 0 &&
-                   UlicaSloId != 0;
+            if (MiejscowoscSloId == 0)
+                return null;
+
+            return this;
         }
 
         bool IEquatable<IAdres>.Equals(IAdres other)
@@ -119,8 +121,9 @@ namespace RejestrNieruchomosciNew.Model
             Numer = string.Empty;
         }
 
-        public void save(IAdres adr)
+        public IAdres save( IAdres adr)
         {
+            int a = 13;
             if (adr.AdresId >= 0 && adr.MiejscowoscSloId > 0)
             {
                 using (var c = new Context())
@@ -146,8 +149,10 @@ namespace RejestrNieruchomosciNew.Model
                         c.Remove(adr);
                         c.SaveChanges();
                     }
+                    return null;
                 }
             }
+            return adr;
         }
 
         [field: NonSerialized]
