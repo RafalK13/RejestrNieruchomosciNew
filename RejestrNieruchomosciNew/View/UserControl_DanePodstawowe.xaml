@@ -159,12 +159,12 @@
                     Style="{StaticResource tekstBox}"
                     Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"/>
 
-        <userControl:UserControl_Adres
-                    HorizontalAlignment="Left"
+        <userControl:UserControl_Adres                    
                     Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
                     rowHight="35"
                     column1Width="150"
                     column2Width="200"
+                    Margin="0,0,-10,0"
                     gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adresSlo="{Binding Path=DataContext.userControl_AddDanePod.adresSloList, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adres="{Binding Path=DataContext.userControl_AddDanePod.dzialka.Adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

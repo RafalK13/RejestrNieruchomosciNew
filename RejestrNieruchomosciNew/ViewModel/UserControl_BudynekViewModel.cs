@@ -12,7 +12,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
-        //private int dzialkaId;
+        private int? _gminaId;
+
+        public int? gminaId
+        {
+            get { return _gminaId; }
+            set => Set(ref _gminaId, value);
+        }
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
@@ -39,8 +45,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
-
-
+        
         private string _budynekName;
         public string budynekName
         {
@@ -68,23 +73,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-
-
-        //public ObservableCollection<IDzialka_Budynek> dzBudListLok { get; set; }
-        //public IDzialka_BudynekList dzBudList { get; set; }
-
-        //private IDzialka_Budynek _dzBudSel;
-        //public IDzialka_Budynek dzBudSel
-        //{
-        //    get { return _dzBudSel; }
-        //    set
-        //    {
-        //        _dzBudSel = value;
-        //        testBudynekSel();
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
                                            IBudynkiList _budList)
         {
@@ -107,10 +95,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (budSel != null)
             {
-                if (budSel.DzialkaId != 0)
-                {
-                    podmiotDetail = true;
-                }
+                //if (budSel.DzialkaId != 0)
+                //{
+                //    podmiotDetail = true;
+                //}
             }
             else
                 podmiotDetail = false;
@@ -122,7 +110,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 return false;
 
             var v = budListLok.Where(r => r.BudynekId == budSel.BudynekId
-                                         && r.DzialkaId == budSel.DzialkaId).Count();
+                                        ).Count();
 
             return (v == 0) ? false : true;
         }

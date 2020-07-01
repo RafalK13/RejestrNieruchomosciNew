@@ -8,47 +8,49 @@
              x:Name="AdresControl"
              d:DesignHeight="190" d:DesignWidth="333"
             >
-            <!--Height="{Binding userHeight}" Width="{Binding userWidth}"-->
-    
+    <!--Height="{Binding userHeight}" Width="{Binding userWidth}"-->
+
     <UserControl.Resources>
         <Style TargetType="ComboBox" x:Key="comboRaf">
             <Setter Property="Height" Value="{Binding comboHight, ElementName=AdresControl}"/>
             <Setter Property="IsEditable" Value="True"/>
         </Style>
-        
+
         <Style TargetType="view:UserControl_ElementInfo" x:Key="elemInfo">
             <Setter Property="widthLabelRaf" Value="{Binding column1Width, ElementName=AdresControl}"/>
             <Setter Property="widthTextRaf"  Value="{Binding column2Width, ElementName=AdresControl}"/>
             <Setter Property="hightRaf" Value="30"/>
         </Style>
     </UserControl.Resources>
-        
-    <Grid>
+    
+        <Grid Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
             <RowDefinition Height="{Binding rowHight}"/>
-            
+
         </Grid.RowDefinitions>
 
         <Label  Grid.Row="0"
                 FontWeight="Bold"
                 Content="Adres"
                 />
-        
+
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthLabelRaf}"/>
-                <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthTextRaf}"/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0"
                    Content="Miejscowość"/>
             <ComboBox 
                   Grid.Column="1"  
                   Style="{StaticResource comboRaf}"
+                 
+                  Margin="0,0,10,0"
                   ItemsSource="{Binding miejscList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
                   SelectedValuePath="MiejscowoscSloId"
@@ -59,40 +61,46 @@
         </Grid>
 
         <Grid Grid.Row="2">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthLabelRaf}"/>
-            <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthTextRaf}"/>
-        </Grid.ColumnDefinitions>
-        <Label Grid.Column="0"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthLabelRaf}"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
                    Content="Ulica"/>
-        <ComboBox 
+            <ComboBox 
                   Grid.Column="1"  
                   Style="{StaticResource comboRaf}"
+                  Margin="0,0,10,0"
                   ItemsSource="{Binding ulicaList.list, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   DisplayMemberPath="Nazwa"   
                   SelectedValuePath="UlicaSloId"
                   SelectedValue="{Binding ulicaSelVal.UlicaSloId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding ulicaSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
-    </Grid>
-    
-    <view:UserControl_ElementInfo
+        </Grid>
+
+        
+        <view:UserControl_ElementInfo
                 x:Name="elemInfo"
                 Grid.Row="3"
                 labelRaf="Numer"
                 Style="{StaticResource elemInfo}"
+                
+                Margin="0,0,10,0"
                 tekstRaf="{Binding NumerUlicy, ElementName=AdresControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />
+        
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthLabelRaf}"/>
-                <ColumnDefinition Width="{Binding ElementName=elemInfo, Path=widthTextRaf}"/>
+                <ColumnDefinition />
+                
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
                 Margin="0,5,0,5"
                 Width="130"
                 Command="{Binding onCzyscClick}"
-                Content="Czyść"/>
+                Content="Czyść" Grid.ColumnSpan="2"/>
         </Grid>
 
 
@@ -114,6 +122,7 @@
                 Style="{StaticResource elemInfo}"
                 tekstRaf="{Binding tekstAdres, ElementName=AdresControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 />-->
-        
+
     </Grid>
+
 </UserControl>

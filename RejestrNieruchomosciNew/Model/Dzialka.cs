@@ -122,16 +122,13 @@ namespace RejestrNieruchomosciNew
         [DataMember]
         public Obreb Obreb { get; set; }
 
-        //[field: NonSerialized]
+
         public ICollection<Wladanie> Wladanie { get; set; }
-        //[field: NonSerialized]
         public ICollection<InnePrawa> InnePrawa { get; set; }
-        //[field: NonSerialized]
         public PlatnoscUW PlatnoscUW { get; set; }
         public ICollection<Zagosp> Zagosp { get; set; }
        
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
-        //[field: NonSerialized]
         bool IEquatable<IDzialka>.Equals(IDzialka other)
         {
             return DzialkaId.Equals(other.DzialkaId) &&
@@ -150,15 +147,8 @@ namespace RejestrNieruchomosciNew
                    NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
         }
 
-        //[NotMapped]
-        //public ProcessDzialka procDz { get; set; }
-
-        //[NotMapped]
-        //public string  ulica { get; set; }
-
         public Dzialka()
         {
-
         }
 
         public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null)//, int? _AdresId=null )
@@ -237,22 +227,6 @@ namespace RejestrNieruchomosciNew
             }
             else
                 Adres = null;
-
-            //if (dzSource.Obreb != null)
-            //{
-            //    if (Obreb == null)
-            //        Obreb = new Obreb();
-
-            //    Obreb.copy(dzSource.Obreb);
-            //}
-
-            //if (dzSource.Adres != null)
-            //{
-            //    if (Adres == null)
-            //        Adres = new Adres();
-
-            //    Adres.copy(dzSource.Adres);
-            //}
 
             return this;
         }

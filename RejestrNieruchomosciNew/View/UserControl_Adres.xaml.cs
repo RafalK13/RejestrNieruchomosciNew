@@ -135,21 +135,21 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty rowHightProperty =
             DependencyProperty.Register("rowHight", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(35));
 
-        public int userWidth
-        {
-            get { return (int)GetValue(userWidthProperty); }
-            set { SetValue(userWidthProperty, value); }
-        }
-        public static readonly DependencyProperty userWidthProperty =
-            DependencyProperty.Register("userWidth", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(270));
+        //public int userWidth
+        //{
+        //    get { return (int)GetValue(userWidthProperty); }
+        //    set { SetValue(userWidthProperty, value); }
+        //}
+        //public static readonly DependencyProperty userWidthProperty =
+        //    DependencyProperty.Register("userWidth", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(270));
 
-        public int userHeight
-        {
-            get { return (int)GetValue(userHeightProperty); }
-            set { SetValue(userHeightProperty, value); }
-        }
-        public static readonly DependencyProperty userHeightProperty =
-            DependencyProperty.Register("userHeight", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(250));
+        //public int userHeight
+        //{
+        //    get { return (int)GetValue(userHeightProperty); }
+        //    set { SetValue(userHeightProperty, value); }
+        //}
+        //public static readonly DependencyProperty userHeightProperty =
+        //    DependencyProperty.Register("userHeight", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(250));
 
         public int column1Width
         {

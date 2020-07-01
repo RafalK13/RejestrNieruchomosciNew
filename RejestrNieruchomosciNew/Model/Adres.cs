@@ -14,8 +14,6 @@ namespace RejestrNieruchomosciNew.Model
         private string _numer;
         private int _miejscowoscSloId;
         private int? _ulicaSloId;
-        //private IMiejscowoscSloList _miejscList;
-        //private IUlicaSloList _ulicaList;
 
         public int AdresId { get; set; }
 
@@ -61,33 +59,13 @@ namespace RejestrNieruchomosciNew.Model
         public int? DzialkaId { get; set; }
         [field: NonSerialized]
         public Dzialka Dzialka { get; set; }
+        
+        public int? BudynekId { get; set; }
+        [field: NonSerialized]
+        public Budynek Budynek { get; set; }
+
         public MiejscowoscSlo MiejscowoscSlo { get; set; }
         public UlicaSlo UlicaSlo { get; set; }
-
-        //[NotMapped]
-        //public IMiejscowoscSloList miejscList
-        //{
-        //    get => _miejscList;
-        //    set
-        //    {
-        //        //Set(ref _miejscList, value);
-        //        _miejscList = value;
-        //        NotifyPropertyChanged();
-        //        if (zmiana != null)
-        //            zmiana(null, EventArgs.Empty);
-        //    }
-        //}
-        //[NotMapped]
-        //public IUlicaSloList ulicaList
-        //{
-        //    get => _ulicaList;
-
-        //    set {
-        //        _ulicaList = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //    //set => Set(ref _ulicaList, value);
-        //}
 
         public IAdres testAdres()
         {

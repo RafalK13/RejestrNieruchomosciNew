@@ -14,6 +14,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         Dzialka Dzialka { get; set; }
         MiejscowoscSlo MiejscowoscSlo { get; set; }
         UlicaSlo UlicaSlo { get; set; }
+        Budynek Budynek { get; set; }
+
 
         IAdres testAdres();
         IAdres copy(IAdres adrSource);

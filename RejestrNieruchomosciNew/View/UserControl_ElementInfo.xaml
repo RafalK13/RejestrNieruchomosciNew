@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding widthLabelRaf}"/>
-            <ColumnDefinition Width="{Binding widthTextRaf}"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Label   Grid.Column="0"
                  Content="{Binding labelRaf}"

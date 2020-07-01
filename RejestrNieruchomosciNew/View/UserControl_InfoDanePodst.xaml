@@ -29,7 +29,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="370"/>
+            <ColumnDefinition Width="370" Name="Column0"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -78,49 +78,56 @@
                 <view:UserControl_ElementInfo
                         Grid.Row="1"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Numer działki"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Numer, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="2"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Obreb"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.Nazwa, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="3"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Gmina"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.GminaSlo.Nazwa, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="4"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="KW aktualne"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwakt, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="5"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="KW zrob."
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="6"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Powierzchnia"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.0000}'}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="7"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Adres">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource adresConvert}" >
@@ -136,7 +143,8 @@
                 <view:UserControl_ElementInfo
                         Grid.Row="8"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
                         labelRaf="Nadzór konserwatora">
 
                     <view:UserControl_ElementInfo.tekstRaf>
