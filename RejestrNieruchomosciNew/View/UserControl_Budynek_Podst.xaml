@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_Budynek_Podst"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Name="Budynek_Podst"
+             >
+        
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" MinWidth="9" />
+            <ColumnDefinition Width="250" MinWidth="9"/>
+            <ColumnDefinition Width="2*" MinWidth="9" />
+        </Grid.ColumnDefinitions>
+       
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" 
+                      IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
+
+            <userControl:UserControl_Adres               
+                    Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
+                    rowHight="35"
+                    column1Width="90"
+                    column2Width="150"
+                
+                    gminaId="{Binding  Path=DataContext.userControl_Budynek.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adresSlo="{Binding  Path=DataContext.userControl_Budynek.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adres="{Binding  Path=DataContext.userControl_Budynek.budSel.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!--gminaId="{Binding Path=DataContext.userControl_Budynek.gminaId, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adresSlo="{Binding Path=DataContext.userControl_Budynek.adresSloList, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adres="{Binding Path=DataContext.userControl_Budynek.dzialka.Adres, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                                     
+                    
+            <!--correctAdr="{Binding Path=DataContext.userControlBudynek.adresChanged, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+           
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
+                      IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
+
+            <TextBox Text="{Binding userControl_Budynek.budSel.powCalk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Height="50"/>
+
+        </ScrollViewer>
+
+
+
+        <!--<TextBox Text="{Binding ElementName=BudynekWin, Path=Name}"
+                 Height="200"
+                 VerticalAlignment="Bottom"
+                 Grid.Column="1"
+                 />-->
+
+        
+    </Grid>
+</UserControl>

@@ -75,7 +75,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void Dzialka_zmiana(object sender, EventArgs e)
         {
-                       testDzialka();
+            testDzialka();
         }
   
         public ObrebClass obreb

@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200526110113_dom5")]
-    partial class dom5
+    [Migration("20200707110227_dom1")]
+    partial class dom1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,19 +113,21 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BudynekId");
+
                     b.Property<int?>("DzialkaId");
 
                     b.Property<int>("MiejscowoscSloId");
 
                     b.Property<string>("Numer");
 
-                    b.Property<int>("UlicaSloId");
+                    b.Property<int?>("UlicaSloId");
 
                     b.HasKey("AdresId");
 
-                    b.HasIndex("DzialkaId")
+                    b.HasIndex("BudynekId")
                         .IsUnique()
-                        .HasFilter("[DzialkaId] IS NOT NULL");
+                        .HasFilter("[BudynekId] IS NOT NULL");
 
                     b.HasIndex("MiejscowoscSloId");
 
@@ -140,27 +142,47 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DzialkaId");
-
-                    b.Property<int>("MediaId");
+                    b.Property<int?>("AdresId");
 
                     b.Property<string>("Nazwa");
 
+                    b.Property<bool>("co");
+
+                    b.Property<bool>("gaz");
+
                     b.Property<int>("iloscKond");
+
+                    b.Property<bool>("internet");
+
+                    b.Property<bool>("kanDeszcz");
+
+                    b.Property<bool>("kanLok");
+
+                    b.Property<bool>("kanSan");
 
                     b.Property<double>("kubatura");
 
                     b.Property<double>("numerEwid");
 
+                    b.Property<string>("opisKonstr");
+
                     b.Property<double>("powBezPiwnic");
 
                     b.Property<double>("powCalk");
 
-                    b.Property<double>("powPiwnic");
+                    b.Property<double>("powZPiwnic");
 
                     b.Property<double>("powZabud");
 
+                    b.Property<bool>("prad");
+
                     b.Property<string>("stanTech");
+
+                    b.Property<bool>("tel");
+
+                    b.Property<bool>("tv");
+
+                    b.Property<bool>("woda");
 
                     b.Property<bool>("wpisRejZab");
 
@@ -960,9 +982,14 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Adres", b =>
                 {
+                    b.HasOne("RejestrNieruchomosciNew.Model.Budynek", "Budynek")
+                        .WithOne("Adres")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "BudynekId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
                         .WithOne("Adres")
-                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "DzialkaId")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "BudynekId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RejestrNieruchomosciNew.Model.MiejscowoscSlo", "MiejscowoscSlo")
@@ -972,8 +999,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Model.UlicaSlo", "UlicaSlo")
                         .WithMany("Adres")
-                        .HasForeignKey("UlicaSloId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UlicaSloId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Dzialka_Budynek", b =>

@@ -239,33 +239,13 @@
     <Compile Include="Command\ClickButtonBevaviour.cs" />
     <Compile Include="Installers\Installers.cs" />
     <Compile Include="Installers\WindsorViewFactory.cs" />
-    <Compile Include="Migrations\20200404130134_dom1.cs" />
-    <Compile Include="Migrations\20200404130134_dom1.designer.cs">
-      <DependentUpon>20200404130134_dom1.cs</DependentUpon>
+    <Compile Include="Migrations\20200707110227_dom1.cs" />
+    <Compile Include="Migrations\20200707110227_dom1.designer.cs">
+      <DependentUpon>20200707110227_dom1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200409201943_dom2.cs" />
-    <Compile Include="Migrations\20200409201943_dom2.designer.cs">
-      <DependentUpon>20200409201943_dom2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200409202903_dom3.cs" />
-    <Compile Include="Migrations\20200409202903_dom3.designer.cs">
-      <DependentUpon>20200409202903_dom3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200416095506_dom4.cs" />
-    <Compile Include="Migrations\20200416095506_dom4.designer.cs">
-      <DependentUpon>20200416095506_dom4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200526110113_dom5.cs" />
-    <Compile Include="Migrations\20200526110113_dom5.designer.cs">
-      <DependentUpon>20200526110113_dom5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200527082015_dom6.cs" />
-    <Compile Include="Migrations\20200527082015_dom6.designer.cs">
-      <DependentUpon>20200527082015_dom6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20200630103914_dom7.cs" />
-    <Compile Include="Migrations\20200630103914_dom7.designer.cs">
-      <DependentUpon>20200630103914_dom7.cs</DependentUpon>
+    <Compile Include="Migrations\20200708084530_dom2.cs" />
+    <Compile Include="Migrations\20200708084530_dom2.designer.cs">
+      <DependentUpon>20200708084530_dom2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
@@ -437,6 +417,15 @@
     <Compile Include="View\UserControl_Budynek.xaml.cs">
       <DependentUpon>UserControl_Budynek.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_BudynekTAB.xaml.cs">
+      <DependentUpon>UserControl_BudynekTAB.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Budynek_Lokale.xaml.cs">
+      <DependentUpon>UserControl_Budynek_Lokale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_Budynek_Podst.xaml.cs">
+      <DependentUpon>UserControl_Budynek_Podst.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_CelNabycia.xaml.cs">
       <DependentUpon>UserControl_CelNabycia.xaml</DependentUpon>
     </Compile>
@@ -553,6 +542,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_Budynek.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_BudynekTAB.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Budynek_Lokale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_Budynek_Podst.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

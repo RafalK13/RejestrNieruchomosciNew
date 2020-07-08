@@ -75,7 +75,6 @@
                     <Setter Property="Panel.ZIndex" Value="13"/>
                     <Setter Property="Grid.RowSpan" Value="3"/>
                 </Trigger>
-
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
@@ -87,13 +86,10 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="250" MinWidth="9" />
-                <ColumnDefinition Width="2*" MinWidth="9"/>
-                <ColumnDefinition Width="2*" MinWidth="9" />
-
+                <ColumnDefinition Width="*" MinWidth="9" />
             </Grid.ColumnDefinitions>
+    
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="50"/>
@@ -105,28 +101,12 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-            <GridSplitter 
-                   Grid.Column ="1"  
-                   Width="5"
-                   HorizontalAlignment="Right" 
-                   VerticalAlignment="Stretch"
-                   Panel.ZIndex="13" 
-                   />
-
-            <GridSplitter 
-                   Grid.Column ="2"  
-                   Width="5"
-                   HorizontalAlignment="Right" 
-                   VerticalAlignment="Stretch"
-                   Panel.ZIndex="13" 
-                   />
-
             <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Label  Grid.Row="0"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label  Grid.Row="0"
                         Content="Nazwa"
                         FontWeight="Bold"                      
                         FontSize="19"
@@ -137,6 +117,7 @@
                         Grid.Row="1"
                         Style="{StaticResource tekskBoxOpis}"
                         Text="{Binding userControl_Budynek.budynekName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
                 <Button Grid.Row="1"
                         Margin="0,90,0,0"
                         HorizontalAlignment="Center"
@@ -146,32 +127,31 @@
                         Width="100"
                         Command="{Binding userControl_Budynek.budynekAdd}"
                         />
-                <DataGrid 
-                        Grid.Row="1"
-                        VerticalAlignment="Top"
-                        Margin="3,140,10,0"
-                        ItemsSource="{Binding userControl_Budynek.budListLok, Mode=TwoWay}"
-                        SelectedItem="{Binding userControl_Budynek.budSel, Mode=TwoWay}"
-                        CanUserSortColumns="False"
-                        FrozenColumnCount="1" 
-                        IsReadOnly="True"
-                        CanUserAddRows="False"
-                        CanUserDeleteRows="False" 
-                        CanUserReorderColumns="False"
-                        HeadersVisibility="Column"
-                        SelectionMode="Single"
-                        SelectionUnit="FullRow"
-                        VerticalScrollBarVisibility="Auto"
-                        AutoGenerateColumns="False"
-                       >
-                    <DataGrid.Columns>
-
-                        <DataGridTextColumn
+                        <DataGrid 
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            Margin="3,140,10,0"
+                            ItemsSource="{Binding userControl_Budynek.budListLok, Mode=TwoWay}"
+                            SelectedItem="{Binding userControl_Budynek.budSel, Mode=TwoWay}"
+                            CanUserSortColumns="False"
+                            FrozenColumnCount="1" 
+                            IsReadOnly="True"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False" 
+                            CanUserReorderColumns="False"
+                            HeadersVisibility="Column"
+                            SelectionMode="Single"
+                            SelectionUnit="FullRow"
+                            VerticalScrollBarVisibility="Auto"
+                            AutoGenerateColumns="False"
+                         >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
                                             Header="Nazwa"
                                             Binding="{Binding Nazwa}"
-                            Width="*"
+                                            Width="*"
                             />
-                        <!--<DataGridTextColumn Header="Nazwa" 
+                                <!--<DataGridTextColumn Header="Nazwa" 
                                             Width="*">
                             <DataGridTextColumn.ElementStyle>
                                 <Style>
@@ -186,61 +166,26 @@
                                 </MultiBinding>
                             </DataGridTextColumn.Binding>
                         </DataGridTextColumn>-->
-                        <DataGridTemplateColumn         
+                                <DataGridTemplateColumn         
  >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button 
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button 
                                             Height="20" 
                                             Width="20" 
                                             Content="x"                                                           
                                             Foreground="Red"
                                             BorderBrush="White"
                                             Command="{Binding Path=DataContext.userControl_Budynek.budynekDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+             </Grid>
 
-            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" >
+            <local:UserControl_BudynekTAB Grid.Column="1"/>
 
-                <userControl:UserControl_Adres
-                    
-                    Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
-                    rowHight="35"
-                    column1Width="90"
-                    column2Width="150"
-                    
-                    gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adresSlo="{Binding Path=DataContext.userControl_AddDanePod.adresSloList, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adres="{Binding Path=DataContext.userControl_AddDanePod.dzialka.Adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                   
-                    />
-
-            </ScrollViewer>
-
-            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
-                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
-                <Grid Margin="10,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                </Grid>
-
-            </ScrollViewer>
-
-            <ScrollViewer Grid.Column="3" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"
-                          IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
-                <Grid Margin="10,0,0,0">
-             
-                </Grid>
-            </ScrollViewer>
         </Grid>
         
         <!--Buttons-->

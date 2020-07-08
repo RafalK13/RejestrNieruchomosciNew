@@ -89,10 +89,13 @@ namespace RejestrNieruchomosciNew.Model
            
             using (var c = new Context())
             {
+
+                int a = 1;
                 dz.Obreb = null;
                 dz.Adres= (Adres)dz.Adres.testAdres();
+               
                 c.Dzialka.Add((Dzialka)dz);
-                
+
                 c.SaveChanges();
             }
             

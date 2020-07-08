@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -14,10 +15,19 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         private int? _gminaId;
 
+        [DoNotWire]
         public int? gminaId
         {
             get { return _gminaId; }
             set => Set(ref _gminaId, value);
+        }
+
+        private IAdresSloList _adresSloList;
+
+        public IAdresSloList adresSloList
+        {
+            get => _adresSloList;
+            set { Set(ref _adresSloList, value); }
         }
 
         public UserControl_PreviewViewModel userPrev { get; set; }
@@ -84,21 +94,27 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _budList.getList(userPrev.dzialkaSel);
-                int r1 = 1;
+               
                 budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
+
+                if (userPrev.dzialkaSel.Obreb != null)
+                {
+                    gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
+                    int a = 1;
+                    
+                }
             }
-            int r2 = 2;
-            podmiotDetail = false;
+               podmiotDetail = false;
         }
 
         private void testBudynekSel()
         {
             if (budSel != null)
             {
-                //if (budSel.DzialkaId != 0)
-                //{
-                //    podmiotDetail = true;
-                //}
+                if (budSel.BudynekId != 0)
+                {
+                    podmiotDetail = true;
+                }
             }
             else
                 podmiotDetail = false;
@@ -120,6 +136,11 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand budynekDel { get; set; }
         public ICommand dzialakBudynekAdd { get; set; }
         public ICommand dzialakBudynekCls { get; set; }
+        public ICommand onTest { get; set; }
+
+        public string tekstRaf { get; set; } = "Rafałek";
+
+
         #endregion
 
         private void initButtons()
@@ -128,6 +149,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             budynekDel = new RelayCommand(onBudynektDel);
             dzialakBudynekAdd = new RelayCommand(onDzialkaBudynekAdd);
             dzialakBudynekCls = new RelayCommand(onDzialkaBudynekCls);
+            onTest = new RelayCommand(onTestRaf);
+        }
+
+        private void onTestRaf()
+        {
+            MessageBox.Show(gminaId.ToString());
         }
 
         private void onBudynektDel()
@@ -154,6 +181,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onBudynekAdd()
         {
+            if( string.IsNullOrEmpty(budynekName) == false)
             if (testIfExist())
             {
                 Budynek bud = new Budynek() { Nazwa = budynekName };

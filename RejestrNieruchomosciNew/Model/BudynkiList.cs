@@ -40,7 +40,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek));
+                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek)
+                                                                          .Include(a => a.Adres));
                 }
                 catch (Exception e)
                 {

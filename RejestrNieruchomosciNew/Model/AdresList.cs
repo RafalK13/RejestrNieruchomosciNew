@@ -36,7 +36,10 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                listAll = new ObservableCollection<IAdres>(await c.Adres.ToListAsync());
+                listAll = new ObservableCollection<IAdres>(await c.Adres
+                                                                  .Include(m => m.MiejscowoscSlo)
+                                                                  .Include(u => u.UlicaSlo)
+                                                                  .ToListAsync());
             }
         }
 

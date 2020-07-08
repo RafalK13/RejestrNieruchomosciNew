@@ -12,7 +12,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         
         string Nazwa { get; set; }
 
-        int AdresId { get; set; }
+        int? AdresId { get; set; }
         
         double powBezPiwnic { get; set; }
         double powZPiwnic { get; set; }

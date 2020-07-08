@@ -14,17 +14,27 @@ namespace RejestrNieruchomosciNew.Migrations
                 {
                     BudynekId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DzialkaId = table.Column<int>(nullable: false),
                     Nazwa = table.Column<string>(nullable: true),
+                    AdresId = table.Column<int>(nullable: true),
                     powBezPiwnic = table.Column<double>(nullable: false),
-                    powPiwnic = table.Column<double>(nullable: false),
+                    powZPiwnic = table.Column<double>(nullable: false),
                     powCalk = table.Column<double>(nullable: false),
                     powZabud = table.Column<double>(nullable: false),
                     kubatura = table.Column<double>(nullable: false),
                     iloscKond = table.Column<int>(nullable: false),
                     numerEwid = table.Column<double>(nullable: false),
                     wpisRejZab = table.Column<bool>(nullable: false),
-                    MediaId = table.Column<int>(nullable: false),
+                    prad = table.Column<bool>(nullable: false),
+                    woda = table.Column<bool>(nullable: false),
+                    kanSan = table.Column<bool>(nullable: false),
+                    kanLok = table.Column<bool>(nullable: false),
+                    kanDeszcz = table.Column<bool>(nullable: false),
+                    tel = table.Column<bool>(nullable: false),
+                    co = table.Column<bool>(nullable: false),
+                    gaz = table.Column<bool>(nullable: false),
+                    internet = table.Column<bool>(nullable: false),
+                    tv = table.Column<bool>(nullable: false),
+                    opisKonstr = table.Column<string>(nullable: true),
                     stanTech = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -73,6 +83,21 @@ namespace RejestrNieruchomosciNew.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_GminaSlo", x => x.GminaSloId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MiejscowoscSlo",
+                columns: table => new
+                {
+                    MiejscowoscSloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    GminaSloId = table.Column<int>(nullable: false),
+                    MiejscowoscUlice = table.Column<int>(nullable: false),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MiejscowoscSlo", x => x.MiejscowoscSloId);
                 });
 
             migrationBuilder.CreateTable(
@@ -141,6 +166,20 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UliceSlo",
+                columns: table => new
+                {
+                    UlicaSloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MiejscowoscUlice = table.Column<int>(nullable: false),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UliceSlo", x => x.UlicaSloId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UzytkiSlo",
                 columns: table => new
                 {
@@ -201,26 +240,6 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UliceSlo",
-                columns: table => new
-                {
-                    UliceSloId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nazwa = table.Column<string>(nullable: true),
-                    GminaSloId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UliceSlo", x => x.UliceSloId);
-                    table.ForeignKey(
-                        name: "FK_UliceSlo_GminaSlo_GminaSloId",
-                        column: x => x.GminaSloId,
-                        principalTable: "GminaSlo",
-                        principalColumn: "GminaSloId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Transakcje",
                 columns: table => new
                 {
@@ -273,7 +292,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     sasiedztwo = table.Column<string>(nullable: true),
                     dostDoDrogi = table.Column<string>(nullable: true),
                     rodzNaw = table.Column<string>(nullable: true),
-                    UliceSloId = table.Column<int>(nullable: true),
                     NadzorKonserwSloId = table.Column<int>(nullable: true),
                     ObrebId = table.Column<int>(nullable: false)
                 },
@@ -292,11 +310,46 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalTable: "Obreb",
                         principalColumn: "ObrebId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Adres",
+                columns: table => new
+                {
+                    AdresId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Numer = table.Column<string>(nullable: true),
+                    MiejscowoscSloId = table.Column<int>(nullable: false),
+                    UlicaSloId = table.Column<int>(nullable: true),
+                    DzialkaId = table.Column<int>(nullable: true),
+                    BudynekId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adres", x => x.AdresId);
                     table.ForeignKey(
-                        name: "FK_Dzialka_UliceSlo_UliceSloId",
-                        column: x => x.UliceSloId,
+                        name: "FK_Adres_Budynek_BudynekId",
+                        column: x => x.BudynekId,
+                        principalTable: "Budynek",
+                        principalColumn: "BudynekId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Adres_Dzialka_BudynekId",
+                        column: x => x.BudynekId,
+                        principalTable: "Dzialka",
+                        principalColumn: "DzialkaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Adres_MiejscowoscSlo_MiejscowoscSloId",
+                        column: x => x.MiejscowoscSloId,
+                        principalTable: "MiejscowoscSlo",
+                        principalColumn: "MiejscowoscSloId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Adres_UliceSlo_UlicaSloId",
+                        column: x => x.UlicaSloId,
                         principalTable: "UliceSlo",
-                        principalColumn: "UliceSloId",
+                        principalColumn: "UlicaSloId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -682,6 +735,23 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Adres_BudynekId",
+                table: "Adres",
+                column: "BudynekId",
+                unique: true,
+                filter: "[BudynekId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adres_MiejscowoscSloId",
+                table: "Adres",
+                column: "MiejscowoscSloId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adres_UlicaSloId",
+                table: "Adres",
+                column: "UlicaSloId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Dzialka_NadzorKonserwSloId",
                 table: "Dzialka",
                 column: "NadzorKonserwSloId");
@@ -690,11 +760,6 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "IX_Dzialka_ObrebId",
                 table: "Dzialka",
                 column: "ObrebId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Dzialka_UliceSloId",
-                table: "Dzialka",
-                column: "UliceSloId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Dzialka_Numer_ObrebId",
@@ -766,11 +831,6 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "RodzajTransakcjiSloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UliceSlo_GminaSloId",
-                table: "UliceSlo",
-                column: "GminaSloId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Uzytki_DzialkaId",
                 table: "Uzytki",
                 column: "DzialkaId");
@@ -819,6 +879,9 @@ namespace RejestrNieruchomosciNew.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Adres");
+
+            migrationBuilder.DropTable(
                 name: "Dzialka_Budynek");
 
             migrationBuilder.DropTable(
@@ -835,6 +898,12 @@ namespace RejestrNieruchomosciNew.Migrations
 
             migrationBuilder.DropTable(
                 name: "Zagosp");
+
+            migrationBuilder.DropTable(
+                name: "MiejscowoscSlo");
+
+            migrationBuilder.DropTable(
+                name: "UliceSlo");
 
             migrationBuilder.DropTable(
                 name: "Budynek");
@@ -871,9 +940,6 @@ namespace RejestrNieruchomosciNew.Migrations
 
             migrationBuilder.DropTable(
                 name: "Obreb");
-
-            migrationBuilder.DropTable(
-                name: "UliceSlo");
 
             migrationBuilder.DropTable(
                 name: "NazwaCzynnosciSlo");

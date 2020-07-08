@@ -127,6 +127,10 @@ namespace RejestrNieruchomosciNew.Migrations
                         .IsUnique()
                         .HasFilter("[BudynekId] IS NOT NULL");
 
+                    b.HasIndex("DzialkaId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL");
+
                     b.HasIndex("MiejscowoscSloId");
 
                     b.HasIndex("UlicaSloId");
@@ -140,7 +144,7 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AdresId");
+                    b.Property<int?>("AdresId");
 
                     b.Property<string>("Nazwa");
 
@@ -987,7 +991,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
                         .WithOne("Adres")
-                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "BudynekId")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "DzialkaId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("RejestrNieruchomosciNew.Model.MiejscowoscSlo", "MiejscowoscSlo")

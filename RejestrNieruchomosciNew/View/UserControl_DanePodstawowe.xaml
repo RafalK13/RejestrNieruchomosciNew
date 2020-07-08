@@ -165,11 +165,22 @@
                     column1Width="150"
                     column2Width="200"
                     Margin="0,0,-10,0"
-                    gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            
+                    gminaId="{Binding  Path=DataContext.userControl_AddDanePod.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adresSlo="{Binding  Path=DataContext.userControl_AddDanePod.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adres="{Binding  Path=DataContext.userControl_AddDanePod.dzialka.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    />
+
+        <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adresSlo="{Binding Path=DataContext.userControl_AddDanePod.adresSloList, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adres="{Binding Path=DataContext.userControl_AddDanePod.dzialka.Adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                   
-                    />
+                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+
+        <!--gminaId="{Binding  Path=DataContext.userControl_Budynek.dzialka.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adresSlo="{Binding  Path=DataContext.userControl_Budynek.dzialka.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    adres="{Binding  Path=DataContext.userControl_Budynek.dzialka.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+
         <!--adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         

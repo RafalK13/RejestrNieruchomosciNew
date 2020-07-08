@@ -10,7 +10,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public string Nazwa { get; set; }
 
-        public int AdresId { get; set; }
+        public int? AdresId { get; set; }
 
         public double powBezPiwnic { get; set; }
         public double powZPiwnic { get; set; }

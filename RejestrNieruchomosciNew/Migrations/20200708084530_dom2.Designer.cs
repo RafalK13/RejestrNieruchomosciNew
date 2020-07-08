@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20200527082015_dom6")]
-    partial class dom6
+    [Migration("20200708084530_dom2")]
+    partial class dom2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,8 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BudynekId");
+
                     b.Property<int?>("DzialkaId");
 
                     b.Property<int>("MiejscowoscSloId");
@@ -122,6 +124,10 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.Property<int?>("UlicaSloId");
 
                     b.HasKey("AdresId");
+
+                    b.HasIndex("BudynekId")
+                        .IsUnique()
+                        .HasFilter("[BudynekId] IS NOT NULL");
 
                     b.HasIndex("DzialkaId")
                         .IsUnique()
@@ -140,27 +146,47 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DzialkaId");
-
-                    b.Property<int>("MediaId");
+                    b.Property<int?>("AdresId");
 
                     b.Property<string>("Nazwa");
 
+                    b.Property<bool>("co");
+
+                    b.Property<bool>("gaz");
+
                     b.Property<int>("iloscKond");
+
+                    b.Property<bool>("internet");
+
+                    b.Property<bool>("kanDeszcz");
+
+                    b.Property<bool>("kanLok");
+
+                    b.Property<bool>("kanSan");
 
                     b.Property<double>("kubatura");
 
                     b.Property<double>("numerEwid");
 
+                    b.Property<string>("opisKonstr");
+
                     b.Property<double>("powBezPiwnic");
 
                     b.Property<double>("powCalk");
 
-                    b.Property<double>("powPiwnic");
+                    b.Property<double>("powZPiwnic");
 
                     b.Property<double>("powZabud");
 
+                    b.Property<bool>("prad");
+
                     b.Property<string>("stanTech");
+
+                    b.Property<bool>("tel");
+
+                    b.Property<bool>("tv");
+
+                    b.Property<bool>("woda");
 
                     b.Property<bool>("wpisRejZab");
 
@@ -960,6 +986,11 @@ namespace RejestrNieruchomosciNew.Migrations
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Adres", b =>
                 {
+                    b.HasOne("RejestrNieruchomosciNew.Model.Budynek", "Budynek")
+                        .WithOne("Adres")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "BudynekId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
                         .WithOne("Adres")
                         .HasForeignKey("RejestrNieruchomosciNew.Model.Adres", "DzialkaId")
