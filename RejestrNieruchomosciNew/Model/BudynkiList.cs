@@ -54,7 +54,7 @@ namespace RejestrNieruchomosciNew.Model
         private void initList(IDzialka dzialka)
         {
             if (dzialka != null)
-                list = new ObservableCollection<IBudynek>( listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
+                list = new ObservableCollection<IBudynek>(listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
 
             listOrg = ObservableCon<IBudynek>.ObservableToList(list);
             listToAdd = new List<IBudynek>();
@@ -70,7 +70,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public BudynkiList(UserControl_PreviewViewModel userPrev)
         {
-         
+
             list = new ObservableCollection<IBudynek>();
             if (userPrev.dzialkaSel != null)
                 initListAll();
@@ -79,14 +79,11 @@ namespace RejestrNieruchomosciNew.Model
         public void getList(IDzialka dzialkaSel)
         {
             dzialkaPrv = dzialkaSel;
-            int r1 = 1;
             initList(dzialkaSel);
-            int r2 = 2;
         }
 
         public void saveBudynki()
         {
-            int r1 = 13;
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
@@ -130,7 +127,6 @@ namespace RejestrNieruchomosciNew.Model
                 foreach (var i in listToAdd)
                 {
                     c.Dzialka_Budynek.Add(new Dzialka_Budynek() { DzialkaId = dzialkaPrv.DzialkaId, Budynek = (Budynek)i });
-                    //c.Budynek.Add((Budynek)i);
                 }
                 c.SaveChanges();
             }
@@ -140,10 +136,10 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+
                 foreach (var i in listToMod)
                 {
-                    var v = c.Budynek.First(r => r.BudynekId == i.BudynekId);
-                    c.Entry(v).CurrentValues.SetValues(i);
+                    c.Update(i);
                 }
                 c.SaveChanges();
             }

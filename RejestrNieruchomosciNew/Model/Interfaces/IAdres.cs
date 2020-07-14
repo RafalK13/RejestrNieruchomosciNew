@@ -2,7 +2,7 @@
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface IAdres : IEquatable<IAdres>
+    public interface IAdres
     {
         int AdresId { get; set; }
 

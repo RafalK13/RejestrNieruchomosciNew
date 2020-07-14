@@ -80,6 +80,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _budSel = value;
                 testBudynekSel();
                 RaisePropertyChanged();
+                int a = 1;
             }
         }
 
@@ -96,7 +97,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _budList.getList(userPrev.dzialkaSel);
                
                 budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
-
+                int w = 1;
                 if (userPrev.dzialkaSel.Obreb != null)
                 {
                     gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
@@ -111,7 +112,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (budSel != null)
             {
-                if (budSel.BudynekId != 0)
+                if (budSel.Adres == null)
+                    budSel.Adres = new Adres();
+
+                //if (budSel.BudynekId != 0)
                 {
                     podmiotDetail = true;
                 }
@@ -174,8 +178,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaBudynekAdd()
         {
+           
             budList.list = new ObservableCollection<IBudynek>(budListLok.Select(r => new Budynek(r)).ToList());
-            int r2 = 14;
+
+            int ar = 1;
             budList.saveBudynki();
         }
 

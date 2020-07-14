@@ -40,6 +40,16 @@ namespace RejestrNieruchomosciNew.View
 
         public ICommand onCzyscClick { get; set; }
 
+        private void calculateVal()
+        {
+            if (adres != null)
+            {
+                miejscSelVal = miejscList?.list?.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId);
+                ulicaSelVal = ulicaList?.list?.FirstOrDefault(r => r.UlicaSloId == adres.UlicaSloId);
+                NumerUlicy = adres?.Numer;
+            }
+        }
+
         #region correctAdr
         public bool correctAdr
         {
@@ -54,25 +64,13 @@ namespace RejestrNieruchomosciNew.View
         #region Loaded
         private void UserControl_Adres_Loaded(object sender, RoutedEventArgs e)
         {
-            int a = 1;
-
-            if (adresSlo == null)
-                a = 1;
-
             if (adresSlo != null)
             {
-                int b = 1;
                 if (adres == null)
                 {
-                    //MessageBox.Show("New");
                     adres = new Adres();
                     adres.AdresId = 0;
                 }
-                //else
-                //{
-                //    int r = 13;
-                //    MessageBox.Show("Not New NULL");
-                //}
 
                 miejscList = adresSlo.miejscList;
                 ulicaList = adresSlo.ulicaList;
@@ -80,28 +78,16 @@ namespace RejestrNieruchomosciNew.View
                 if (gminaId != null)
                 {
                     calculateMiejsc();
-
+                    
                     calculateVal();
-
+                  
                     correctAdr = true;
                 }
-
             }
-            //else
-            //    MessageBox.Show("Not New");
-
         }
         #endregion
 
-        private void calculateVal()
-        {
-            if (adres != null)
-            {
-                miejscSelVal = miejscList?.list?.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId);
-                ulicaSelVal = ulicaList?.list?.FirstOrDefault(r => r.UlicaSloId == adres.UlicaSloId);
-                NumerUlicy = adres?.Numer;
-            }
-        }
+        
 
 
         #region adres
@@ -112,17 +98,13 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty adresProperty =
-            DependencyProperty.Register("adres", typeof(IAdres), typeof(UserControl_Adres)); //, new PropertyMetadata( onChangeAdres)
+            DependencyProperty.Register("adres", typeof(IAdres), typeof(UserControl_Adres), new PropertyMetadata( onChangeAdres));
 
         private static void onChangeAdres(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
+        {          
             UserControl_Adres u = d as UserControl_Adres;
-            int r = 1;
             u.calculateVal();
-
-
         }
-
 
         #endregion
 
@@ -138,8 +120,7 @@ namespace RejestrNieruchomosciNew.View
         private static void onGminaIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Adres u = d as UserControl_Adres;
-            u.calculateMiejsc();
-            //gminaId = adresSlo.miejscList.listAll.FirstOrDefault(r => r.MiejscowoscSloId == adres.MiejscowoscSloId).GminaSloId;
+            u.calculateMiejsc();            
         }
         #endregion
 
@@ -232,13 +213,9 @@ namespace RejestrNieruchomosciNew.View
         private static void onSelectMiejsc(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Adres u = d as UserControl_Adres;
-            int g = 13;
+            int a = 1;
             if (u.miejscSelVal != null)
             {
-                g = 1;
-                if (u.adres == null)
-                    u.adres = new Adres();
-
                 u.adresSlo.ulicaList.getList(u.miejscSelVal);
                 u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
 
@@ -280,7 +257,6 @@ namespace RejestrNieruchomosciNew.View
 
             u.correctAdr = true;
 
-            //u.correctAdr = u.validate();
         }
 
         public string ulicaSelValPath

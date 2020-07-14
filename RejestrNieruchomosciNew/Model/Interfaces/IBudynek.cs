@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface IBudynek : IEquatable<IBudynek>, ICloneable
+    public interface IBudynek : ICloneable
     {
         int BudynekId { get; set; }
         

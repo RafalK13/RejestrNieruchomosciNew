@@ -46,18 +46,18 @@ namespace RejestrNieruchomosciNew.Model
 
         public Budynek(IBudynek budynek)
         {
-             BudynekId = budynek.BudynekId;
+            BudynekId = budynek.BudynekId;
 
-             Nazwa = budynek.Nazwa;
- 
-             powBezPiwnic = budynek.powBezPiwnic;
-             powZPiwnic = budynek.powZPiwnic;
-             powCalk = budynek.powCalk;
-             powZabud = budynek.powZabud;
-             kubatura = budynek.kubatura;
-             iloscKond = budynek.iloscKond;
-             numerEwid = budynek.numerEwid;
-             wpisRejZab = budynek.wpisRejZab;
+            Nazwa = budynek.Nazwa;
+
+            powBezPiwnic = budynek.powBezPiwnic;
+            powZPiwnic = budynek.powZPiwnic;
+            powCalk = budynek.powCalk;
+            powZabud = budynek.powZabud;
+            kubatura = budynek.kubatura;
+            iloscKond = budynek.iloscKond;
+            numerEwid = budynek.numerEwid;
+            wpisRejZab = budynek.wpisRejZab;
 
             prad = budynek.prad;
             woda = budynek.woda;
@@ -72,40 +72,54 @@ namespace RejestrNieruchomosciNew.Model
 
             opisKonstr = budynek.opisKonstr;
             stanTech = budynek.stanTech;
+
+            Adres = budynek.Adres;
+            AdresId = budynek.AdresId;
         }
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            Budynek bud = (Budynek)this.MemberwiseClone();
+            if (bud.Adres != null)
+                bud.Adres = (Adres)Adres.Clone(Adres);
+
+            return bud;
         }
 
-        public bool Equals(IBudynek other)
+        public override bool Equals(Object other)
         {
-            return BudynekId.Equals(other.BudynekId) &&
-                   
-                   string.Equals(Nazwa, other.Nazwa) &&
-                   powBezPiwnic.Equals(other.powBezPiwnic) &&
-                   powZPiwnic.Equals(other.powZPiwnic) &&
-                   powCalk.Equals(other.powCalk) &&
-                   powZabud.Equals(other.powZabud) &&                  
-                   kubatura.Equals(other.kubatura) &&
-                   iloscKond.Equals(other.iloscKond) &&
-                   numerEwid.Equals(other.numerEwid) &&
-                   wpisRejZab.Equals(other.wpisRejZab) &&
+            IBudynek obj = other as IBudynek;
 
-                   prad.Equals(other.prad) &&
-                   woda.Equals(other.woda) &&
-                   kanSan.Equals(other.kanSan) &&
-                   kanLok.Equals(other.kanLok) &&
-                   kanDeszcz.Equals(other.kanDeszcz) &&
-                   tel.Equals(other.tel) &&
-                   co.Equals(other.co) &&
-                   gaz.Equals(other.gaz) &&
-                   internet.Equals(other.internet) &&
-                   tv.Equals(other.tv) &&
-                   
-                   string.Equals(opisKonstr, other.opisKonstr) &&
-                   string.Equals(stanTech, other.stanTech);
+            if (obj == null)
+                return false;
+
+            return BudynekId.Equals(obj.BudynekId) &&
+
+                   string.Equals(Nazwa, obj.Nazwa) &&
+                   powBezPiwnic.Equals(obj.powBezPiwnic) &&
+                   powZPiwnic.Equals(obj.powZPiwnic) &&
+                   powCalk.Equals(obj.powCalk) &&
+                   powZabud.Equals(obj.powZabud) &&
+                   kubatura.Equals(obj.kubatura) &&
+                   iloscKond.Equals(obj.iloscKond) &&
+                   numerEwid.Equals(obj.numerEwid) &&
+                   wpisRejZab.Equals(obj.wpisRejZab) &&
+
+                   prad.Equals(obj.prad) &&
+                   woda.Equals(obj.woda) &&
+                   kanSan.Equals(obj.kanSan) &&
+                   kanLok.Equals(obj.kanLok) &&
+                   kanDeszcz.Equals(obj.kanDeszcz) &&
+                   tel.Equals(obj.tel) &&
+                   co.Equals(obj.co) &&
+                   gaz.Equals(obj.gaz) &&
+                   internet.Equals(obj.internet) &&
+                   tv.Equals(obj.tv) &&
+
+                   string.Equals(opisKonstr, obj.opisKonstr) &&
+                   string.Equals(stanTech, obj.stanTech) &&
+
+                   (object.ReferenceEquals(Adres, obj.Adres) || Adres != null && Adres.Equals(obj.Adres));
         }
     }
 }

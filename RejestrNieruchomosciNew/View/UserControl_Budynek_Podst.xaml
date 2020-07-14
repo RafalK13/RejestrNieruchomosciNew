@@ -62,8 +62,7 @@
 
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
                       IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
-
-            <TextBox Text="{Binding userControl_Budynek.budSel.powCalk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 <TextBox Text="{Binding userControl_Budynek.budSel.powCalk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Height="50"/>
 
         </ScrollViewer>

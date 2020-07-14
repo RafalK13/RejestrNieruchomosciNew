@@ -127,7 +127,7 @@
                         Width="100"
                         Command="{Binding userControl_Budynek.budynekAdd}"
                         />
-                        <DataGrid 
+                  <DataGrid 
                             Grid.Row="1"
                             VerticalAlignment="Top"
                             Margin="3,140,10,0"

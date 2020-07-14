@@ -75,17 +75,43 @@ namespace RejestrNieruchomosciNew.Model
             return this;
         }
 
-        bool IEquatable<IAdres>.Equals(IAdres other)
+        public override bool Equals(Object other)
         {
-            return Numer == other.Numer &&
-                   MiejscowoscSloId == other.MiejscowoscSloId &&
-                   UlicaSloId == other.UlicaSloId;
+            if (other == null)
+                return false;
+
+            IAdres obj = other as IAdres;
+
+            if(obj == null)
+                return false;
+
+     
+
+            return string.Equals(Numer, obj.Numer) &&
+                          (MiejscowoscSloId == obj.MiejscowoscSloId) && 
+                          ( obj != null && UlicaSloId == obj.UlicaSloId);
+        }
+
+        public object Clone( IAdres obj)
+        {
+            //Adres adr = new Adres();
+            //if (obj == null)
+            //    return null;
+
+            //adr.Numer = obj.Numer;
+            //adr.MiejscowoscSloId = obj.MiejscowoscSloId;
+            //adr.UlicaSloId = obj.UlicaSloId;
+
+            return (Adres)this.MemberwiseClone(); ;
         }
 
         public IAdres copy(IAdres adrSource)
         {
+            if (adrSource == null)
+                return null;
+
             AdresId = adrSource.AdresId;
-            Numer = adrSource.Numer;
+            Numer =  adrSource.Numer;
             MiejscowoscSloId = adrSource.MiejscowoscSloId;
             UlicaSloId = adrSource.UlicaSloId;
 

@@ -23,10 +23,10 @@ namespace RejestrNieruchomosciNew.ViewModel
             string ulica = "";
             string numer = "";
 
-            if (adr == null || adrList==null)
+            if (adr == null || adrList==null || adr.MiejscowoscSloId == 0)
                 return null;
-
-             miejsc = adrList.miejscList.listAll.FirstOrDefault(r => r.MiejscowoscSloId == adr.MiejscowoscSloId).Nazwa;
+            
+            miejsc = adrList.miejscList.listAll.FirstOrDefault(r => r.MiejscowoscSloId == adr.MiejscowoscSloId).Nazwa;
             
              if( adr.UlicaSloId != null)
                 ulica = ", "+adrList.ulicaList.listAll.FirstOrDefault(r => r.UlicaSloId == adr.UlicaSloId).Nazwa;
