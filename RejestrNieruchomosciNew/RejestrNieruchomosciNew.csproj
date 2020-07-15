@@ -247,6 +247,10 @@
     <Compile Include="Migrations\20200708084530_dom2.designer.cs">
       <DependentUpon>20200708084530_dom2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200714114057_dom3.cs" />
+    <Compile Include="Migrations\20200714114057_dom3.designer.cs">
+      <DependentUpon>20200714114057_dom3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -429,6 +433,9 @@
     <Compile Include="View\UserControl_CelNabycia.xaml.cs">
       <DependentUpon>UserControl_CelNabycia.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl_CheckBox.xaml.cs">
+      <DependentUpon>UserControl_CheckBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl_DaneDodatkowe.xaml.cs">
       <DependentUpon>UserControl_DaneDodatkowe.xaml</DependentUpon>
     </Compile>
@@ -558,6 +565,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_CelNabycia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_CheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

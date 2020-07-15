@@ -215,7 +215,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             int result;
             if (int.TryParse(digit, out result))
-                return string.Format("{0:#,0}", result);
+            {
+                if (result == 0)
+                    return null;
+                else
+                    return string.Format("{0:#,0}", result);
+            }
             return null;
         }
 

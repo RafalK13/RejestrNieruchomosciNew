@@ -505,7 +505,7 @@
                                    TextWrapping="Wrap"
                                    AcceptsReturn="True"
                                    AcceptsTab="True"
-
+                                   VerticalScrollBarVisibility="Auto"
                                    Height="150"
                                    Margin="7,0,10,3"
                                    Text="{Binding userControl_InnePrawa.innePrawaSel.WarunkiRealizacji}" 

@@ -10,16 +10,14 @@ namespace RejestrNieruchomosciNew.Model
 
         public string Nazwa { get; set; }
 
-        public int? AdresId { get; set; }
-
-        public double powBezPiwnic { get; set; }
-        public double powZPiwnic { get; set; }
-        public double powCalk { get; set; }
-        public double powZabud { get; set; }
-        public double kubatura { get; set; }
+        public int powBezPiwnic { get; set; }
+        public int powZPiwnic { get; set; }
+        public int powCalk { get; set; }
+        public int powZabud { get; set; }
+        public int kubatura { get; set; }
 
         public int iloscKond { get; set; }
-        public double numerEwid { get; set; }
+        public string numerEwid { get; set; }
         public bool wpisRejZab { get; set; }
 
         public bool prad { get; set; }
@@ -74,7 +72,7 @@ namespace RejestrNieruchomosciNew.Model
             stanTech = budynek.stanTech;
 
             Adres = budynek.Adres;
-            AdresId = budynek.AdresId;
+            //AdresId = budynek.AdresId;
         }
 
         public object Clone()
@@ -102,7 +100,7 @@ namespace RejestrNieruchomosciNew.Model
                    powZabud.Equals(obj.powZabud) &&
                    kubatura.Equals(obj.kubatura) &&
                    iloscKond.Equals(obj.iloscKond) &&
-                   numerEwid.Equals(obj.numerEwid) &&
+                   string.Equals(numerEwid, obj.numerEwid) &&
                    wpisRejZab.Equals(obj.wpisRejZab) &&
 
                    prad.Equals(obj.prad) &&

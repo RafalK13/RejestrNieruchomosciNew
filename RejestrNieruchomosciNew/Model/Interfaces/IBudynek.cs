@@ -12,16 +12,14 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         
         string Nazwa { get; set; }
 
-        int? AdresId { get; set; }
-        
-        double powBezPiwnic { get; set; }
-        double powZPiwnic { get; set; }
-        double powCalk { get; set; }
-        double powZabud { get; set; }
-        double kubatura { get; set; }
+        int powBezPiwnic { get; set; }
+        int powZPiwnic { get; set; }
+        int powCalk { get; set; }
+        int powZabud { get; set; }
+        int kubatura { get; set; }
 
         int iloscKond { get; set; }
-        double numerEwid { get; set; }
+        string numerEwid { get; set; }
         bool wpisRejZab { get; set; }
 
         bool prad { get; set; }

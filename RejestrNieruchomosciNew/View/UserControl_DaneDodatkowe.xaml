@@ -57,9 +57,11 @@
 
             <Style x:Key="tekskBoxOpis" TargetType="TextBox">
                 <Setter Property="TextWrapping" Value="Wrap"/>
-                <Setter Property="MinLines" Value="10"/>
+                <Setter Property="Height" Value="150"/>
                 <Setter Property="AcceptsReturn" Value="True"/>
                 <Setter Property="AcceptsTab" Value="True"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+
             </Style>
             <Style x:Key="LabelOpis" TargetType="Label">
                 <Setter Property="FontSize" Value="17"/>

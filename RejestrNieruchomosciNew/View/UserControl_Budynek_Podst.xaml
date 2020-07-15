@@ -5,14 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+             d:DesignHeight="495" d:DesignWidth="800"
              Name="Budynek_Podst"
              >
-        
+    <UserControl.Resources>
+        <con:stringToDouble x:Key="doubleConverter"/>
+        <con:stringToInt x:Key="intConverter"/>
+        <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
+            <Setter Property="Margin" Value="0,5,10,0"/>
+            <Setter Property="widthLabelRaf" Value="130"/>
+        </Style>
+
+        <Style TargetType="userControl:UserControl_CheckBox" x:Key="elemCheckBox">
+            <Setter Property="Margin" Value="0,1,10,0"/>
+            <Setter Property="widthLabelRaf" Value="170"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" MinWidth="9" />
-            <ColumnDefinition Width="250" MinWidth="9"/>
+            <ColumnDefinition Width="200" MinWidth="9"  MaxWidth="200"/>
+            <ColumnDefinition Width="300" MinWidth="9" />
             <ColumnDefinition Width="2*" MinWidth="9" />
         </Grid.ColumnDefinitions>
        
@@ -30,7 +44,13 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
         <GridSplitter 
                    Grid.Column ="2"  
                    Width="5"
@@ -41,7 +61,9 @@
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" 
                       IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
 
-            <userControl:UserControl_Adres               
+            <StackPanel>
+                <userControl:UserControl_Adres 
+                    x:Name="controlAdres"
                     Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
                     rowHight="35"
                     column1Width="90"
@@ -51,23 +73,156 @@
                     adresSlo="{Binding  Path=DataContext.userControl_Budynek.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adres="{Binding  Path=DataContext.userControl_Budynek.budSel.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <!--gminaId="{Binding Path=DataContext.userControl_Budynek.gminaId, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adresSlo="{Binding Path=DataContext.userControl_Budynek.adresSloList, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adres="{Binding Path=DataContext.userControl_Budynek.dzialka.Adres, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-                                     
-                    
-            <!--correctAdr="{Binding Path=DataContext.userControlBudynek.adresChanged, ElementName=BudynekWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-           
+                <Label Name="labelPow"
+                       Content="Powierzchnie"
+                       FontWeight="Bold"
+                       Margin="0,20,0,0"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.całkowita"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.powCalk, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.zabudowy"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.powZabud, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.uż.bez piwnic"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.powBezPiwnic, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.uż.z piwnicami"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.powZPiwnic, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Kukatura"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.kubatura, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Ilość kondygnacji"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.iloscKond, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Numer ewidencyjny"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.budSel.numerEwid, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="Wpis do rejestru zabytków"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.wpisRejZab, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+             </StackPanel>
         </ScrollViewer>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" 
-                      IsEnabled="{Binding userControl_Budynek.podmiotDetail}">
-                 <TextBox Text="{Binding userControl_Budynek.budSel.powCalk, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="50"/>
+        <ScrollViewer   Grid.Column="1" VerticalScrollBarVisibility="Auto" 
+                        IsEnabled="{Binding userControl_Budynek.podmiotDetail}"
+                        >
+            <StackPanel>
+            <Label      Content="Media"
+                        FontWeight="Bold"
+                       />
 
+            <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="prąd"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.prad, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="woda"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.woda, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="kanalizacja sanitarna"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.kanSan, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="kanalizacja deszczowa"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.kanDeszcz, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="kanalizacja lokalna"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.kanLok, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="telefon"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.tel, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="co"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.co, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="gaz"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.gaz, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="internet"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.internet, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_CheckBox
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="TV"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.tv, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </StackPanel>
         </ScrollViewer>
 
+        <ScrollViewer   Grid.Column="2" VerticalScrollBarVisibility="Auto" 
+                        IsEnabled="{Binding userControl_Budynek.podmiotDetail}"
+                        >
+            <StackPanel>
+                <Label  Content="Opis konstrukcji"
+                        FontWeight="Bold"
+                       />
+            <TextBox 
+                        TextWrapping="Wrap"
+                        AcceptsReturn="True"
+                        AcceptsTab="True"
+                        Height="150"
+                        Margin="7,0,10,3"
+                        VerticalScrollBarVisibility="Auto"
+                        Text="{Binding userControl_Budynek.budSel.opisKonstr}" 
+                        />
+                <Label  Content="Stan techniczny"
+                        FontWeight="Bold"
+                       />
 
+                <TextBox 
+                        TextWrapping="Wrap"
+                        AcceptsReturn="True"
+                        AcceptsTab="True"
+                        Height="150"
+                        Margin="7,0,10,3"
+                        VerticalScrollBarVisibility="Auto"
+                        Text="{Binding userControl_Budynek.budSel.stanTech}" 
+                        />
+            </StackPanel>
+        </ScrollViewer>
 
         <!--<TextBox Text="{Binding ElementName=BudynekWin, Path=Name}"
                  Height="200"
