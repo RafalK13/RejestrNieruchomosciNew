@@ -19,7 +19,7 @@
 
         <Style TargetType="userControl:UserControl_CheckBox" x:Key="elemCheckBox">
             <Setter Property="Margin" Value="0,1,10,0"/>
-            <Setter Property="widthLabelRaf" Value="170"/>
+            <Setter Property="widthLabelRaf" Value="150"/>
         </Style>
     </UserControl.Resources>
     <Grid>
