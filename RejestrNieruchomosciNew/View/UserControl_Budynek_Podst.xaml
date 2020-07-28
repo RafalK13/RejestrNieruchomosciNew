@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
+              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-             d:DesignHeight="495" d:DesignWidth="800"
+             d:DesignHeight="495" d:DesignWidth="948"
              Name="Budynek_Podst"
              >
     <UserControl.Resources>
@@ -22,11 +23,12 @@
             <Setter Property="widthLabelRaf" Value="150"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Margin="0,0,-435,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" MinWidth="9" />
             <ColumnDefinition Width="200" MinWidth="9"  MaxWidth="200"/>
             <ColumnDefinition Width="300" MinWidth="9" />
+            <ColumnDefinition Width="200" MinWidth="9" />
             <ColumnDefinition Width="2*" MinWidth="9" />
         </Grid.ColumnDefinitions>
        
@@ -53,6 +55,13 @@
                    />
         <GridSplitter 
                    Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="3"  
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"
@@ -224,12 +233,87 @@
             </StackPanel>
         </ScrollViewer>
 
-        <!--<TextBox Text="{Binding ElementName=BudynekWin, Path=Name}"
-                 Height="200"
-                 VerticalAlignment="Bottom"
-                 Grid.Column="1"
-                 />-->
+        <ScrollViewer   Grid.Column="3" VerticalScrollBarVisibility="Auto" 
+                        IsEnabled="{Binding userControl_Budynek.podmiotDetail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        >
+            <!--IsEnabled="{Binding userControl_Budynek.podmiotDetail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+            <!--IsEnabled="{Binding  Path=DataContext.userControl_Budynek.podmiotDetail, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+            
+            
+            <Grid>
+                <Label  Content="Działki przyległe"
+                        FontWeight="Bold"
+                       />
 
+
+                <conRaf:DataGridRafALL  Margin="10,26,10,0"
+                                        x:Name="conRaf1"
+                                        VerticalAlignment="Top"   Panel.ZIndex="13"
+
+                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Budynek.dzialkaList,  RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        fontSizeRafALL="14"
+                                        heightRafALL="25"
+                                        HorizontalAlignment="Stretch"
+                                        colNameRaf="Numer"
+                                        colNameIdRaf="DzialkaId"
+                                        clearTekstOnExit="True"
+                                        TekstPropALL="{Binding Path=DataContext.userControl_Budynek.budName,  RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+
+
+                    />
+                <!--selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.selectedPodmId, ElementName=WladanieWin,Mode=TwoWay}"-->
+                <!--TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotName, ElementName=WladanieWin, Mode=TwoWay}"-->
+
+                <Button     Grid.Column="0"
+                            Margin="10,70,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Content="Dodaj"
+                            Height="30"
+                            Width="100"
+                            Command="{Binding userControl_Wlasciciel.podmiotAdd}" Grid.ColumnSpan="2"/>
+                <DataGrid 
+                        VerticalAlignment="Top"
+                        Height="200"
+                        Margin="3,130,10,0"
+                        ItemsSource="{Binding userControl_Budynek.dzialkaListBud, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                     
+                        AutoGenerateColumns="False"
+                        >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Numer działki" 
+                                            Binding="{Binding Numer}"
+                                            Width="*">
+
+                            
+                            <!--<DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>-->
+                           
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn         
+ >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button 
+                                            Height="20" 
+                                            Width="20" 
+                                            Content="x"                                                           
+                                            Foreground="Red"
+                                            BorderBrush="White"
+                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+            </Grid>
+        </ScrollViewer>
+
+      
         
     </Grid>
 </UserControl>

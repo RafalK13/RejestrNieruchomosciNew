@@ -40,7 +40,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek)
+                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d=>d.Dzialka)
                                                                           .Include(a => a.Adres));
                 }
                 catch (Exception e)
@@ -56,12 +56,14 @@ namespace RejestrNieruchomosciNew.Model
             if (dzialka != null)
                 list = new ObservableCollection<IBudynek>(listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
 
+            int a = 1;
             listOrg = ObservableCon<IBudynek>.ObservableToList(list);
             listToAdd = new List<IBudynek>();
             listToMod = new List<IBudynek>();
             listToDel = new List<IBudynek>();
             result = string.Empty;
-        }
+
+            }
 
         public BudynkiList()
         {
@@ -84,6 +86,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public void saveBudynki()
         {
+
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
@@ -92,7 +95,14 @@ namespace RejestrNieruchomosciNew.Model
                 {
                     if (listOrg.Exists(row => row.BudynekId == r.BudynekId) == true)
                     {
-                        listToMod.Add((IBudynek)r.Clone());
+                        //if (r.Adres != null)
+                        //{
+                        //    if((Adres)r.Adres.testAdres() == null)
+                        //        r.Adres = null;
+                        //}
+                        listToMod.Add(r);
+
+                        int a = 1;
                         var rToDel = listOrg.Find(d => d.BudynekId == r.BudynekId);
                         listOrg.Remove(rToDel);
                     }
@@ -116,6 +126,7 @@ namespace RejestrNieruchomosciNew.Model
             if (listToMod.Count() > 0)
                 ModRows();
 
+
             initListAll();
             initList(dzialkaPrv);
         }
@@ -126,7 +137,12 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
+                    if (i.Adres != null)
+                    {
+                        i.Adres = (Adres)i.Adres.testAdres();
+                    }
                     c.Dzialka_Budynek.Add(new Dzialka_Budynek() { DzialkaId = dzialkaPrv.DzialkaId, Budynek = (Budynek)i });
+                   
                 }
                 c.SaveChanges();
             }
@@ -136,12 +152,47 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                //var toDelete = listToMod.Where(r => r.Adres.MiejscowoscSloId == 0 && r.Adres.BudynekId>0).Select(n=>n.Adres).ToList();
 
-                foreach (var i in listToMod)
+                foreach (var item in listToMod)
                 {
-                    c.Update(i);
+                    int a = 13;
+                    if (item.Adres != null)
+                    {
+                        if (item.Adres.MiejscowoscSloId == 0)
+                        {
+                            var adr = c.Adres.FirstOrDefault(r => r.AdresId == item.Adres.AdresId);
+
+                            if (adr != null)
+                                c.Adres.Remove(adr);
+                            else
+                                item.Adres = null;
+
+                        }
+                        item.Dzialka_Budynek = null;
+                    }
                 }
+               
+                c.UpdateRange(listToMod);
                 c.SaveChanges();
+
+                //c.RemoveRange(toDelete);
+                //c.SaveChanges();
+                //int a = 13;
+
+
+                //c.UpdateRange(listToMod);
+                //c.SaveChanges();
+
+                //int DUPA = 13;
+
+                //var v = c.Budynek.Include(l => l.Adres).FirstOrDefault(r => r.BudynekId == 73);
+
+                //v.Adres = null;
+
+                //c.Update(v);
+                //c.SaveChanges();
+
             }
         }
 

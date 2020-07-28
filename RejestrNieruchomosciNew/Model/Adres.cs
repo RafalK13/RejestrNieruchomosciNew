@@ -85,24 +85,29 @@ namespace RejestrNieruchomosciNew.Model
             if(obj == null)
                 return false;
 
-     
-
             return string.Equals(Numer, obj.Numer) &&
                           (MiejscowoscSloId == obj.MiejscowoscSloId) && 
                           ( obj != null && UlicaSloId == obj.UlicaSloId);
         }
 
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                const int HashingBase = (int)2166136261;
+                const int HashingMultiplier = 16777619;
+
+                int hash = HashingBase;
+                hash = (hash * HashingMultiplier) ^ MiejscowoscSloId.GetHashCode();
+                hash = (hash * HashingMultiplier) ^ UlicaSloId.GetHashCode();
+
+                return hash;
+            }
+        }
+
         public object Clone( IAdres obj)
         {
-            //Adres adr = new Adres();
-            //if (obj == null)
-            //    return null;
-
-            //adr.Numer = obj.Numer;
-            //adr.MiejscowoscSloId = obj.MiejscowoscSloId;
-            //adr.UlicaSloId = obj.UlicaSloId;
-
-            return (Adres)this.MemberwiseClone(); ;
+            return (Adres)this.MemberwiseClone(); 
         }
 
         public IAdres copy(IAdres adrSource)

@@ -129,6 +129,7 @@ namespace RejestrNieruchomosciNew
         public ICollection<Zagosp> Zagosp { get; set; }
        
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
+
         bool IEquatable<IDzialka>.Equals(IDzialka other)
         {
             return DzialkaId.Equals(other.DzialkaId) &&
@@ -145,6 +146,20 @@ namespace RejestrNieruchomosciNew
                    //AdresId == other.AdresId &&                    
                    ObrebId.Equals(other.ObrebId) &&
                    NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                const int HashingBase = (int)2166136261;
+                const int HashingMultiplier = 16777619;
+
+                int hash = HashingBase;
+                hash = (hash * HashingMultiplier) ^ (DzialkaId.GetHashCode());
+                hash = (hash * HashingMultiplier) ^ (ObrebId.GetHashCode());
+                return hash;
+            }
         }
 
         public Dzialka()

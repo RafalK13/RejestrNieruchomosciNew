@@ -34,32 +34,32 @@ namespace RejestrNieruchomosciNew.Model
 
         public void initListAll()
         {
-            using (Context c = new Context())
-            {
-                try
-                {
-                    listAll = new ObservableCollection<IDzialka_Budynek>(c.Dzialka_Budynek.Include(n1 => n1.Budynek)
-                                                                                          .Include(n2 => n2.Dzialka));
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show($"Dzialka_BudynekList\r\n{e.Message}");
-                    Environment.Exit(0);
-                }
-            }
+            //using (Context c = new Context())
+            //{
+            //    try
+            //    {
+            //        listAll = new ObservableCollection<IDzialka_Budynek>(c.Dzialka_Budynek.Include(n1 => n1.Budynek)
+            //                                                                              .Include(n2 => n2.Dzialka));
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        MessageBox.Show($"Dzialka_BudynekList\r\n{e.Message}");
+            //        Environment.Exit(0);
+            //    }
+            //}
         }
 
         private void initList(IDzialka dzialka)
         {
-            if (dzialka != null)
-                list = new ObservableCollection<IDzialka_Budynek>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId).ToList());
+        //    if (dzialka != null)
+        //        list = new ObservableCollection<IDzialka_Budynek>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId).ToList());
 
-            listOrg = ObservableCon<IDzialka_Budynek>.ObservableToList(list);
+        //    listOrg = ObservableCon<IDzialka_Budynek>.ObservableToList(list);
 
-            listToAdd = new List<IDzialka_Budynek>();
-            listToMod = new List<IDzialka_Budynek>();
-            listToDel = new List<IDzialka_Budynek>();
-            result = string.Empty;
+        //    listToAdd = new List<IDzialka_Budynek>();
+        //    listToMod = new List<IDzialka_Budynek>();
+        //    listToDel = new List<IDzialka_Budynek>();
+        //    result = string.Empty;
         }
 
         public Dzialka_BudynekList()

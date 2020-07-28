@@ -159,10 +159,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                         if (res == null)
                             dzialka.Adres = null;
-                        int a = 13;
 
                         dzialkaList.ModRow(dzialka);
-                        int  b = 13;
+
                         canAdd = false;
                         break;
                     }
@@ -211,7 +210,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 if (!string.IsNullOrEmpty(dzialka.Numer))
                 {
                     var dz = dzialkaList.list.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId);
-                    int r2 = 13;
                     if (dzialka.Equals(dz) && adresChanged == false)
                         canAdd = false;
                     else

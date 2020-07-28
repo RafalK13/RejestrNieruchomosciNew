@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -13,6 +14,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
+        private string _budName;
+
+        public string budName
+        {
+            get { return _budName; }
+            set => Set( ref _budName, value);
+            
+        }
+
+
         private int? _gminaId;
 
         [DoNotWire]
@@ -48,14 +59,14 @@ namespace RejestrNieruchomosciNew.ViewModel
         public bool podmiotDetail
         {
             get => _podmiotDetail;
-
+           
             set
             {
                 _podmiotDetail = value;
                 RaisePropertyChanged();
             }
         }
-        
+
         private string _budynekName;
         public string budynekName
         {
@@ -71,6 +82,17 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IBudynkiList budList { get; set; }
 
+        private int _nr;
+        public int nr
+        {
+            get { return _nr; }
+            set
+            {
+                _nr = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private IBudynek _budSel;
         public IBudynek budSel
         {
@@ -80,9 +102,21 @@ namespace RejestrNieruchomosciNew.ViewModel
                 _budSel = value;
                 testBudynekSel();
                 RaisePropertyChanged();
-                int a = 1;
             }
         }
+
+        private ObservableCollection<IDzialka> _dzialkaListBud;
+        public ObservableCollection<IDzialka> dzialkaListBud
+        {
+            get => _dzialkaListBud;
+
+            set {
+                _dzialkaListBud = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public List<IDzialka> dzialkaList { get; set; }
 
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
                                            IBudynkiList _budList)
@@ -95,33 +129,44 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _budList.getList(userPrev.dzialkaSel);
-               
+
                 budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
-                int w = 1;
+
                 if (userPrev.dzialkaSel.Obreb != null)
                 {
                     gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
-                    int a = 1;
+                    dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();
                     
                 }
             }
-               podmiotDetail = false;
+            
+            podmiotDetail = false;
+            budSel = null;
         }
 
         private void testBudynekSel()
         {
-            if (budSel != null)
+            if (budSel != null && budSel.Nazwa != null)
             {
                 if (budSel.Adres == null)
                     budSel.Adres = new Adres();
-
-                //if (budSel.BudynekId != 0)
+               
+                podmiotDetail = true;
+               
+                if (budSel.Dzialka_Budynek != null)
                 {
-                    podmiotDetail = true;
+                    var newList = new IDzialka[] { (IDzialka)userPrev.dzialkaSel };
+                    var newBudList = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
+
+                    dzialkaListBud = new ObservableCollection<IDzialka>( newBudList.Except(newList));
                 }
+
+                budName = "*";
             }
             else
                 podmiotDetail = false;
+
+            budName = string.Empty;
         }
 
         private bool testWlascExist()
@@ -143,7 +188,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand onTest { get; set; }
 
         public string tekstRaf { get; set; } = "Rafałek";
-
 
         #endregion
 
@@ -178,27 +222,32 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaBudynekAdd()
         {
-           
+          
+
+            //foreach (var item in budListLok)
+            //{
+            //    if (item.Adres.MiejscowoscSloId == 0)
+            //        item.Adres = null;
+            //}
+
             budList.list = new ObservableCollection<IBudynek>(budListLok.Select(r => new Budynek(r)).ToList());
 
-            int ar = 1;
             budList.saveBudynki();
         }
 
         private void onBudynekAdd()
         {
-            if( string.IsNullOrEmpty(budynekName) == false)
-            if (testIfExist())
-            {
-                Budynek bud = new Budynek() { Nazwa = budynekName };
+            if (string.IsNullOrEmpty(budynekName) == false)
+                if (testIfExist())
+                {
+                    Budynek bud = new Budynek() { Nazwa = budynekName };
 
-                budListLok.Add( bud);
-                budList.list.Add( bud);
-               
-                budynekName = string.Empty;
-                budSel = null;
-            
-            }
+                    budListLok.Add(bud);
+                    budList.list.Add(bud);
+
+                    budynekName = string.Empty;
+                    budSel = null;
+                }
         }
 
         private bool testIfExist()

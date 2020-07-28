@@ -1,6 +1,7 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -39,7 +40,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public Budynek()
         {
-
+          
         }
 
         public Budynek(IBudynek budynek)
@@ -72,6 +73,8 @@ namespace RejestrNieruchomosciNew.Model
             stanTech = budynek.stanTech;
 
             Adres = budynek.Adres;
+
+            Dzialka_Budynek = budynek.Dzialka_Budynek;
             //AdresId = budynek.AdresId;
         }
 
@@ -80,6 +83,9 @@ namespace RejestrNieruchomosciNew.Model
             Budynek bud = (Budynek)this.MemberwiseClone();
             if (bud.Adres != null)
                 bud.Adres = (Adres)Adres.Clone(Adres);
+
+            if (bud.Dzialka_Budynek != null)
+                bud.Dzialka_Budynek = Dzialka_Budynek.Select(r => (Dzialka_Budynek)r.Clone()).ToList();
 
             return bud;
         }
@@ -118,6 +124,20 @@ namespace RejestrNieruchomosciNew.Model
                    string.Equals(stanTech, obj.stanTech) &&
 
                    (object.ReferenceEquals(Adres, obj.Adres) || Adres != null && Adres.Equals(obj.Adres));
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                const int HashingBase = (int)2166136261;
+                const int HashingMultiplier = 16777619;
+
+                int hash = HashingBase;
+                hash = (hash * HashingMultiplier) ^ ( BudynekId.GetHashCode() );
+                hash = (hash * HashingMultiplier) ^ ( Object.ReferenceEquals(null, Nazwa) ? 0: Nazwa.GetHashCode());
+                return hash;
+            }
         }
     }
 }

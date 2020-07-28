@@ -12,7 +12,7 @@
              Name="WladanieWin"
              d:DesignHeight="660" d:DesignWidth="1450"
              >
-   
+
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
@@ -21,7 +21,7 @@
         <con:stringToDecimal x:Key="convStrToDec"/>
         <sys:Double x:Key="widthMin">150</sys:Double>
         <sys:Double x:Key="widthMax">500</sys:Double>
-        
+
         <Style x:Key="label1" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
             <Setter Property="Width" Value="100"/>
@@ -48,7 +48,7 @@
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="Margin" Value="15,30"></Setter>
         </Style>
-        
+
         <Style x:Key="comboBox" TargetType="ComboBox">
             <Setter Property="Margin" Value="10,5,0,0"></Setter>
             <Setter Property="Width" Value="150"></Setter>
@@ -115,7 +115,11 @@
                    />
 
             <Grid Grid.Column="0">
-                <Label  Margin="10,10,10,0"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="126*"/>
+                    <ColumnDefinition Width="55*"/>
+                </Grid.ColumnDefinitions>
+                <Label  Margin="10,10,0,0"
                         Content="Właściciel"
                         FontWeight="Bold"                      
                         FontSize="19"
@@ -123,7 +127,7 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
 
-                <conRaf:DataGridRafALL  Margin="10,50,0,0"
+                <conRaf:DataGridRafALL  Margin="10,50,10,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
                                         TekstPropALL="{Binding Path=DataContext.userControl_Wlasciciel.podmiotName, ElementName=WladanieWin, Mode=TwoWay}"
@@ -132,17 +136,17 @@
                                         heightRafALL="25"
                                         HorizontalAlignment="Stretch"
                                         colNameRaf="nazwa"
-                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.selectedPodmId, ElementName=WladanieWin,Mode=TwoWay}"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Wlasciciel.selectedPodmId, ElementName=WladanieWin,Mode=TwoWay}" Grid.ColumnSpan="2"
                                         />
-               
+
                 <Button     Grid.Column="0"
-                            Margin="10,100,0,0"
+                            Margin="136,100,16,0"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Content="Dodaj"
                             Height="30"
                             Width="100"
-                            Command="{Binding userControl_Wlasciciel.podmiotAdd}" Grid.ColumnSpan="2"/>
+                            Command="{Binding userControl_Wlasciciel.podmiotAdd}"/>
                 <DataGrid 
                         VerticalAlignment="Top"
                         Margin="3,160,10,0"
@@ -158,7 +162,7 @@
                         SelectionMode="Single"
                         SelectionUnit="FullRow"
                         VerticalScrollBarVisibility="Auto"
-                        AutoGenerateColumns="False"
+                        AutoGenerateColumns="False" Grid.ColumnSpan="2"
                        >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Podmiot" 
@@ -247,8 +251,8 @@
                                 <ColumnDefinition Width="113"/>
                                 <ColumnDefinition Width="3"/>
                                 <ColumnDefinition Width="7*"/>
-                               
-                               
+
+
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>
@@ -276,7 +280,7 @@
                                    FontWeight="Bold"
                                    FontSize="15"         
                                    />
-                          
+
                             <Label Grid.Column="1" Grid.Row="1" 
                                    Content=""                                       
                                    Style="{StaticResource labelTab}"/>
@@ -299,8 +303,8 @@
                             <Label  Grid.Column="1" Grid.Row="6" 
                                         Content="Skan dokumentu"    
                                         Style="{StaticResource labelTab}"/>
-                         
-                             <Button Grid.Column="3" Grid.Row="9"
+
+                            <Button Grid.Column="3" Grid.Row="9"
                                     Margin="3"
                                     Content="Sprzedaż udziału"
                                     Command="{Binding  userControl_Wlasciciel.wlascSell}">
@@ -314,12 +318,12 @@
 
                                         </Style.Triggers>
                                     </Style>
-                                    
+
                                 </Button.Style>
-                             
+
                             </Button>
 
-                           
+
                             <userCon:UserControl_Transakcja
                                        Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
                                        Grid.ColumnSpan="2" Margin="1,0,0,0"
@@ -377,9 +381,9 @@
                         </Grid>
 
                     </StackPanel>
-                    
-                    
-                  
+
+
+
                 </Grid>
 
             </ScrollViewer>
@@ -458,7 +462,7 @@
                                        />
                         </StackPanel>
                     </StackPanel>
-               
+
                 </Grid>
 
             </ScrollViewer>
@@ -467,7 +471,7 @@
                           IsEnabled="{Binding userControl_Wlasciciel.podmiotDetail}">
                 <Grid Margin="10,0,0,0">
                     <StackPanel>
-                      
+
                         <Label 
                                    Content="Cel nabycia prawa"
                                    FontWeight="Bold"
@@ -500,12 +504,12 @@
                                     Command="{Binding userControl_Wlasciciel.wlascAdd}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
-                <Button Content="Czyść"
+            <Button Content="Czyść"
                                    Style="{StaticResource buttonCommon}"
                                     Command="{Binding userControl_Wlasciciel.wlascCls}"
                                     />
 
-                <Button  Content="Anuluj"
+            <Button  Content="Anuluj"
                                     Style="{StaticResource buttonCommon}"
                                     IsCancel="True"
                                     com:CloseOnClickBehaviour.IsEnabled="True"
@@ -514,7 +518,7 @@
                                     />
             <!--com:CloseOnClickBehaviour.IsEnabled="True"-->
         </StackPanel>
-       
+
     </Grid>
 
 </UserControl>

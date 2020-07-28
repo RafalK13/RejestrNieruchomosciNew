@@ -147,22 +147,6 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty rowHightProperty =
             DependencyProperty.Register("rowHight", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(35));
 
-        //public int userWidth
-        //{
-        //    get { return (int)GetValue(userWidthProperty); }
-        //    set { SetValue(userWidthProperty, value); }
-        //}
-        //public static readonly DependencyProperty userWidthProperty =
-        //    DependencyProperty.Register("userWidth", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(270));
-
-        //public int userHeight
-        //{
-        //    get { return (int)GetValue(userHeightProperty); }
-        //    set { SetValue(userHeightProperty, value); }
-        //}
-        //public static readonly DependencyProperty userHeightProperty =
-        //    DependencyProperty.Register("userHeight", typeof(int), typeof(UserControl_Adres), new PropertyMetadata(250));
-
         public int column1Width
         {
             get { return (int)GetValue(column1WidthProperty); }
@@ -213,11 +197,14 @@ namespace RejestrNieruchomosciNew.View
         private static void onSelectMiejsc(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Adres u = d as UserControl_Adres;
-            int a = 1;
+
             if (u.miejscSelVal != null)
             {
                 u.adresSlo.ulicaList.getList(u.miejscSelVal);
                 u.adres.MiejscowoscSloId = u.miejscSelVal.MiejscowoscSloId;
+
+                //if (u.adres.MiejscowoscSloId == 0)
+                //    u.adres = null;
 
                 u.ulicaList = null;
                 //u.adres.UlicaSloId = 0;

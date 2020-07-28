@@ -86,11 +86,8 @@ namespace RejestrNieruchomosciNew.Model
 
         public void AddRow(IDzialka dz)
         {
-           
             using (var c = new Context())
             {
-
-                int a = 1;
                 dz.Obreb = null;
                 dz.Adres= (Adres)dz.Adres.testAdres();
                
