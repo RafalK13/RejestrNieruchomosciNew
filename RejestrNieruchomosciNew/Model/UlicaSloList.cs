@@ -43,7 +43,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                listAll = new ObservableCollection<IUlicaSlo>(await c.UliceSlo.ToListAsync());
+                listAll = new ObservableCollection<IUlicaSlo>(await c.UliceSlo.AsNoTracking().ToListAsync());
             }
         }
 

@@ -40,7 +40,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d=>d.Dzialka)
+                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                           .Include(a => a.Adres));
                 }
                 catch (Exception e)
@@ -63,7 +63,7 @@ namespace RejestrNieruchomosciNew.Model
             listToDel = new List<IBudynek>();
             result = string.Empty;
 
-            }
+        }
 
         public BudynkiList()
         {
@@ -86,7 +86,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public void saveBudynki()
         {
-
+            int e = 1;
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))
@@ -95,14 +95,7 @@ namespace RejestrNieruchomosciNew.Model
                 {
                     if (listOrg.Exists(row => row.BudynekId == r.BudynekId) == true)
                     {
-                        //if (r.Adres != null)
-                        //{
-                        //    if((Adres)r.Adres.testAdres() == null)
-                        //        r.Adres = null;
-                        //}
                         listToMod.Add(r);
-
-                        int a = 1;
                         var rToDel = listOrg.Find(d => d.BudynekId == r.BudynekId);
                         listOrg.Remove(rToDel);
                     }
@@ -141,8 +134,12 @@ namespace RejestrNieruchomosciNew.Model
                     {
                         i.Adres = (Adres)i.Adres.testAdres();
                     }
-                    c.Dzialka_Budynek.Add(new Dzialka_Budynek() { DzialkaId = dzialkaPrv.DzialkaId, Budynek = (Budynek)i });
-                   
+
+                    foreach (var item in i.Dzialka_Budynek)
+                    {
+                        item.Dzialka = null;
+                    }                
+                    c.Update(i);
                 }
                 c.SaveChanges();
             }
@@ -152,47 +149,33 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                //var toDelete = listToMod.Where(r => r.Adres.MiejscowoscSloId == 0 && r.Adres.BudynekId>0).Select(n=>n.Adres).ToList();
-
                 foreach (var item in listToMod)
                 {
-                    int a = 13;
+                    item.Adres.BudynekId = item.BudynekId;
                     if (item.Adres != null)
-                    {
+                    {                       
                         if (item.Adres.MiejscowoscSloId == 0)
                         {
                             var adr = c.Adres.FirstOrDefault(r => r.AdresId == item.Adres.AdresId);
-
                             if (adr != null)
                                 c.Adres.Remove(adr);
                             else
                                 item.Adres = null;
-
                         }
-                        item.Dzialka_Budynek = null;
+                        else
+                        {
+                            c.Entry(item.Adres).CurrentValues.SetValues(item.Adres);
+                        }
+
+                        foreach (var item2 in item.Dzialka_Budynek)
+                        {
+                            item2.Dzialka = null;
+                        }                       
                     }
+
+                    c.Update( item);
                 }
-               
-                c.UpdateRange(listToMod);
                 c.SaveChanges();
-
-                //c.RemoveRange(toDelete);
-                //c.SaveChanges();
-                //int a = 13;
-
-
-                //c.UpdateRange(listToMod);
-                //c.SaveChanges();
-
-                //int DUPA = 13;
-
-                //var v = c.Budynek.Include(l => l.Adres).FirstOrDefault(r => r.BudynekId == 73);
-
-                //v.Adres = null;
-
-                //c.Update(v);
-                //c.SaveChanges();
-
             }
         }
 

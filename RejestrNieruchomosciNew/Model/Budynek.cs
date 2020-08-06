@@ -75,7 +75,6 @@ namespace RejestrNieruchomosciNew.Model
             Adres = budynek.Adres;
 
             Dzialka_Budynek = budynek.Dzialka_Budynek;
-            //AdresId = budynek.AdresId;
         }
 
         public object Clone()
@@ -136,6 +135,8 @@ namespace RejestrNieruchomosciNew.Model
                 int hash = HashingBase;
                 hash = (hash * HashingMultiplier) ^ ( BudynekId.GetHashCode() );
                 hash = (hash * HashingMultiplier) ^ ( Object.ReferenceEquals(null, Nazwa) ? 0: Nazwa.GetHashCode());
+
+                int a = 12;
                 return hash;
             }
         }

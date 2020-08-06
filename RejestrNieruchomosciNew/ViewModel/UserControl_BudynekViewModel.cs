@@ -19,10 +19,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public string budName
         {
             get { return _budName; }
-            set => Set( ref _budName, value);
-            
+            set => Set( ref _budName, value); 
         }
-
 
         private int? _gminaId;
 
@@ -32,6 +30,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _gminaId; }
             set => Set(ref _gminaId, value);
         }
+
+        private int _selDzialkaPrzylId;
+
+        public int selDzialkaPrzylId
+        {
+            get { return _selDzialkaPrzylId; }
+            set { Set ( ref _selDzialkaPrzylId, value); }
+        }
+
 
         private IAdresSloList _adresSloList;
 
@@ -129,14 +136,11 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _budList.getList(userPrev.dzialkaSel);
-
                 budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
-
                 if (userPrev.dzialkaSel.Obreb != null)
                 {
                     gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
-                    dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();
-                    
+                    dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();                 
                 }
             }
             
@@ -146,19 +150,18 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testBudynekSel()
         {
+
             if (budSel != null && budSel.Nazwa != null)
             {
                 if (budSel.Adres == null)
                     budSel.Adres = new Adres();
                
                 podmiotDetail = true;
-               
                 if (budSel.Dzialka_Budynek != null)
                 {
                     var newList = new IDzialka[] { (IDzialka)userPrev.dzialkaSel };
-                    var newBudList = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
-
-                    dzialkaListBud = new ObservableCollection<IDzialka>( newBudList.Except(newList));
+                    //var newBudList = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
+                    dzialkaListBud = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
                 }
 
                 budName = "*";
@@ -186,10 +189,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand dzialakBudynekAdd { get; set; }
         public ICommand dzialakBudynekCls { get; set; }
         public ICommand onTest { get; set; }
-
-        public string tekstRaf { get; set; } = "Rafałek";
-
-        #endregion
+        public ICommand dzialkaPrzylAdd { get; set; }
 
         private void initButtons()
         {
@@ -197,12 +197,36 @@ namespace RejestrNieruchomosciNew.ViewModel
             budynekDel = new RelayCommand(onBudynektDel);
             dzialakBudynekAdd = new RelayCommand(onDzialkaBudynekAdd);
             dzialakBudynekCls = new RelayCommand(onDzialkaBudynekCls);
-            onTest = new RelayCommand(onTestRaf);
+            dzialkaPrzylAdd = new RelayCommand(onDzialkaPrzylAdd);
         }
 
-        private void onTestRaf()
+        #endregion
+
+
+        private void onDzialkaPrzylAdd()
         {
-            MessageBox.Show(gminaId.ToString());
+            
+            if (testDzialkaPrzyl())
+            {
+                IDzialka d = dzialkaList.FirstOrDefault(r => r.DzialkaId == selDzialkaPrzylId);
+
+                if (d != null)
+                {
+                    budSel.Dzialka_Budynek.Add(new Dzialka_Budynek {
+                                                                       DzialkaId = d.DzialkaId
+                                                                     , Dzialka = (Dzialka)d
+                                                                     , Budynek = (Budynek)budSel
+                                                                    });
+                    dzialkaListBud.Add(d);
+                }
+                int a = 1;
+            }
+        }
+
+        private bool testDzialkaPrzyl()
+        {
+            bool result = dzialkaListBud.FirstOrDefault(r => r.DzialkaId == selDzialkaPrzylId) == null ? true : false;
+            return result;
         }
 
         private void onBudynektDel()
@@ -222,37 +246,31 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaBudynekAdd()
         {
-          
-
-            //foreach (var item in budListLok)
-            //{
-            //    if (item.Adres.MiejscowoscSloId == 0)
-            //        item.Adres = null;
-            //}
 
             budList.list = new ObservableCollection<IBudynek>(budListLok.Select(r => new Budynek(r)).ToList());
 
             budList.saveBudynki();
-        }
 
+        }
         private void onBudynekAdd()
         {
             if (string.IsNullOrEmpty(budynekName) == false)
                 if (testIfExist())
                 {
-                    Budynek bud = new Budynek() { Nazwa = budynekName };
+                    Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId,  Dzialka = (Dzialka)userPrev.dzialkaSel } } };
 
                     budListLok.Add(bud);
-                    budList.list.Add(bud);
-
+                  
                     budynekName = string.Empty;
                     budSel = null;
                 }
+
         }
 
         private bool testIfExist()
         {
-            return budList.list.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
+            return budListLok.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
+            //return budList.list.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
         }
 
 

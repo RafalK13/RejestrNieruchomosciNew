@@ -7,7 +7,7 @@
               xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-             d:DesignHeight="495" d:DesignWidth="948"
+             d:DesignHeight="495" d:DesignWidth="1009.5"
              Name="Budynek_Podst"
              >
     <UserControl.Resources>
@@ -28,7 +28,7 @@
             <ColumnDefinition Width="250" MinWidth="9" />
             <ColumnDefinition Width="200" MinWidth="9"  MaxWidth="200"/>
             <ColumnDefinition Width="300" MinWidth="9" />
-            <ColumnDefinition Width="200" MinWidth="9" />
+            <ColumnDefinition Width="250" MinWidth="9" />
             <ColumnDefinition Width="2*" MinWidth="9" />
         </Grid.ColumnDefinitions>
        
@@ -249,7 +249,7 @@
                 <conRaf:DataGridRafALL  Margin="10,26,10,0"
                                         x:Name="conRaf1"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
-
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Budynek.selDzialkaPrzylId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         itemSourceRafALL="{Binding Path=DataContext.userControl_Budynek.dzialkaList,  RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         fontSizeRafALL="14"
                                         heightRafALL="25"
@@ -271,7 +271,7 @@
                             Content="Dodaj"
                             Height="30"
                             Width="100"
-                            Command="{Binding userControl_Wlasciciel.podmiotAdd}" Grid.ColumnSpan="2"/>
+                            Command="{Binding userControl_Budynek.dzialkaPrzylAdd}" Grid.ColumnSpan="2"/>
                 <DataGrid 
                         VerticalAlignment="Top"
                         Height="200"

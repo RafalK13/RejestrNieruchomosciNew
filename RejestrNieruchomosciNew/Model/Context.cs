@@ -72,11 +72,21 @@ namespace RejestrNieruchomosciNew
                   .HasForeignKey("Adres", "DzialkaId")
                   .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Adres>()
-               .HasOne<Budynek>(a => a.Budynek)
-               .WithOne(a => a.Adres)
+            //modelBuilder.Entity<Adres>()
+            //   .HasOne<Budynek>(a => a.Budynek)
+            //   .WithOne(a => a.Adres)
+            //   .HasForeignKey("Adres", "BudynekId")
+            //   .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Budynek>()
+               .HasOne<Adres>(a => a.Adres)
+               .WithOne(a => a.Budynek)
                .HasForeignKey("Adres", "BudynekId")
                .OnDelete(DeleteBehavior.Cascade);
+
+
+
+
 
             //modelBuilder.Entity<MiejscowoscSlo>()
             //    .HasKey(km => km.MiejscowoscSYM);
