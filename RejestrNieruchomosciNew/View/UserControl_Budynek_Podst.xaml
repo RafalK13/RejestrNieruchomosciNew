@@ -277,6 +277,7 @@
                         Height="200"
                         Margin="3,130,10,0"
                         ItemsSource="{Binding userControl_Budynek.dzialkaListBud, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                     
+                        SelectedItem="{Binding userControl_BUdynek.dzialkaSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         AutoGenerateColumns="False"
                         >
                     <DataGrid.Columns>
@@ -302,7 +303,7 @@
                                             Content="x"                                                           
                                             Foreground="Red"
                                             BorderBrush="White"
-                                            Command="{Binding Path=DataContext.userControl_Wlasciciel.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                            Command="{Binding Path=DataContext.userControl_Budynek.dzilakaPrzylDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

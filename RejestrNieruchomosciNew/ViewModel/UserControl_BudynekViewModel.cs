@@ -1,6 +1,7 @@
 ﻿using Castle.Core;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
@@ -38,7 +39,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _selDzialkaPrzylId; }
             set { Set ( ref _selDzialkaPrzylId, value); }
         }
-
 
         private IAdresSloList _adresSloList;
 
@@ -125,22 +125,50 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public List<IDzialka> dzialkaList { get; set; }
 
+        private IDzialka _dzialkaSel;
+
+        public IDzialka dzialkaSel
+        {
+            get { return _dzialkaSel; }
+            set { Set(ref _dzialkaSel, value); }
+        }
+
+        
+
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
                                            IBudynkiList _budList)
         {
             initButtons();
+
+            dzialkaSel = userPrev.dzialkaSel;
 
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)
             {
                 //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-                _budList.getList(userPrev.dzialkaSel);
-                budListLok = new ObservableCollection<IBudynek>(_budList.list.Select(r => new Budynek(r)).ToList());
-                if (userPrev.dzialkaSel.Obreb != null)
+                _budList.getList( dzialkaSel);
+
+                using (var c = new Context())
                 {
-                    gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
-                    dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();                 
+                    budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
+                                                                             .Include(a => a.Adres)
+                                                                             .Where( r=>r.Dzialka_Budynek.FirstOrDefault(l=>l.DzialkaId == dzialkaSel.DzialkaId) != null)
+                                                                   );
+                }
+
+
+                if (dzialkaSel.Obreb != null)
+                {
+                    //gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
+                    //dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();
+
+                    using (var c = new Context())
+                    {
+                        gminaId = dzialkaSel.Obreb.GminaSloId;
+
+                        dzialkaList = c.Dzialka.Where(r => r.ObrebId == dzialkaSel.ObrebId).Select(r2=>(IDzialka)r2).ToList();
+                    }
                 }
             }
             
@@ -150,7 +178,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testBudynekSel()
         {
-
             if (budSel != null && budSel.Nazwa != null)
             {
                 if (budSel.Adres == null)
@@ -158,9 +185,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                
                 podmiotDetail = true;
                 if (budSel.Dzialka_Budynek != null)
-                {
-                    var newList = new IDzialka[] { (IDzialka)userPrev.dzialkaSel };
-                    //var newBudList = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
+                {                   
                     dzialkaListBud = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
                 }
 
@@ -190,6 +215,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand dzialakBudynekCls { get; set; }
         public ICommand onTest { get; set; }
         public ICommand dzialkaPrzylAdd { get; set; }
+        public ICommand dzilakaPrzylDel { get; set; }
 
         private void initButtons()
         {
@@ -198,14 +224,18 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzialakBudynekAdd = new RelayCommand(onDzialkaBudynekAdd);
             dzialakBudynekCls = new RelayCommand(onDzialkaBudynekCls);
             dzialkaPrzylAdd = new RelayCommand(onDzialkaPrzylAdd);
+            dzilakaPrzylDel = new RelayCommand(onDzialkaPrzylDel);
+        }
+
+        private void onDzialkaPrzylDel()
+        {
+            //dzialkaListBud.Remove(dzialkaSel);
         }
 
         #endregion
 
-
         private void onDzialkaPrzylAdd()
-        {
-            
+        {           
             if (testDzialkaPrzyl())
             {
                 IDzialka d = dzialkaList.FirstOrDefault(r => r.DzialkaId == selDzialkaPrzylId);
@@ -218,8 +248,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                                                                      , Budynek = (Budynek)budSel
                                                                     });
                     dzialkaListBud.Add(d);
-                }
-                int a = 1;
+                }             
             }
         }
 
@@ -247,11 +276,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onDzialkaBudynekAdd()
         {
 
-            budList.list = new ObservableCollection<IBudynek>(budListLok.Select(r => new Budynek(r)).ToList());
+            budList.list = budListLok;
 
             budList.saveBudynki();
 
         }
+
         private void onBudynekAdd()
         {
             if (string.IsNullOrEmpty(budynekName) == false)

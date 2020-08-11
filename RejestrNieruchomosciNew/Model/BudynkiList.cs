@@ -86,74 +86,12 @@ namespace RejestrNieruchomosciNew.Model
 
         public void saveBudynki()
         {
-            int e = 1;
-            foreach (var r in list)
-            {
-                if (listOrg.Contains(r))
-                    listOrg.Remove(r);
-                else
-                {
-                    if (listOrg.Exists(row => row.BudynekId == r.BudynekId) == true)
-                    {
-                        listToMod.Add(r);
-                        var rToDel = listOrg.Find(d => d.BudynekId == r.BudynekId);
-                        listOrg.Remove(rToDel);
-                    }
-                    else
-                    {
-                        listToAdd.Add((IBudynek)r.Clone());
-                    }
-                }
-            }
-            foreach (var row in listOrg)
-            {
-                listToDel.Add(row);
-            }
-
-            if (listToDel.Count() > 0)
-                DelRows();
-
-            if (listToAdd.Count() > 0)
-                AddRows();
-
-            if (listToMod.Count() > 0)
-                ModRows();
-
-
-            initListAll();
-            initList(dzialkaPrv);
-        }
-
-        public void AddRows()
-        {
             using (var c = new Context())
             {
-                foreach (var i in listToAdd)
+                foreach (var item in list)
                 {
-                    if (i.Adres != null)
-                    {
-                        i.Adres = (Adres)i.Adres.testAdres();
-                    }
-
-                    foreach (var item in i.Dzialka_Budynek)
-                    {
-                        item.Dzialka = null;
-                    }                
-                    c.Update(i);
-                }
-                c.SaveChanges();
-            }
-        }
-
-        public void ModRows()
-        {
-            using (var c = new Context())
-            {
-                foreach (var item in listToMod)
-                {
-                    item.Adres.BudynekId = item.BudynekId;
                     if (item.Adres != null)
-                    {                       
+                    {
                         if (item.Adres.MiejscowoscSloId == 0)
                         {
                             var adr = c.Adres.FirstOrDefault(r => r.AdresId == item.Adres.AdresId);
@@ -162,35 +100,16 @@ namespace RejestrNieruchomosciNew.Model
                             else
                                 item.Adres = null;
                         }
-                        else
-                        {
-                            c.Entry(item.Adres).CurrentValues.SetValues(item.Adres);
-                        }
-
-                        foreach (var item2 in item.Dzialka_Budynek)
-                        {
-                            item2.Dzialka = null;
-                        }                       
                     }
-
-                    c.Update( item);
                 }
+
+                c.UpdateRange( list);
                 c.SaveChanges();
             }
-        }
 
-        public void DelRows()
-        {
-            using (var c = new Context())
-            {
-                foreach (var i in listToDel)
-                {
-                    var v = c.Budynek.First(r => r.BudynekId == i.BudynekId);
-
-                    c.Budynek.Remove(v);
-                }
-                c.SaveChanges();
-            }
+            initListAll();
+            initList(dzialkaPrv);
         }
+      
     }
 }
