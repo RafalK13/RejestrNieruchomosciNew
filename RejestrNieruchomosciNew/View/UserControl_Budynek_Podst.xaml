@@ -277,7 +277,7 @@
                         Height="200"
                         Margin="3,130,10,0"
                         ItemsSource="{Binding userControl_Budynek.dzialkaListBud, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                     
-                        SelectedItem="{Binding userControl_BUdynek.dzialkaSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding userControl_Budynek.dzialkaPrzylSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         AutoGenerateColumns="False"
                         >
                     <DataGrid.Columns>
@@ -285,7 +285,6 @@
                                             Binding="{Binding Numer}"
                                             Width="*">
 
-                            
                             <!--<DataGridTextColumn.ElementStyle>
                                 <Style>
                                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

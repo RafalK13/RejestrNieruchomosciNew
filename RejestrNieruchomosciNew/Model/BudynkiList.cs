@@ -40,7 +40,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
+                    listAll = new ObservableCollection<IBudynek>(c.Budynek.AsNoTracking().Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                           .Include(a => a.Adres));
                 }
                 catch (Exception e)
@@ -101,8 +101,14 @@ namespace RejestrNieruchomosciNew.Model
                                 item.Adres = null;
                         }
                     }
-                }
+                    if (item.BudynekId >= 0)
+                    {
+                        var budAll = c.Dzialka_Budynek.AsNoTracking().Where(r => r.BudynekId == item.BudynekId).ToList();
+                        var budToDel = budAll.Except(item.Dzialka_Budynek);
 
+                        c.Dzialka_Budynek.RemoveRange( budToDel);                        
+                    }
+                }
                 c.UpdateRange( list);
                 c.SaveChanges();
             }
@@ -110,6 +116,5 @@ namespace RejestrNieruchomosciNew.Model
             initListAll();
             initList(dzialkaPrv);
         }
-      
     }
 }

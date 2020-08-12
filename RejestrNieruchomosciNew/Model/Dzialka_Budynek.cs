@@ -33,11 +33,49 @@ namespace RejestrNieruchomosciNew.Model
             return this.MemberwiseClone();
         }
 
-        bool IEquatable<IDzialka_Budynek>.Equals(IDzialka_Budynek other)
+        //public override  bool Equals(Object _other)
+        //{
+        //    IDzialka_Budynek other = _other as IDzialka_Budynek;
+
+        //    return DzialkaId.Equals(other.DzialkaId) &&
+        //           BudynekId.Equals(other.BudynekId);
+        //}
+
+        //public override int GetHashCode() => (DzialkaId, BudynekId).GetHashCode();
+
+        public override int GetHashCode()
         {
-            return DzialkaId.Equals(other.DzialkaId) &&
-                   BudynekId.Equals(other.BudynekId);
+            unchecked
+            {
+                const int HashingBase = (int)2166136261;
+                const int HashingMultiplier = 16777619;
+
+                int hash = HashingBase;
+                hash = (hash * HashingMultiplier) ^ (!Object.ReferenceEquals(null, DzialkaId) ? DzialkaId.GetHashCode() : 0);
+                hash = (hash * HashingMultiplier) ^ (!Object.ReferenceEquals(null, BudynekId) ? BudynekId.GetHashCode() : 0);
+                return hash;
+            }
+        }
+
+        public override bool Equals(object _other)
+        {
+            if (_other == null)
+            {
+                return false;
+            }
+
+            IDzialka_Budynek other = _other as IDzialka_Budynek;
+
+            if (other == null)
+            {
+                return false;
+            }
+
+            return DzialkaId == other.DzialkaId &&
+                   BudynekId == other.BudynekId;
+
         }
     }
 }
+
 

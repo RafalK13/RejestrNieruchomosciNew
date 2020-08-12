@@ -112,12 +112,25 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        //private List<IDzialka> _dzialkaListBud;
+        //public List<IDzialka> dzialkaListBud
+        //{
+        //    get => _dzialkaListBud;
+
+        //    set
+        //    {
+        //        _dzialkaListBud = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
         private ObservableCollection<IDzialka> _dzialkaListBud;
         public ObservableCollection<IDzialka> dzialkaListBud
         {
             get => _dzialkaListBud;
 
-            set {
+            set
+            {
                 _dzialkaListBud = value;
                 RaisePropertyChanged();
             }
@@ -126,14 +139,27 @@ namespace RejestrNieruchomosciNew.ViewModel
         public List<IDzialka> dzialkaList { get; set; }
 
         private IDzialka _dzialkaSel;
-
         public IDzialka dzialkaSel
         {
             get { return _dzialkaSel; }
             set { Set(ref _dzialkaSel, value); }
         }
 
-        
+        private IDzialka _dzialkaPrzylSel;
+        public IDzialka dzialkaPrzylSel
+        {
+            get { return _dzialkaPrzylSel; }
+            set { Set(ref _dzialkaPrzylSel, value); }
+        }
+
+        private List<IDzialka> _dzialkaIn;
+
+        public List<IDzialka> dzialkaIn
+        {
+            get { return _dzialkaIn; }
+            set { Set( ref _dzialkaIn, value);  }
+        }
+
 
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
                                            IBudynkiList _budList)
@@ -146,7 +172,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (userPrev.dzialkaSel != null)
             {
-                //dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
                 _budList.getList( dzialkaSel);
 
                 using (var c = new Context())
@@ -160,14 +185,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 if (dzialkaSel.Obreb != null)
                 {
-                    //gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
-                    //dzialkaList = userPrev.dzialkiList.list.Where(d => d.ObrebId == userPrev.dzialkaSel.ObrebId).ToList();
-
                     using (var c = new Context())
                     {
                         gminaId = dzialkaSel.Obreb.GminaSloId;
-
-                        dzialkaList = c.Dzialka.Where(r => r.ObrebId == dzialkaSel.ObrebId).Select(r2=>(IDzialka)r2).ToList();
+                        dzialkaIn = new List<IDzialka>(new Dzialka[] { (Dzialka)userPrev.dzialkaSel });
+                        dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
+                                      .Except( dzialkaIn).ToList();
                     }
                 }
             }
@@ -185,8 +208,12 @@ namespace RejestrNieruchomosciNew.ViewModel
                
                 podmiotDetail = true;
                 if (budSel.Dzialka_Budynek != null)
-                {                   
-                    dzialkaListBud = new ObservableCollection<IDzialka>( budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
+                {
+                    var dzialkaListBudAll = new List<IDzialka>(budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
+                    
+
+                     dzialkaListBud = new ObservableCollection<IDzialka>(  dzialkaListBudAll.Except(dzialkaIn).ToList());
+
                 }
 
                 budName = "*";
@@ -226,13 +253,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzialkaPrzylAdd = new RelayCommand(onDzialkaPrzylAdd);
             dzilakaPrzylDel = new RelayCommand(onDzialkaPrzylDel);
         }
+        #endregion
 
         private void onDzialkaPrzylDel()
         {
-            //dzialkaListBud.Remove(dzialkaSel);
-        }
+                var v = budSel.Dzialka_Budynek.FirstOrDefault(r => r.DzialkaId == dzialkaPrzylSel.DzialkaId && r.Budynek.BudynekId == budSel.BudynekId);
 
-        #endregion
+                budSel.Dzialka_Budynek.Remove(v);
+                dzialkaListBud.Remove(dzialkaPrzylSel);
+        }
 
         private void onDzialkaPrzylAdd()
         {           
