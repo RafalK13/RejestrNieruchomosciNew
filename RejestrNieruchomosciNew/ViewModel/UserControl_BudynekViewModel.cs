@@ -216,12 +216,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 }
 
-                budName = "*";
+                budName = string.Empty;
             }
             else
                 podmiotDetail = false;
 
-            budName = string.Empty;
+            budName = "*";
+            //budName = string.Empty;
         }
 
         private bool testWlascExist()
@@ -279,6 +280,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                     dzialkaListBud.Add(d);
                 }             
             }
+            budName = "*";
         }
 
         private bool testDzialkaPrzyl()
