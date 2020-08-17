@@ -15,6 +15,7 @@ namespace RejestrNieruchomosciNew.View
 {
     public partial class UserControl_Transakcja : UserControl
     {
+        #region Konstruktor
         public UserControl_Transakcja()
         {
             InitializeComponent();
@@ -22,9 +23,10 @@ namespace RejestrNieruchomosciNew.View
             clickAdd = new RelayCommand(onClickAdd);
             clickCls = new RelayCommand(onClickCls);
             clickMod = new RelayCommand(onClickMod);
-            //clickZal = new RelayCommand(onClickZalacznik);
         }
+        #endregion
 
+        #region zalPath
         public string zalPath
         {
             get { return (string)GetValue(zalPathProperty); }
@@ -33,6 +35,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty zalPathProperty =
             DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_Transakcja), new PropertyMetadata(null));
+        #endregion
 
         #region Transakcje
         public ITransakcje transakcje
@@ -140,7 +143,6 @@ namespace RejestrNieruchomosciNew.View
                 }
                 else
                 {
-                    int r = 13;
                     int selIdTrans = u.selectedIdTrans.Value;
                     u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == selIdTrans);
                     u.zalButton = true;
@@ -198,6 +200,13 @@ namespace RejestrNieruchomosciNew.View
         #endregion
 
         #region Buttons
+
+        #region ICommand
+        public ICommand clickAdd { get; set; }
+        public ICommand clickCls { get; set; }
+        public ICommand clickMod { get; set; }
+        #endregion
+
         #region clsDialog
         private void clsDialog()
         {
@@ -239,24 +248,6 @@ namespace RejestrNieruchomosciNew.View
 
             modButton = false;
         }
-
-        //public void onClickZalacznik()
-        //{
-        //    string zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\Transakcje\\" + transakcje.TransakcjeId;
-
-        //    //transakcje.Skan = zalPath;
-
-        //    DirectoryInfo dir = new DirectoryInfo(zalPath);
-        //    if (!dir.Exists)
-        //        dir.Create();
-
-        //    Process.Start(zalPath);
-        //}
-
-        public ICommand clickAdd { get; set; }
-        public ICommand clickCls { get; set; }
-        public ICommand clickMod { get; set; }
-        //public ICommand clickZal { get; set; }
         #endregion
 
         #region Slowniki

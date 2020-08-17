@@ -19,11 +19,142 @@ namespace RejestrNieruchomosciNew.View
             initButtons();
         }
 
-        #region Buttons
-        public ICommand clickAdd { get; set; }
-        public ICommand clickCls { get; set; }
-        public ICommand clickMod { get; set; }
-        public ICommand clickZal { get; set; }
+        public string zalPath
+        {
+            get { return (string)GetValue(zalPathProperty); }
+            set { SetValue(zalPathProperty, value); }
+        }
+
+        public static readonly DependencyProperty zalPathProperty =
+            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_DecyzjeAdmin));
+
+        #region DecyzjeAdminstracyjne
+        public DecyzjeAdministracyjne decyzjeAdmin
+        {
+            get { return (DecyzjeAdministracyjne)GetValue(decyzjeAdminProperty); }
+            set { SetValue(decyzjeAdminProperty, value); }
+        }
+
+        public static readonly DependencyProperty decyzjeAdminProperty =
+            DependencyProperty.Register("decyzjeAdmin", typeof(DecyzjeAdministracyjne), typeof(UserControl_DecyzjeAdmin));
+        #endregion
+
+        #region DecyzjeAdministracyjneList
+        public DecyzjeAdministracyjneList decyzjeAdminList
+        {
+            get { return (DecyzjeAdministracyjneList)GetValue(decyzjeAdminListProperty); }
+            set { SetValue(decyzjeAdminListProperty, value); }
+        }
+
+        public static readonly DependencyProperty decyzjeAdminListProperty =
+            DependencyProperty.Register("decyzjeAdminList", typeof(DecyzjeAdministracyjneList), typeof(UserControl_DecyzjeAdmin));
+        #endregion
+
+        #region DecyzjaAdministracyjne Numer
+        public string NumerDecAdmin
+        {
+            get { return (string)GetValue(NumerDecAdminProperty); }
+            set { SetValue(NumerDecAdminProperty, value); }
+        }
+
+        public static readonly DependencyProperty NumerDecAdminProperty =
+            DependencyProperty.Register("NumerDecAdmin", typeof(string), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(null, new PropertyChangedCallback(onNumerDecAdminChange)));
+
+        private static void onNumerDecAdminChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
+
+            if (u.NumerDecAdmin != null)
+            {
+                if (u.selectedIdDec > 0)
+                {
+                    u.addButtonDec = false;                 
+                    u.clsButtonDec = true;                   
+                }
+                else
+                {
+                    var v = u.decyzjeAdminList.list.FirstOrDefault(row => row.Numer == u.NumerDecAdmin);
+
+                    if (v != null)
+                    {
+                        u.addButtonDec = false;                       
+                        u.clsButtonDec = true;
+                    }
+                    else
+                    {
+                        //u.selectedIdDec = 0;
+                        u.addButtonDec = true;                       
+                        u.clsButtonDec = true;
+                    }
+                }
+            }
+            if (u.NumerDecAdmin == "")
+            {
+                u.selectedIdDec = null;
+                u.zalButtonDec = false;
+            }
+
+            //else
+            //{
+            //    u.selectedIdDec = null;
+            //    u.zalButtonDec = false;
+            //}
+        }
+        #endregion
+
+        #region SelectedIdDecyzje
+        public int? selectedIdDec
+        {
+            get { return (int?)GetValue(selectedIdDecProperty); }
+            set { SetValue(selectedIdDecProperty, value); }
+        }
+
+        public static readonly DependencyProperty selectedIdDecProperty =
+            DependencyProperty.Register("selectedIdDec", typeof(int?), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(0, onDecyzjeChenged));
+
+        private static void onDecyzjeChenged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+
+            UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
+            if (u.selectedIdDec != null)
+            {
+                if (u.selectedIdDec.Value <= 0)
+                {
+                    string s = u.NumerDecAdmin;
+                    u.decyzjeAdmin = new DecyzjeAdministracyjne();
+                    u.decyzjeAdmin.Numer = s;
+                    u.PodmiotNazwa = string.Empty;
+                    u.selectedIdDec = 0;
+                    u.addButtonDec = true;
+                    u.zalButtonDec = false;                   
+                }
+                else
+                {
+                    int selIdDec = u.selectedIdDec.Value;
+                    u.decyzjeAdmin = u.decyzjeAdminList.list.FirstOrDefault(row => row.DecyzjeAdministracyjneId == selIdDec);
+
+                    if (u.decyzjeAdmin.PodmiotId == 0 || u.decyzjeAdmin.PodmiotId == null)
+                        u.PodmiotNazwa = string.Empty;
+                    else
+                        u.PodmiotNazwa = u.podmiotList.list.FirstOrDefault(r => r.PodmiotId == u.decyzjeAdmin.PodmiotId).Name;
+
+                    u.decyzjeAdmin.onChange += u.DecyzjeAdmin_onChange;
+                }
+            }
+            else
+            {
+                u.decyzjeAdmin = new DecyzjeAdministracyjne();
+
+                u.selectedIdDec = null;
+                u.PodmiotNazwa = string.Empty;
+                u.NumerDecAdmin = string.Empty;
+                u.zalButtonDec = false;
+                u.modButtonDec = false;
+            }
+
+            u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\" + u.selectedIdDec;
+        }
+        #endregion
 
         #region Buttons Visibility
 
@@ -62,17 +193,17 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty zalButtonDecProperty =
             DependencyProperty.Register("zalButtonDec", typeof(bool), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(false));
-        
-        public string zalPath
-        {
-            get { return (string)GetValue(zalPathProperty); }
-            set { SetValue(zalPathProperty, value); }
-        }
 
-        public static readonly DependencyProperty zalPathProperty =
-            DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_DecyzjeAdmin));
-        
         #endregion
+
+        
+        #region Buttons
+        public ICommand clickAdd { get; set; }
+        public ICommand clickCls { get; set; }
+        public ICommand clickMod { get; set; }
+        public ICommand clickZal { get; set; }
+
+     
 
         private void initButtons()
         {
@@ -161,130 +292,17 @@ namespace RejestrNieruchomosciNew.View
             //    u.decyzjeAdmin.PodmiotId = null;
         }
 
-        public DecyzjeAdministracyjneList decyzjeAdminList
-        {
-            get { return (DecyzjeAdministracyjneList)GetValue(decyzjeAdminListProperty); }
-            set { SetValue(decyzjeAdminListProperty, value); }
-        }
+        
 
-        public static readonly DependencyProperty decyzjeAdminListProperty =
-            DependencyProperty.Register("decyzjeAdminList", typeof(DecyzjeAdministracyjneList), typeof(UserControl_DecyzjeAdmin));
+        
 
-        public string  NumerDecAdmin
-        {
-            get { return (string )GetValue(NumerDecAdminProperty); }
-            set { SetValue(NumerDecAdminProperty, value); }
-        }
+        
 
-        public static readonly DependencyProperty NumerDecAdminProperty =
-            DependencyProperty.Register("NumerDecAdmin", typeof(string ), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(null, new PropertyChangedCallback(onNumerDecAdminChange)));
-
-        private static void onNumerDecAdminChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
-
-            
-
-            if (u.NumerDecAdmin != null)
-            {
-                if (u.selectedIdDec > 0)
-                {
-                    u.addButtonDec = false;
-                    u.modButtonDec = false;
-                    u.clsButtonDec = true;
-                    u.zalButtonDec = true;
-                }
-                else
-                {
-                    var v = u.decyzjeAdminList.list.FirstOrDefault(row => row.Numer == u.NumerDecAdmin);
-
-                    if (v != null)
-                    {
-                        u.addButtonDec = false;
-                        u.modButtonDec = true;
-                        u.clsButtonDec = true;
-                    }
-                    else
-                    {
-                        u.selectedIdDec = 0;
-                        u.addButtonDec = true;
-                        u.modButtonDec = false;
-                        u.clsButtonDec = true;
-                    }
-                }
-            }
-            else
-            {
-                u.selectedIdDec = null;
-                u.zalButtonDec = false;
-            }
-        }
-
-        public DecyzjeAdministracyjne decyzjeAdmin
-        {
-            get { return (DecyzjeAdministracyjne)GetValue(decyzjeAdminProperty); }
-            set { SetValue(decyzjeAdminProperty, value); }
-        }
-
-        public static readonly DependencyProperty decyzjeAdminProperty =
-            DependencyProperty.Register("decyzjeAdmin", typeof(DecyzjeAdministracyjne), typeof(UserControl_DecyzjeAdmin));
-
-        public int? selectedIdDec
-        {
-            get { return (int?)GetValue(selectedIdDecProperty); }
-            set { SetValue(selectedIdDecProperty, value); }
-        }
-         
-        public static readonly DependencyProperty selectedIdDecProperty =
-            DependencyProperty.Register("selectedIdDec", typeof(int?), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(0, onDecyzjeChenged));
-
-        private static void onDecyzjeChenged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-
-            UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
-            if (u.selectedIdDec != null)
-            {
-                if (u.selectedIdDec.Value <= 0)
-                {
-                    string s = u.NumerDecAdmin;
-                    u.decyzjeAdmin = new DecyzjeAdministracyjne();
-                    u.decyzjeAdmin.Numer = s;
-                    u.PodmiotNazwa = string.Empty;
-                    u.selectedIdDec = 0;
-                    u.addButtonDec = true;
-                    u.zalButtonDec = false;
-                    u.modButtonDec = false;
-                }
-                else
-                {
-                    int selIdDec = u.selectedIdDec.Value;
-                    u.decyzjeAdmin = u.decyzjeAdminList.list.FirstOrDefault(row => row.DecyzjeAdministracyjneId == selIdDec);
-                   
-                    if (u.decyzjeAdmin.PodmiotId == 0 || u.decyzjeAdmin.PodmiotId == null)
-                        u.PodmiotNazwa = string.Empty;
-                    else
-                        u.PodmiotNazwa = u.podmiotList.list.FirstOrDefault(r => r.PodmiotId == u.decyzjeAdmin.PodmiotId).Name;
-
-                    u.decyzjeAdmin.onChange += u.DecyzjeAdmin_onChange;
-                }
-            }
-            else
-            {
-                u.decyzjeAdmin = new DecyzjeAdministracyjne();
-
-                u.selectedIdDec = null;
-                u.PodmiotNazwa = string.Empty;
-                u.NumerDecAdmin = string.Empty;
-                u.zalButtonDec = false;
-                u.modButtonDec = false;
-            }
-
-            u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\" + u.selectedIdDec;
-        }
+        
 
         private void DecyzjeAdmin_onChange(object sender, EventArgs e)
         {
-            modButtonDec = true;
+            modButtonDec = false;
         }
        
         private void userControlDataGridRafALL_Loaded(object sender, RoutedEventArgs e)
