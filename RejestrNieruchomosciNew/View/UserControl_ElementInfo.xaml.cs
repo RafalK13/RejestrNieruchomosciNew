@@ -67,10 +67,20 @@ namespace RejestrNieruchomosciNew.View
         public static readonly DependencyProperty pathZalProperty =
             DependencyProperty.Register("pathZal", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(null, new PropertyChangedCallback( onChangePath)));
 
+        private bool checkIfFiles(string path)
+        {
+            if (Directory.Exists(path) == false)
+                return false;
+            if (Directory.GetFiles( path).FirstOrDefault() == null)        
+                return false;
+
+            return true;
+        }
+
         private static void onChangePath(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_ElementInfo u = d as UserControl_ElementInfo;
-            if (Directory.Exists(u.pathZal) == false)
+            if (u.checkIfFiles(u.pathZal) == false)
             {
                 u.buttonOpis = "Empty";
                 u.buttonEnabled = false;

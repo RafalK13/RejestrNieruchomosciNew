@@ -82,8 +82,7 @@ namespace RejestrNieruchomosciNew.View
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Transakcja u = d as UserControl_Transakcja;
-            int r = 13;
-            if (u.numerTrans != null)
+              if (u.numerTrans != null)
             {
                 if (u.selectedIdTrans > 0)
                 {
@@ -132,7 +131,6 @@ namespace RejestrNieruchomosciNew.View
             {
                 if (u.selectedIdTrans.Value <= 0)
                 {
-                    int r = 13;
                     string s = u.numerTrans;
                     u.transakcje = new Transakcje();
                     u.transakcje.Numer = s;

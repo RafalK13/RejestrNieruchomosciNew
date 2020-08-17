@@ -4,6 +4,7 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _innePrawaSel = value;
+
+                decAdmiPath = pathAdmin + innePrawaSel?.DecyzjeAdministracyjneId;
+
                 RaisePropertyChanged();
             }
         }
+
+        public string  pathAdmin { get; set; }
 
         private UserControl_PreviewViewModel _prev;
         public UserControl_PreviewViewModel prev
@@ -56,20 +62,38 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private string _decAdmiPath;
+
+        public string decAdmiPath
+        {
+            get {
+               
+                return _decAdmiPath; }
+            set {
+               
+                _decAdmiPath = value;
+                RaisePropertyChanged();
+            }
+        }
+        //DecyzjeAdministracyjneId
+
         private void Prev_zmianaDzialkaSel(object sender, System.EventArgs e)
         {
             if (prev != null)
             {
                 innePrawaList.getList(prev.dzialkaSel);
-
-                int r = 13;
+                
             }
         }
 
+        #region Konstruktor
         public UserControl_InfoInnePrawaViewModel()
         {
             onClick = new RelayCommand(onClickSkan);
+            pathAdmin = ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\";
+            //MessageBox.Show(ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\" + innePrawaSel.DecyzjeAdministracyjneId);
         }
+        #endregion
 
         private void onClickSkan()
         {

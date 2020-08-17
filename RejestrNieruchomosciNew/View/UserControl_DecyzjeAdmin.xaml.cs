@@ -16,7 +16,6 @@ namespace RejestrNieruchomosciNew.View
         {
             InitializeComponent();
             DataContext = this;
-
             initButtons();
         }
 
@@ -109,6 +108,7 @@ namespace RejestrNieruchomosciNew.View
             selectedIdDec =decyzjeAdmin.DecyzjeAdministracyjneId;
 
             addButtonDec = false;
+            zalButtonDec = true;
         }
 
         private void onClickMod()
@@ -182,7 +182,9 @@ namespace RejestrNieruchomosciNew.View
         private static void onNumerDecAdminChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
+
             
+
             if (u.NumerDecAdmin != null)
             {
                 if (u.selectedIdDec > 0)
@@ -190,6 +192,7 @@ namespace RejestrNieruchomosciNew.View
                     u.addButtonDec = false;
                     u.modButtonDec = false;
                     u.clsButtonDec = true;
+                    u.zalButtonDec = true;
                 }
                 else
                 {
@@ -211,7 +214,10 @@ namespace RejestrNieruchomosciNew.View
                 }
             }
             else
+            {
                 u.selectedIdDec = null;
+                u.zalButtonDec = false;
+            }
         }
 
         public DecyzjeAdministracyjne decyzjeAdmin
@@ -234,6 +240,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onDecyzjeChenged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+
             UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
             if (u.selectedIdDec != null)
             {
@@ -246,6 +253,7 @@ namespace RejestrNieruchomosciNew.View
                     u.selectedIdDec = 0;
                     u.addButtonDec = true;
                     u.zalButtonDec = false;
+                    u.modButtonDec = false;
                 }
                 else
                 {
@@ -267,6 +275,8 @@ namespace RejestrNieruchomosciNew.View
                 u.selectedIdDec = null;
                 u.PodmiotNazwa = string.Empty;
                 u.NumerDecAdmin = string.Empty;
+                u.zalButtonDec = false;
+                u.modButtonDec = false;
             }
 
             u.zalPath = ConfigurationManager.AppSettings["zalacznikPath"] + "\\DezyzjeAdministracyjne\\" + u.selectedIdDec;

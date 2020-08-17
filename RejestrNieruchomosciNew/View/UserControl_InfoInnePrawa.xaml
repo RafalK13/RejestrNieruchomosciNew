@@ -87,7 +87,7 @@
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
@@ -265,10 +265,10 @@
 
                 <view:UserControl_ElementInfo
                  Grid.Row="6" Grid.Column="1"
-                Style="{StaticResource userInfo}"
-                Margin="0,1,0,1"
-                labelRaf="Data"
-                tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.ProtPrzejData, ElementName=infoInnePrawa, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+                 Style="{StaticResource userInfo}"
+                 Margin="0,1,0,1"
+                 labelRaf="Data"
+                 tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.ProtPrzejData, ElementName=infoInnePrawa, StringFormat='{}{0:dd.MM.yyyy}'}"/>
 
                 <view:UserControl_ElementInfo
                 Grid.Row="7" Grid.Column="1"
@@ -278,6 +278,7 @@
                 buttonVisibility="Visible"
                 IsHitTestVisible="True"
                 pathZal="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.ProtPrzejPath, ElementName=infoInnePrawa}"/>
+                
 
                 <Label Grid.Row="8" Grid.Column="1"
                 Style="{StaticResource labelRaf}"
@@ -361,7 +362,7 @@
                 Content="Przedmiot"
                 />
                 <TextBox Grid.Row="5" Grid.Column="2"
-                         Margin="5,0,10,0"
+                         Margin="5,0,0,0"
                          Grid.RowSpan="3"
                          TextWrapping="Wrap"
                          IsReadOnly="True"
@@ -375,8 +376,8 @@
                         labelRaf="Skan"
                         buttonVisibility="Visible"
                         IsHitTestVisible="True"
-                        pathZal="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.ProtPrzejPath, ElementName=infoInnePrawa}"/>
-
+                        pathZal="{Binding Path=DataContext.infoMain.infoInnePrawa.decAdmiPath, ElementName=infoInnePrawa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        
                 <Label  Grid.Row="9" Grid.Column="3"
                         Style="{StaticResource labelRaf}"
                         Content="Płatność w tytułu innego prawa"/>

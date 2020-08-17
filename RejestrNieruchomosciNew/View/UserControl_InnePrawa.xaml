@@ -132,7 +132,7 @@
                         VerticalAlignment="Top"
                         Margin="3,100,10,0"
                         ItemsSource="{Binding userControl_InnePrawa.inneListLok, Mode=TwoWay}"
-                        SelectedItem="{Binding userControl_InnePrawa.innePrawaSel, Mode=TwoWay}"
+                        SelectedItem="{Binding userControl_InnePrawa.innePrawaSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         CanUserSortColumns="False"
                         FrozenColumnCount="1" 
                         IsReadOnly="True"
