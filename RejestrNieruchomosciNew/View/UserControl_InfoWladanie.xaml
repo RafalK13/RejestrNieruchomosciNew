@@ -165,7 +165,7 @@
                         labelRaf="Nazwa czynności"> 
                         <view:UserControl_ElementInfo.tekstRaf>
                             <MultiBinding Converter="{StaticResource slowConvert}">
-                                <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
+                            <Binding Path="DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.NazwaCzynnosciSloId"
                                          ElementName="InfoWlasciciel"/>
                                 <Binding Path="DataContext.infoMain.infoWlad.nazwaCzynList.list"
                                          ElementName="InfoWlasciciel"/>

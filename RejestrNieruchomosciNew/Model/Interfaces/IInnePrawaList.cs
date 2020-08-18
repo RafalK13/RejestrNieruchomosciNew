@@ -9,5 +9,6 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         void save();
 
         void getList(IDzialka dzialkaSel);
+
     }
 }

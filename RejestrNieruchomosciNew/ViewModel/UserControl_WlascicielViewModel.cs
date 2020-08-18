@@ -72,7 +72,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (wladanieSel != null)
             {
-                if(wladanieSel.DzialkaId != null)
+                if (wladanieSel.DzialkaId != null)
                     podmiotDetail = true;
             }
             else

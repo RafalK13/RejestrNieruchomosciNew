@@ -106,7 +106,7 @@ namespace RejestrNieruchomosciNew.Model
                     onChange(this, EventArgs.Empty);
             }
         }
-        //private string _Skan;
+       
         public string Skan
         {
             get
@@ -144,19 +144,23 @@ namespace RejestrNieruchomosciNew.Model
         [InverseProperty("TransakcjeS_Wlad")]
         public ICollection<Wladanie> TransakcjeS_Wlad { get; set; }
 
+        public object clone() {
+            return this.MemberwiseClone();
+        }
+
+        public bool Equals(ITransakcje other)
+        {
+            ITransakcje t = other as ITransakcje;
+
+            if(other == null)
+                return false;
+
+            if (t == null)
+                return false;
+
+            return TransakcjeId == t.TransakcjeId;
+        }
+
         public event EventHandler onChange;
-
-        //public virtual void Transakcje_onChange(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //public Transakcje()
-        //{
-        //    onChange += Transakcje_onChange;
-        //}
-
-
-
     }
 }

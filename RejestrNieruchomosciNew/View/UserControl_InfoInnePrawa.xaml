@@ -117,7 +117,6 @@
                     <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
 
-
                 <Label Grid.Row="0"
                 Style="{StaticResource labelRaf}"
                 Content="Rodzaj innego prawa"
@@ -183,8 +182,6 @@
                 buttonVisibility="Visible"
                 IsHitTestVisible="True"
                 pathZal="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Skan, ElementName=infoInnePrawa}"/>
-           <!--pathZal="{Binding  Path=DataContext.infoMain.infoWlad.wladanieSel.TransakcjeK_Wlad.Skan, ElementName=InfoWlasciciel}"/>-->
-
 
                 <Label Grid.Row="8" Grid.Column="0"
                 Style="{StaticResource labelRaf}"

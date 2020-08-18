@@ -247,10 +247,10 @@
                                    Style="{StaticResource label}"/>
                         <Grid Panel.ZIndex="1" Margin="0,0,10,0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="113"/>
                                 <ColumnDefinition Width="3"/>
-                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition/>
 
 
                             </Grid.ColumnDefinitions>
@@ -332,6 +332,7 @@
                                        selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransK_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
+                                       collectionToRealod="{Binding Path=DataContext.userControl_Wlasciciel.wladanieList, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 />
 
                             <Label Grid.Column="3" Grid.Row="8"
@@ -375,7 +376,7 @@
                                        selectedIdTrans="{Binding Path=DataContext.userControl_Wlasciciel.wladanieSel.TransS_Id, ElementName=WladanieWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        rodzDokSlo="{Binding Path=DataContext.userControl_Wlasciciel.rodzDokSlo, ElementName=WladanieWin}" 
                                        nazwaCzynSlo="{Binding Path=DataContext.userControl_Wlasciciel.nazwaCzynSlo, ElementName=WladanieWin}" 
-                             />
+                            />
 
 
                         </Grid>

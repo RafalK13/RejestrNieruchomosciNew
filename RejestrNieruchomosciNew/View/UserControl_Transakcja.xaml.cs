@@ -26,6 +26,17 @@ namespace RejestrNieruchomosciNew.View
         }
         #endregion
 
+        #region CollectionToReload
+        public object collectionToRealod
+        {
+            get { return (object)GetValue(collectionToRealodProperty); }
+            set { SetValue(collectionToRealodProperty, value); }
+        }
+
+        public static readonly DependencyProperty collectionToRealodProperty =
+            DependencyProperty.Register("collectionToRealod", typeof(object), typeof(UserControl_Transakcja));
+        #endregion
+
         #region zalPath
         public string zalPath
         {
@@ -84,8 +95,9 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            int ddd = 13;
             UserControl_Transakcja u = d as UserControl_Transakcja;
-              if (u.numerTrans != null)
+            if (string.IsNullOrEmpty( u.numerTrans) == false )
             {
                 if (u.selectedIdTrans > 0)
                 {
@@ -111,6 +123,7 @@ namespace RejestrNieruchomosciNew.View
             if (u.numerTrans == "")
             {
                 u.selectedIdTrans = null;
+                u.addButton = false;
                 u.zalButton = false;
             }
 
@@ -130,6 +143,8 @@ namespace RejestrNieruchomosciNew.View
         private static void onSelectedIdTransChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_Transakcja u = d as UserControl_Transakcja;
+
+            //MessageBox.Show(u.selectedIdTrans.ToString());
             if (u.selectedIdTrans != null)
             {
                 if (u.selectedIdTrans.Value <= 0)
@@ -138,13 +153,12 @@ namespace RejestrNieruchomosciNew.View
                     u.transakcje = new Transakcje();
                     u.transakcje.Numer = s;
                     u.selectedIdTrans = 0;
-                    u.addButton = true;
                     u.zalButton = false;
                 }
                 else
                 {
                     int selIdTrans = u.selectedIdTrans.Value;
-                    u.transakcje = u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == selIdTrans);
+                    u.transakcje = (ITransakcje)u.itemSourceTrans.FirstOrDefault(row => row.TransakcjeId == selIdTrans).clone();
                     u.zalButton = true;
                     u.transakcje.onChange += u.Transakcje_onChange;
                 }
@@ -245,6 +259,18 @@ namespace RejestrNieruchomosciNew.View
             transakcje.Numer = numerTrans;
 
             transList.ModRow(transakcje);
+            //transList.list();
+            transList.initList();
+            itemSourceTrans = transList.list;
+
+            WladanieList wlad = collectionToRealod as WladanieList;
+            if (wlad != null)
+                wlad.initListAll();
+
+            InnePrawaList innePrawa = collectionToRealod as InnePrawaList;
+            if (innePrawa != null)
+                innePrawa.initListAll();
+
 
             modButton = false;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface ITransakcje
+    public interface ITransakcje : IEquatable<ITransakcje>
     {
         int? TransakcjeId { get; set; }
         int? RodzajTransakcjiSloId { get; set; }
@@ -18,7 +18,9 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         string Tytul { get; set; }
         //string Skan { get; set; }
         string Skan { get; }
-        DateTime? WpisDoKW {get; set;} 
+        DateTime? WpisDoKW {get; set;}
+
+        object clone();
 
         event EventHandler onChange;
         

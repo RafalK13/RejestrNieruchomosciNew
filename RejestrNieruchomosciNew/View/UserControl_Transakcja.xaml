@@ -87,7 +87,7 @@
         <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button
                  Command="{Binding clickAdd}"
-                 IsEnabled="{Binding addButton}"
+                 IsEnabled="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Content="Dodaj"
                  MaxWidth="100" 
                  

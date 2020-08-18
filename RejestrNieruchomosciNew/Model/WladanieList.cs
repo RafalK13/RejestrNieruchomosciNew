@@ -46,34 +46,21 @@ namespace RejestrNieruchomosciNew.Model
                     MessageBox.Show($"WladanieList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
-                #region Old version
-                //list = new ObservableCollection<IWladanie>(c.Wladanie.Where(r => r.DzialkaId == userPrev.dzialkaSel.DzialkaId
-                //                                                                                      && r.TransS_Id == null)
-                //                                                            );
-                //listOrg = ObservableCon<IWladanie>.ObservableToList(list);
-
-                //listToAdd = new List<IWladanie>();
-                //listToMod = new List<IWladanie>();
-                //listToDel = new List<IWladanie>();
-                //result = string.Empty;
-                #endregion
             }
         }
 
         private void initList(IDzialka dzialka)
         {
-            int rr = 1;
-
             if (dzialka != null)
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
-                                                                                     && r.TransS_Id == null).ToList());
+                                                                           && r.TransS_Id == null).ToList());
 
-                listOrg = ObservableCon<IWladanie>.ObservableToList(list);
+            listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
-                listToAdd = new List<IWladanie>();
-                listToMod = new List<IWladanie>();
-                listToDel = new List<IWladanie>();
-                result = string.Empty;
+            listToAdd = new List<IWladanie>();
+            listToMod = new List<IWladanie>();
+            listToDel = new List<IWladanie>();
+            result = string.Empty;
         }
 
         public WladanieList()
@@ -82,13 +69,11 @@ namespace RejestrNieruchomosciNew.Model
             //MessageBox.Show("1");
 
             list = new ObservableCollection<IWladanie>();
-            
+
         }
 
         public WladanieList(UserControl_PreviewViewModel userPrev)
         {
-            int r = 2;
-            //MessageBox.Show("2");
 
             list = new ObservableCollection<IWladanie>();
             if (userPrev.dzialkaSel != null)
@@ -97,13 +82,13 @@ namespace RejestrNieruchomosciNew.Model
 
         public void getList(IDzialka dzialkaSel)
         {
-            int r =-13;
+            int r = -13;
             dzialkaPrv = dzialkaSel;
 
             initList(dzialkaPrv);
         }
 
-        public void saveWladanie( )
+        public void saveWladanie()
         {
             foreach (var r in list)
             {

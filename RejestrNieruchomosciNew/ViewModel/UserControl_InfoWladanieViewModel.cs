@@ -1,9 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -20,11 +22,42 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IWladanie wladanieSel
         {
             get => _wladanieSel;
-            set {
+            set
+            {
                 _wladanieSel = value;
+                //getWladanieSel();
                 RaisePropertyChanged();
             }
         }
+
+        //private IWladanie _wlad;
+
+        //public IWladanie wlad
+        //{
+        //    get { return _wlad; }
+        //    set { Set( ref _wlad, value); }
+        //}
+
+
+        //private void getWladanieSel()
+        //{
+        //    if(wladanieSel != null)
+        //    using (Context c = new Context())
+        //    {
+        //        try
+        //        {
+        //            wlad = c.Wladanie.AsNoTracking().Include(f => f.FormaWladaniaSlo)
+        //                                            .Include(t => t.TransakcjeK_Wlad)
+        //                                            .FirstOrDefault(r => r.WladanieId == wladanieSel.WladanieId && r.TransS_Id == null);
+                    
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            MessageBox.Show($"WladanieList\r\n{e.Message}");
+        //            Environment.Exit(0);
+        //        }
+        //    }
+        //}
 
         private UserControl_PreviewViewModel _prev;
         public UserControl_PreviewViewModel prev
@@ -60,22 +93,5 @@ namespace RejestrNieruchomosciNew.ViewModel
         public UserControl_InfoWladanieViewModel()
         {
         }
-
-        //public IViewFactory factory { get; set; }
-
-        //public IWindow_Factory zal { get; set; }
-        //public IWindow_ZalacznikViewModel viewModel { get; set; }
-
-        //private void onClickSkan()
-        //{
-
-        //    viewModel = zal.create( "Rafałek13");
-        //    Window view = factory.CreateView<Window_Zalacznik>();
-        //    view.DataContext = viewModel;
-
-        //    view.ShowDialog();
-        //    zal.relase(viewModel);
-
-        //}
     }
 }

@@ -25,7 +25,7 @@ namespace RejestrNieruchomosciNew.Model
             initList();
         }
 
-        private void initList()
+        public void initList()
         {
             using (Context c = new Context())
             {
@@ -57,6 +57,8 @@ namespace RejestrNieruchomosciNew.Model
                 c.Transakcje.Update((Transakcje)modTrans);
                 c.SaveChanges();
             }
+            //int indedks = list.IndexOf(modTrans);
+            //list[indedks] = (ITransakcje)modTrans.clone();
         }
 
         public void DelRow(IWladanie wlad) { }

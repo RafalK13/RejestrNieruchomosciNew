@@ -12,13 +12,31 @@ namespace RejestrNieruchomosciNew.View
 {
     public partial class UserControl_DecyzjeAdmin : UserControl
     {
+
+        #region Konstruktor
         public UserControl_DecyzjeAdmin()
         {
             InitializeComponent();
             DataContext = this;
             initButtons();
         }
+        #endregion
 
+        #region CollectionToReloadDec
+
+        public object collectionToRealodDec
+        {
+            get { return (object)GetValue(collectionToRealodDecProperty); }
+            set { SetValue(collectionToRealodDecProperty, value); }
+        }
+
+        public static readonly DependencyProperty collectionToRealodDecProperty =
+            DependencyProperty.Register("collectionToRealodDec", typeof(object), typeof(UserControl_DecyzjeAdmin));
+
+
+        #endregion
+
+        #region zalPath
         public string zalPath
         {
             get { return (string)GetValue(zalPathProperty); }
@@ -27,6 +45,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty zalPathProperty =
             DependencyProperty.Register("zalPath", typeof(string), typeof(UserControl_DecyzjeAdmin));
+        #endregion
 
         #region DecyzjeAdminstracyjne
         public DecyzjeAdministracyjne decyzjeAdmin
@@ -64,12 +83,12 @@ namespace RejestrNieruchomosciNew.View
         {
             UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
 
-            if (u.NumerDecAdmin != null)
+            if (string.IsNullOrEmpty(u.NumerDecAdmin) == false)
             {
                 if (u.selectedIdDec > 0)
                 {
-                    u.addButtonDec = false;                 
-                    u.clsButtonDec = true;                   
+                    u.addButtonDec = false;
+                    u.clsButtonDec = true;
                 }
                 else
                 {
@@ -77,13 +96,13 @@ namespace RejestrNieruchomosciNew.View
 
                     if (v != null)
                     {
-                        u.addButtonDec = false;                       
+                        u.addButtonDec = false;
                         u.clsButtonDec = true;
                     }
                     else
                     {
                         //u.selectedIdDec = 0;
-                        u.addButtonDec = true;                       
+                        u.addButtonDec = true;
                         u.clsButtonDec = true;
                     }
                 }
@@ -91,6 +110,7 @@ namespace RejestrNieruchomosciNew.View
             if (u.NumerDecAdmin == "")
             {
                 u.selectedIdDec = null;
+                u.addButtonDec = false;
                 u.zalButtonDec = false;
             }
 
@@ -125,8 +145,7 @@ namespace RejestrNieruchomosciNew.View
                     u.decyzjeAdmin.Numer = s;
                     u.PodmiotNazwa = string.Empty;
                     u.selectedIdDec = 0;
-                    u.addButtonDec = true;
-                    u.zalButtonDec = false;                   
+                    u.zalButtonDec = false;
                 }
                 else
                 {
@@ -138,6 +157,7 @@ namespace RejestrNieruchomosciNew.View
                     else
                         u.PodmiotNazwa = u.podmiotList.list.FirstOrDefault(r => r.PodmiotId == u.decyzjeAdmin.PodmiotId).Name;
 
+                    u.zalButtonDec = true;
                     u.decyzjeAdmin.onChange += u.DecyzjeAdmin_onChange;
                 }
             }
@@ -196,14 +216,11 @@ namespace RejestrNieruchomosciNew.View
 
         #endregion
 
-        
         #region Buttons
         public ICommand clickAdd { get; set; }
         public ICommand clickCls { get; set; }
         public ICommand clickMod { get; set; }
         public ICommand clickZal { get; set; }
-
-     
 
         private void initButtons()
         {
@@ -236,7 +253,7 @@ namespace RejestrNieruchomosciNew.View
             userControlDataGridRafALLDec.initItemSourceList();
 
             decyzjeAdmin = decyzjeAdminList.list.FirstOrDefault(row => row.Numer == NumerDecAdmin);
-            selectedIdDec =decyzjeAdmin.DecyzjeAdministracyjneId;
+            selectedIdDec = decyzjeAdmin.DecyzjeAdministracyjneId;
 
             addButtonDec = false;
             zalButtonDec = true;
@@ -249,9 +266,15 @@ namespace RejestrNieruchomosciNew.View
             decyzjeAdminList.ModRow(decyzjeAdmin);
 
             modButtonDec = false;
+
+            InnePrawaList innePrawa = collectionToRealodDec as InnePrawaList;
+            if (innePrawa != null)
+                innePrawa.initListAll();
+
         }
         #endregion
-        
+
+        #region Podmiot
         public IPodmiotList podmiotList
         {
             get { return (IPodmiotList)GetValue(podmiotListProperty); }
@@ -269,7 +292,7 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty PodmiotNazwaProperty =
             DependencyProperty.Register("PodmiotNazwa", typeof(string), typeof(UserControl_DecyzjeAdmin));
-        
+
         public int? selectedIdPodm
         {
             get { return (int?)GetValue(selectedIdPodmProperty); }
@@ -277,14 +300,14 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty selectedIdPodmProperty =
-            DependencyProperty.Register("selectedIdPodm", typeof(int?), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata( onPodmiotChanged));
+            DependencyProperty.Register("selectedIdPodm", typeof(int?), typeof(UserControl_DecyzjeAdmin), new PropertyMetadata(onPodmiotChanged));
 
         private static void onPodmiotChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             UserControl_DecyzjeAdmin u = d as UserControl_DecyzjeAdmin;
 
             //if (u.decyzjeAdmin.PodmiotId > 0)
-            if( u.decyzjeAdmin != null)
+            if (u.decyzjeAdmin != null)
             {
                 u.decyzjeAdmin.PodmiotId = u.selectedIdPodm;
             }
@@ -292,32 +315,29 @@ namespace RejestrNieruchomosciNew.View
             //    u.decyzjeAdmin.PodmiotId = null;
         }
 
-        
+        #endregion
 
-        
-
-        
-
-        
+        #region Events
 
         private void DecyzjeAdmin_onChange(object sender, EventArgs e)
         {
-            modButtonDec = false;
+            modButtonDec = true;
         }
-       
+
         private void userControlDataGridRafALL_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
         #region clsDialog
         private void clsDialog()
         {
             decyzjeAdmin = new DecyzjeAdministracyjne();
 
-            selectedIdDec= null;
+            selectedIdDec = null;
             NumerDecAdmin = string.Empty;
             PodmiotNazwa = string.Empty;
         }
+        #endregion
         #endregion
     }
 }

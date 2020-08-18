@@ -34,7 +34,7 @@ namespace RejestrNieruchomosciNew.Model
         public string result;
         private IDzialka dzialkaPrv;
 
-        private void initListAll()
+        public void initListAll()
         {
             using (Context c = new Context())
             {
@@ -55,12 +55,10 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         private void initList(IDzialka dzialka)
-        {
+        {            
             if (dzialka != null)
                 list = new ObservableCollection<IInnePrawa>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
-                                                                                     && r.TransS_Id == null)
-                                                                                     .ToList());
-           
+                                                                             && r.TransS_Id == null).ToList());
             listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
             listToAdd = new List<IInnePrawa>();
@@ -75,18 +73,6 @@ namespace RejestrNieruchomosciNew.Model
             list = new ObservableCollection<IInnePrawa>();
             initListAll();
         }
-
-        //public InnePrawaList(UserControl_PreviewViewModel userPrev)
-        //{
-        //    //MessageBox.Show("2");
-        //    list = new ObservableCollection<IInnePrawa>();
-        //    int r = 15;
-        //    if ( listAll == null)
-        //        initListAll();
-        //    else
-        //        initList(userPrev.dzialkaSel);
-
-        //}
 
         public void getList(IDzialka dzialkaSel)
         {
