@@ -7,6 +7,37 @@ using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class oneRoomConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            int ddd = 1;
+
+            if (values[0] == null)
+                return 0;
+
+            if (values[1] == null)
+                return 0;
+
+            if( bool.TryParse( values[0].ToString(), out bool valBool) == false)
+                return 0;
+
+            if (int.TryParse(values[1].ToString(), out int valInt) == false)
+                return 0;
+
+            if (valBool == false)
+                return 0;
+           
+            
+            return 50;
+        }
+
+        object[] IMultiValueConverter.ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     class AdresConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

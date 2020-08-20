@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
-              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              d:DesignHeight="495" d:DesignWidth="1009.5"

@@ -1,11 +1,12 @@
-﻿using RejestrNieruchomosciNew.Model.Interfaces;
+﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class Budynek : IBudynek
+    public class Budynek : ViewModelBase, IBudynek
     {
         public int BudynekId { get; set; }
 
@@ -35,12 +36,28 @@ namespace RejestrNieruchomosciNew.Model
         public string opisKonstr { get; set; }
         public string stanTech { get; set; }
 
+        private bool _jednorodzinny;
+
+        public bool jednorodzinny
+        {
+            get { return _jednorodzinny; }
+            set
+            {
+                _jednorodzinny = value;
+                if (zmiana != null)
+                    zmiana( null, EventArgs.Empty);
+
+            }
+        }
+
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         public Adres Adres { get; set; }
 
+        public event EventHandler zmiana;
+
         public Budynek()
         {
-          
+
         }
 
         public Budynek(IBudynek budynek)
@@ -71,6 +88,7 @@ namespace RejestrNieruchomosciNew.Model
 
             opisKonstr = budynek.opisKonstr;
             stanTech = budynek.stanTech;
+            jednorodzinny = budynek.jednorodzinny;
 
             Adres = budynek.Adres;
 
@@ -119,6 +137,8 @@ namespace RejestrNieruchomosciNew.Model
                    internet.Equals(obj.internet) &&
                    tv.Equals(obj.tv) &&
 
+                   jednorodzinny.Equals(obj.jednorodzinny) &&
+
                    string.Equals(opisKonstr, obj.opisKonstr) &&
                    string.Equals(stanTech, obj.stanTech) &&
 
@@ -133,10 +153,9 @@ namespace RejestrNieruchomosciNew.Model
                 const int HashingMultiplier = 16777619;
 
                 int hash = HashingBase;
-                hash = (hash * HashingMultiplier) ^ ( BudynekId.GetHashCode() );
-                hash = (hash * HashingMultiplier) ^ ( Object.ReferenceEquals(null, Nazwa) ? 0: Nazwa.GetHashCode());
+                hash = (hash * HashingMultiplier) ^ (BudynekId.GetHashCode());
+                hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, Nazwa) ? 0 : Nazwa.GetHashCode());
 
-                int a = 12;
                 return hash;
             }
         }

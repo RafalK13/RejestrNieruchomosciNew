@@ -251,6 +251,10 @@
     <Compile Include="Migrations\20200714114057_dom3.designer.cs">
       <DependentUpon>20200714114057_dom3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200819080827_dom5.cs" />
+    <Compile Include="Migrations\20200819080827_dom5.designer.cs">
+      <DependentUpon>20200819080827_dom5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />

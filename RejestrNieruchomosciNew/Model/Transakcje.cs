@@ -51,6 +51,8 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
+        public NazwaCzynnosciSlo NazwaCzynnosciSlo { get; set; }
+
         private int? _RodzajDokumentuSloId;
         public int? RodzajDokumentuSloId
         {
@@ -64,6 +66,8 @@ namespace RejestrNieruchomosciNew.Model
                     onChange(this, EventArgs.Empty);
             }
         }
+
+        public RodzajDokumentuSlo RodzajDokumentuSlo { get; set; }
 
         private string _Numer;
         public string Numer

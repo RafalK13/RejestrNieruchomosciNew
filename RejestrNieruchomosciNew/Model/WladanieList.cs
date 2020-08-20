@@ -39,7 +39,7 @@ namespace RejestrNieruchomosciNew.Model
                 try
                 {
                     listAll = new ObservableCollection<IWladanie>(c.Wladanie.Include(f => f.FormaWladaniaSlo)
-                                                                            .Include(t => t.TransakcjeK_Wlad));
+                                                                            .Include(t => t.TransakcjeK_Wlad).ThenInclude(l1=>l1.NazwaCzynnosciSlo));
                 }
                 catch (Exception e)
                 {
@@ -54,6 +54,8 @@ namespace RejestrNieruchomosciNew.Model
             if (dzialka != null)
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                            && r.TransS_Id == null).ToList());
+
+            int ddd = 13;
 
             listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 

@@ -15,12 +15,53 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
+
+        private bool _jednrodzinny;
+
+        public bool jednorodzinny
+        {
+            get { return _jednrodzinny; }
+            set
+            {
+                _jednrodzinny = value;
+                serveJednorodzinnyButton();
+                //MessageBox.Show("Clicked");
+                RaisePropertyChanged();
+            }
+        }
+
+        private void serveJednorodzinnyButton()
+        {
+            if (budSel != null)
+            {
+                if (jednorodzinny == true)
+                {
+                    budSel.jednorodzinny = true;
+                    widthRaf = new GridLength(0);
+                }
+                else
+                {
+                    budSel.jednorodzinny = false;
+                    widthRaf = new GridLength(250);
+                }
+            }
+        }
+
+        private GridLength _widthRaf;
+
+        public GridLength widthRaf
+        {
+            get { return _widthRaf; }
+            set { Set(ref _widthRaf, value); }
+        }
+
+
         private string _budName;
 
         public string budName
         {
             get { return _budName; }
-            set => Set( ref _budName, value); 
+            set => Set(ref _budName, value);
         }
 
         private int? _gminaId;
@@ -37,7 +78,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public int selDzialkaPrzylId
         {
             get { return _selDzialkaPrzylId; }
-            set { Set ( ref _selDzialkaPrzylId, value); }
+            set { Set(ref _selDzialkaPrzylId, value); }
         }
 
         private IAdresSloList _adresSloList;
@@ -66,7 +107,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public bool podmiotDetail
         {
             get => _podmiotDetail;
-           
+
             set
             {
                 _podmiotDetail = value;
@@ -100,28 +141,40 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        private Budynek _b;
+
         private IBudynek _budSel;
         public IBudynek budSel
         {
             get { return _budSel; }
             set
             {
+                
                 _budSel = value;
                 testBudynekSel();
                 RaisePropertyChanged();
             }
         }
 
-        //private List<IDzialka> _dzialkaListBud;
-        //public List<IDzialka> dzialkaListBud
-        //{
-        //    get => _dzialkaListBud;
+        private void BudSel_zmiana1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Rafałek");
+        }
 
-        //    set
-        //    {
-        //        _dzialkaListBud = value;
-        //        RaisePropertyChanged();
-        //    }
+        //private void checkWidthColumn()
+        //{
+
+           
+        //    int ddd = 1;
+        //    if (budSel?.jednorodzinny == true)
+        //        widthRaf = new GridLength(75, GridUnitType.Star);
+        //    else
+        //        widthRaf = new GridLength(0, GridUnitType.Star);
+        //}
+
+        //private void BudSel_zmiana(object sender, EventArgs e)
+        //{
+        //    checkWidthColumn();
         //}
 
         private ObservableCollection<IDzialka> _dzialkaListBud;
@@ -157,10 +210,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public List<IDzialka> dzialkaIn
         {
             get { return _dzialkaIn; }
-            set { Set( ref _dzialkaIn, value);  }
+            set { Set(ref _dzialkaIn, value); }
         }
 
-
+        #region Konstruktor
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
                                            IBudynkiList _budList)
         {
@@ -172,13 +225,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (userPrev.dzialkaSel != null)
             {
-                _budList.getList( dzialkaSel);
+                _budList.getList(dzialkaSel);
 
                 using (var c = new Context())
                 {
                     budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                              .Include(a => a.Adres)
-                                                                             .Where( r=>r.Dzialka_Budynek.FirstOrDefault(l=>l.DzialkaId == dzialkaSel.DzialkaId) != null)
+                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == dzialkaSel.DzialkaId) != null)
                                                                    );
                 }
 
@@ -190,33 +243,43 @@ namespace RejestrNieruchomosciNew.ViewModel
                         gminaId = dzialkaSel.Obreb.GminaSloId;
                         dzialkaIn = new List<IDzialka>(new Dzialka[] { (Dzialka)userPrev.dzialkaSel });
                         dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
-                                      .Except( dzialkaIn).ToList();
+                                      .Except(dzialkaIn).ToList();
                     }
                 }
             }
-            
+            //checkWidthColumn();
             podmiotDetail = false;
             budSel = null;
+            
         }
 
+        #endregion
         private void testBudynekSel()
         {
             if (budSel != null && budSel.Nazwa != null)
             {
                 if (budSel.Adres == null)
                     budSel.Adres = new Adres();
-               
+
                 podmiotDetail = true;
                 if (budSel.Dzialka_Budynek != null)
                 {
                     var dzialkaListBudAll = new List<IDzialka>(budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
-                    
 
-                     dzialkaListBud = new ObservableCollection<IDzialka>(  dzialkaListBudAll.Except(dzialkaIn).ToList());
+
+                    dzialkaListBud = new ObservableCollection<IDzialka>(dzialkaListBudAll.Except(dzialkaIn).ToList());
 
                 }
 
                 budName = string.Empty;
+
+                if (budSel.jednorodzinny == true)
+                    jednorodzinny = true;
+                else
+                    jednorodzinny = false;
+
+
+               
             }
             else
                 podmiotDetail = false;
@@ -258,27 +321,30 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaPrzylDel()
         {
-                var v = budSel.Dzialka_Budynek.FirstOrDefault(r => r.DzialkaId == dzialkaPrzylSel.DzialkaId && r.Budynek.BudynekId == budSel.BudynekId);
+            var v = budSel.Dzialka_Budynek.FirstOrDefault(r => r.DzialkaId == dzialkaPrzylSel.DzialkaId && r.Budynek.BudynekId == budSel.BudynekId);
 
-                budSel.Dzialka_Budynek.Remove(v);
-                dzialkaListBud.Remove(dzialkaPrzylSel);
+            budSel.Dzialka_Budynek.Remove(v);
+            dzialkaListBud.Remove(dzialkaPrzylSel);
         }
 
         private void onDzialkaPrzylAdd()
-        {           
+        {
             if (testDzialkaPrzyl())
             {
                 IDzialka d = dzialkaList.FirstOrDefault(r => r.DzialkaId == selDzialkaPrzylId);
 
                 if (d != null)
                 {
-                    budSel.Dzialka_Budynek.Add(new Dzialka_Budynek {
-                                                                       DzialkaId = d.DzialkaId
-                                                                     , Dzialka = (Dzialka)d
-                                                                     , Budynek = (Budynek)budSel
-                                                                    });
+                    budSel.Dzialka_Budynek.Add(new Dzialka_Budynek
+                    {
+                        DzialkaId = d.DzialkaId
+                                                                     ,
+                        Dzialka = (Dzialka)d
+                                                                     ,
+                        Budynek = (Budynek)budSel
+                    });
                     dzialkaListBud.Add(d);
-                }             
+                }
             }
             budName = "*";
         }
@@ -318,10 +384,10 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (string.IsNullOrEmpty(budynekName) == false)
                 if (testIfExist())
                 {
-                    Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId,  Dzialka = (Dzialka)userPrev.dzialkaSel } } };
+                    Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId, Dzialka = (Dzialka)userPrev.dzialkaSel } } };
 
                     budListLok.Add(bud);
-                  
+
                     budynekName = string.Empty;
                     budSel = null;
                 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface IBudynek : ICloneable
+    public interface IBudynek :  ICloneable
     {
         int BudynekId { get; set; }
         
@@ -36,7 +37,11 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         string opisKonstr { get; set; }
         string stanTech { get; set; }
 
+        bool jednorodzinny { get; set; }
+
         ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         Adres Adres { get; set; }
+
+        event EventHandler zmiana;
     }
 }

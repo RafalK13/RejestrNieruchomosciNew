@@ -41,9 +41,10 @@ namespace RejestrNieruchomosciNew.Model
                 try
                 {
                     listAll = new ObservableCollection<IInnePrawa>(c.InnePrawa.Include(a => a.RodzajInnegoPrawaSlo)
-                                                                              .Include(t => t.TransakcjeK_InnePr)
+                                                                              .Include(t => t.TransakcjeK_InnePr).ThenInclude(l1 => l1.NazwaCzynnosciSlo)
+                                                                              .Include(t => t.TransakcjeK_InnePr).ThenInclude(l1 => l1.RodzajDokumentuSlo)
                                                                               .Include(i => i.PlatnoscInnePrawa)
-                                                                              .Include(d => d.DecyzjeAdministracyjne)
+                                                                              .Include(d => d.DecyzjeAdministracyjne)                                                                             
                                                                               );
                 }
                 catch (Exception e)
@@ -58,7 +59,9 @@ namespace RejestrNieruchomosciNew.Model
         {            
             if (dzialka != null)
                 list = new ObservableCollection<IInnePrawa>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
-                                                                             && r.TransS_Id == null).ToList());
+                                                                            && r.TransS_Id == null).ToList());
+
+            int ddd = 13;
             listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
             listToAdd = new List<IInnePrawa>();

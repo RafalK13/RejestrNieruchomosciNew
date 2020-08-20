@@ -147,35 +147,32 @@
                         Grid.Row="4"
                         Style="{StaticResource userInfo}"
                         Margin="0,1,0,1"
-                        labelRaf="Nazwa czynności">
-                    <view:UserControl_ElementInfo.tekstRaf>
-                        <MultiBinding Converter="{StaticResource slowConvert}">
-                            <Binding Path="DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.NazwaCzynnosciSloId"
-                                         ElementName="infoInnePrawa"/>
-                            <Binding Path="DataContext.infoMain.infoInnePrawa.nazwaCzynList.list"
-                                         ElementName="infoInnePrawa"/>
-                            <Binding Source="NazwaCzynnosciSloId"/>
-                            <Binding Source="Nazwa"/>
-                        </MultiBinding>
-                    </view:UserControl_ElementInfo.tekstRaf>
-                </view:UserControl_ElementInfo>
-
+                        labelRaf="Rodzaj dokumentu"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.RodzajDokumentuSlo.Nazwa, ElementName=infoInnePrawa, Mode=TwoWay}"/>
+                       
+                <view:UserControl_ElementInfo 
+                        Grid.Row="5"
+                        Style="{StaticResource userInfo}"
+                        Margin="0,1,0,1"
+                        labelRaf="Nazwa czynności"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.NazwaCzynnosciSlo.Nazwa, ElementName=infoInnePrawa, Mode=TwoWay}"/>
+                      
                 <view:UserControl_ElementInfo
-                Grid.Row="5"
+                Grid.Row="6"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Tytuł dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Tytul , ElementName=infoInnePrawa}"/>
 
                 <view:UserControl_ElementInfo
-                Grid.Row="6"
+                Grid.Row="7"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Data dokumentu"
                 tekstRaf="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Data, ElementName=infoInnePrawa, StringFormat='{}{0:dd.MM.yyyy}'}"/>
 
                 <view:UserControl_ElementInfo
-                Grid.Row="7"
+                Grid.Row="8"
                 Style="{StaticResource userInfo}"
                 Margin="0,1,0,1"
                 labelRaf="Skan"
@@ -183,18 +180,17 @@
                 IsHitTestVisible="True"
                 pathZal="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Skan, ElementName=infoInnePrawa}"/>
 
-                <Label Grid.Row="8" Grid.Column="0"
+                <Label Grid.Row="9" Grid.Column="0"
                 Style="{StaticResource labelRaf}"
                 Content="Cel nabycia prawa"
                 />
-                <TextBox Grid.Row="9" Grid.Column="0"
+                <TextBox Grid.Row="10" Grid.Column="0"
                          Margin="5,0,10,0"
                          Grid.RowSpan="2"
                          TextWrapping="Wrap"
                          IsReadOnly="True"
                          VerticalScrollBarVisibility="Auto"
                          >
-                    <!--Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.TransakcjeK_InnePr.Tytul , ElementName=infoInnePrawa}"/>-->
                     <TextBox.Text>
                         <MultiBinding Converter="{StaticResource slowConvert}">
                             <Binding Path="DataContext.infoMain.infoInnePrawa.innePrawaSel.CelNabyciaId"
@@ -208,20 +204,17 @@
 
                 </TextBox>
 
-                <Label Grid.Row="11" Grid.Column="0"
+                <Label Grid.Row="12" Grid.Column="0"
                 Style="{StaticResource labelRaf}"
                 Content="Warunki realizacji innego prawa"
                 />
-                <TextBox Grid.Row="12" Grid.Column="0"
+                <TextBox Grid.Row="13" Grid.Column="0"
                          Margin="5,0,10,0"
                          Grid.RowSpan="3"
                          TextWrapping="Wrap"
                          VerticalScrollBarVisibility="Auto"
                           IsReadOnly="True"
                          Text="{Binding Path=DataContext.infoMain.infoInnePrawa.innePrawaSel.WarunkiRealizacji, ElementName=infoInnePrawa}"/>
-
-
-                
 
                 <Label Grid.Row="0" Grid.Column="1"
                 Style="{StaticResource labelRaf}"

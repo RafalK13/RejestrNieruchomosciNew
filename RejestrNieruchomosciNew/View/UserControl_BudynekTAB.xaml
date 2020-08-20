@@ -8,10 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <TabControl>
+
+            <TabItem Header="Lokale">
+                <View:UserControl_Budynek_Lokale/>
+            </TabItem>
             <TabItem Header="Dane podstawowe o budynku">
                 <View:UserControl_Budynek_Podst/>
             </TabItem>
-            <TabItem Header="Lokale"/>
+            
         </TabControl>
         
     </Grid>
