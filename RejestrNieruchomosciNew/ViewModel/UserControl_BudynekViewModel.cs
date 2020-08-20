@@ -16,37 +16,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class UserControl_BudynekViewModel : ViewModelBase
     {
 
-        private bool _jednrodzinny;
-
-        public bool jednorodzinny
-        {
-            get { return _jednrodzinny; }
-            set
-            {
-                _jednrodzinny = value;
-                serveJednorodzinnyButton();
-                //MessageBox.Show("Clicked");
-                RaisePropertyChanged();
-            }
-        }
-
-        private void serveJednorodzinnyButton()
-        {
-            if (budSel != null)
-            {
-                if (jednorodzinny == true)
-                {
-                    budSel.jednorodzinny = true;
-                    widthRaf = new GridLength(0);
-                }
-                else
-                {
-                    budSel.jednorodzinny = false;
-                    widthRaf = new GridLength(250);
-                }
-            }
-        }
-
         private GridLength _widthRaf;
 
         public GridLength widthRaf
@@ -149,34 +118,37 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _budSel; }
             set
             {
-                
                 _budSel = value;
                 testBudynekSel();
+                if (budSel != null)
+                {
+                    //if (budSel.zmiana == null)
+                    
+
+                    budSel.zmiana -= BudSel_zmiana;
+                    budSel.zmiana += BudSel_zmiana;
+                }
                 RaisePropertyChanged();
             }
         }
 
-        private void BudSel_zmiana1(object sender, EventArgs e)
+        private void BudSel_zmiana(object sender, EventArgs e)
         {
-            MessageBox.Show("Rafałek");
+            setWidthColumn();
         }
 
-        //private void checkWidthColumn()
-        //{
-
-           
-        //    int ddd = 1;
-        //    if (budSel?.jednorodzinny == true)
-        //        widthRaf = new GridLength(75, GridUnitType.Star);
-        //    else
-        //        widthRaf = new GridLength(0, GridUnitType.Star);
-        //}
-
-        //private void BudSel_zmiana(object sender, EventArgs e)
-        //{
-        //    checkWidthColumn();
-        //}
-
+        private void setWidthColumn()
+        {
+            if (budSel != null)
+            {
+                if (budSel.jednorodzinny == true)
+                    widthRaf = new GridLength(0);
+                else
+                    widthRaf = new GridLength(250);
+                
+            }
+        }
+       
         private ObservableCollection<IDzialka> _dzialkaListBud;
         public ObservableCollection<IDzialka> dzialkaListBud
         {
@@ -273,19 +245,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                 budName = string.Empty;
 
-                if (budSel.jednorodzinny == true)
-                    jednorodzinny = true;
-                else
-                    jednorodzinny = false;
-
-
-               
+                setWidthColumn();
             }
             else
                 podmiotDetail = false;
 
             budName = "*";
-            //budName = string.Empty;
         }
 
         private bool testWlascExist()

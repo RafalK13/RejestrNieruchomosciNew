@@ -3,10 +3,33 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
+    class oneRoomConverter2 : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return 0;
+
+            if (bool.TryParse(value.ToString(), out bool valBool) == false)
+                return 0;
+
+            if( valBool == true)
+                return new GridLength(0);
+
+            return new GridLength(250);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return false;
+        }
+    }
+
     class oneRoomConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

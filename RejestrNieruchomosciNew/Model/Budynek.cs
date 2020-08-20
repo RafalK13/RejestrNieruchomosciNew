@@ -46,7 +46,6 @@ namespace RejestrNieruchomosciNew.Model
                 _jednorodzinny = value;
                 if (zmiana != null)
                     zmiana( null, EventArgs.Empty);
-
             }
         }
 
