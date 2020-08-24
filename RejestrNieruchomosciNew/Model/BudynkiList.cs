@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -56,11 +57,11 @@ namespace RejestrNieruchomosciNew.Model
             if (dzialka != null)
                 list = new ObservableCollection<IBudynek>(listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
 
-            int a = 1;
-            listOrg = ObservableCon<IBudynek>.ObservableToList(list);
-            listToAdd = new List<IBudynek>();
-            listToMod = new List<IBudynek>();
-            listToDel = new List<IBudynek>();
+            //int a = 1;
+            //listOrg = ObservableCon<IBudynek>.ObservableToList(list);
+            //listToAdd = new List<IBudynek>();
+            //listToMod = new List<IBudynek>();
+            //listToDel = new List<IBudynek>();
             result = string.Empty;
 
         }
@@ -88,6 +89,17 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
+                //int ddd = 13;
+                int dz = dzialkaPrv.DzialkaId;
+                var budAll = c.Budynek.AsNoTracking().Where(r => r.Dzialka_Budynek.FirstOrDefault(l1 => l1.DzialkaId == dz) != null).ToList();
+
+                foreach (var itemA in budAll)
+                {
+                    var result = list.FirstOrDefault(r => r.BudynekId == itemA.BudynekId);
+                    if (result == null)
+                        c.Budynek.Remove(itemA);
+                }
+                
                 foreach (var item in list)
                 {
                     if (item.Adres != null)
@@ -101,15 +113,9 @@ namespace RejestrNieruchomosciNew.Model
                                 item.Adres = null;
                         }
                     }
-                    if (item.BudynekId >= 0)
-                    {
-                        var budAll = c.Dzialka_Budynek.AsNoTracking().Where(r => r.BudynekId == item.BudynekId).ToList();
-                        var budToDel = budAll.Except(item.Dzialka_Budynek);
-
-                        c.Dzialka_Budynek.RemoveRange( budToDel);                        
-                    }
                 }
-                c.UpdateRange( list);
+
+                c.UpdateRange(list);
                 c.SaveChanges();
             }
 
