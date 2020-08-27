@@ -146,6 +146,7 @@
                             Content="Dodaj"
                             Height="30"
                             Width="100"
+                            MinWidth="100"
                             Command="{Binding userControl_Wlasciciel.podmiotAdd}"/>
                 <DataGrid 
                         VerticalAlignment="Top"

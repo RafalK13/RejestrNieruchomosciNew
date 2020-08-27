@@ -1,0 +1,60 @@
+﻿using RejestrNieruchomosciNew.Model.Interfaces;
+using System.Configuration;
+using System.Linq;
+using System.Windows;
+
+namespace RejestrNieruchomosciNew.Model
+{
+    public class Lokal : ILokal
+    {
+        public int LokalId { get; set; }
+
+        public string Numer { get; set; }
+        public double? pow { get; set; }
+        public double? powPomPrzyn { get; set; }
+        public string opis { get; set; }
+        public string kondygnacja { get; set; }
+        public string KWlok { get; set; }
+        public int NajemcaId { get; set; }
+
+        public int? BudynekId { get; set; }
+        public Budynek Budynek { get; set; }
+
+        //public string ZalPath
+        //{
+        //    get
+        //    {
+        //        string s = $"{    Budynek.Dzialka_Budynek.FirstOrDefault().DzialkaId}" +
+        //                    $"\r\n{Budynek.Dzialka_Budynek.FirstOrDefault().Dzialka.Numer}" +
+        //                    $"\r\n{Budynek.Dzialka_Budynek.FirstOrDefault().Budynek}";
+
+        //        MessageBox.Show(s);
+
+        //        //if (Budynek.D != null && BudynekId != null)
+        //        //{
+        //        //    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\ProtokolPrzejecia\\" + PodmiotId;
+        //        //}
+        //        return null;
+        //    }
+        //}
+
+        public Lokal()
+        {
+
+        }
+
+        public Lokal(Lokal lok)
+        {
+            LokalId = lok.LokalId;
+            Numer = lok.Numer;
+            pow = lok.pow;
+            powPomPrzyn = lok.powPomPrzyn;
+            opis = lok.opis;
+            kondygnacja = lok.kondygnacja;
+            KWlok = lok.KWlok;
+            NajemcaId = lok.NajemcaId;
+            BudynekId = lok.BudynekId;
+            Budynek = lok.Budynek;
+        }
+    }
+}

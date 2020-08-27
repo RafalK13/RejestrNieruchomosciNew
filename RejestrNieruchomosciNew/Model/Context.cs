@@ -38,6 +38,8 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbSet<UlicaSlo> UliceSlo { get; set; }
 
+        public virtual DbSet<Lokal> Lokal { get; set; }
+
         public virtual DbSet<Adres> Adres { get; set; }
 
         public virtual DbSet<MiejscowoscSlo> MiejscowoscSlo { get; set; }
@@ -51,6 +53,8 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<Transakcje> Transakcje { get; set; }
         
         public virtual DbSet<DecyzjeAdministracyjne> DecyzjeAdministracyjne { get; set; }
+
+        
 
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
@@ -66,30 +70,22 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Lokal>()
+                 .HasOne<Budynek>(a => a.Budynek)
+                 .WithMany(a => a.Lokal)
+                 .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Adres>()
                   .HasOne<Dzialka>(a => a.Dzialka)
                   .WithOne(a => a.Adres)
                   .HasForeignKey("Adres", "DzialkaId")
                   .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder.Entity<Adres>()
-            //   .HasOne<Budynek>(a => a.Budynek)
-            //   .WithOne(a => a.Adres)
-            //   .HasForeignKey("Adres", "BudynekId")
-            //   .OnDelete(DeleteBehavior.Cascade);
-
             modelBuilder.Entity<Budynek>()
                .HasOne<Adres>(a => a.Adres)
                .WithOne(a => a.Budynek)
                .HasForeignKey("Adres", "BudynekId")
                .OnDelete(DeleteBehavior.Cascade);
-
-
-
-
-
-            //modelBuilder.Entity<MiejscowoscSlo>()
-            //    .HasKey(km => km.MiejscowoscSYM);
 
             modelBuilder.Entity<Adres>()
                 .HasOne(m => m.MiejscowoscSlo)
@@ -100,14 +96,6 @@ namespace RejestrNieruchomosciNew
                 .HasOne(m => m.UlicaSlo)
                 .WithMany(a => a.Adres)
                 .HasForeignKey(am => am.UlicaSloId);
-
-            //modelBuilder.Entity<MiejscowoscSlo>()
-            //   .HasKey(km => km.MiejscowoscSYM);
-
-            //modelBuilder.Entity<Adres>()
-            //    .HasOne(m => m.MiejscowoscSlo)
-            //    .WithMany(a => a.Adres)
-            //    .HasForeignKey(am => am.MiejscowoscSYM);
 
             modelBuilder.Entity<Dzialka_Budynek>()
                 .HasKey(bc => new { bc.DzialkaId, bc.BudynekId });

@@ -42,6 +42,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         Adres Adres { get; set; }
 
+        ICollection<Lokal> Lokal { get; set; }
+
         event EventHandler zmiana;
     }
 }

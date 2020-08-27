@@ -2,6 +2,7 @@
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace RejestrNieruchomosciNew.Model
@@ -52,6 +53,8 @@ namespace RejestrNieruchomosciNew.Model
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         public Adres Adres { get; set; }
 
+        public ICollection<Lokal> Lokal { get; set; }
+
         public event EventHandler zmiana;
 
         public Budynek()
@@ -92,6 +95,8 @@ namespace RejestrNieruchomosciNew.Model
             Adres = budynek.Adres;
 
             Dzialka_Budynek = budynek.Dzialka_Budynek;
+
+            Lokal = budynek.Lokal;
         }
 
         public object Clone()
@@ -151,9 +156,19 @@ namespace RejestrNieruchomosciNew.Model
                 const int HashingBase = (int)2166136261;
                 const int HashingMultiplier = 16777619;
 
+                //const int HashingBase = (int)2166;
+                //const int HashingMultiplier = 1677;
+
                 int hash = HashingBase;
                 hash = (hash * HashingMultiplier) ^ (BudynekId.GetHashCode());
                 hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, Nazwa) ? 0 : Nazwa.GetHashCode());
+                //hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, opisKonstr) ? 0 : opisKonstr.GetHashCode());
+                //hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, stanTech) ? 0 : stanTech.GetHashCode());
+
+                //using (StreamWriter writer = new StreamWriter("c:\\test\\result.txt", true))
+                //{
+                //    writer.WriteLine( $"{hash} {Nazwa} {BudynekId} {opisKonstr} {stanTech}" );
+                //}
 
                 return hash;
             }

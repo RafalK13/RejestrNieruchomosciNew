@@ -255,6 +255,14 @@
     <Compile Include="Migrations\20200819080827_dom5.designer.cs">
       <DependentUpon>20200819080827_dom5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200826101934_dom7.cs" />
+    <Compile Include="Migrations\20200826101934_dom7.designer.cs">
+      <DependentUpon>20200826101934_dom7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200827094142_dom9.cs" />
+    <Compile Include="Migrations\20200827094142_dom9.designer.cs">
+      <DependentUpon>20200827094142_dom9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -297,8 +305,9 @@
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
-    <Compile Include="Model\Interfaces\ILokale.cs" />
-    <Compile Include="Model\Interfaces\ILokaleList.cs" />
+    <Compile Include="Model\Interfaces\ILokal.cs" />
+    <Compile Include="Model\Interfaces\ILokalList.cs" />
+    <Compile Include="Model\Interfaces\ILokal_Najemca.cs" />
     <Compile Include="Model\Interfaces\IMedia.cs" />
     <Compile Include="Model\Interfaces\IMediaList.cs" />
     <Compile Include="Model\Interfaces\IMiejscowoscSloList.cs" />
@@ -306,6 +315,7 @@
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
+    <Compile Include="Model\Interfaces\INajemca.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IBudynek.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
@@ -337,13 +347,16 @@
     <Compile Include="Model\Interfaces\IZagospList.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\Interfaces\MyEventHandler.cs" />
-    <Compile Include="Model\Lokale.cs" />
+    <Compile Include="Model\Lokal.cs" />
+    <Compile Include="Model\LokalList.cs" />
+    <Compile Include="Model\Lokal_Najemca.cs" />
     <Compile Include="Model\Media.cs" />
     <Compile Include="Model\MiejscowoscSlo.cs" />
     <Compile Include="Model\MiejscowoscSloList.cs" />
     <Compile Include="Model\MyEventArgs.cs" />
     <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
     <Compile Include="Model\NadzorKonserwSlo.cs" />
+    <Compile Include="Model\Najemca.cs" />
     <Compile Include="Model\PerformMode.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />

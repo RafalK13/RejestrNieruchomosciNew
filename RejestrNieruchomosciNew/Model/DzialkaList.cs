@@ -54,8 +54,6 @@ namespace RejestrNieruchomosciNew.Model
                                                          .Include( r=> r.PlatnoscUW)
                                                          .Include( adr=>adr.Adres).ToListAsync());
             }
-
-            int a13 = 13;
         }
 
         public void DelRow(IDzialka dz)

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20200826101934_dom7")]
+    partial class dom7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -298,13 +300,15 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("Numer");
 
-                    b.Property<string>("kondygnacja");
+                    b.Property<int>("kondygnacja");
+
+                    b.Property<int>("media");
 
                     b.Property<string>("opis");
 
-                    b.Property<double?>("pow");
+                    b.Property<double>("pow");
 
-                    b.Property<double?>("powPomPrzyn");
+                    b.Property<double>("powPomPrzyn");
 
                     b.HasKey("LokalId");
 

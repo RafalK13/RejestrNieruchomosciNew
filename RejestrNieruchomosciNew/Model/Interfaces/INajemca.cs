@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    interface ILokaleList
+    public interface INajemca
     {
+        int PodmiotId { get; set; }
+        IPodmiot Podmiot { get; set; }
     }
 }

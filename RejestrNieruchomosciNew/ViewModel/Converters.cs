@@ -34,7 +34,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            int ddd = 1;
 
             if (values[0] == null)
                 return 0;
@@ -288,6 +287,32 @@ namespace RejestrNieruchomosciNew.ViewModel
             return null;
         }
     }
+    class stringToDouble_two : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return null;
+
+            string digit = value.ToString().Replace(",", ".");
+
+            double result;
+            if (double.TryParse(digit, out result))
+                return string.Format("{0:N2}", result);
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            double result;
+
+            if (double.TryParse(value?.ToString(), out result) == true)
+                return result;
+
+            return null;
+        }
+    }
+
 
     class stringToDouble : IValueConverter
     {

@@ -3,12 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
@@ -41,8 +38,10 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    listAll = new ObservableCollection<IBudynek>(c.Budynek.AsNoTracking().Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
-                                                                          .Include(a => a.Adres));
+                    listAll = new ObservableCollection<IBudynek>(c.Budynek
+                                                                          .Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
+                                                                          .Include(a => a.Adres)
+                                                                          .Include(l=>l.Lokal));
                 }
                 catch (Exception e)
                 {
@@ -117,10 +116,12 @@ namespace RejestrNieruchomosciNew.Model
 
                 c.UpdateRange(list);
                 c.SaveChanges();
+
+                
             }
 
             initListAll();
-            initList(dzialkaPrv);
+            //initList(dzialkaPrv);
         }
     }
 }

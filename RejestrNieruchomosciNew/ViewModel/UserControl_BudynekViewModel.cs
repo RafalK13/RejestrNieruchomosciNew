@@ -15,7 +15,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
-
+        #region GridLength widthRaf
         private GridLength _widthRaf;
 
         public GridLength widthRaf
@@ -23,8 +23,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _widthRaf; }
             set { Set(ref _widthRaf, value); }
         }
-
-
+        #endregion
+  
+        #region budName
         private string _budName;
 
         public string budName
@@ -32,7 +33,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _budName; }
             set => Set(ref _budName, value);
         }
+        #endregion
 
+        #region gminaId
         private int? _gminaId;
 
         [DoNotWire]
@@ -41,7 +44,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _gminaId; }
             set => Set(ref _gminaId, value);
         }
+        #endregion
 
+        #region selDzialkaPrzyl
         private int _selDzialkaPrzylId;
 
         public int selDzialkaPrzylId
@@ -49,7 +54,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _selDzialkaPrzylId; }
             set { Set(ref _selDzialkaPrzylId, value); }
         }
+        #endregion
 
+        #region adresSloList
         private IAdresSloList _adresSloList;
 
         public IAdresSloList adresSloList
@@ -57,9 +64,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _adresSloList;
             set { Set(ref _adresSloList, value); }
         }
+        #endregion
 
+        #region userPrev
         public UserControl_PreviewViewModel userPrev { get; set; }
-
+        #endregion
+        
+        #region sellVisibility
         private Visibility _sellVisibility;
         public Visibility sellVisibility
         {
@@ -71,7 +82,9 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
+        #endregion
 
+        #region bool podmiotDetail
         private bool _podmiotDetail;
         public bool podmiotDetail
         {
@@ -83,7 +96,9 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
+        #endregion
 
+        #region string budynekName
         private string _budynekName;
         public string budynekName
         {
@@ -94,24 +109,9 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
+        #endregion
 
-        public ObservableCollection<IBudynek> budListLok { get; set; }
-
-        public IBudynkiList budList { get; set; }
-
-        private int _nr;
-        public int nr
-        {
-            get { return _nr; }
-            set
-            {
-                _nr = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        private Budynek _b;
-
+        #region IBudynek budSel
         private IBudynek _budSel;
         public IBudynek budSel
         {
@@ -122,15 +122,17 @@ namespace RejestrNieruchomosciNew.ViewModel
                 testBudynekSel();
                 if (budSel != null)
                 {
-                    //if (budSel.zmiana == null)
-                    
-
                     budSel.zmiana -= BudSel_zmiana;
                     budSel.zmiana += BudSel_zmiana;
                 }
                 RaisePropertyChanged();
             }
         }
+        #endregion
+
+        #region List<IDzialka> dzialkaIn
+        List<IDzialka> dzialkaIn;
+        #endregion
 
         private void BudSel_zmiana(object sender, EventArgs e)
         {
@@ -148,7 +150,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                 
             }
         }
-       
+
+        #region ObservableCollection<IDzialka> dzialkaListBud
         private ObservableCollection<IDzialka> _dzialkaListBud;
         public ObservableCollection<IDzialka> dzialkaListBud
         {
@@ -160,15 +163,15 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
+        #endregion
 
         public List<IDzialka> dzialkaList { get; set; }
 
-        private IDzialka _dzialkaSel;
-        public IDzialka dzialkaSel
-        {
-            get { return _dzialkaSel; }
-            set { Set(ref _dzialkaSel, value); }
-        }
+        public ObservableCollection<IBudynek> budListLok { get; set; }
+
+        public IBudynkiList budList { get; set; }
+
+        #region IDzialka dzialkaPrzylSel
 
         private IDzialka _dzialkaPrzylSel;
         public IDzialka dzialkaPrzylSel
@@ -176,71 +179,85 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _dzialkaPrzylSel; }
             set { Set(ref _dzialkaPrzylSel, value); }
         }
+        #endregion
 
-        private List<IDzialka> _dzialkaIn;
+        #region ILokal lokalSel
+        private ILokal _lokalSel;
 
-        public List<IDzialka> dzialkaIn
+        public ILokal lokalSel
         {
-            get { return _dzialkaIn; }
-            set { Set(ref _dzialkaIn, value); }
+            get { return _lokalSel; }
+            set { Set( ref _lokalSel ,  value); }
         }
 
-        #region Konstruktor
-        public UserControl_BudynekViewModel(UserControl_PreviewViewModel userPrev,
-                                           IBudynkiList _budList)
+        #endregion
+
+        #region KONSTRUKTOR
+
+        public UserControl_BudynekViewModel(UserControl_PreviewViewModel _userPrev
+                                           ,IBudynkiList _budList)
         {
             initButtons();
-
-            dzialkaSel = userPrev.dzialkaSel;
-
+            
+            userPrev = _userPrev;
             sellVisibility = Visibility.Hidden;
 
-            if (userPrev.dzialkaSel != null)
+            if (_userPrev.dzialkaSel != null)
             {
-                _budList.getList(dzialkaSel);
+                _budList.getList(userPrev.dzialkaSel);
 
                 using (var c = new Context())
                 {
                     budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                              .Include(a => a.Adres)
-                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == dzialkaSel.DzialkaId) != null)
+                                                                             .Include(l=>l.Lokal)
+                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == userPrev.dzialkaSel.DzialkaId) != null)
                                                                    );
                 }
 
-
-                if (dzialkaSel.Obreb != null)
+                if (userPrev.dzialkaSel.Obreb != null)
                 {
                     using (var c = new Context())
                     {
-                        gminaId = dzialkaSel.Obreb.GminaSloId;
-                        dzialkaIn = new List<IDzialka>(new Dzialka[] { (Dzialka)userPrev.dzialkaSel });
-                        dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
+                        gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
+                        dzialkaIn = new List<IDzialka>(new Dzialka[] { (Dzialka)_userPrev.dzialkaSel });
+                        dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == userPrev.dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
                                       .Except(dzialkaIn).ToList();
                     }
                 }
             }
-            //checkWidthColumn();
             podmiotDetail = false;
             budSel = null;
-            
         }
 
         #endregion
+
         private void testBudynekSel()
         {
+           
             if (budSel != null && budSel.Nazwa != null)
             {
+                setWidthColumn();
+
                 if (budSel.Adres == null)
                     budSel.Adres = new Adres();
+
+                if (budSel.Lokal == null)
+                {
+                    budSel.Lokal = new ObservableCollection<Lokal>();
+                    lokalSel = new Lokal() { BudynekId = budSel.BudynekId};
+                    budSel.Lokal.Add( (Lokal)lokalSel);
+                }
+                else
+                {
+                    lokalSel = budSel.Lokal.FirstOrDefault();
+                }
 
                 podmiotDetail = true;
                 if (budSel.Dzialka_Budynek != null)
                 {
                     var dzialkaListBudAll = new List<IDzialka>(budSel.Dzialka_Budynek.Select(r => r.Dzialka).ToList());
-
-
                     dzialkaListBud = new ObservableCollection<IDzialka>(dzialkaListBudAll.Except(dzialkaIn).ToList());
-
                 }
 
                 budName = string.Empty;
@@ -282,8 +299,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzialkaPrzylAdd = new RelayCommand(onDzialkaPrzylAdd);
             dzilakaPrzylDel = new RelayCommand(onDzialkaPrzylDel);
         }
-        #endregion
-
+        
         private void onDzialkaPrzylDel()
         {
             var v = budSel.Dzialka_Budynek.FirstOrDefault(r => r.DzialkaId == dzialkaPrzylSel.DzialkaId && r.Budynek.BudynekId == budSel.BudynekId);
@@ -337,9 +353,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialkaBudynekAdd()
         {
-
+            budSel = null;
             budList.list = budListLok;
-
             budList.saveBudynki();
 
         }
@@ -358,18 +373,11 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
 
         }
+        #endregion
 
         private bool testIfExist()
         {
             return budListLok.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
-            //return budList.list.FirstOrDefault(r => r.Nazwa == budynekName) == null ? true : false;
         }
-
-
-        //private void onBudynektDel()
-        //{
-        //    //inneListLok.Remove(innePrawaSel);
-        //    //innePrawaSel = null;
-        //}
     }
 }

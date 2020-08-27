@@ -70,6 +70,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testWladanieSel()
         {
+           
             if (wladanieSel != null)
             {
                 if (wladanieSel.DzialkaId != null)

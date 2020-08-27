@@ -16,6 +16,17 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="10,0,0,0"/>
         </Style>
+
+            <con:stringToDouble_two x:Key="doubleConverter_two"/>
+        
+            <con:stringToInt x:Key="intConverter"/>
+            <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
+                <Setter Property="Margin" Value="0,5,10,0"/>
+                <Setter Property="widthLabelRaf" Value="210"/>
+            </Style>
+
+
+
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -35,12 +46,12 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding Path=DataContext.userControl_Budynek.widthRaf, ElementName=Budynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="330"/>
                 <ColumnDefinition Width="250" MinWidth="9" />
                 <ColumnDefinition Width="250" MinWidth="9" />
                 <ColumnDefinition Width="2*" MinWidth="9" />
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="1" Background="Green"/>
+            <!--<Border Grid.Column="1" Background="Green"/>-->
             <GridSplitter 
                    Grid.Column ="0"  
                    Width="5"
@@ -76,14 +87,67 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-            <Grid Grid.Column="0"
+        <Grid Grid.Column="0"
                  
                   >
                 <TextBox
                     Text="Rafałek"/>
             </Grid>
 
+            <StackPanel Grid.Column="1">
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Powierzchnia całkowita [m2]"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.pow, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},  Converter={StaticResource doubleConverter_two}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.pomieszczeń przynależnych [m2]"
+
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.powPomPrzyn, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource doubleConverter_two}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Kondygnacja"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.kondygnacja, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="KW lokalu"
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.KWlok, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo                     
+                       VerticalContentAlignment="Top"
+                       labelRaf="Opis"
+                       widthLabelRaf="50"                      
+                       tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.opis, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <userControl:UserControl_ElementInfo.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="VerticalAlignment" Value="Top"/>
+                            <Setter Property="Margin" Value="0,1,10,0"/>
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="MinHeight" Value="130"/>
+                            <Setter Property="Margin" Value="0,7,10,0"/>
+                            <Setter Property="AcceptsReturn" Value="True"/>
+                            <Setter Property="AcceptsTab" Value="True"/>
+                            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                        </Style>
+                      
+                    </userControl:UserControl_ElementInfo.Resources>
+                </userControl:UserControl_ElementInfo>
+
+
+                <!--<userControl:UserControl_Attachment
+                                       Width="{Binding  ElementName=NumerProtokoluPrzejecia, Path=ActualWidth}"
+                                       Height="{Binding ElementName=NumerProtokoluPrzejecia, Path=ActualHeight}"
+                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
+                                       pathRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.ZalPath, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       />-->
+            </StackPanel>
         </Grid>
+
+        
 
 
     </Grid>

@@ -61,7 +61,6 @@ namespace RejestrNieruchomosciNew.Model
                 list = new ObservableCollection<IInnePrawa>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                             && r.TransS_Id == null).ToList());
 
-            int ddd = 13;
             listOrg = ObservableCon<IInnePrawa>.ObservableToList(list);
 
             listToAdd = new List<IInnePrawa>();
