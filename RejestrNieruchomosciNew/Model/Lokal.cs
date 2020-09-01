@@ -56,5 +56,33 @@ namespace RejestrNieruchomosciNew.Model
             BudynekId = lok.BudynekId;
             Budynek = lok.Budynek;
         }
+
+        public override bool Equals(object other)
+        {
+            ILokal obj = other as ILokal;
+
+            if (obj == null)
+                return false;
+
+            return Numer.Equals(obj.Numer);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                const int HashingBase = (int)2166136261;
+                const int HashingMultiplier = 16777619;
+
+                //const int HashingBase = (int)2166;
+                //const int HashingMultiplier = 1677;
+
+                int hash = HashingBase;
+                hash = (hash * HashingMultiplier) ^ (LokalId.GetHashCode());
+                hash = (hash * HashingMultiplier) ^ (object.ReferenceEquals(null, Numer) ? 0 : Numer.GetHashCode());
+                return hash;
+            }
+
+        }
     }
 }

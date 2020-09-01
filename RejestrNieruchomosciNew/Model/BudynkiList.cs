@@ -88,7 +88,6 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                //int ddd = 13;
                 int dz = dzialkaPrv.DzialkaId;
                 var budAll = c.Budynek.AsNoTracking().Where(r => r.Dzialka_Budynek.FirstOrDefault(l1 => l1.DzialkaId == dz) != null).ToList();
 
@@ -101,6 +100,7 @@ namespace RejestrNieruchomosciNew.Model
                 
                 foreach (var item in list)
                 {
+                    #region Adres
                     if (item.Adres != null)
                     {
                         if (item.Adres.MiejscowoscSloId == 0)
@@ -112,6 +112,19 @@ namespace RejestrNieruchomosciNew.Model
                                 item.Adres = null;
                         }
                     }
+                    #endregion
+
+                    #region Lokal
+                    var lokalAll = c.Lokal.AsNoTracking().Where(r => r.BudynekId == item.BudynekId).ToList();
+
+                    foreach (var itemLok in lokalAll)
+                    {
+                        var result = item.Lokal.FirstOrDefault(r => r.Numer == itemLok.Numer);
+                        if (result == null)
+                            c.Lokal.Remove(itemLok);
+                    }
+
+                    #endregion
                 }
 
                 c.UpdateRange(list);

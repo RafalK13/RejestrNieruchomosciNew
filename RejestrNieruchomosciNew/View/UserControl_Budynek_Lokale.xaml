@@ -7,7 +7,7 @@
              xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1102.959"
+             d:DesignHeight="450" d:DesignWidth="1368.959"
              Name="Budynek_lokale">
     <UserControl.Resources>
         <Style TargetType="userControl:UserControl_CheckBox" x:Key="elemCheckBox">
@@ -17,15 +17,27 @@
             <Setter Property="Margin" Value="10,0,0,0"/>
         </Style>
 
-            <con:stringToDouble_two x:Key="doubleConverter_two"/>
+        <Style x:Key="tekskBoxOpis" TargetType="TextBox">
+            <Setter Property="MinLines" Value="3"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="AcceptsTab" Value="True"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+
+        <Style x:Key="scrollViewer" TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="IsEnabled" Value="{Binding userControl_Budynek.podmiotDetail}"/>
+        </Style>
+
+        <con:stringToDouble_two x:Key="doubleConverter_two"/>
         
             <con:stringToInt x:Key="intConverter"/>
             <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
                 <Setter Property="Margin" Value="0,5,10,0"/>
                 <Setter Property="widthLabelRaf" Value="210"/>
             </Style>
-
-
 
     </UserControl.Resources>
     <Grid>
@@ -42,14 +54,14 @@
                         hightRaf="30"
                         isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.jednorodzinny, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
-
+        <!--<ColumnDefinition Width="{Binding Path=DataContext.userControl_Budynek.widthRaf, ElementName=Budynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=DataContext.userControl_Budynek.widthRaf, ElementName=Budynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="330"/>
                 <ColumnDefinition Width="250" MinWidth="9" />
                 <ColumnDefinition Width="250" MinWidth="9" />
-                <ColumnDefinition Width="2*" MinWidth="9" />
+                <ColumnDefinition Width="250" MinWidth="9" />
             </Grid.ColumnDefinitions>
             <!--<Border Grid.Column="1" Background="Green"/>-->
             <GridSplitter 
@@ -87,64 +99,143 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-        <Grid Grid.Column="0"
-                 
-                  >
-                <TextBox
-                    Text="Rafałek"/>
-            </Grid>
+            <ScrollViewer Grid.Column="0" 
+                          Style="{StaticResource scrollViewer}">
+                <StackPanel >
+                    <Label      Grid.Row="0"
+                                Content="Numer"
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left"/>
+                    <TextBox 
+                        Grid.Row="1"
+                        Style="{StaticResource tekskBoxOpis}"
+                        Text="{Binding userControl_Budynek.lokalNumer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button     Grid.Row="1"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Content="Dodaj"
+                                Height="30"
+                                Width="100"
+                                Command="{Binding userControl_Budynek.lokalAdd}"
+                                />
+                    <DataGrid 
+                            Grid.Row="1"
+                            VerticalAlignment="Top"
+                            Margin="3,10,10,0"
+                            ItemsSource="{Binding userControl_Budynek.budSel.Lokal, Mode=TwoWay}"
+                            SelectedItem="{Binding userControl_Budynek.lokalSel, Mode=TwoWay}"
+                            CanUserSortColumns="False"
+                            FrozenColumnCount="1" 
+                            IsReadOnly="True"
+                            CanUserAddRows="False"
+                            CanUserDeleteRows="False" 
+                            CanUserReorderColumns="False"
+                            HeadersVisibility="Column"
+                            SelectionMode="Single"
+                            SelectionUnit="FullRow"
+                            VerticalScrollBarVisibility="Auto"
+                            AutoGenerateColumns="False"
+                         >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                            Header="Nazwa"
+                                            Binding="{Binding Numer}"
+                                            Width="*"
+                            />
+                            <DataGridTemplateColumn         
+ >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button 
+                                            Height="20" 
+                                            Width="20" 
+                                            Content="x"                                                           
+                                            Foreground="Red"
+                                            BorderBrush="White"
+                                            Command="{Binding Path=DataContext.userControl_Budynek.lokalDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <!--Command="{Binding Path=DataContext.userControl_Budynek.lokalDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>-->
+                </StackPanel>
+            </ScrollViewer>
 
-            <StackPanel Grid.Column="1">
-                <userControl:UserControl_ElementInfo
+            <ScrollViewer Grid.Column="1"
+                          Style="{StaticResource scrollViewer}">
+                <StackPanel>
+                    <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        labelRaf="Powierzchnia całkowita [m2]"
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.pow, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},  Converter={StaticResource doubleConverter_two}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <userControl:UserControl_ElementInfo
+                    <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        labelRaf="Pow.pomieszczeń przynależnych [m2]"
 
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.powPomPrzyn, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource doubleConverter_two}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <userControl:UserControl_ElementInfo
+                    <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        labelRaf="Kondygnacja"
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.kondygnacja, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <userControl:UserControl_ElementInfo
+                    <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        labelRaf="KW lokalu"
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.KWlok, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <userControl:UserControl_ElementInfo                     
+                    <userControl:UserControl_ElementInfo                     
                        VerticalContentAlignment="Top"
                        labelRaf="Opis"
                        widthLabelRaf="50"                      
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.opis, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <userControl:UserControl_ElementInfo.Resources>
-                        <Style TargetType="Label">
-                            <Setter Property="VerticalAlignment" Value="Top"/>
-                            <Setter Property="Margin" Value="0,1,10,0"/>
-                        </Style>
-                        <Style TargetType="TextBox">
-                            <Setter Property="MinHeight" Value="130"/>
-                            <Setter Property="Margin" Value="0,7,10,0"/>
-                            <Setter Property="AcceptsReturn" Value="True"/>
-                            <Setter Property="AcceptsTab" Value="True"/>
-                            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-                        </Style>
-                      
-                    </userControl:UserControl_ElementInfo.Resources>
-                </userControl:UserControl_ElementInfo>
+                        <userControl:UserControl_ElementInfo.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="VerticalAlignment" Value="Top"/>
+                                <Setter Property="Margin" Value="0,1,10,0"/>
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="MinHeight" Value="130"/>
+                                <Setter Property="Margin" Value="0,7,10,0"/>
+                                <Setter Property="AcceptsReturn" Value="True"/>
+                                <Setter Property="AcceptsTab" Value="True"/>
+                                <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                            </Style>
+
+                        </userControl:UserControl_ElementInfo.Resources>
+                    </userControl:UserControl_ElementInfo>
 
 
-                <!--<userControl:UserControl_Attachment
+                    <!--<userControl:UserControl_Attachment
                                        Width="{Binding  ElementName=NumerProtokoluPrzejecia, Path=ActualWidth}"
                                        Height="{Binding ElementName=NumerProtokoluPrzejecia, Path=ActualHeight}"
                                        Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
                                        pathRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.ZalPath, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        />-->
-            </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Column="2"
+                          Style="{StaticResource scrollViewer}">
+                <Grid>
+                    <Grid/>
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer Grid.Column="3"
+                          Style="{StaticResource scrollViewer}">
+                <Grid>
+                    <Grid/>
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer Grid.Column="4"
+                          Style="{StaticResource scrollViewer}">
+                <StackPanel Grid.Column="2"/>
+
+            </ScrollViewer>
         </Grid>
 
         

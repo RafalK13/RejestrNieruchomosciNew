@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         Adres Adres { get; set; }
 
-        ICollection<Lokal> Lokal { get; set; }
+        ObservableCollection<Lokal> Lokal { get; set; }
 
         event EventHandler zmiana;
     }

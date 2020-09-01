@@ -2,6 +2,7 @@
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 
@@ -53,7 +54,7 @@ namespace RejestrNieruchomosciNew.Model
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
         public Adres Adres { get; set; }
 
-        public ICollection<Lokal> Lokal { get; set; }
+        public ObservableCollection<Lokal> Lokal { get; set; }
 
         public event EventHandler zmiana;
 
@@ -111,7 +112,7 @@ namespace RejestrNieruchomosciNew.Model
             return bud;
         }
 
-        public override bool Equals(Object other)
+        public override bool Equals(object other)
         {
             IBudynek obj = other as IBudynek;
 
