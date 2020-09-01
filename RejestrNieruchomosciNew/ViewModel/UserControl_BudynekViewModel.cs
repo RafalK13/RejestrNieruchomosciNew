@@ -25,8 +25,26 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _isCheckBoxVisible = value;
-                setWidthColumn();
+                
+                makeLokSingle();
                 RaisePropertyChanged();
+            }
+        }
+
+        private void makeLokSingle()
+        {
+            
+            if (budSel != null)
+            {
+                if (budSel.jednorodzinny == true)
+                {
+                    if (budSel.Lokal.Count == 0)
+                    {
+                        budSel.Lokal.Add(new Lokal { Numer = "jednorodzinny" });
+                    }
+                    lokalSel = budSel.Lokal.First();
+                }
+                setWidthColumn();
             }
         }
 
@@ -160,7 +178,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void BudSel_zmiana(object sender, EventArgs e)
         {
-            setWidthColumn();
+            isCheckBoxVisible = false;
+            makeLokSingle();
+            
+
         }
 
         private void setWidthColumn()
@@ -270,16 +291,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testBudynekSel()
         {
-
-
-
             if (budSel != null && budSel.Nazwa != null)
             {
-                int ddd = 13;
-
-
-                setWidthColumn();
-
                 if (budSel.Adres == null)
                     budSel.Adres = new Adres();
 
@@ -293,6 +306,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     //lokalSel = budSel.Lokal.FirstOrDefault();
                 }
+               
 
                 isCheckBoxVisible = budSel.Lokal.Count > 0 ? false : true;
 
@@ -306,6 +320,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 budName = string.Empty;
 
                 setWidthColumn();
+                
             }
             else
                 podmiotDetail = false;
@@ -364,6 +379,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                     budSel.Lokal.Add(lokal);
                     lokalNumer = string.Empty;
                     lokalSel = null;
+                    isCheckBoxVisible = false;
                 }
             }
         }
