@@ -32,12 +32,12 @@
         </Style>
 
         <con:stringToDouble_two x:Key="doubleConverter_two"/>
-        
-            <con:stringToInt x:Key="intConverter"/>
-            <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
-                <Setter Property="Margin" Value="0,5,10,0"/>
-                <Setter Property="widthLabelRaf" Value="210"/>
-            </Style>
+
+        <con:stringToInt x:Key="intConverter"/>
+        <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
+            <Setter Property="Margin" Value="0,5,10,0"/>
+            <Setter Property="widthLabelRaf" Value="210"/>
+        </Style>
 
     </UserControl.Resources>
     <Grid>
@@ -52,18 +52,17 @@
                         FlowDirection="RightToLeft"
                         HorizontalAlignment="Left"
                         hightRaf="30"
+                        IsEnabled="{Binding Path=DataContext.userControl_Budynek.isCheckBoxVisible, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         isChackedRaf="{Binding Path=DataContext.userControl_Budynek.budSel.jednorodzinny, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <!--<ColumnDefinition Width="{Binding Path=DataContext.userControl_Budynek.widthRaf, ElementName=Budynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="330"/>
-                <ColumnDefinition Width="250" MinWidth="9" />
+                <ColumnDefinition Width="{Binding Path=DataContext.userControl_Budynek.widthRaf, ElementName=Budynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ColumnDefinition Width="300" MinWidth="9" />
                 <ColumnDefinition Width="250" MinWidth="9" />
                 <ColumnDefinition Width="250" MinWidth="9" />
             </Grid.ColumnDefinitions>
-            <!--<Border Grid.Column="1" Background="Green"/>-->
             <GridSplitter 
                    Grid.Column ="0"  
                    Width="5"
@@ -71,34 +70,35 @@
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-        <GridSplitter 
+            <GridSplitter 
                    Grid.Column ="1"  
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-        <GridSplitter 
+            <GridSplitter 
                    Grid.Column ="2"  
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
-        <GridSplitter 
-                   Grid.Column ="2"  
-                   Width="5"
-                   HorizontalAlignment="Right" 
-                   VerticalAlignment="Stretch"
-                   Panel.ZIndex="13" 
-                   />
-        <GridSplitter 
+            <GridSplitter 
                    Grid.Column ="3"  
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"
                    Panel.ZIndex="13" 
                    />
+            <GridSplitter 
+                   Grid.Column ="5"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
             <ScrollViewer Grid.Column="0" 
                           Style="{StaticResource scrollViewer}">
                 <StackPanel >
@@ -219,26 +219,26 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <ScrollViewer Grid.Column="2"
+            <ScrollViewer Grid.Column="5"
                           Style="{StaticResource scrollViewer}">
                 <Grid>
                     <Grid/>
                 </Grid>
             </ScrollViewer>
-            <ScrollViewer Grid.Column="3"
+            <ScrollViewer Grid.Column="5"
                           Style="{StaticResource scrollViewer}">
                 <Grid>
                     <Grid/>
                 </Grid>
             </ScrollViewer>
-            <ScrollViewer Grid.Column="4"
+            <ScrollViewer Grid.Column="5"
                           Style="{StaticResource scrollViewer}">
                 <StackPanel Grid.Column="2"/>
 
             </ScrollViewer>
         </Grid>
 
-        
+
 
 
     </Grid>

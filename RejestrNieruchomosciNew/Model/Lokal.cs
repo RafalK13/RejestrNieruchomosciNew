@@ -64,7 +64,10 @@ namespace RejestrNieruchomosciNew.Model
             if (obj == null)
                 return false;
 
-            return Numer.Equals(obj.Numer);
+            return object.Equals( Numer, obj.Numer) &&
+                   LokalId == obj.LokalId &&
+                   BudynekId == obj.BudynekId;
+            //return Numer.Equals(obj.Numer);
         }
 
         public override int GetHashCode()
@@ -79,6 +82,7 @@ namespace RejestrNieruchomosciNew.Model
 
                 int hash = HashingBase;
                 hash = (hash * HashingMultiplier) ^ (LokalId.GetHashCode());
+                hash = (hash * HashingMultiplier) ^ (BudynekId.GetHashCode());
                 hash = (hash * HashingMultiplier) ^ (object.ReferenceEquals(null, Numer) ? 0 : Numer.GetHashCode());
                 return hash;
             }

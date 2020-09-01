@@ -199,12 +199,12 @@
                             >
             <Button Content="Zapisz"
                                     Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Budynek.dzialakBudynekAdd}"/>
+                                    Command="{Binding userControl_Budynek.dzialakBudynekSave}"/>
 
 
             <Button Content="Zapisz i zamknij"
                                     Style="{StaticResource buttonCommon}"
-                                    Command="{Binding userControl_Budynek.dzialakBudynekAdd}"
+                                    Command="{Binding userControl_Budynek.dzialakBudynekSave}"
                                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
             <Button Content="Czyść"
