@@ -350,6 +350,7 @@
     <Compile Include="Model\Lokal.cs" />
     <Compile Include="Model\LokalList.cs" />
     <Compile Include="Model\Lokal_Najemca.cs" />
+    <Compile Include="Model\Lokal_Podmiot.cs" />
     <Compile Include="Model\Media.cs" />
     <Compile Include="Model\MiejscowoscSlo.cs" />
     <Compile Include="Model\MiejscowoscSloList.cs" />

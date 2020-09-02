@@ -39,7 +39,7 @@ namespace RejestrNieruchomosciNew.Model
                 try
                 {
                     listAll = new ObservableCollection<IBudynek>(c.Budynek
-                                                                          .Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
+                                                                          .Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka).AsNoTracking()
                                                                           .Include(a => a.Adres)
                                                                           .Include(l=>l.Lokal));
                 }
@@ -126,7 +126,7 @@ namespace RejestrNieruchomosciNew.Model
 
                     #endregion
                 }
-
+                int xxx = 13;
                 c.UpdateRange(list);
                 c.SaveChanges();
 

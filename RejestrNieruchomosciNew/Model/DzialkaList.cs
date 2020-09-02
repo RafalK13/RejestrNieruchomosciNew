@@ -59,23 +59,41 @@ namespace RejestrNieruchomosciNew.Model
         public void DelRow(IDzialka dz)
         {
             list.Remove(dz);
-
+           
             using (var c = new Context())
             {
-                var r1 = c.Dzialka_Budynek.Where(n => n.DzialkaId == dz.DzialkaId);
-                foreach (var item in r1)
+                ICollection<Dzialka_Budynek> tab;
+                Dzialka d = dz as Dzialka;
+                if (d.Dzialka_Budynek != null)
+                     tab = d.Dzialka_Budynek;
+                else
+                    tab = c.Dzialka_Budynek.AsNoTracking().Include(b=>b.Budynek).AsNoTracking()
+                                                         .Where(n => n.DzialkaId == dz.DzialkaId).ToList();
+
+
+                foreach (var item in tab)
                 {
-                    if (c.Budynek.Where(r2 => r2.BudynekId == item.BudynekId).Count() == 1)
+                   var budTodel = item.Budynek;
+                    try
                     {
-                        try
-                        {
-                            c.Budynek.Remove(c.Budynek.FirstOrDefault(d => d.BudynekId == item.BudynekId));
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        c.Budynek.Remove(item.Budynek);
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    //if (c.Budynek.Where(r2 => r2.BudynekId == item.BudynekId).Count() == 1)
+                    //{
+                    //    try
+                    //    {
+                    //        c.Budynek.Remove(c.Budynek.FirstOrDefault(d => d.BudynekId == item.BudynekId));
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        MessageBox.Show(ex.Message);
+                    //    }
+                    //}
                 }
                 c.Dzialka.Remove((Dzialka)dz);
                 c.SaveChanges();

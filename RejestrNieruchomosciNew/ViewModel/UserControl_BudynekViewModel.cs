@@ -15,7 +15,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
-
         #region CheckBoxVisible
         private bool _isCheckBoxVisible;
 
@@ -33,7 +32,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void makeLokSingle()
         {
-            
             if (budSel != null)
             {
                 if (budSel.jednorodzinny == true)
@@ -180,8 +178,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             isCheckBoxVisible = false;
             makeLokSingle();
-            
-
         }
 
         private void setWidthColumn()
@@ -269,6 +265,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                                                                              .Include(l => l.Lokal)
                                                                              .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == userPrev.dzialkaSel.DzialkaId) != null)
                                                                    );
+
+                   
                 }
 
                 if (userPrev.dzialkaSel.Obreb != null)
@@ -437,6 +435,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialakBudynekSave()
         {
+          
             budSel = null;
             budList.list = budListLok;
             budList.saveBudynki();
