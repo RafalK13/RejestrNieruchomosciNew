@@ -222,7 +222,8 @@
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="2"
-                          Style="{StaticResource scrollViewer}">
+                          Style="{StaticResource scrollViewer}"
+                          IsEnabled="{Binding userControl_Budynek.lokatorDetail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
@@ -263,7 +264,7 @@
                         VerticalAlignment="Top"
                         Margin="3,100,10,0"
                         ItemsSource="{Binding userControl_Budynek.lokalSel.Lokal_Podmiot, Mode=TwoWay}"
-                        SelectedItem="{Binding userControl_Budynek.innePrawaSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        SelectedItem="{Binding userControl_Budynek.lokal_PodmiotSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         CanUserSortColumns="False"
                         FrozenColumnCount="1" 
                         IsReadOnly="True"
@@ -301,7 +302,7 @@
                                             Content="x"                                                           
                                             Foreground="Red"
                                             BorderBrush="White"
-                                            Command="{Binding Path=DataContext.userControl_InnePrawa.podmiotDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
+                                            Command="{Binding Path=DataContext.userControl_Budynek.lokatorDel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGrid}}}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

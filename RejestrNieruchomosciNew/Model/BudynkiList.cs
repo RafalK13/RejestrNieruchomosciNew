@@ -118,7 +118,19 @@ namespace RejestrNieruchomosciNew.Model
                         if (result == null)
                             c.Lokal.Remove(itemLok);
                     }
+                    #endregion
 
+                    #region Lokator
+                    foreach (var itemLokal in item.Lokal)
+                    {
+                        var lokatorAll = c.Lokal_Podmiot.AsNoTracking().Where(r => r.LokalId == itemLokal.LokalId).ToList();
+                        foreach (var itemLokator in lokatorAll)
+                        {
+                            var result = itemLokal.Lokal_Podmiot.FirstOrDefault(r => r.PodmiotId == itemLokator.PodmiotId);
+                            if (result == null)
+                                c.Lokal_Podmiot.Remove(itemLokator);
+                        }
+                    }
                     #endregion
                 }
                 c.UpdateRange(list);
