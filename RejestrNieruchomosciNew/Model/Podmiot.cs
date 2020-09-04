@@ -22,5 +22,7 @@ namespace RejestrNieruchomosciNew
         //public string Country { get; set; }
 
         //public ICollection<Wladanie> Wladanie { get; set; }
+
+        //public ICollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
     }
 }

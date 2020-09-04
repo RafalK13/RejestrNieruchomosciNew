@@ -1,4 +1,6 @@
-﻿namespace RejestrNieruchomosciNew.Model
+﻿using System.Collections.Generic;
+
+namespace RejestrNieruchomosciNew.Model
 {
     public interface IPodmiot
     {
@@ -9,6 +11,8 @@
         //string Street { get; set; }
         //string House { get; set; }
 
-       
+        //ICollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
+
+
     }
 }

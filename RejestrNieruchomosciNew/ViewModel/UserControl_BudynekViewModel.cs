@@ -15,6 +15,67 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
+        private InnePrawaDzialka _innePrawaDzialka;
+
+        public InnePrawaDzialka innePrawaDzialka
+        {
+            get { return _innePrawaDzialka; }
+            set
+            {
+                _innePrawaDzialka = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #region selectedInnePrawaId
+        private int _selectedInnePrawaId;
+
+        public int selectedInnePrawaId
+        {
+            get { return _selectedInnePrawaId; }
+            set
+            {
+                _selectedInnePrawaId = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region innePrawaName
+        private string _innePrawaName;
+
+        public string innePrawaName
+        {
+            get { return _innePrawaName; }
+            set
+            {
+                _innePrawaName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region IPodmiotList podmiotList
+        public IPodmiotList podmiotList { get; set; }
+        #endregion
+
+        //#region List<Lokal_Podmiot>
+        //private ObservableCollection<Lokal_Podmiot> _lokalPodListLok;
+
+        //public ObservableCollection<Lokal_Podmiot> lokalPodListLok
+        //{
+        //    get { return _lokalPodListLok; }
+        //    set
+        //    {
+        //        _lokalPodListLok = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
+        //#endregion
+
         #region CheckBoxVisible
         private bool _isCheckBoxVisible;
 
@@ -24,7 +85,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _isCheckBoxVisible = value;
-                
+
                 makeLokSingle();
                 RaisePropertyChanged();
             }
@@ -238,8 +299,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _lokalSel = value;
+                testLokalSel();
                 RaisePropertyChanged();
             }
+        }
+
+        private void testLokalSel()
+        {
+            if(lokalSel != null)
+            if (lokalSel.Lokal_Podmiot == null)
+                lokalSel.Lokal_Podmiot = new ObservableCollection<Lokal_Podmiot>();
         }
 
         #endregion
@@ -247,35 +316,35 @@ namespace RejestrNieruchomosciNew.ViewModel
         #region KONSTRUKTOR
 
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel _userPrev
-                                           , IBudynkiList _budList)
+                                           , IBudynkiList _budList
+                                           , InnePrawaDzialka _innePrawaD)
         {
             initButtons();
+            innePrawaDzialka = _innePrawaD;
 
-            userPrev = _userPrev;
             sellVisibility = Visibility.Hidden;
 
             if (_userPrev.dzialkaSel != null)
             {
-                _budList.getList(userPrev.dzialkaSel);
+                _budList.getList(_userPrev.dzialkaSel);
 
                 using (var c = new Context())
                 {
                     budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                              .Include(a => a.Adres)
-                                                                             .Include(l => l.Lokal)
-                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == userPrev.dzialkaSel.DzialkaId) != null)
+                                                                             .Include(l => l.Lokal).ThenInclude( r=>r.Lokal_Podmiot)
+                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == _userPrev.dzialkaSel.DzialkaId) != null)
                                                                    );
 
-                   
                 }
 
-                if (userPrev.dzialkaSel.Obreb != null)
+                if (_userPrev.dzialkaSel.Obreb != null)
                 {
                     using (var c = new Context())
                     {
-                        gminaId = userPrev.dzialkaSel.Obreb.GminaSloId;
+                        gminaId = _userPrev.dzialkaSel.Obreb.GminaSloId;
                         dzialkaIn = new List<IDzialka>(new Dzialka[] { (Dzialka)_userPrev.dzialkaSel });
-                        dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == userPrev.dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
+                        dzialkaList = c.Dzialka.AsNoTracking().Where(r => r.ObrebId == _userPrev.dzialkaSel.ObrebId).Select(r2 => (IDzialka)r2).ToList()
                                       .Except(dzialkaIn).ToList();
                     }
                 }
@@ -289,6 +358,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testBudynekSel()
         {
+            lokalSel = null;
             if (budSel != null && budSel.Nazwa != null)
             {
                 if (budSel.Adres == null)
@@ -304,7 +374,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     //lokalSel = budSel.Lokal.FirstOrDefault();
                 }
-               
+
 
                 isCheckBoxVisible = budSel.Lokal.Count > 0 ? false : true;
 
@@ -318,13 +388,12 @@ namespace RejestrNieruchomosciNew.ViewModel
                 budName = string.Empty;
 
                 setWidthColumn();
-                
+
             }
             else
                 podmiotDetail = false;
 
             budName = "*";
-
         }
 
         private bool testWlascExist()
@@ -347,6 +416,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand dzilakaPrzylDel { get; set; }
         public ICommand lokalAdd { get; set; }
         public ICommand lokalDel { get; set; }
+        public ICommand lokatorAdd { get; set; }
 
         private void initButtons()
         {
@@ -358,6 +428,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             dzilakaPrzylDel = new RelayCommand(onDzialkaPrzylDel);
             lokalAdd = new RelayCommand(onLokalAdd);
             lokalDel = new RelayCommand(onlokalDel);
+            lokatorAdd = new RelayCommand(onLokatorAdd);
+        }
+
+        private void onLokatorAdd()
+        {
+            lokalSel.Lokal_Podmiot.Add( new Lokal_Podmiot { LokalId=lokalSel.LokalId, PodmiotId = selectedInnePrawaId});
+            innePrawaName = String.Empty;
         }
 
         private void onlokalDel()
@@ -435,7 +512,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialakBudynekSave()
         {
-          
+
             budSel = null;
             budList.list = budListLok;
             budList.saveBudynki();

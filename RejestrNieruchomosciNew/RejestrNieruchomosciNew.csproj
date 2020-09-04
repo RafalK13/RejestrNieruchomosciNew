@@ -263,6 +263,10 @@
     <Compile Include="Migrations\20200827094142_dom9.designer.cs">
       <DependentUpon>20200827094142_dom9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200902130145_dom11.cs" />
+    <Compile Include="Migrations\20200902130145_dom11.designer.cs">
+      <DependentUpon>20200902130145_dom11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -318,6 +322,7 @@
     <Compile Include="Model\Interfaces\INajemca.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IBudynek.cs" />
+    <Compile Include="Model\Interfaces\InnePrawaDzialka.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajPlatnosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajTransakcjiSlo.cs" />

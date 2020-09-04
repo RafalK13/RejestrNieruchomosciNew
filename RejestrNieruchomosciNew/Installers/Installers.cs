@@ -167,8 +167,13 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_BudynekViewModel>().LifeStyle.Transient);
 
+            container.Register(Component.For<Lokal_Podmiot>().LifeStyle.Transient);
+
+            container.Register(Component.For<InnePrawaDzialka>().LifeStyle.Transient);
+
             //container.Register(Component.For<ILokal>().ImplementedBy<Lokal>().LifeStyle.Transient);
             //container.Register(Component.For<ILokalList>().ImplementedBy<LokalList>());
         }
     }
 }
+

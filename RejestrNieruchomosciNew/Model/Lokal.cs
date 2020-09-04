@@ -1,4 +1,7 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Windows;
@@ -19,6 +22,8 @@ namespace RejestrNieruchomosciNew.Model
 
         public int? BudynekId { get; set; }
         public Budynek Budynek { get; set; }
+
+        public ObservableCollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
 
         //public string ZalPath
         //{

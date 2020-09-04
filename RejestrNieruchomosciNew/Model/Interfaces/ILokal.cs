@@ -1,4 +1,7 @@
-﻿namespace RejestrNieruchomosciNew.Model.Interfaces
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+namespace RejestrNieruchomosciNew.Model.Interfaces
 {
     public interface ILokal
     {
@@ -14,5 +17,7 @@
 
          int? BudynekId { get; set; }
          Budynek Budynek { get; set; }
+
+         ObservableCollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
     }
 }

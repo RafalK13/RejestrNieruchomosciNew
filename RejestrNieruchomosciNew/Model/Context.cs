@@ -54,7 +54,7 @@ namespace RejestrNieruchomosciNew
         
         public virtual DbSet<DecyzjeAdministracyjne> DecyzjeAdministracyjne { get; set; }
 
-        //public virtual DbSet<Lokal_Podmiot> Lokal_Podmiot { get; set; }
+        public virtual DbSet<Lokal_Podmiot> Lokal_Podmiot { get; set; }
 
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
@@ -70,17 +70,11 @@ namespace RejestrNieruchomosciNew
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Dzialka_Budynek>()
-            //    .HasOne(bc => bc.Dzialka)
-            //    .WithMany(b => b.Dzialka_Budynek)
-            //    .HasForeignKey(bc => bc.DzialkaId);
-
-            //modelBuilder.Entity<Dzialka_Budynek>()
-            //    .HasOne(bc => bc.Budynek)
-            //    .WithMany(c => c.Dzialka_Budynek)
-            //    .HasForeignKey(bc => bc.BudynekId)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
+            modelBuilder.Entity<Lokal_Podmiot>()
+                .HasOne(bc => bc.Lokal)
+                .WithMany(b => b.Lokal_Podmiot)
+                .OnDelete(DeleteBehavior.Cascade);
+             
             modelBuilder.Entity<Lokal>()
                  .HasOne<Budynek>(a => a.Budynek)
                  .WithMany(a => a.Lokal)

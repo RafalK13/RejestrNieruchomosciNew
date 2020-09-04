@@ -41,7 +41,7 @@ namespace RejestrNieruchomosciNew.Model
                     listAll = new ObservableCollection<IBudynek>(c.Budynek
                                                                           .Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka).AsNoTracking()
                                                                           .Include(a => a.Adres)
-                                                                          .Include(l=>l.Lokal));
+                                                                          .Include(l=>l.Lokal).ThenInclude( p=>p.Lokal_Podmiot));
                 }
                 catch (Exception e)
                 {
@@ -56,11 +56,6 @@ namespace RejestrNieruchomosciNew.Model
             if (dzialka != null)
                 list = new ObservableCollection<IBudynek>(listAll.Where(r => r.Dzialka_Budynek.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId) != null).ToList());
 
-            //int a = 1;
-            //listOrg = ObservableCon<IBudynek>.ObservableToList(list);
-            //listToAdd = new List<IBudynek>();
-            //listToMod = new List<IBudynek>();
-            //listToDel = new List<IBudynek>();
             result = string.Empty;
 
         }
@@ -126,15 +121,11 @@ namespace RejestrNieruchomosciNew.Model
 
                     #endregion
                 }
-                int xxx = 13;
                 c.UpdateRange(list);
                 c.SaveChanges();
-
-                
             }
 
             initListAll();
-            //initList(dzialkaPrv);
         }
     }
 }
