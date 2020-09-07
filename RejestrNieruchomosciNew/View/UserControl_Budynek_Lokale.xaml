@@ -32,13 +32,15 @@
             <Setter Property="IsEnabled" Value="{Binding userControl_Budynek.podmiotDetail}"/>
         </Style>
 
-        <con:stringToDouble_two x:Key="doubleConverter_two"/>
-        <con:personIdToPersonName x:Key="parsonConvert"/>
-        <con:stringToInt x:Key="intConverter"/>
         <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
             <Setter Property="Margin" Value="0,5,10,0"/>
             <Setter Property="widthLabelRaf" Value="210"/>
         </Style>
+
+        <con:stringToDouble_two x:Key="doubleConverter_two"/>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:stringToInt x:Key="intConverter"/>
+       
 
     </UserControl.Resources>
     <Grid>
@@ -177,7 +179,6 @@
                     <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        labelRaf="Pow.pomieszczeń przynależnych [m2]"
-
                        tekstRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.powPomPrzyn, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource doubleConverter_two}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <userControl:UserControl_ElementInfo

@@ -9,16 +9,13 @@
     <Grid>
         <TabControl>
 
-            <TabItem Header="Lokale">
-                <View:UserControl_Budynek_Lokale/>
-            </TabItem>
-
             <TabItem Header="Dane podstawowe o budynku">
                 <View:UserControl_Budynek_Podst/>
             </TabItem>
-            
-            
-            
+
+            <TabItem Header="Lokale">
+                <View:UserControl_Budynek_Lokale/>
+            </TabItem>
             
         </TabControl>
         

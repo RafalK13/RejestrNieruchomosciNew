@@ -34,7 +34,7 @@
     </UserControl.Resources>
 
     <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Auto">
+                  HorizontalScrollBarVisibility="Auto">
 
         <Grid>
             <!--<GridSplitter 

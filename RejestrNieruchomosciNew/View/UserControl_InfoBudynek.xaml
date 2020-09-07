@@ -70,11 +70,13 @@
         </DataGrid>
 
         <TabControl  Grid.Column="1">
-            <TabItem Header="Dane Podstawowe">
-                <view:UserControl_InfoBudynek_danePodstawowe/>
-            </TabItem>
+           
             <TabItem Header="Lokale">
                 <view:UserControl_InfoBudynek_Lokale/>
+            </TabItem>
+
+            <TabItem Header="Dane Podstawowe">
+                <view:UserControl_InfoBudynek_danePodstawowe/>
             </TabItem>
         </TabControl>
 

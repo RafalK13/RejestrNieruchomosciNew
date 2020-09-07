@@ -3,10 +3,148 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="InfoBudynek_lokale"
+             >
+    <UserControl.Resources>
+        <con:personIdToPersonName x:Key="parsonConvert"/>
+        <con:stringToInt x:Key="intConverter"/>
+        <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
+        <con:slownikIdToName x:Key="slowConvert"/>
+        <Style TargetType="view:UserControl_CheckBox" x:Key="elemCheckBox">
+            <Setter Property="Margin" Value="0,1,10,0"/>
+            <Setter Property="widthLabelRaf" Value="150"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
+            <Setter Property="isChackedRaf" Value="False"/>
+        </Style>
+        <Style TargetType="Label" x:Key="labelRaf">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style TargetType="view:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="210"/>
+            <Setter Property="IsHitTestVisible" Value="false"/>
+            <Setter Property="isReadOnlyRaf" Value="True"/>
+            <Setter Property="Margin" Value="0,5,10,0"/>
+        </Style>
+
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter 
+                   Grid.Column ="0"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+        <GridSplitter 
+                   Grid.Column ="1"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <GridSplitter 
+                   Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+        <DataGrid
+                   Name="DataGridWladanie"
+                   Grid.Column="0"
+                   ItemsSource="{Binding infoMain.infoBudynek.budynekSel.Lokal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   SelectedItem="{Binding infoMain.infoBudynek.lokalSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   CanUserSortColumns="False"
+                   FrozenColumnCount="1" 
+                   IsReadOnly="True"
+                   CanUserAddRows="False"
+                   CanUserDeleteRows="False" 
+                   CanUserReorderColumns="False"
+                   HeadersVisibility="Column"
+                   SelectionMode="Single"
+                   SelectionUnit="FullRow"
+                   VerticalScrollBarVisibility="Auto"
+                   AutoGenerateColumns="False"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nazwa lokalu"
+                                    Binding="{ Binding Numer}"
+                                    Width="*"
+                                    />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+
+            <Label  Content="Opis lokalu"
+                        FontWeight="Bold"
+                       />
+            <view:UserControl_ElementInfo                      
+                        Style="{StaticResource userInfo}"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
+                        labelRaf="Powierzchnia całkowita [m2]"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoBudynek.lokalSel.pow,  ElementName=InfoBudynek_lokale, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <view:UserControl_ElementInfo                      
+                        Style="{StaticResource userInfo}"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
+                         labelRaf="Pow.pomieszczeń przynależnych [m2]"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoBudynek.lokalSel.powPomPrzyn,  ElementName=InfoBudynek_lokale, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <view:UserControl_ElementInfo                      
+                        Style="{StaticResource userInfo}"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
+                         labelRaf="Kondygnacja"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoBudynek.lokalSel.kondygnacja,  ElementName=InfoBudynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <view:UserControl_ElementInfo                      
+                        Style="{StaticResource userInfo}"
+                        widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
+                        Margin="0,1,20,1"
+                        labelRaf="KW lokalu"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoBudynek.lokalSel.KWlok,  ElementName=InfoBudynek_lokale, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <view:UserControl_ElementInfo                     
+                       VerticalContentAlignment="Top"
+                       labelRaf="Opis"
+                       widthLabelRaf="50"                      
+                       tekstRaf="{Binding  Path=DataContext.infoMain.infoBudynek.lokalSel.opis,ElementName=InfoBudynek_lokale,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <view:UserControl_ElementInfo.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="VerticalAlignment" Value="Top"/>
+                        <Setter Property="Margin" Value="0,1,10,0"/>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="MinHeight" Value="130"/>
+                        <Setter Property="Margin" Value="0,7,20,0"/>
+                        <Setter Property="AcceptsReturn" Value="True"/>
+                        <Setter Property="AcceptsTab" Value="True"/>
+                        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                    </Style>
+
+                </view:UserControl_ElementInfo.Resources>
+            </view:UserControl_ElementInfo>
+
+
+        </StackPanel>
+
     </Grid>
 </UserControl>

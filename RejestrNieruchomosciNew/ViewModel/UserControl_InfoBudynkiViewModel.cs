@@ -1,17 +1,26 @@
 ﻿using GalaSoft.MvvmLight;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoBudynkiViewModel : ViewModelBase
     {
+        private ILokal _lokalSel;
+
+        public ILokal lokalSel
+        {
+            get { return _lokalSel; }
+            set
+            {
+                _lokalSel = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public IAdresSloList adresSloList { get; set; }
 
         private IBudynek _budynekSel;
