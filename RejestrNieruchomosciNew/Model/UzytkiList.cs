@@ -73,8 +73,7 @@ namespace RejestrNieruchomosciNew.Model
 
             if (userPrev.dzialkaSel != null)
             {
-                int r = 1;
-                initListAll();
+               initListAll();
             }
         }
 

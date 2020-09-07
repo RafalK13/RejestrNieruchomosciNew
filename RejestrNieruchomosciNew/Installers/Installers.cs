@@ -142,6 +142,8 @@ namespace RejestrNieruchomosciNew.Installers
 
             container.Register(Component.For<UserControl_InfoZagospViewModel>());
 
+            container.Register(Component.For<UserControl_InfoBudynkiViewModel>());
+
             container.Register(Component.For<WindowTestRaf>());
             container.Register(Component.For<WindowTestRafViewModel>());
 

@@ -55,8 +55,6 @@ namespace RejestrNieruchomosciNew.Model
                 list = new ObservableCollection<IWladanie>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId
                                                                            && r.TransS_Id == null).ToList());
 
-            int ddd = 13;
-
             listOrg = ObservableCon<IWladanie>.ObservableToList(list);
 
             listToAdd = new List<IWladanie>();
@@ -67,11 +65,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public WladanieList()
         {
-            int r = 1;
-            //MessageBox.Show("1");
-
-            list = new ObservableCollection<IWladanie>();
-
+           list = new ObservableCollection<IWladanie>();
         }
 
         public WladanieList(UserControl_PreviewViewModel userPrev)
@@ -84,7 +78,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public void getList(IDzialka dzialkaSel)
         {
-            int r = -13;
             dzialkaPrv = dzialkaSel;
 
             initList(dzialkaPrv);

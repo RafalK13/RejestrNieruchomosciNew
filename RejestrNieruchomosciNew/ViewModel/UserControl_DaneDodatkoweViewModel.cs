@@ -54,8 +54,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
 
             daneDodAdd = new RelayCommand( onDaneDodAdd);
-
-            int r1 = 13;
         }
 
         private void onDaneDodAdd()
@@ -67,7 +65,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             //if (dz.Equals(dzialka) == false)
             //    dzialkaList.ModRow(dz);
-            int r1 = 1;
             dzialkaList.ModRow(dzialka);
 
             //userPrev.dzialkaSel = dzialka;

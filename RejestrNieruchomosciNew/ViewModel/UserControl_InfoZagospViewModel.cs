@@ -58,8 +58,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (prev != null)
             {
                 zagospList.getList(prev.dzialkaSel);
-                
-                int r = 13;
             }
         }
 

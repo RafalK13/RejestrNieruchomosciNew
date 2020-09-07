@@ -66,7 +66,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onTestClick()
         {
-            int r = 1;
         }
 
         private void onDoubleClick()

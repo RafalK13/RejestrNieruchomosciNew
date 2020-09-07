@@ -178,6 +178,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Interactive.Async, Version=3.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.3.2.0\lib\net46\System.Interactive.Async.dll</HintPath>
     </Reference>
@@ -407,6 +408,7 @@
     <Compile Include="ViewModel\UserControl_DaneDodatkoweViewModel.cs" />
     <Compile Include="ViewModel\UserControl_DanePodstawoweViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserControl_InfoBudynkiViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoDaneDodViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoDanePodstViewModel.cs" />
     <Compile Include="ViewModel\UserControl_InfoInnePrawaViewModel.cs" />
@@ -470,6 +472,15 @@
     </Compile>
     <Compile Include="View\UserControl_ElementInfo.xaml.cs">
       <DependentUpon>UserControl_ElementInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoBudynek.xaml.cs">
+      <DependentUpon>UserControl_InfoBudynek.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoBudynek_danePodstawowe.xaml.cs">
+      <DependentUpon>UserControl_InfoBudynek_danePodstawowe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl_InfoBudynek_Lokale.xaml.cs">
+      <DependentUpon>UserControl_InfoBudynek_Lokale.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl_InfoDaneDodat.xaml.cs">
       <DependentUpon>UserControl_InfoDaneDodat.xaml</DependentUpon>
@@ -608,6 +619,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl_ElementInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoBudynek.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoBudynek_danePodstawowe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl_InfoBudynek_Lokale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

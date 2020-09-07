@@ -30,35 +30,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        //private IWladanie _wlad;
-
-        //public IWladanie wlad
-        //{
-        //    get { return _wlad; }
-        //    set { Set( ref _wlad, value); }
-        //}
-
-
-        //private void getWladanieSel()
-        //{
-        //    if(wladanieSel != null)
-        //    using (Context c = new Context())
-        //    {
-        //        try
-        //        {
-        //            wlad = c.Wladanie.AsNoTracking().Include(f => f.FormaWladaniaSlo)
-        //                                            .Include(t => t.TransakcjeK_Wlad)
-        //                                            .FirstOrDefault(r => r.WladanieId == wladanieSel.WladanieId && r.TransS_Id == null);
-                    
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            MessageBox.Show($"WladanieList\r\n{e.Message}");
-        //            Environment.Exit(0);
-        //        }
-        //    }
-        //}
-
         private UserControl_PreviewViewModel _prev;
         public UserControl_PreviewViewModel prev
         {

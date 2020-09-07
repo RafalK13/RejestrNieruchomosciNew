@@ -95,7 +95,6 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onNumerTransChange(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            int ddd = 13;
             UserControl_Transakcja u = d as UserControl_Transakcja;
             if (string.IsNullOrEmpty( u.numerTrans) == false )
             {

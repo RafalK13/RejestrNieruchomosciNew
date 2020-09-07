@@ -132,8 +132,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public IAdres save( IAdres adr)
         {
-            int a = 13;
-            if (adr.AdresId >= 0 && adr.MiejscowoscSloId > 0)
+           if (adr.AdresId >= 0 && adr.MiejscowoscSloId > 0)
             {
                 using (var c = new Context())
                 {

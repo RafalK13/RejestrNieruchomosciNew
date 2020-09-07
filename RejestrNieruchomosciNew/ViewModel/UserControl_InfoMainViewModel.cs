@@ -20,6 +20,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_InfoZagospViewModel infoZagosp { get; set; }
 
+        public UserControl_InfoBudynkiViewModel infoBudynek { get; set; }
+
         public UserControl_InfoMainViewModel()
         {
            

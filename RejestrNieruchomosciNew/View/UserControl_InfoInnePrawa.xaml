@@ -27,7 +27,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
-            
         </Grid.ColumnDefinitions>
 
         <GridSplitter 
@@ -84,7 +83,7 @@
         <ScrollViewer Grid.Column="1" 
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <Grid Grid.Column="1">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="Auto"/>

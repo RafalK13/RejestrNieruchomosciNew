@@ -87,7 +87,9 @@ namespace RejestrNieruchomosciNew.ViewModel
              if (string.IsNullOrEmpty(adr.Numer) == false)
                 numer = ", " + adr.Numer;
 
-             return $"{miejsc}{ulica}{numer}";
+             string s = $"{miejsc}{ulica}{numer}";
+
+            return $"{miejsc}{ulica}{numer}";
             
         }
 
@@ -120,9 +122,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (values[1] == null)
                 return 0;
 
-            int R = 1;
-
-            if (int.TryParse(values[0].ToString(), out int id))
+           if (int.TryParse(values[0].ToString(), out int id))
             {
                 UlicaSloList pl = values[1] as UlicaSloList;
                 if (pl != null)
@@ -190,9 +190,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (values[3] == null)
                 return 0;
 
-            int r13 = 1;
-
-            IEnumerable e = values[1] as IEnumerable;
+           IEnumerable e = values[1] as IEnumerable;
 
             if (e != null)
             {
