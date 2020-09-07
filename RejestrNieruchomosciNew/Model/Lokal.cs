@@ -25,23 +25,30 @@ namespace RejestrNieruchomosciNew.Model
 
         public ObservableCollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
 
-        //public string ZalPath
-        //{
-        //    get
-        //    {
-        //        string s = $"{    Budynek.Dzialka_Budynek.FirstOrDefault().DzialkaId}" +
-        //                    $"\r\n{Budynek.Dzialka_Budynek.FirstOrDefault().Dzialka.Numer}" +
-        //                    $"\r\n{Budynek.Dzialka_Budynek.FirstOrDefault().Budynek}";
+        public string ZalPath
+        {
+            get
+            {
+                int DzialkaId;
+                string BudynekNazwa;
 
-        //        MessageBox.Show(s);
+                var result = Budynek?.Dzialka_Budynek?.FirstOrDefault();
 
-        //        //if (Budynek.D != null && BudynekId != null)
-        //        //{
-        //        //    return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Wladanie\\ProtokolPrzejecia\\" + PodmiotId;
-        //        //}
-        //        return null;
-        //    }
-        //}
+                if (result == null)
+                    return null;
+                
+                DzialkaId = result.DzialkaId;
+                BudynekNazwa = result.Budynek?.Nazwa;
+
+                if(BudynekNazwa == null)
+                    return null;
+
+                if(Numer == null)
+                    return null;
+
+                return ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Budynek\\" + BudynekNazwa + "\\Lokal\\" + Numer;
+            }
+        }
 
         public Lokal()
         {

@@ -18,6 +18,8 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
          int? BudynekId { get; set; }
          Budynek Budynek { get; set; }
 
+        string ZalPath { get; }
+
          ObservableCollection<Lokal_Podmiot> Lokal_Podmiot { get; set; }
     }
 }

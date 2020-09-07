@@ -15,13 +15,39 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_BudynekViewModel : ViewModelBase
     {
+
+        #region rzutLokaluDetail
+        private bool _rzutLokaluDetail;
+
+        public bool rzutLokaluDetail
+        {
+            get { return _rzutLokaluDetail; }
+            set { Set(ref _rzutLokaluDetail, value); }
+        }
+
+        public void checkRzutLokaluDetail()
+        {
+            if (lokalSel != null)
+            {
+                if (lokalSel.ZalPath != null)
+                    rzutLokaluDetail = true;
+                else
+                    rzutLokaluDetail = false;
+            }
+            else
+                rzutLokaluDetail = false;
+            
+        }
+
+        #endregion
+
         #region Lokal_Podmiot lokal_PodmiotSel
         private Lokal_Podmiot _lokal_PodmiotSel;
 
         public Lokal_Podmiot lokal_PodmiotSel
         {
             get { return _lokal_PodmiotSel; }
-            set { Set ( ref _lokal_PodmiotSel,value); }
+            set { Set(ref _lokal_PodmiotSel, value); }
         }
 
 
@@ -194,7 +220,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public bool lokatorDetail
         {
             get { return _lokatorDetail; }
-            set { Set( ref _lokatorDetail , value); }
+            set { Set(ref _lokatorDetail, value); }
         }
 
 
@@ -276,6 +302,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
 
                 budName = string.Empty;
+                checkRzutLokaluDetail();
 
                 setWidthColumn();
             }
@@ -362,9 +389,11 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void testLokalSel()
         {
-            if(lokalSel != null)
-            if (lokalSel.Lokal_Podmiot == null)
-                lokalSel.Lokal_Podmiot = new ObservableCollection<Lokal_Podmiot>();
+            if (lokalSel != null)
+                if (lokalSel.Lokal_Podmiot == null)
+                    lokalSel.Lokal_Podmiot = new ObservableCollection<Lokal_Podmiot>();
+
+            checkRzutLokaluDetail();
 
             lokatorDetail = true;
         }
@@ -390,7 +419,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {
                     budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
                                                                              .Include(a => a.Adres)
-                                                                             .Include(l => l.Lokal).ThenInclude( r=>r.Lokal_Podmiot)
+                                                                             .Include(l => l.Lokal).ThenInclude(r => r.Lokal_Podmiot)
                                                                              .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == _userPrev.dzialkaSel.DzialkaId) != null)
                                                                    );
                 }
@@ -407,14 +436,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
             }
             podmiotDetail = false;
+            rzutLokaluDetail = false;
 
             budSel = null;
             widthRaf = new GridLength(250);
         }
 
         #endregion
-
-       
 
         private bool testWlascExist()
         {
@@ -455,12 +483,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onlokatorDel()
         {
-           if( lokal_PodmiotSel != null)
-           {
-                lokalSel.Lokal_Podmiot.Remove( lokal_PodmiotSel);
-           }
+            if (lokal_PodmiotSel != null)
+            {
+                lokalSel.Lokal_Podmiot.Remove(lokal_PodmiotSel);
+            }
         }
-        
+
         #region void onLokatorAdd()
         private void onLokatorAdd()
         {
@@ -468,6 +496,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 if (testLokatorIfExist())
                 {
+
                     lokalSel.Lokal_Podmiot.Add(new Lokal_Podmiot { LokalId = lokalSel.LokalId, PodmiotId = selectedInnePrawaId });
                     innePrawaName = String.Empty;
                 }
@@ -569,7 +598,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                     Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId, Dzialka = (Dzialka)userPrev.dzialkaSel } } };
 
                     budListLok.Add(bud);
-
                     budynekName = string.Empty;
                     budSel = null;
                 }

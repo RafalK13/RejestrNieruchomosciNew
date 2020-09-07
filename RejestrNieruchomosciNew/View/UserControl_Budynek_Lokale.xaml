@@ -211,13 +211,17 @@
                         </userControl:UserControl_ElementInfo.Resources>
                     </userControl:UserControl_ElementInfo>
 
-
-                    <!--<userControl:UserControl_Attachment
-                                       Width="{Binding  ElementName=NumerProtokoluPrzejecia, Path=ActualWidth}"
-                                       Height="{Binding ElementName=NumerProtokoluPrzejecia, Path=ActualHeight}"
-                                       Margin="{Binding ElementName=NumerProtokoluPrzejecia, Path=Margin}"
-                                       pathRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.ZalPath, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       />-->
+                    <StackPanel Orientation="Horizontal"
+                                Margin="10">
+                        <Label Content="Rzut lokalu"
+                               Width="100"/>
+                        <userControl:UserControl_Attachment
+                                       Width="130"
+                                       Margin="10,0,0,0"
+                                       pathRaf="{Binding  Path=DataContext.userControl_Budynek.lokalSel.ZalPath, RelativeSource={RelativeSource AncestorType=local:UserControl_Budynek_Lokale}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                       IsEnabled="{Binding userControl_Budynek.rzutLokaluDetail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       />
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
 

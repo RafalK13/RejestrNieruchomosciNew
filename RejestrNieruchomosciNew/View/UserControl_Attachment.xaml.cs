@@ -28,7 +28,7 @@ namespace RejestrNieruchomosciNew.View
         private void Button_Add(object sender, RoutedEventArgs e)
         {
             string p = copyFiles.getFilePath();
-
+         
             Directory.CreateDirectory( pathRaf);
 
             if( p != null)
