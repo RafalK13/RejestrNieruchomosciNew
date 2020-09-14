@@ -14,7 +14,9 @@ namespace RejestrNieruchomosciNew
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-           
+
+            //MessageBox.Show( $"UserName:{Environment.UserName}");
+
             container.Install(FromAssembly.This());
 
             using (var c = new Context())
@@ -32,8 +34,8 @@ namespace RejestrNieruchomosciNew
 
                 //var view = container.Resolve<WindowTestRaf>();
                 var view = container.Resolve<MainView>();
-            //var view = container.Resolve<Window2>();
-            view.Show();
+                //var view = container.Resolve<Window2>();
+                view.Show();
 
             //container.Dispose();
         }

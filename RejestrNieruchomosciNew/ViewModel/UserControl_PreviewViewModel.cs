@@ -172,7 +172,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 {                  
                     var v = factory.CreateView<ChangeView>();
                     v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                    v.Show();
+                    v.ShowDialog();
                 }
             }
         }

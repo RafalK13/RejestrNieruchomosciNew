@@ -121,6 +121,7 @@ namespace RejestrNieruchomosciNew.Model
                     #endregion
 
                     #region Lokator
+                    if(item.Lokal !=null)
                     foreach (var itemLokal in item.Lokal)
                     {
                         var lokatorAll = c.Lokal_Podmiot.AsNoTracking().Where(r => r.LokalId == itemLokal.LokalId).ToList();

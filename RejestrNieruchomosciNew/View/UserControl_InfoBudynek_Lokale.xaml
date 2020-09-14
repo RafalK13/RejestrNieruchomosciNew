@@ -143,7 +143,58 @@
                 </view:UserControl_ElementInfo.Resources>
             </view:UserControl_ElementInfo>
 
+            <view:UserControl_ElementInfo
+                    Grid.Row="6" Grid.Column="1"
+                    Style="{StaticResource userInfo}"
+                    widthLabelRaf="50"
+                    Margin="0,10,20,1"
+                    labelRaf="Skan"
+                    buttonVisibility="Visible"
+                    IsHitTestVisible="True"
+                    pathZal="{Binding Path=DataContext.infoMain.infoBudynek.lokalSel.ZalPath, ElementName=InfoBudynek_lokale}"/>
+        </StackPanel>
 
+        <StackPanel Grid.Column="2">
+
+            <Label  Content="Lokatorzy"
+                        FontWeight="Bold"
+                       />
+
+            <DataGrid   Grid.Row="1"
+                        VerticalAlignment="Top"
+                        Margin="3,1,10,0"
+                        ItemsSource="{Binding infoMain.infoBudynek.lokalSel.Lokal_Podmiot, Mode=TwoWay}"
+                        CanUserSortColumns="False"
+                        FrozenColumnCount="1" 
+                        IsReadOnly="True"
+                        CanUserAddRows="False"
+                        CanUserDeleteRows="False" 
+                        CanUserReorderColumns="False"
+                        HeadersVisibility="Column"
+                        SelectionMode="Single"
+                        SelectionUnit="FullRow"
+                        VerticalScrollBarVisibility="Auto"
+                        AutoGenerateColumns="False"
+                       >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lokator" 
+                                                Width="*">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource parsonConvert}" >
+                                <Binding  Path="PodmiotId"/>
+                                <Binding  ElementName="InfoBudynek_lokale"  Path="DataContext.infoMain.infoBudynek.podmiotList"/>
+                              
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+
+                   </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
 
     </Grid>

@@ -9,6 +9,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoBudynkiViewModel : ViewModelBase
     {
+        #region IPodmiotList podmiotList
+        public IPodmiotList podmiotList { get; set; }
+        #endregion
+
         private ILokal _lokalSel;
 
         public ILokal lokalSel

@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -338,6 +338,7 @@
     <Compile Include="Model\Interfaces\ITransakcjeList.cs" />
     <Compile Include="Model\Interfaces\IUlicaSlo.cs" />
     <Compile Include="Model\Interfaces\IUlicaSloList.cs" />
+    <Compile Include="Model\Interfaces\IUser.cs" />
     <Compile Include="Model\Interfaces\IUzytki.cs" />
     <Compile Include="Model\Interfaces\IUzytkiList.cs" />
     <Compile Include="Model\Interfaces\IUzytkiSlo.cs" />

@@ -37,18 +37,18 @@
         <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                       >
 
-            <Button 
+            <!--<Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Test" 
                 Command="{Binding testClick}"
-                />
+                />-->
 
-            <Button 
+            <!--<Button 
                 Style="{StaticResource buttonRaf}"
-                Content="Aktualizuj" ></Button>
-            <Button 
+                Content="Aktualizuj" ></Button>-->
+            <!--<Button 
                 Style="{StaticResource buttonRaf}"
-                Content="Przegladanie"></Button>
+                Content="Przegladanie"></Button>-->
             <Button 
                 Style="{StaticResource buttonRaf}"
                 Command="{Binding modDzialka}"
@@ -63,9 +63,9 @@
                 Style="{StaticResource buttonRaf}"
                 Command="{Binding delDzialka}"
                 Content="Usuwanie"></Button>
-            <Button 
+            <!--<Button 
                 Style="{StaticResource buttonRaf}"
-                Content="Inne"></Button>
+                Content="Inne"></Button>-->
         </StackPanel>
 
     </Grid>
