@@ -6,7 +6,7 @@
              xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="1300"
+             d:DesignHeight="400" d:DesignWidth="1300"
              x:Name="PreviewWin"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              >
@@ -52,7 +52,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="300" MinWidth="50"/>
             <ColumnDefinition Width="*" MinWidth="50"/>
@@ -63,25 +63,32 @@
         <GridSplitter Grid.Column="4" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
         <GridSplitter Grid.Column="5" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
 
-        <TextBox Grid.Column="1" Grid.Row="0" BorderThickness="0"
+        <!--<TextBox Grid.Column="1" Grid.Row="0" BorderThickness="0"
                  Text="{Binding result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource conv}}"
                  Margin="0,1,0,0"
-                 IsReadOnly="True" Foreground="Black"/>
-        <Label Grid.Row="1" Grid.Column="1"
+                 IsReadOnly="True" Foreground="Black"/>-->
+        <StackPanel Grid.Row="1" Grid.Column="1">
+         <Label 
+               Style="{StaticResource label}"
+               Content="Wyszukiwanie podstawowe"
+               FontWeight="Bold"
+               Margin="0,0,0,0"/>
+            
+        <Label 
                Style="{StaticResource label}"
                Content="Numer działki"
                Margin="0,0,0,0"/>
-        <TextBox Grid.Row="1" Grid.Column="1"
+        <TextBox 
                 Style="{StaticResource tekstBox}"
                 Text="{Binding userControl_prev.dzialkaNr, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
-                Margin="0,25,0,0"/>
+                Margin="0,0,0,0"/>
         <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Gmina"
-               Margin="0,55,0,0"/>
-        <ComboBox Grid.Row="1" Grid.Column="1"
+               Margin="0,0,0,0"/>
+        <ComboBox
                 Style="{StaticResource comboBox}"
-                Margin="0,80,0,0"
+                Margin="0,0,0,0"
                 SelectedValue="{Binding userControl_prev.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_prev.obreb.gminaView}">
             <i:Interaction.Triggers>
@@ -90,14 +97,14 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ComboBox>
-        <Label Grid.Row="1" Grid.Column="1"
+        <Label 
                Style="{StaticResource label}"
                Content="Obręb"
-               Margin="0,110,0,0"/>
+               Margin="0,0,0,0"/>
 
-        <ComboBox Grid.Row="1" Grid.Column="1"
+        <ComboBox 
                 Style="{StaticResource comboBox}"
-                Margin="0,140,0,0"
+                Margin="0,0,0,0"
                 SelectedValue="{Binding userControl_prev.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_prev.obreb.obrebView}"
                 >
@@ -108,14 +115,27 @@
             </i:Interaction.Triggers>
         </ComboBox>
 
-        <Button Grid.Row="1" Grid.Column="1"
+        <Button 
                 Style="{StaticResource button}"
                 Content="Czyść"
-                Margin="0,200,0,0"
+                Margin="0,15,0,0"
                 Command="{ Binding userControl_prev.clsClick}"
-                >
-        </Button>
+                />
 
+            <Label 
+               Style="{StaticResource label}"
+               Content="Wyszukiwanie zaawansowane"
+               FontWeight="Bold"
+               Margin="0,30,0,0"/>
+
+            <Button 
+                Style="{StaticResource button}"
+                Content="Szukaj"
+                Margin="0,10,0,0"
+                Command="{ Binding userControl_prev.clsSzukaj}"
+                />
+        </StackPanel>
+        
         <Label Grid.Row="0" Grid.Column="3"
                Style="{StaticResource label1}"
                Content="Dane działki"
@@ -148,25 +168,10 @@
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
-
-           
-
-            <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="GotFocus">
-                    <i:InvokeCommandAction Command="{Binding userControl_prev.onGotFocus}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>-->
-
         </DataGrid>
 
-        <!--<TextBox VerticalAlignment="Bottom"
-                 Margin="10,0,0,50"
-                Grid.Row="1" Grid.Column="3"
-                Text="{Binding ElementName=DataGridMain, Path=ActualWidth, Mode=OneWay}"/>-->
-
         <StackPanel  Grid.Row="1" Grid.Column="3"
-                     VerticalAlignment="Bottom" ClipToBounds="True"
-                     >
+                     VerticalAlignment="Bottom" ClipToBounds="True">
             <CheckBox  
                   Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding userControl_prev.allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -182,7 +187,6 @@
                Content="Info"
                Margin="10,0,0,0"/>
 
-        <view:UserControl_InfoMain
-              Grid.Row="1" Grid.Column="4"/>
+        <view:UserControl_InfoMain Grid.Row="1" Grid.Column="4"/>
     </Grid>
 </UserControl>

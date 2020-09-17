@@ -393,8 +393,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
     public class DateConverter : IValueConverter
     {
-        public object convFun(object value)
+        public string convFun(object value)
         {
+            int xxx = 13;
             try
             {
                 //if (string.IsNullOrEmpty(value.ToString()))  - bardzo wolne działenie
@@ -402,8 +403,10 @@ namespace RejestrNieruchomosciNew.ViewModel
                     return null;
                 else
                 {
-                    DateTime newDate = DateTime.Parse(value.ToString());
-                    return newDate.ToString("yyyy/MM/dd");
+                    if (DateTime.TryParse(value.ToString(), out DateTime result))
+                        return result.ToString("yyyy/MM/dd");
+                    else
+                        return null;
                 }
             }
             catch (Exception)

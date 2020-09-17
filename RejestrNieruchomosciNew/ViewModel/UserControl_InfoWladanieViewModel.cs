@@ -54,10 +54,13 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         private void Prev_zmianaDzialkaSel(object sender, System.EventArgs e)
-        {
+        {      
             if (prev != null)
             {
-                wladanieList.getList(prev.dzialkaSel);
+                if( prev.dzialkaSel != null)
+                    wladanieList.getList(prev.dzialkaSel);
+                else
+                    wladanieList.list = null;
             }
         }
 

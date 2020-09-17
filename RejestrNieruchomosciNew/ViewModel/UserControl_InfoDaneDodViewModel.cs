@@ -28,6 +28,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 uzytki.getList(prev.dzialkaSel);
             }
+            else
+                uzytki.list = null;
         }
 
         public IUzytkiList uzytki { get; set; }

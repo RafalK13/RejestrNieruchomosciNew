@@ -111,10 +111,7 @@
                 <view:UserControl_DanePodstawowe/>
             </TabItem>
 
-            <TabItem Header="Budynki"
-                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
-                <view:UserControl_Budynek/>
-            </TabItem>
+           
 
             <TabItem Header="Płatność z tytułu UW"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
@@ -145,6 +142,11 @@
                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
                 <view:UserControl_Zagosp/>
+            </TabItem>
+
+            <TabItem Header="Budynki"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
+                <view:UserControl_Budynek/>
             </TabItem>
         </TabControl>
         

@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand leftClick { get; set; }
         public ICommand clsClick { get; set; }
         public ICommand unselectClick { get; set; }
+        public ICommand clsSzukaj { get; set; }
         #endregion
 
         private int _selectedIndeks;
@@ -106,6 +108,11 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IViewFactory factory { get; set; }
 
+        //public Window_Filtr windowFiltr { get; set; }
+        public Window_FiltrViewModel viewModel { get; set; }
+
+        public IFiltr filtr{ get; set; }
+
         #region Konstructor
         public UserControl_PreviewViewModel(IDzialkaList _dzialkiList)
         {
@@ -131,6 +138,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             leftClick = new RelayCommand(onLeftClick);
             clsClick = new RelayCommand(onClsClick);
             unselectClick = new RelayCommand(onUnSelectClick);
+            clsSzukaj = new RelayCommand(onSzukaj);
+        }
+
+        private void onSzukaj()
+        {
+            Window_Filtr windowFiltr = new Window_Filtr(viewModel);
+            windowFiltr.ShowDialog();
+
+            if (windowFiltr.DialogResult.HasValue && windowFiltr.DialogResult.Value)
+            {
+                setFilter();
+            }
+            
         }
 
         private void clearLists()
@@ -187,6 +207,24 @@ namespace RejestrNieruchomosciNew.ViewModel
                 }
         }
 
+        //private bool testIfExist<T>(T wrt, Dzialka d, string name)
+        //{
+        //    var v = Type.GetTypeCode( wrt.GetType());
+
+        //    if (v == TypeCode.String)
+        //    {
+        //        var n = v.ToString();
+
+        //        var result = !string.IsNullOrEmpty(n) ? d.Wladanie.FirstOrDefault(r => r.GetType().GetProperty(name).GetValue(d.Wladanie).ToString() == n) != null : true;
+
+        //        return false;
+        //    }
+
+
+
+        //    return false;
+        //}
+
         public void setFilter()
         {
             string s = String.Empty;
@@ -200,11 +238,43 @@ namespace RejestrNieruchomosciNew.ViewModel
                 bool nb = !string.IsNullOrEmpty(dzialkaNr) ? d.Numer.Contains(dzialkaNr) : true;
                 bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d.Obreb.Nazwa.Contains(obreb.obrebValue) : true;
                 bool gb = !string.IsNullOrEmpty(obreb.gminaValue) ? d.Obreb.GminaSlo.Nazwa.Contains(obreb.gminaValue) : true;
+                bool wladanieUdzial = !string.IsNullOrEmpty(filtr.wlad_udzial) ? d.Wladanie.FirstOrDefault(r=>r.Udzial == filtr.wlad_udzial) != null : true;
 
-                return nb && ob && gb;
+                bool wladanie_formaWlad = filtr.wlad_formaWladId != 0 ?
+                    (d.Wladanie.FirstOrDefault(r => r.FormaWladaniaSloId == filtr.wlad_formaWladId)) != null ? true : false : true;
+
+                bool wladanie_Podmiot = filtr.wlad_podmiot != 0 ?
+                    (d.Wladanie.FirstOrDefault(r => r.PodmiotId == filtr.wlad_podmiot)) != null ? true : false : true;
+
+                bool wladNumerTrans = (string.IsNullOrEmpty(filtr.wlad_NumerTrans)) ?
+                   true : d.Wladanie.FirstOrDefault(r => EqualsStr(r?.TransakcjeK_Wlad?.Numer, filtr?.wlad_NumerTrans)) != null ?
+                   true : false;
+
+                bool wladTytulTrans =  (string.IsNullOrEmpty(filtr.wlad_TytulTrans)) ? 
+                    true : d.Wladanie.FirstOrDefault(r => EqualsStr(r?.TransakcjeK_Wlad?.Tytul, filtr?.wlad_TytulTrans)) != null ?
+                    true : false;
+
+                return nb && ob && gb
+                          && wladanieUdzial
+                          && wladanie_formaWlad
+                          && wladanie_Podmiot
+                          && wladNumerTrans
+                          && wladTytulTrans;
             };
             result = dzialkaView.Cast<object>().Count().ToString();
         }
-        #endregion
+        #endregion      
+
+        private bool EqualsStr(string s1, string s2)
+        {
+            if (s1 == null)
+                return false;
+
+            if (s2 == null)
+                return false;
+
+            return s1.Contains(s2);
+        }
+
     }
 }

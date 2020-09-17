@@ -10,11 +10,6 @@
     <Grid>
         <TabControl Grid.Row="1" Margin="10,0,20,20" Name="TabControlMain">
 
-            <TabItem Header="Budynki">
-                <view:UserControl_InfoBudynek/>
-            </TabItem>
-
-
             <TabItem Header="Dane podstawowe">
                 <view:UserControl_InfoDanePodst/>
             </TabItem>
@@ -38,6 +33,13 @@
             <TabItem Header="Zagospodarowanie działki">
                 <view:UserControl_InfoZagosp/>
             </TabItem>
+
+            <TabItem Header="Budynki">
+                <view:UserControl_InfoBudynek/>
+            </TabItem>
+
+
+
 
         </TabControl>
 

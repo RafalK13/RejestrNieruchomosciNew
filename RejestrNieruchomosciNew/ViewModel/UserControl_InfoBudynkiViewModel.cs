@@ -90,8 +90,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (prev != null)
             {
-                budynkiList.getList(prev.dzialkaSel);
-
+                if (prev.dzialkaSel != null)
+                    budynkiList.getList(prev.dzialkaSel);
+                else
+                {
+                    budynkiList.list = null;
+                }
             }
         }
 

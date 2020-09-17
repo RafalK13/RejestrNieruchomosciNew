@@ -52,7 +52,12 @@ namespace RejestrNieruchomosciNew.Model
             {
                 list = new List<IDzialka>(await c.Dzialka.Include( a => a.Obreb).ThenInclude(a => a.GminaSlo)
                                                          .Include( r=> r.PlatnoscUW)
-                                                         .Include( adr=>adr.Adres).ToListAsync());
+                                                         .Include( adr=>adr.Adres)
+                                                         .Include( w =>w.Wladanie).ThenInclude(f=>f.FormaWladaniaSlo)
+                                                         .Include(w => w.Wladanie).ThenInclude(t => t.TransakcjeK_Wlad)
+                                                         .ToListAsync());
+
+             
             }
         }
 

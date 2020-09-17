@@ -57,7 +57,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (prev != null)
             {
-                zagospList.getList(prev.dzialkaSel);
+                if (prev.dzialkaSel != null)
+                    zagospList.getList(prev.dzialkaSel);
+                else
+                {
+                    zagospList.list = null;
+                }
             }
         }
 

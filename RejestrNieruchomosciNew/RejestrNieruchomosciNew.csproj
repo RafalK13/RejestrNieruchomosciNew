@@ -288,6 +288,7 @@
     <Compile Include="Model\Dzialka_Budynek.cs" />
     <Compile Include="Model\Dzialka_BudynekList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
+    <Compile Include="Model\Filtr.cs" />
     <Compile Include="Model\FormaWladaniaList.cs" />
     <Compile Include="Model\InnePrawa.cs" />
     <Compile Include="Model\InnePrawaList.cs" />
@@ -307,6 +308,7 @@
     <Compile Include="Model\Interfaces\IDzialka_Budynek.cs" />
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
     <Compile Include="Model\Interfaces\IDzialka_BudynekList.cs" />
+    <Compile Include="Model\Interfaces\IFiltr.cs" />
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
@@ -425,6 +427,7 @@
     <Compile Include="ViewModel\UserControl_ZagospViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WindowTestRafViewModel.cs" />
+    <Compile Include="ViewModel\Window_FiltrViewModel.cs" />
     <Compile Include="ViewModel\Window_ZalacznikViewModel.cs" />
     <Compile Include="View\ChangeView.xaml.cs">
       <DependentUpon>ChangeView.xaml</DependentUpon>
@@ -539,6 +542,9 @@
     </Compile>
     <Compile Include="View\WindowTestRaf.xaml.cs">
       <DependentUpon>WindowTestRaf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Window_Filtr.xaml.cs">
+      <DependentUpon>Window_Filtr.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Window_Zalacznik.xaml.cs">
       <DependentUpon>Window_Zalacznik.xaml</DependentUpon>
@@ -708,6 +714,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\WindowTestRaf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Window_Filtr.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
