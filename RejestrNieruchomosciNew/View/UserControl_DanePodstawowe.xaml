@@ -154,7 +154,7 @@
 
         <Label      Grid.Row="6" Grid.Column="0"
                     Style="{StaticResource label}"
-                    Content="Powierzchnia"/>
+                    Content="Powierzchnia [ha]"/>
         <TextBox    Grid.Row="6" Grid.Column="1"
                     Style="{StaticResource tekstBox}"
                     Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"/>

@@ -21,6 +21,8 @@
         <TextBox Grid.Column="1"
                  Text="{Binding tekstRaf}"
                  Height="{Binding hightRaf}"
+                 TextWrapping="Wrap"
+                
                  IsReadOnly="{ Binding isReadOnlyRaf}"
                  />
 

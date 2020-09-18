@@ -14,6 +14,7 @@
 
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
+        <con:stringToDouble x:Key="strToDouble"/>
         <!--
             <con:DoubleConverter x:Key="doubleConverter"/>
         <con:IntConverter x:Key="intConverter"/>
@@ -116,7 +117,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="300" MinWidth="9" />
             <ColumnDefinition Width="300" MinWidth="9"/>
             <ColumnDefinition Width="300" MinWidth="9" />
@@ -144,14 +145,47 @@
                    Grid.Column ="3"  
                    Style="{StaticResource gridSplitter}"
                    />
-        
+
+        <ScrollViewer Grid.Column="0"  Grid.Row="0"
+                      Style="{StaticResource scrollViewer}">
+            <StackPanel>
+                <Label  Grid.Row="0"
+                        Content="Dane podstawowe"
+                        FontWeight="Bold"                      
+                        FontSize="13"
+                        Style="{StaticResource label}" HorizontalAlignment="Left"/>
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Numer KW akt."
+                       tekstRaf="{Binding  Path=DataContext.filtr.kwAkt, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Numer KW zrob."
+                       tekstRaf="{Binding  Path=DataContext.filtr.kwZrob, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.[ha] od"
+                       tekstRaf="{Binding  Path=DataContext.filtr.powP,  RelativeSource={RelativeSource AncestorType=local:Window_Filtr}, Converter={StaticResource strToDouble}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <userControl:UserControl_ElementInfo
+                       Style="{StaticResource elemInfo_Col1}"
+                       labelRaf="Pow.[ha] do"
+                       tekstRaf="{Binding  Path=DataContext.filtr.powK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr}, Converter={StaticResource strToDouble}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+            </StackPanel>
+        </ScrollViewer>
+
         <ScrollViewer Grid.Column="1"  Grid.Row="0"
                       Style="{StaticResource scrollViewer}">
             <StackPanel>
             <Label      Grid.Row="0"
                         Content="Własność"
                         FontWeight="Bold"                      
-                        FontSize="18"
+                        FontSize="13"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
             <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"

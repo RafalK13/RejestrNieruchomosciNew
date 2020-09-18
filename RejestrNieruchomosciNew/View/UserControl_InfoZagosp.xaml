@@ -112,8 +112,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="330"/>
                 </Grid.ColumnDefinitions>
 
                 <Label  Grid.Row="0"
@@ -124,22 +124,25 @@
                 <view:UserControl_ElementInfo
                         Grid.Row="1"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        Margin="0,1,10,1"
                         labelRaf="Status"
                         tekstRaf="{Binding Path=DataContext.infoMain.infoZagosp.zagospSel.ZagospStatusSlo.Nazwa, ElementName=infoZagospWin}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="2"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        Margin="0,1,10,1"
                         labelRaf="Funkcja"
                         tekstRaf="{Binding Path=DataContext.infoMain.infoZagosp.zagospSel.ZagospFunkcjaSlo.Nazwa, ElementName=infoZagospWin}"/>
 
                 <view:UserControl_ElementInfo 
-                        Grid.Row="3"
+                        Grid.Row="3" Grid.RowSpan="3"
                         Style="{StaticResource userInfo}"
-                        Margin="0,1,0,1"
+                        Margin="0,1,10,1"
+                        hightRaf="88"
                         labelRaf="Przedstawiciel">
+                    
+                    
                     <view:UserControl_ElementInfo.tekstRaf>
                             <MultiBinding Converter="{StaticResource parsonConvert}" >
                             <Binding ElementName="infoZagospWin" Path="DataContext.infoMain.infoZagosp.zagospSel.przedstSloId"/>
@@ -153,9 +156,11 @@
                 Content="Aktualne zagospodarowanie"/>
                 
                 <view:UserControl_ElementInfo
-                    Grid.Row="1" Grid.Column="1"
+                    Grid.Row="1" Grid.Column="1" Grid.RowSpan="3"
                     Style="{StaticResource userInfo}"
+                    widthLabelRaf="130"
                     Margin="0,1,0,1"
+                    hightRaf="88"
                     labelRaf="Istniejące obiekty">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource slowConvert}">
@@ -170,9 +175,11 @@
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo
-                    Grid.Row="2" Grid.Column="1"
+                    Grid.Row="4" Grid.Column="1" Grid.RowSpan="3"
                     Style="{StaticResource userInfo}"
+                    widthLabelRaf="130"
                     Margin="0,1,0,1"
+                    hightRaf="88"
                     labelRaf="Obiekty komercyjne">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource slowConvert}">
@@ -187,9 +194,11 @@
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo
-                    Grid.Row="3" Grid.Column="1"
+                    Grid.Row="7" Grid.Column="1" Grid.RowSpan="3"
                     Style="{StaticResource userInfo}"
+                    widthLabelRaf="130"
                     Margin="0,1,0,1"
+                    hightRaf="88"
                     labelRaf="Zadania inwestycyjne">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource slowConvert}">
@@ -204,9 +213,11 @@
                 </view:UserControl_ElementInfo>
 
                 <view:UserControl_ElementInfo
-                    Grid.Row="4" Grid.Column="1"
+                    Grid.Row="10" Grid.Column="1" Grid.RowSpan="3"
                     Style="{StaticResource userInfo}"
+                    widthLabelRaf="130"
                     Margin="0,1,0,1"
+                    hightRaf="88"
                     labelRaf="Cele komercyjne">
                     <view:UserControl_ElementInfo.tekstRaf>
                         <MultiBinding Converter="{StaticResource slowConvert}">

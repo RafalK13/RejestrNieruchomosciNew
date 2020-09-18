@@ -415,13 +415,20 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 _budList.getList(_userPrev.dzialkaSel);
 
-                using (var c = new Context())
+                try
                 {
-                    budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
-                                                                             .Include(a => a.Adres)
-                                                                             .Include(l => l.Lokal).ThenInclude(r => r.Lokal_Podmiot)
-                                                                             .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == _userPrev.dzialkaSel.DzialkaId) != null)
-                                                                   );
+                    using (var c = new Context())
+                    {
+                        budListLok = new ObservableCollection<IBudynek>(c.Budynek.Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka)
+                                                                                 .Include(a => a.Adres)
+                                                                                 .Include(l => l.Lokal).ThenInclude(r => r.Lokal_Podmiot)
+                                                                                 .Where(r => r.Dzialka_Budynek.FirstOrDefault(l => l.DzialkaId == _userPrev.dzialkaSel.DzialkaId) != null)
+                                                                       );
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show( $"Problem z czytaniem bazy danych:Budynki\r\n{ e.Message}\r\n{e.Source}");
                 }
 
                 if (_userPrev.dzialkaSel.Obreb != null)

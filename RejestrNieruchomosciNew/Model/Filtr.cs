@@ -10,35 +10,70 @@ namespace RejestrNieruchomosciNew.Model
         public void czysc()
         {
             var v = this.GetType();// typeof(Filtr);
+            
             foreach (var prop in v.GetProperties())
             {
-                TypeCode typeCode = Type.GetTypeCode(prop.PropertyType);
-                switch ( typeCode)
+               if (Nullable.GetUnderlyingType(prop.PropertyType) != null)
                 {
-                    case TypeCode.Byte:
-                    case TypeCode.Int16:
-                    case TypeCode.UInt16:
-                    case TypeCode.Int32:
-                    case TypeCode.UInt32:
-                    case TypeCode.Int64:
-                    case TypeCode.UInt64:
-                    case TypeCode.Single:
-                         prop.SetValue(this, 0);
-                         break;
-
-                    case TypeCode.String:
-                        prop.SetValue(this, null);
-                        break;
-
-                    case TypeCode.DateTime:
-                        prop.SetValue(this, null);
-                        break;
-                    //default:
-                    //    MessageBox.Show(Type.GetTypeCode(prop.GetType()).ToString());
-                    //    break;
+                    prop.SetValue(this, null);
                 }
+                else
+                {
+                    TypeCode typeCode = Type.GetTypeCode(prop.PropertyType);
+                    switch (typeCode)
+                    {
+                        case TypeCode.Byte:
+                        case TypeCode.Int16:
+                        case TypeCode.UInt16:
+                        case TypeCode.Int32:
+                        case TypeCode.UInt32:
+                        case TypeCode.Int64:
+                        case TypeCode.UInt64:
+                        case TypeCode.Single:
+                            prop.SetValue(this, 0);
+                            break;
 
+                        case TypeCode.String:
+                            prop.SetValue(this, null);
+                            break;
+
+                        case TypeCode.DateTime:
+                            prop.SetValue(this, null);
+                            break;
+                            //default:
+                            //    MessageBox.Show(Type.GetTypeCode(prop.GetType()).ToString());
+                            //    break;
+                    }
+                }
             }
+        }
+
+        private double? _powK;
+        public double?  powK
+        {
+            get { return _powK; }
+            set { Set( ref _powK, value); }
+        }
+
+        private double?  _powP;
+        public double?  powP
+        {
+            get { return _powP; }
+            set { Set( ref _powP , value); }
+        }
+
+        private string _kwAkt;              
+        public string kwAkt
+        {
+            get { return _kwAkt; }
+            set { Set( ref _kwAkt, value); }
+        }
+
+        private string _kwZrob;
+        public string kwZrob
+        {
+            get { return _kwZrob; }
+            set { Set( ref _kwZrob ,value); }
         }
 
         private int _wlad_podmiot;

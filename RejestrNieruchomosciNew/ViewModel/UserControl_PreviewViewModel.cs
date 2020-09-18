@@ -111,7 +111,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         //public Window_Filtr windowFiltr { get; set; }
         public Window_FiltrViewModel viewModel { get; set; }
 
-        public IFiltr filtr{ get; set; }
+        public IFiltr filtr { get; set; }
 
         #region Konstructor
         public UserControl_PreviewViewModel(IDzialkaList _dzialkiList)
@@ -150,7 +150,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 setFilter();
             }
-            
+
         }
 
         private void clearLists()
@@ -189,7 +189,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             else
             {
                 if (dzialkaSel != null)
-                {                  
+                {
                     var v = factory.CreateView<ChangeView>();
                     v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
                     v.ShowDialog();
@@ -238,7 +238,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 bool nb = !string.IsNullOrEmpty(dzialkaNr) ? d.Numer.Contains(dzialkaNr) : true;
                 bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d.Obreb.Nazwa.Contains(obreb.obrebValue) : true;
                 bool gb = !string.IsNullOrEmpty(obreb.gminaValue) ? d.Obreb.GminaSlo.Nazwa.Contains(obreb.gminaValue) : true;
-                bool wladanieUdzial = !string.IsNullOrEmpty(filtr.wlad_udzial) ? d.Wladanie.FirstOrDefault(r=>r.Udzial == filtr.wlad_udzial) != null : true;
+                bool wladanieUdzial = !string.IsNullOrEmpty(filtr.wlad_udzial) ? d.Wladanie.FirstOrDefault(r => r.Udzial == filtr.wlad_udzial) != null : true;
 
                 bool wladanie_formaWlad = filtr.wlad_formaWladId != 0 ?
                     (d.Wladanie.FirstOrDefault(r => r.FormaWladaniaSloId == filtr.wlad_formaWladId)) != null ? true : false : true;
@@ -250,31 +250,110 @@ namespace RejestrNieruchomosciNew.ViewModel
                    true : d.Wladanie.FirstOrDefault(r => EqualsStr(r?.TransakcjeK_Wlad?.Numer, filtr?.wlad_NumerTrans)) != null ?
                    true : false;
 
-                bool wladTytulTrans =  (string.IsNullOrEmpty(filtr.wlad_TytulTrans)) ? 
+                bool wladTytulTrans = (string.IsNullOrEmpty(filtr.wlad_TytulTrans)) ?
                     true : d.Wladanie.FirstOrDefault(r => EqualsStr(r?.TransakcjeK_Wlad?.Tytul, filtr?.wlad_TytulTrans)) != null ?
                     true : false;
+
+                bool kwAkt = (string.IsNullOrEmpty(filtr.kwAkt)) ?
+                   true : EqualsStr(d.Kwakt, filtr.kwAkt) ?
+                   true : false;
+
+                bool kwZrob = (string.IsNullOrEmpty(filtr.kwZrob)) ?
+                   true : EqualsStr(d.Kwzrob, filtr.kwZrob) ?
+                   true : false;
+
+                bool powDanePod = testPow(filtr.powP, filtr.powK, d.Pow);
+
 
                 return nb && ob && gb
                           && wladanieUdzial
                           && wladanie_formaWlad
                           && wladanie_Podmiot
                           && wladNumerTrans
-                          && wladTytulTrans;
+                          && wladTytulTrans
+                          && kwAkt
+                          && kwZrob
+                          && powDanePod;
             };
             result = dzialkaView.Cast<object>().Count().ToString();
         }
-        #endregion      
 
-        private bool EqualsStr(string s1, string s2)
+        public bool testPow(double? powP, double? powK, double? pow)
         {
-            if (s1 == null)
+            if (pow != null && powP == null && powK == null)
+                return true;
+
+            if ((pow == null))
                 return false;
 
-            if (s2 == null)
-                return false;
+            if (pow != null)
+            {
+                if (powP == null)
+                {
+                    return CompareRaf(pow.Value, powK.Value);
+                }
 
-            return s1.Contains(s2);
+                if (powK == null)
+                {
+                    return CompareRaf(powP.Value, pow.Value);
+                }
+
+                return CompareRaf(powP.Value, pow.Value) &&
+                       CompareRaf(pow.Value, powK.Value);
+            }
+
+            return true;
+            #region OLD
+            //if (powP != null)
+            //{
+            //    if (powK != null)
+            //    {
+            //        if (powP <= pow && pow <= powK)
+            //        {
+            //            return true;
+            //        }
+            //        else
+            //        {
+            //            return false;
+            //        }
+
+            //    }
+            //    if (powP <= pow)
+            //        return true;
+            //    else
+            //        return false;
+            //}
+            //else
+            //{
+            //    if (powK != null)
+            //    {
+            //        if (pow <= powK)
+            //            return true;
+            //        else
+            //            return false;
+            //    }
+            //    return false;
+            //}
+            #endregion
         }
 
+        public bool CompareRaf<T>(T nMniejsze, T nWieksze) where T : IComparable
+        {
+            return nMniejsze.CompareTo(nWieksze) <= 0 ? true : false;
+        }
+
+        #endregion
+
+        private bool EqualsStr(string s1, string s2)
+    {
+        if (s1 == null)
+            return false;
+
+        if (s2 == null)
+            return false;
+
+        return s1.Contains(s2);
     }
+
+}
 }
