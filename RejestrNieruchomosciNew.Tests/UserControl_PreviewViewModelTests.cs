@@ -12,6 +12,106 @@ namespace RejestrNieruchomosciNew.Tests
 {
     public class UserControl_PreviewViewModelTests
     {
+        public class TestData3
+        {
+            public DateTime? data1 { get; set; }
+            public DateTime? data2 { get; set; }
+            public DateTime? data3 { get; set; }
+            public bool result { get; set; }
+        }
+
+        private static TestData3[] testData3 = new TestData3[]
+        {
+            new TestData3 { data1 = new DateTime(2020, 01, 13),
+                            data2 = new DateTime(2020, 03, 13),
+                            data3 = new DateTime(2020, 02, 13),
+                            result = true },
+            new TestData3 { data1 = new DateTime(2020, 01, 13),
+                            data2 = new DateTime(2020, 02, 13),
+                            data3 = new DateTime(2020, 03, 13),
+                            result = false },
+            new TestData3 { data1 = new DateTime(2020, 03, 13),
+                            data2 = new DateTime(2020, 02, 13),
+                            data3 = new DateTime(2020, 01, 13),
+                            result = false },
+            new TestData3 { data1 = new DateTime(2020, 03, 13),
+                            data2 = new DateTime(2020, 02, 13),
+                            result = false },
+            new TestData3 { data1 = new DateTime(2020, 03, 13),
+                            data2 = new DateTime(2020, 02, 13),
+                            result = false },
+            new TestData3 { result = false }
+        };
+       
+        [TestCaseSource("testData3")]
+
+        public void testRange_forDateTime1(TestData3 data3)
+        {
+            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
+
+            var c = new UserControl_PreviewViewModel(dzMock);
+            var w = c.testRange<DateTime>(data3.data1, data3.data2, data3.data3);
+
+            Assert.That(w, Is.EqualTo(data3.result));
+        }
+
+        [TestCase(null, null, null, false)]
+        [TestCase("Raf", null, null, false)]
+        [TestCase(null, "Raf", null, false)]
+        [TestCase(null, null, "Raf", true)]
+        [TestCase("Raf1", "Raf2", "Raf", false)]
+        [TestCase("Raf1", "Raf3", "Raf2", true)]
+        [TestCase("Raf2", "Raf3", "Raf1", false)]
+        [TestCase("Raf1", "Raf2", "Raf3", false)]
+
+        public void testRange_forString(string p1, string p2, string p, bool result)
+        {
+            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
+
+            var c = new UserControl_PreviewViewModel(dzMock);
+            var w = c.testRange<string>(p1, p2, p);
+
+            Assert.That(w, Is.EqualTo(result));
+        }
+
+        [TestCase(null, null, null, false)]
+        [TestCase(13, null, null, false)]
+        [TestCase(null, 13, null, false)]
+        [TestCase(null, null, 13, true)]
+        [TestCase(1, 2, 13, false)]
+        [TestCase(1, 15, 13, true)]
+        [TestCase(2, 15, 1, false)]
+        [TestCase(2, 15, null, false)]
+
+        public void testRange_forInt(int? p1, int? p2, int? p, bool result)
+        {
+            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
+
+            var c = new UserControl_PreviewViewModel(dzMock);
+            var w = c.testRange<double>(p1, p2, p);
+
+            Assert.That(w, Is.EqualTo(result));
+        }
+
+        [TestCase(null, null, null, false)]
+        [TestCase(13, null, null, false)]
+        [TestCase(null, 13, null, false)]
+        [TestCase(null, null, 13, true)]
+        [TestCase(1, 2, 13, false)]
+        [TestCase(1, 15, 13, true)]
+        [TestCase(2, 15, 1, false)]
+        [TestCase(2, 15, null, false)]
+
+        public void testRange_forDouble(double? p1, double? p2, double? p, bool result)
+        {
+            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
+
+            var c = new UserControl_PreviewViewModel(dzMock);
+            var w = c.testRange<double>(p1, p2, p);
+
+            Assert.That(w, Is.EqualTo(result));
+        }
+
         [TestCase(null, null, null, false)]
         [TestCase(13, null, null, false)]
         [TestCase(null, 13, null, false)]

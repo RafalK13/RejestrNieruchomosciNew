@@ -278,6 +278,62 @@ namespace RejestrNieruchomosciNew.ViewModel
             result = dzialkaView.Cast<object>().Count().ToString();
         }
 
+        public bool testRange<T>(T limitLow, T limitUp, T value) where T : IComparable
+
+        {
+            if ((value == null))
+                return false;
+
+            if (value != null && limitLow == null && limitUp == null)
+                return true;
+
+            if (value != null)
+            {
+                if (limitLow == null)
+                {
+                    return CompareRaf(value, limitUp);
+                }
+
+                if (limitUp == null)
+                {
+                    return CompareRaf(limitLow, value);
+                }
+
+                return CompareRaf(limitLow, value) &&
+                       CompareRaf(value, limitUp);
+            }
+
+            return true;
+        }
+
+        public bool testRange<T>(T? limitLow, T? limitUp, T? value) where T : struct, IComparable
+
+        {
+            if ((value == null))
+                return false;
+
+            if (value != null && limitLow == null && limitUp == null)
+                return true;
+
+            if (value != null)
+            {
+                if (limitLow == null)
+                {
+                    return CompareRaf(value.Value, limitUp.Value);
+                }
+
+                if (limitUp == null)
+                {
+                    return CompareRaf(limitLow.Value, value.Value);
+                }
+
+                return CompareRaf(limitLow.Value, value.Value) &&
+                       CompareRaf(value.Value, limitUp.Value);
+            }
+
+            return true;
+        }
+
         public bool testPow(double? powP, double? powK, double? pow)
         {
             if (pow != null && powP == null && powK == null)
@@ -302,39 +358,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                        CompareRaf(pow.Value, powK.Value);
             }
 
-            return true;
-            #region OLD
-            //if (powP != null)
-            //{
-            //    if (powK != null)
-            //    {
-            //        if (powP <= pow && pow <= powK)
-            //        {
-            //            return true;
-            //        }
-            //        else
-            //        {
-            //            return false;
-            //        }
-
-            //    }
-            //    if (powP <= pow)
-            //        return true;
-            //    else
-            //        return false;
-            //}
-            //else
-            //{
-            //    if (powK != null)
-            //    {
-            //        if (pow <= powK)
-            //            return true;
-            //        else
-            //            return false;
-            //    }
-            //    return false;
-            //}
-            #endregion
+            return true;         
         }
 
         public bool CompareRaf<T>(T nMniejsze, T nWieksze) where T : IComparable
