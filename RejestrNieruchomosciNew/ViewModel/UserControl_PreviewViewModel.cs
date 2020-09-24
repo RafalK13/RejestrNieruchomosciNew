@@ -47,7 +47,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IDzialka _dzialkaSel;
         public IDzialka dzialkaSel
         {
-            get => _dzialkaSel;
+            get
+            {
+                 return _dzialkaSel;
+            }
             set
             {
                 _dzialkaSel = value;
@@ -188,6 +191,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 deleteDzialka();
             else
             {
+                int xxx = 13;
                 if (dzialkaSel != null)
                 {
                     var v = factory.CreateView<ChangeView>();
@@ -262,8 +266,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                    true : EqualsStr(d.Kwzrob, filtr.kwZrob) ?
                    true : false;
 
-                bool powDanePod = testPow(filtr.powP, filtr.powK, d.Pow);
+                //foreach (var item in d.Wladanie)
+                //{
+                //   if (testRange(filtr.wlad_dataOdbOdP, filtr.wlad_dataOdbOdK, item.DataOdbOd) == true)
+                       
+                //}
+                
 
+                bool powDanePod = testRange(filtr.powP, filtr.powK, d.Pow);
 
                 return nb && ob && gb
                           && wladanieUdzial
@@ -278,10 +288,18 @@ namespace RejestrNieruchomosciNew.ViewModel
             result = dzialkaView.Cast<object>().Count().ToString();
         }
 
-        public bool testRange<T>(T limitLow, T limitUp, T value) where T : IComparable
-
+        private bool testDataRangeMulti( )
         {
-            if ((value == null))
+
+            return false;
+        }
+
+        public bool testRange<T>(T limitLow, T limitUp, T value) where T : IComparable
+        {
+            if ((value == null) && (limitLow == null && limitUp == null))
+                return true;
+
+            if ((value == null) && (limitLow == null || limitUp == null))
                 return false;
 
             if (value != null && limitLow == null && limitUp == null)
@@ -303,13 +321,15 @@ namespace RejestrNieruchomosciNew.ViewModel
                        CompareRaf(value, limitUp);
             }
 
-            return true;
+            return false;
         }
 
         public bool testRange<T>(T? limitLow, T? limitUp, T? value) where T : struct, IComparable
-
         {
-            if ((value == null))
+            if ((value == null) && (limitLow == null && limitUp == null))
+                return true;
+
+            if ((value == null) && (limitLow == null || limitUp == null))
                 return false;
 
             if (value != null && limitLow == null && limitUp == null)
@@ -331,34 +351,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                        CompareRaf(value.Value, limitUp.Value);
             }
 
-            return true;
-        }
-
-        public bool testPow(double? powP, double? powK, double? pow)
-        {
-            if (pow != null && powP == null && powK == null)
-                return true;
-
-            if ((pow == null))
-                return false;
-
-            if (pow != null)
-            {
-                if (powP == null)
-                {
-                    return CompareRaf(pow.Value, powK.Value);
-                }
-
-                if (powK == null)
-                {
-                    return CompareRaf(powP.Value, pow.Value);
-                }
-
-                return CompareRaf(powP.Value, pow.Value) &&
-                       CompareRaf(pow.Value, powK.Value);
-            }
-
-            return true;         
+            return false;
         }
 
         public bool CompareRaf<T>(T nMniejsze, T nWieksze) where T : IComparable

@@ -18,7 +18,7 @@
                 <view:UserControl_InfoDaneDodat/>
             </TabItem>
 
-            <TabItem Header="Płatkość UW">
+            <TabItem Header="Płatność UW">
                 <view:UserControl_InfoPlatnoscUW/>
             </TabItem>
 

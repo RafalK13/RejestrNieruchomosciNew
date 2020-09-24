@@ -143,7 +143,7 @@
 
         <DataGrid Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Margin="10,0,10,20"
                   ItemsSource="{Binding userControl_prev.dzialkaView, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2"
-                  SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"
+                  SelectedItem="{Binding userControl_prev.dzialkaSel,  UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
                   SelectedIndex="{Binding userControl_prev.selectedIndeks, UpdateSourceTrigger=PropertyChanged}" 
                   IsReadOnly="True"
                   AutoGenerateColumns="False"

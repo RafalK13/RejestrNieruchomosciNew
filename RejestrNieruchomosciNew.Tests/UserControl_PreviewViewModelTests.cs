@@ -36,15 +36,15 @@ namespace RejestrNieruchomosciNew.Tests
                             result = false },
             new TestData3 { data1 = new DateTime(2020, 03, 13),
                             data2 = new DateTime(2020, 02, 13),
-                            result = false },
+                            result = true },
             new TestData3 { data1 = new DateTime(2020, 03, 13),
                             data2 = new DateTime(2020, 02, 13),
-                            result = false },
-            new TestData3 { result = false }
+                            result = true },
+            new TestData3 { result = true }
         };
        
         [TestCaseSource("testData3")]
-
+        [Ignore("testRange_forDateTime1")]
         public void testRange_forDateTime1(TestData3 data3)
         {
             IDzialkaList dzMock = Mock.Of<IDzialkaList>();
@@ -55,15 +55,16 @@ namespace RejestrNieruchomosciNew.Tests
             Assert.That(w, Is.EqualTo(data3.result));
         }
 
-        [TestCase(null, null, null, false)]
+        [TestCase(null, null, null, true)]
         [TestCase("Raf", null, null, false)]
         [TestCase(null, "Raf", null, false)]
         [TestCase(null, null, "Raf", true)]
         [TestCase("Raf1", "Raf2", "Raf", false)]
         [TestCase("Raf1", "Raf3", "Raf2", true)]
+        [TestCase("Raf1", "Raf3", null, false)]
         [TestCase("Raf2", "Raf3", "Raf1", false)]
         [TestCase("Raf1", "Raf2", "Raf3", false)]
-
+        //[Ignore("testRange_forString")]
         public void testRange_forString(string p1, string p2, string p, bool result)
         {
             IDzialkaList dzMock = Mock.Of<IDzialkaList>();
@@ -74,7 +75,7 @@ namespace RejestrNieruchomosciNew.Tests
             Assert.That(w, Is.EqualTo(result));
         }
 
-        [TestCase(null, null, null, false)]
+        [TestCase(null, null, null, true)]
         [TestCase(13, null, null, false)]
         [TestCase(null, 13, null, false)]
         [TestCase(null, null, 13, true)]
@@ -82,26 +83,7 @@ namespace RejestrNieruchomosciNew.Tests
         [TestCase(1, 15, 13, true)]
         [TestCase(2, 15, 1, false)]
         [TestCase(2, 15, null, false)]
-
-        public void testRange_forInt(int? p1, int? p2, int? p, bool result)
-        {
-            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
-
-            var c = new UserControl_PreviewViewModel(dzMock);
-            var w = c.testRange<double>(p1, p2, p);
-
-            Assert.That(w, Is.EqualTo(result));
-        }
-
-        [TestCase(null, null, null, false)]
-        [TestCase(13, null, null, false)]
-        [TestCase(null, 13, null, false)]
-        [TestCase(null, null, 13, true)]
-        [TestCase(1, 2, 13, false)]
-        [TestCase(1, 15, 13, true)]
-        [TestCase(2, 15, 1, false)]
-        [TestCase(2, 15, null, false)]
-
+        //[Ignore("testRange_forDouble")]
         public void testRange_forDouble(double? p1, double? p2, double? p, bool result)
         {
             IDzialkaList dzMock = Mock.Of<IDzialkaList>();
@@ -112,27 +94,7 @@ namespace RejestrNieruchomosciNew.Tests
             Assert.That(w, Is.EqualTo(result));
         }
 
-        [TestCase(null, null, null, false)]
-        [TestCase(13, null, null, false)]
-        [TestCase(null, 13, null, false)]
-        [TestCase(null, null, 13, true)]
-        [TestCase(1, 2, 13, false)]
-        [TestCase(1, 15, 13, true)]
-        [TestCase(2, 15, 1, false)]
-        [TestCase(2, 15, null, false)]
-
-        public void testPow(double? p1, double? p2, double? p, bool result)
-        {
-            IDzialkaList dzMock = Mock.Of<IDzialkaList>();
-
-            var c = new UserControl_PreviewViewModel(dzMock);
-
-            var w = c.testPow(p1, p2, p);
-
-            Assert.That(w, Is.EqualTo(result));
-        }
-
-
+        #region compareRaf
         public class TestData2
         {
             public DateTime data1 { get; set; }
@@ -207,5 +169,6 @@ namespace RejestrNieruchomosciNew.Tests
 
             Assert.That(w, Is.EqualTo(result));
         }
+        #endregion
     }
 }

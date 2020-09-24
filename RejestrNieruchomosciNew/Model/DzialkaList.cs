@@ -55,9 +55,7 @@ namespace RejestrNieruchomosciNew.Model
                                                          .Include( adr=>adr.Adres)
                                                          .Include( w =>w.Wladanie).ThenInclude(f=>f.FormaWladaniaSlo)
                                                          .Include(w => w.Wladanie).ThenInclude(t => t.TransakcjeK_Wlad)
-                                                         .ToListAsync());
-
-             
+                                                         .ToListAsync());          
             }
         }
 
@@ -128,22 +126,25 @@ namespace RejestrNieruchomosciNew.Model
                 using (var c = new Context())
                 {
                     Dzialka d = (Dzialka)dz;
-                 
+
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
                     c.Entry(v1).CurrentValues.SetValues(d);
                     c.SaveChanges();
+
+                    var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
+
+                    list[v] = c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo)
+                                                             .Include(r => r.PlatnoscUW)
+                                                             .Include(adr => adr.Adres)
+                                                             .FirstOrDefault(i => i.DzialkaId == d.DzialkaId);
+
+
+                    //if(list[v].Adres != null)
+                    //    list[v].Adres.DzialkaId = dz.DzialkaId;
+
+                    //list[v].Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
                 }
-
-                var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
-
-                list[v].copy(dz);
-
-                if(list[v].Adres != null)
-                    list[v].Adres.DzialkaId = dz.DzialkaId;
-                
-                list[v].Obreb = obrebList.obrebList.FirstOrDefault(r => r.ObrebId == dz.ObrebId);
-
-            }
+                }
             catch (Exception ex)
             {
                 MessageBox.Show( $"Błąd modyfikacji działki\r\n{ex.Message}\r\n{ex.Source}");

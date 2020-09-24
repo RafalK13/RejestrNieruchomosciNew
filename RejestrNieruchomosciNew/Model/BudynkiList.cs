@@ -41,7 +41,7 @@ namespace RejestrNieruchomosciNew.Model
                     listAll = new ObservableCollection<IBudynek>(c.Budynek
                                                                           .Include(f => f.Dzialka_Budynek).ThenInclude(d => d.Dzialka).AsNoTracking()
                                                                           .Include(a => a.Adres)
-                                                                          .Include(l=>l.Lokal).ThenInclude( p=>p.Lokal_Podmiot));
+                                                                          .Include(l => l.Lokal).ThenInclude(p => p.Lokal_Podmiot));
                 }
                 catch (Exception e)
                 {
@@ -85,12 +85,23 @@ namespace RejestrNieruchomosciNew.Model
             {
                 int dz = dzialkaPrv.DzialkaId;
                 var budAll = c.Budynek.AsNoTracking().Where(r => r.Dzialka_Budynek.FirstOrDefault(l1 => l1.DzialkaId == dz) != null).ToList();
-
-                foreach (var itemA in budAll)
+               
+                foreach (var item_budAll in budAll)
                 {
-                    var result = list.FirstOrDefault(r => r.BudynekId == itemA.BudynekId);
+                    var result = list.FirstOrDefault(r => r.BudynekId == item_budAll.BudynekId);
                     if (result == null)
-                        c.Budynek.Remove(itemA);
+                        c.Budynek.Remove(item_budAll);
+
+                    else
+                    {
+                        var dzialkaBudynekALL = c.Dzialka_Budynek.AsNoTracking().Where(r => r.BudynekId == item_budAll.BudynekId).ToList();
+
+                        var dzialkaBudynekList = list.FirstOrDefault(r=>r.BudynekId == item_budAll.BudynekId).Dzialka_Budynek.ToList();
+
+                        var dzialkaBudynekToDel = dzialkaBudynekALL.Except(dzialkaBudynekList).ToList();
+
+                        c.Dzialka_Budynek.RemoveRange(dzialkaBudynekToDel);
+                    }
                 }
                 
                 foreach (var item in list)
@@ -121,17 +132,17 @@ namespace RejestrNieruchomosciNew.Model
                     #endregion
 
                     #region Lokator
-                    if(item.Lokal !=null)
-                    foreach (var itemLokal in item.Lokal)
-                    {
-                        var lokatorAll = c.Lokal_Podmiot.AsNoTracking().Where(r => r.LokalId == itemLokal.LokalId).ToList();
-                        foreach (var itemLokator in lokatorAll)
+                    if (item.Lokal != null)
+                        foreach (var itemLokal in item.Lokal)
                         {
-                            var result = itemLokal.Lokal_Podmiot.FirstOrDefault(r => r.PodmiotId == itemLokator.PodmiotId);
-                            if (result == null)
-                                c.Lokal_Podmiot.Remove(itemLokator);
+                            var lokatorAll = c.Lokal_Podmiot.AsNoTracking().Where(r => r.LokalId == itemLokal.LokalId).ToList();
+                            foreach (var itemLokator in lokatorAll)
+                            {
+                                var result = itemLokal.Lokal_Podmiot.FirstOrDefault(r => r.PodmiotId == itemLokator.PodmiotId);
+                                if (result == null)
+                                    c.Lokal_Podmiot.Remove(itemLokator);
+                            }
                         }
-                    }
                     #endregion
                 }
                 c.UpdateRange(list);
