@@ -9,34 +9,47 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <TabControl Grid.Row="1" Margin="10,0,20,20" Name="TabControlMain">
-
-            <TabItem Header="Dane podstawowe">
-                <view:UserControl_InfoDanePodst/>
-            </TabItem>
             
-            <TabItem Header="Dane dodatkowe">
-                <view:UserControl_InfoDaneDodat/>
-            </TabItem>
-
-            <TabItem Header="Płatność UW">
-                <view:UserControl_InfoPlatnoscUW/>
-            </TabItem>
-
-            <TabItem Header="Własność">
-                <view:UserControl_InfoWladanie/>
-            </TabItem>
-
-            <TabItem Header="Inne Prawa">
-                <view:UserControl_InfoInnePrawa/>
-            </TabItem>
-
-            <TabItem Header="Zagospodarowanie działki">
-                <view:UserControl_InfoZagosp/>
+            <TabItem Header="Działki">
+                <TabControl>
+                    <TabItem Header="Dane poodstwowe">
+                        <view:UserControl_InfoDanePodst/>
+                    </TabItem>
+                    <TabItem Header="Dane dodatkowe">
+                        <view:UserControl_InfoDaneDodat/>
+                    </TabItem>
+                </TabControl>
             </TabItem>
 
             <TabItem Header="Budynki">
                 <view:UserControl_InfoBudynek/>
             </TabItem>
+
+            <TabItem Header="Stan prawny">
+                <TabControl>
+                    <TabItem Header="Własność">
+                        <view:UserControl_InfoWladanie/>
+                    </TabItem>
+
+                    <TabItem Header="Inne Prawa">
+                        <view:UserControl_InfoInnePrawa/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+
+
+            <TabItem Header="Płatność UW">
+                <view:UserControl_InfoPlatnoscUW/>
+            </TabItem>
+
+            
+
+            <TabItem Header="Zagospodarowanie działki">
+                <view:UserControl_InfoZagosp/>
+            </TabItem>
+
+           
 
 
 
