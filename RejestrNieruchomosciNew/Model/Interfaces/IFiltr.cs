@@ -9,9 +9,11 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         int wlad_podmiot { get; set; }
         int wlad_formaWladId { get; set; }
         string wlad_udzial { get; set; }
-        DateTime? wlad_dataOdbOdP { get; set; }
-        DateTime? wlad_dataOdbOdK { get; set; }
-        DateTime? wlad_dataOdbODo { get; set; }
+        DateTime? wlad_dataOdb_odP { get; set; }
+        DateTime? wlad_dataOdb_odK { get; set; }
+        DateTime? wlad_dataOdb_doP { get; set; }
+        DateTime? wlad_dataOdb_doK { get; set; }
+
         DateTime? wlad_NrProtPrzej { get; set; }
         int wlad_celNadId { get; set; }
         int wlad_RodzajTransakcjiSloId { get; set; }

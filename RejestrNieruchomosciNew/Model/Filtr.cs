@@ -97,25 +97,32 @@ namespace RejestrNieruchomosciNew.Model
             set { Set(ref _wlad_udzial, value); }
         }
 
-        private DateTime? _wlad_dataOdbOdP;
-        public DateTime? wlad_dataOdbOdP
+        private DateTime? _wlad_dataOdb_odP;
+        public DateTime? wlad_dataOdb_odP
         {
-            get { return _wlad_dataOdbOdP; }
-            set { Set(ref  _wlad_dataOdbOdP ,value); }
+            get { return _wlad_dataOdb_odP; }
+            set { Set(ref _wlad_dataOdb_odP, value); }
         }
 
-        private DateTime? _wlad_dataOdbOdK;
-        public DateTime? wlad_dataOdbOdK
+        private DateTime? _wlad_dataOdb_odK;
+        public DateTime? wlad_dataOdb_odK
         {
-            get { return _wlad_dataOdbOdK; }
-            set { Set(ref _wlad_dataOdbOdK, value); }
+            get { return _wlad_dataOdb_odK; }
+            set { Set(ref _wlad_dataOdb_odK, value); }
         }
 
-        private DateTime? _wlad_dataOdbODo;
-        public DateTime? wlad_dataOdbODo
+        private DateTime? _wlad_dataOdb_doP;
+        public DateTime? wlad_dataOdb_doP
         {
-            get { return _wlad_dataOdbODo; }
-            set { Set(ref _wlad_dataOdbODo, value); }
+            get { return _wlad_dataOdb_doP; }
+            set { Set(ref _wlad_dataOdb_doP, value); }
+        }
+
+        private DateTime? _wlad_dataOdb_doK;
+        public DateTime? wlad_dataOdb_doK
+        {
+            get { return _wlad_dataOdb_doK; }
+            set { Set(ref _wlad_dataOdb_doK, value); }
         }
 
         private DateTime? _wlad_NrProtPrzej;

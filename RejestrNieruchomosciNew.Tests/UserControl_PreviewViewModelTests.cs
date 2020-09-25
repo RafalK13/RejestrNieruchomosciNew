@@ -22,29 +22,46 @@ namespace RejestrNieruchomosciNew.Tests
 
         private static TestData3[] testData3 = new TestData3[]
         {
+              new TestData3 { data1 = new DateTime(2001, 10, 10),
+                              //data2 = new DateTime(2020, 02, 11),
+                              data3 = new DateTime(2010, 02, 13),
+                              result = true},
+
+             new TestData3 { data1 = new DateTime(2020, 01, 13),
+                             data3 = new DateTime(2020, 02, 13),
+                             result = true },
+
+             new TestData3 { data2 = new DateTime(2020, 03, 13),
+                             data3 = new DateTime(2020, 04, 13),
+                             result = false },
+
             new TestData3 { data1 = new DateTime(2020, 01, 13),
                             data2 = new DateTime(2020, 03, 13),
                             data3 = new DateTime(2020, 02, 13),
                             result = true },
+
             new TestData3 { data1 = new DateTime(2020, 01, 13),
                             data2 = new DateTime(2020, 02, 13),
                             data3 = new DateTime(2020, 03, 13),
                             result = false },
+
             new TestData3 { data1 = new DateTime(2020, 03, 13),
                             data2 = new DateTime(2020, 02, 13),
                             data3 = new DateTime(2020, 01, 13),
                             result = false },
+
             new TestData3 { data1 = new DateTime(2020, 03, 13),
                             data2 = new DateTime(2020, 02, 13),
-                            result = true },
+                            result = false },
+
             new TestData3 { data1 = new DateTime(2020, 03, 13),
                             data2 = new DateTime(2020, 02, 13),
-                            result = true },
-            new TestData3 { result = true }
+                            result = false }
+            //new TestData3 { result = true }
         };
        
         [TestCaseSource("testData3")]
-        [Ignore("testRange_forDateTime1")]
+        //[Ignore("testRange_forDateTime1")]
         public void testRange_forDateTime1(TestData3 data3)
         {
             IDzialkaList dzMock = Mock.Of<IDzialkaList>();

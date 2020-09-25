@@ -5,6 +5,7 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -49,7 +50,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             get
             {
-                 return _dzialkaSel;
+                return _dzialkaSel;
             }
             set
             {
@@ -179,12 +180,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
-        //public void addDzialka(IDzialka dz)
-        //{
-        //    //dzialkiList.AddRow(dz);
-        //    //dzialkaView.Refresh();
-        //}
-
         public void onDoubleClicked()
         {
             if (allowDelete == true)
@@ -266,12 +261,13 @@ namespace RejestrNieruchomosciNew.ViewModel
                    true : EqualsStr(d.Kwzrob, filtr.kwZrob) ?
                    true : false;
 
-                //foreach (var item in d.Wladanie)
-                //{
-                //   if (testRange(filtr.wlad_dataOdbOdP, filtr.wlad_dataOdbOdK, item.DataOdbOd) == true)
-                       
-                //}
-                
+                bool wlad_dataOdb_od = true;
+                    if (filtr.wlad_dataOdb_odP != null || filtr.wlad_dataOdb_odK != null)
+                    wlad_dataOdb_od = checkDate<Wladanie>(filtr.wlad_dataOdb_odP, filtr.wlad_dataOdb_odK, d.Wladanie, "DataOdbOd");
+
+                bool wlad_dataOdb_do = true;
+                if (filtr.wlad_dataOdb_doP != null || filtr.wlad_dataOdb_doK != null)
+                    wlad_dataOdb_do = checkDate<Wladanie>(filtr.wlad_dataOdb_doP, filtr.wlad_dataOdb_doK, d.Wladanie, "DataOdbDo");
 
                 bool powDanePod = testRange(filtr.powP, filtr.powK, d.Pow);
 
@@ -283,12 +279,47 @@ namespace RejestrNieruchomosciNew.ViewModel
                           && wladTytulTrans
                           && kwAkt
                           && kwZrob
+                          && wlad_dataOdb_od
+                          && wlad_dataOdb_do
                           && powDanePod;
             };
             result = dzialkaView.Cast<object>().Count().ToString();
         }
 
-        private bool testDataRangeMulti( )
+        private bool checkDate<T>(DateTime? p, DateTime? k, ICollection<T> col, string name)
+        {
+            DateTime valueDate;
+            foreach (var item in col)
+            {
+                var v = item.GetType().GetProperty(name).GetValue(item);
+                if (v != null)
+                {
+                    DateTime.TryParse(v.ToString(), out valueDate);
+
+                    if (valueDate != null)
+                        if (testRange(p, k, valueDate) == true)
+                        {
+                            return true;
+                        }
+                }
+            }
+            return false;
+        }
+
+        private bool wlasData(DateTime? p, DateTime? k, ICollection<Wladanie> w)
+        {
+            foreach (var item in w)
+            {
+                if (testRange(p, k, item.DataOdbOd) == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        private bool testDataRangeMulti()
         {
 
             return false;
@@ -362,15 +393,15 @@ namespace RejestrNieruchomosciNew.ViewModel
         #endregion
 
         private bool EqualsStr(string s1, string s2)
-    {
-        if (s1 == null)
-            return false;
+        {
+            if (s1 == null)
+                return false;
 
-        if (s2 == null)
-            return false;
+            if (s2 == null)
+                return false;
 
-        return s1.Contains(s2);
+            return s1.Contains(s2);
+        }
+
     }
-
-}
 }

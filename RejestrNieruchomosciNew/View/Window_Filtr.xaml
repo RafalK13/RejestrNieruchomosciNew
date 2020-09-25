@@ -223,25 +223,25 @@
                        Style="{StaticResource elemInfo_Col1}"
                        widthLabelRaf="200"
                        labelRaf="Data odbioru Od - szukanie od dnia"
-                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdbOdP, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
+                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdb_odP, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
 
                 <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        widthLabelRaf="200"
                        labelRaf="Data odbioru Od - szukanie do dnia"
-                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdbOdK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
+                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdb_odK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
 
-                <userControl:UserControl_ElementInfo
+                <wyszukiwanie daty 
                        Style="{StaticResource elemInfo_Col1}"
                        widthLabelRaf="200"
                        labelRaf="Data odbioru Do - szukanie od dnia"
-                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdbOdP, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
+                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdb_doP, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
 
                 <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        widthLabelRaf="200"
                        labelRaf="Data odbioru Do - szukanie do dnia"
-                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdbOdK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
+                       tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdb_doK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
 
                 <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
