@@ -268,6 +268,14 @@
     <Compile Include="Migrations\20200902130145_dom11.designer.cs">
       <DependentUpon>20200902130145_dom11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20200925103524_dom13.cs" />
+    <Compile Include="Migrations\20200925103524_dom13.designer.cs">
+      <DependentUpon>20200925103524_dom13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20200925103748_dom15.cs" />
+    <Compile Include="Migrations\20200925103748_dom15.designer.cs">
+      <DependentUpon>20200925103748_dom15.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -390,6 +398,7 @@
     <Compile Include="Model\TransakcjeList.cs" />
     <Compile Include="Model\UlicaSlo.cs" />
     <Compile Include="Model\UlicaSloList.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Model\Uzytki.cs" />
     <Compile Include="Model\UzytkiList.cs" />
     <Compile Include="Model\UzytkiSlo.cs" />

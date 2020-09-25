@@ -34,8 +34,11 @@
 
         <localView:UserControl_PreviewView Grid.Row="1"/>
 
-        <StackPanel  Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                      >
+        <StackPanel  Grid.Row="3" Orientation="Horizontal"
+                     HorizontalAlignment="Center"
+                     IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    
+                     >
 
             <!--<Button 
                 Style="{StaticResource buttonRaf}"

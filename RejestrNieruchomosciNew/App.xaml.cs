@@ -1,5 +1,7 @@
 ﻿using Castle.Windsor;
 using Castle.Windsor.Installer;
+using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
 using System.Collections.Generic;
@@ -27,15 +29,31 @@ namespace RejestrNieruchomosciNew
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show( $"Błąd podłączenia z bazą danych\r\n{ ex.Message}");
+                    MessageBox.Show($"Błąd podłączenia z bazą danych\r\n{ ex.Message}");
                     Environment.Exit(0);
                 }
             }
 
-                //var view = container.Resolve<WindowTestRaf>();
+            //var view = container.Resolve<WindowTestRaf>();
+
+            var mode = container.Resolve<PerformMode>();
+
+            using (var c = new Context())
+            {
+                var u = c.User.FirstOrDefault(r => r.name == Environment.UserName);
+
+                if (u != null)
+                {
+                    if (u.admin == true)
+                        mode.workMod = PerformMode.workMode.admin;
+                }
+            }
+
+
+
                 var view = container.Resolve<MainView>();
-                //var view = container.Resolve<Window2>();
-                view.Show();
+            //var view = container.Resolve<Window2>();
+            view.Show();
 
             //container.Dispose();
         }

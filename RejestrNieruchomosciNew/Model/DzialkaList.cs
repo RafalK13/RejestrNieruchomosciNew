@@ -73,7 +73,6 @@ namespace RejestrNieruchomosciNew.Model
                     tab = c.Dzialka_Budynek.AsNoTracking().Include(b=>b.Budynek).AsNoTracking()
                                                          .Where(n => n.DzialkaId == dz.DzialkaId).ToList();
 
-
                 foreach (var item in tab)
                 {
                    var budTodel = item.Budynek;
@@ -85,18 +84,6 @@ namespace RejestrNieruchomosciNew.Model
                     {
                         MessageBox.Show(ex.Message);
                     }
-
-                    //if (c.Budynek.Where(r2 => r2.BudynekId == item.BudynekId).Count() == 1)
-                    //{
-                    //    try
-                    //    {
-                    //        c.Budynek.Remove(c.Budynek.FirstOrDefault(d => d.BudynekId == item.BudynekId));
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        MessageBox.Show(ex.Message);
-                    //    }
-                    //}
                 }
                 c.Dzialka.Remove((Dzialka)dz);
                 c.SaveChanges();

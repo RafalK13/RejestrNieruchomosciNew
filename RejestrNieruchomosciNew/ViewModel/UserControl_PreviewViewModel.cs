@@ -117,7 +117,20 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public IFiltr filtr { get; set; }
 
+        public PerformMode performMode { get; set; }
+
         #region Konstructor
+        public UserControl_PreviewViewModel(IDzialkaList _dzialkiList,
+                                            PerformMode _performMode) : this( _dzialkiList)
+        {
+            performMode = _performMode;
+
+            if (performMode.workMod == PerformMode.workMode.admin)
+                allowDeleteEnabled = true;
+            else
+                allowDeleteEnabled = false;
+        }
+
         public UserControl_PreviewViewModel(IDzialkaList _dzialkiList)
         {
             dzialkiList = _dzialkiList;
@@ -180,18 +193,22 @@ namespace RejestrNieruchomosciNew.ViewModel
             setFilter();
         }
 
+       public bool allowDeleteEnabled { get; set; }
+
         public void onDoubleClicked()
         {
-            if (allowDelete == true)
-                deleteDzialka();
-            else
+            if (performMode.workMod == PerformMode.workMode.admin)
             {
-                int xxx = 13;
-                if (dzialkaSel != null)
+                if (allowDelete == true)
+                    deleteDzialka();
+                else
                 {
-                    var v = factory.CreateView<ChangeView>();
-                    v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                    v.ShowDialog();
+                    if (dzialkaSel != null)
+                    {
+                        var v = factory.CreateView<ChangeView>();
+                        v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
+                        v.ShowDialog();
+                    }
                 }
             }
         }

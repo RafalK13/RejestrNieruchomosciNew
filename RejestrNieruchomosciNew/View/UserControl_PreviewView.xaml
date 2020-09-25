@@ -172,12 +172,12 @@
 
         <StackPanel  Grid.Row="1" Grid.Column="3"
                      VerticalAlignment="Bottom" ClipToBounds="True">
-            <CheckBox  
+        <CheckBox  
                   Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding userControl_prev.allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 
+                  IsEnabled="{Binding userControl_prev.allowDeleteEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   Name="checkBox"
-                   Panel.ZIndex="13"
+                  Panel.ZIndex="13"
                   >
             </CheckBox>
         </StackPanel>

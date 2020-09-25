@@ -59,6 +59,8 @@ namespace RejestrNieruchomosciNew
         public virtual DbQuery<CelNabycia> CelNabyciaView { get; set; }
         public virtual DbQuery<Podmiot> PodmiotView { get; set; }
 
+        public virtual DbSet<User> User { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

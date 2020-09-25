@@ -23,7 +23,7 @@ namespace RejestrNieruchomosciNew.Tests
         private static TestData3[] testData3 = new TestData3[]
         {
               new TestData3 { data1 = new DateTime(2001, 10, 10),
-                              //data2 = new DateTime(2020, 02, 11),
+                              data2 = new DateTime(2020, 02, 11),
                               data3 = new DateTime(2010, 02, 13),
                               result = true},
 

@@ -127,9 +127,8 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_ZagospViewModel>().LifeStyle.Transient);
 
-            
-
             container.Register(Component.For<PerformMode>());
+            container.Register(Component.For<IUser>().ImplementedBy<User>().LifeStyle.Transient);
 
             //container.Register(Component.For<UserControl_InfoMain>());
             container.Register(Component.For<UserControl_InfoMainViewModel>());

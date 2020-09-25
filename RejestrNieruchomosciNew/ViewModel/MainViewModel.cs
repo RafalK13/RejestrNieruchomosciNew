@@ -46,11 +46,16 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IDzialkaList dzialkaList { get; set; }
 
         #region Konstruktor
-        public MainViewModel()
+        public MainViewModel( PerformMode mode)
         {
             modeMessage = "Przegl¹danie bazy dzia³ek";
             initButtonCommand();
-            btActivity = true;
+            if( mode.workMod == PerformMode.workMode.admin)
+                btActivity = true;
+            else
+                btActivity = false;
+
+
         }
         #endregion
 

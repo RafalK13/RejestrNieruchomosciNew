@@ -231,7 +231,7 @@
                        labelRaf="Data odbioru Od - szukanie do dnia"
                        tekstRaf="{Binding  Path=DataContext.filtr.wlad_dataOdb_odK, RelativeSource={RelativeSource AncestorType=local:Window_Filtr},  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateConvert} }"/>
 
-                <wyszukiwanie daty 
+                <userControl:UserControl_ElementInfo
                        Style="{StaticResource elemInfo_Col1}"
                        widthLabelRaf="200"
                        labelRaf="Data odbioru Do - szukanie od dnia"
