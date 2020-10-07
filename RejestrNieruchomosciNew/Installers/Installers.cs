@@ -18,11 +18,14 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IViewFactory>().ImplementedBy<WindsorViewFactory>());
 
             container.Register(Component.For<MainView>());
+            
             container.Register(Component.For<MainViewModel>());
 
             container.Register(Component.For<Window_Filtr>());
             container.Register(Component.For<Window_FiltrViewModel>());
             container.Register(Component.For<IFiltr>().ImplementedBy<Filtr>());
+
+            container.Register(Component.For<UpdateClass>());
 
             //container.Register(Component.For<IWindow_Factory>().AsFactory());
             container.Register(Component.For<IWindow_ZalacznikViewModel>().ImplementedBy<Window_ZalacznikViewModel>().LifeStyle.Transient);

@@ -32,6 +32,11 @@ namespace RejestrNieruchomosciNew.Model
             initDzialkaList();          
         }
 
+        public void UpdateList()
+        {
+            initDzialkaList();
+        }        
+
         private void initDzialkaList()
         {
             try

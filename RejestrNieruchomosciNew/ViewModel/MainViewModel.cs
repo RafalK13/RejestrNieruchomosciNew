@@ -35,6 +35,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand modDzialka { get; set; }
         public ICommand doubleClick { get; set; }
         public ICommand testClick { get; set; }
+        public ICommand updateAll { get; set; }
 
         public string modeMessage { get; set; }
 
@@ -44,6 +45,8 @@ namespace RejestrNieruchomosciNew.ViewModel
         public PerformMode mode { get; set; }
 
         public IDzialkaList dzialkaList { get; set; }
+
+        public UpdateClass updateClass { get; set; }
 
         #region Konstruktor
         public MainViewModel( PerformMode mode)
@@ -67,6 +70,12 @@ namespace RejestrNieruchomosciNew.ViewModel
             modDzialka = new RelayCommand(onModifyDzialka);
             doubleClick = new RelayCommand(onDoubleClick);
             testClick = new RelayCommand( onTestClick);
+            updateAll = new RelayCommand(onUpdateAll);
+        }
+
+        private void onUpdateAll()
+        {
+           
         }
 
         private void onTestClick()

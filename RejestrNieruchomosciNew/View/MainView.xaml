@@ -66,6 +66,11 @@
                 Style="{StaticResource buttonRaf}"
                 Command="{Binding delDzialka}"
                 Content="Usuwanie"></Button>
+
+            <Button 
+                Style="{StaticResource buttonRaf}"
+                Command="{Binding updateAll}"
+                Content="Update"></Button>
             <!--<Button 
                 Style="{StaticResource buttonRaf}"
                 Content="Inne"></Button>-->

@@ -13,6 +13,8 @@ namespace RejestrNieruchomosciNew.Model
         void DelRow(IDzialka dz);
         void ModRow(IDzialka dzialka);
 
+        void UpdateList();
+
         event EventHandler zmianaDzialkiList;
 
     }
