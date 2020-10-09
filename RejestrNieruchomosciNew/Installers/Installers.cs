@@ -117,8 +117,14 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_DaneDodatkowe>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_DaneDodatkoweViewModel>().LifeStyle.Transient);
 
-            container.Register(Component.For<INadzorKonserwSlo>().ImplementedBy<NadzorKonserwSlo>());
-            container.Register(Component.For<INadzorKonserwatoraSloList>().ImplementedBy<NadzorKonserwatoraSloList>());
+            container.Register(Component.For<IKonserwPrzyrodySlo>().ImplementedBy<KonserwPrzyrodySlo>());
+            container.Register(Component.For<IKonserwPrzyrodySloList>().ImplementedBy<KonserwPrzyrodySloList>());
+
+            container.Register(Component.For<IPrzedstawicielSlo>().ImplementedBy<PrzedstawicielSlo>());
+            container.Register(Component.For<IPrzedstawicielSloList>().ImplementedBy<PrzedstawicielsSloList>());
+
+            container.Register(Component.For<IKonserwZabytkowSlo>().ImplementedBy<KonserwZabytkowSlo>());
+            container.Register(Component.For<IKonserwZabytkowSloList>().ImplementedBy<KonserwZabytkowSloList>());
 
             container.Register(Component.For<IZagosp>().ImplementedBy<Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<IZagospList>().ImplementedBy<ZagospList>());

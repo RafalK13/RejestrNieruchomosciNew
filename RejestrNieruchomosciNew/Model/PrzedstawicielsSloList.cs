@@ -1,26 +1,29 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class ZagospFunkcjaSloList
+    public class PrzedstawicielsSloList : IPrzedstawicielSloList
     {
-        public ObservableCollection<IZagospFunkcjaSlo> list { get; set; }
+        public ObservableCollection<IPrzedstawicielSlo> list { get; set; }
 
-        public ZagospFunkcjaSloList()
+        public PrzedstawicielsSloList()
         {
             using (var c = new Context())
             {
                 try
                 {
-                    list = new ObservableCollection<IZagospFunkcjaSlo>(c.ZagospFunkcjaSlo.ToList());
+                    list = new ObservableCollection<IPrzedstawicielSlo>(c.PrzedstawicielSlo.ToList());
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"ZagospodatowanieFunkcjaLIst\r\n{e.Message}");
+                    MessageBox.Show($"PrzedstawicielSloList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
             }

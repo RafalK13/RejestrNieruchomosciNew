@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class NadzorKonserwSlo : INadzorKonserwSlo
+    public class KonserwPrzyrodySlo : IKonserwPrzyrodySlo
     {
-        public int NadzorKonserwSloId { get; set; }
+        public int KonserwPrzyrodySloId { get; set; }
         public string Nazwa { get; set; }
-
 
         public ICollection<Dzialka> Dzialka { get; set; }
 

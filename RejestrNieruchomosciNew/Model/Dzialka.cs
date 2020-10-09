@@ -95,10 +95,13 @@ namespace RejestrNieruchomosciNew
         [DataMember]
         public Adres Adres { get; set; }
         [DataMember]
-        public int? NadzorKonserwSloId { get; set; }
+        public int? KonserwZabytkowSloId { get; set; }
+        [DataMember]
+        public int? KonserwPrzyrodySloId { get; set; }
         //[field: NonSerialized]
 
-        public NadzorKonserwSlo NadzorKonserwSlo { get; set; }
+        public KonserwZabytkowSlo KonserwZabytkowSlo { get; set; }
+        public KonserwPrzyrodySlo KonserwPrzyrodySlo { get; set; }
 
         //[field: NonSerialized]
         public ICollection<Uzytki> Uzytki { get; set; }
@@ -171,7 +174,8 @@ namespace RejestrNieruchomosciNew
                    string.Equals(rodzNaw, other.rodzNaw) &&
                    //AdresId == other.AdresId &&                    
                    ObrebId.Equals(other.ObrebId) &&
-                   NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
+                   KonserwPrzyrodySloId.Equals(other.KonserwPrzyrodySloId) &&
+                   KonserwZabytkowSloId.Equals(other.KonserwZabytkowSloId);
         }
 
         public override int GetHashCode()
@@ -192,14 +196,15 @@ namespace RejestrNieruchomosciNew
         {
         }
 
-        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null)//, int? _AdresId=null )
+        public Dzialka(string _numer, int _ObrebId, string _kwA = null, string _kwZ = null, double? _Pow = null, int? _NadzorKonserwSloId = null, int? _KonserwZabytkowSloId=null, int? _KonserwPrzyrodySloId=null)//, int? _AdresId=null )
         {
             Numer = _numer;
             ObrebId = _ObrebId;
             Kwakt = _kwA;
             Kwzrob = _kwZ;
             Pow = _Pow;
-            NadzorKonserwSloId = _NadzorKonserwSloId;
+            KonserwPrzyrodySloId = _KonserwPrzyrodySloId;
+            KonserwZabytkowSloId = _KonserwZabytkowSloId;
             //AdresId = _AdresId;
         }
        
@@ -232,7 +237,8 @@ namespace RejestrNieruchomosciNew
             dzDest.Kwakt = dzSource.Kwakt;
             dzDest.Kwzrob = dzSource.Kwzrob;
             dzDest.Pow = dzSource.Pow;
-            dzDest.NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
+            dzDest.KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
+            dzDest.KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
             //dzDest.AdresId = dzSource.AdresId;
             dzDest.lokalizacja = dzSource.lokalizacja;
             dzDest.uzbrojenie = dzSource.uzbrojenie;
@@ -250,7 +256,8 @@ namespace RejestrNieruchomosciNew
             Kwakt = dzSource.Kwakt;
             Kwzrob = dzSource.Kwzrob;
             Pow = dzSource.Pow;
-            NadzorKonserwSloId = dzSource.NadzorKonserwSloId;
+            KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
+            KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
             //AdresId = dzSource.AdresId;
             lokalizacja = dzSource.lokalizacja;
             uzbrojenie = dzSource.uzbrojenie;

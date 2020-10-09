@@ -12,7 +12,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_InfoDanePodstViewModel : ViewModelBase
     {
-        public INadzorKonserwatoraSloList nadzorList { get; set; }
+        public IKonserwZabytkowSloList nadzorList { get; set; }
 
         public IAdresSloList adresSloList { get; set; }
 

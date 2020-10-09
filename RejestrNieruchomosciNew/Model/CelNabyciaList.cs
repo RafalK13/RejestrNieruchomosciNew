@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class CelNabyciaList : ViewModelBase, ICelNabyciaList
+    public class CelNabyciaList : ICelNabyciaList
     {
         public ObservableCollection<ICelNabycia> list { get; set; }
 

@@ -48,7 +48,10 @@ namespace RejestrNieruchomosciNew
         public virtual DbSet<ZagospStatusSlo> ZagospStatusSlo { get; set; }
         public virtual DbSet<ZagospFunkcjaSlo> ZagospFunkcjaSlo { get; set; }
         
-        public virtual DbSet<NadzorKonserwSlo> NadzorKonserwSlo { get; set; }
+        public virtual DbSet<KonserwPrzyrodySlo> KonserwPrzyrodySlo { get; set; }
+        public virtual DbSet<KonserwZabytkowSlo> KonserwZabytkowSlo { get; set; }
+
+        public virtual DbSet<PrzedstawicielSlo> PrzedstawicielSlo { get; set; }
 
         public virtual DbSet<Transakcje> Transakcje { get; set; }
         
@@ -169,11 +172,19 @@ namespace RejestrNieruchomosciNew
               new FormaWladaniaSlo() { FormaWladaniaSloId = 3, Nazwa = "UW" }
           );
 
-            modelBuilder.Entity<NadzorKonserwSlo>().HasData(
-              new NadzorKonserwSlo() { NadzorKonserwSloId = 1, Nazwa = "-" },
-              new NadzorKonserwSlo() { NadzorKonserwSloId = 2, Nazwa = "Nie" },
-              new NadzorKonserwSlo() { NadzorKonserwSloId = 3, Nazwa = "Tak" }
+            modelBuilder.Entity<KonserwPrzyrodySlo>().HasData(
+              new KonserwPrzyrodySlo() { KonserwPrzyrodySloId = 1, Nazwa = "-" },
+              new KonserwPrzyrodySlo() { KonserwPrzyrodySloId = 2, Nazwa = "Nie" },
+              new KonserwPrzyrodySlo() { KonserwPrzyrodySloId = 3, Nazwa = "Tak" }
           );
+
+            modelBuilder.Entity<KonserwZabytkowSlo>().HasData(
+               new KonserwZabytkowSlo() { KonserwZabytkowSloId = 1, Nazwa = "-" },
+               new KonserwZabytkowSlo() { KonserwZabytkowSloId = 2, Nazwa = "rejestr zabytków" },
+               new KonserwZabytkowSlo() { KonserwZabytkowSloId = 3, Nazwa = "Gminna Ewidencja Zabytków" },
+               new KonserwZabytkowSlo() { KonserwZabytkowSloId = 4, Nazwa = "Wojewódzka Ewidencja Zabytków" },
+               new KonserwZabytkowSlo() { KonserwZabytkowSloId = 5, Nazwa = "MPZP" }
+            );
 
             modelBuilder.Entity<NazwaCzynnosciSlo>().HasData(
              new NazwaCzynnosciSlo() { NazwaCzynnosciSloId = 1, Nazwa = "-" },
@@ -206,7 +217,16 @@ namespace RejestrNieruchomosciNew
                 new ZagospStatusSlo() { ZagospStatusSloId = 4, Nazwa = "komercyjna" },
                 new ZagospStatusSlo() { ZagospStatusSloId = 5, Nazwa = "mieszana" }
         );
-            
+
+            modelBuilder.Entity<PrzedstawicielSlo>().HasData(
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 1, Nazwa = "-" },
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 2, Nazwa = "GIWK EE" },
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 3, Nazwa = "GIWK TE" },
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 4, Nazwa = "GIWK TS" },
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 5, Nazwa = "SNG" },
+                new PrzedstawicielSlo() { PrzedstawicielSloId = 6, Nazwa = "inny" }
+        );
+
             modelBuilder.Entity<UzytkiSlo>().HasData(
              new UzytkiSlo() { UzytkiSloId = 1, Nazwa = "-" },
              new UzytkiSlo() { UzytkiSloId = 2, Nazwa = "R" },

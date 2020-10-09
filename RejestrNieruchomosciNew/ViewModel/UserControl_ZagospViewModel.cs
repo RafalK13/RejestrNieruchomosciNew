@@ -12,17 +12,28 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_ZagospViewModel : ViewModelBase
     {
-        private ICelNabyciaList _celNabList;
-        public ICelNabyciaList celNabList { get => _celNabList;
-            set {
-                _celNabList = value;
-                RaisePropertyChanged();
-            } }
+        //private ICelNabyciaList _celNabList;
+        //public ICelNabyciaList celNabList
+        //{
+        //    get => _celNabList;
+        //    set
+        //    {
+        //        _celNabList = value;
+        //        RaisePropertyChanged();
+        //    }
+        //}
+
+        public IKonserwPrzyrodySloList konsPrzyrodyList { get; set; }
+      
+        public IKonserwZabytkowSloList konsZabytkowList { get; set; }
+
+        public IPrzedstawicielSloList przedstawicielSloList { get; set; }
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
         public ZagospFunkcjaSloList zagFunList { get; set; }
-        public ZagospStatusSloList zagStaList { get; set; }
+        public ZagospStatusSloList zagospStaList { get; set; }
+        public IZagospStatusSlo zapospStatusSel { get; set; }
 
         private bool _podmiotDetail;
         public bool podmiotDetail
@@ -64,24 +75,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ObservableCollection<IZagosp> zagospListLok { get; set; }
 
-        private string _nazwa;
-        public string nazwa
-        {
-            get => _nazwa;
-            set
-            {
-                _nazwa = value;
-                RaisePropertyChanged();
-            }
-        }
 
-        public IPodmiotList podmList { get; set; }
-
-        public ICommand nazwaAdd { get; set; }
-        public ICommand nazwaDel { get; set; }
-        public ICommand zagospAdd { get; set; }
+        public ICommand statusAdd { get; set; }
+        public ICommand statusDel { get; set; }
+        //public ICommand zagospAdd { get; set; }
         public ICommand zagospCls { get; set; }
 
+        #region Konstruktor
         public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev,
                                            IZagospList _zagospList)
         {
@@ -96,12 +96,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             podmiotDetail = false;
         }
+        #endregion
 
         private void initButtons()
         {
-            nazwaAdd = new RelayCommand(onNazwaAll);
-            nazwaDel = new RelayCommand(onNazwaDel);
-            zagospAdd = new RelayCommand(onZagospAdd);
+            statusAdd = new RelayCommand(onStatusAdd);
+            statusDel = new RelayCommand(onStatusDel);
+        //    zagospAdd = new RelayCommand(onZagospAdd);
             zagospCls = new RelayCommand(onZagospCls);
         }
 
@@ -109,39 +110,24 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             //MessageBox.Show( $"{zagospSel.istObiektySloId.ToString()}\r\n{zagospSel.obiektyKomSloId.ToString()}\r\n{zagospSel.zadInwestSloId.ToString()}\r\n{zagospSel.celeKomSloId.ToString()}");
 
-            //zagospSel = null;
+            zagospSel = null;
         }
 
-        private void onZagospAdd()
-        {
-            try
-            {
-                
-                zagospList.list = new ObservableCollection<IZagosp>(zagospListLok.Select(r => new Zagosp(r)).ToList());
-                zagospList.saveZagosp();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show( $@"{ex.Message}" +
-                                  $"{ex.Source}" +
-                                  $"{ex.StackTrace}");
-            }
-        }
 
-        private void onNazwaDel()
+
+        private void onStatusDel()
         {
             zagospListLok.Remove(zagospSel);
         }
 
-        private void onNazwaAll()
+        private void onStatusAdd()
         {
+            
             if (testIfExist())
             {
                 try
                 {
-                    zagospListLok.Add(new Zagosp() { Nazwa = nazwa, DzialkaId = userPrev.dzialkaSel.DzialkaId });
-                    nazwa = string.Empty;
-                    zagospSel = null;
+                    zagospListLok.Add(new Zagosp() { ZagospStatusSloId = zapospStatusSel.ZagospStatusSloId, DzialkaId = userPrev.dzialkaSel.DzialkaId });
                 }
                 catch (Exception ex)
                 {
@@ -154,7 +140,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private bool testIfExist()
         {
-            return zagospList.list.FirstOrDefault(r => r.Nazwa == nazwa) == null ? true : false;
+            return zagospListLok.FirstOrDefault(r => r.ZagospStatusSloId == zapospStatusSel.ZagospStatusSloId) == null ? true : false;
         }
 
     }

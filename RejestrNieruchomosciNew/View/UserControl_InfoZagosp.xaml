@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              x:Name="infoZagospWin"
              d:DesignHeight="900" d:DesignWidth="1300">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:NabycieRodzDokIdToName x:Key="rodzDokConvert"/>
         <con:slownikIdToName x:Key="slowConvert"/>
@@ -21,10 +21,10 @@
             <Setter Property="IsHitTestVisible" Value="false"/>
             <Setter Property="isReadOnlyRaf" Value="True"/>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
 
     <Grid>
-        <Grid.ColumnDefinitions>
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
 
@@ -234,7 +234,7 @@
 
 
             </Grid>
-        </ScrollViewer>
+        </ScrollViewer>-->
 
     </Grid>
 </UserControl>

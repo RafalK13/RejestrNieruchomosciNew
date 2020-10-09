@@ -140,7 +140,7 @@
                     </view:UserControl_ElementInfo.tekstRaf>
                 </view:UserControl_ElementInfo>
 
-                <view:UserControl_ElementInfo
+                <!--<view:UserControl_ElementInfo
                         Grid.Row="8"
                         Style="{StaticResource userInfo}"
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
@@ -157,7 +157,7 @@
                             <Binding Source="Nazwa" />
                         </MultiBinding>
                     </view:UserControl_ElementInfo.tekstRaf>
-                </view:UserControl_ElementInfo>
+                </view:UserControl_ElementInfo>-->
 
                 <!--<view:UserControl_Adres
                      Grid.Row="9"

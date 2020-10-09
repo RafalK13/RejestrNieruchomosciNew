@@ -37,7 +37,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
-        public INadzorKonserwatoraSloList nadzorKons { get; set; }
+        //public INadzorKonserwatoraSloList nadzorKons { get; set; }
 
         public UserControl_DaneDodatkoweViewModel(IDzialka _dzialka,
                                                   UserControl_PreviewViewModel _prev,

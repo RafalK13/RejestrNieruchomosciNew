@@ -6,21 +6,21 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class ZagospFunkcjaSloList
+    public class KonserwPrzyrodySloList : IKonserwPrzyrodySloList
     {
-        public ObservableCollection<IZagospFunkcjaSlo> list { get; set; }
+        public ObservableCollection<IKonserwPrzyrodySlo> list { get; set; }
 
-        public ZagospFunkcjaSloList()
+        public KonserwPrzyrodySloList()
         {
-            using (var c = new Context())
+            using ( var c = new Context())
             {
                 try
                 {
-                    list = new ObservableCollection<IZagospFunkcjaSlo>(c.ZagospFunkcjaSlo.ToList());
+                    list = new ObservableCollection<IKonserwPrzyrodySlo>(c.KonserwPrzyrodySlo.ToList());
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"ZagospodatowanieFunkcjaLIst\r\n{e.Message}");
+                    MessageBox.Show($"IKonserwPrzyrodySloList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
             }

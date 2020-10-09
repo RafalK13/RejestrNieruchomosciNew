@@ -276,6 +276,10 @@
     <Compile Include="Migrations\20200925103748_dom15.designer.cs">
       <DependentUpon>20200925103748_dom15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20201008062218_dom17.cs" />
+    <Compile Include="Migrations\20201008062218_dom17.designer.cs">
+      <DependentUpon>20201008062218_dom17.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -320,6 +324,8 @@
     <Compile Include="Model\Interfaces\IFormaWladaniaSlo.cs" />
     <Compile Include="Model\Interfaces\IInnePrawa.cs" />
     <Compile Include="Model\Interfaces\IInnePrawaList.cs" />
+    <Compile Include="Model\Interfaces\IKonserwPrzyrodySlo.cs" />
+    <Compile Include="Model\Interfaces\IKonserwPrzyrodySloList.cs" />
     <Compile Include="Model\Interfaces\ILokal.cs" />
     <Compile Include="Model\Interfaces\ILokalList.cs" />
     <Compile Include="Model\Interfaces\ILokal_Najemca.cs" />
@@ -328,12 +334,14 @@
     <Compile Include="Model\Interfaces\IMiejscowoscSloList.cs" />
     <Compile Include="Model\Interfaces\IMiejscowoscSlo.cs" />
     <Compile Include="Model\Interfaces\INabyciePrawa.cs" />
-    <Compile Include="Model\Interfaces\INadzorKonserwatoraSloList.cs" />
-    <Compile Include="Model\Interfaces\INadzorKonserwSlo.cs" />
+    <Compile Include="Model\Interfaces\IKonserwZabytkowSloList.cs" />
+    <Compile Include="Model\Interfaces\IKonserwZabytkowSlo.cs" />
     <Compile Include="Model\Interfaces\INajemca.cs" />
     <Compile Include="Model\Interfaces\INazwaCzynosciSlo.cs" />
     <Compile Include="Model\Interfaces\IBudynek.cs" />
     <Compile Include="Model\Interfaces\InnePrawaDzialka.cs" />
+    <Compile Include="Model\Interfaces\IPrzedstawicielSlo.cs" />
+    <Compile Include="Model\Interfaces\IPrzedstawicielSloList.cs" />
     <Compile Include="Model\Interfaces\IRodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajPlatnosciSlo.cs" />
     <Compile Include="Model\Interfaces\IRodzajTransakcjiSlo.cs" />
@@ -364,6 +372,8 @@
     <Compile Include="Model\Interfaces\IZagospList.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\Interfaces\MyEventHandler.cs" />
+    <Compile Include="Model\KonserwZabytkowSlo.cs" />
+    <Compile Include="Model\KonserwPrzyrodySloList.cs" />
     <Compile Include="Model\Lokal.cs" />
     <Compile Include="Model\LokalList.cs" />
     <Compile Include="Model\Lokal_Najemca.cs" />
@@ -372,13 +382,15 @@
     <Compile Include="Model\MiejscowoscSlo.cs" />
     <Compile Include="Model\MiejscowoscSloList.cs" />
     <Compile Include="Model\MyEventArgs.cs" />
-    <Compile Include="Model\NadzorKonserwatoraSloList.cs" />
-    <Compile Include="Model\NadzorKonserwSlo.cs" />
+    <Compile Include="Model\KonserwZabytkowSloList.cs" />
+    <Compile Include="Model\KonserwPrzyrodySlo.cs" />
     <Compile Include="Model\Najemca.cs" />
     <Compile Include="Model\PerformMode.cs" />
     <Compile Include="Model\PlatnoscInnePrawa.cs" />
     <Compile Include="Model\PlatnoscInnePrawaList.cs" />
     <Compile Include="Model\PlatnoscList.cs" />
+    <Compile Include="Model\PrzedstawicielSlo.cs" />
+    <Compile Include="Model\PrzedstawicielsSloList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaList.cs" />
     <Compile Include="Model\RodzajInnegoPrawaSlo.cs" />
     <Compile Include="Model\RodzajPlatnosciSlo.cs" />

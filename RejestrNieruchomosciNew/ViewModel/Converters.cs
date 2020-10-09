@@ -177,18 +177,21 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
+            int xxx = 13;
 
-            if (values[0] == null)
+            if (values[0] == null) // propertyValue
                 return 0;
 
-            if (values[1] == null)
+            if (values[1] == null) //table
                 return 0;
 
-            if (values[2] == null)
+            if (values[2] == null)  //PropertyName
                 return 0;
 
-            if (values[3] == null)
+            if (values[3] == null) // Property NamePAth to display
                 return 0;
+
+            
 
            IEnumerable e = values[1] as IEnumerable;
 

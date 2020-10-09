@@ -7,8 +7,6 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         int ZagospId { get; set; }
         int DzialkaId { get; set; }
 
-        string Nazwa { get; set; }
-
         int? ZagospStatusSloId { get; set; }
         int? ZagospFunkcjaSloId { get; set; }
 

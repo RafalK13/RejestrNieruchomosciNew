@@ -1,8 +1,8 @@
 ﻿namespace RejestrNieruchomosciNew.Model.Interfaces
 {
-    public interface INadzorKonserwSlo
+    public interface IKonserwPrzyrodySlo
     {
-        int NadzorKonserwSloId { get; set; }
+        int KonserwPrzyrodySloId { get; set; }
         string Nazwa { get; set; }
     }
 }

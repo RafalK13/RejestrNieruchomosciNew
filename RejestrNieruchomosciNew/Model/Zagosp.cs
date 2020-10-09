@@ -6,7 +6,7 @@ namespace RejestrNieruchomosciNew.Model
     {
         public int ZagospId { get; set; }
         public int DzialkaId { get; set; }
-        public string Nazwa { get; set; }
+       
         public int? ZagospStatusSloId { get; set; }
         public int? ZagospFunkcjaSloId { get; set; }
 
@@ -36,7 +36,6 @@ namespace RejestrNieruchomosciNew.Model
         {
             ZagospId = z.ZagospId;
             DzialkaId = z.DzialkaId;
-            Nazwa = z.Nazwa;
             ZagospStatusSloId = z.ZagospStatusSloId;
             ZagospFunkcjaSloId = z.ZagospFunkcjaSloId;
             istObiektySloId = z.istObiektySloId;

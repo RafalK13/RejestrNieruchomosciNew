@@ -193,7 +193,7 @@
     
           
             <Grid Grid.Column="3">
-            <StackPanel>
+            <!--<StackPanel>
                 <Label  Margin="10,10,10,0"
                         Content="Nadzór konserwatora zabytków"
                         FontWeight="Bold"                      
@@ -208,7 +208,7 @@
                           SelectedValuePath="NadzorKonserwSloId"
                           DisplayMemberPath="Nazwa"  
                           Width="200"/>
-            </StackPanel>
+            </StackPanel>-->
         </Grid>
         <StackPanel 
                             Grid.Column="0"

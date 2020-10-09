@@ -9,21 +9,21 @@ using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class NadzorKonserwatoraSloList : INadzorKonserwatoraSloList
+    public class KonserwZabytkowSloList : IKonserwZabytkowSloList
     {
-        public ObservableCollection<INadzorKonserwSlo> list { get; set; }
+        public ObservableCollection<IKonserwZabytkowSlo> list { get; set; }
 
-        public NadzorKonserwatoraSloList()
+        public KonserwZabytkowSloList()
         {
             using ( var c = new Context())
             {
                 try
                 {
-                    list = new ObservableCollection<INadzorKonserwSlo>(c.NadzorKonserwSlo.ToList());
+                    list = new ObservableCollection<IKonserwZabytkowSlo>(c.KonserwZabytkowSlo.ToList());
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"NadzorKonserwatoraList\r\n{e.Message}");
+                    MessageBox.Show($"IKonserwZabytkowSloList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
             }
