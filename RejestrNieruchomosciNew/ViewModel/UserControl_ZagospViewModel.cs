@@ -12,16 +12,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_ZagospViewModel : ViewModelBase
     {
-        //private ICelNabyciaList _celNabList;
-        //public ICelNabyciaList celNabList
-        //{
-        //    get => _celNabList;
-        //    set
-        //    {
-        //        _celNabList = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+        private ICelNabyciaList _celNabList;
+        public ICelNabyciaList celNabList
+        {
+            get => _celNabList;
+            set
+            {
+                _celNabList = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public IKonserwPrzyrodySloList konsPrzyrodyList { get; set; }
       
@@ -95,8 +95,17 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
 
             podmiotDetail = false;
+
+            onTest = new RelayCommand( onTestClick);
+        }
+
+        private void onTestClick()
+        {
+            int xxx = 13;
         }
         #endregion
+
+        public ICommand onTest { get; set; }
 
         private void initButtons()
         {

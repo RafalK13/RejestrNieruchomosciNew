@@ -45,7 +45,7 @@ namespace RejestrNieruchomosciNew.Model
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"ZagospodatowanieList\r\n{e.Message}");
+                    MessageBox.Show($"ZagospodarowanieList\r\n{e.Message}");
                     Environment.Exit(0);
                 }
             }

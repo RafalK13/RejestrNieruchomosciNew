@@ -12,8 +12,9 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
 
         int? istObiektySloId { get; set; }
         int? obiektyKomSloId { get; set; }
+        string zagospKomercyjne { get; set; }
         int? zadInwestSloId { get; set; }
-        int? celeKomSloId { get; set; }
+        string celeKom { get; set; }
 
         int? przedstSloId { get; set; }
     }

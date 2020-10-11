@@ -12,9 +12,9 @@ namespace RejestrNieruchomosciNew.Model
 
         public int? istObiektySloId { get; set; }
         public int? obiektyKomSloId { get; set; }
+        public string zagospKomercyjne { get; set; }
         public int? zadInwestSloId { get; set; }
-        public int? celeKomSloId { get; set; }
-
+        public string celeKom { get; set; }
 
         public int? przedstSloId { get; set; }
 
@@ -41,8 +41,10 @@ namespace RejestrNieruchomosciNew.Model
             istObiektySloId = z.istObiektySloId;
             obiektyKomSloId = z.obiektyKomSloId;
             zadInwestSloId = z.zadInwestSloId;
-            celeKomSloId = z.celeKomSloId;
             przedstSloId = z.przedstSloId;
+            zagospKomercyjne = z.zagospKomercyjne;
+            celeKom = z.celeKom;
+
         }
     }
 }
