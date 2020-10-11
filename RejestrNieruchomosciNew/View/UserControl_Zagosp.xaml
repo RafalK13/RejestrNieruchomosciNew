@@ -307,14 +307,15 @@
                                         Margin="10,0,10,0"
                                         x:Name="conRaf3"
                                         VerticalAlignment="Top"   Panel.ZIndex="13"
-                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Zagosp.zagFunList.list, ElementName=ZagospWin}"
+                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Zagosp.celNabList.obIstnList, ElementName=ZagospWin}"
+                                                  
                                         fontSizeRafALL="14"
                                         heightRafALL="25"
                                         HorizontalAlignment="Stretch"
                                         colNameRaf="Nazwa"
-                                        colNameIdRaf="ZagospFunkcjaSloId"
+                                        colNameIdRaf="Id"
                                         selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.istObiektySloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        clearTekstOnExit="False" Height="25"
+                                        clearTekstOnExit="False" 
                                         />
                     <Label      Grid.Row="3"
                                 Content="Komercyjne obiekty"
@@ -332,7 +333,7 @@
                                         colNameRaf="Nazwa"
                                         colNameIdRaf="Id"
                                         selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.obiektyKomSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        clearTekstOnExit="False" Height="25"
+                                        clearTekstOnExit="False"
                                         />
 
                     <Label      Grid.Row="5"
@@ -378,7 +379,7 @@
                                 colNameRaf="Nazwa"
                                 colNameIdRaf="Id"
                                 selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.zadInwestSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                clearTekstOnExit="False" Height="25"/>
+                                clearTekstOnExit="False"/>
                     <Label      Grid.Row="12"
                                 Content="Cele komercyjne"
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
