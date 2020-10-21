@@ -129,7 +129,7 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IZagosp>().ImplementedBy<Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<IZagospList>().ImplementedBy<ZagospList>());
             container.Register(Component.For<IZagospFunkcjaSlo>().ImplementedBy<ZagospFunkcjaSlo>());
-            container.Register(Component.For<IZagospStatusSlo>().ImplementedBy<ZagospStatusSlo>());
+            container.Register(Component.For<IZagospStatusSlo>().ImplementedBy<ZagospStatusSlo>().LifeStyle.Transient);
             container.Register(Component.For<ZagospFunkcjaSloList>());
             container.Register(Component.For<ZagospStatusSloList>());
 

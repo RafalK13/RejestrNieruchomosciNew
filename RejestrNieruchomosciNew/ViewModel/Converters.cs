@@ -177,8 +177,6 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            int xxx = 13;
-
             if (values[0] == null) // propertyValue
                 return 0;
 
@@ -397,8 +395,7 @@ namespace RejestrNieruchomosciNew.ViewModel
     public class DateConverter : IValueConverter
     {
         public string convFun(object value)
-        {
-            int xxx = 13;
+        {           
             try
             {
                 //if (string.IsNullOrEmpty(value.ToString()))  - bardzo wolne działenie

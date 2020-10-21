@@ -223,7 +223,7 @@
 
             <ScrollViewer Grid.Column="2" 
                           Style="{StaticResource scrollViewer}"
-                          IsEnabled="{Binding userControl_Zagosp.podmiotDetail}">
+                          >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -322,7 +322,7 @@
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0" Height="32" Width="158"/>
 
                     <conRaf:DataGridRafALL  
-                                        Grid.Row="4"
+                                        Grid.Row="4"  Grid.RowSpan="20"
                                         Margin="10,0,10,0"
                                         x:Name="conRaf4"
                                         VerticalAlignment="Top"   Panel.ZIndex="12"
@@ -368,7 +368,7 @@
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0" Height="33" Width="169"/>
 
                     <conRaf:DataGridRafALL  
-                                Grid.Row="11"
+                                Grid.Row="11"  Grid.RowSpan="20"
                                 Margin="10,0,10,0"
                                 x:Name="conRaf5"
                                 VerticalAlignment="Top"   Panel.ZIndex="11"
@@ -380,6 +380,7 @@
                                 colNameIdRaf="Id"
                                 selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.zadInwestSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 clearTekstOnExit="False"/>
+                    
                     <Label      Grid.Row="12"
                                 Content="Cele komercyjne"
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>

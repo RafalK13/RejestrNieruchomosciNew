@@ -48,7 +48,7 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        private async Task fillLokalList()
+        private void fillLokalList()
         {
             using (var c = new Context())
             {

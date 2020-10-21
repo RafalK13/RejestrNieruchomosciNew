@@ -102,7 +102,7 @@ namespace RejestrNieruchomosciNew.Model
                     gminaValue = v.GminaSlo.Nazwa;
                 }
             }
-            catch (Exception e)
+            catch 
             {
                 obrebValue = null;
                 gminaValue = null;

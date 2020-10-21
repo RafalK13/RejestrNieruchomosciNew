@@ -96,18 +96,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             podmiotDetail = false;
 
-            onTest = new RelayCommand( onTestClick);
+           
         }
 
-        private void onTestClick()
-        {
-            int xxx = 13;
-        }
+       
         #endregion
 
-        public ICommand onTest { get; set; }
-
-        private void initButtons()
+              private void initButtons()
         {
             statusAdd = new RelayCommand(onStatusAdd);
             statusDel = new RelayCommand(onStatusDel);
