@@ -24,7 +24,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         public IKonserwPrzyrodySloList konsPrzyrodyList { get; set; }
-      
+
         public IKonserwZabytkowSloList konsZabytkowList { get; set; }
 
         public IPrzedstawicielSloList przedstawicielSloList { get; set; }
@@ -80,6 +80,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand statusDel { get; set; }
         //public ICommand zagospAdd { get; set; }
         public ICommand zagospCls { get; set; }
+        public ICommand zagospSave { get; set; }
 
         #region Konstruktor
         public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev,
@@ -96,18 +97,26 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             podmiotDetail = false;
 
-           
+
         }
 
-       
+
         #endregion
 
-              private void initButtons()
+        private void initButtons()
         {
             statusAdd = new RelayCommand(onStatusAdd);
             statusDel = new RelayCommand(onStatusDel);
-        //    zagospAdd = new RelayCommand(onZagospAdd);
+            //zagospAdd = new RelayCommand(onZagospAdd);
             zagospCls = new RelayCommand(onZagospCls);
+            zagospSave = new RelayCommand(onZagospSave);
+        }
+
+        private void onZagospSave()
+        {
+            zagospSel = null;
+            zagospList.list = zagospListLok;
+            zagospList.saveZagosp(userPrev.dzialkaSel);
         }
 
         private void onZagospCls()
@@ -126,7 +135,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onStatusAdd()
         {
-            
+
             if (testIfExist())
             {
                 try

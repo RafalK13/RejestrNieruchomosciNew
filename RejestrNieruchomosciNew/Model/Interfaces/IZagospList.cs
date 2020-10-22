@@ -7,7 +7,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ObservableCollection<IZagosp> listAll { get; set; }
         ObservableCollection<IZagosp> list { get; set; }
 
-        void saveZagosp();
+        void saveZagosp(IDzialka dz);
         void getList(IDzialka dzialkaSel);
     }
 }

@@ -414,12 +414,12 @@
                             >
             <Button Content="Zapisz"
                     Style="{StaticResource buttonCommon}"
-                    Command="{Binding userControl_Zagosp.zagospAdd}"
+                    Command="{Binding userControl_Zagosp.zagospSave}"
                     />
 
             <Button Content="Zapisz i zamknij"
                     Style="{StaticResource buttonCommon}"
-                    Command="{Binding userControl_Zagosp.zagospAdd}"
+                    Command="{Binding userControl_Zagosp.zagospSave}"
                     com:CloseOnClickBehaviour.IsEnabled="True"/>
 
 

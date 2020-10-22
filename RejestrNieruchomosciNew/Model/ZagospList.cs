@@ -29,7 +29,7 @@ namespace RejestrNieruchomosciNew.Model
         private List<IZagosp> listToAdd { get; set; }
         private List<IZagosp> listToMod { get; set; }
         private List<IZagosp> listToDel { get; set; }
-
+        
         public string result;
         private IDzialka dzialkaPrv;
 
@@ -84,43 +84,69 @@ namespace RejestrNieruchomosciNew.Model
             initList(dzialkaPrv);
         }
 
-        public void saveZagosp()
+        public void saveZagosp(IDzialka dz)
         {
-            foreach (var r in list)
+            int xxx = 13;
+            using (var c = new Context())
             {
-                if (listOrg.Contains(r))
-                    listOrg.Remove(r);
-                else
+                var zagospAll = c.Zagosp.AsNoTracking().Where(r => r.DzialkaId == dz.DzialkaId).ToList();
+
+                foreach (var item in zagospAll)
                 {
-                    if (listOrg.Exists(row => row.ZagospId == r.ZagospId) == true)
-                    {
-                        listToMod.Add((IZagosp)r.Clone());
-                        var rToDel = listOrg.Find(d => d.ZagospId == r.ZagospId);
-                        listOrg.Remove(rToDel);
-                    }
-                    else
-                    {
-                        listToAdd.Add((IZagosp)r.Clone());
-                    }
+                    var toDel = list.FirstOrDefault(r=>r.ZagospId == item.ZagospId);
+                    if (toDel == null)
+                        c.Remove(item);
                 }
+
+                c.UpdateRange(list);
+
+                c.SaveChanges();
+                initListAll();
+
             }
-            foreach (var row in listOrg)
+
+            using (var c = new Context())
             {
-                listToDel.Add(row);
+                c.Update(dz);
+
+                c.SaveChanges();
             }
 
-            if (listToDel.Count() > 0)
-                DelRows();
+                //foreach (var r in list)
+                //{
+                //    if (listOrg.Contains(r))
+                //        listOrg.Remove(r);
+                //    else
+                //    {
+                //        if (listOrg.Exists(row => row.ZagospId == r.ZagospId) == true)
+                //        {
+                //            listToMod.Add((IZagosp)r.Clone());
+                //            var rToDel = listOrg.Find(d => d.ZagospId == r.ZagospId);
+                //            listOrg.Remove(rToDel);
+                //        }
+                //        else
+                //        {
+                //            listToAdd.Add((IZagosp)r.Clone());
+                //        }
+                //    }
+                //}
+                //foreach (var row in listOrg)
+                //{
+                //    listToDel.Add(row);
+                //}
 
-            if (listToAdd.Count() > 0)
-                AddRows();
+                //if (listToDel.Count() > 0)
+                //    DelRows();
 
-            if (listToMod.Count() > 0)
-                ModRows();
+                //if (listToAdd.Count() > 0)
+                //    AddRows();
 
-            initListAll();
-            initList(dzialkaPrv);
-        }
+                //if (listToMod.Count() > 0)
+                //    ModRows();
+
+                //initListAll();
+                //initList(dzialkaPrv);
+            }
 
         public void AddRows()
         {
