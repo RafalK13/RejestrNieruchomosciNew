@@ -1,0 +1,1353 @@
+﻿Id;Nazwa;Rodzaj
+1;N Biuro zarządu;Obiekt
+2;F15 Ujęcie wody Dolina Radości;Obiekt
+3;G06 Pompownia wody "Matemblewo;Obiekt
+4;G07 Pompownia wody "Nowolipie";Obiekt
+5;G08 Przepompownia wody "Matemb;Obiekt
+6;F29 Ujęcie wody "OŚ Wschód";Obiekt
+7;H21 Hydrofornia "Guderskiego";Obiekt
+8;H12 Hydrofornia "Niedźwiednik";Obiekt
+9;F30 Ujęcie wody "Stocznia Wisł;Obiekt
+10;Uczniowska - poletka;Obiekt
+11;33 Przepompownia ścieków PS. O;Obiekt
+12;47 Przepompownia ścieków PS-3;Obiekt
+13;48 Przepompownia ścieków ul. I;Obiekt
+14;49 Przepompownia ścieków "Kolo;Obiekt
+15;50 Przepompownia ścieków "Żuła;Obiekt
+16;51 Przepompownia ścieków "Jasi;Obiekt
+17;F16 Ujęcie wody Matarnia;Obiekt
+18;G09 Pompownia wody Spacerowa;Obiekt
+19;H13 Hydrofornia Kołobrzeska;Obiekt
+20;H14 Hydrofornia Bajki;Obiekt
+21;52 Przepompownie ścieków P-11;Obiekt
+22;53 Przepompownie ścieków P-9 W;Obiekt
+23;54 Przepompownie ścieków P-9a;Obiekt
+24;55 Przepompownie ścieków P-6 W;Obiekt
+25;56 Przepompownie ścieków PS-1;Obiekt
+26;57 Przepompownie ścieków PS-2;Obiekt
+27;58 Przepompownie ścieków PS-1;Obiekt
+28;I08 Zbiornik wody "Stara Dolin;Obiekt
+29;59 Przepompownia ścieków PS-1;Obiekt
+30;F17 Ujęcie wody Złota Karczma;Obiekt
+31;F18 Ujęcie wody Suchanino;Obiekt
+32;F19 Ujęcie wody Chełm;Obiekt
+33;G10 Pompownia wody Serbska;Obiekt
+34;F31 Ujęcie wody "Szadółki";Obiekt
+35;H16 Hydrofornia Głęboka;Obiekt
+36;F20 Ujęcie wody Kołobrzeska;Obiekt
+37;G11 Pompownia wody "Borkowska";Obiekt
+38;H18 Hydrofornia "Nowiec";Obiekt
+39;60 Przepompownia ścieków "Cent;Obiekt
+40;H19 Hydrofornia i zbiornik"Gór;Obiekt
+41;Wdzydzka;Obiekt
+42;I07 Zbiornik wody "Stara Oruni;Obiekt
+43;Miejsca użytkowania;Obiekt
+44;I06 Zbiornik wody "Stary Sobie;Obiekt
+45;I05 Zbiornik wody "Wysoki Dwór;Obiekt
+46;A Sieć wodociągowa;Obiekt
+47;B Sieć kanalizacyjna;Obiekt
+48;C Przyłącze wodociągowe;Obiekt
+49;D Przyłącze kanalizacyjne;Obiekt
+50;E Linie energetyczne;Obiekt
+51;F Ujęcia wody;Obiekt
+52;G Przepompownie wody;Obiekt
+53;H Hydrofornie;Obiekt
+54;I Zbiorniki wody;Obiekt
+55;J Oczyszczalnie ścieków;Obiekt
+56;K Przepompownie ścieków;Obiekt
+57;L Pozostałe;Obiekt
+58;Magistrala wodociągowa "Strasz;Obiekt
+59;Sieć wodociągowa - rozdzielcza;Obiekt
+60;01 Sieć kanalizacyjna;Obiekt
+61;02 Kolektor sanitarny Morena;Obiekt
+62;03 Kolektor tłoczny "Motława W;Obiekt
+63;04 Rurociąg tłoczny "Ołowianka;Obiekt
+64;01 Przyłącza;Obiekt
+65;F01 Ujęcie wody "Lipce";Obiekt
+66;F02 Ujęcie wody "Czarny Dwór";Obiekt
+67;F03 Ujęcie wody "Zaspa";Obiekt
+68;F04 Ujęcie wody "Straszyn";Obiekt
+69;F05 Ujęcie wody "Pręgowo";Obiekt
+70;F06 Ujęcie wody "Osowa";Obiekt
+71;F07 Ujęcie wody "Polanki";Obiekt
+72;F08 Ujęcie wody "Grodza Kamien;Obiekt
+73;F09 Ujęcie wody "Krakowiec" i;Obiekt
+74;F10 Ujęcie wody "Jasień";Obiekt
+75;F11 Ujęcie wody "Klukowo";Obiekt
+76;F12 Ujęcie wody "Łostowice";Obiekt
+77;F13 Ujęcie wody "Sobieszewo";Obiekt
+78;F14 Ujęcie wody "Świbno";Obiekt
+79;G01 Przepompownia wody "Sobies;Obiekt
+80;G02 Przepompownia wody "Ptasia;Obiekt
+81;G03 Stacja podnoszenia ciśnien;Obiekt
+82;G04 Pompownia wody "Św Wojciec;Obiekt
+83;G05 Pompownia wody "Kiełpinek";Obiekt
+84;H05 Hydrofornia "Baczyńskiego";Obiekt
+85;H06 Hydrofornia "Czerwony Dwór;Obiekt
+86;H07 Hydrofornia "Bydgoska" 23;Obiekt
+87;H08 Hydrofornia "Jana Pawła II;Obiekt
+88;H09 Hydrofornia "Bitwy Oliwski;Obiekt
+89;H10 Hydrofornia "Karpacka" 56;Obiekt
+90;H11 Hydrofornia "Żywiecka" 94;Obiekt
+91;I01 Zbiornik wody "Migowo" nr;Obiekt
+92;I02 Zbiornik wody "Sobieski" 1;Obiekt
+93;I03 Zbiornik wody "Orunia" 16;Obiekt
+94;I04 Zbiornik wody "Cyganka" 17;Obiekt
+95;J01 Oczyszczalnia ścieków Zasp;Obiekt
+96;J02 Oczyszczalnia ścieków "Wsc;Obiekt
+97;J03 Kanał odpływowy oczyszczal;Obiekt
+98;01 Przepompownia ścieków Ołowi;Obiekt
+99;02 Przepompownia ścieków Motła;Obiekt
+100;03 Przepompownia ścieków "Boga;Obiekt
+101;04 Przepompownie ścieków "Jeli;Obiekt
+102;05 Przepompownie ścieków "Zasp;Obiekt
+103;06 Przepompownie ścieków "Letn;Obiekt
+104;07 Przepompownie ścieków "Zało;Obiekt
+105;08 Przepompownie ścieków "Stog;Obiekt
+106;09 Przepompownie ścieków "Zawi;Obiekt
+107;10 Przepompownie ścieków "P-2";Obiekt
+108;11 Przepompownie ścieków "P-1";Obiekt
+109;12 Przepompownie ścieków "Maki;Obiekt
+110;13 Przepompownie ścieków "Brze;Obiekt
+111;14 Przepompownie ścieków "Czar;Obiekt
+112;15 Przepompownie ścieków "Łowi;Obiekt
+113;16 Przepompownie ścieków "Żakó;Obiekt
+114;17 Przepompownie ścieków "Byse;Obiekt
+115;18 Przepompownie ścieków "Niwk;Obiekt
+116;19 Przepompownie ścieków "Modr;Obiekt
+117;20 Przepompownie ścieków "Modr;Obiekt
+118;21 Przepompownie ścieków "Rudn;Obiekt
+119;22 Przepompownie ścieków "Rudn;Obiekt
+120;23 Przepompownie ścieków "Rudn;Obiekt
+121;24 Przepompownie ścieków "Rudn;Obiekt
+122;25 Przepompownie ścieków "Rudn;Obiekt
+123;26 Przepompownie ścieków "Rudn;Obiekt
+124;27 Przepompownie ścieków "Rudn;Obiekt
+125;28 Przepompownie ścieków "Tarc;Obiekt
+126;29 Przepompownie ścieków "Nieg;Obiekt
+127;30 Przepompownie ścieków "Letn;Obiekt
+128;31 Przepompownie ścieków "Kacz;Obiekt
+129;32 Przepompownie ścieków "Szcz;Obiekt
+130;34 Przepompownie ścieków "P-1;Obiekt
+131;35 Przepompownie ścieków "P-2;Obiekt
+132;36 Przepompownie ścieków "P-3;Obiekt
+133;37 Przepompownie ścieków "P-4;Obiekt
+134;38 Przepompownie ścieków "P-5;Obiekt
+135;39 Przepompownie ścieków "P-8;Obiekt
+136;40 Przepompownie ścieków "Myśl;Obiekt
+137;41 Przepompownie ścieków "Rudn;Obiekt
+138;42 Przepompownie ścieków "Otom;Obiekt
+139;43 Przepompownie ścieków "P-14;Obiekt
+140;46 Przepompownia ścieków "Iław;Obiekt
+141;45 Przepompownie ścieków "Tarc;Obiekt
+142;44 Przepompownie ścieków "P-15;Obiekt
+143;01 Pozostałe środki infrastruk;Obiekt
+144;02 Nakłady na obcym gruncie;Obiekt
+145;03 Baza wodomierzowa w Osowie;Obiekt
+146;04 Baza "Malczewskiego";Obiekt
+147;05 Baza eksploatacyjna "Zawiśl;Obiekt
+148;06 Magazyn wodomierzowni ul. R;Obiekt
+149;07 Środki trwałe inne;Obiekt
+150;F21 Ujęcie wody Port Lotniczy;Obiekt
+151;F22 Ujęcie Wody "Kalina";Obiekt
+152;F23 Ujęcie wody "Smęgorzyno";Obiekt
+153;G12 Pompownia wody "Jasień" -K;Obiekt
+154;H20 Hydrofornia "Porębskiego";Obiekt
+155;61 Przepompownia ścieków "Lite;Obiekt
+156;62 Przepompownia ścieków "Gabr;Obiekt
+157;63 Przepompownia ścieków "Grab;Obiekt
+158;G13 Przepompownia wody "Migowo;Obiekt
+159;64 Przepompownia ścieków "Jodł;Obiekt
+160;06 Kolektor "Uczniowska";Obiekt
+161;05 Kolektor tł. od Przep.Gł.Za;Obiekt
+162;78 Przepompownia ścieków "Do S;Obiekt
+163;65 Przepompownia ścieków "Byse;Obiekt
+164;73 Przepompownia ścieków "Nadm;Obiekt
+165;74 Przepompownia ścieków "Zasp;Obiekt
+166;79 Przepompownia ścieków "Stud;Obiekt
+167;81 Przepompownia ścieków "Prze;Obiekt
+168;07 Rurociąg od PŚ Bogatka do Z;Obiekt
+169;82 Przepompownia ścieków "Narw;Obiekt
+170;83 Przepompownia ścieków "Prom;Obiekt
+171;84 Przepompownia ścieków "Błoń;Obiekt
+172;85 Przepompownia ścieków "Jaśm;Obiekt
+173;86 Przepompownia ścieków "Brat;Obiekt
+174;87 Przepompownia ścieków "Zeni;Obiekt
+175;88 Przepompownia ścieków "Nowa;Obiekt
+176;90 Przepompownia ścieków "Krót;Obiekt
+177;89 Przepompownia ścieków "Kacz;Obiekt
+178;G15 Pompownia wody "Warszawska;Obiekt
+179;66 Przepompownia ścieków "Wdzy;Obiekt
+180;67 Przepompownia ścieków "Gopl;Obiekt
+181;68 Przepompownia ścieków "Somi;Obiekt
+182;G14 Pompownia wody "Przemian";Obiekt
+183;69 Przepompownia ścieków "Kolo;Obiekt
+184;71 Przepompownia ścieków "Pomo;Obiekt
+185;M - Magazyn SNG;Obiekt
+186;ul. Sandomierska 58;Obiekt
+187;75 Przepompownia ścieków "Nowi;Obiekt
+188;80 Przepompownia ścieków PS-2;Obiekt
+189;F24 Ujęcie wody "Zakoniczyn";Obiekt
+190;G16 Pompownia wody "Królowej B;Obiekt
+191;70 Przepompownia ścieków "Kamp;Obiekt
+192;91 Przepompownia ścieków "Życz;Obiekt
+193;J06 - ogólne CHP i ITPO;Obiekt
+194;92 Przepompownia ścieków "Masz;Obiekt
+195;93 Przepompownia ścieków "Masz;Obiekt
+196;08 Kolektor "Ołowianka Wschód;Obiekt
+197;94 Przepompownia ścieków "Kolo;Obiekt
+198;95 Przepompownia ścieków "Żabi;Obiekt
+199;96 Przepompownia ścieków "Przy;Obiekt
+200;97 Przepompownia ścieków "Łapi;Obiekt
+201;98 Przepompownia ścieków "Rzec;Obiekt
+202;99 Przepompownia ścieków "Trak;Obiekt
+203;a100 Przepompownia ścieków "Św;Obiekt
+204;a101 Przepompownia ścieków "Św;Obiekt
+205;a102 Przepompownia ścieków "Św;Obiekt
+206;a103 Przepompownia ścieków "Cz;Obiekt
+207;77 Przepompownia ścieków "Tarc;Obiekt
+208;a104 Przepompownia ścieków "Wo;Obiekt
+209;H22 Hydrofornia "Chełm" -Witos;Obiekt
+210;I09 Zbiornik wody "Kiełpino";Obiekt
+211;J04 - Energia odnawialna CHP;Obiekt
+212;J05 - Przekształcanie osadów I;Obiekt
+213;a105 Przepompownia ścieków "Wi;Obiekt
+214;a106 Przepompownia ścieków "Ne;Obiekt
+215;G18 Przepompownia wody "Cedrow;Obiekt
+216;F32 Ujęcie wody "Maszynowa" -;Obiekt
+217;F33 Ujęcie wody (plan) "Kiełpi;Obiekt
+218;a108 Przepompownia ścieków "Do;Obiekt
+219;H23 Hydrofornia "Paganiniego/K;Obiekt
+220;a107 Przepompownia ścieków "Po;Obiekt
+221;a110 Przepompownia ścieków PS2;Obiekt
+222;a111 Przepompownia ścieków "Os;Obiekt
+223;a112 Przepompownia ścieków "Ma;Obiekt
+224;a109 Przepompownia ścieków "Gó;Obiekt
+225;Fontanna - Rajska;Obiekt
+226;Magazyn - Dragana;Obiekt
+227;a113 Przepompownia ścieków "Wr;Obiekt
+228;a114 Przepompownia ścieków "Ga;Obiekt
+229;Gdański Szlak Wodociągowy;Obiekt
+230;F25 Ujęcie wody "Pleniewo";Obiekt
+231;F26 Ujęcie wody "Kiełpinek";Obiekt
+232;F27 Ujecie wody "Ujeścisko";Obiekt
+233;F28 Ujęcie wody "Św. Wojciech";Obiekt
+234;76 Przepompownia ścieków "Zawo;Obiekt
+235;I10 Zbiornik wieżowy wody "Kaz;Obiekt
+236;a115 Przepompownia ścieków "St;Obiekt
+237;a116 Przepompownia ścieków PS1;Obiekt
+238;a118 Przepompownia ścieków "Św;Obiekt
+239;a119 Przepompownia ścieków "Wy;Obiekt
+240;a120 Przepompownia ścieków "Cz;Obiekt
+241;Magazyn - OŚ Wschód obiekt 125;Obiekt
+242;Rycerska;Obiekt
+243;Pozostałe;Obiekt
+244;Stary Sobieski;Obiekt
+245;G02 Stacja pomp "Ptasia" 19;Obiekt
+246;H08 Hydrofornia "Zaspa D" 24;Obiekt
+247;G03 Pompownia wody "Maćki" 26;Obiekt
+248;72 Przepompownia ścieków "Koch;Obiekt
+249;Komercja - obiekty;Obiekt
+250;Pomorska;Obiekt
+251;G17 Przepompownia wody "Sobies;Obiekt
+252;a117 Przepompownia ścieków "Cz;Obiekt
+253;nieustalone;Obiekt
+259;H25 Hydrofornia "Grunwaldzka";Obiekt
+260;G19 Stacja podnoszenia ciśnien;Obiekt
+261;H24 Hydrofornia "Unruga"- Piot;Obiekt
+262;Malczewskiego;Obiekt
+263;Budynek dydaktyczny na ITPO;Obiekt
+264;a123 Przepompownia ścieków PM-;Obiekt
+265;a121 Przepompownia ścieków "Go;Obiekt
+266;;Obiekt
+267;a122 Przepompownia ścieków "Pa;Obiekt
+268;Zbiornik Kazimierz - wyposażen;Obiekt
+269;Stara Orunia;Obiekt
+270;Przedmioty muzealne;Obiekt
+271;IWAMA;Obiekt
+272;a124 Przepompownia ścieków "Ni;Obiekt
+273;a125 Przepompownia ścieków "Le;Obiekt
+274;Promocja i edukacja;Obiekt
+275;a126 Przepompownia ścieków "Ch;Obiekt
+276;a127 Przepompownia ścieków "Ch;Obiekt
+277;a128 Przepompownia ścieków "Bu;Obiekt
+278;a129 Przepompownia ścieków "Bu;Obiekt
+279;a130 Przepompownia ścieków "Ku;Obiekt
+280;a131 Przepompownia ścieków "Św;Obiekt
+281;a132 Przepompownia ścieków "Ba;Obiekt
+282;08 Mobilne urządzenia po Jambo;Obiekt
+283;a133 Przepompownia ścieków PS-;Obiekt
+284;a134 Przepompownia ścieków PS1;Obiekt
+285;a135 Przepompownia ścieków PS-;Obiekt
+286;a136 Przepompownia ścieków "My;Obiekt
+287;a137 Przepompownia ścieków PS-;Obiekt
+1991;Przebudowa kanalizacji sanitarnej DN300 w ul. Al. Rzeczypospolitej w Gdańsku.;Zadanie
+1992;Przebudowa magistrali straszyńskiej (SUW Straszyn - K20);Zadanie
+1993;OŚ Wschód - Ob. Nr 108 
+Stacja odwadniania - wymiana przenośników ślimakowych osadu odwodnionego wraz z montażem pompy typ Putzmeister;Zadanie
+1994;UW Pręgowo - Odbudowa ujęcia wody Dolina Ostróżki;Zadanie
+1995;Kompleksowa modernizacja SUW Straszyn;Zadanie
+1996;OŚ Wschód Pompownia Odcieków Ob. 105/30 - Wymiana pomp ściekowych w pompowni odcieków;Zadanie
+1997;Likwidacja ujęcia wody Matarnia - Budowa SPC Matarnia;Zadanie
+1998;OŚW - Zbiornik pośredni osadu przefermentowanego Ob. nr 17 - montaż mieszadła;Zadanie
+1999;Likwidacja UW Klukowo;Zadanie
+2000;Wymiana sieci wodociągowej DN żel. I DN 200 AC oraz przyłączy wodociągowych do budynków 46, 74, 82, 84 w ul. Karłowicza po istniejącej trasie;Zadanie
+2001;Likwidacja UW Kalina;Zadanie
+2002;Hydrofornia Niedźwiednik - Modernizacja układu technologicznego i montaż zestawu hydroforowego;Zadanie
+2003;UW Polanki  - zagospodarowanie terenu zlikwidowanego ujęcia i SUW ;Zadanie
+2004;Renowacja magistrali pręgowskiej O 418mm - etap I Straszyn- Orunia;Zadanie
+2006;Budowa kanalizacji sanitarnej w dzielnicy Smęgorzyno;Zadanie
+2009;Przeniesienie przepływomierza DN100 oraz szafy telemetrycznej ze studni nr 3 na UW Złota Karczma do komory reduktora na ul. Niegowo;Zadanie
+2010;Budowa kanalizacji sanitarnej w ul. Przegalińskiej;Zadanie
+2011;Budowa kanalizacji sanitarnej w ul. Feliksa Muzyka;Zadanie
+2012;Przebudowa sieci kanalizacji sanitarnej w ul. Klonowicza w Gdańsku;Zadanie
+2013;Zabezpieczenie studni zbiorczej nieczynnego drenażowego ujęcia wody Dolina Radości ;Zadanie
+2015;Przebudowa kolektorów sanitarnych "Sopot - Zaspa" w Gdańsku ;Zadanie
+2016;OŚ Wschód - Rozbudowa tymczasowego magazynu osadu odwodnionego;Zadanie
+2017;"Montaż reduktora ciśnień wraz z budową komory przy ul. Niegowo na przewodzie wodociągowym (DN100-wariant I lub DN200-wariant II)";Zadanie
+2018;Włączenie wodociągu DN100 w magistralę DN400 przy skrzyżowaniu ulic Barniewickiej i Pegaza w dzielnicy Osowa;Zadanie
+2019;Układ tranzytowy z pś. "Bogatka" - część morska - Modernizacja układu dyfuzorów ścieków w Zatoce Gdańskiej;Zadanie
+2020;Pompownia Wody Kiełpino - Zmiana sposobu zaopatrzenia w wodę sieci lokalnych w dzielnicach Kiełpino i Smęgorzyno oraz awaryjnego zasilania odbiorców zaopatrywanych z magistrali Osowa-Kiełpino.;Zadanie
+2021;Wykonanie odprowadzenia ścieków technologicznych z ITPO.;Zadanie
+2022;Budowa magistrali wzdłuż Trasy Sucharskiego;Zadanie
+2023;Montaż zaworu napowietrzająco-odpowietrzającego na wodociągu 225PE ul. Biegańskiego 12.;Zadanie
+2025;Modernizacja pomieszczenia rozdzielni głównej PŚ Bysewo;Zadanie
+2026;Budowa komory pomiarowej ciśnienia i przepływu wody wraz z reduktorem ciśnień na proj. Wodociągu DN250 Przy ul. Budowlanych;Zadanie
+2027;Podłącznie kompleksu obiektów PW Migowo do miejskiej sieci ciepłowniczej.;Zadanie
+2028;Naprawa bioreaktorów w Oczyszczalni Ścieków Wschód;Zadanie
+2030;Przebudowa sieci wodociągowych w ul. Słowackiego (żeliwo 150, PE 110);Zadanie
+2031;Kanalizacja Sanitarna Wyspy Sobieszewskiej - zadanie IV, etap I;Zadanie
+2032;Kanały ścieków oczyszczonych i surowych - uszczelnienie dylatacji;Zadanie
+2033;Kanalizacja sanitarna - rejon ulic Pelczara, Leszczynowej, Jabłoniowej;Zadanie
+2034;Sieć wodociągowa i kanalizacja sanitarna - rejon ulicy Matemblewskiej, Tischnera, Waldorffa;Zadanie
+2036;Kanalizacja sanitarna dla dzielnicy Chełm-Południe rejon ulic Łucznicza, Olimpijska, Saneczkarska, Łyżwiarska, Tenisowa i Podleckiego;Zadanie
+2037;Przebudowa wodociągu w dzielnicy Osowa w okolicy ul. Spacerowej i Kielnieńskiej;Zadanie
+2038;Budowa sieci wodociągowej w ul. Biegańskiego w Gdańsku oraz przełączenie budynków nr 3, 4, 6, 8, 10, 12 do strefy zbiornika Migowo;Zadanie
+2039;Modernizacja sieci wod-kan w dzielnicy Letnica w Gdańsku;Zadanie
+2041;Przebudowa kanalizacji sanitarnej w ul. Uczniowskiej 50 i 52 w Gdańsku;Zadanie
+2042;Budowa sieci wodociągowej w ul. Radarowej;Zadanie
+2043;Budowa sieci wodociągowej  z przyłączami w ul. Pagórkowej;Zadanie
+2046;Budowa sieci kanalizacji sanitarnej w rejonie ul. Gdańskiej i Uczniowskiej w Gdańsku;Zadanie
+2048;Likwidacja ujęcia lokalnego Jasień;Zadanie
+2049;Przebudowa kanalizacji deszczowej na OŚW w związku z kolizją z ks ITPO;Zadanie
+2051;Przebudowa wodociągu w ul. Świętokrzyskiej - likwidacja AC.;Zadanie
+2052;Budowa rurociągu przesyłowego koagulanta PIX do stacji odwadniania osadów na Oczyszczalni Ścieków Wschód;Zadanie
+2053;Budowa Przepompowni Wody Spacerowa;Zadanie
+2055;Budowa sieci wodociągowej i kanalizacyjnej na obszarze Wyspy Spichrzów;Zadanie
+2056;ZW Orunia - Modernizacja układu zasilania w wodę zbiorników nr 1, 2, 3 i 4;Zadanie
+2057;Wymiana stalowych wywietrzaków grawitacyjnych na UW Czarny Dwór;Zadanie
+2059;SUW Lipce - Przebudowa rurociągu technologicznego DN600;Zadanie
+2060;PŚ Ołowianka - Montaż zasuwy nożowej na dopływie do przepompowni ;Zadanie
+2061;Budowa przepompowni ścieków Wielopole;Zadanie
+2062;PŚ Ołowianka - Wykonanie oświetlenia zewnętrznego terenu przepompowni i budowa systemu telewizji dozorowej CCTV wraz z montażem kamer systemu CCTV;Zadanie
+2063;Wymiana zabezpieczeń nadprądowych w rozdzielni 15/6kV w stacji trafo T-16107 - PŚ Motława;Zadanie
+2064;UW Pręgowo - Wymiana wyeksploatowanych drenów;Zadanie
+2065;Montaż osłony dźwiękochłonnej na bramie wjazdowej hali pomp;Zadanie
+2066;Modernizacja komory zasuw na terenie UW Pręgowo;Zadanie
+2067;UW Osowa - Przystosowanie istniejącego agregatu prądotwórczego do samostartu;Zadanie
+2068;UW Oczyszczalnia Wschód - Przebudowa układu odprowadzania wód technologicznych;Zadanie
+2069;Rozbudowa systemu wizualizacji - przepompownia ścieków UW Czarny Dwór;Zadanie
+2070;Budowa systemu monitoringu TV terenu SUW Czarny Dwór;Zadanie
+2071;PŚ Motława - wymiana elektronapędów do zasuw nr 13 i 16 na układzie tłocznym DN 1000 (2 szt.);Zadanie
+2072;PŚ Motława - Wymiana zasuwy na dopływie do krat;Zadanie
+2073;PŚ Kolorowa - modernizacja przepompowni;Zadanie
+2074;Modernizacja pompowni osadu zmieszanego na Oczyszczalni Wschód, obiekt 122/13;Zadanie
+2075;Wymiana pomp osadu po strącaniu chemicznym fosforanów na Oczyszczalni Wschód, obiekt 18/4;Zadanie
+2076;Przebudowa kanału sanitarnego w ul. Chlebnickiej ;Zadanie
+2077;PW Św. Wojciech II - kontynuacja modernizacji układu technologicznego i montaż zestawu hydroforowego wraz z układem sterowania;Zadanie
+2079;Przebudowa układu technologicznego komory zasuw ZW Sobieski;Zadanie
+2080;ZW Migowo - Modernizacja pomiarów poziomu wody w zbiornikach ZW 3 i ZW 4;Zadanie
+2081;Ob. nr 101 - Budynek krat - wymiana przykrycia i naprawa ścian kanałów i komory rozprężnej, wymiana zastawek, wykonanie nowych balustrad ze stali kwasoodpornej;Zadanie
+2082;Ob. nr 123 - zwężka pomiarowa na odpływie - wymiana wyeksploatowanego pomiaru przepływu;Zadanie
+2083;Wykonanie odpowietrzenia za komorą rozprężną sieci kanalizacji sanitarnej odprowadzajacej ścieki z gminy Żukowo ;Zadanie
+2086;Zakup zasilacza UPS na przepompownię ścieków Ołowianka;Zadanie
+2087;Przebudowa układu kanalizacji wód deszczowych UW Czarny Dwór;Zadanie
+2088;Hydrofornia Karpacka - wzmocnienie posadowienia budynku.;Zadanie
+2089;Zakup falownika pompy osadu wirówki nr 3.;Zadanie
+2090;Budowa kanalizacji sanitarnej w dzielnicy Kiełpino - rejon ulic Charzykowskiej i Łapalickiej;Zadanie
+2091;Budowa kanalizacji sanitarnej w ul. Kampinoskiej;Zadanie
+2093;Wymiana przyłączy wodociągowo-kanalizacyjnych do budynku GZNK przy ulicy Brzegi 9;Zadanie
+2094;Montaż hydrantów DN80 - Przewód wodociągowy w ul. Biologiczna 4, ul. Do Studzienki 49, ul. Gnieźnieńska 55, ul. Grodzieńska 12, ul. Kochanowskiego 70, ul. Kopalniana 12, ul. Myśliborska 4, ul. Nobla 14, ul. Nowy Świat 26, ul. Orłowska 6, ul. Otwarta ;Zadanie
+2096;Likwidacja nieczynnych zdrojów;Zadanie
+2097;Montaż 2 zdrojów na terenie dzielnicy Olszynka;Zadanie
+2098;Modernizacja sieci wodociągowej w rejonie ul. Świtezianki;Zadanie
+2099;Obiekt 125 - Modernizacja wentylacji i pomieszczeń podłączenie do systemu ogrzewania OS Wschód.;Zadanie
+2101;Budowa komory pomiarowej przy ul. Wyzwolenia na projektowanej magistrali DN300 w kierunku ul. Ku ujściu.;Zadanie
+2102;Budowa sieci wodociągowej i kanalizacyjnej w ulicy Stokłosy;Zadanie
+2103;Wymiana sieci wodociągowej wraz z przyłączami stalowymi oraz budowa sieci kanalizacji sanitarnej - ul. Poznańska;Zadanie
+2105;Budowa kanału sanitarnego o łącznej długości ok. 2650 m wraz z przepompownią ścieków Ku Ujściu -  skanalizowanie terenów portowych;Zadanie
+2106;Wymiana wyesploatowanego kotła c.o. w budynku socjalnym PŚ Motława na węzeł c.o. Budowa przyłącza cieplnego.;Zadanie
+2107;Budowa kanalizacji technologicznej na terenie SUW Smęgorzyno;Zadanie
+2108;Obiekt 118  OŚ "Wschód" - Modernizacja rozdzielni głównej niskiego napięcia w stacji transformatorowej T-2.;Zadanie
+2109;UW Straszyn - wymiana wyeksploatowanego falownika zasilającego pompę wody do płukania filtrów (110kW, 0,4kV);Zadanie
+2110;SUW Straszyn - Wykonanie urządzeń pomiarowych odprowadzających wodę z terenu ujęcia  ;Zadanie
+2111;SUW Straszyn - Laguny i poletka osadowe wraz z  garażami - Likwidacja obiektu i rekultywacja terenu.;Zadanie
+2112;SUW Straszyn - Hala sit -Wymiana 1 szt. sita obrotowego;Zadanie
+2114;UW Osowa - Wypiętrzenie studni 1, 2A, 3, 4A, 5,  6, 7, 9 do powierzchni terenu wraz z wymianą obudów na naziemne;Zadanie
+2115;Adaptacja pomieszczeń na terenie SUW Lipce. Baza - zaplecze socjalne brygad EN i EP na terenie SUW Lipce;Zadanie
+2116;Modernizacja układu technologicznego ujęcia wody Oczyszczalnia Wschód wraz z przebudową układu odprowadzania wód technologicznych;Zadanie
+2118;UW Czarny Dwór - likwidacja istniejących studni M-3, M-5, 1B, 3A i 30A  i odwierty studni zastępczych ;Zadanie
+2119;Wykonanie nowej kanalizacji awaryjnego przelewu ze zbiorników wody czystej do rowu melioracyjnego UW Czarny Dwór;Zadanie
+2120;PW Polanki - przebudowa pompowni wody;Zadanie
+2121;SUW "Łostowice" -Likwidacja budynku i instalacji technologicznej SUW.;Zadanie
+2122;UW Smęgorzyno - Wymiana instalacji technologicznej wewnętrznej napływu na zbiornik i przelewu ze zbiornika wraz modernizacją instalacji odpowietrzania i wentylacji zbiornika ;Zadanie
+2123;Likwidacja ujęcia wody i SUW Port Lotniczy;Zadanie
+2125;Grodza Kamienna - Uczynnienie ujęcia -Grodza B;Zadanie
+2126;Budowa UW i SUW Kokoszki;Zadanie
+2127;Likwidacja obiektu Ujęcia Chełm;Zadanie
+2128;Likwidacja nieczynnej studni (samowypływ);Zadanie
+2129;Likwidacja Przepompowni Wody Święty Wojciech - ul. Trakt Św. Wojciecha (koło stolarni);Zadanie
+2130;Ochrona przeciwwilgociowa budynku pompowni wody Ptasia;Zadanie
+2131;Hydrofornia Bydgoska - likwidacja obiektu.;Zadanie
+2132;Modernizacja hydroforni Witosa i Sieci II strefy za hydrofornią;Zadanie
+2133;Hydrofornia Dragana - likwidacja obiektu;Zadanie
+2134;ZW Migowo - Modernizacja pomiarów poziomu wody w zbiornikach ZW 1 i ZW 2;Zadanie
+2135;Uszczelnienie komory zasuw zbiorników wody 1 i 2 - ZW Orunia;Zadanie
+2136;Montaż regulatora ciśnień w komorze zasuw ZW Orunia;Zadanie
+2138;ul. Miałki Szlak - przebudowa sieci wodociągowej DN 150 AC;Zadanie
+2139;Wykonanie przebudowy wodociągu DN 250 z przepięciem do DN 300 wraz z likwidacją odcinka DN 250 od wpięcia do magistrali straszyńskiej do ul. Świętokrzyskiej/Łódzka;Zadanie
+2140;Przebudowa ok. 50 mb sieci wodociągowej w ul. Toruńskiej wraz z izolacją i konstrukcją wsporczą (w moście nad Nową Motławą);Zadanie
+2141;Montaż reduktora ciśnienia w ul. Wileńskiej/Myczkowskiego;Zadanie
+2145;Budowa komory pomiarowej monitoringu sieci wodociągowej na przewodzie DN 160 w ul. Czermińskiego;Zadanie
+2150;Poprawa warunków zasilania dzielnicy Matemblewo i Niedźwiednik;Zadanie
+2152;Przebudowa wodociągu DN50 AC biegnącego po terenach prywatnych na wodociąg DN 125 oraz budowa kanalizacji sanitarnej w ul. Drawskiej;Zadanie
+2153;Budowa sieci wodociągowej w rejonie ul. Cienistej i Kolonii Anielinki;Zadanie
+2154;Montaż zdrojów na terenie gdańskiej starówki           ;Zadanie
+2155;Budowa magistrali wodociągowej DN 300 ul. Miałki Szlak - ul. Zagroble;Zadanie
+2156;Ob. nr 15/5 i 15/6 - Budynki operacyjne ZKF - Wykonanie instalacji do dozowania środów chemicznych;Zadanie
+2158;Wymiana 3 softstartów na falowniki w stacji T-6 PŚ Bogatka;Zadanie
+2159;Modernizacja baterii kondensatorów na stacjach transformatorowych na OŚW;Zadanie
+2160;Zakup 2 szt. sond pomiaru azotanów Reaktor 3-06;Zadanie
+2161;PŚ Motława - wymiana armatury zaporowo - zwrotnej;Zadanie
+2162;Odzysk energii ze ścieków na terenie obiektu PŚ Motława i PŚ Ołowianka;Zadanie
+2163;PŚ Orłowska - montaż zasuwy odcinającej na dopływie, rurociągu grawitacyjnego, wymiana pomp ściekowych zatapialnych. Wykonanie nowego układu sterowania i zasilania zespołów pompowych;Zadanie
+2164;Rekonstrukcja kanału sanitarnego w ul. Wyzwolenia;Zadanie
+2165;Przebudowa kanału sanitarnego DN400 i DN200 i sieci wodociagowej w ul. Robotniczej z przyłączeniem do kolektora WM-1;Zadanie
+2166;Modernizacja kanalizacji sanitarnej - baza Migowo;Zadanie
+2167;Przebudowa kanalizacji sanitarnej DN 200 w ul. Starogardzkiej (od wysokości budynku MOPS);Zadanie
+2169;Adaptacja nieczynnego kolektora na Wyspie Sobieszewskiej na ścieżkę rowerową;Zadanie
+2170;ul. 3-go Maja - wymiana odcinka sieci kanalizacji sanitarnej DN 250, L=170 m;Zadanie
+2171;Przebudowa sieci kanalizacji sanitarnej w ul. Politechnicznej ;Zadanie
+2172;Modernizacja wodociągu DN 400 od ul. Krzemowej do Parku Oruńskiego;Zadanie
+2173;Wymiana sieci wodociągowej DN250 żel. w ul. Platynowej;Zadanie
+2174;Budowa odcinka sieci wodociągowej w ulicy Żabiej;Zadanie
+2175;Wykonanie drogi dojazdowej do PŚ Smęgorzyńska 1;Zadanie
+2178;Budowa kanalizacji sanitarnej w ul. Westy - Gdańsk Osowa;Zadanie
+2179;Przebudowa sieci wodociągowej w rejonie ul. Wenus (ul. Saturna, Merkurego, Jowisza, Andromedy, Mirandy, Urana, Strzelca, Plejady, Woźnicy);Zadanie
+2180;Wymiana wodociągu AC w ul. Myśliborskiej (Gdańsk Osowa);Zadanie
+2181;Wymiana wodociągu w ul. Sobieskiego-Smoluchowskiego (zadanie skoordynowane z ZDiZ);Zadanie
+2182;Budowa i przebudowa sieci wodociągowej w ul. Zenitowej DN200 L=ca350m;Zadanie
+2183;Przebudowa odcinka sieci wodociągowej DN150 żel na DN200 żel L=~30m, zlokalizowanej w ul. Targ Drzewny;Zadanie
+2184;Uzupełnienie opomiarowania wody pobieranej ze środowiska UW Pręgowo ;Zadanie
+2185;Przebudowa sieci wodociągowej dla budynków 128-129 AF i renowacja kanału sanitarnego przy ul. Malczewskiego;Zadanie
+2187;Rozebranie komory betonowej na nieczynnym kolektorze sanitarnym 2700x2200 na Wyspie Sobieszewskiej.;Zadanie
+2188;Likwidacja odwodnienia magistrali DN500 do Jeziora Osowskiego o dł. 60m - likwidacja odcinka magistrali DN 500 w kierunku Gdynia Kacze Buki;Zadanie
+2190;Przebudowa wodociągu DN 150 w ul. Kartuskiej, Borsuczej i Rysiej oraz budowa sieci kanalizacji sanitarnej wzdłuż Kartuskiej miedzy Zwierzyniecką a Szczytników;Zadanie
+2191;Likwidacja piezometru i wykonanie otworu zastępczego na UW Czarny Dwór (P-14'/F02);Zadanie
+2192;Likwidacja 5 zbędnych piezometrów w obrębie ujęcia wody Lipce;Zadanie
+2193;Budowa sieci wodociągowej w ul. Narcyzowej na dł. ok. 364 m;Zadanie
+2194;Montaż kraty koszowej i mieszadła w zbiorniku przepompowni ścieków Zawiśle wraz z przebudową kolektora sanitarnego na terenie przepompowni;Zadanie
+2196;Rewitalizacja Dolnego Miasta w Gdańsku - przebudowa przyłączy wodociągowych w ulicy Łąkowa, Wróbla oraz w ulicach przyległych;Zadanie
+2197;Zmiana zasilania komór pomiarowych K12, K18, K25, K30, K44, K45, K74 z bateryjnego na sieciowe. Wykonanie stałego zasilania dla komory K77.;Zadanie
+2199;Opomiarowanie czterech studni wodomierzowych przy Ofiar Grudnia 70, Narciarska (dwie studnie), Piłkarska;Zadanie
+2201;Budowa komory redukcyjno-pomiarowej na przewodzie DN 400 w rejonie Zb. Kiełpino;Zadanie
+2202;Kanalizacja sanitarna w rejonie ulic Nowej Jabłoniowej, Potęgowskiej, Lubowidzkiej i Goszyńskiej;Zadanie
+2203;Budowa sieci kanalizacji sanitarnej i sieci wodociągowej w ul. Matemblewskiej, Tischnera i Waldorffa;Zadanie
+2205;Wykonanie przekazu danych z komór pomiarowych Swd2, Swd3, Swd4 na magistrali Osowa-Kiełpino;Zadanie
+2511;Budowa przyłącza wodociągowego w ul. Nadwiślańskiej (do posesji przy Gwiaździstej 2 i 4 i przy Nadwiślańskiej 7);Zadanie
+2512;Podłączenie do sieci kanalizacji sanitarnej budynku bazy wodomierzy przy ul. Kielnieńskiej 18;Zadanie
+2514;Rekonstrukcja kanału DN 200 w ul. Lenartowicza na dł. L=81,5 m metodą wykopową ;Zadanie
+2515;Rekonstrukcja kanału DN 250 w ul. Przetocznej na dł. L=21,5m;Zadanie
+2516;Budowa odcinka kanalizacji sanitarnej DN 200 w ul. Gerwazego na dł. ok. 110 m;Zadanie
+2517;Przebudowa kanału sanitarnego DN 250 w ul. Ogarnej.;Zadanie
+2519;Budowa kanalizacji sanitarnej DN 200 w ul. Wiłkomirskiego i Radarowej na dł. ok. 990 m;Zadanie
+2520;Przebudowa kanału sanitarnego DN 200 w ul. Pstrowskiego na dł. 10 m;Zadanie
+2522;Przebudowa odcinków kolektora "Morena" DN1000 w ul. Cementowej o dł. L=890 m wraz z komorami;Zadanie
+2524;PŚ Jasień - Modernizacja układu technologicznego i sterowania przepompowni. wymiana pomp;Zadanie
+2525;Wykonanie zasilania elektroenergetycznego wraz z układem pomiarowo-rozliczeniowym energii elektrycznej PS-2 ul. Przełom;Zadanie
+2526;Likwidacja PŚ Centaura, PŚ Junony/Antygony oraz PŚ Prometeusza;Zadanie
+2527;PŚ Zaspa - Hermetyzacja i ocieplenie krat wraz z kontenerami na skratki. Rozbudowa instalacji dezodoryzacji;Zadanie
+2528;PŚ Jaśminowa - Modernizacja przepompowni - wymiana pomp i układów sterowania;Zadanie
+2529;Modernizacja 2 szt. zasuw DN 400 na dwóch rurociągach wody surowej i modernizacja armatury: rurociągi (stal nierdzewna), przepustnice (pnaumatyczne), filtry (16 kpl.), aerarory (4 szt.), odpowietrzniki na SUW Czarny Dwór;Zadanie
+2530;Modernizacja podziemnej przepompowni ścieków socjalno-bytowych i modernizacja podziemnej pompowni wód popłucznych i technologicznych na SUW Czarny Dwór;Zadanie
+2531;Przebudowa węzłów wodociągowych w rejonie ul. Słowackiego, Chrzanowskiego i Reymonta - wydzielenie strefy ZW Wysoki Dwór i Stara Dolina;Zadanie
+2532;Budowa pompowni wody na terenie UW Sobieszewo ;Zadanie
+2534;UW Dolina Radości - wypiętrzenie obudowy studni 3c ;Zadanie
+2535;Modernizacja hydroforni Jana Pawła II lub połączenie II strefy ze strefą I;Zadanie
+2536;Likwidacja hydroforni Bajki;Zadanie
+2537;Hydrofornia Głęboka - spięcie sieci na wysokości obiektu w celu umożliwienia likwidacji obiektu;Zadanie
+2538;Modernizacja pomiarów steżenia osadu na pompowni 7-01, 7-02, 7-03;Zadanie
+2539;Modernizacja pomiarów stężenia tlenu na reaktorach biologicznych 3-01 do 3-06 w komorze R6. ;Zadanie
+2540;Wymiana barierek ochronnych przy kanałach międzyobiektowych na wysokości przelewu awaryjnego oraz między budynkiem krat a os. wstępnymi (o dł. 200 mb);Zadanie
+2541;Ob. Nr 108 - Stacja odwadniania osadu - Wymiana maceratorów Allweiler ABM 80 na maceratory nożowo-sitowe typu RotaCut;Zadanie
+2542;Ob. Nr 3-01 - 3-06 - Wymiana mieszadeł pędzących i pompujących - szt. 10  ;Zadanie
+2543;Ob. nr 7-01 ÷ 7-06 - Pompownia recyrkulatu - Wymiana wyeksploatowanych pomp osadu KRTK 200 i Amarex - 5 szt.;Zadanie
+2544;Ob. nr 3-01 ÷ 3-06 - Reaktory biologiczne - Wykonanie przenośnej instalacji do opróżniania bioreaktorów;Zadanie
+2545;Ocz. Wschód - pompownia pośrednia P2 - Wymiana wciągarki ręcznej na wciągarkę elektryczną dwubiegową + wymiana napędu suwnicy z ręcznego na elektryczny;Zadanie
+2546;Ob. Nr 4-01, 4-02, 4-04, 4-05 - Rekonstrukcja uszczelnień kanałów doprowadzajacych i odprowadzających ścieki oczyszczone do/z bioreaktorów i z osadników wtórnych;Zadanie
+2547;Montaże hydrantów DN 80 na przewodach w ul. Barwnej 4, Beethowena 38, Beethowena 58, Biskupiej 23, Gostyńskiej 16, Nadwiślańskiej 80, Nadwiślańskiej 96, Rzecznej 7a, ul. Trakcie Św. Wojciecha 245, Trakcie Św. Wojciecha 437, Wagnera 22;Zadanie
+2548;Przebudowa wodociągu DN 200 żel. przy ul. Grunwaldzkiej 214-238 na dł. 270 m;Zadanie
+2549;Likwidacja przewodu wodociągowego DN 100/DN 200 wraz z wymianą przewodu wodociągowego DN 200 (około 500 mb.) w ul. Angielska Grobla, Na Stępce, Długa Grobla, Dziewanowskiego, Wiesława, Zabłotna;Zadanie
+2550;Wymiana sieci wodociągowej DN 20/25 stal w ul. Kolonia Postęp na długości ok. L=280 m ;Zadanie
+2551;Wymiana sieci wodociągowej DN 20/25/50 w ul. Kolonia Przyszłość na długości ok. L=213 m ;Zadanie
+2552;Wymiana wodociągu w ul. Stromej na dł. ok. 320 m;Zadanie
+2553;Budowa wodociągu DN 100 w ul. Czarnowskiego;Zadanie
+2554;Przebudowa sieci wodociągowej w ul. Bysewskiej na dł. ok. 240 m;Zadanie
+2555;Budowa wodociągu i przebudowa kanału sanitarnego DN 200 w ul. Starogardzkiej ;Zadanie
+2556;Przebudowa przewodu wodociągowego DN 100 w ul. Poleskiej (ok. 100 mb);Zadanie
+2557;Modernizacja (relining) przewodu wod. DN600/550 (ok. 2700 m) z modernizacją węzłów w ul. Nowiny i Trakcie Św. Wojciecha ;Zadanie
+2558;Przebudowa sieci wodociągowych: DN 500 (ok. 30 m) w ul. Plac Wałowy/Grodza Kamienna oraz DN100/150 (ok.264/160 m) w ul. Plac Wałowy, Pod Zrębem i Dolna Brama                                                                         ;Zadanie
+2559;Likwidacja komory z odpowietrznikiem w jezdni (ul. Schuberta) i wybudowanie nowej na magistrali wodociągowej DN 800 PW Ptasia-ZW Sobieski;Zadanie
+2560;Budowa ok. 280 m sieci wodociągowej DN 150 w celu połączenia sieci II strefy Hydroforni "Baczyńskiego" z siecią I strefy;Zadanie
+2561;Wymiana sieci wodociągowej DN 40 na długości ok. L=230 m w ul. Kolonia Uroda;Zadanie
+2562;Wymiana sieci wodociągowej DN 40 na długości ok. L=155m w ul. Małoogrodowej;Zadanie
+2563;Wymiana sieci wodociągowej DN 20/25/32/40/80/100 na długości L=340 m w ul. Kaczeńce (Stogi);Zadanie
+2564;Likwidacja przewodu DN 200 AC o L=380 mb. w ul. Siennej Grobli;Zadanie
+2565;Wymiana wodociągu DN150 w ul. Żuławskiej ;Zadanie
+2566;Wymiana istniejącego wodociągu DN150 w ul. Mostowej na dł. 300 m ;Zadanie
+2567;Przebudowa sieci wodociągowej DN32/25 w ul. Kolonia Wyżyny oraz budowa spinki wodociągowej  od ul. Ojcowskiej do ul. Skarpowej na dł. ok. 370 m;Zadanie
+2568;Budowa kanalizacji sanitarnej wraz z przepompownią ścieków w rejonie schroniska dla zwierząt (ul. Przyrodników);Zadanie
+2569;Przebudowa wodociągu i kanalizacji sanitarnej w ul. Ogarnej.;Zadanie
+2570;Przebudowa wodociągu DN 100 w ul. Małachowskiego na dł. 160 m;Zadanie
+2571;Budowa spinki wodociągowej od ul. Przytulnej DN 160 do Trasy W-Z na dł. 130 m;Zadanie
+2572;Budowa spinki sieci wodociągowej w ul. Sąsiedzkiej ;Zadanie
+2573;Opomiarowanie trzech studni wodomierzowych Kowale-Osiedle Olimp, Kowale-hydrofornia, Jankowo;Zadanie
+2575;Budowa wodociągu i kanalizacji sanitarnej DN400 w ul. Jaracza;Zadanie
+2576;Wykonanie drogi tymczasowej do studni ujęcia Unikom, odwodnienie terenu.;Zadanie
+2577;Budowa kolektora sanitarnego WM-1 Nowa Wałowa od Węzła Kliniczna do PŚ Ołowianka;Zadanie
+2578;Budowa kanalizacji sanitarnej oraz sieci wodociągowej w dzielnicy Osowa;Zadanie
+2579;Budowa kanalizacji sanitarnej w dzielnicy Maćkowy ul. Przemian;Zadanie
+2580;Budowa kanalizacji sanitarnej w dzielnicy Smęgorzyno;Zadanie
+2581;Przebudowa sieci kanalizacji sanitarnej w zlewni przepompowni ścieków "Czerwony Most";Zadanie
+2582;Przebudowa układu sieci kanalizacyjnej w rejonie przepompowni ścieków "Wiewiórcza" i "Trzy Dęby" oraz w ul. Kartuskiej;Zadanie
+2583;Przebudowa przepompowni ścieków "Załogowa";Zadanie
+2584;Budowa sieci wodociągowej w celu włączenia Wyspy Sobieszewskiej i Płoni Wielkiej do gdańskiego systemu wodociągowego;Zadanie
+2585;Budowa wieżowego zbiornika retencyjnego na terenie Wyspy Sobieszewskiej;Zadanie
+2586;Rozbudowa oczyszczalni ścieków "Gdańsk-Wschód" etap IIb - zagospodarowanie osadów ściekowych;Zadanie
+2587;Przebudowa kolektora sanitarnego Zaroślak;Zadanie
+2588;ul. Bysewska  - budowa magistrali wodociągowej DN 200;Zadanie
+2590;ul. Wschodnia - wymiana sieci wodociągowej;Zadanie
+2591;Uszczelnienie Zbiornika wody Sobieski - Nr 1 i 2;Zadanie
+2592;OŚW - naprawa i uszczelnienie bioreaktora 3-04 i 3-06 wraz z uszczelnieniem kanałów dopływowych
+;Zadanie
+2593;Budowa przepompowni ścieków Wydmy wraz z kanalizacją sanitarną;Zadanie
+2594;Promocja GPWŚ II;Zadanie
+2595;Obsługa JRP II;Zadanie
+2599;OŚW - naprawa i uszczelnienie bioreaktora 3-01 wraz z uszczelnieniem kanałów dopływowych
+;Zadanie
+2601;OŚW - naprawa i uszczelnienie bioreaktora 3-02 wraz z uszczelnieniem kanałów dopływowych
+;Zadanie
+2602;Przebudowa sieci wodociągowej w ul. Narwickiej;Zadanie
+2604;Program wymiany sieci wodociagowych wykonanych z azbestocementu - sektor na Przymorzu;Zadanie
+2608;Przebudowa przepompowni ścieków Motława ;Zadanie
+2609;Przebudowa układu tłocznego z przepompowni ścieków "Motława" do komory K2;Zadanie
+2610;Budowa kolektora "żuławskiego" we współpracy z gminami sąsiadującymi z Gdańskiem;Zadanie
+2613;Przebudowa przepompowni ścieków "Stogi" wraz z modernizacją układu kanalizacyjnego;Zadanie
+2614;Program wymiany sieci wodociagowych wykonanych z azbestocementu - kontynuacja;Zadanie
+2616;Przebudowa  kolektora sanitarnego DN 600 i DN 900/600 w rejonie ul. Marynarki Polskiej i M. Reja;Zadanie
+2619;Kontynuacja budowy kolektora sanitarnego WM-1 do Węzła Kliniczna - zad. 5 (ul. Swojska, Twarda, Marynarki Polskiej);Zadanie
+2625;K.10  - inżynier kontraktu;Zadanie
+2627;Usługi obce, dostawy i roboty budowlane związane z wykonaniem zastępczym usuwania usterek w okresie rękojmi;Zadanie
+2628;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych;Zadanie
+2629;ul. Nowiny - modernizacja kolektora sanitarnego;Zadanie
+2630;Kolektor Ołowianka II - Prace dodatkowe dot. Kontraktu 2, mające na celu zwiększenia bezpieczeństwa oraz poprawę eksploatacji kolektora Ołowianka II;Zadanie
+2631;ul. Jeziorowa - budowa kanalizacji sanitarnej;Zadanie
+2632;Trakt Św. Wojciecha - budowa sieci kanalizacji sanitarnej;Zadanie
+2633;Budowa kanalizacji sanitarnej - podłączenie Muzeum II Wojny Światowej do kolektora WM-1;Zadanie
+2634;ul. Równa - budowa kanalizacji sanitarnej;Zadanie
+2635;Przebudowa kanalizacji sanitarnej w ul.Doki z podłączeniem do kolektora WM-1 (ECS);Zadanie
+2636;Likwidacja tymczasowej PŚ i przełączenie do WM-1 kanalizacji sanitarnej z ul. Doki;Zadanie
+2637;ul. Jantarowa, ul. Piastowska (kanalizacja zdroju);Zadanie
+2638;ul. Kielnieńska - budowa kanalizacji sanitarnej wraz z przyłączami, etap II - kontynuacja;Zadanie
+2639;ul. Fromborska - przebudowa i wymiana sieci kanalizacji sanitarnej;Zadanie
+2640;ul. Nad Brzegiem 1A - utwardzenie placu wokół przepompowni wraz z wykonaniem fundamentu pod żurawik;Zadanie
+2641;Modernizacja linii napowietrzno-kablowej SN 15kV;Zadanie
+2642;Wykonanie robót energetycznych - zabezpieczenie i uruchomienie urzadzeń energet. ;Zadanie
+2643;Wykonanie prac projektowych umożliwiających nowemu wykonawcy dokończenie robót;Zadanie
+2644;Remont budynku agregatorni, demontaż likwidowanych urządzeń, dostawa nowego agregatu;Zadanie
+2645;Dokończenie robót na ujęciu i SUW Lipce  z zakresu GPWŚ I;Zadanie
+2648;Likwidacja i odwiert zastępczy studni M-1;Zadanie
+2649;Zakup i montaż falownika dla zespołu pompowego II stopnia Nr 3 o mocy 250kW.;Zadanie
+2650;Modernizacja zasilania (110 kV) ujęcia;Zadanie
+2651;ul. Grodzka i Wapiennicza - przebudowa sieci wodociągowej;Zadanie
+2652;ul. Wassowskiego - przebudowa sieci wodociągowej;Zadanie
+2653;Budowa sieci wodociagowej DN250 w ul. Budowlanych;Zadanie
+2654;Budowa komory reduktora w  ul. Smęgorzyńskiej w rejonie skrzyżowania z ul. Kartuską;Zadanie
+2655;ul. Przybrzeżna/Olszyńska - przebudowa przewodu wodociągowego ;Zadanie
+2656;ul. Trakt Św. Wojciecha - likwidacja sieci wodociągowej AC;Zadanie
+2657;ul.Falowa/Barwna - budowa przewodu wodociągowego;Zadanie
+2658;ul. Przegalińska - wymiana przyłącza wodociągowego;Zadanie
+2659;ul. Polanki - modernizacja węzłów wodociągowych - związana z czyszczeniem sieci;Zadanie
+2660;ul. Jelitkowska - budowa komory pomiarowej na granicy Gdańska i Sopotu;Zadanie
+2661;Budowa komory reduktora w rejonie ul. Grunwaldzkiej/Derdowskiego;Zadanie
+2662;Budowa komory reduktora w rejonie ul. Grunwaldzkiej/Opackiej;Zadanie
+2663;ul. Brzeźnieńska;Zadanie
+2664;ul. Łużycka;Zadanie
+2665;Przebudowa układu technologicznego;Zadanie
+2667;Roboty uzupełniające na SUW Zakoniczyn;Zadanie
+2668;Likwidacja obiektu - stacja uzdatniania;Zadanie
+2669;UW Oczyszczalnia Wschód - wypiętrzenie studzien K-1 i K-2 / UW Krakowiec II - wypiętrzenie studni K-3;Zadanie
+2670;UW Stocznia Wisła - Likwidacja obiektu;Zadanie
+2671;Montaż regulatora ciśnień na terenie PP Nowy Sobieski i budowa magistrali DN200 umożliwiającej zasilanie w wodę ze strefy Migowo strefy zbiornika Wysoki Dwór;Zadanie
+2672;Odprowadzenie wód technologicznych;Zadanie
+2673;Przestawienie ogrodzenia hydroforni Dragana;Zadanie
+2674;Odprowadzenie wód technologicznych;Zadanie
+2675;ZW Wysoki Dwór - Wykup gruntów i wykonanie schodów;Zadanie
+2676;Ob. nr 103 - Komora rozdziału - wymiana barierek i gretingów wraz z remontem komory;Zadanie
+2677;Ob. nr 8 - Stacja dmuchaw - modernizacja układu chłodzenia;Zadanie
+2678;Ob. nr 36 - Komora rozdziału - wymiana barierek, gretingów i drabin, wymiana lamp oświetleniowych;Zadanie
+2679;Wymiana ogrodzenia magazynu na OŚ Wschód;Zadanie
+2680;Modernizacja magistrali wodociągowej O400mm Ptasia - Hebanowskiego;Zadanie
+2681;Przebudowa sieci i likwidacja przepompowni wody Nowolipie ;Zadanie
+2682;ul. Raduńska - przebudowa sieci wodociągowej;Zadanie
+2684;ul. Stokłosy - budowa sieci wodociągowej (spięcie z siecią Unikom);Zadanie
+2685;ul. Nadwiślańska - wymiana sieci wodociągowej;Zadanie
+2686;Budowa sieci wodociągowej z przyłączami - ul. Buczka;Zadanie
+2687;ul. Chałubińskiego 33-37 - wymiana przewodu wodociągowego DN 100;Zadanie
+2688;Kontynuacja modernizacji węzłów wodociągowych w Gdańsku Oliwie ;Zadanie
+2689;ul. Wajdeloty;Zadanie
+2690;Przebudowa wodociągu w ul. Starogardzkiej - most na Kanale Raduni;Zadanie
+2691;Likwidacja 13 szt. studzien głębinowych;Zadanie
+2692;Naprawa uszkodzonych urządzeń i poprawienie warunków BHP na SUW Lipce;Zadanie
+2694;Ob. nr 108-stacja odwadniania osadu -wymiana 1 szt. wirówki NOXON DC40 na nowe urzadzenie doodwadniania osadu;Zadanie
+2695;Ob nr 108 - stacja odwadniania osadu - wymiana 2 szt. wirówek Noxon DC 40 na nowe urządzenia do odwadniania osadu;Zadanie
+2701;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych w 2014r.;Zadanie
+2705;Przebudowa kolektora sanitarnego Wrzeszcz-Ołowianka od Placu Zebrań Ludowych do ul. Do Studzienki;Zadanie
+2712;Rekonstrukcja kanału w ul. Kaletniczej na dł. 88 m;Zadanie
+2720;Renowacja kanału na odcinku ok. 100 m w ul. Malczewskiego;Zadanie
+2722;Wymiana rozdzielni sterującej na UW Świbno;Zadanie
+2724;ul. Dragana - renowacja magistrali wodociągowej DN 600   ;Zadanie
+2725;Wymiana sieci wodociągowej DN100/125 w ulicy Małomiejskiej;Zadanie
+2726;Budowa kanalizacji sanitarnej w ul. Świętokrzyskiej;Zadanie
+2727;Przebudowa sieci wodociągowej i sieci kanalizacji sanitarnej w ul. Sobieskiego od Traugutta do ul. Smoluchowskiego (Nowej Medyków);Zadanie
+2728;Wymiana sieci wodociągowej DN 100 o dł. ok. 256 m w ul. Walecznych (od Dworskiej do Orlej);Zadanie
+2729;Przebudowa sieci wodociągowej w ul. Traugutta (od ul. Do Studzienki do Al. Zwycięstwa);Zadanie
+2730;Przebudowa sieci wodociągowej w rejonie ul. Letniskowej ;Zadanie
+2731;Wymiana sieci wodociągowej DN200 w ulicy Siennej;Zadanie
+2732;Ustalenie zasobów dyspozycyjnych wody w strefie krawędziowej dla obszaru ujęć Kokoszki i Smęgorzyno;Zadanie
+2733;Likwidacja ogrodzenia i piezometru 1/C - UW Czarny Dwór;Zadanie
+2734;Dostawa i montaż agregatu prądotwórczego na PŚ Bysewo;Zadanie
+2737;Ob. nr 15/3 - ZKF - Montaż dodatkowego bezpiecznika na komorze;Zadanie
+2738;Wykonanie i obsługa tymczasowej przepompowni ścieków na ul. Jelitkowskiej;Zadanie
+2739;Wymagania do wykonania ekspertyzy technicznej analizy stanu kolektora Morena;Zadanie
+2742;Wykonanie przyłącza wodociągowego w celu umożliwienia likwidacji SUW Złota Karczma ;Zadanie
+2743;Adaptacja budynku warsztatowego na terenie dawnej Oczyszczalni Ścieków Zaspa na zaplecze socjalne brygad sieci kanalizacyjnej;Zadanie
+2744;Przebudowa sieci wodociągowej przy ul. Wagnera 22 i 22A;Zadanie
+2746;Montaż studni wodomierzowej na istniejącym przyłączu ul. Szczęśliwa 48;Zadanie
+2748;Przebudowa sieci wodociągowej w ul. Bałtyckiej;Zadanie
+2757;Betonowa waga samochodowa na terenie ITPO;Zadanie
+2758;Likwidacja wodociągu DN200 pod mostem Stągiewnym nad rzeką Nowa Motława;Zadanie
+2759;Modernizacja opomiarowania wody ujętej na UW Straszyn -  Pompownia I stopnia, Pompownia II stopnia, Filtry;Zadanie
+2760;Projekt i realizacja schodów w komorze zasuw zbiorników wody na UW Straszyn;Zadanie
+2761;Montaż 2 szt. drabinek BHP na Osadniku WOR - UW Straszyn;Zadanie
+2762;Zakup 3 szt. nowych pomp dwugłowicowych dozujących koagulant. Przystosowanie układu dozowania dostosowane do obecnych potrzeb oraz do docelowej koncepcji pracy ujęcia wraz ze sterowaniem, automatyzacją i wizualizacją lokalną i z poziomu centralnej dy;Zadanie
+2763;Wykonanie zasilania elektroenergetycznego do studni głębinowej nr 3 UW Lipce (ramię południe);Zadanie
+2764;Wykonanie wentylacji w budynkach magazynowo-garażowych na SUW Czarny Dwór;Zadanie
+2765;Likwidacja nieczynnej magistrali DN 1200 od Straszyna w kierunku ZW Orunia;Zadanie
+2766;Wymiana odcinka wodociągu DN 100 na całej długości ulicy Wierzbowej (ok.80 mb);Zadanie
+2767;Przebudowa przewodu wodociągowego DN 80 w ul. Fultona przy ul. Morenowej (ok.71 mb);Zadanie
+2768;Wymiana dwóch odcinków wodociągu DN 150  podwieszonych pod mostem w ul.Elbląskiej na dł. 40 mb;Zadanie
+2770;Zakup i montaż zestawu hydroforowego oraz urządzeń do przekazu telemetrycznego danych dla SPC Grunwaldzka;Zadanie
+2771;Budowa komory z montażem zaworu eletromagnetycznego odcinającego na przewodzie DN 250 w rejonie ul. Nadwiślańskiej;Zadanie
+2772;Budowa przewodu łączącego końcówki przewodów 110 PCV w ul. Pasteura i Wileńskiej;Zadanie
+2773;Budowa komory i montaż zaworu redukcyjnego ciśnienia z zabudową na przewodzie DN 150 w ul. Jaśkowa Dolina/Falista;Zadanie
+2774;Wymiana nieefektywnych istniejących separatorów siarki;Zadanie
+2775;Wymiana wyeksploatowanej prasy do zagęszczania osadu na nową prasę lub wymiana na wirówkę o wydajności ~150m3/h.;Zadanie
+2776;Ob.  nr 9 - Budowa nowej stacji zlewczej na 4 stanowiska;Zadanie
+2777;Wykonanie oświetlenia rejonu krat na terenie przepompowni ścieków Bogatka wraz z wymianą istniejących słupów betonowych;Zadanie
+2779;Przebudowa wentylacji przepompowni oraz budowa systemu dezodoryzacji na PŚ Bysewo;Zadanie
+2780;Przebudowa placu i tacy ociekowej wokół kontenerów zlewczych w punkcie zlewnym PŚ Bysewo;Zadanie
+2781;Termomodernizacja budynku biurowego na terenie PŚ Zaspa;Zadanie
+2782;Przebudowa przyłącza kanalizacyjnego Trakt Św. Wojciecha 82;Zadanie
+2783;Modernizacja kanału sanitarnego DN 200 w ul. Witosa 7 metodą bezwykopową, L=21m        ;Zadanie
+2784;Modernizacja kanału sanitarnego DN 250 L= 152 m w ul. Saperów metodą wykopową;Zadanie
+2785;Modernizacja kolektora sanitarnego "Radunia"  DN 800, L=2x45m w rejonie ul.Trakt Św Wojciecha 277;Zadanie
+2786;Modernizacja przyłączy ks do budynków mieszkalnych przy ul. Worcella 13, DN 150, L=22 m, Bitwy pod Lenino 6 DN 150 L=19m;Zadanie
+2787;Modernizacja sieci wodociągowej (ok 590 m) i kanalizacji sanitarnej (ok 230m) w ul. Twardej wraz z przyłączem ks w ul Twardej 3B;Zadanie
+2788;Przebudowa kanału sanitarnego DN200 o dł. 464  m w ul. Chałubińskiego ;Zadanie
+2789;Przebudowa kanału sanitarnego DN 350, L= 61m w ul. Grunwaldzkiej/ Miszewskiego;Zadanie
+2790;Likwidacja nieczynnego kolektora sanitarnego DN 200 "Złota Karczma";Zadanie
+2792;Budowa wodociągu DN 150 w moście nad Potokiem Kozackim - układ drogowy ul. Guderskiego;Zadanie
+2793;Przebudowa sieci wodociągowej w ul. Kołobrzeskiej;Zadanie
+2794;Budowa kanalizacji sanitarnej w rejonie ul. Letnickiej na dł. ok. 270 m;Zadanie
+2795;Dyspozytornia ujęcia - wymiana zużytych paneli operatorskich modyfikujących parametry pracy ujęcia Czarny Dwór;Zadanie
+2796;Likwidacja SPC Kiełpinek i budowa komory pomiarowej na przewodzie DN150 w rejonie ronda Kuronia;Zadanie
+2797;Budowa budynku socjalno-warsztatowego na potrzeby ITPO oraz zaplecza dydaktyczno-edukacyjnego na terenie Oczyszczalni Ścieków Wschód;Zadanie
+2799;Przebudowa wodociągu DN 100 w ul. Szarej o łącznej dł.258 m;Zadanie
+2800;Wymiana przyłączy wodociągowych w ul.Sienkiewicza;Zadanie
+2801;Wymiana sieci wodociągowej DN 100/200 w ul. Piastowskiej na dł. ok. 630 m;Zadanie
+2802;Przebudowa sieci wodociągowej DN 150 w ul. Długie Ogrody na odcinku ul. Szafarnia-Długa Grobla o łącznej dł. 550 m;Zadanie
+2803;Wymiana sieci wodociagowej DN 100/150 w ul. Pod Zrębem na dł. 170 m;Zadanie
+2804;Przebudowa sieci wodociągowej i przyłączy wodociągowych w ul. Grottgera, Tetmajera, Kasprowicza, Bażyńskiego.;Zadanie
+2805;Podłączenie sieci wodociągowej na terenach ZMPG z magistralą DN300 wzdłuż Trasy Sucharskiego ;Zadanie
+2807;Modernizacja układu AKP - Modernizacja 6szt. szaf przy studniach. Pełna identyfikacja sytuacji alarmowych na terenie ujęcia wody. Rozbudowa sterownika w dyspozytorni UW Czarny Dwór.;Zadanie
+2808;Modernizacja węzłów wodociągowych w Gdańsku Oliwie - etap 3 ;Zadanie
+2809;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych w 2015;Zadanie
+2810;Rewitalizacja Drogi Królewskiej - przebudowa uzbrojenia podziemnego;Zadanie
+2811;Przebudowa wodociągu DN 100 w ul. Tuwima;Zadanie
+2812;Przebudowa wodociągu DN 100 na dł. 450 m w ul. Orzeszkowej;Zadanie
+2813;Przebudowa wodociągu DN 100 żel w ul. Zagórnej na dł. 250 m;Zadanie
+2814;Wykonanie spinki wodociągowej o dł. 130 m łączącej wodociąg DN 160 w ul. Szafranowej z DN 110 w ul. Św. Alberta;Zadanie
+2815;Przebudowa sieci wodociągowej DN 125 w ul. Stary Rynek Oliwski na dł. ok. 240 m;Zadanie
+2816;Przebudowa sieci wodociągowej DN 100 w ul. Hirszfelda na dł. 110 m;Zadanie
+2817;Wymiana wyeksploatowanych urządzeń do pomiaru azotu amonowego w bioreaktorze 3-03;Zadanie
+2818;Odzysk energii ze ścieków na terenie obiektu PŚ Zaspa;Zadanie
+2819;Poprawa systemu sterowania procesem pracy bioreaktora 3-02 - wymiana sond ;Zadanie
+2820;Budowa systemu monitoringu dla sieci kanalizacyjnej na terenie Gdańska;Zadanie
+3128;Przebudowa sieci wodociągowej DN200 - ul. Sienna - Etap II;Zadanie
+3129;Przeniesienie hydrantu naziemnego poza obręb działki prywatnej przy ul. Nadwiślańskiej 85;Zadanie
+3130;Likwidacja ujęcia Pleniewo-Zagroble;Zadanie
+3133;Przebudowa układu kanalizacyjnego w ul. Abrahama;Zadanie
+3136;Prace adaptacyjne na kanale zrzutowym OŚ na terenie Wyspy Sobieszewskiej;Zadanie
+3137;Przełożenie odcinka kanalizacji sanitarnej na ul. Czereśniowej;Zadanie
+3138;Wymiana wodociągu DN 150 w ul. Łagiewniki;Zadanie
+3139;Zabezpieczenie stropu nad komorą wejściową do zbiornika Stary Sobieski;Zadanie
+3140;Modernizacja węzłów wodociągowych w Gdańsku Oliwie - etap 1;Zadanie
+3141;ul. Raduńska - przebudowa sieci wodociągowej - Etap IV;Zadanie
+3142;Przebudowa sieci wodociągowej DN 80 w ul. Ramułta i Grabowej na łącznej dł. ok. 235 m;Zadanie
+3143;Wymiana falownika pompy nr 4 w PŚ Ołowianka;Zadanie
+3145;Przebudowa sieci wodociągowej w ul. Osiedlowej oraz wykonanie studni przyłączeniowej do kolektora Morena;Zadanie
+3146;Przebudowa odcinka sieci wodociągowej w ul. Kolonia Anielinki na dł. ok. 20 m. ;Zadanie
+3147;Przepompownia wody technologicznej dla planowanej elektrowni gazowo-parowej przy ul. Benzynowej w Gdańsku;Zadanie
+3148;Likwidacja 4 szt. piezometrów UW Jasień;Zadanie
+3149;Likwidacja kolizji sieci wodociągowej z kanalizacją deszczową - ul. Kartuska/Sowia i Zawodników;Zadanie
+3150;Wymiana sieci wodociągowej w ul. Św. Ducha na dł. ok. 280 m;Zadanie
+3151;Modernizacja kotłowni OŚ Wschód ;Zadanie
+3152;Zabezpieczenie konstrukcji zbiornika "Stara Orunia" przed degradacją ;Zadanie
+3162;Przebudowa sieci wodociągowej w ul. Straganiarskiej;Zadanie
+3164;Kanalizacja sanitarna dla dzielnicy Chełm-Południe rejon ulic Łucznicza, Olimpijska, Łyżwiarska i Saneczkarska;Zadanie
+3165;Modernizacja przepompowni ścieków Rudniki 7;Zadanie
+3166;Modernizacja układu wentylacji i klimatyzacji PŚ Ołowianka;Zadanie
+3167;Wymiana przestarzałych i wyeksploatowanych zabezpieczeń nadprądowych w rozdzielni 15kV stracji transf. T-16252 PŚ Ołowianka;Zadanie
+3169;Budowa sieci wodociągowej oraz kanalizacji sanitarnej w rejonie ul. Doki - promenada Droga Do Wolności;Zadanie
+3172;Przebudowa sieci wodociągowej DN100/200 w ul. Wileńskiej na odcinku od ul. Raciborskiego do zasuwy strefowej przy ul. Suwalskiej;Zadanie
+3173;Budowa zdroju na Placu Wybickiego;Zadanie
+3174;Rozbudowa kanalizacji sanitarnej w ul. Forsycji w Gdańsku Sobieszewie;Zadanie
+3175;Wymiana sieci wodociągowej DN 225 na DN 315 w ul. Leszczynowej na dł. ok. 220 m;Zadanie
+3176;Wymiana sieci wodociągowej DN 100/150 w ul. Tamka i Falck Polonusa na dł. ok. 740 m;Zadanie
+3177;Zabezpieczenie części konstrukcji drewnianej dachu nieczynnej przepompowni wody Sobieski;Zadanie
+3178;Wykonanie izolacji zewnętrznej zbiorników 1, 2, 3 przy ul. Polanki/Abrahama ;Zadanie
+3179;Budowa sieci wodociągowej i kanalizacji sanitarnej w ul. Kolonia Anielinki;Zadanie
+3180;Przebudowa sieci wodociągowej w ul. Jacka Soplicy na dł. ok. 200 m;Zadanie
+3181;Projekt budowy drogi techologiczno-eksploatacyjnej dla ujęcia drenażowego Pręgowo;Zadanie
+3182;Budowa sieci wodociągowej oraz kanalizacji sanitarnej w ul. Łanowej i ul. Modrej;Zadanie
+3183;Budowa kanalizacji sanitarnej w ul. Kolonia Uroda, Winogronowa, Małoogrodowa, Daliowa, Żniwna;Zadanie
+3184;Przebudowa sieci wodociągowej DN 200 żel.  w ul. K. Pułaskiego;Zadanie
+3185;Wymiana sieci wodociągowej DN 100 w ul. Korzeniowskiego;Zadanie
+3186;Wymiana sieci wodociągowej DN 80 w ul. Łukasiewicza;Zadanie
+3188;Wymiana sieci wodociągowej DN 100 żel w ul. Sobótki i DN250 w ul. Sienkiewicza;Zadanie
+3189;Wymiana sieci wodociągowej DN 100 w ul. Rozłogi i ul. Niskiej;Zadanie
+3190;Wymiana sieci wodociągowej DN 150 w ul. Niskiej;Zadanie
+3191;Wymiana sieci wodociągowej i renowacja kanalizacji sanitarnej w ul. Pomorskiej na odcinku od Pelplińskiej do Chłopskiej;Zadanie
+3192;SUW Straszyn - Filtry - Zakup i montaż sprężarki dostosowanej do istniejącej automatyki filtrów;Zadanie
+3193;SUW Straszyn - Ozonownia - Zakup i montaż 2 szt. sprężarek na ozonowni;Zadanie
+3194;SUW Straszyn - Wymiana sterowników oraz panela operatorskiego dla ozonatora LWA3000 i LWA6000;Zadanie
+3195;UW Czarny Dwór - Montaż dwóch zasuw DN600 oraz odwodnienia na rurociągu DN350 wody surowej na linii Piastowska;Zadanie
+3196;UW Zakoniczyn - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni Ł-1;Zadanie
+3197;UW Zakoniczyn - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 2 i Ł-2;Zadanie
+3198;Montaż detektorów chloru wraz z podłączeniem instalacji zasilania i telemetrii do centralnej dyspozytorni w chlorowni UW Zakoniczyn;Zadanie
+3199;Modernizacja układu AKP pozwalającego na pełną identyfikację sytuacji alarmowych na terenie UW Osowa;Zadanie
+3200;Wymiana przewodu wodociągowego DN 100 w ul.Grabowskiego 3-5 (ok.145 mb) wraz z 4 przyłączami (ok. 51 mb);Zadanie
+3201;Wymiana przewodu wodociągowego DN 100 (około 410 mb), DN 250 (około 390 mb) oraz DN 300 (około 200 mb) w ul. Cebertowicza;Zadanie
+3204;Przebudowa sieci wodociągowej DN 80 w ul. Biskupiej na dł. 275 m;Zadanie
+3205;Przebudowa układu sieciowego umożliwiająca likwidację hydroforni Zielony Trójkąt;Zadanie
+3206;SPC Maćkowy - Likwidacja obiektu;Zadanie
+3207;Przebudowa układu sieciowego umożliwiająca likwidację hydroforni Kołobrzeska;Zadanie
+3208;PW Migowo - modernizacja obiektu wraz z rozbudową i termomodernizacją budynku, budową budynku garażowego i modernizacją pomiaru poziomu wody w ZW Migowo;Zadanie
+3209;Sieć osadu przefermentowanego - Wymiana odcinka rurociągu DN200 na dł. ok. 53,4 mb;Zadanie
+3210;Ob. 20 Kotłownia technologiczna - Modernizacja nieprawidłowego włączenia instalacji CHP do kolektora zasilającego i powrotnego kotłów;Zadanie
+3211;OŚW - Przebudowa zasilania elektroenergetycznego do stacji T-16100;Zadanie
+3212;OŚW - ob. 20 - kotłownia technologiczna - Modernizacja rozdzielni sterowania obiegami kotłowymi;Zadanie
+3213;OŚW - ob. 36 - Wymiana wyeksploatowanych 4 szt.pomiarów  przepływu na kanałach dopływowych do reaktora 3-01,3-02,3-03,3-04;Zadanie
+3214;PŚ SOBIESZEWO P1- P4 - modernizacja przepompowni ;Zadanie
+3215;Modernizacja przyłącza ks DN 150 do budynku mieszkalnego przy ulicy Bitwy pod Lenino 6, L=19 m;Zadanie
+3216;Modernizacja kanału sanitarnego w ul. Wieżyckiej DN 500, L=345 m;Zadanie
+3217;Modernizacja kanału sanitarnego w ul. Generała Józefa Hallera, DN 200, L=20 m;Zadanie
+3218;Projekt budowy drogi dojazdowej dla kanału sanitarnego DN 300 na odcinku od Domu Samotnej Matki w Matemblewie do ul. Potokowej - odcinek leśny;Zadanie
+3219;Przebudowa sieci wodociągowej w ul. Smolnej i Dalekiej na dł. ok. 352 m;Zadanie
+3220;Budowa sieci wodociągowej i kanalizacji sanitarnej w ul. Beskidzkiej ;Zadanie
+3222;Przebudowa sieci wodociągowej DN 200 i DN 300 w ul. Przetocznej ;Zadanie
+3224;Przebudowa sieci wodociągowej w ul. Dickensa;Zadanie
+3225;Przebudowa sieci wodociągowej w ul. Chwaszczyńskiej;Zadanie
+3226;Przebudowa sieci wodociągowej w ul. Dubois;Zadanie
+3227;Przebudowa sieci wodociągowej w ul. Zakopiańskiej;Zadanie
+3228;Przebudowa sieci wodociągowej przy Al. Zwycięstwa;Zadanie
+3229;Przebudowa sieci wodociągowej w ul.Siennej na odcinku od ul. Krynicznej do Bajki;Zadanie
+3230;Przebudowa sieci wodociągowej w ul. Mazurskiej ;Zadanie
+3232;Przebudowa sieci wodociągowej w ul. Dźwigowej ;Zadanie
+3233;Przebudowa sieci wodociągowej w ul. Ojcowskiej;Zadanie
+3234;Budowy punktów poboru wody i odprowadzenia ścieków na terenie Głównego Miasta Gdańska;Zadanie
+3235;Budowa zdroju w Parku nad Strzyżą;Zadanie
+3236;Budowa sieci wodociągowej i kanalizacji sanitarnej w rejonie ul. Bytowskiej ;Zadanie
+3237;Montaż przepływomierza elektromagnet. na przewodzie odpływowym ze ZW Kazimierz. Przeniesienie telemetrii z komory K33 na UW Świbno;Zadanie
+3238;Wymiana sieci wodociągowej DN 100 w Trakcie Św. Wojciecha na dł. ok. 100 m;Zadanie
+3239;Likwidacja przecieków do wnętrza ZW Migowo Nr 4;Zadanie
+3240;Budowa przepompowni ścieków przy ul. Budowlanych wraz z przebudową sieci wodociągowej w ul. Budowlanych;Zadanie
+3243;Podłączenie sygnału alarmu ppoż. 2-go stopnia ze ZW Kazimierz do PSP. Montaż kamery internetowej na dachu zbiornika.;Zadanie
+3244;OŚW Ob.nr 101 - Budynek krat - Modernizacja elewacji zewnętrznej budynku krat, założenie izolacji pionowej,  modernizacja podjazdu do budynku krat, zabezpieczenie stropu budynku;Zadanie
+3245;Budowa zdrojów na terenie Miasta Gdańska;Zadanie
+3246;UW Czarny Dwór - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni 15B;Zadanie
+3247;Przebudowa sieci wodociągowej DN 200 w ul. Morenowe Wzgórze ;Zadanie
+3248;Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 3C;Zadanie
+3249;Zabezpieczenie ruin zabytkowego młyna;Zadanie
+3250;Projekt i realizacja wykonania separatorów podczyszczających wody opadowe spełniających wymogi prawne. ;Zadanie
+3251;Wymiana węzła cieplnego w ul. Polanki 110A;Zadanie
+3252;UW Wschód - Budowa instalacji przekazu danych z rozdzielni hydroforni do dyspozytorni OŚ Wschód;Zadanie
+3254;UW Dolina Radości - Projekt i realizacja wymiany żeliwnego rurociągu zbiorczego wody surowej DN 300 L=350mb, wraz z montażem armatury.;Zadanie
+3255;SUW Czarny Dwór - Projekt i realizacja wymiany wyeksploatowanej lampy UV na lampę nowego typu;Zadanie
+3256;SUW Zaspa Wodna - Projekt i realizacja wymiany wyeksploatowanej lampy UV na lampę nowego typu;Zadanie
+3257;Usunięcie eternitu z budynku stacji.;Zadanie
+3258;UW Krakowiec - Projekt i likwidacja studni K2;Zadanie
+3259;UW Czarny Dwór - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni 17b;Zadanie
+3261;UW Lipce - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 11b;Zadanie
+3262;Projekt i realizacja budowy zbiornika wody surowej.;Zadanie
+3265;Przebudowa drogi dojazdowej do ZW Stara Dolina;Zadanie
+3268;Wymiana sieci wodociągowej DN 150 w ul. Wałowej na odcinku Rybaki Górne - Stara Stocznia ;Zadanie
+3269;Wymiana sieci wodociągowej DN 100 w ul. Winogronowa na całej długości ok.164 m;Zadanie
+3270;Wymiana odcinka sieci DN300 AC w ul. Pohulanka /Kolonia Studentów/ pod wiaduktem Armii Krajowej (ok 90m);Zadanie
+3271;Wykonanie izolacji komór oraz uszczelnienia przejść rurociągów na magistrali straszyńskiej;Zadanie
+3272;Wykonanie przyłącza elektroenergetycznego NN zasilajacego komorę pomiarową w Gdansku, ul. Jana z Kolna.;Zadanie
+3273;Wymiana ok.100 mb przewodu wodociągowego DN 400 AC przy ul. Chłopskiej między ul. Pomorską a ul. Rzepichy;Zadanie
+3274;Przebudowa przewodu wodociągowego DN 500 w yl. Marynarki Polskiej (ok.3400 mb) z modernizacją brakujących węzłów. ;Zadanie
+3275;Przebudowa przewodu wodociągowego DN 600 w Al. Grunwaldzkiej z modernizacją węzłów;Zadanie
+3276;Wymiana przewodu wodociągowego DN 100 w ul. Dragana o dł. ok.430 m;Zadanie
+3277;Wymiana przewodu wodociągowego DN 100 żel  (około 210 mb) w ul.Dziewanowskiego;Zadanie
+3278;Wymiana przewodu wodociągowego DN 150 (około 300 mb) w ul. Krzemowej;Zadanie
+3279;Wymiana przewodu wodociągowego DN 100 (około 560 mb) na ul. Sandomierskiej od ul. Równej do ul. Mostowej;Zadanie
+3280;Wymiana przewodu wodociągowego DN 100 (około 330 mb), oraz DN  150 (około 220 mb) w ul. Toruńskiej ;Zadanie
+3281;Przebudowy sieci wodociągowej w ul. Biskupiej i Menonitów;Zadanie
+3282;Wymiana przewodu wodociągowego DN 150 w ul. Biskupiej (ok.213 mb).;Zadanie
+3283;Wymiana przewodu wodociągowego DN 100 w ul. Królikarnia (ok.287 mb).;Zadanie
+3284;Wymiana przewodu wodociągowego DN 100 w ul. Czopowej na dł. ok.120 m ;Zadanie
+3285;Wymiana przewodu wodociągowego DN 80 w ul. Motławskiej (ok.80 mb).;Zadanie
+3286;Wymiana przewodu wodociągowego DN 100 w ul. Krowoderskiej (ok.300 mb).;Zadanie
+3287;Wymiana przewodu wodociągowego DN 200 w ul. Długa Grobla (ok.250 mb).;Zadanie
+3288;Wymiana przewodu wodociągowego DN 100 w ul. Św. Barbary (ok.315 mb).;Zadanie
+3289;Wymiana przewodu wodociągowego DN 100 w ul. Seredyńskiego (ok.265 mb).;Zadanie
+3290;Wymiana odcinka sieci wodociągowej DN 100 w ul. Nad Jarem;Zadanie
+3292;ul. Pohulanka - przebudowa sieci wodociągowej DN100 na DN150;Zadanie
+3293;ul. Łozy - wymiana sieci wodociagowej DN200 (przełożnie wodociągu z działek prywatnych w pas techniczny);Zadanie
+3294;Wymiana przewodu DN 200 w ul. Marynarki Polskiej AC/żeliwo na odcinku ok. 600 m.;Zadanie
+3300;Wymiana sieci wodociągowej  DN32 stal. w ul. Romera na dł. ok. l=138 m na spełniającą wymogi p.poż. ;Zadanie
+3301;Wymiana sieci wodociągowej DN 32/DN25  stal. w ul. Kolonia Wyżyny na dł. ok. 271 m na spełniającą wymogi p.poż.;Zadanie
+3302;Przebudowa sieci wodociągowej DN 80 żel. w ul. Kamienna Grobla 5,7 oraz przebudowa kanału sanitarnego DN300 w ul. Kamienna Grobla 2, 5, 7;Zadanie
+3303;Budowa przewodu łączącego sieci w strefie zb. Cyganka: Wykonanie połączenia przewodem DN 150 o L=400 mb sieci wodociągowej DN 150 w ul. Powstańców Warszawskich z siecią DN 100 w ul. Dębowej;Zadanie
+3304;Rozbudowa systemu monitoringu sieci wodociągowej - budowa komory pomiarowej na przewodzie DN 200 w ul. Jana z Kolna 30 w miejscu spięcia z realizowanym przewodem DN 300 w ramach zadania Nowa Wałowa;Zadanie
+3305;Montaż zaworu samopłuczącego na końcówce linii DN 100 w ul. Edisona 22 z odprowadzeniem wód popłucznych do kanalizacji sanitarnej;Zadanie
+3306;Opracowanie koncepcji budowy komór redukcyjnych w celu ograniczenia nadmiernego ciśnienia w sieci Orunia Górna/Chełm Południe, ~0,7 Mpa.;Zadanie
+3307;Wymiana węzła cieplnego - baza działu sieci wodociągowej Lenartowicza 10;Zadanie
+3308;Wymiana węzła cieplnego hydroforni ul. Czerwony Dwór 22;Zadanie
+3309;Rozbudowa sytemu telewizji dozorowej obiektu o dodatkowe kamery monitorujące teren zewnętrzny PW Ptasia;Zadanie
+3310;Modernizacja przewodu pomiędzy ul. Czereśniową a ul. Jabłoniową (ok. 260 mb). Obecnie odcinek wyłączony ze względu na duże zagłębienie ok. 6.5 m w terenie prywatnym (w miejscu awarii).;Zadanie
+3311;ZW Wysoki Dwór - Modernizacja pomiarów poziomu wody;Zadanie
+3312;ZW Cyganka - Modernizacja pomiarów poziomu wody;Zadanie
+3313;Przebudowa ogrodzenia  Zbiornika Wody "Migowo" na ogrodzenie panelowe;Zadanie
+3314;PW Św. Wojciech - Budowa utwardzonej drogi dojazdowej;Zadanie
+3316;PW Stary Sobieski - Kompleksowa wymiana stolarki okiennej.;Zadanie
+3317;Modernizacja izolacji przeciwwilgociowej i likwidacja ingresji do wnętrza ZW Migowo Nr 3;Zadanie
+3319;Wymiana rozdzielni SN-15kV i głównej NN-0,4kV w stacji transf.T-16089 Pompownia wody Sobieski;Zadanie
+3320;Wymiana rozdzielni głównej NN-0,4kV w stacji transf.T-16098 Polanki;Zadanie
+3321;OŚW - Wymiana wyeksploatowanych, nieefektywnych krat 10 mm na kraty hakowo-taśmowe 6 mm - szt. 2. Montaż drugiej prasopłuczki;Zadanie
+3322;OŚW - Zakup i montaż 5 szt. zastawek ze stali k.o. na kanałach dopływowych przepompowni pośredniej P2;Zadanie
+3323;Modernizacja wyeksploatowanej instalacji ochronnej przy stacjach T30,T50,T 25,T40  oraz wokół obiektów zasilanych z wyżej wymienionych stacji ( wymiana bednarki ułożonej w gruncie);Zadanie
+3324;Modernizacja wyeksploatowanego ukladu sterowania prasami odwadniania osadu  ob.14;Zadanie
+3325;Rekonstrukcja zniszczonych dylatacji i ścian OBF, wymiana wyeksploatowanych pomp ściekowych poziomych 250 Z2K - szt. 2;Zadanie
+3326;Likwidacja obiektów wyłączonych z eksploatacji: piaskownika, hydrolizera, komory tłuszczu przy osadnikach wstępnych, zagęszczaczy grawitacyjnych, budynku przy OBF nr 1 i 2, osadnika wstępnego 103/3;Zadanie
+3327;Wymiana wyeksploatowanych kamer do monitoringu i rozbudowa systemu na terenie OŚ Wschód;Zadanie
+3328;Wymiana wyeksploatowanych lamp oświetlenia ulicznego za OBF oraz wokół stacji wirówek ;Zadanie
+3330;Wymiana wyeksploatowanych sond azotanów-reaktory 3-01 do 3-05;Zadanie
+3331;Wymiana 1 szt. wyeksploatowanej wirówki NOXON DC40 na nowe urządzenie do odwadniania osadu;Zadanie
+3332;OŚW - Wymiana wyeksploatowanych pomp osadu surowego - szt. 3;Zadanie
+3333;Modernizacja układu tłoczenia na ZKF (Ob. nr 15/5  i 15/6 Budynki operacyjne ZKF);Zadanie
+3334;Ob. nr 16 - Wymiana wyeksploatowanych pomp osadu przefermentowanego - 3 szt.;Zadanie
+3335;Wymiana softstartów od zesp.nr 2, 3, 6 na falowniki w pompowni Bogatka oraz wymiana wyeksploatowanych falowników pomp 1, 4, 5;Zadanie
+3336;Kolektor Ołowianka II - budowa drogi dojazdowej do komory K2;Zadanie
+3338;PŚ Bysewo - modernizacja urządzeń i armatury w zbiorniku przepompowni. Wymiana pomp i zmiana lokalizacji mieszadła;Zadanie
+3339;Modernizacja PŚ Przewałowa - montaż zasuwy odcinającej DN600 na dopływie;Zadanie
+3340;PŚ Do Studzienki - wymiana pomp ;Zadanie
+3341;PŚ Myśliwska 2 - wymiana pomp;Zadanie
+3342;Budowa nowej PŚ Pagórkowa;Zadanie
+3343;Wykonanie zabezpieczenia rurociągu DN 1600 i obciążników;Zadanie
+3345;Przebudowa drogi dojazdowej do PŚ Rudniki 5 na drogę szutrową na dł. ok. 120 m (ul. Prosta);Zadanie
+3346;Wykonanie instalacji sytemu telewizji dozorowej obiektu PŚ Zaspa;Zadanie
+3347;PŚ Motława - Przebudowa wentylacji mechanicznej hali krat i hali silników ;Zadanie
+3348;PŚ Motława - Modernizacja krat mechanicznych - wymiana na nowe kraty z systemem automatycznego transportu skratek na górny poziom ;Zadanie
+3349;Modernizacja rozdzielni sterujacej pompami dla trzech układów pompowych PŚ Sobieszewo 3;Zadanie
+3350;Zespół przepompowni P.Ś. Rudniki 1, 3, 4, 10 - wymiana wyeksploatowanych rozdzielni sterowniczych z wykonaniem telemetrycznego przekazu danych;Zadanie
+3352;Wymiana węzła cieplnego PŚ Letnica;Zadanie
+3353;PŚ Olszynka1 - Wymiana rozdzielni sterowniczej. Wykonanie telemetrycznego przekazu danych;Zadanie
+3354;Wykonanie nowego układu sterowania i zasilania zespołów pompowych PŚ Otomińska I;Zadanie
+3355;Wykonanie nowego układu sterowania i zasilania zespołów pompowych PŚ Szczodra;Zadanie
+3356;Wykonanie zasilania elektroenergetycznego NN-0,4kV wraz z układem pomiarowo-rozliczeniowym do komór zasuw K1,K2,K3,K4 na kolektorze tłocznym Ołowianka-O/Wschód  ;Zadanie
+3357;Wykonanie nowego układu sterowania i zasilania zespołów pompowych wraz z przekazem danych PŚ Zaspa D;Zadanie
+3358;Budowa komór pomiarowch na sieci kanalizacji sanitarnej;Zadanie
+3359;Przebudowa kolektora sanitarnego DN1000 w ul. Trakt Św. Wojciecha, odprowadzającego ścieki Pruszcza Gdańskiego i ul. Borkowskiej;Zadanie
+3360;Wymiana przyłącza sanitarnego DN 150 Kołobrzeska nr 46  na dł. ok. 30 m;Zadanie
+3361;Modernizacja kanału sanitarnego DN 200 w ulicy Nagórskiego metodą wykopową L= 13 m    ;Zadanie
+3362;Przebudowa układu wodociągowego wzdłuż ul. Chłopskiej od Pomorskiej do Piastowskiej wraz z przebudową przyłącza sanitarnego ul. Chłopska 64 ;Zadanie
+3363;Wymiana przykanalika sanitarnego DN 150  w ul. Owsianej na dł. ok. 5 m;Zadanie
+3364;Wymiana odcinka kanału DN200 w ul. Reduta Żbik;Zadanie
+3365;Wymiana odcinka kanału DN 250 w ul. Służebnej (Podwale Przedmiejskie) na dł. ok. 170 m;Zadanie
+3366;Rekonstrukcja kanału DN250,dn 350,dn 400 w ul. Targ Rakowy;Zadanie
+3367;Rekonstrukcja kanału DN250 w ul. Przyokopowej na długości 220 m;Zadanie
+3368;Wymiana odcinka kanału DN150 w ul. Legionów na dł. ok. 15 m;Zadanie
+3370;Wymiana kanału DN200 w ul. Trubadurów na całej długości ok. 130 m;Zadanie
+3371;UW Sobieszewo - likwidacja ujęcia ;Zadanie
+3372;UW Krakowiec I (ul. Sówki) - Projekt i odwiert zastępczy lub likwidacja studni K4 i K1 ;Zadanie
+3373;Wymiana sieci wodociągowej DN100 w ul. Klonowicza od Mickiewicza do Żywieckiej;Zadanie
+3374;Wymiana przewodu wodociągowego DN 200 w ul. Siennej od ul. Bajki do Trasy Sucharskiego;Zadanie
+3375;Budowa sieci wodociągowej i kanalizacji sanitarnej dla potrzeb Pomorskiego Centrum Logistycznego;Zadanie
+3376;Przebudowa PŚ Zawiśle wraz z modernizacją układu kanalizacyjnego;Zadanie
+3377;Budowa składowiska popiołów;Zadanie
+3381;Budowa zindywidualizowanych zdrojów na terenie Głównego Miasta;Zadanie
+3382;ul. Raduńska - przebudowa sieci wodociągowej - Etap V;Zadanie
+3383;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych w 2016;Zadanie
+3384;Przebudowa sieci wodociągowej w ul. Kielnieńskiej oraz budowa przyłącza wodociągowego do PŚ Kielnieńska;Zadanie
+3385;Budowa sieci wodociągowej w ul. Planetarnej.;Zadanie
+3386;Roboty dodatkowe w zbiorniku PŚ Załogowa ;Zadanie
+3387;Likwidacja przewodów DN 150 i DN 500 na działkach prywatnych. Wymiana wodociągu w ul. Chełmińskiej;Zadanie
+3388;Koncepcja rozbudowy sieci wod-kan w rejonie ul. Spadochroniarzy, Nowej Słowackiego, Radarowej;Zadanie
+3389;Spinka sieci za hydrofornią Bajki z siecią dolnej strefy;Zadanie
+3390;Budowa odcinka sieci wodociągowej w ul. Kielnieńskiej i w rejonie ul. Gowidlińskiej;Zadanie
+3391;Budowa sieci kanalizacji sanitarnej w ul. Nowy Świat;Zadanie
+3392;Budowa kanalizacji sanitarnej w rejonie ul. Wienieckiej i Przegalińskiej;Zadanie
+3393;Budowa sieci wod-kan w rejonie ul. Grzybowej, Czaplewskiej i Żukowskiej;Zadanie
+3395;Poprawa systemu sterowania procesem pracy bioreaktora 3-05 - montaż 6-ściu mieszadeł;Zadanie
+3397;Lokalizacja zamgławiaczy na terenie Miasta Gdańska;Zadanie
+3398;Przebudowa kanału sanitarnego DN400 ul. Podwale Przedmiejskie na potrzeby odprowadzenia ścieków z Wyspy Spichrzów;Zadanie
+3399;Budowa kanalizacji sanitarnej w ul. Gostyńskiej;Zadanie
+3400;Budowa sieci wodociągowej w ul. Swojskiej;Zadanie
+3401;Budowa sieci wodociagowej od ul. Nowej Portowej do połączenia z magistralą w ul. Ku Ujściu;Zadanie
+3402;Przebudowa sieci wodociągowej w ul. Ludowej i Kmiecej i kanalizacji sanitarnej w ul. Kmiecej;Zadanie
+3403;Przebudowa sieci wodociągowej DN 100 żel w ul. Zimnej na dł. ok. 200 m;Zadanie
+3404;Wykonanie drogi dojazdowej do komory na kolektorze DN 1000 "Zaroślak" ;Zadanie
+3406;Biologiczna stacja odsiarczania biogazu;Zadanie
+3409;Budowa kanalizacji sanitarnej w ul. Egiertowskiej;Zadanie
+3411;Budowa sieci kanalizacji sanitarnej w ul. Synów Pułku;Zadanie
+3412;Likwidacja kanału sanitarnego 0,25/ 0,3 m Menonitów – Okopowa;Zadanie
+3413;Budowa odcinka kanału sanitarnego w ul. Zeusa o dł. ok. 110 m oraz sieci wodociągowej 160/200 w ul. Nowy Świat na dł. ok. 1300 m;Zadanie
+3414;;Zadanie
+3416;Budowa kanalizacji sanitarnej w ul. Karlikowskiej o dł. ok. 247 m;Zadanie
+3417;Kanalizacja sanitarna w rejonie ulic Oliwkowej, Turzycowej i Ostrzyckiej - I etap;Zadanie
+3420;Przebudowa sieci wodociągowej DN 100 w ul. Złotników;Zadanie
+3421;Likwidacja trzech studni głębinowych i zbiorników nieczynnego UW Złota Karczma;Zadanie
+3422;Budowa sieci wodociągowej i kanalizacji sanitarnej w ul. Sztutowskiej;Zadanie
+3423;Wymiana bramy w agregatorni SUW Lipce;Zadanie
+3424;UW Lipce - Rekonstrukcja lub odwiert zastępczy studni kredowej K2a;Zadanie
+3425;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych w 2017;Zadanie
+3428;SUW Straszyn - zakup i montaż 5 czujników stężenia chloru w pomieszczeniach chlorowni;Zadanie
+3429;SUW Straszyn - wymiana pomp Seepex na dwie pompy membranowe ZP 980 w instalacji wytwarzania i dozowania mleka wapiennego;Zadanie
+3430;SUW Straszyn - wymiana dwóch pomp obiegowych w instalacji wytwarzania i dozowania mleka wapiennego ;Zadanie
+3431;SUW Straszyn - wymiana analizatora chloru Endress - Hauser na rurociągu tłocznym wody do miasta w budynku pompowni II stopnia;Zadanie
+3432;SUW Straszyn - wymiana stacji uzdatniania wody kotłowej;Zadanie
+3433;SUW Straszyn - modernizacja rozdzielni prądu stałegoTPS i modernizacja rozdzielni oświetlenia TOA;Zadanie
+3434;SUW Straszyn - wymiana sprężarki ATLAS COPCO na hali filtrów i sprężarek;Zadanie
+3435;SUW Straszyn - wymiana pompy UM 500 na przepince między filtrami żwirowymi i filtrami węglowymi;Zadanie
+3436;SUW Straszyn - wymiana dwóch osuszaczy powietrza na hali filtrów i sprężarek;Zadanie
+3437;SUW Pręgowo - wymiana pompek dozujących podchloryn sodu wraz z armaturą, sterowaniem i podłączeniem;Zadanie
+3438;UW Lipce - modernizacja układu komunikacji 20 studni głębinowych i 6 polowych stacji trafo na ter. UW i SUW Lipce. Wymiana istn. światłowodowych modułów komunikacyjnych (światło/miedź) na inny typ;Zadanie
+3439;UW Czarny Dwór - projekt i likwidacja uszkodzonego piezometru P-19 b oraz projekt i wykonanie piezometru zastępczego;Zadanie
+3441;SUW Zakoniczyn - projekt i realizacja rekonstrukcji odwiertu zastępczego studni nr 3;Zadanie
+3442;Wymiana przewodu wodociągowego DN 100/150 ul. Cieszyńskiego nr 16-18 (L = 114 mb), 32 (L = 67 mb) oraz Cieszyńskiego 56 - Więckowskiego 2 (L = 210 mb) ;Zadanie
+3443;Wymiana przewodu wodociągowego DN200 L=382 mb w ul. Jabłońskiego;Zadanie
+3444;Rozbudowa systemu monitoringu sieci wodociągowej - opomiarowanie reduktora na przewodzie 160 PE w ul. Guderskiego/Czermińskiego na spięciu stref ZW Kiełpino - SUW Straszyn;Zadanie
+3445;Wymiana sieci wodociągowej DN 50/DN80AC w ul. Cyprysowej na długości ok. L = 310 m ;Zadanie
+3446;Wymiana ok. 73 mb odcinka sieci DN 150 między przyczółkami mostu w ul. Toruńskiej;Zadanie
+3447;Zbiornik Wody "Orunia" - Likwidacja ingresji wody do wnętrza zbiornika nr 1 i 2;Zadanie
+3448;Modernizacja przewodu DN 150 w ul. Trakt Św. Wojciecha pomiędzy ul. Zaroślak a ul. Dworcową (ok. 1920 mb);Zadanie
+3449;SPC Bitwy Oliwskiej - Modernizacja układu zasilania elektroenergetycznego oraz sterowania pracą hydroforni. Wykonanie nowego układu sterowania i zasilania zespołów pompowych;Zadanie
+3450;Magistrala Straszyn komora K11 - budowa drogi dojazdowej bezpośrednio z ul. Staropolskiej w Kowalach;Zadanie
+3451;Modernizacja instalacji napowietrzającej - OŚW - Piaskowniki napowietrzane;Zadanie
+3452;OŚW - Zabudowa w studni zasuwy ZZ2C na instalacji spustu cieczy ze zbiornika tłuszczu;Zadanie
+3453;OŚW - ob. 16 - Pompownia osadu przefermentowanego - Montaż 2 elektronapędów do zasuw na rurociągach osadu zagęszczonego;Zadanie
+3454;Wykonanie wentylacji mechanicznej i izolacji ścian pompowni OBF ;Zadanie
+3455;Modernizacja obudów rozdzielni zasilających pompownie recyrkulacji osadu, osadników wtórnych oraz SZR obiektu od 7-01 do 7-06;Zadanie
+3456;Wymiana wyeksploatowanych 8 szt. rozruszników dmuchaw powietrza na stacji T-16100 (ob. 25);Zadanie
+3457;OŚW - Wymiana przestarzałych technicznie oraz wyeksploatowanych zabezpieczeń nadprądowych, podnapięciowych i nadnapięciowych w rozdzielni 15 kV stacji;Zadanie
+3459;OŚW - ob. 5 - Pompownia osadu wstępnego - Wymiana napędów do 3 pomp osadu, zastosowanie falowników, modernizacja rozdzielni oraz systemu automatyki i sterowania;Zadanie
+3460;Modernizacja sterowników obiektowych dmuchaw szt. 8 oraz sterownika nadrzędnego na hali dmuchaw. Modernizacja wewnętrznej sieci komunikacyjnej;Zadanie
+3461;Wymiana zużytych powłok 2 zbiorników biogazu;Zadanie
+3462;Modernizacja przepompowni "Nowa Spadochroniarzy" (montaż żurawia, zasuwy odcinającej na dopływie, mieszadła);Zadanie
+3463;PŚ Żabia - doprowadzenie przyłącza wodociągowego na teren przepompowni do celów technologicznych;Zadanie
+3464;PŚ Letnica - likwidacja zbiornika przeciwuderzeniowego;Zadanie
+3465;PŚ Ołowianka - Budowa systemu telewizji dozorowej CCTV;Zadanie
+3466;PŚ Letnica - Wykonanie nowego układu sterowania i zasilania zespołów pompowych oraz pracą pompowni;Zadanie
+3467;Modernizacja kanału sanitarnego DN 250 w ul. Kowalskiej na dł. ok. 130 m;Zadanie
+3468;Modernizacja kanału sanitarnego DN 400 metodą bezwykopową w ul. Pułaskiego;Zadanie
+3469;Budowa kanalizacji sanitarnej w rejonie ul. Leźnieńskiej;Zadanie
+3470;Przebudowa kanału sanitarnego DN200 w ul. Św. Ducha na dł. ok. 100 m;Zadanie
+3471;Budowa kanalizacji sanitarnej w ul. Kampinoskiej (na wysokości Zb. Orunia);Zadanie
+3472;Budowa przykanalików sanitarnych w ul. Niepołomickiej;Zadanie
+3473;Kanalizacja sanitarna w rejonie ulic Ku Ujściu i Przetocznej ;Zadanie
+3474;Zasilanie jednej sekcji rozdzielnicy T-16100 O/Wschód z CHP;Zadanie
+3475;Budowa kanalizacji sanitarnej w ul. Letnickiej i Wyzwolenia;Zadanie
+3477;Budowa kanalizacji sanitarnej w ul. Chełmińskiej wraz z pś;Zadanie
+3478;Budowa kanalizacji sanitarnej w dzielnicy Osowa;Zadanie
+3480;Przebudowa sieci wodociągowej DN 150 AC w ul. Czerwony Dwór na dł. 427 m;Zadanie
+3481;Przebudowa sieci wodociągowej DN 100 w ul. Przy Torze na dł. ok. 750 m wraz z renowacja kolektora sanitarnego 0,6m bet.;Zadanie
+3482;Przebudowa sieci wodociągowej DN 100 w ul. Karłowicza na dł. ok. 500 m;Zadanie
+3483;Przebudowa sieci wodociągowej DN 100/150 w ul. Toruńskiej;Zadanie
+3484;Przebudowa sieci wodociągowej DN 100AC w ul. Tęczowej ;Zadanie
+3485;Przebudowa sieci wodociągowych DN 150/250/300 AC w ul. Stryjewskiego, Sówki i Kępnej;Zadanie
+3486;Przebudowa sieci wodociągowej DN 100AC w ul. Równej na dł. ok.879 m;Zadanie
+3487;Przebudowa sieci wodociągowej w ul. Lilli Wenedy DN 100AC o dł. ok. 360 m;Zadanie
+3488;Przebudowa sieci wodociągowej DN100 w ul. Zakopiańskiej na dł. ok. 710 m;Zadanie
+3489;Przebudowa sieci wodociągowej DN 100 w ul. Asesora na dł. ok. 330 m;Zadanie
+3490;Przebudowa sieci wodociągowej DN 100 w ul. Danusi na dł. ok. 190 m;Zadanie
+3491;Przebudowa sieci wodociągowej DN150 żel/AC w ul. Reymonta na dł. ok. 330 m;Zadanie
+3492;Przebudowa sieci wodociągowej DN150/200 AC w Al. Grunwaldzkiej;Zadanie
+3493;Wymiana sieci wodociagowej DN 100AC w ul. Turystycznej ;Zadanie
+3494;Przebudowa sieci wodociągowych i budowa sieci kanalizacji sanitarnej w ul. Podwale Przedmiejskie;Zadanie
+3495;Budowa kanału sanitarnego w ul. Śliwkowej na dł. ok. 120 m;Zadanie
+3496;Projekt i realizacja włączenia wód opadowych i roztopowych terenu UW Lipce  ;Zadanie
+3497;ZW Kazimierz Montaż zespołu pompowego;Zadanie
+3498;Pompownia wody na terenie UW Krakowiec ;Zadanie
+3499;Przebudowa sieci wodociągowej w ul. Turystycznej - budowa przewodu wodociągowego 250PE dla obozowiska harcerskiego;Zadanie
+3500;Rozbudowa przepompowni ścieków PS-9  na terenie Wyspy Sobieszewskiej (Jamboree);Zadanie
+3501;Budowa przyłącza oraz montaż pompowni i zbiorników w celu odprowadzenia ścieków z miasteczka harcerskiego (Jamboree);Zadanie
+3502;Budowa rurociągu przesyłowego przez teren Miasteczka ;Zadanie
+3503;Badania hydrogeologiczne zasobów UW Pręgowo;Zadanie
+3504;Przebudowa kanału sanitarnego DN 250 na dł. 70 m i DN 500 na dł. 130 m w ul. Szerokiej ;Zadanie
+3505;Przebudowa sieci wodociągowej DN 500, DN300/250, DN200 i DN150  w rejonie Bramy Nizinnej;Zadanie
+3506;Przebudowa kanalizacji sanitarnej w Osowej w ul. Parterowej i ul. Barniewickiej - zrzut ścieków z gm. Żukowo;Zadanie
+3507;Przebudowa PŚ przy ul. Chłopskiej 66;Zadanie
+3508;Budowa odcinka kanału sanitarnego DN 200 w ul. Trakt Św. Wojciecha 331b o dł. ok. 23 m;Zadanie
+3509;Podłączenie układu pomiarowego PM-1 do systemu monitoringu. Doprowadzenie stałego zasilania do urządzenia pomiarowego;Zadanie
+3510;Budowa odcinka sieci wodociągowej i kanalizacyjnej w drodze dojazdowej do Miasteczka;Zadanie
+3511;Modernizacja przepompowni ścieków przy ul. Bytowskiej (na terenie SUW Dolina Radości);Zadanie
+3512;Budowa sieci wodociągowej w ul. Sąsiedzkiej i Jesiennej na dł. ok. 250 m;Zadanie
+3513;Działania związane z likwidacją odorów przy WM-1;Zadanie
+3514;Budowa sieci wodociągowej w ul. Do Studzienki wraz z przyłączem wodociągowym Do Studzienki 65a;Zadanie
+3516;Przebudowa kanału sanitarnego DN 200 w rejonie schodów przy ul. Starodworskiej;Zadanie
+3517;Modernizacja systemu wizualizacyjnego w Centralnej Dyspozytorni OŚ Wschód;Zadanie
+3518;Przebudowa sieci wodociągowej i kanalizacji sanitarnej w ul. Chmielnej (odprowadzenie ścieków z Wyspy Spichrzów);Zadanie
+3519;Wymiana sieci wodociągowej DN100 żel w ul. Rybaki Dolne na dł. 184 m oraz w Rybaki Górne na dł. 306 m;Zadanie
+3520;Przebudowa sieci wodociągowej DN100/500 w ul. Siedlickiej od ul. Fiszera do Traugutta ;Zadanie
+3521;Przebudowa kanału sanitarnego w ul. Gwiazdowskiego;Zadanie
+3522;Przebudowa kanałów sanitarnych DN 250 w ul. Krosna oraz w ul. Rycerskiej wraz z likwidacją kolektora Przymorze żelbet 1,4x2,1 m na długości L=540 m;Zadanie
+3523;Budowa magistrali wodociągowej DN400 w ramach ul. Nowej Bulońskiej Północnej;Zadanie
+3524;Budowa sieci wodociągowej w ul. Galileusza o dł. ok. 470 m;Zadanie
+3525;Przebudowa sieci wodociągowej DN200 AC w ul. Białej na dł. ok. 640 m;Zadanie
+3526;Kolektor Osowa - Oliwa;Zadanie
+3528;Przebudowa kanału sanitarnego DN200 w ul. Dragana;Zadanie
+3529;Węzeł W18 Iławska/Chełmińska na magistrali DN 500;Zadanie
+3531;Przebudowa kanalizacji sanitarnej oraz obiektów kanalizacji sanitarnej w rejonie dzielnicy Osowa;Zadanie
+3532;Przebudowa sieci wodociągowej DN 600/550 w ul. Nowiny - Trakt Św. Wojciecha. Wykonanie połączenia magistrali DN 1000 z przewodem wod. DN 600 w rejonie ul. Rejtana;Zadanie
+3533;Przebudowa magistrali pręgowskiej na terenie gminy Kolbudy;Zadanie
+3534;Budowa węzłów wodociągowych DN600/100 Kołobrzeska/Słupska, Kołobrzeska/Szczecińska;Zadanie
+3535;Budowa kanalizacji sanitarnej na terenie Ogrodu Zoologicznego;Zadanie
+3536;Budowa sieci wodociągowej  w ul. Borkowskiej, Straszyńskiej i Czerskiej na dł. ok. 1640 m;Zadanie
+3537;Budowa kanalizacji sanitarnej w ul. Radiowej i w części ul. Internetowej na dł.ok. 666,8 m;Zadanie
+3538;Przebudowa sieci wodociągowej DN80 AC w ul. Sołeckiej na dł. ok. 140 m;Zadanie
+3539;Budowa kanalizacji sanitarnej w ul. Nowej Turystycznej;Zadanie
+3540;Budowa kanalizacji sanitarnej w ul. Źródlanej i Jasińskiego na dł. ok. 1126 m oraz sieci wodociągowej w ul. Źródlanej na dł. 262 m;Zadanie
+3541;Przebudowa sieci wodociągowej DN100 żel w ul. Bliskiej na dł. ok. 140 m;Zadanie
+3542;Przebudowa sieci wodociągowej DN100 żel w ul. Skarpowej na dł. ok. 987 m;Zadanie
+3543;Przebudowa sieci wodociągowej DN100 żel w ul. Konopnickiej na dł. ok. 245 m;Zadanie
+3544;Przebudowa sieci wodociągowej DN100 żel w ul. Grażyny na dł. ok. 200 m;Zadanie
+3545;Przebudowa kanału sanitarnego w ul. Augustyńskiego DN225 na dł. 59 m;Zadanie
+3546;Wymiana przykanalika sanitarnego DN150 w ul. Łużyckiej o dł. 10 m;Zadanie
+3547;Remont przyłącza  sanitarnego DN 150 przy ul. Elbląskiej 67 C metodą wykopową na dł. 15m;Zadanie
+3548;Przebudowa kanału sanitarnego DN 200 w ul. Hożej na dł. 248 m;Zadanie
+3549;Budowa sieci wodociągowej DN150 w ul. Stężyckiej ;Zadanie
+3550;UW Lipce - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 8a;Zadanie
+3551;PŚ Rzeczna - Modernizacja skarpy poprzez budowę betonowego muru oporowego ;Zadanie
+3552;Przebudowa sieci wodociągowej DN50 w ul. Ujeścisko na dł. ok.260 m;Zadanie
+3553;Budowa sieci i przyłączy wod-kan do toalet w pasie nadmorskim;Zadanie
+3554;Przebudowa sieci wodociagowej DN80 na DN150 w ul. Przyrodników na dł. ok. 540 m;Zadanie
+3555;Budowa sieci wodociągowej w ul. Keplera na dł. ok. 623 m i ul. Koziorożca na dł. ok. 544 m;Zadanie
+3556;Pompownia Wody "Stary Sobieski" - likwidacja obiektu;Zadanie
+3557;Przebudowa kanału sanitarnego DN200 w ul. J. Soplicy na dł. ok. 220 m;Zadanie
+3558;Przebudowa kanału sanitarnego w rejonie Beethovena 78-120 na dł. ok. 489 m;Zadanie
+3559;Przebudowa kanału sanitarnego DN200/150 w ul. Łostowickiej 25-27 na dł. ok. 108 m;Zadanie
+3560;Uporządkowanie sieci wod-kan w rejonie ul. Kolejowej;Zadanie
+3561;Remont budynku przy Dragana;Zadanie
+3562;Przebudowa sieci wodociągowej i kanalizacyjnej w ul.Biskupia, Na Stoku, Salwator, Zaroślak oraz Górka w ramach rewitalizacji obszaru Biskupia Górka / Stary Chełm w Gdańsku;Zadanie
+3564;Przebudowa sieci wod-kan w ramach rewitalizacji obszaru Dolne Miasto/Plac Wałowy/Stare Przedmieście;Zadanie
+3565;Budowa fontanny wraz z przebudową sieci wod-kan w ramach rewitalizacji „Placu Wałowego";Zadanie
+3566;Przebudowa sieci wodociągowych w ul. Wilków Morskich i Góreckiego w ramach rewitalizacji obszaru Nowy Port z Twierdzą Wisłoujście w Gdańsku;Zadanie
+3567;Przebudowa sieci wodociągowej DN400AC w ul. Chłopskiej od Piastowskiej do Obrońców Wybrzeża;Zadanie
+3568;Wymiana sieci wodociągowej w ul. Stępkarskiej;Zadanie
+3569;Wymiana skorodowanych przewodów wodociągowych w ul. Seredyńskiego DN200/100 żel, Kubacza, PCK, Wróbla, Świętopełka/Słowiańska, Broniewskiego, Bystrzycka, Manifestu Połanieckiego, Sambora, Rejtana;Zadanie
+3570;Wycięcie przewodu DN200 żel w korycie Potoku Strzyża (ul. Reymonta);Zadanie
+3572;Likwidacja dwóch studni na zlikwidowanym kanałe DN300 w rejonie kolektora "Zaroślak";Zadanie
+3573;Wykonanie przyłączy wod-kan do działki 24/5 przy ul. Otomińskiej;Zadanie
+3574;Przebudowa sieci wodociągowej DN200 żel w ul. Stryjewskiego od Tamka do Zimnej na dł. ok. 350 m;Zadanie
+3575;Przebudowa sieci wodociągowej DN100 żel w ul. Starowiślnej na dł. ok. 120 m;Zadanie
+3576;Przebudowa sieci wodociągowej DN300AC w ul. Kolonia Studentów/ul. Pohulanka na dł. ok. 450 m;Zadanie
+3577;Odprowadzenie odcieków z placu manewrowego przed budynkiem separacji piasku OSW Wschód ;Zadanie
+3578;Dom dla dzieci przy ul. Malczewskiego 100;Zadanie
+3579;;Zadanie
+3581;Przebudowa sieci wodociągowej w ul. Dobrej wraz z przyłączami na dł. ok. 230 m;Zadanie
+3582;Przyłącze wodociągowe do zraszania trawnika w Parku Świętopełka;Zadanie
+3584;Budowa odwodnienia liniowego deszczowego przed wjazdem do przepompowni "Czereśniowa" z podłączeniem do kanału deszczowego;Zadanie
+3585;Budowa PŚ Portowa;Zadanie
+3586;Przebudowa sieci wodociągowej DN100/80 w Sandomierskiej na dł 557m od Traktu Św. Wojciecha do ul. Równej;Zadanie
+3589;Przebudowa kanału sanitarnego DN250 kam. w ul. Niedziałkowskiego;Zadanie
+3591;Przebudowa sieci wodociągowej w ul. Gościnnej w ramach rewitalizacji obszaru Orunia;Zadanie
+3592;Przebudowa sieci wodociągowej DN100 w ul. Uphagena na dł. ok. 570 m;Zadanie
+3593;Przebudowa odcinka sieci wodociągowej DN250 w ul. Marii Ludwiki i ul. Madalińskiego na dł. ok 300 m;Zadanie
+3594;Przebudowa sieci wodociągowej DN 150 w ul. Trakt Św. Wojciecha/ul. Dworcowa przed realizacją prawoskrętu;Zadanie
+3595;Przeniesienie urządzeń do pomiaru jakościowego wody na ZW Kazimierz;Zadanie
+3596;Przebudowa sieci wodociągowej DN250 AC w ciągu al. Gen. J. Hallera na dł. ok. 1270 m;Zadanie
+3597;Przyłączenie poletka osadowego do kanalizacji sanitarnej na terenie OŚ Wschód;Zadanie
+3598;Przebudowa kanalizacji sanitarnej w rejonie PŚ Motława;Zadanie
+3599;Dostosowanie UW Czarny Dwór do planowanej Drogi Zielonej;Zadanie
+3600;;Zadanie
+3601;Przebudowa obiektu Pomorska 60;Zadanie
+3602;;Zadanie
+3603;;Zadanie
+3604;;Zadanie
+3608;;Zadanie
+3609;Zagospodarowanie terenu północnej części wyspy Ołowianka;Zadanie
+3610;Przebudowa sieci wodociągowej DN200/100 żel/AC w ul. Piastowskiej od Poznańskiej do Chłopskiej na dł. ok. 510 m wraz z budową odcinka kanału sanitarnego w ul. Chłopskiej;Zadanie
+3611;SUW Straszyn - Wymiana dwóch pomp obiegowych w instalacji wytwarzania i dozowania mleka wapiennego;Zadanie
+3612;SUW Zakoniczyn - Wymiana 1 pompki dozującej podchloryn sodu wraz z podłączeniem do istniejącej instalacji technologicznej i sterowania;Zadanie
+3613;SUW Zakoniczyn - Projekt, zakup i montaż analizatora chloru w wodzie wraz z podłączeniem do instalaji przekazu danych;Zadanie
+3615;ZW Orunia nr 3 - Odbudowa i modernizacja skarp zbiornika z jednoczesnym ich uzbrojeniem zapobiegającym ponownemu osunięciu;Zadanie
+3616;Wymiana istniejących niezidentyfikowanych przyłączy ołowianych i stalowych w 2018;Zadanie
+3617;Ob. 16 - pompownia osadu przefermentowanego - wymiana wyeksploatowanego mieszadła zatapialnego ;Zadanie
+3618;Ob. 17 - zbiornik  pośredni osadu przefermentowanego - wymiana wyeksploatowanych mieszadeł zatapialnych;Zadanie
+3619;Ob.7-01 do 7-06 - Modernizacja rozdzielni zasilajacej pompownię osadu recyrkulowanego oraz sterownice osadników wstępnych;Zadanie
+3620;Budowa przepompowni ścieków na terenach byłych ZNTK;Zadanie
+3621;Budowa odcinka sieci wodociągowej DN100 w rejonie ul. Kielnieńskiej o dł. ok. 40 m;Zadanie
+3622;Przebudowa sieci DN200 AC wzdłuż ul. Wosia Budzysza oraz budowa odcinków sieci wod-kan w celu podłączenia budynków pętli tramwajowych;Zadanie
+3624;Przebudowa sieci wodociągowej z UW Smęgorzyno ;Zadanie
+3625;Przywrócenie fontanny na Małym Błędniku;Zadanie
+3627;Budowa kanalizacji sanitarnej w ul. Feliksa Muzyka;Zadanie
+3629;Hermetyzacja komór krat na PM-1 i PŚ Ołowianka;Zadanie
+3630;Przebudowa sieci wodociągowej DN100 w ul. Sandomierskiej na dł. ok. 390 m od ul. Przy Torze do ul. Równej;Zadanie
+3631;Przebudowa sieci wodociagowej PVC160 w ul. Olszyńskiej na dł. ok. 170 m;Zadanie
+3632;;Zadanie
+3633;Wykonanie dostępu do kosza ssawnego małej niecki oraz przebudowa układu zasilania ekranu dotykowego na fontannie Heweliusza przy ul. Rajskiej w Gdańsku ;Zadanie
+3635;Przebudowa sieci wodociągowej DN150 AC przy budynku ul. Startowa nr 23 na dł. ok. 180 m;Zadanie
+3636;PS Załogowa- doposażenie;Zadanie
+3637;Wymiana układu napędowego na środkach trwałych będących w okresie trwałości, zrealizowanych w ramach zadania 103 GPWŚII;Zadanie
+3638;Przebudowa odcinka kolektora "Przymorze" od ul. Kolejowej do Jana z Kolna;Zadanie
+3639;Przebudowa sieci wodociągowej DN200 i kanału sanitarnego DN300 w ul. Reymonta pod Potokiem Strzyża ;Zadanie
+3640;Przebudowa sieci wodociągowej DN100 AC w ul. Wojska Polskiego na dł. 458 m;Zadanie
+3641;;Zadanie
+3642;Budowa sieci kanalizacji sanitarnej w ul. Choczewskiej, Będomińskiej, Barkoczyńskiej, Mirachowskiej, Zbąszyńskiej, Smęgorzyńskiej 24-26B o łącznej dł. ok.1919 m wraz z przepompownią ścieków;Zadanie
+3644;;Zadanie
+3645;Wykonanie ocieplenia instalacji punktu poboru wody na Targu Węglowym;Zadanie
+3647;Koncepcja budowy kanalizacji sanitarnej w rejonie ul. Marzeń;Zadanie
+3648;Przebudowa sieci wodociągowej DN200 AC/żel na DN300 w ul. Wały Piastowskie 6-24 na dł. ok. 160 m;Zadanie
+3649;Budowa połączenia sieci wodociągowej 225 PE przy ul. Potęgowskiej/Nowej Stężyckiej na dł. ok. 110 m wraz z budową komory reduktora;Zadanie
+3650;Przebudowa sieci wodociągowej DN100 żel w ul. Głuchej na dł. ok. 338 m;Zadanie
+3651;Budowa myjni samochodów ciężarowych na terenie ITPO;Zadanie
+3652;Budowa kanalizacji sanitarnej w dzielnicy Kiełpino rejon ulic Łagowskiej, Kortowskiej, Niegocińskiej;Zadanie
+3654;Likwidacja infrastruktury podziemnej w obrębie SUW Grodza Kamienna ;Zadanie
+3655;Budowa spinki wodociągowej od ZU Szadółki przez ul. Lubowidzką do Stężyckiej o dł. ok. ...;Zadanie
+3657;Budowa kanalizacji sanitarnej w ul. Łagowskiej na dł. ok. 490 m;Zadanie
+3658;Wymiana wodociągu DN100 w ul. Brzegi (ok. 840 m);Zadanie
+3659;Wymiana wodociągu DN 300 w ul. Cieszyńskiego o dł. ok. 690 mb;Zadanie
+3660;Wymiana sieci wodociągowej DN100 w ul. Stary Dwór (przejście pod mostem);Zadanie
+3661;Wymiana sieci wodociągowej DN100AC w ul. Żołnierska/Dąbrowskiego;Zadanie
+3662;Likwidacja sieci wodociągowej DN 40 w ul. Portowców 6, 9, 11, 11A, 15, 17;Zadanie
+3663;Modernizacja przyłącza sanitarnego DN 150 w ul.Polanki 28;Zadanie
+3664;PŚ Letnica - modernizacja rurociągu tłocznego DN 500/600 ;Zadanie
+3665;Komory pomiarowe ścieków na granicy gmin ościennych: Żukowa i m. Pruszcz Gdański - przyłączenie przepływomierzy gmin ościennych do systemu telemetrii;Zadanie
+3668;PŚ. Ołowianka - Wymiana silników pomp głównych - szt. 3;Zadanie
+3669;Modernizacja dwóch rurociągów tłocznych DN500 stalowych z PŚ. Bysewo i z gm. Żukowo;Zadanie
+3670;PŚ Nadmorski Dwór - Modernizacja kolektora tłocznego DN100 w studni armatury na terenie przepompowni wraz z wymianą pomp;Zadanie
+3671;PŚ Łabędzia - Modernizacja przepompowni - wymiana pomp;Zadanie
+3672;PŚ Sobieszewo 11 - Modernizacja przepompowni - wymiana pomp;Zadanie
+3673;PŚ. Kościuszki - Modernizacja przepompowni - wymiana pomp;Zadanie
+3674;PŚ Sobieszewo PS4 - Doposażenie w zasuwę odcinającą dopływ ścieków do przepompowni;Zadanie
+3675;PŚ Sobieszewo PS9 - Doposażenie w zasuwę odcinającą dopływ ścieków do przepompowni;Zadanie
+3676;Budowa fontanny w dzielnicy Stogi;Zadanie
+3677;Budowa zdrojów w kolejnych dzielnicach Gdańska - edycja 2019;Zadanie
+3678;Likwidacja stacji transformatorowej wnętrzowej 15kV na terenie PW Polanki;Zadanie
+3679;Budowa kanalizacji sanitarnej w ul. Strzelca;Zadanie
+3680;UW Dolina Radości - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 11b;Zadanie
+3682;UW Osowa - wymiana 6 szt. terenowych rozdzielnic zasilająco - sterowniczych na terenie ujęcia wody ;Zadanie
+3683;UW Lipce - Projekt i realizacja wymiany wodociągu od studni nr 7a do zbiorczego rurociągu wody surowej DN 150 ze stalowego na żeliwo sferoidalne;Zadanie
+3684;UW Osowa - Zakup pomp głębinowych szt. 2 (studnia nr 3 i 7);Zadanie
+3685;UW Straszyn - Zakup i montaż pompy zatapialnej do osadnika gnilnego;Zadanie
+3687;Modernizacja przykanalika sanitarnego DN150 do budynku mieszkalnego przy ul. Polanki 28, L=12,5 m;Zadanie
+3688;;Zadanie
+3689;Instalacja mikroaeracji na terenie OŚ Gdańsk Wschód;Zadanie
+3692;Budowa zdroju na terenie Placu Gen. S. Maczka;Zadanie
+3693;Przebudowa sieci wodociągowej DN100 i odcinka kanalizacji sanitarnej DN300 w ul. Szczyglej na dł. ok. 125 m;Zadanie
+3695;Przebudowa sieci wodociągowej w ul. Słupskiej, Arkońskiej, Szczecińskiej, Śląskiej, Kołobrzeskiej oraz Beniowskiego i Bora-Komorowskiego na łącznej dł. ok. 2400 m;Zadanie
+3698;Przebudowa odcinka kanału sanitarnego DN200 w ul. Wrzosy 26 na dł. 47 m;Zadanie
+3699;Przebudowa kanału sanitarnego DN250 w ul. Wygon na dł. ok. 81,5 m;Zadanie
+3700;Fontanna na Targu Maślanym wraz z zagospodarowaniem placu;Zadanie
+3701;Rozbiórka budynku przy ulicy Benzynowej 16;Zadanie
+3702;Przebudowa odcinka kanału sanitarnego w ul. Grunwaldzkiej nr  174, 176, 178 i 180 na dł. ok. 210 m;Zadanie
+3703;Budowa nowego odcinka sieci DN100 w ul. Powstańców Warszawskich na odcinku Szpital Kolejowy - Kartuska na dł. 110 m;Zadanie
+3709;Przebudowa odcinka sieci kanalizacji sanitarnej w ul. Leszczyńskich/Majewskich;Zadanie
+3710;Przebudowa sieci wodociągowej z działek prywatnych w pas drogowy, na wysokości posesji Leśna Góra 31, 31a, 41;Zadanie
+3711;Przebudowa sieci wodociągowej DN100 AC w ul. Jana Rybińskiego na dł. ok. 130 m;Zadanie
+3712;Przebudowa sieci wodociągowej 160/110PE w ul. Nadwodnej na dł. ok. 170 m;Zadanie
+3713;Przebudowa kanału sanitarnego DN150 przy budynku Grobla I nr 13 na dł. ok. 80 m;Zadanie
+3714;Przebudowa sieci wodociągowych i sieci kanalizacji sanitarnej w ul. Kielnieńskiej;Zadanie
+3716;Budowa nowych zdrojów w Gdańsku;Zadanie
+3717;Wiata magazynowa na odpady eksploatacyjne ITPO i Instalacji CHP ;Zadanie
+3718;Modyfikacja algorytmu sterowania PM-1 i PŚ Ołowianka , modernizacja PŚ Ołowianka wraz z pozostałymi zaleceniami po awarii;Zadanie
+3719;Budowa komory K2 na kolektorze WM-1;Zadanie
+3721;Usunięcie kolizji sieci wodociągowej z rowami i potokami;Zadanie
+3722;Usunięcie kolizji sieci kanalizacyjnej z rowami i potokami;Zadanie
+3723;PŚ PM-1 - Wykonanie dodatkowego włazu oraz otworu eksploatacyjnego w pokrywie. ;Zadanie
+3724;Magazynek Wodomierzowni Reymonta 57 - likwidacja obiektu;Zadanie
+3725;Przebudowa sieci wodociągowej i sieci kanalizacji sanitarnej w ul. Sierocej na dł. ok. 100 m;Zadanie
+3726;Przebudowa przepompowni ścieków "Letnicka";Zadanie
+3727;Przebudowa kanalizacji sanitarnej i technologicznej wraz z likwidacją lokalnej przepompowni ścieków na terenie ZW Kiełpino;Zadanie
+3728;;Zadanie
+3729;Przebudowa sieci wodociągowej DN100 żel przy ul. Wyzwolenia 19;Zadanie
+3730;Wymiana rurociągów osadu przefermentowanego z ZKF;Zadanie
+3731;Eliminacja uciążliwych zapachów oraz nadmiernego hałasu z terenu PŚ Ołowianka i PM-1;Zadanie
+3732;Rozbiórka budynku przy ulicy Benzynowej 16/2;Zadanie
+3734;Przebudowa sieci wodociągowej DN200/125 w ul. Kliniczna i ul. Kochanowskiego na dł. 330 m;Zadanie
+3735;;Zadanie
+3736;;Zadanie
+3737;Budowa sieci wod-kan wraz z przyłączami na terenie ul. Reduta Dzik;Zadanie
+3738;;Zadanie
+3739;Budowa odcinka kanalizacji sanitarnej wzdłuż ul. Spacerowej o dł. ok. 132 m ;Zadanie
+3740;Budowa kanalizacji sanitarnej w rejonie ul. Wielkopolskiej;Zadanie
+3742;Budowa przyłącza wodociągowego przy budynku Podhalańska 14a;Zadanie
+3743;Zapewnienie możliwości automatycznego zamknięcia zastawek Z8 i Z10 w przepompowni ścieków PM-1;Zadanie
+3744;Budowa odcinków kanalizacji sanitarnej w celu podłączenia żłobków przy ul. Elewów oraz  ul. Hynka o łacznej dł. ok. 290 m;Zadanie
+3745;Budowa sieci wod-kan. dla Młodego Miasta;Zadanie
+3746;Budowa sieci wodociagowej i kanalizacji sanitarnej dla Polskiego Haka;Zadanie
+3747;Przebudowa sieci DN200AC w ul. Komandorskiej na dł. ok. 300 m i Sopockiej na dł. ok. 106 m;Zadanie
+3748;Budowa sieci wodociągowej 225PE w drodze wewnętrznej łączącej wewnętrzny układ komunikacyjny PCI z ul. Nową Portową na dł. ok. 154 m;Zadanie
+3750;SUW Straszyn - Projekt i montaż przepustnicy działowej DN800 na rurociagu zbiorczym między mieszaczem 5 i 6 na koagulacji;Zadanie
+3751;Modernizacja kanału sanitarnego DN150 w ul. Chłopska 53/Piastowska;Zadanie
+3753;UW Świbno - modernizacja hydroforni;Zadanie
+3754;Wymiana agregatu prądotwórczego UW Czarny Dwór (2 szt.);Zadanie
+3755;SUW Czarny Dwór - Modernizacja układu 4 szt. pomp głównych;Zadanie
+3756;Modernizacja agregatu prądotwórczego UW Osowa;Zadanie
+3757;UW Czarny Dwór - Chlorownia - Wymiana 2 pompek dozujących, instalacji, podłączenie AKP i wizualizacji;Zadanie
+3758;Wykonanie dwóch węzłów hydrantowych w ul. Lazurowej na sieci DN250 (zasilanie i odpływ ze ZW Kazimierz);Zadanie
+3759;Likwidacja awaryjnego odcinka sieci wodociagowej DN100 w ul. Wodopój z przepięciem 2 przyłączy;Zadanie
+3760;Przełożenie odcinka sieci wodociągowej DN150 na terenie Kościoła przy ul. Kadmowej/Krzemowej;Zadanie
+3761;Montaż dwóch zamgławiaczy (przy placu zabaw w Parku Oruńskim oraz na Skwerze Bajki);Zadanie
+3762;SUW Straszyn - Pompownia I st. - Dobór, montaż i podłączenie sterowania napędów elektrycznych do 4 szt. przepustnic na rurociągach pomp P2 i P6;Zadanie
+3763;SUW Straszyn Modernizacja zespłu pompowego 740 kW 2750 m3/h na stanowisku nr 1 pompowni II st. ;Zadanie
+3764;OŚW - stacja T-2 - Montaż agregatu pradotwórczego dla stacji T-2 wraz z dodatkowym zbiornikiem paliwa;Zadanie
+3765;OŚW - Modernizacja pochodni biogazu;Zadanie
+3767;OŚW - Budowa instalacji do usuwania związków azotu z odcieków z wirówek;Zadanie
+3768;Modernizacja budynku pompowni wody Sobieski i zbiorników ujęcia wody Polanki;Zadanie
+3769;Przebudowa przyłącza kanalizacji sanitarnej do budynku Chałubińskiego 8 ;Zadanie
+3770;OŚW - Ob. 35 - Zakup i montaż zastawki na kanale zbiorczym ścieków oczyszczonych ;Zadanie
+3771;OŚW - ob. 16 - Pompownia osadu przefermentowanego - Wymian napędów do 3 pomp osadu, zastosowanie falowników,  modernizacja rozdzielni oraz systemu automatyki i sterowania;Zadanie
+3772;OŚW - ob. 207 Instalacja do płukania piasku z czyszczenia kanalizacji - zabudowa instalacji wiatą;Zadanie
+3773;OŚW - Budowa instalacji do usuwania-odzysku fosforu z osadów;Zadanie
+3774;OŚW - Modernizacja sterowniów obiektowych K112,K118K,25,K26,K27,K28,K108,K15/5,K15/6 .Modernizacja wewnętrznej sieci komunikacyjnej.Wymiana na sterowniki nowej generacji Siemens S71200 i S71500;Zadanie
+3775;Przebudowa sieci wod-kan w ul. Malczewskiego;Zadanie
+3776;Przebudowa sieci wodociagowej DN100/80AC w ul. Nadwiślańskiej i Ornitologów o długości ok. 2190 m;Zadanie
+3777;Przeniesienie hydrantu na wysokości posesji Radarowa 7A;Zadanie
+3778;Budowa kanalizacji sanitarnej w ul. Wagnera;Zadanie
+3779;Przebudowa magistrali pręgowskiej w ul. Starogardzkiej od ronda Starogardzka/Niepołomicka/Czerska do granicy miasta Gdańska ;Zadanie
+3780;Budowa kanalizacji sanitarnej w ul. Sąsiedzkiej i Budowlanych;Zadanie
+3781;Przebudowa budynku przy ul. Pomorskiej 60;Zadanie
+3782;Przebudowa sieci wodociągowej w ul. Budowlanych od ul. Bysewskiej do ul. Biologicznej na dł. ok. 208 m;Zadanie
+3783;Montaż 3 szt. falowników na mieszadłach recyrkulacyjnych w bioreaktorach;Zadanie
+3784;Przebudowa sieci kanalizacji sanitarnej w rejonie budynku Zabłockiego 10 na dł. ok. 88 m;Zadanie
+3785;UW Osowa - Projekt i realizacja rekonstrukcji lub odwiertu zastępczego studni nr 1;Zadanie
+3786;Modernicacja układu zasilania 4szt. pomp głównych;Zadanie
+3787; UW Dolina Radości - Likwidacja piezometru P-8 i wykonanie nowego odwiertu;Zadanie
+3788;UW Czarny Dwór - Wymiana 28 kompletów obudów studni na obudowy nowego typu;Zadanie
+3789;UW Czarny Dwór - Wymiana 2 szt. sprężarek Kaeser do napowietrzania wody surowej;Zadanie
+3790;Przełożenie odcinka sieci wodociągowej  DN 100/150 na terenie OŚ Wschód wraz z wymianą armatury oraz przejść pod kanałem KS na odcinku od PŚ Bogatka do planowanego włączenia OŚ Wschód do linii DN 300 (dł. ok. 1880 m);Zadanie
+3791;PŚ Motława - Wymiana 2 szt. wyeksploatowanych silników SADY 400kW zespołów pompowych nr 1 i 5;Zadanie
+3792;PŚ Letnica - wykonanie odwodnienia w hali pomp wraz z sygnalizacją zalania, wyniesienie połączeń kablowych pomp na poziom "0". Modernizacja rozdzielni nn 0,4kV;Zadanie
+3793;PŚ Załogowa - Wyniesienie skrzynek łączeniowych kabli zasilających pompy zatapialne ponad możliwy poziom zalania hali pomp ściekami;Zadanie
+3794;PŚ Brzeźno - Projekt i realizacja wymiany pomp ;Zadanie
+3795;PŚ Rudniki 8 - Projekt i realizacja wymiany pomp ;Zadanie
+3796;PS Przybrzeźna - Projekt i realizacja wymiany pomp ;Zadanie
+3797;PS Jezioro Jasień - Projekt i realizacja wymiany pomp ;Zadanie
+3798;PS Sobieszewo 22 - Projekt i realizacja wymiany pomp ;Zadanie
+3799;PS Sobieszewo 23 - Projekt i realizacja wymiany pomp;Zadanie
+3800;Komory zasuw na rurociągu tłocznym Ołowianka I i Motława na terenie Oczyszczalni Wschód - Montaż 2 szt. zasuw nożowych DN1200 z napędem elektrycznym na rurociągach awaryjnych - zrzutowych z kolektora Motława i kolektora Ołowianka I;Zadanie
+3801;Likwidacja nieczynnych rurociągów sanitarnych wykonanych z azbestocementu;Zadanie
+3802;Modernizacja kanału odpływowego ścieków oczyszczonych z oczyszczalni. Budowa nowego, rezerwowego  kolektora grawitacyjnego odprowadzającego ścieki oczyszczone z oczyszczalni Wschód do przepompowni Bogatka wraz z komorami zasuw/zastawek przełączeniowy;Zadanie
+3803;Modernizacja kanału sanitarnego DN 150 w ul. Chłopskiej 53, L=22 m;Zadanie
+3804;PS Zawiśle - Wykonanie instalacji do podłączenia przewoźnej przepompowni "BETSY". Wykonanie odwodnienia hali pomp. Wykonanie instalacji sygnalizacyjnej o zalaniu hali pomp;Zadanie
+3805;;Zadanie
+3806;;Zadanie
+3809;;Zadanie
+3821;;Zadanie
+3822;;Zadanie
+3823;;Zadanie
+3829;;Zadanie
+3830;;Zadanie
+3831;;Zadanie
+3832;;Zadanie
+3834;;Zadanie
+3835;;Zadanie
+3836;;Zadanie
+3837;;Zadanie
+3838;;Zadanie
+3839;;Zadanie
+3840;;Zadanie
+3841;;Zadanie
+3842;;Zadanie
+3843;;Zadanie
+3844;;Zadanie
+3845;;Zadanie
+3846;;Zadanie
+3847;;Zadanie
+3848;;Zadanie
+3849;;Zadanie
+3850;;Zadanie
+3851;;Zadanie
+3852;;Zadanie
+3853;;Zadanie
+3854;;Zadanie
+3855;;Zadanie
+3856;;Zadanie
+3857;;Zadanie
+3858;;Zadanie
+3859;;Zadanie
+3860;;Zadanie
+3861;;Zadanie
+3862;;Zadanie
+3863;;Zadanie
+3864;;Zadanie
+3865;;Zadanie
+3866;;Zadanie
+3867;;Zadanie
+3868;;Zadanie
+3869;;Zadanie
+3870;;Zadanie
+3871;;Zadanie
+3872;;Zadanie
+10000;Dragana;ObKom
+10001;Wdzydzka;ObKom
+10002;Malczewskiego 100;ObKom
+10003;Stary Sobieski;ObKom
+10004;Stara Orunia;ObKom
+10005;Pomorska;ObKom
+10006;Polanki;ObKom
+10007;Benzynowa;ObKom
+10008;Bitwy Oliwskiej;ObKom
+10009;Karpacka;ObKom
+10010;Jana Pawła II;ObKom
+10011;Bydgoska;ObKom
+10012;Sobieski;ObKom
+10013;Reymonta;ObKom
+10014;Malczewskiego 126;ObKom
+10015;Lenartowicza;ObKom
+10016;Ptasia;ObKom
+10017;UW Jasień;ObKom
+10018;UW Klukowo;ObKom
+10019;UW Kalina;ObKom
+10020;UW Pleniewo;ObKom
+10021;Rycerska;ObKom
+10022;Uczniowska;ObKom
+10023;Naftowa;ObKom
+10024;Otomińska;ObKom
+10025;Żuławska;ObKom
+10026;Krynicka;ObKom
+10027;Grodza B;ObKom
+10028;Ujeścisko;ObKom
+10029;Stocznia Wisła;ObKom
+10030;Szadółki;ObKom
+10031;Chełm;ObKom
+10032;Abrahama;ObKom
+10033;SPC Kiełpinek;ObKom
+10034;PŚ Centaura;ObKom
+10035;SPC Maćki;ObKom
+10036;Sukiennicza;ObKom

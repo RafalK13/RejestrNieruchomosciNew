@@ -22,7 +22,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    list = new ObservableCollection<ICelNabycia>(c.CelNabyciaView);
+                    list = new ObservableCollection<ICelNabycia>(c.CelNabyciaView.Where(r=>string.IsNullOrEmpty( r.Nazwa) == false));
                 }
                 catch (Exception e)
                 {

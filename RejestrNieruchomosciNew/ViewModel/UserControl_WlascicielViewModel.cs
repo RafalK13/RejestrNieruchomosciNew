@@ -121,8 +121,10 @@ namespace RejestrNieruchomosciNew.ViewModel
         private int dzialkaId;
 
         public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev,
-                                               IWladanieList _wladanieList)
+                                               IWladanieList _wladanieList
+                                              )
         {
+
             initButtons();
 
             sellVisibility = Visibility.Hidden;

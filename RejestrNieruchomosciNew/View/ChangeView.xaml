@@ -111,8 +111,6 @@
                 <view:UserControl_DanePodstawowe/>
             </TabItem>
 
-           
-
             <TabItem Header="Płatność z tytułu UW"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                     >
@@ -149,8 +147,5 @@
                 <view:UserControl_Budynek/>
             </TabItem>
         </TabControl>
-        
-      
-
     </Grid>
 </Window>

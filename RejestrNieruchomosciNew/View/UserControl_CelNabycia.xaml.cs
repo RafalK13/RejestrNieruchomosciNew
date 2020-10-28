@@ -16,6 +16,7 @@ namespace RejestrNieruchomosciNew.View
             DataContext = this;
 
             onCzysc = new RelayCommand( onCzyscClick);
+       
         }
 
         #region Command
@@ -51,6 +52,8 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onChangeIstOb(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+
+           
             //UserControl_CelNabycia u = d as UserControl_CelNabycia;
             //u.zadInwestName = string.Empty;
             //u.obiektKomName = string.Empty;
@@ -112,6 +115,7 @@ namespace RejestrNieruchomosciNew.View
 
         private static void onChangedSelectedId(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+
             UserControl_CelNabycia u = d as UserControl_CelNabycia;
             var v = u.celNabyciaList.list.FirstOrDefault(row => row.Id == u.selectedId);
             if (v != null)

@@ -17,13 +17,17 @@
     </Window.Resources>
 
     <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="379*"/>
+            <ColumnDefinition Width="117*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-           
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+
             <TextBox  Grid.Row="0" 
                   FontSize="20"
                   TextAlignment="Center"
@@ -32,12 +36,11 @@
                   BorderThickness="0"></TextBox>
         </StackPanel>
 
-        <localView:UserControl_PreviewView Grid.Row="1"/>
+        <localView:UserControl_PreviewView Grid.Row="1" Grid.ColumnSpan="2"/>
 
-        <StackPanel  Grid.Row="3" Orientation="Horizontal"
+        <StackPanel  Grid.Row="2" Orientation="Horizontal"
                      HorizontalAlignment="Center"
-                     IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    
+                     IsEnabled="{Binding btActivity, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.ColumnSpan="2" Margin="186,0"                   
                      >
 
             <!--<Button 

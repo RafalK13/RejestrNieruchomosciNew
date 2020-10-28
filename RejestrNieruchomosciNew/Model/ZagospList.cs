@@ -86,7 +86,6 @@ namespace RejestrNieruchomosciNew.Model
 
         public void saveZagosp(IDzialka dz)
         {
-            int xxx = 13;
             using (var c = new Context())
             {
                 var zagospAll = c.Zagosp.AsNoTracking().Where(r => r.DzialkaId == dz.DzialkaId).ToList();

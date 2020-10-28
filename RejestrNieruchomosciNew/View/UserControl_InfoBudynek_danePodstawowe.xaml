@@ -83,6 +83,7 @@
                 <view:UserControl_ElementInfo
                       
                         Style="{StaticResource userInfo}"
+                        hightRaf="50"
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
                         labelRaf="Adres">
