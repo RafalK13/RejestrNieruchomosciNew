@@ -286,6 +286,38 @@
     <Compile Include="Migrations\20201009080512_dom-19.designer.cs">
       <DependentUpon>20201009080512_dom-19.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20201130124432_dom21.cs" />
+    <Compile Include="Migrations\20201130124432_dom21.designer.cs">
+      <DependentUpon>20201130124432_dom21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201084845_dom23.cs" />
+    <Compile Include="Migrations\20201201084845_dom23.designer.cs">
+      <DependentUpon>20201201084845_dom23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201091923_dom24.cs" />
+    <Compile Include="Migrations\20201201091923_dom24.designer.cs">
+      <DependentUpon>20201201091923_dom24.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201092407_dom25.cs" />
+    <Compile Include="Migrations\20201201092407_dom25.designer.cs">
+      <DependentUpon>20201201092407_dom25.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201092825_dom26.cs" />
+    <Compile Include="Migrations\20201201092825_dom26.designer.cs">
+      <DependentUpon>20201201092825_dom26.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201093556_dom27.cs" />
+    <Compile Include="Migrations\20201201093556_dom27.designer.cs">
+      <DependentUpon>20201201093556_dom27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201093938_dom28.cs" />
+    <Compile Include="Migrations\20201201093938_dom28.designer.cs">
+      <DependentUpon>20201201093938_dom28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201201094119_dom29.cs" />
+    <Compile Include="Migrations\20201201094119_dom29.designer.cs">
+      <DependentUpon>20201201094119_dom29.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -376,6 +408,7 @@
     <Compile Include="Model\Interfaces\IZagosp.cs" />
     <Compile Include="Model\Interfaces\IZagospFunkcjaSlo.cs" />
     <Compile Include="Model\Interfaces\IZagospList.cs" />
+    <Compile Include="Model\Interfaces\IZagospStatus.cs" />
     <Compile Include="Model\Interfaces\IZagospStatusSlo.cs" />
     <Compile Include="Model\Interfaces\MyEventHandler.cs" />
     <Compile Include="Model\KonserwZabytkowSlo.cs" />
@@ -426,10 +459,10 @@
     <Compile Include="Model\WladanieList.cs" />
     <Compile Include="Model\Zagosp.cs" />
     <Compile Include="Model\ZagospFunkcjaSlo.cs" />
-    <Compile Include="Model\ZagospFunkcjaSloList.cs" />
     <Compile Include="Model\ZagospList.cs" />
+    <Compile Include="Model\ZagospStatus.cs" />
+    <Compile Include="Model\ZagospStatusList.cs" />
     <Compile Include="Model\ZagospStatusSlo.cs" />
-    <Compile Include="Model\ZagospStatusSloList.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />

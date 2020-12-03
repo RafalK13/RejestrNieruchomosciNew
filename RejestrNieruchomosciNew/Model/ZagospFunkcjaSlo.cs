@@ -7,7 +7,5 @@ namespace RejestrNieruchomosciNew.Model
     {
         public int ZagospFunkcjaSloId { get; set; }
         public string Nazwa { get; set; }
-
-        public ICollection<Zagosp> Zagosp { get; set; }
     }
 }

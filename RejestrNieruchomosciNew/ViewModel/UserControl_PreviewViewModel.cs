@@ -120,6 +120,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         public PerformMode performMode { get; set; }
 
         #region Konstructor
+        public UserControl_PreviewViewModel() { }
         public UserControl_PreviewViewModel(IDzialkaList _dzialkiList,
                                             PerformMode _performMode) : this( _dzialkiList)
         {

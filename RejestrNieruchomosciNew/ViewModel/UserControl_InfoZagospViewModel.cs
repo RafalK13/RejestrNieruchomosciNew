@@ -2,11 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -75,7 +70,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onClickSkan()
         {
-            MessageBox.Show("Rafałek");
+            MessageBox.Show("Rafałek-InfoZagospViewModel");
         }
     }
 }

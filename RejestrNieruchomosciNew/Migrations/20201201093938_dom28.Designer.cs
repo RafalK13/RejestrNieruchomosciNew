@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201201093938_dom28")]
+    partial class dom28
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -990,56 +992,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("ZagospStatusSloId");
 
                     b.ToTable("ZagospStatus");
-
-                    b.HasData(
-                        new
-                        {
-                            ZagospStatusId = 1,
-                            ZagospFunkcjaSloId = 1,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 2,
-                            ZagospFunkcjaSloId = 2,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 3,
-                            ZagospFunkcjaSloId = 3,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 4,
-                            ZagospFunkcjaSloId = 4,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 5,
-                            ZagospFunkcjaSloId = 5,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 6,
-                            ZagospFunkcjaSloId = 6,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 7,
-                            ZagospFunkcjaSloId = 7,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 8,
-                            ZagospFunkcjaSloId = 8,
-                            ZagospStatusSloId = 2
-                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatusSlo", b =>

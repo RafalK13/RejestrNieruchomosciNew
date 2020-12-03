@@ -23,8 +23,8 @@ namespace RejestrNieruchomosciNew.Model
             MessageBox.Show("Class1Raf");
 
             list = new ObservableCollection<Person>() {
-                new Person(){ id = 1, name="Rafałek"},
-                new Person(){ id = 1, name="Hanula"}
+                new Person(){ id = 1, name="Rafałek_Class1Raf"},
+                new Person(){ id = 1, name="Hanula_Class1Raf"}
             };
         }
     }

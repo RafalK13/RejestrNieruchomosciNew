@@ -1,27 +1,53 @@
 ﻿using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public class Zagosp : IZagosp
+    public class Zagosp : IZagosp, INotifyPropertyChanged
     {
         public int ZagospId { get; set; }
-        public int DzialkaId { get; set; }
+        public int? DzialkaId { get; set; }
 
-        public int? ZagospStatusSloId { get; set; }
-        public int? ZagospFunkcjaSloId { get; set; }
+        private int? _ZagospStatusId;
+        public int? ZagospStatusId { get=> _ZagospStatusId;
+            set {
+                _ZagospStatusId = value;
+                NotifyPropertyChanged();
+                if (zmiana != null)
+                    zmiana(null, EventArgs.Empty);
 
-        public int? istObiektySloId { get; set; }
-        public int? obiektyKomSloId { get; set; }
-        public string zagospKomercyjne { get; set; }
-        public int? zadInwestSloId { get; set; }
-        public string celeKom { get; set; }
+            } }
 
-        public int? przedstSloId { get; set; }
+        public int? istObiektySloId { get; set; }       //1
+        public int? zadInwestSloId { get; set; }        //2
+        public string PlanowaneZagosp { get; set; }     //3
+        public string DodatkoweZagosp { get; set; }     //4
+        public string DoWylaczenia { get; set; }        //5
+       
+        public string WylaczenieProt { get; set; }      //6
 
+        public string WylacznieProtokolPath             //7
+        {
+            get =>  System.Configuration.ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Zagospodarowanie\\Protokol\\";
+        }
+
+        public string WylacznieInfo { get; set; }       //8
+
+        public string WylacznieInfoPath                 //9
+        {
+            get => System.Configuration.ConfigurationManager.AppSettings["zalacznikPath"] + "\\Dzialka\\" + DzialkaId + "\\Zagospodarowanie\\Info\\";
+        }
         public Dzialka Dzialka { get; set; }
-        public ZagospFunkcjaSlo ZagospFunkcjaSlo { get; set; }
-        public ZagospStatusSlo ZagospStatusSlo { get; set; }
+        public ZagospStatus ZagospStatus{ get; set; }
+
+        #region Z przeda zmiany
+        //public int? obiektyKomSloId { get; set; }
+        //public string zagospKomercyjne { get; set; }
+        //public string celeKom { get; set; }
+        //public int? przedstSloId { get; set; }
+        #endregion
 
         public object Clone()
         {
@@ -37,14 +63,14 @@ namespace RejestrNieruchomosciNew.Model
         {
             ZagospId = z.ZagospId;
             DzialkaId = z.DzialkaId;
-            ZagospStatusSloId = z.ZagospStatusSloId;
-            ZagospFunkcjaSloId = z.ZagospFunkcjaSloId;
-            istObiektySloId = z.istObiektySloId;
-            obiektyKomSloId = z.obiektyKomSloId;
-            zadInwestSloId = z.zadInwestSloId;
-            przedstSloId = z.przedstSloId;
-            zagospKomercyjne = z.zagospKomercyjne;
-            celeKom = z.celeKom;
+            ZagospStatusId = z.ZagospStatusId;
+            istObiektySloId = z.istObiektySloId;    //1
+            zadInwestSloId = z.zadInwestSloId;      //2
+            PlanowaneZagosp = z.PlanowaneZagosp;    //3
+            DodatkoweZagosp = z.DodatkoweZagosp;    //4
+            DoWylaczenia = z.DodatkoweZagosp;       //5
+            WylaczenieProt = z.WylaczenieProt;      //6
+            WylacznieInfo = z.WylacznieInfo;        //8
         }
 
         public override bool Equals(object other)
@@ -56,15 +82,16 @@ namespace RejestrNieruchomosciNew.Model
 
             return ZagospId.Equals(obj.ZagospId) &&
                     DzialkaId.Equals(obj.DzialkaId) &&
-                    ZagospStatusSloId.Equals(obj.ZagospStatusSloId) &&
-                    ZagospFunkcjaSloId.Equals(obj.ZagospFunkcjaSloId) &&
+                    ZagospStatusId.Equals(obj.ZagospStatusId) &&
                     istObiektySloId.Equals(obj.istObiektySloId) &&
-                    obiektyKomSloId.Equals(obj.obiektyKomSloId) &&
                     zadInwestSloId.Equals(obj.zadInwestSloId) &&
-                    przedstSloId.Equals(obj.przedstSloId) &&
-                    string.Equals(zagospKomercyjne, zagospKomercyjne) &&
-                    string.Equals(celeKom, obj.celeKom);
 
+                    string.Equals(PlanowaneZagosp, obj.PlanowaneZagosp) &&
+                    string.Equals(DodatkoweZagosp, obj.DodatkoweZagosp) &&
+                    string.Equals(DoWylaczenia, obj.DoWylaczenia) &&
+                    string.Equals(WylacznieProtokolPath, obj.WylacznieProtokolPath) &&
+                    string.Equals(WylacznieInfo, obj.WylacznieInfo) &&
+                    string.Equals(WylacznieInfoPath, obj.WylacznieInfoPath);
         }
 
         public override int GetHashCode()
@@ -74,22 +101,20 @@ namespace RejestrNieruchomosciNew.Model
                 const int HashingBase = (int)2166136261;
                 const int HashingMultiplier = 16777619;
 
-                //const int HashingBase = (int)2166;
-                //const int HashingMultiplier = 1677;
-
                 int hash = HashingBase;
                 hash = (hash * HashingMultiplier) ^ (ZagospId.GetHashCode());
-                //hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, DzialkaId) ? 0 : DzialkaId.GetHashCode());
-                //hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, ZagospStatusSloId) ? 0 : ZagospStatusSloId.GetHashCode());
-                //hash = (hash * HashingMultiplier) ^ (Object.ReferenceEquals(null, stanTech) ? 0 : stanTech.GetHashCode());
-
-                //using (StreamWriter writer = new StreamWriter("c:\\test\\result.txt", true))
-                //{
-                //    writer.WriteLine( $"{hash} {Nazwa} {BudynekId} {opisKonstr} {stanTech}" );
-                //}
 
                 return hash;
             }
+        }
+        public event EventHandler zmiana;
+
+        [field: NonSerialized]
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -129,7 +129,7 @@ namespace RejestrNieruchomosciNew
         public ICollection<Wladanie> Wladanie { get; set; }
         public ICollection<InnePrawa> InnePrawa { get; set; }
         public PlatnoscUW PlatnoscUW { get; set; }
-        public ICollection<Zagosp> Zagosp { get; set; }
+        public Zagosp Zagosp { get; set; }
        
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201201093556_dom27")]
+    partial class dom27
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -929,48 +931,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("ZagospFunkcjaSloId");
 
                     b.ToTable("ZagospFunkcjaSlo");
-
-                    b.HasData(
-                        new
-                        {
-                            ZagospFunkcjaSloId = 1,
-                            Nazwa = "wodociągowa"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 2,
-                            Nazwa = "kanlizacyjna"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 3,
-                            Nazwa = "energetyczna"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 4,
-                            Nazwa = "mieszana"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 5,
-                            Nazwa = "społeczna"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 6,
-                            Nazwa = "użytkowa"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 7,
-                            Nazwa = "finansowa"
-                        },
-                        new
-                        {
-                            ZagospFunkcjaSloId = 8,
-                            Nazwa = "mieszana"
-                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatus", b =>
@@ -990,56 +950,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("ZagospStatusSloId");
 
                     b.ToTable("ZagospStatus");
-
-                    b.HasData(
-                        new
-                        {
-                            ZagospStatusId = 1,
-                            ZagospFunkcjaSloId = 1,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 2,
-                            ZagospFunkcjaSloId = 2,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 3,
-                            ZagospFunkcjaSloId = 3,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 4,
-                            ZagospFunkcjaSloId = 4,
-                            ZagospStatusSloId = 1
-                        },
-                        new
-                        {
-                            ZagospStatusId = 5,
-                            ZagospFunkcjaSloId = 5,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 6,
-                            ZagospFunkcjaSloId = 6,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 7,
-                            ZagospFunkcjaSloId = 7,
-                            ZagospStatusSloId = 2
-                        },
-                        new
-                        {
-                            ZagospStatusId = 8,
-                            ZagospFunkcjaSloId = 8,
-                            ZagospStatusSloId = 2
-                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatusSlo", b =>
@@ -1053,18 +963,6 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("ZagospStatusSloId");
 
                     b.ToTable("ZagospStatusSlo");
-
-                    b.HasData(
-                        new
-                        {
-                            ZagospStatusSloId = 1,
-                            Nazwa = "Wod/Kan/Energ"
-                        },
-                        new
-                        {
-                            ZagospStatusSloId = 2,
-                            Nazwa = "Komercyjna"
-                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>

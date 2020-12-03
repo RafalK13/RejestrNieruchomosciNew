@@ -34,7 +34,7 @@ namespace RejestrNieruchomosciNew.View
 
         // Using a DependencyProperty as the backing store for testRaf.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty testRafProperty =
-            DependencyProperty.Register("testRaf", typeof(string), typeof(UserControl_TestRaf), new PropertyMetadata("RAfałek"));
+            DependencyProperty.Register("testRaf", typeof(string), typeof(UserControl_TestRaf), new PropertyMetadata("RAfałek_UserControl_TestRaf"));
 
 
     }

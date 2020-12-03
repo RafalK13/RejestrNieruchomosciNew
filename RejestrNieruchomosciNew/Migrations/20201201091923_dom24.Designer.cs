@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RejestrNieruchomosciNew;
 
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201201091923_dom24")]
+    partial class dom24
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -979,7 +981,9 @@ namespace RejestrNieruchomosciNew.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ZagospFunkcjaSloId");
+                    b.Property<int>("ZagospFunctSloId");
+
+                    b.Property<int?>("ZagospFunkcjaSloId");
 
                     b.Property<int>("ZagospStatusSloId");
 
@@ -995,49 +999,49 @@ namespace RejestrNieruchomosciNew.Migrations
                         new
                         {
                             ZagospStatusId = 1,
-                            ZagospFunkcjaSloId = 1,
+                            ZagospFunctSloId = 1,
                             ZagospStatusSloId = 1
                         },
                         new
                         {
                             ZagospStatusId = 2,
-                            ZagospFunkcjaSloId = 2,
+                            ZagospFunctSloId = 2,
                             ZagospStatusSloId = 1
                         },
                         new
                         {
                             ZagospStatusId = 3,
-                            ZagospFunkcjaSloId = 3,
+                            ZagospFunctSloId = 3,
                             ZagospStatusSloId = 1
                         },
                         new
                         {
                             ZagospStatusId = 4,
-                            ZagospFunkcjaSloId = 4,
+                            ZagospFunctSloId = 4,
                             ZagospStatusSloId = 1
                         },
                         new
                         {
                             ZagospStatusId = 5,
-                            ZagospFunkcjaSloId = 5,
+                            ZagospFunctSloId = 5,
                             ZagospStatusSloId = 2
                         },
                         new
                         {
                             ZagospStatusId = 6,
-                            ZagospFunkcjaSloId = 6,
+                            ZagospFunctSloId = 6,
                             ZagospStatusSloId = 2
                         },
                         new
                         {
                             ZagospStatusId = 7,
-                            ZagospFunkcjaSloId = 7,
+                            ZagospFunctSloId = 7,
                             ZagospStatusSloId = 2
                         },
                         new
                         {
                             ZagospStatusId = 8,
-                            ZagospFunkcjaSloId = 8,
+                            ZagospFunctSloId = 8,
                             ZagospStatusSloId = 2
                         });
                 });
@@ -1332,8 +1336,7 @@ namespace RejestrNieruchomosciNew.Migrations
                 {
                     b.HasOne("RejestrNieruchomosciNew.Model.ZagospFunkcjaSlo", "ZagospFunkcjaSlo")
                         .WithMany()
-                        .HasForeignKey("ZagospFunkcjaSloId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ZagospFunkcjaSloId");
 
                     b.HasOne("RejestrNieruchomosciNew.Model.ZagospStatusSlo", "ZagospStatusSlo")
                         .WithMany()

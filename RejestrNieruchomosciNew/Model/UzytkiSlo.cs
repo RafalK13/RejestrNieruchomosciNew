@@ -8,6 +8,6 @@ namespace RejestrNieruchomosciNew.Model
         public int UzytkiSloId { get; set; }
         public string Nazwa { get; set; }
 
-        //public ICollection<Adres> Adres { get; set; }
+        
     }
 }

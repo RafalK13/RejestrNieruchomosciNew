@@ -99,7 +99,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onClickSkan()
         {
-            MessageBox.Show("Rafałek");
+            MessageBox.Show("Rafałek-InfoInnaPrawaViewModel");
         }
     }
 }
