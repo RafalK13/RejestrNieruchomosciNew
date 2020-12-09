@@ -10,8 +10,8 @@ using RejestrNieruchomosciNew;
 namespace RejestrNieruchomosciNew.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201201093556_dom27")]
-    partial class dom27
+    [Migration("20201207131109_dom1")]
+    partial class dom1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -667,6 +667,32 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            admin = true,
+                            name = "rkarczewski"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            admin = true,
+                            name = "emegger"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            admin = true,
+                            name = "emegger2"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            admin = true,
+                            name = "mkomorowski"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>
@@ -903,7 +929,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("WylacznieInfo");
 
-                    b.Property<int>("ZagospStatusId");
+                    b.Property<int?>("ZagospStatusId");
 
                     b.Property<int?>("istObiektySloId");
 
@@ -931,6 +957,48 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("ZagospFunkcjaSloId");
 
                     b.ToTable("ZagospFunkcjaSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            ZagospFunkcjaSloId = 1,
+                            Nazwa = "wodociągowa"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 2,
+                            Nazwa = "kanlizacyjna"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 3,
+                            Nazwa = "energetyczna"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 4,
+                            Nazwa = "mieszana"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 5,
+                            Nazwa = "społeczna"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 6,
+                            Nazwa = "użytkowa"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 7,
+                            Nazwa = "finansowa"
+                        },
+                        new
+                        {
+                            ZagospFunkcjaSloId = 8,
+                            Nazwa = "mieszana"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatus", b =>
@@ -950,6 +1018,56 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasIndex("ZagospStatusSloId");
 
                     b.ToTable("ZagospStatus");
+
+                    b.HasData(
+                        new
+                        {
+                            ZagospStatusId = 1,
+                            ZagospFunkcjaSloId = 1,
+                            ZagospStatusSloId = 1
+                        },
+                        new
+                        {
+                            ZagospStatusId = 2,
+                            ZagospFunkcjaSloId = 2,
+                            ZagospStatusSloId = 1
+                        },
+                        new
+                        {
+                            ZagospStatusId = 3,
+                            ZagospFunkcjaSloId = 3,
+                            ZagospStatusSloId = 1
+                        },
+                        new
+                        {
+                            ZagospStatusId = 4,
+                            ZagospFunkcjaSloId = 4,
+                            ZagospStatusSloId = 1
+                        },
+                        new
+                        {
+                            ZagospStatusId = 5,
+                            ZagospFunkcjaSloId = 5,
+                            ZagospStatusSloId = 2
+                        },
+                        new
+                        {
+                            ZagospStatusId = 6,
+                            ZagospFunkcjaSloId = 6,
+                            ZagospStatusSloId = 2
+                        },
+                        new
+                        {
+                            ZagospStatusId = 7,
+                            ZagospFunkcjaSloId = 7,
+                            ZagospStatusSloId = 2
+                        },
+                        new
+                        {
+                            ZagospStatusId = 8,
+                            ZagospFunkcjaSloId = 8,
+                            ZagospStatusSloId = 2
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatusSlo", b =>
@@ -963,6 +1081,18 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("ZagospStatusSloId");
 
                     b.ToTable("ZagospStatusSlo");
+
+                    b.HasData(
+                        new
+                        {
+                            ZagospStatusSloId = 1,
+                            Nazwa = "Wod/Kan/Energ"
+                        },
+                        new
+                        {
+                            ZagospStatusSloId = 2,
+                            Nazwa = "Komercyjna"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.NazwaCzynnosciSlo", b =>
@@ -1222,8 +1352,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Model.ZagospStatus", "ZagospStatus")
                         .WithMany("Zagosp")
-                        .HasForeignKey("ZagospStatusId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ZagospStatusId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatus", b =>

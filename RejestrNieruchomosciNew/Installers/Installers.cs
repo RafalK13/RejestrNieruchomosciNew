@@ -126,11 +126,12 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<IKonserwZabytkowSlo>().ImplementedBy<KonserwZabytkowSlo>());
             container.Register(Component.For<IKonserwZabytkowSloList>().ImplementedBy<KonserwZabytkowSloList>());
 
-            container.Register(Component.For<IZagosp>().ImplementedBy<Zagosp>().LifeStyle.Transient);
+            //container.Register(Component.For<IZagosp>().ImplementedBy<Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<IZagospList>().ImplementedBy<ZagospList>());
             container.Register(Component.For<IZagospStatus>().ImplementedBy<ZagospStatus>().LifeStyle.Transient);
-            container.Register(Component.For<ZagospStatusList>());
-           
+            //container.Register(Component.For<IZagospStatusSlo>().ImplementedBy<ZagospStatusSlo>().LifeStyle.Transient);
+            container.Register(Component.For<ZagospStatusList>().LifeStyle.Transient);
+            container.Register(Component.For<ZagospStatusListSlo>());
 
             container.Register(Component.For<UserControl_Zagosp>().LifeStyle.Transient);
             container.Register(Component.For<UserControl_ZagospViewModel>().LifeStyle.Transient);

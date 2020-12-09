@@ -1,8 +1,8 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using Microsoft.EntityFrameworkCore;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -11,10 +11,13 @@ namespace RejestrNieruchomosciNew.Model
 {
     public class ZagospStatusList : ViewModelBase
     {
-        public ObservableCollection<ZagospStatus> list { get; set; }
+        public event EventHandler zmianaZagospStatus;
 
-        private ZagospStatus _statusSel;
-        public ZagospStatus statusSel
+        public ZagospStatusListSlo ZagospStatusListSlo { get; set; }
+
+        private IZagospStatus _statusSel;
+
+        public IZagospStatus statusSel
         {
             get { return _statusSel; }
             set
@@ -25,36 +28,47 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        public ObservableCollection<ZagospStatus> statusList { get => new ObservableCollection<ZagospStatus>(list.GroupBy(r => r.ZagospStatusSloId).Select(t => t.First()).ToList()); }
+        public void ustalId( int? id)
+        {
+            if (id.HasValue)
+            {
+                int iStatusSlo = ZagospStatusListSlo.list.FirstOrDefault(r => r.ZagospStatusId == id).ZagospStatusSloId;
+                statusSel = ZagospStatusListSlo.list.FirstOrDefault(r => r.ZagospStatusSloId == iStatusSlo);
+                funkcjaSel = ZagospStatusListSlo.list.FirstOrDefault(r => r.ZagospStatusId == id);
+            }
+        }
+
+        private ZagospStatus _funkcjaSel;
+
+        public ZagospStatus funkcjaSel
+        {
+            get { return _funkcjaSel; }
+            set
+            {
+                _funkcjaSel = value;
+
+                if (zmianaZagospStatus != null)
+                    zmianaZagospStatus.Invoke( null, EventArgs.Empty);
+
+                RaisePropertyChanged();
+            }
+        }
+
+        public ObservableCollection<ZagospStatus> statusList
+        {
+            get
+            {
+                return new ObservableCollection<ZagospStatus>(ZagospStatusListSlo.list.GroupBy(r => r.ZagospStatusSloId).Select(t => t.First()).ToList()); }
+            }
 
         public ObservableCollection<ZagospStatus> functionList
         {
             get
             {
-                if (statusSel.ZagospStatusId != 0)
-                {
-                    return new ObservableCollection<ZagospStatus>(list.Where(r => r.ZagospStatusSloId == statusSel.ZagospStatusSloId));
-                }
-                else return null;
-            }
-        }
-
-        public ZagospStatusList()
-        {
-            using (var c = new Context())
-            {
-                try
-                {
-                    list = new ObservableCollection<ZagospStatus>(c.ZagospStatus.Include(r => r.ZagospStatusSlo)
-                                                                                .Include(r => r.ZagospFunkcjaSlo).ToList());
-
-                    //var statusList1  = list.GroupBy(r => r.ZagospStatusSloId).Select(t => t.First()).ToList();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show($"ZagospStatusList\r\n{e.Message}");
-                    Environment.Exit(0);
-                }
+                if (statusSel != null)
+                    return new ObservableCollection<ZagospStatus>(ZagospStatusListSlo.list.Where(r => r.ZagospStatusSloId == statusSel.ZagospStatusSloId));
+                else
+                    return null;
             }
         }
     }

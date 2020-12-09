@@ -1,4 +1,5 @@
 ﻿using RejestrNieruchomosciNew.Model;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -27,17 +28,22 @@ namespace RejestrNieruchomosciNew.View
         
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            string p = copyFiles.getFilePath();
-         
-            Directory.CreateDirectory( pathRaf);
+            try
+            {
+                string p = copyFiles.getFilePath();
+                Directory.CreateDirectory(pathRaf);
 
-            if( p != null)
-                File.Copy(p, pathRaf+$"\\{copyFiles.fileName}", true);
+                if (p != null)
+                    File.Copy(p, pathRaf + $"\\{copyFiles.fileName}", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Source}\r\n{ex.Message}\r\n{ex.StackTrace}");
+            }
         }
 
         private void Button_Prev(object sender, RoutedEventArgs e)
         {
-
             if (Directory.Exists(pathRaf) )
             {
                 if (Directory.GetFiles(pathRaf).Length > 0)

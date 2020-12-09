@@ -35,7 +35,7 @@ namespace RejestrNieruchomosciNew.Model
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"PodmiotList\r\n{e.Message}");
+                    MessageBox.Show($"PodmiotList\r\n{e.Message}\r\n{e.Source}\r\n{e.StackTrace}");
                     Environment.Exit(0);
                 }
 

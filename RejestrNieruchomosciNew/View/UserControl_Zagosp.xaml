@@ -33,6 +33,12 @@
         <Style x:Key="label2" TargetType="Label">
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
         </Style>
+
+        <Style x:Key="tekstWylaczenia" TargetType="TextBox">
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Margin" Value="10,5,20,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
         <Style x:Key="tekst" TargetType="TextBox">
             <Setter Property="DockPanel.Dock" Value="Top"/>
             <Setter Property="Height" Value="25"></Setter>
@@ -100,9 +106,9 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*" MinWidth="9" />
-                <ColumnDefinition Width="2*" MinWidth="9" />
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="500" MinWidth="9" />
+                <ColumnDefinition Width="300" MinWidth="9" />
                 <ColumnDefinition Width="3*" MinWidth="9" />
 
             </Grid.ColumnDefinitions>
@@ -138,12 +144,15 @@
                 <Grid     Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="36"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="36"/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="35"/>
                         <RowDefinition Height="35"/>
-                        <RowDefinition Height="80"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
@@ -155,10 +164,10 @@
                     <ComboBox   Grid.Row="1"
                                 Style="{StaticResource comboBox2}"
                                 ItemsSource="{Binding userControl_Zagosp.zagospStatusList.statusList}"
-                                SelectedItem="{ Binding userControl_Zagosp.zagospStatusList.statusSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                DisplayMemberPath="ZagospStatusSlo.Nazwa"
+                                SelectedItem="{Binding userControl_Zagosp.zagospStatusList.statusSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                DisplayMemberPath="ZagospStatusSlo.Nazwa" Height="26" VerticalAlignment="Top"
                                 />
-
+                    <!--SelectedItem="{ Binding userControl_Zagosp.zagospStatusList.statusSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                     <!--SelectedValue="{Binding  userControl_Zagosp.zagospStatusList.statusSel.ZagospStatusId}"
                                 SelectedValuePath="ZagospStatusId"-->
 
@@ -171,22 +180,20 @@
                     <ComboBox   Grid.Row="3"
                                 Style="{StaticResource comboBox2}"
                                 ItemsSource="{Binding userControl_Zagosp.zagospStatusList.functionList}"
-                                
+                                SelectedItem="{Binding userControl_Zagosp.zagospStatusList.funkcjaSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 DisplayMemberPath="ZagospFunkcjaSlo.Nazwa"
                                 />
+
+                    <!--SelectedValue="{Binding userControl_Zagosp.zagospLok.ZagospStatusId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedValuePath="ZagospStatusId"-->
+                    <!--ItemsSource="{Binding userControl_Zagosp.zagospStatusList.functionList}"-->
+                    <!--DisplayMemberPath="ZagospFunkcjaSlo.Nazwa"-->
                     <!--SelectedValue="{Binding userControl_Zagosp.zagospSel.ZagospStatusId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                 SelectedValuePath="ZagospStatusId"-->
                     <!--SelectedItem="{Binding userControl_Zagosp.zagospStatusSel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 
-                    <Button     Grid.Row="5"
-                               
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Content="Dodaj"
-                                Height="30"
-                                Width="100"
-                                Command="{Binding userControl_Zagosp.statusAdd}"
-                        />
+                    <!--SelectedValue="{Binding  userControl_Zagosp.zagospStatusList.statusSel.ZagospStatusId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                SelectedValuePath="ZagospStatusId"-->
 
                     <!--<DataGrid   Grid.Row="3"
                                 VerticalAlignment="Top"
@@ -245,20 +252,35 @@
             </ScrollViewer>
 
             <ScrollViewer Grid.Column="2" 
-                          Style="{StaticResource scrollViewer}"
+                          Style="{StaticResource scrollViewer}" Height="660" VerticalAlignment="Bottom"
                           >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
+
                     <Label      Grid.Row="0"
+                                Content=""
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1" Width="263"/>
+                    <Label      Grid.Row="1"
+                                Content="Ochrona zabytków"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>
+
+                    <!--<Label      Grid.Row="0"
                                 Content="Konserwator zabytków"
                                 FontWeight="Bold"                      
                                 FontSize="19"
@@ -281,7 +303,7 @@
                                 SelectedValue="{Binding  userControl_Zagosp.userPrev.dzialkaSel.KonserwPrzyrodySloId}"
                                 SelectedValuePath="KonserwPrzyrodySloId"
                                 DisplayMemberPath="Nazwa"
-                                Style="{StaticResource comboBox}"/>
+                                Style="{StaticResource comboBox}"/>-->
 
 
                 </Grid>
@@ -295,28 +317,23 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28" Tag="Planowane zagospodarowanie"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="28"/>
                         <RowDefinition Height="80"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="112"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <Label      Grid.Row="0"
-                                Content="Aktualne zagospodatowanie"
+                                Content="Zagospodarowanie"
                                 FontWeight="Bold"                      
                                 FontSize="19"
                                 Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1" Width="263"/>
@@ -337,61 +354,15 @@
                                         HorizontalAlignment="Stretch"
                                         colNameRaf="Nazwa"
                                         colNameIdRaf="Id"
-                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.istObiektySloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospLok.istObiektySloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                         clearTekstOnExit="False" 
                                         />
                     <Label      Grid.Row="3"
-                                Content="Komercyjne obiekty"
+                                Content="Zadania inwestycyjne"
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0" Height="32" Width="158"/>
 
                     <conRaf:DataGridRafALL  
-                                        Grid.Row="4"  Grid.RowSpan="20"
-                                        Margin="10,0,10,0"
-                                        x:Name="conRaf4"
-                                        VerticalAlignment="Top"   Panel.ZIndex="12"
-                                        itemSourceRafALL="{Binding Path=DataContext.userControl_Zagosp.celNabList.obKomList, ElementName=ZagospWin}"
-                                        fontSizeRafALL="14"
-                                        heightRafALL="25"
-                                        HorizontalAlignment="Stretch"
-                                        colNameRaf="Nazwa"
-                                        colNameIdRaf="Id"
-                                        selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.obiektyKomSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        clearTekstOnExit="False"
-                                        />
-
-                    <Label      Grid.Row="5"
-                                Content="Funkcja"
-                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                    <ComboBox
-                                Grid.Row="6"
-                                ItemsSource="{Binding userControl_Zagosp.zagFunList.list}"
-                                SelectedValue="{Binding  userControl_Zagosp.zagospSel.ZagospFunkcjaSloId}"
-                                SelectedValuePath="ZagospFunkcjaSloId"
-                                DisplayMemberPath="Nazwa"
-                                Margin="10,0,100,0"/>
-                    <Label      Grid.Row="7"
-                                Content="Opis komercyjnego zapospodarowania"
-                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"
-                                Margin="10,0,0,0"/>
-                    <TextBox
-                                Grid.Row="8"
-                                Margin="10,0,10,0"
-                                Text="{Binding userControl_Zagosp.zagospSel.zagospKomercyjne}"
-                                VerticalScrollBarVisibility="Auto"
-                                Style="{StaticResource tekskBoxOpis}"/>
-                    <Label      Grid.Row="9"
-                                Content="Projektowane zagospodatowanie"
-                                FontWeight="Bold"                      
-                                FontSize="19"
-                                Style="{StaticResource label}" HorizontalAlignment="Left" 
-                                Margin="10,9,0,1"/>
-
-                    <Label      Grid.Row="10"
-                                Content="Zadania inwestycyjne"
-                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0" Height="33" Width="169"/>
-
-                    <conRaf:DataGridRafALL  
-                                Grid.Row="11"  Grid.RowSpan="20"
+                                Grid.Row="4"  Grid.RowSpan="20"
                                 Margin="10,0,10,0"
                                 x:Name="conRaf5"
                                 VerticalAlignment="Top"   Panel.ZIndex="11"
@@ -401,28 +372,94 @@
                                 HorizontalAlignment="Stretch"
                                 colNameRaf="Nazwa"
                                 colNameIdRaf="Id"
-                                selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospSel.zadInwestSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                selectedIdRafALL="{Binding Path=DataContext.userControl_Zagosp.zagospLok.zadInwestSloId, ElementName=ZagospWin,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                 clearTekstOnExit="False"/>
 
-                    <Label      Grid.Row="12"
-                                Content="Cele komercyjne"
-                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
-                    <TextBox    Grid.Row="13"
+                    <Label      Grid.Row="5"
+                                Content="Dodatkowe zagospodarowanie"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    <TextBox
+                                Grid.Row="6"
                                 Margin="10,0,10,0"
-                                Text="{Binding userControl_Zagosp.zagospSel.celeKom}"
+                                Text="{Binding userControl_Zagosp.zagospLok.DodatkoweZagosp}"
+                                VerticalScrollBarVisibility="Auto"
+                                Style="{StaticResource tekskBoxOpis}"/>
+                    <Label      Grid.Row="7"
+                                Content="Do wyłączenia"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"
+                                Margin="10,0,0,0"/>
+                    <TextBox
+                                Grid.Row="8"
+                                Margin="10,0,10,0"
+                                Text="{Binding userControl_Zagosp.zagospLok.DoWylaczenia}"
+                                VerticalScrollBarVisibility="Auto"
+                                Style="{StaticResource tekskBoxOpis}"/>
+                    <Label      Grid.Row="9"
+                                Content="Planowane zagospodatowanie"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
+
+                    <TextBox
+                                Grid.Row="10"
+                                Margin="10,0,10,0"
+                                Text="{Binding userControl_Zagosp.zagospLok.PlanowaneZagosp}"
                                 VerticalScrollBarVisibility="Auto"
                                 Style="{StaticResource tekskBoxOpis}"/>
 
-                    <Label      Grid.Row="14"
-                                Content="Przedstawiciel"
+                    <Label      Grid.Row="11"
+                                Content="Wyłączenie z grupy"
                                 Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
-                    <ComboBox   Grid.Row="15"
-                                ItemsSource="{Binding userControl_Zagosp.przedstawicielSloList.list}"
-                                SelectedValue="{Binding  userControl_Zagosp.zagospSel.przedstSloId}"
-                                SelectedValuePath="PrzedstawicielSloId"
-                                DisplayMemberPath="Nazwa"
-                                Margin="10,0,100,0"/>
 
+                    <Grid Grid.Row="12" Width="300" HorizontalAlignment="Left">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label  Grid.Row="0" Grid.Column="0"
+                                Content="Protokół"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
+                        <Label  Grid.Row="1" Grid.Column="0"
+                                Content="Skan"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
+                        <Label  Grid.Row="2" Grid.Column="0"
+                                Content="Info od EK"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
+                        <Label  Grid.Row="3" Grid.Column="0"
+                                Content="Skan"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left"/>
+
+                        <TextBox
+                                Grid.Row="0" Grid.Column="1"
+                                Margin="10,2,10,2"
+                                Text="{Binding userControl_Zagosp.zagospLok.WylaczenieProt}"
+                                VerticalScrollBarVisibility="Auto"/>
+                        <userCon:UserControl_Attachment
+                                Grid.Column="1" Grid.Row="1" 
+                                Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+                                Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+                                Margin="10,2,10,2"
+                                pathRaf="{Binding Path=DataContext.userControl_Zagosp.zagospLok.WylacznieProtokolPath, ElementName=ZagospWin}"
+                                />
+
+                        <TextBox
+                                Grid.Row="2" Grid.Column="1"
+                                Margin="10,2,10,2"
+                                Text="{Binding userControl_Zagosp.zagospLok.WylacznieInfo}"
+                                VerticalScrollBarVisibility="Auto"/>
+                        <userCon:UserControl_Attachment
+                                Grid.Row="3" Grid.Column="1" 
+                                Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+                                Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+                                Margin="10,2,10,2"
+                                pathRaf="{Binding Path=DataContext.userControl_Zagosp.zagospLok.WylacznieInfoPath, ElementName=ZagospWin}"
+                                />
+
+                    </Grid>
                 </Grid>
             </ScrollViewer>
 

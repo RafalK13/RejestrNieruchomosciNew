@@ -16,203 +16,205 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_WlascicielViewModel : ViewModelBase
     {
-    //    private string _podmiotName;
-    //    public string podmiotName
-    //    {
-    //        get => _podmiotName;
-    //        set
-    //        {
-    //            _podmiotName = value;
-    //            RaisePropertyChanged("podmiotName");
-    //        }
-    //    }
+        private string _podmiotName;
+        public string podmiotName
+        {
+            get => _podmiotName;
+            set
+            {
+                _podmiotName = value;
+                RaisePropertyChanged("podmiotName");
+            }
+        }
 
-    //    private int _selectedPodmId;
-    //    public int selectedPodmId
-    //    {
-    //        get => _selectedPodmId;
-    //        set
-    //        {
-    //            _selectedPodmId = value;
-    //            RaisePropertyChanged("selectedPodmId");
-    //        }
-    //    }
+        private int _selectedPodmId;
+        public int selectedPodmId
+        {
+            get => _selectedPodmId;
+            set
+            {
+                _selectedPodmId = value;
+                RaisePropertyChanged("selectedPodmId");
+            }
+        }
 
-    //    public IWladanie wladanie { get; set; }
+        public IWladanie wladanie { get; set; }
 
-    //    public ObservableCollection<IWladanie> wladListLok { get; set; }
+        public ObservableCollection<IWladanie> wladListLok { get; set; }
 
-    //    public IWladanieList wladanieList { get; set; }
+        public IWladanieList wladanieList { get; set; }
 
-    //    public IPodmiotList podmiotList { get; set; }
+        public IPodmiotList podmiotList { get; set; }
 
-    //    public FormaWladaniaList sloFormWlad { get; set; }
+        public FormaWladaniaList sloFormWlad { get; set; }
 
-    //    public ITransakcjeList transakcjeList { get; set; }
+        public ITransakcjeList transakcjeList { get; set; }
 
-    //    public RodzajDokumentuList rodzDokSlo { get; set; }
+        public RodzajDokumentuList rodzDokSlo { get; set; }
 
-    //    public NazwaCzynnosciList nazwaCzynSlo { get; set; }
+        public NazwaCzynnosciList nazwaCzynSlo { get; set; }
 
-    //    public ICelNabyciaList celNabyciaList { get; set; }
+        public ICelNabyciaList celNabyciaList { get; set; }
 
-    //    private IWladanie _wladanieSel;
-    //    public IWladanie wladanieSel
-    //    {
-    //        get { return _wladanieSel; }
-    //        set
-    //        {
-    //            _wladanieSel = value;
-    //            testWladanieSel();
-    //            RaisePropertyChanged("wladanieSel");
-    //        }
-    //    }
+        private IWladanie _wladanieSel;
+        public IWladanie wladanieSel
+        {
+            get { return _wladanieSel; }
+            set
+            {
+                _wladanieSel = value;
+                testWladanieSel();
+                RaisePropertyChanged("wladanieSel");
+            }
+        }
 
-    //    private void testWladanieSel()
-    //    {
-           
-    //        if (wladanieSel != null)
-    //        {
-    //            if (wladanieSel.DzialkaId != null)
-    //                podmiotDetail = true;
-    //        }
-    //        else
-    //            podmiotDetail = false;
-    //    }
+        private void testWladanieSel()
+        {
 
-    //    private bool _podmiotDetail;
-    //    public bool podmiotDetail
-    //    {
-    //        get => _podmiotDetail;
+            if (wladanieSel != null)
+            {
+                if (wladanieSel.DzialkaId != null)
+                    podmiotDetail = true;
+            }
+            else
+                podmiotDetail = false;
+        }
 
-    //        set {
-    //            _podmiotDetail = value;
-    //            RaisePropertyChanged("podmiotDetail");
-    //        }
-    //    }
+        private bool _podmiotDetail;
+        public bool podmiotDetail
+        {
+            get => _podmiotDetail;
 
-    //    private Visibility _sellVisibility;
-    //    public Visibility sellVisibility
-    //    {
-    //        get => _sellVisibility;
+            set
+            {
+                _podmiotDetail = value;
+                RaisePropertyChanged("podmiotDetail");
+            }
+        }
 
-    //        set {
-    //            _sellVisibility = value;
-    //            RaisePropertyChanged("sellVisibility");
-    //        }
-    //    }
+        private Visibility _sellVisibility;
+        public Visibility sellVisibility
+        {
+            get => _sellVisibility;
 
-    //    #region Buttons
-    //    public ICommand wlascAdd { get; set; }
-    //    public ICommand wlascCls { get; set; }
-    //    public ICommand podmiotAdd { get; set; }
-    //    public ICommand podmiotDel { get; set; }
-    //    public ICommand onCzyscPlatnosci { get; set; }
-    //    public ICommand wlascSell{ get; set; }
-    //    public ICommand onCancel { get; set; }
-    //    #endregion
+            set
+            {
+                _sellVisibility = value;
+                RaisePropertyChanged("sellVisibility");
+            }
+        }
 
-    //    public IDzialka dzialkaSel { get; set; }
+        #region Buttons
+        public ICommand wlascAdd { get; set; }
+        public ICommand wlascCls { get; set; }
+        public ICommand podmiotAdd { get; set; }
+        public ICommand podmiotDel { get; set; }
+        public ICommand onCzyscPlatnosci { get; set; }
+        public ICommand wlascSell { get; set; }
+        public ICommand onCancel { get; set; }
+        #endregion
 
-    //    public PlatnoscUW platnosci { get; set; }
+        public IDzialka dzialkaSel { get; set; }
 
-    //    //public IDzialkaList dzialkaList { get; set; }
+        public PlatnoscUW platnosci { get; set; }
 
-    //    private int dzialkaId;
+        //public IDzialkaList dzialkaList { get; set; }
 
-    //    public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev,
-    //                                           IWladanieList _wladanieList
-    //                                          )
-    //    {
+        private int dzialkaId;
 
-    //        initButtons();
+        public UserControl_WlascicielViewModel(UserControl_PreviewViewModel userPrev,
+                                               IWladanieList _wladanieList
+                                              )
+        {
 
-    //        sellVisibility = Visibility.Hidden;
+            initButtons();
 
-    //        if (userPrev.dzialkaSel != null)
-    //        {
-    //            dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
-    //            _wladanieList.getList(userPrev.dzialkaSel);
+            sellVisibility = Visibility.Hidden;
 
-    //            wladListLok = new ObservableCollection<IWladanie>(_wladanieList.list.Select(r => new Wladanie(r)).ToList());
-    //        }
+            if (userPrev.dzialkaSel != null)
+            {
+                dzialkaId = int.Parse(userPrev.dzialkaSel.DzialkaId.ToString());
+                _wladanieList.getList(userPrev.dzialkaSel);
 
-    //        podmiotDetail = false;
-    //    }
+                wladListLok = new ObservableCollection<IWladanie>(_wladanieList.list.Select(r => new Wladanie(r)).ToList());
+            }
 
-    //    private void initButtons()
-    //    {
-    //        wlascCls = new RelayCommand(onWlascCls);
-    //        wlascAdd = new RelayCommand(onWlascAdd);
-    //        podmiotAdd = new RelayCommand(onPodmiotAdd);
-    //        podmiotDel = new RelayCommand(onPodmiotDel);
-    //        onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
-    //        wlascSell = new RelayCommand(onWlascSell);
-    //        onCancel = new RelayCommand(onCancelClick);
-    //    }
+            podmiotDetail = false;
+        }
 
-    //    private void onCancelClick()
-    //    {
-    //        //var w = Application.Current.Windows[1];
-    //    }
+        private void initButtons()
+        {
+            wlascCls = new RelayCommand(onWlascCls);
+            wlascAdd = new RelayCommand(onWlascAdd);
+            podmiotAdd = new RelayCommand(onPodmiotAdd);
+            podmiotDel = new RelayCommand(onPodmiotDel);
+            onCzyscPlatnosci = new RelayCommand(onCzyscPlatnosciClick);
+            wlascSell = new RelayCommand(onWlascSell);
+            onCancel = new RelayCommand(onCancelClick);
+        }
 
-    //    private void onWlascSell()
-    //    {
-    //        sellVisibility = Visibility.Visible;
-    //    }
+        private void onCancelClick()
+        {
+            //var w = Application.Current.Windows[1];
+        }
 
-    //    private void onCzyscPlatnosciClick()
-    //    {
-    //        platnosci.cleanObj();
-    //    }
+        private void onWlascSell()
+        {
+            sellVisibility = Visibility.Visible;
+        }
 
-    //    private void onWlascCls()
-    //    {
-    //        wladanieSel = null;
-    //    }
+        private void onCzyscPlatnosciClick()
+        {
+            platnosci.cleanObj();
+        }
 
-    //    private void onPodmiotAdd()
-    //    {
-            
-    //        if (selectedPodmId > 0)
-    //        {
-    //            if (testWlascExist() == false)
-    //            {
-    //                wladanie.DzialkaId = dzialkaId;
-    //                wladanie.PodmiotId = selectedPodmId;
+        private void onWlascCls()
+        {
+            wladanieSel = null;
+        }
 
-    //                wladListLok.Add(new Wladanie()
-    //                {
-    //                    DzialkaId = wladanie.DzialkaId,
-    //                    PodmiotId = wladanie.PodmiotId,
-    //                });
-                    
-    //                podmiotName = string.Empty;
-    //                wladanieSel = null;
-    //            }
-    //        }
-    //    }
+        private void onPodmiotAdd()
+        {
 
-    //    private void onPodmiotDel()
-    //    {
-    //        wladListLok.Remove(wladanieSel);
-    //        wladanieSel = null;
-    //    }
+            if (selectedPodmId > 0)
+            {
+                if (testWlascExist() == false)
+                {
+                    wladanie.DzialkaId = dzialkaId;
+                    wladanie.PodmiotId = selectedPodmId;
 
-    //    private void onWlascAdd()
-    //    {
-    //        wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
-    //        wladanieList.saveWladanie();
-    //    }
+                    wladListLok.Add(new Wladanie()
+                    {
+                        DzialkaId = wladanie.DzialkaId,
+                        PodmiotId = wladanie.PodmiotId,
+                    });
 
-    //    private bool testWlascExist()
-    //    {
-    //        if(wladListLok.Count() == 0 )
-    //            return false;
+                    podmiotName = string.Empty;
+                    wladanieSel = null;
+                }
+            }
+        }
 
-    //        var v = wladListLok.Where(r => r.PodmiotId == selectedPodmId).Count();
+        private void onPodmiotDel()
+        {
+            wladListLok.Remove(wladanieSel);
+            wladanieSel = null;
+        }
 
-    //        return (v == 0) ? false : true;
-    //    }
+        private void onWlascAdd()
+        {
+            wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
+            wladanieList.saveWladanie();
+        }
+
+        private bool testWlascExist()
+        {
+            if (wladListLok.Count() == 0)
+                return false;
+
+            var v = wladListLok.Where(r => r.PodmiotId == selectedPodmId).Count();
+
+            return (v == 0) ? false : true;
+        }
     }
 }

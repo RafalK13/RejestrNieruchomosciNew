@@ -25,10 +25,7 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        private List<IZagosp> listOrg { get; set; }
-        private List<IZagosp> listToAdd { get; set; }
-        private List<IZagosp> listToMod { get; set; }
-        private List<IZagosp> listToDel { get; set; }
+
         
         public string result;
         private IDzialka dzialkaPrv;
@@ -55,11 +52,6 @@ namespace RejestrNieruchomosciNew.Model
             if (dzialka != null)
                 list = new ObservableCollection<IZagosp>(listAll.Where(r => r.DzialkaId == dzialka.DzialkaId).ToList());
 
-            listOrg = ObservableCon<IZagosp>.ObservableToList(list);
-
-            listToAdd = new List<IZagosp>();
-            listToMod = new List<IZagosp>();
-            listToDel = new List<IZagosp>();
             result = string.Empty;
         }
 
@@ -83,70 +75,84 @@ namespace RejestrNieruchomosciNew.Model
             initList(dzialkaPrv);
         }
 
-        public void saveZagosp(IDzialka dz)
+        public void saveZagosp(Zagosp zagospLok)
         {
+            int y = 1;
+            zagospLok.ZagospStatus = null;
             using (var c = new Context())
             {
-                var zagospAll = c.Zagosp.AsNoTracking().Where(r => r.DzialkaId == dz.DzialkaId).ToList();
-
-                foreach (var item in zagospAll)
-                {
-                    var toDel = list.FirstOrDefault(r=>r.ZagospId == item.ZagospId);
-                    if (toDel == null)
-                        c.Remove(item);
-                }
-
-                c.UpdateRange(list);
-
-                c.SaveChanges();
-                initListAll();
-
+                c.Update(zagospLok);
+                int result = c.SaveChanges();
             }
-
-            using (var c = new Context())
-            {
-                c.Update(dz);
-
-                c.SaveChanges();
-            }
-            #region to delete
-            //foreach (var r in list)
-            //{
-            //    if (listOrg.Contains(r))
-            //        listOrg.Remove(r);
-            //    else
-            //    {
-            //        if (listOrg.Exists(row => row.ZagospId == r.ZagospId) == true)
-            //        {
-            //            listToMod.Add((IZagosp)r.Clone());
-            //            var rToDel = listOrg.Find(d => d.ZagospId == r.ZagospId);
-            //            listOrg.Remove(rToDel);
-            //        }
-            //        else
-            //        {
-            //            listToAdd.Add((IZagosp)r.Clone());
-            //        }
-            //    }
-            //}
-            //foreach (var row in listOrg)
-            //{
-            //    listToDel.Add(row);
-            //}
-
-            //if (listToDel.Count() > 0)
-            //    DelRows();
-
-            //if (listToAdd.Count() > 0)
-            //    AddRows();
-
-            //if (listToMod.Count() > 0)
-            //    ModRows();
-
-            //initListAll();
-            //initList(dzialkaPrv);
-            #endregion
         }
-        #region old version
+
+        #region Old Version
+        //public void saveZagosp(IDzialka dz)
+        //{
+        //    using (var c = new Context())
+        //    {
+        //        var zagospAll = c.Zagosp.AsNoTracking().Where(r => r.DzialkaId == dz.DzialkaId).ToList();
+
+        //        foreach (var item in zagospAll)
+        //        {
+        //            var toDel = list.FirstOrDefault(r=>r.ZagospId == item.ZagospId);
+        //            if (toDel == null)
+        //                c.Remove(item);
+        //        }
+
+        //        c.UpdateRange(list);
+
+        //        c.SaveChanges();
+        //        initListAll();
+
+        //    }
+
+        //    using (var c = new Context())
+        //    {
+        //        c.Update(dz);
+
+        //        c.SaveChanges();
+        //    }
+        //    #region to delete
+        //    //foreach (var r in list)
+        //    //{
+        //    //    if (listOrg.Contains(r))
+        //    //        listOrg.Remove(r);
+        //    //    else
+        //    //    {
+        //    //        if (listOrg.Exists(row => row.ZagospId == r.ZagospId) == true)
+        //    //        {
+        //    //            listToMod.Add((IZagosp)r.Clone());
+        //    //            var rToDel = listOrg.Find(d => d.ZagospId == r.ZagospId);
+        //    //            listOrg.Remove(rToDel);
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            listToAdd.Add((IZagosp)r.Clone());
+        //    //        }
+        //    //    }
+        //    //}
+        //    //foreach (var row in listOrg)
+        //    //{
+        //    //    listToDel.Add(row);
+        //    //}
+
+        //    //if (listToDel.Count() > 0)
+        //    //    DelRows();
+
+        //    //if (listToAdd.Count() > 0)
+        //    //    AddRows();
+
+        //    //if (listToMod.Count() > 0)
+        //    //    ModRows();
+
+        //    //initListAll();
+        //    //initList(dzialkaPrv);
+        //    #endregion
+        //}
+        #endregion
+
+        #region Old version
         //public void AddRows()
         //{
         //    using (var c = new Context())

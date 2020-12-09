@@ -665,6 +665,32 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            admin = true,
+                            name = "rkarczewski"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            admin = true,
+                            name = "emegger"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            admin = true,
+                            name = "emegger2"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            admin = true,
+                            name = "mkomorowski"
+                        });
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Uzytki", b =>
@@ -901,7 +927,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.Property<string>("WylacznieInfo");
 
-                    b.Property<int>("ZagospStatusId");
+                    b.Property<int?>("ZagospStatusId");
 
                     b.Property<int?>("istObiektySloId");
 
@@ -1324,8 +1350,7 @@ namespace RejestrNieruchomosciNew.Migrations
 
                     b.HasOne("RejestrNieruchomosciNew.Model.ZagospStatus", "ZagospStatus")
                         .WithMany("Zagosp")
-                        .HasForeignKey("ZagospStatusId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ZagospStatusId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.ZagospStatus", b =>

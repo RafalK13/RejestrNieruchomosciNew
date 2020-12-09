@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -11,6 +12,17 @@ namespace RejestrNieruchomosciNew.Model
         public int ZagospStatusId { get; set; }
 
         public int ZagospStatusSloId { get; set; }
+
+        //private int _ZagospStatusSloId;
+        //public int ZagospStatusSloId
+        //{
+        //    get => _ZagospStatusSloId;
+        //    set
+        //    {
+        //        _ZagospStatusSloId = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
 
         private int _ZagospFunkcjaSloId;
         public int ZagospFunkcjaSloId
@@ -22,7 +34,6 @@ namespace RejestrNieruchomosciNew.Model
                 NotifyPropertyChanged();
                 if (zmiana != null)
                     zmiana(null, EventArgs.Empty);
-
             }
         }
 

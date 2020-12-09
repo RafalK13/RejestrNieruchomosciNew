@@ -22,14 +22,28 @@ namespace RejestrNieruchomosciNew.Tests
                Mock.Of<Zagosp>( r=>r.ZagospId==5 && r.DzialkaId == 13)
             });
 
-        [TestCase(13)]
-        public void testKonstruktora_UserControl_ZagospViewModel_powinienPrzejsc( int nr)
+        [TestCase(21)]
+        public void testKonstruktora_sprawdzdenieCzyZrobiNowyZagospGdyNieZnajdzieGowTablicy_powinienPrzejsc(int nr)
         {
             UserControl_PreviewViewModel userControl_prevModel = Mock.Of<UserControl_PreviewViewModel>(
              r => r.dzialkaSel == new Dzialka { DzialkaId = nr }
             );
 
-            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList);
+            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList, null);
+
+            var result = userControl.zagospLok;
+
+            Assert.AreEqual(21, result.DzialkaId);
+        }
+
+        [TestCase(13)]
+        public void testKonstruktora_sprawdzdenieCzyZnajdzieZagospo_powinienPrzejsc( int nr)
+        {
+            UserControl_PreviewViewModel userControl_prevModel = Mock.Of<UserControl_PreviewViewModel>(
+             r => r.dzialkaSel == new Dzialka { DzialkaId = nr }
+            );
+
+            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList, null);
                     
             var result = userControl.zagospLok;
 
@@ -43,7 +57,7 @@ namespace RejestrNieruchomosciNew.Tests
              r => r.dzialkaSel == new Dzialka { DzialkaId = nr }
             );
 
-            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList);
+            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList, null);
 
             var result = userControl.zagospLok;
 

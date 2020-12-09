@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Castle.Core;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
@@ -13,16 +14,16 @@ namespace RejestrNieruchomosciNew.ViewModel
 {
     public class UserControl_ZagospViewModel : ViewModelBase
     {
-        //private ICelNabyciaList _celNabList;
-        //public ICelNabyciaList celNabList
-        //{
-        //    get => _celNabList;
-        //    set
-        //    {
-        //        _celNabList = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
+        private ICelNabyciaList _celNabList;
+        public ICelNabyciaList celNabList
+        {
+            get => _celNabList;
+            set
+            {
+                _celNabList = value;
+                RaisePropertyChanged();
+            }
+        }
 
         //public IKonserwPrzyrodySloList konsPrzyrodyList { get; set; }
 
@@ -36,6 +37,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         //public IZagospStatusSlo zapospStatusSel { get; set; }
 
+        public IZagospList zagospList { get; set; }
+
         private bool _podmiotDetail;
         public bool podmiotDetail
         {
@@ -48,33 +51,17 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        //private IZagosp _zagospSel;
-        //public IZagosp zagospSel
-        //{
-        //    get => _zagospSel;
-        //    set
-        //    {
-        //        _zagospSel = value;
-        //        RaisePropertyChanged();
 
-        //        testPodmiotDetail();
-        //    }
-        //}
-
-        //private void testPodmiotDetail()
-        //{
-        //    if (zagospSel != null)
-        //    {
-        //        if (zagospSel.DzialkaId != 0)
-        //            podmiotDetail = true;
-        //    }
-        //    else
-        //        podmiotDetail = false;
-        //}
-
-        //public IZagospList zagospList { get; set; }
-
-        public IZagosp zagospLok { get; set; }
+        private Zagosp _zagospLok;
+        public Zagosp zagospLok
+        {
+            get => _zagospLok;
+            set
+            {
+                _zagospLok = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public ICommand statusAdd { get; set; }
         public ICommand statusDel { get; set; }
@@ -82,58 +69,75 @@ namespace RejestrNieruchomosciNew.ViewModel
         public ICommand zagospCls { get; set; }
         public ICommand zagospSave { get; set; }
 
-        public ZagospStatusList zagospStatusList { get; set; }
-
-        //private ZagospStatus _zagospStatusSel;
-        //public ZagospStatus zagospStatusSel
-        //{
-        //    get => _zagospStatusSel;
-        //    set {
-        //        _zagospStatusSel = value;
-               
-        //    }
-        //}
-
-        private IZagosp _zagospSel;
-
-        public IZagosp zagospSel
+      
+        private ZagospStatusList _zagospStatusList;
+        [DoNotWire]
+        public ZagospStatusList zagospStatusList
         {
-            get { return _zagospSel; }
+            get
+            {
+                return _zagospStatusList;
+            }
             set
             {
-                _zagospSel = value;
+                _zagospStatusList = value;
                 RaisePropertyChanged();
-                zagospSel.zmiana += ZagospSel_zmiana;
             }
         }
 
-        private void ZagospSel_zmiana(object sender, EventArgs e)
-        {
-            podmiotDetail = zagospSel.ZagospStatusId != null ? true : false;
-        }
+        public ZagospStatusListSlo list { get; set; }
 
-
-
-        //public List<ZagospStatus> status { get => zagospStatusList.list.GroupBy(r => r.ZagospStatusSloId).Select(t => t.First()).ToList(); }
-
-        //public ZagospStatusList status
-        //{
-        //    get => zagospStatusList.
-        //}
+        public ZagospStatus statusSel { get; set; }
+        [DoNotWire]
+        public ZagospStatusListSlo zagospStatusRaf { get; set; }
 
         #region Konstruktor
-
-        public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev,
-                                           IZagospList _zagospList)
+        public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev
+                                            , IZagospList _zagospList
+                                            , ZagospStatusList _zagospStatusList
+                                            , ZagospStatusListSlo _zagospStatusRaf
+                                            )
         {
-            initButtons();
+            zagospStatusList = _zagospStatusList;
 
+            initButtons();
+           
             if (userPrev.dzialkaSel != null)
             {
                 _zagospList.getList(userPrev.dzialkaSel);
-                zagospLok = _zagospList.listAll.FirstOrDefault(r => r.DzialkaId == (userPrev.dzialkaSel.DzialkaId)) ?? new Zagosp();
+
+                zagospLok = (Zagosp)_zagospList.listAll.FirstOrDefault(r => r.DzialkaId == (userPrev.dzialkaSel.DzialkaId));
+
+                if (zagospLok == null)
+                {
+                    int t = 13;
+                    zagospLok = new Zagosp(userPrev.dzialkaSel.DzialkaId);
+                    podmiotDetail = false;
+                }
+                else
+                {
+                    zagospStatusList.ustalId(zagospLok.ZagospStatusId);
+                    podmiotDetail = true;
+                }
+
+                zagospStatusList.zmianaZagospStatus += ZagospStatusList_zmianaZagospStatus;
             }
-            podmiotDetail = false;
+        }
+
+        private void ZagospStatusList_zmianaZagospStatus(object sender, EventArgs e)
+        {
+            if (zagospStatusList.funkcjaSel != null)
+            {
+                int x = 13;
+                podmiotDetail = true;
+                zagospLok.ZagospStatusId = zagospStatusList.funkcjaSel.ZagospFunkcjaSloId;
+            }
+            else
+            {
+                podmiotDetail = false;
+                zagospLok.ZagospStatusId = null;
+            }
+
         }
 
         #endregion
@@ -144,15 +148,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             //statusDel = new RelayCommand(onStatusDel);
             ////zagospAdd = new RelayCommand(onZagospAdd);
             //zagospCls = new RelayCommand(onZagospCls);
-            //zagospSave = new RelayCommand(onZagospSave);
+            zagospSave = new RelayCommand(onZagospSave);
         }
 
-        //private void onZagospSave()
-        //{
-        //    zagospSel = null;
-        //    zagospList.list = zagospListLok;
-        //    zagospList.saveZagosp(userPrev.dzialkaSel);
-        //}
+        private void onZagospSave()
+        {
+            int z1 = 13;
+            if (zagospLok != null)
+            {
+                
+                zagospList.saveZagosp(zagospLok);
+            }
+            //            zagospLok = null;
+        }
 
         //private void onZagospCls()
         //{
@@ -170,6 +178,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onStatusAdd()
         {
+            int xxx = 13;
             //    if (testIfExist())
             //    {
             //        try

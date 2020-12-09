@@ -42,6 +42,13 @@ namespace RejestrNieruchomosciNew.Model
         public Dzialka Dzialka { get; set; }
         public ZagospStatus ZagospStatus{ get; set; }
 
+        #region Konstruktor
+        public Zagosp(int _dzialkaId)
+        {
+            DzialkaId = _dzialkaId;
+        }
+        #endregion
+
         #region Z przeda zmiany
         //public int? obiektyKomSloId { get; set; }
         //public string zagospKomercyjne { get; set; }

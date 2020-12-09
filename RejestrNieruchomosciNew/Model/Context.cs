@@ -291,6 +291,13 @@ namespace RejestrNieruchomosciNew
                 new ZagospStatus { ZagospStatusId = 7, ZagospStatusSloId = 2, ZagospFunkcjaSloId = 7 },
                 new ZagospStatus { ZagospStatusId = 8, ZagospStatusSloId = 2, ZagospFunkcjaSloId = 8 }
                 );
+
+            modelBuilder.Entity<User>().HasData(
+               new User { UserId = 1, name = "rkarczewski", admin = true },
+               new User { UserId = 2, name = "emegger", admin = true },
+               new User { UserId = 3, name = "emegger2", admin = true },
+               new User { UserId = 4, name = "mkomorowski", admin = true }
+               );
         }
     }
 }

@@ -15,14 +15,13 @@ namespace RejestrNieruchomosciNew.Migrations
                     BudynekId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nazwa = table.Column<string>(nullable: true),
-                    AdresId = table.Column<int>(nullable: true),
-                    powBezPiwnic = table.Column<double>(nullable: false),
-                    powZPiwnic = table.Column<double>(nullable: false),
-                    powCalk = table.Column<double>(nullable: false),
-                    powZabud = table.Column<double>(nullable: false),
-                    kubatura = table.Column<double>(nullable: false),
+                    powBezPiwnic = table.Column<int>(nullable: false),
+                    powZPiwnic = table.Column<int>(nullable: false),
+                    powCalk = table.Column<int>(nullable: false),
+                    powZabud = table.Column<int>(nullable: false),
+                    kubatura = table.Column<int>(nullable: false),
                     iloscKond = table.Column<int>(nullable: false),
-                    numerEwid = table.Column<double>(nullable: false),
+                    numerEwid = table.Column<string>(nullable: true),
                     wpisRejZab = table.Column<bool>(nullable: false),
                     prad = table.Column<bool>(nullable: false),
                     woda = table.Column<bool>(nullable: false),
@@ -35,7 +34,8 @@ namespace RejestrNieruchomosciNew.Migrations
                     internet = table.Column<bool>(nullable: false),
                     tv = table.Column<bool>(nullable: false),
                     opisKonstr = table.Column<string>(nullable: true),
-                    stanTech = table.Column<string>(nullable: true)
+                    stanTech = table.Column<string>(nullable: true),
+                    jednorodzinny = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,6 +86,32 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "KonserwPrzyrodySlo",
+                columns: table => new
+                {
+                    KonserwPrzyrodySloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KonserwPrzyrodySlo", x => x.KonserwPrzyrodySloId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "KonserwZabytkowSlo",
+                columns: table => new
+                {
+                    KonserwZabytkowSloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_KonserwZabytkowSlo", x => x.KonserwZabytkowSloId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MiejscowoscSlo",
                 columns: table => new
                 {
@@ -101,19 +127,6 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NadzorKonserwSlo",
-                columns: table => new
-                {
-                    NadzorKonserwSloId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nazwa = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NadzorKonserwSlo", x => x.NadzorKonserwSloId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "NazwaCzynnosciSlo",
                 columns: table => new
                 {
@@ -124,6 +137,19 @@ namespace RejestrNieruchomosciNew.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NazwaCzynnosciSlo", x => x.NazwaCzynnosciSloId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PrzedstawicielSlo",
+                columns: table => new
+                {
+                    PrzedstawicielSloId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Nazwa = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PrzedstawicielSlo", x => x.PrzedstawicielSloId);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +206,20 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    name = table.Column<string>(nullable: true),
+                    admin = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UzytkiSlo",
                 columns: table => new
                 {
@@ -216,6 +256,32 @@ namespace RejestrNieruchomosciNew.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ZagospStatusSlo", x => x.ZagospStatusSloId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lokal",
+                columns: table => new
+                {
+                    LokalId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Numer = table.Column<string>(nullable: true),
+                    pow = table.Column<double>(nullable: true),
+                    powPomPrzyn = table.Column<double>(nullable: true),
+                    opis = table.Column<string>(nullable: true),
+                    kondygnacja = table.Column<string>(nullable: true),
+                    KWlok = table.Column<string>(nullable: true),
+                    NajemcaId = table.Column<int>(nullable: false),
+                    BudynekId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lokal", x => x.LokalId);
+                    table.ForeignKey(
+                        name: "FK_Lokal_Budynek_BudynekId",
+                        column: x => x.BudynekId,
+                        principalTable: "Budynek",
+                        principalColumn: "BudynekId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -277,6 +343,52 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ZagospStatus",
+                columns: table => new
+                {
+                    ZagospStatusId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ZagospStatusSloId = table.Column<int>(nullable: false),
+                    ZagospFunkcjaSloId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ZagospStatus", x => x.ZagospStatusId);
+                    table.ForeignKey(
+                        name: "FK_ZagospStatus_ZagospFunkcjaSlo_ZagospFunkcjaSloId",
+                        column: x => x.ZagospFunkcjaSloId,
+                        principalTable: "ZagospFunkcjaSlo",
+                        principalColumn: "ZagospFunkcjaSloId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ZagospStatus_ZagospStatusSlo_ZagospStatusSloId",
+                        column: x => x.ZagospStatusSloId,
+                        principalTable: "ZagospStatusSlo",
+                        principalColumn: "ZagospStatusSloId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lokal_Podmiot",
+                columns: table => new
+                {
+                    Lokal_PodmiotId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LokalId = table.Column<int>(nullable: false),
+                    PodmiotId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lokal_Podmiot", x => x.Lokal_PodmiotId);
+                    table.ForeignKey(
+                        name: "FK_Lokal_Podmiot_Lokal_LokalId",
+                        column: x => x.LokalId,
+                        principalTable: "Lokal",
+                        principalColumn: "LokalId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Dzialka",
                 columns: table => new
                 {
@@ -292,17 +404,24 @@ namespace RejestrNieruchomosciNew.Migrations
                     sasiedztwo = table.Column<string>(nullable: true),
                     dostDoDrogi = table.Column<string>(nullable: true),
                     rodzNaw = table.Column<string>(nullable: true),
-                    NadzorKonserwSloId = table.Column<int>(nullable: true),
+                    KonserwZabytkowSloId = table.Column<int>(nullable: true),
+                    KonserwPrzyrodySloId = table.Column<int>(nullable: true),
                     ObrebId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dzialka", x => x.DzialkaId);
                     table.ForeignKey(
-                        name: "FK_Dzialka_NadzorKonserwSlo_NadzorKonserwSloId",
-                        column: x => x.NadzorKonserwSloId,
-                        principalTable: "NadzorKonserwSlo",
-                        principalColumn: "NadzorKonserwSloId",
+                        name: "FK_Dzialka_KonserwPrzyrodySlo_KonserwPrzyrodySloId",
+                        column: x => x.KonserwPrzyrodySloId,
+                        principalTable: "KonserwPrzyrodySlo",
+                        principalColumn: "KonserwPrzyrodySloId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Dzialka_KonserwZabytkowSlo_KonserwZabytkowSloId",
+                        column: x => x.KonserwZabytkowSloId,
+                        principalTable: "KonserwZabytkowSlo",
+                        principalColumn: "KonserwZabytkowSloId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Dzialka_Obreb_ObrebId",
@@ -334,8 +453,8 @@ namespace RejestrNieruchomosciNew.Migrations
                         principalColumn: "BudynekId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Adres_Dzialka_BudynekId",
-                        column: x => x.BudynekId,
+                        name: "FK_Adres_Dzialka_DzialkaId",
+                        column: x => x.DzialkaId,
                         principalTable: "Dzialka",
                         principalColumn: "DzialkaId",
                         onDelete: ReferentialAction.Cascade);
@@ -544,15 +663,15 @@ namespace RejestrNieruchomosciNew.Migrations
                 {
                     ZagospId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DzialkaId = table.Column<int>(nullable: false),
-                    Nazwa = table.Column<string>(nullable: true),
-                    ZagospStatusSloId = table.Column<int>(nullable: true),
-                    ZagospFunkcjaSloId = table.Column<int>(nullable: true),
+                    DzialkaId = table.Column<int>(nullable: true),
+                    ZagospStatusId = table.Column<int>(nullable: true),
                     istObiektySloId = table.Column<int>(nullable: true),
-                    obiektyKomSloId = table.Column<int>(nullable: true),
                     zadInwestSloId = table.Column<int>(nullable: true),
-                    celeKomSloId = table.Column<int>(nullable: true),
-                    przedstSloId = table.Column<int>(nullable: true)
+                    PlanowaneZagosp = table.Column<string>(nullable: true),
+                    DodatkoweZagosp = table.Column<string>(nullable: true),
+                    DoWylaczenia = table.Column<string>(nullable: true),
+                    WylaczenieProt = table.Column<string>(nullable: true),
+                    WylacznieInfo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -562,18 +681,12 @@ namespace RejestrNieruchomosciNew.Migrations
                         column: x => x.DzialkaId,
                         principalTable: "Dzialka",
                         principalColumn: "DzialkaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Zagosp_ZagospFunkcjaSlo_ZagospFunkcjaSloId",
-                        column: x => x.ZagospFunkcjaSloId,
-                        principalTable: "ZagospFunkcjaSlo",
-                        principalColumn: "ZagospFunkcjaSloId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Zagosp_ZagospStatusSlo_ZagospStatusSloId",
-                        column: x => x.ZagospStatusSloId,
-                        principalTable: "ZagospStatusSlo",
-                        principalColumn: "ZagospStatusSloId",
+                        name: "FK_Zagosp_ZagospStatus_ZagospStatusId",
+                        column: x => x.ZagospStatusId,
+                        principalTable: "ZagospStatus",
+                        principalColumn: "ZagospStatusId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -614,13 +727,25 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "NadzorKonserwSlo",
-                columns: new[] { "NadzorKonserwSloId", "Nazwa" },
+                table: "KonserwPrzyrodySlo",
+                columns: new[] { "KonserwPrzyrodySloId", "Nazwa" },
                 values: new object[,]
                 {
                     { 1, "-" },
                     { 2, "Nie" },
                     { 3, "Tak" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "KonserwZabytkowSlo",
+                columns: new[] { "KonserwZabytkowSloId", "Nazwa" },
+                values: new object[,]
+                {
+                    { 1, "-" },
+                    { 2, "rejestr zabytków" },
+                    { 3, "Gminna Ewidencja Zabytków" },
+                    { 4, "Wojewódzka Ewidencja Zabytków" },
+                    { 5, "MPZP" }
                 });
 
             migrationBuilder.InsertData(
@@ -634,12 +759,25 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "PrzedstawicielSlo",
+                columns: new[] { "PrzedstawicielSloId", "Nazwa" },
+                values: new object[,]
+                {
+                    { 4, "GIWK TS" },
+                    { 3, "GIWK TE" },
+                    { 2, "GIWK EE" },
+                    { 1, "-" },
+                    { 6, "inny" },
+                    { 5, "SNG" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "RodzajDokumentuSlo",
                 columns: new[] { "RodzajDokumentuSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 3, "Postanowienie sądu" },
                     { 2, "Akt notarialny" },
+                    { 3, "Postanowienie sądu" },
                     { 1, "-" }
                 });
 
@@ -648,13 +786,13 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "RodzajInnegoPrawaSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 7, "bezumowne" },
-                    { 6, "czasowe zajęcie" },
                     { 1, "-" },
-                    { 4, "użyczenie" },
-                    { 3, "najem" },
                     { 2, "dzierżawa" },
-                    { 5, "służebność" }
+                    { 3, "najem" },
+                    { 5, "służebność" },
+                    { 6, "czasowe zajęcie" },
+                    { 7, "bezumowne" },
+                    { 4, "użyczenie" }
                 });
 
             migrationBuilder.InsertData(
@@ -668,46 +806,57 @@ namespace RejestrNieruchomosciNew.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "UserId", "admin", "name" },
+                values: new object[,]
+                {
+                    { 4, true, "mkomorowski" },
+                    { 3, true, "emegger2" },
+                    { 1, true, "rkarczewski" },
+                    { 2, true, "emegger" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "UzytkiSlo",
                 columns: new[] { "UzytkiSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 22, "Tp" },
                     { 23, "E-Ws" },
                     { 24, "E-Wp" },
                     { 25, "E-Ls" },
                     { 26, "E-Lz" },
                     { 27, "E-N" },
-                    { 30, "E-Ł" },
+                    { 28, "E-Ps" },
                     { 29, "E-R" },
+                    { 30, "E-Ł" },
                     { 31, "E-Lzr" },
                     { 32, "E-W" },
-                    { 21, "Ti" },
+                    { 33, "Wm" },
                     { 34, "Wp" },
                     { 35, "Ws" },
                     { 36, "Tr" },
-                    { 28, "E-Ps" },
-                    { 33, "Wm" },
-                    { 20, "Tk" },
-                    { 18, "K" },
+                    { 22, "Tp" },
+                    { 21, "Ti" },
+                    { 15, "Bi" },
+                    { 19, "dr" },
                     { 1, "-" },
                     { 2, "R" },
-                    { 19, "dr" },
+                    { 20, "Tk" },
                     { 4, "Ł" },
                     { 5, "Ps" },
                     { 6, "Br" },
                     { 7, "Wsr" },
-                    { 8, "W" },
+                    { 9, "Lzr" },
                     { 3, "S" },
+                    { 11, "Ls" },
+                    { 18, "K" },
                     { 10, "N" },
                     { 17, "Bz" },
-                    { 9, "Lzr" },
-                    { 16, "Bp" },
-                    { 15, "Bi" },
+                    { 8, "W" },
+                    { 14, "Ba" },
                     { 13, "B" },
                     { 12, "Lz" },
-                    { 11, "Ls" },
-                    { 14, "Ba" }
+                    { 16, "Bp" }
                 });
 
             migrationBuilder.InsertData(
@@ -715,11 +864,14 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "ZagospFunkcjaSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "-" },
-                    { 2, "społeczna" },
-                    { 3, "użytkowa" },
-                    { 5, "mieszana" },
-                    { 4, "finansowa" }
+                    { 1, "wodociągowa" },
+                    { 2, "kanlizacyjna" },
+                    { 3, "energetyczna" },
+                    { 5, "społeczna" },
+                    { 6, "użytkowa" },
+                    { 7, "finansowa" },
+                    { 8, "mieszana" },
+                    { 4, "mieszana" }
                 });
 
             migrationBuilder.InsertData(
@@ -727,11 +879,23 @@ namespace RejestrNieruchomosciNew.Migrations
                 columns: new[] { "ZagospStatusSloId", "Nazwa" },
                 values: new object[,]
                 {
-                    { 1, "-" },
-                    { 2, "wodociągowa" },
-                    { 3, "sanitarna" },
-                    { 4, "komercyjna" },
-                    { 5, "mieszana" }
+                    { 1, "Wod/Kan/Energ" },
+                    { 2, "Komercyjna" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ZagospStatus",
+                columns: new[] { "ZagospStatusId", "ZagospFunkcjaSloId", "ZagospStatusSloId" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 1 },
+                    { 3, 3, 1 },
+                    { 4, 4, 1 },
+                    { 5, 5, 2 },
+                    { 6, 6, 2 },
+                    { 7, 7, 2 },
+                    { 8, 8, 2 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -740,6 +904,13 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "BudynekId",
                 unique: true,
                 filter: "[BudynekId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Adres_DzialkaId",
+                table: "Adres",
+                column: "DzialkaId",
+                unique: true,
+                filter: "[DzialkaId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Adres_MiejscowoscSloId",
@@ -752,9 +923,14 @@ namespace RejestrNieruchomosciNew.Migrations
                 column: "UlicaSloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dzialka_NadzorKonserwSloId",
+                name: "IX_Dzialka_KonserwPrzyrodySloId",
                 table: "Dzialka",
-                column: "NadzorKonserwSloId");
+                column: "KonserwPrzyrodySloId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Dzialka_KonserwZabytkowSloId",
+                table: "Dzialka",
+                column: "KonserwZabytkowSloId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Dzialka_ObrebId",
@@ -797,6 +973,16 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "IX_InnePrawa_TransS_Id",
                 table: "InnePrawa",
                 column: "TransS_Id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lokal_BudynekId",
+                table: "Lokal",
+                column: "BudynekId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lokal_Podmiot_LokalId",
+                table: "Lokal_Podmiot",
+                column: "LokalId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Obreb_GminaSloId",
@@ -863,16 +1049,23 @@ namespace RejestrNieruchomosciNew.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Zagosp_DzialkaId",
                 table: "Zagosp",
-                column: "DzialkaId");
+                column: "DzialkaId",
+                unique: true,
+                filter: "[DzialkaId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Zagosp_ZagospFunkcjaSloId",
+                name: "IX_Zagosp_ZagospStatusId",
                 table: "Zagosp",
+                column: "ZagospStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ZagospStatus_ZagospFunkcjaSloId",
+                table: "ZagospStatus",
                 column: "ZagospFunkcjaSloId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Zagosp_ZagospStatusSloId",
-                table: "Zagosp",
+                name: "IX_ZagospStatus_ZagospStatusSloId",
+                table: "ZagospStatus",
                 column: "ZagospStatusSloId");
         }
 
@@ -885,10 +1078,19 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "Dzialka_Budynek");
 
             migrationBuilder.DropTable(
+                name: "Lokal_Podmiot");
+
+            migrationBuilder.DropTable(
                 name: "PlatnoscInnePrawa");
 
             migrationBuilder.DropTable(
                 name: "PlatnoscUW");
+
+            migrationBuilder.DropTable(
+                name: "PrzedstawicielSlo");
+
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Uzytki");
@@ -906,7 +1108,7 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "UliceSlo");
 
             migrationBuilder.DropTable(
-                name: "Budynek");
+                name: "Lokal");
 
             migrationBuilder.DropTable(
                 name: "InnePrawa");
@@ -918,10 +1120,10 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "FormaWladaniaSlo");
 
             migrationBuilder.DropTable(
-                name: "ZagospFunkcjaSlo");
+                name: "ZagospStatus");
 
             migrationBuilder.DropTable(
-                name: "ZagospStatusSlo");
+                name: "Budynek");
 
             migrationBuilder.DropTable(
                 name: "DecyzjeAdministracyjne");
@@ -936,7 +1138,16 @@ namespace RejestrNieruchomosciNew.Migrations
                 name: "Transakcje");
 
             migrationBuilder.DropTable(
-                name: "NadzorKonserwSlo");
+                name: "ZagospFunkcjaSlo");
+
+            migrationBuilder.DropTable(
+                name: "ZagospStatusSlo");
+
+            migrationBuilder.DropTable(
+                name: "KonserwPrzyrodySlo");
+
+            migrationBuilder.DropTable(
+                name: "KonserwZabytkowSlo");
 
             migrationBuilder.DropTable(
                 name: "Obreb");
