@@ -94,10 +94,10 @@ namespace RejestrNieruchomosciNew
         //[field: NonSerialized]
         [DataMember]
         public Adres Adres { get; set; }
-        [DataMember]
-        public int? KonserwZabytkowSloId { get; set; }
-        [DataMember]
-        public int? KonserwPrzyrodySloId { get; set; }
+        //[DataMember]
+        //public int? KonserwZabytkowSloId { get; set; }
+        //[DataMember]
+        //public int? KonserwPrzyrodySloId { get; set; }
         //[field: NonSerialized]
 
         public KonserwZabytkowSlo KonserwZabytkowSlo { get; set; }
@@ -173,9 +173,9 @@ namespace RejestrNieruchomosciNew
                    string.Equals(dostDoDrogi, other.dostDoDrogi) &&
                    string.Equals(rodzNaw, other.rodzNaw) &&
                    //AdresId == other.AdresId &&                    
-                   ObrebId.Equals(other.ObrebId) &&
-                   KonserwPrzyrodySloId.Equals(other.KonserwPrzyrodySloId) &&
-                   KonserwZabytkowSloId.Equals(other.KonserwZabytkowSloId);
+                   ObrebId.Equals(other.ObrebId);
+                   //KonserwPrzyrodySloId.Equals(other.KonserwPrzyrodySloId) &&
+                   //KonserwZabytkowSloId.Equals(other.KonserwZabytkowSloId);
         }
 
         public override int GetHashCode()
@@ -237,8 +237,8 @@ namespace RejestrNieruchomosciNew
             dzDest.Kwakt = dzSource.Kwakt;
             dzDest.Kwzrob = dzSource.Kwzrob;
             dzDest.Pow = dzSource.Pow;
-            dzDest.KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
-            dzDest.KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
+            //dzDest.KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
+            //dzDest.KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
             //dzDest.AdresId = dzSource.AdresId;
             dzDest.lokalizacja = dzSource.lokalizacja;
             dzDest.uzbrojenie = dzSource.uzbrojenie;
@@ -256,8 +256,8 @@ namespace RejestrNieruchomosciNew
             Kwakt = dzSource.Kwakt;
             Kwzrob = dzSource.Kwzrob;
             Pow = dzSource.Pow;
-            KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
-            KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
+            //KonserwPrzyrodySloId = dzSource.KonserwPrzyrodySloId;
+            //KonserwZabytkowSloId = dzSource.KonserwZabytkowSloId;
             //AdresId = dzSource.AdresId;
             lokalizacja = dzSource.lokalizacja;
             uzbrojenie = dzSource.uzbrojenie;

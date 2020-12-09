@@ -19,8 +19,8 @@ namespace RejestrNieruchomosciNew.Model
         string dostDoDrogi { get; set; }
         string rodzNaw { get; set; }
         
-        int? KonserwZabytkowSloId { get; set; }
-        int? KonserwPrzyrodySloId { get; set; }
+        //int? KonserwZabytkowSloId { get; set; }
+        //int? KonserwPrzyrodySloId { get; set; }
 
         int ObrebId { get; set; }
         Obreb Obreb { get; set; }
