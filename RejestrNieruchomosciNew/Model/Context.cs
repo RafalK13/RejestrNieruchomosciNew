@@ -65,6 +65,8 @@ namespace RejestrNieruchomosciNew
 
         public virtual DbSet<User> User { get; set; }
 
+        public virtual DbSet<DzialkaOchrona> DzialkaOchrona { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

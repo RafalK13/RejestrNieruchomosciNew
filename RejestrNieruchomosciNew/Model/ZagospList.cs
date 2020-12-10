@@ -24,8 +24,6 @@ namespace RejestrNieruchomosciNew.Model
                 RaisePropertyChanged();
             }
         }
-
-
         
         public string result;
         private IDzialka dzialkaPrv;

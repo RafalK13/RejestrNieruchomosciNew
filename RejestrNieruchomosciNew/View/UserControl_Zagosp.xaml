@@ -19,6 +19,19 @@
         <con:stringToDecimal x:Key="convStrToDec"/>
         <con:slownikIdToName x:Key="slownikToName"/>
 
+        <Style TargetType="userCon:UserControl_ElementInfo" x:Key="userInfo">
+            <Setter Property="widthLabelRaf" Value="130"/>
+            <Setter Property="IsHitTestVisible" Value="true"/>
+            <Setter Property="isReadOnlyRaf" Value="False"/>
+        </Style>
+
+        <Style TargetType="userCon:UserControl_CheckBox" x:Key="elemCheckBox">
+            <Setter Property="Margin" Value="30,1,10,0"/>
+            <Setter Property="widthLabelRaf" Value="200"/>
+            <Setter Property="IsHitTestVisible" Value="true"/>
+            <Setter Property="isChackedRaf" Value="False"/>
+        </Style>
+
         <Style x:Key="scrollViewer" TargetType="ScrollViewer">
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         </Style>
@@ -109,6 +122,7 @@
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="500" MinWidth="9" />
                 <ColumnDefinition Width="300" MinWidth="9" />
+                <ColumnDefinition Width="300" MinWidth="9" />
                 <ColumnDefinition Width="3*" MinWidth="9" />
 
             </Grid.ColumnDefinitions>
@@ -133,6 +147,14 @@
                    />
             <GridSplitter 
                    Grid.Column ="2"  
+                   Width="5"
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Stretch"
+                   Panel.ZIndex="13" 
+                   />
+
+            <GridSplitter 
+                   Grid.Column ="3"  
                    Width="5"
                    HorizontalAlignment="Right" 
                    VerticalAlignment="Stretch"
@@ -250,65 +272,6 @@
 
                 </Grid>
             </ScrollViewer>
-
-            <ScrollViewer Grid.Column="2" 
-                          Style="{StaticResource scrollViewer}" Height="660" VerticalAlignment="Bottom"
-                          >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="28"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Label      Grid.Row="0"
-                                Content=""
-                                FontWeight="Bold"                      
-                                FontSize="19"
-                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1" Width="263"/>
-                    <Label      Grid.Row="1"
-                                Content="Ochrona zabytków"
-                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>
-
-                    <!--<Label      Grid.Row="0"
-                                Content="Konserwator zabytków"
-                                FontWeight="Bold"                      
-                                FontSize="19"
-                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
-                    <ComboBox
-                                Grid.Row="1"
-                                ItemsSource="{Binding userControl_Zagosp.konsZabytkowList.list}"
-                                SelectedValue="{Binding  userControl_Zagosp.userPrev.dzialkaSel.KonserwZabytkowSloId}"
-                                SelectedValuePath="KonserwZabytkowSloId"
-                                DisplayMemberPath="Nazwa"
-                                Style="{StaticResource comboBox}"/>
-                    <Label      Grid.Row="2"
-                                Content="Konserwator przyrody"
-                                FontWeight="Bold"                      
-                                FontSize="19"
-                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1"/>
-                    <ComboBox
-                                Grid.Row="3"
-                                ItemsSource="{Binding userControl_Zagosp.konsPrzyrodyList.list}"
-                                SelectedValue="{Binding  userControl_Zagosp.userPrev.dzialkaSel.KonserwPrzyrodySloId}"
-                                SelectedValuePath="KonserwPrzyrodySloId"
-                                DisplayMemberPath="Nazwa"
-                                Style="{StaticResource comboBox}"/>-->
-
-
-                </Grid>
-            </ScrollViewer>
-
 
             <ScrollViewer Grid.Column="1" 
                           Style="{StaticResource scrollViewer}"
@@ -462,6 +425,227 @@
                     </Grid>
                 </Grid>
             </ScrollViewer>
+
+            <ScrollViewer Grid.Column="2" 
+                          Style="{StaticResource scrollViewer}" Height="660" VerticalAlignment="Bottom"
+                          >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label      Grid.Row="0"
+                                Content=""
+                                FontWeight="Bold"                      
+                                FontSize="19"
+                                Style="{StaticResource label}" HorizontalAlignment="Left" Margin="10,9,0,1" Width="263"/>
+                    <Label      Grid.Row="1"
+                                Content="Ochrona zabytków"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>
+
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="2"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="obszar chroniony"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.obszarChroniony, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="3"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="wpis do GEZ"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.wpisDoGEZ, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="4"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="wpis do WEZ"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.wpisDoWEZ, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="5"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="wpis do RZ"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.wpisDoWZ, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="6"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="wpis do MPZP"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.wpisDoMPZP, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label  Grid.Row="7"
+                                Content="Ochrona przyrody"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>                    
+                    
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="8"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="park narodowy"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.parkNarodowy, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="9"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="rezerwat przyrody"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.rezerwatPrzyrody, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="10"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="park krajbrazowy"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.parkKrajobrazowy, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="11"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="obszar chronionego krajobrazu"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.obszarChronionyKrajobrazu, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="12"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="obszar Natura 2000"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.obszarNatura2000, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="13"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="pomnik przyrody"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.pomnikPrzyrody, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="14"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="stanowisko dokumentacyjne"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.stonowiskoDok, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="15"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="użytek ekologiczny"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.uzytekEkologiczny, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="16"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="wpis do mpzp"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.wpisWMPZM, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label  Grid.Row="17"
+                                Content="Ochrona ujęcia wody"
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>
+
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="18"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="teren ochrony bezpośredniej"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.terenOchrBezp, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="19"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="teren ochrony ścisłej"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.terenOchrScislej, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <userCon:UserControl_CheckBox
+                        Grid.Row="20"
+                        Style="{StaticResource elemCheckBox}"
+                        labelRaf="teren ochrony pośredniej"
+                        hightRaf="30"
+                        isChackedRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.terenOchrPosr, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </ScrollViewer>
+
+            <ScrollViewer Grid.Column="3" 
+                          Style="{StaticResource scrollViewer}" Height="660" VerticalAlignment="Bottom"
+                          >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="28"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label  Grid.Row="1"
+                                Content="Miejscowy plan zagospodarowania przest."
+                                Style="{StaticResource LabelOpis}" HorizontalAlignment="Left" Margin="10,0,0,1" Width="263"/>
+
+                    <userCon:UserControl_ElementInfo
+                        Grid.Row="2"
+                        Style="{StaticResource userInfo}"
+                        Margin="30,1,10,1"
+                        labelRaf="obowiązujący"
+                        tekstRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.planObowiazujacy, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <userCon:UserControl_ElementInfo
+                        Grid.Row="3"
+                        Style="{StaticResource userInfo}"
+                        Margin="30,1,10,1"
+                        labelRaf="procedowany"
+                        tekstRaf="{Binding Path=DataContext.userControl_Zagosp.dzialkaOchronaLok.planProcedowany, RelativeSource={RelativeSource AncestorType=userCon:UserControl_Zagosp}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                </Grid>
+            </ScrollViewer>
+
+
+
 
         </Grid>
         <StackPanel 

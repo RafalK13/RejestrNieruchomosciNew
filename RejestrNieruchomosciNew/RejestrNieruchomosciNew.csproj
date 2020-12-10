@@ -30,7 +30,7 @@
     <UpdateUrl>\\mapa\GeoVidi\RejestrNieruchomosci\Instal\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>19</ApplicationRevision>
     <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -246,6 +246,14 @@
     <Compile Include="Migrations\20201207131109_dom1.designer.cs">
       <DependentUpon>20201207131109_dom1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20201210083916_dom2.cs" />
+    <Compile Include="Migrations\20201210083916_dom2.designer.cs">
+      <DependentUpon>20201210083916_dom2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201210120328_dom3.cs" />
+    <Compile Include="Migrations\20201210120328_dom3.designer.cs">
+      <DependentUpon>20201210120328_dom3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ContextModelSnapshot.cs" />
     <Compile Include="Model\Adres.cs" />
     <Compile Include="Model\AdresList.cs" />
@@ -263,6 +271,7 @@
     <Compile Include="Model\DecyzjeAdministracyjne.cs" />
     <Compile Include="Model\DecyzjeAdministracyjneList.cs" />
     <Compile Include="Model\DzialkaList.cs" />
+    <Compile Include="Model\DzialkaOchrona.cs" />
     <Compile Include="Model\Dzialka_Budynek.cs" />
     <Compile Include="Model\Dzialka_BudynekList.cs" />
     <Compile Include="Model\EnumsTypes.cs" />
@@ -283,6 +292,7 @@
     <Compile Include="Model\Interfaces\IContrlosVisibling.cs" />
     <Compile Include="Model\Interfaces\IDecyzjeAdministracyjne.cs" />
     <Compile Include="Model\Interfaces\IDzialka.cs" />
+    <Compile Include="Model\Interfaces\IDzialkaOchrona.cs" />
     <Compile Include="Model\Interfaces\IDzialka_Budynek.cs" />
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
     <Compile Include="Model\Interfaces\IDzialka_BudynekList.cs" />

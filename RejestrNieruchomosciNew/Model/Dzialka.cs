@@ -89,6 +89,7 @@ namespace RejestrNieruchomosciNew
         public string dostDoDrogi { get; set; }
         [DataMember]
         public string rodzNaw { get; set; }
+
         //[DataMember]
         //public int? AdresId { get; set; }
         //[field: NonSerialized]
@@ -133,31 +134,7 @@ namespace RejestrNieruchomosciNew
        
         public ICollection<Dzialka_Budynek> Dzialka_Budynek { get; set; }
 
-        //public override bool Equals(object _other)
-        //{
-        //    if ( _other == null)
-        //        return false;
-
-        //    IDzialka other = _other as IDzialka;
-
-        //    if (other == null)
-        //        return false;
-
-        //    return DzialkaId.Equals(other.DzialkaId) &&
-        //           string.Equals(Numer, other.Numer) &&
-        //           string.Equals(Kwakt, other.Kwakt) &&
-        //           string.Equals(Kwzrob, other.Kwzrob) &&
-        //           Pow.Equals(other.Pow) &&
-        //           string.Equals(lokalizacja, other.lokalizacja) &&
-        //           string.Equals(uzbrojenie, other.uzbrojenie) &&
-        //           string.Equals(ksztalt, other.ksztalt) &&
-        //           string.Equals(sasiedztwo, other.sasiedztwo) &&
-        //           string.Equals(dostDoDrogi, other.dostDoDrogi) &&
-        //           string.Equals(rodzNaw, other.rodzNaw) &&
-        //           //AdresId == other.AdresId &&                    
-        //           ObrebId.Equals(other.ObrebId) &&
-        //           NadzorKonserwSloId.Equals(other.NadzorKonserwSloId);
-        //}
+        public DzialkaOchrona DzialkaOchrona { get; set; }
 
         bool IEquatable<IDzialka>.Equals(IDzialka other)
         {
@@ -203,8 +180,8 @@ namespace RejestrNieruchomosciNew
             Kwakt = _kwA;
             Kwzrob = _kwZ;
             Pow = _Pow;
-            KonserwPrzyrodySloId = _KonserwPrzyrodySloId;
-            KonserwZabytkowSloId = _KonserwZabytkowSloId;
+            //KonserwPrzyrodySloId = _KonserwPrzyrodySloId;
+            //KonserwZabytkowSloId = _KonserwZabytkowSloId;
             //AdresId = _AdresId;
         }
        

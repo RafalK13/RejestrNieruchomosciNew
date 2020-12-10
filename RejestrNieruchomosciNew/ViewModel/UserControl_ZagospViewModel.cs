@@ -4,10 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace RejestrNieruchomosciNew.ViewModel
@@ -24,18 +21,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged();
             }
         }
-
-        //public IKonserwPrzyrodySloList konsPrzyrodyList { get; set; }
-
-        //public IKonserwZabytkowSloList konsZabytkowList { get; set; }
-
-        //public IPrzedstawicielSloList przedstawicielSloList { get; set; }
-
-        //public UserControl_PreviewViewModel userPrev { get; set; }
-
-        //public ZagospFunkcjaSloList zagFunList { get; set; }
-
-        //public IZagospStatusSlo zapospStatusSel { get; set; }
 
         public IZagospList zagospList { get; set; }
 
@@ -65,7 +50,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICommand statusAdd { get; set; }
         public ICommand statusDel { get; set; }
-        //public ICommand zagospAdd { get; set; }
         public ICommand zagospCls { get; set; }
         public ICommand zagospSave { get; set; }
 
@@ -91,27 +75,37 @@ namespace RejestrNieruchomosciNew.ViewModel
         [DoNotWire]
         public ZagospStatusListSlo zagospStatusRaf { get; set; }
 
+        public DzialkaOchrona dzialkaOchronaLok { get; set; }
+        [DoNotWire]
+        public IDzialka dzialkaSel { get; set; }
+
+        public UserControl_PreviewViewModel  userPrev { get; set; }
+
         #region Konstruktor
-        public UserControl_ZagospViewModel(UserControl_PreviewViewModel userPrev
+        public UserControl_ZagospViewModel(   UserControl_PreviewViewModel _userPrev
                                             , IZagospList _zagospList
                                             , ZagospStatusList _zagospStatusList
-                                            , ZagospStatusListSlo _zagospStatusRaf
                                             )
         {
+            int x = 13;
             zagospStatusList = _zagospStatusList;
+            dzialkaSel = _userPrev.dzialkaSel;
+            userPrev = _userPrev;
 
             initButtons();
            
-            if (userPrev.dzialkaSel != null)
+            if (dzialkaSel != null)
             {
-                _zagospList.getList(userPrev.dzialkaSel);
+                _zagospList.getList( dzialkaSel);
 
-                zagospLok = (Zagosp)_zagospList.listAll.FirstOrDefault(r => r.DzialkaId == (userPrev.dzialkaSel.DzialkaId));
+                zagospLok = (Zagosp)_zagospList.listAll.FirstOrDefault(r => r.DzialkaId == (dzialkaSel.DzialkaId));
+
+                //var t = (DzialkaOchrona)dzialkaSel.DzialkaOchrona.Clone();
+                dzialkaOchronaLok = (DzialkaOchrona)dzialkaSel?.DzialkaOchrona?.Clone();
 
                 if (zagospLok == null)
                 {
-                    int t = 13;
-                    zagospLok = new Zagosp(userPrev.dzialkaSel.DzialkaId);
+                    zagospLok = new Zagosp(dzialkaSel.DzialkaId);
                     podmiotDetail = false;
                 }
                 else
@@ -120,6 +114,9 @@ namespace RejestrNieruchomosciNew.ViewModel
                     podmiotDetail = true;
                 }
 
+                if (dzialkaOchronaLok == null)
+                    dzialkaOchronaLok = new DzialkaOchrona() { DzialkaId = dzialkaSel.DzialkaId};
+                int n = 13;
                 zagospStatusList.zmianaZagospStatus += ZagospStatusList_zmianaZagospStatus;
             }
         }
@@ -137,7 +134,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 podmiotDetail = false;
                 zagospLok.ZagospStatusId = null;
             }
-
         }
 
         #endregion
@@ -146,20 +142,34 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             statusAdd = new RelayCommand(onStatusAdd);
             //statusDel = new RelayCommand(onStatusDel);
-            ////zagospAdd = new RelayCommand(onZagospAdd);
             //zagospCls = new RelayCommand(onZagospCls);
             zagospSave = new RelayCommand(onZagospSave);
         }
 
         private void onZagospSave()
         {
-            int z1 = 13;
             if (zagospLok != null)
             {
-                
                 zagospList.saveZagosp(zagospLok);
             }
+
+            saveDzialka();
+            
             //            zagospLok = null;
+        }
+
+        private void saveDzialka()
+        {
+            using (var c = new Context())
+            {
+                int x = 13;
+                c.Update(dzialkaOchronaLok);
+                c.SaveChanges();
+
+                var ind = userPrev.dzialkiList.list.IndexOf(dzialkaSel);
+
+                userPrev.dzialkiList.list[ind].DzialkaOchrona = (DzialkaOchrona)dzialkaOchronaLok.Clone();
+            }
         }
 
         //private void onZagospCls()

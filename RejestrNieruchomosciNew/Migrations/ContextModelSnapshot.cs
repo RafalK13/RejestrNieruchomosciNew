@@ -218,6 +218,61 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.ToTable("DecyzjeAdministracyjne");
                 });
 
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.DzialkaOchrona", b =>
+                {
+                    b.Property<int>("DzialkaOchronaId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DzialkaId");
+
+                    b.Property<bool>("obszarChroniony");
+
+                    b.Property<bool>("obszarChronionyKrajobrazu");
+
+                    b.Property<bool>("obszarNatura2000");
+
+                    b.Property<bool>("parkKrajobrazowy");
+
+                    b.Property<bool>("parkNarodowy");
+
+                    b.Property<string>("planObowiazujacy");
+
+                    b.Property<string>("planProcedowany");
+
+                    b.Property<bool>("pomnikPrzyrody");
+
+                    b.Property<bool>("rezerwatPrzyrody");
+
+                    b.Property<bool>("stonowiskoDok");
+
+                    b.Property<bool>("terenOchrBezp");
+
+                    b.Property<bool>("terenOchrPosr");
+
+                    b.Property<bool>("terenOchrScislej");
+
+                    b.Property<bool>("uzytekEkologiczny");
+
+                    b.Property<bool>("wpisDoGEZ");
+
+                    b.Property<bool>("wpisDoMPZP");
+
+                    b.Property<bool>("wpisDoWEZ");
+
+                    b.Property<bool>("wpisDoWZ");
+
+                    b.Property<bool>("wpisWMPZM");
+
+                    b.HasKey("DzialkaOchronaId");
+
+                    b.HasIndex("DzialkaId")
+                        .IsUnique()
+                        .HasFilter("[DzialkaId] IS NOT NULL");
+
+                    b.ToTable("DzialkaOchrona");
+                });
+
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Dzialka_Budynek", b =>
                 {
                     b.Property<int>("DzialkaId");
@@ -1251,6 +1306,13 @@ namespace RejestrNieruchomosciNew.Migrations
                     b.HasOne("RejestrNieruchomosciNew.Model.UlicaSlo", "UlicaSlo")
                         .WithMany("Adres")
                         .HasForeignKey("UlicaSloId");
+                });
+
+            modelBuilder.Entity("RejestrNieruchomosciNew.Model.DzialkaOchrona", b =>
+                {
+                    b.HasOne("RejestrNieruchomosciNew.Dzialka", "Dzialka")
+                        .WithOne("DzialkaOchrona")
+                        .HasForeignKey("RejestrNieruchomosciNew.Model.DzialkaOchrona", "DzialkaId");
                 });
 
             modelBuilder.Entity("RejestrNieruchomosciNew.Model.Dzialka_Budynek", b =>

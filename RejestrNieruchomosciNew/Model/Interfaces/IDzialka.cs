@@ -29,6 +29,7 @@ namespace RejestrNieruchomosciNew.Model
         Adres Adres { get; set; }
 
         PlatnoscUW PlatnoscUW { get; set; }
+        DzialkaOchrona DzialkaOchrona { get; set; }
 
         void clone( IDzialka d);
         object clone();

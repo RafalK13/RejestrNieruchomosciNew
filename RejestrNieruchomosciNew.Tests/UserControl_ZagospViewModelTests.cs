@@ -43,7 +43,7 @@ namespace RejestrNieruchomosciNew.Tests
              r => r.dzialkaSel == new Dzialka { DzialkaId = nr }
             );
 
-            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList, null);
+            UserControl_ZagospViewModel userControl = new UserControl_ZagospViewModel(userControl_prevModel, zagospList,null);
                     
             var result = userControl.zagospLok;
 
