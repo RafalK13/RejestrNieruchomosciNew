@@ -56,8 +56,18 @@
                     </DataGridComboBoxColumn.EditingElementStyle>
                 </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="Powierzchnia" 
-                                    Binding="{Binding Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }" 
-                                    Width="*"/>
+                                    Binding="{Binding Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  StringFormat={}{0:####} }" 
+                                    Width="*" 
+                                     >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" 
+                                            Value="Right"/>
+
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <!--<DataGridTextColumn Header="Id" Binding="{Binding UzytkiSloId}" 
                                     Width="*"/>-->
 

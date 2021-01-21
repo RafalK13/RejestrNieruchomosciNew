@@ -12,7 +12,7 @@
             
             <TabItem Header="Działki">
                 <TabControl>
-                    <TabItem Header="Dane poodstwowe">
+                    <TabItem Header="Dane podstawowe">
                         <view:UserControl_InfoDanePodst/>
                     </TabItem>
                     <TabItem Header="Dane dodatkowe">

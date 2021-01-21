@@ -37,12 +37,19 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
+        private double? _powUzTotal;
+        public double? powUzTotal
+        {
+            get => _powUzTotal;
+            set { Set(ref _powUzTotal, value); }
+        }
+
         //public INadzorKonserwatoraSloList nadzorKons { get; set; }
 
         public UserControl_DaneDodatkoweViewModel(IDzialka _dzialka,
                                                   UserControl_PreviewViewModel _prev,
                                                   IUzytkiList _uzytkiList
-                                                 ) 
+                                                 )
         {
             if (_prev?.dzialkaSel != null)
             {
@@ -51,9 +58,21 @@ namespace RejestrNieruchomosciNew.ViewModel
                 //_prev.dzialkaView.Refresh();
                 _uzytkiList.getList(_prev.dzialkaSel);
                 uzytkiListLok = new ObservableCollection<Uzytki>(_uzytkiList.list.Select(r => new Uzytki(r)).ToList());
+
+                uzytkiListLok.CollectionChanged += UzytkiListLok_CollectionChanged;
+                powUzTotal = uzytkiListLok.Sum(r => r.Pow);
+
             }
 
-            daneDodAdd = new RelayCommand( onDaneDodAdd);
+            daneDodAdd = new RelayCommand(onDaneDodAdd);
+
+        }
+
+        private void UzytkiListLok_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+
+            powUzTotal = uzytkiListLok.Sum(r => r.Pow);
+            int s = 13;
         }
 
         private void onDaneDodAdd()

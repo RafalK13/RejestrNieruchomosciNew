@@ -6,6 +6,7 @@
              xmlns:con="clr-namespace:RejestrNieruchomosciNew.ViewModel"
              xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
+             xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              mc:Ignorable="d" 
              x:Name="DaneDodWin"
@@ -18,6 +19,11 @@
             <con:IntConverter x:Key="intConverter"/>
             <con:stringToDecimal x:Key="convStrToDec"/>
             <con:stringToDouble x:Key="strToDouble"/>
+
+            <Style TargetType="userControl:UserControl_ElementInfo" x:Key="elemInfo_Col1">
+                <Setter Property="Margin" Value="10,5,10,0"/>
+                <Setter Property="widthLabelRaf" Value="100"/>
+            </Style>
 
             <Style x:Key="gridSplitter" TargetType="GridSplitter">
                 <Setter Property="Width" Value="5"/>
@@ -113,7 +119,27 @@
                         uzytkiSloList="{Binding Path=DataContext.userControl_DaneDod.uzytkiSloList, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         uzytkiListRaf="{Binding Path=DataContext.userControl_DaneDod.uzytkiListLok, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         dzialka="{Binding Path=DataContext.userControl_DaneDod.userPrev.dzialkaSel, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Margin="10,50,10,0"/>
+                        Margin="10,50,10,50"/>
+
+                <!--tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.powUzTotal, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">-->
+                <!--tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.uzytkiListLok.count, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">-->
+                <TextBox Text="{Binding userControl_DaneDod.powUzTotal }"
+                          VerticalAlignment="Bottom"
+                         Margin="0,0,69,0"
+                         />
+
+                <!--<userControl:UserControl_ElementInfo
+                    VerticalAlignment="Bottom"
+                       labelRaf="Pow.użytków"
+                       tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.powUzTotal, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <userControl:UserControl_ElementInfo.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Background" Value="#33FF0000"/>
+                            
+                        </Style>
+                        
+                    </userControl:UserControl_ElementInfo.Resources>
+                </userControl:UserControl_ElementInfo>-->
             </Grid>
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" 

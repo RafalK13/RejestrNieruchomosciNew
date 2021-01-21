@@ -197,8 +197,20 @@
                                             Width="*"
                                             />
                         <DataGridTextColumn Header="Powierzchnia"
-                                            Binding="{ Binding Pow, StringFormat='{}{0:#,0.00}'}"
-                                            Width="*"/>
+                                            Binding="{ Binding Pow, StringFormat='{}{0:#,0.0000}'}"
+                                            Width="*"
+                                           
+                                            
+                                           >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" 
+                                            Value="Right"/>
+
+
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 
