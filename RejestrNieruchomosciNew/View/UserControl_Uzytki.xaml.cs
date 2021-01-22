@@ -3,6 +3,7 @@ using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -75,6 +76,36 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty dzialkaProperty =
             DependencyProperty.Register("dzialka", typeof(IDzialka), typeof(UserControl_Uzytki));
-       
+
+        private void GridRaf_CurrentCellChanged(object sender, EventArgs e)
+        {
+            powTotal = uzytkiListRaf.Sum(r => r.Pow);
+      
+            if (powTotal != 0 && dzialka.Pow != 0)
+            {
+                sizeAlert = (powTotal - dzialka.Pow) < 0.00001 ? false : true;
+            }
+        }
+
+        public double? powTotal
+        {
+            get { return (double?)GetValue(powTotalProperty); }
+            set { SetValue(powTotalProperty, value); }
+        }
+
+        public static readonly DependencyProperty powTotalProperty =
+            DependencyProperty.Register("powTotal", typeof(double?), typeof(UserControl_Uzytki));
+
+        public bool sizeAlert
+        {
+            get { return (bool)GetValue(sizeAlertProperty); }
+            set { SetValue(sizeAlertProperty, value); }
+        }
+
+        public static readonly DependencyProperty sizeAlertProperty =
+            DependencyProperty.Register("sizeAlert", typeof(bool), typeof(UserControl_Uzytki));
+
+
+
     }
 }

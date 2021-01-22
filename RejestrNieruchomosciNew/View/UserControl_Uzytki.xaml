@@ -39,7 +39,7 @@
                   RowDetailsVisibilityMode="Visible"
                   RowHeaderWidth="13"
                   AutoGenerateColumns="False" Loaded="gridRaf_Loaded" 
-                  ItemsSource="{Binding uzytkiListRaf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding uzytkiListRaf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" CurrentCellChanged="GridRaf_CurrentCellChanged"
                   >
             <DataGrid.Columns>
                 <DataGridComboBoxColumn Header="Użytek" 

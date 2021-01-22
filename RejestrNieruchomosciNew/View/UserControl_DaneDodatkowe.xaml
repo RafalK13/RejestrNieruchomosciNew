@@ -116,30 +116,70 @@
                         VerticalAlignment="Top"
                         Style="{StaticResource label}" HorizontalAlignment="Left"/>
                 <userCon:UserControl_Uzytki 
+                        x:Name="PowUzTotalName"
+                        sizeAlert="{Binding Path=DataContext.userControl_DaneDod.sizeAlert, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        powTotal="{Binding Path=DataContext.userControl_DaneDod.powUzTotal, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         uzytkiSloList="{Binding Path=DataContext.userControl_DaneDod.uzytkiSloList, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         uzytkiListRaf="{Binding Path=DataContext.userControl_DaneDod.uzytkiListLok, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                         dzialka="{Binding Path=DataContext.userControl_DaneDod.userPrev.dzialkaSel, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Margin="10,50,10,50"/>
+                        Margin="10,50,10,75"/>
 
+               
                 <!--tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.powUzTotal, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">-->
                 <!--tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.uzytkiListLok.count, RelativeSource={RelativeSource AncestorType=userControl:UserControl_Budynek}, Converter={StaticResource intConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">-->
-                <TextBox Text="{Binding userControl_DaneDod.powUzTotal }"
-                          VerticalAlignment="Bottom"
-                         Margin="0,0,69,0"
-                         />
-
                 <!--<userControl:UserControl_ElementInfo
-                    VerticalAlignment="Bottom"
+                       x:Name="PowUzTotalName"
+                       VerticalAlignment="Bottom"
                        labelRaf="Pow.użytków"
+                       widthLabelRaf="80"
+                       Margin="10,10,10,40"
                        tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.powUzTotal, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <userControl:UserControl_ElementInfo.Resources>
-                        <Style TargetType="TextBox">
-                            <Setter Property="Background" Value="#33FF0000"/>
-                            
-                        </Style>
-                        
-                    </userControl:UserControl_ElementInfo.Resources>
+                <userControl:UserControl_ElementInfo.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Background" Value="#33FF0000"/>
+                    </Style>
+                </userControl:UserControl_ElementInfo.Resources>
                 </userControl:UserControl_ElementInfo>-->
+
+                <Label
+                    VerticalAlignment="Bottom"
+                    Margin="10,10,10,40"
+                    Content="Pow.użytków">
+                </Label>
+
+                <TextBox
+                    VerticalAlignment="Bottom"
+                    Height="25"
+                    Margin="90,10,10,40"
+                    HorizontalContentAlignment="Right"
+                    Text="{Binding ElementName=PowUzTotalName, Path=powTotal,  StringFormat={}{0:0.0000} }"
+                    >
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Background" Value="White"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=PowUzTotalName, Path=sizeAlert}" Value="true">
+                                    <Setter Property="Background" Value="#33FF0000"></Setter>
+
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+
+                </TextBox>
+
+                <userControl:UserControl_ElementInfo
+                    VerticalAlignment="Bottom"
+                       labelRaf="Pow.działki"
+                       widthLabelRaf="80"
+                       Margin="10,10,10,10"
+                       tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.dzialka.Pow, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0.0000} }">
+                    <userControl:UserControl_ElementInfo.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                        </Style>
+                    </userControl:UserControl_ElementInfo.Resources>
+                </userControl:UserControl_ElementInfo>
             </Grid>
         </ScrollViewer>
         <ScrollViewer Grid.Column="2" 

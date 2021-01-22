@@ -139,8 +139,11 @@
                    Style="{StaticResource label}"
                    Content="Numer KW akt."
                    />
-        <TextBox   Grid.Row="4" Grid.Column="1"                
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
+        
+        
+        <TextBox   Grid.Row="4" Grid.Column="1"  
+                   
+                   Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Style="{StaticResource tekstBox}"
                    />
         <Label     Grid.Row="5" Grid.Column="0"
