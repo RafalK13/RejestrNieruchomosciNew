@@ -5,8 +5,11 @@ using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.View;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace RejestrNieruchomosciNew
 {
@@ -16,8 +19,25 @@ namespace RejestrNieruchomosciNew
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
+            //var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+            //var ci = new CultureInfo(currentCulture)
+            //{
+            //    NumberFormat = { NumberDecimalSeparator = "." },
+            //    DateTimeFormat = { DateSeparator = "/" }
+            //};
+            //System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
 
             //MessageBox.Show( $"UserName:{Environment.UserName}");
+
+            CultureInfo ci = new CultureInfo("pl-PL");
+
+            ci.NumberFormat.NumberDecimalSeparator = ".";
+
+
+            Thread.CurrentThread.CurrentCulture = ci;
 
             container.Install(FromAssembly.This());
 

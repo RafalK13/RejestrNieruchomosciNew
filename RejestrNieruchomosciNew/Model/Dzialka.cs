@@ -67,8 +67,10 @@ namespace RejestrNieruchomosciNew
         [DataMember]
         public double? Pow
         {
-            get => _Pow; set
+            get => _Pow;
+            set
             {
+               
                 _Pow = value;
                 //RaisePropertyChanged();
                 NotifyPropertyChanged();

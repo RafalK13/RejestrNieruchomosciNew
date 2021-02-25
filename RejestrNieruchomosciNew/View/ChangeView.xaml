@@ -98,17 +98,44 @@
                             <Binding  Path="userControl_AddDanePod.UliceSloList"/>
                         </MultiBinding>
                 </TextBox>
-                    
-                
-
             </StackPanel>
 
         </StackPanel>
 
         <TabControl Grid.Row="1" Margin="20,20,20,10">
 
-            <TabItem Header="Dane podstawowe">
-                <view:UserControl_DanePodstawowe/>
+            <TabItem Header="Działki">
+                <TabControl>
+                    <TabItem Header="Dane podstawowe">
+                        <view:UserControl_DanePodstawowe/>
+                    </TabItem>
+                    <TabItem Header="Dane dodatkowe"
+                         Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
+                        <view:UserControl_DaneDodatkowe/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Header="Stan prawny">
+                <TabControl>
+                    <TabItem Header="Własność"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
+                        <view:UserControl_Wlasciciel/>
+                    </TabItem>
+
+                    <TabItem Header="Inne prawa"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
+                        <view:UserControl_InnePrawa>
+                        </view:UserControl_InnePrawa>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <TabItem Header="Budynki"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
+                <view:UserControl_Budynek/>
             </TabItem>
 
             <TabItem Header="Płatność z tytułu UW"
@@ -117,35 +144,14 @@
                 <view:UserControl_PlatnoscUW/>
             </TabItem>
 
-            <TabItem Header="Dane Dodatkowe"
-                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
-                     >
-            <view:UserControl_DaneDodatkowe/>
-                   
-            </TabItem>
-
-            <TabItem Header="Własność"
-                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
-                     >
-                <view:UserControl_Wlasciciel/>
-            </TabItem>
-
-            <TabItem Header="Inne prawa"
-                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
-                     >
-                <view:UserControl_InnePrawa>
-                </view:UserControl_InnePrawa>
-            </TabItem>
+            
             <TabItem Header="Zagospodarowanie działki"
                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
                 <view:UserControl_Zagosp/>
             </TabItem>
 
-            <TabItem Header="Budynki"
-                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}">
-                <view:UserControl_Budynek/>
-            </TabItem>
+            
         </TabControl>
     </Grid>
 </Window>

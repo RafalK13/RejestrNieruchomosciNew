@@ -322,7 +322,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             string digit = value.ToString().Replace(",", ".");
 
+            //CultureInfo c = CultureInfo.InvariantCulture;
+
             double result;
+            //if (double.TryParse(digit, NumberStyles.AllowDecimalPoint, c, out result))
             if (double.TryParse(digit, out result))
                 return string.Format("{0:#,0.0000}", result);
             return null;

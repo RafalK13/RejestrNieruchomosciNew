@@ -130,7 +130,8 @@ namespace RejestrNieruchomosciNew.Model
             {
                 foreach (var i in listToAdd)
                 {
-                    c.Uzytki.Add(i);
+                    if(i.UzytkiSloId > 0)
+                        c.Uzytki.Add(i);
                 }
                 c.SaveChanges();
             }

@@ -69,17 +69,13 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDaneDodAdd()
         {
+            int r1 = 13;
             uzytkiList.list = new ObservableCollection<Uzytki>(uzytkiListLok.Select(r => new Uzytki(r)).ToList());
             uzytkiList.saveUzytki();
-
-            //IDzialka dz = userPrev.dzialkaSel;
-
-            //if (dz.Equals(dzialka) == false)
-            //    dzialkaList.ModRow(dz);
-            dzialkaList.ModRow(dzialka);
-
-            //userPrev.dzialkaSel = dzialka;
-            userPrev.dzialkaView.Refresh();
+     
+            //dzialkaList.ModRow(dzialka);
+  
+            //userPrev.dzialkaView.Refresh();
         }
     }
 }
