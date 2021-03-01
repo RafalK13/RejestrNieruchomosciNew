@@ -24,9 +24,11 @@ namespace RejestrNieruchomosciNew.ViewModel
             get => _wladanieSel;
             set
             {
+                
                 _wladanieSel = value;
                 //getWladanieSel();
                 RaisePropertyChanged();
+                int r = 13;
             }
         }
 

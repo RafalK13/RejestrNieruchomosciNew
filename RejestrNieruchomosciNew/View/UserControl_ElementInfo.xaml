@@ -28,11 +28,12 @@
 
         <Button  Grid.Column="1"
                  Height="{Binding hightRaf}"
-                 IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"
+                 IsEnabled="True"
                  Visibility="{Binding buttonVisibility}"
                  Command="{Binding onClickZal}"
-                 Content="{Binding buttonOpis, Mode=TwoWay}"
+                 Content="{Binding buttonOpis, Mode=TwoWay}" 
                  />
+        <!--IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"-->
 
         <!--<ComboBox Grid.Column="1"
                   Height="{Binding hightRaf}"

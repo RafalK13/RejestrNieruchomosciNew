@@ -4,8 +4,10 @@ using RejestrNieruchomosciNew.Model.Interfaces;
 using RejestrNieruchomosciNew.ViewModel;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,7 +22,7 @@ namespace RejestrNieruchomosciNew.View
             InitializeComponent();
             DataContext = this;
 
-            onClickZal = new RelayCommand( zalClicked);
+            onClickZal = new RelayCommand(zalClicked);
         }
 
         public bool isReadOnlyRaf
@@ -34,10 +36,19 @@ namespace RejestrNieruchomosciNew.View
 
         private void zalClicked()
         {
-             var view = new Window_Zalacznik();
-             Window_ZalacznikViewModel m = new Window_ZalacznikViewModel(pathZal);
-             view.DataContext = m;
-             view.ShowDialog();
+            int r = 13;
+            if (checkIfFiles(pathZal) == true)
+            {
+                var view = new Window_Zalacznik();
+                Window_ZalacznikViewModel m = new Window_ZalacznikViewModel(pathZal);
+                view.DataContext = m;
+                view.ShowDialog();
+            }
+            //else
+            //{
+            //    buttonOpis = "brak załączników";
+            //    buttonEnabled = false;
+            //}
         }
 
         public string buttonOpis
@@ -47,7 +58,7 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty buttonOpisProperty =
-            DependencyProperty.Register("buttonOpis", typeof(string), typeof(UserControl_ElementInfo));
+            DependencyProperty.Register("buttonOpis", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(""));
 
         public bool buttonEnabled
         {
@@ -56,7 +67,7 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty buttonEnabledProperty =
-            DependencyProperty.Register("buttonEnabled", typeof(bool), typeof(UserControl_ElementInfo));
+            DependencyProperty.Register("buttonEnabled", typeof(bool), typeof(UserControl_ElementInfo), new PropertyMetadata(false));
 
         public string pathZal
         {
@@ -65,22 +76,56 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty pathZalProperty =
-            DependencyProperty.Register("pathZal", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata(null, new PropertyChangedCallback( onChangePath)));
+            DependencyProperty.Register("pathZal", typeof(string), typeof(UserControl_ElementInfo), new PropertyMetadata("XXX", new PropertyChangedCallback(onChangePath)));
+
+        public async Task<bool> checkIfFilesAsync(string s)
+        {
+            bool result = true;
+            string resultList = String.Empty;
+            await Task.Run(() =>
+            {
+                result = Directory.Exists(s);
+            });
+
+            if (result == false)
+                return false;
+            else
+            {
+                await Task.Run(() =>
+                {
+                    resultList = Directory.GetFiles(s).FirstOrDefault();
+                });
+                if (resultList == null)
+                    return false;
+            }
+
+
+
+            return true;
+        }
+
 
         private bool checkIfFiles(string path)
         {
             if (Directory.Exists(path) == false)
                 return false;
-            if (Directory.GetFiles( path).FirstOrDefault() == null)        
+            if (Directory.GetFiles(path).FirstOrDefault() == null)
                 return false;
 
             return true;
         }
 
-        private static void onChangePath(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static async void onChangePath(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            int r = 13;
+            //MessageBox.Show("XXX");
+
+            //UserControl_ElementInfo u = d as UserControl_ElementInfo;
+            //u.buttonOpis = "";
+            //u.buttonEnabled = true;
+
             UserControl_ElementInfo u = d as UserControl_ElementInfo;
-            if (u.checkIfFiles(u.pathZal) == false)
+            if ( await u.checkIfFilesAsync(u.pathZal) == false)
             {
                 u.buttonOpis = "Empty";
                 u.buttonEnabled = false;
@@ -108,7 +153,7 @@ namespace RejestrNieruchomosciNew.View
         }
 
         public static readonly DependencyProperty buttonVisibilityProperty =
-            DependencyProperty.Register("buttonVisibility", typeof(Visibility), typeof(UserControl_ElementInfo), new PropertyMetadata( Visibility.Hidden));
+            DependencyProperty.Register("buttonVisibility", typeof(Visibility), typeof(UserControl_ElementInfo), new PropertyMetadata(Visibility.Hidden));
 
         public int hightRaf
         {
@@ -172,44 +217,6 @@ namespace RejestrNieruchomosciNew.View
 
         public static readonly DependencyProperty comboVisibilityProperty =
             DependencyProperty.Register("comboVisibility", typeof(Visibility), typeof(UserControl_ElementInfo), new PropertyMetadata(Visibility.Hidden));
-
-        //#region COMBO
-        //public IEnumerable comboList
-        //{
-        //    get { return (IEnumerable)GetValue(comboListProperty); }
-        //    set { SetValue(comboListProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty comboListProperty =
-        //    DependencyProperty.Register("comboList", typeof(IEnumerable), typeof(UserControl_ElementInfo));
-
-        //public string comboDispMember
-        //{
-        //    get { return (string)GetValue(comboDispMemberProperty); }
-        //    set { SetValue(comboDispMemberProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty comboDispMemberProperty =
-        //    DependencyProperty.Register("comboDispMember", typeof(string), typeof(UserControl_ElementInfo));
-
-        //public object comboSelValue
-        //{
-        //    get { return (object)GetValue(comboSelValueProperty); }
-        //    set { SetValue(comboSelValueProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty comboSelValueProperty =
-        //    DependencyProperty.Register("comboSelValue", typeof(object), typeof(UserControl_ElementInfo));
-
-        //public string comboSelValPath
-        //{
-        //    get { return (string)GetValue(comboSelValPathProperty); }
-        //    set { SetValue(comboSelValPathProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty comboSelValPathProperty =
-        //    DependencyProperty.Register("comboSelValPath", typeof(string), typeof(UserControl_ElementInfo));
-        //#endregion
 
     }
 }
