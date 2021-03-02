@@ -40,7 +40,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICollectionView dzialkaView
         {
-            get => CollectionViewSource.GetDefaultView(dzialkiList.list);
+            get
+            {
+                int r = 14;
+                return CollectionViewSource.GetDefaultView(dzialkiList.list);
+            }
+            //get => CollectionViewSource.GetDefaultView(dzialkiList.list);
         }
 
         public event EventHandler zmianaDzialkaSel;
@@ -253,7 +258,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 Dzialka d = row as Dzialka;
 
                 bool nb = !string.IsNullOrEmpty(dzialkaNr) ? d.Numer.Contains(dzialkaNr) : true;
-                bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d.Obreb.Nazwa.Contains(obreb.obrebValue) : true;
+                bool ob = !string.IsNullOrEmpty(obreb.obrebValue) ? d.Obreb.Numer.Contains(obreb.obrebValue) : true;
                 bool gb = !string.IsNullOrEmpty(obreb.gminaValue) ? d.Obreb.GminaSlo.Nazwa.Contains(obreb.gminaValue) : true;
                 bool wladanieUdzial = !string.IsNullOrEmpty(filtr.wlad_udzial) ? d.Wladanie.FirstOrDefault(r => r.Udzial == filtr.wlad_udzial) != null : true;
 

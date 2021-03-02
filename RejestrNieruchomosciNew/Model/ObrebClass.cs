@@ -18,8 +18,9 @@ namespace RejestrNieruchomosciNew.Model
         {
             get
             {
+                int r = 13;
                 if (obrebValue != null)
-                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.Nazwa.Contains(obrebValue)).Select(a => a.GminaSlo.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.Numer.Contains(obrebValue)).Select(a => a.GminaSlo.Nazwa).Distinct());
                 else
                     return CollectionViewSource.GetDefaultView(obrebList.obrebList.Select(a => a.GminaSlo.Nazwa).Distinct());
             }
@@ -36,10 +37,11 @@ namespace RejestrNieruchomosciNew.Model
         {
             get
             {
+                
                 if (gminaValue != null)
-                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.GminaSlo.Nazwa.Contains(gminaValue)).Select(a => a.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Where(a => a.GminaSlo.Nazwa.Contains(gminaValue)).Select(a => a.Numer).Distinct());
                 else
-                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Select(a => a.Nazwa).Distinct());
+                    return CollectionViewSource.GetDefaultView(obrebList.obrebList.Select(a => a.Numer).Distinct());
             }
 
             set
@@ -63,7 +65,7 @@ namespace RejestrNieruchomosciNew.Model
                 _obrebValue = value;
                 RaisePropertyChanged("obrebValue");
                 RaisePropertyChanged("gminaView");
-
+               
                 //setFilter();
             }
         }
@@ -98,7 +100,7 @@ namespace RejestrNieruchomosciNew.Model
                 {
                     var v = obrebList.obrebList.Where(r => r.ObrebId == d.ObrebId).First();
 
-                    obrebValue = v.Nazwa;
+                    obrebValue = v.Numer;
                     gminaValue = v.GminaSlo.Nazwa;
                 }
             }
@@ -116,8 +118,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 if (gminaView != null && obrebView != null)
                 {
-                    obrebValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().Nazwa;
-                    gminaValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().GminaSlo.Nazwa;
+                    obrebValue = obrebList.obrebList.Where(r => r.ObrebId == id).First().Numer;
                 }
             }
             catch (Exception)
@@ -129,7 +130,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public int getId(string obreb, string gmina)
         {
-            return obrebList.obrebList.FirstOrDefault(r => r.Nazwa == obreb && r.GminaSlo.Nazwa == gmina).ObrebId;
+            return obrebList.obrebList.FirstOrDefault(r => r.Numer == obreb && r.GminaSlo.Nazwa == gmina).ObrebId;
         }
 
         public int? getId()
@@ -138,7 +139,7 @@ namespace RejestrNieruchomosciNew.Model
             if (!string.IsNullOrEmpty(obrebValue) && !string.IsNullOrEmpty(gminaValue))
             {
 
-                n =  obrebList.obrebList.FirstOrDefault(o => o.Nazwa == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;
+                n =  obrebList.obrebList.FirstOrDefault(o => o.Numer == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;
                 //using (var c = new Context())
                 //{
                 //    n = c.Obreb.FirstOrDefault(o => o.Nazwa == obrebValue && o.GminaSlo.Nazwa == gminaValue).ObrebId;

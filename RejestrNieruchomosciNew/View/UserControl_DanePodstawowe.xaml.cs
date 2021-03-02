@@ -18,5 +18,10 @@ namespace RejestrNieruchomosciNew.View
         {
 
         }
+
+        private void UserControl_Adres_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

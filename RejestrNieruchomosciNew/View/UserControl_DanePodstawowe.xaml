@@ -8,8 +8,10 @@
              xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
              xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              Name="userControlDanePod"
+             xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
              d:DesignHeight="500" d:DesignWidth="1000"
              >
     <UserControl.Resources>
@@ -137,18 +139,25 @@
                   />
         <Label     Grid.Row="4" Grid.Column="0"
                    Style="{StaticResource label}"
-                   Content="Numer KW akt."
+                   Content="Numer KW aktualny"
                    />
+        <xctk:MaskedTextBox
+            Grid.Row="4" Grid.Column="1" 
+            Style="{StaticResource tekstBox}"
+            x:Name="_maskedTextBox"
+            Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             Mask="GD1L\/00000000\/0"
+                            />
         
         
-        <TextBox   Grid.Row="4" Grid.Column="1"  
-                   
+        <!--<TextBox   Grid.Row="4" Grid.Column="1"  
+                   extensions.TextBoxMask.Mask="9a9a-a9a*"
                    Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                    Style="{StaticResource tekstBox}"
-                   />
+                   />-->
         <Label     Grid.Row="5" Grid.Column="0"
                    Style="{StaticResource label}"
-                   Content="Numer KW źród."
+                   Content="Numer KW źródłowy"
                    />
         <TextBox   Grid.Row="5" Grid.Column="1"        
                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
@@ -172,7 +181,7 @@
                     gminaId="{Binding  Path=DataContext.userControl_AddDanePod.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adresSlo="{Binding  Path=DataContext.userControl_AddDanePod.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adres="{Binding  Path=DataContext.userControl_AddDanePod.dzialka.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="UserControl_Adres_Loaded"
                     />
 
         <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

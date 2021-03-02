@@ -89,7 +89,7 @@
                          widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
                         labelRaf="Obręb"
-                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.Nazwa, ElementName=InfoDanePodstawowe}"/>
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Obreb.Numer, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
                         Grid.Row="3"
@@ -112,7 +112,7 @@
                         Style="{StaticResource userInfo}"
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
-                        labelRaf="KW źród."
+                        labelRaf="KW źródłowy"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo

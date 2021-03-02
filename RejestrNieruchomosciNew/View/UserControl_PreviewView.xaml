@@ -151,7 +151,7 @@
                   Name="DataGridMain">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer" Binding="{Binding Numer}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Nazwa}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Numer}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.InputBindings>

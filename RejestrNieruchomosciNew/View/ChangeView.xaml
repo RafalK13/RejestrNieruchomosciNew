@@ -80,7 +80,7 @@
                 <TextBox Text="obręb:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.Nazwa}"
+                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.Numer}"
                     Style="{StaticResource tytulOpis}"
                     x:Name="obrebRaf1"
 
@@ -116,7 +116,9 @@
                 </TabControl>
             </TabItem>
 
-            <TabItem Header="Stan prawny">
+            <TabItem Header="Stan prawny"
+                     Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
+                     >
                 <TabControl>
                     <TabItem Header="Własność"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
