@@ -160,7 +160,7 @@
                    Content="Numer KW źródłowy"
                    />
         <TextBox   Grid.Row="5" Grid.Column="1"        
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"
+                   Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
                    Style="{StaticResource tekstBox}"
                    />
 

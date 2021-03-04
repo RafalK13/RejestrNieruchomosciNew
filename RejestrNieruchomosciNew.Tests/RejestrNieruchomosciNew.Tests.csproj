@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConverterTests.cs" />
     <Compile Include="FiltrTests.cs" />
     <Compile Include="UserControl_PreviewViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

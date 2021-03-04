@@ -1,15 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using RejestrNieruchomosciNew.Model;
+﻿using RejestrNieruchomosciNew.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
-using System.Windows;
-using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace RejestrNieruchomosciNew
 {
@@ -92,21 +86,12 @@ namespace RejestrNieruchomosciNew
         [DataMember]
         public string rodzNaw { get; set; }
 
-        //[DataMember]
-        //public int? AdresId { get; set; }
-        //[field: NonSerialized]
         [DataMember]
         public Adres Adres { get; set; }
-        //[DataMember]
-        //public int? KonserwZabytkowSloId { get; set; }
-        //[DataMember]
-        //public int? KonserwPrzyrodySloId { get; set; }
-        //[field: NonSerialized]
 
         public KonserwZabytkowSlo KonserwZabytkowSlo { get; set; }
         public KonserwPrzyrodySlo KonserwPrzyrodySlo { get; set; }
 
-        //[field: NonSerialized]
         public ICollection<Uzytki> Uzytki { get; set; }
 
         private int _ObrebId;
@@ -117,9 +102,7 @@ namespace RejestrNieruchomosciNew
             set 
             {
                 _ObrebId = value;
-                //Set( ref _ObrebId, value);
 
-                //RaisePropertyChanged();
                 NotifyPropertyChanged();
                 if (zmianaObreb != null)
                     zmianaObreb(null, EventArgs.Empty);
@@ -127,7 +110,6 @@ namespace RejestrNieruchomosciNew
         }
         [DataMember]
         public Obreb Obreb { get; set; }
-
 
         public ICollection<Wladanie> Wladanie { get; set; }
         public ICollection<InnePrawa> InnePrawa { get; set; }

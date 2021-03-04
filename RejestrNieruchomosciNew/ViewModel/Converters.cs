@@ -317,6 +317,7 @@ namespace RejestrNieruchomosciNew.ViewModel
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            int r = 13;
             if (value == null)
                 return null;
 

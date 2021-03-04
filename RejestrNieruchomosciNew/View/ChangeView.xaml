@@ -62,7 +62,7 @@
                 <TextBox Text="numer działki:"
                          Style="{StaticResource tytulLabel}"
                          />
-                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Numer}"
+                <TextBox Text="{Binding userControl_AddDanePod.headerOpis.numer}"
                          Style="{StaticResource tytulOpis}"
                          />
             </StackPanel>
@@ -71,24 +71,31 @@
                 <TextBox Text="gmina:"
                      Style="{StaticResource tytulLabel}"
                      />
-                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.GminaSlo.Nazwa}"
+                <TextBox Text="{Binding userControl_AddDanePod.headerOpis.gmina}"
                     Style="{StaticResource tytulOpis}"
                      />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
                 <TextBox Text="obręb:"
-                     Style="{StaticResource tytulLabel}"
+                     Style="{StaticResource tytulLabel}" Margin="0,20,0,0" VerticalAlignment="Top"
                      />
-                <TextBox Text="{Binding userControl_AddDanePod.dzialka.Obreb.Numer}"
+                <TextBox Text="{Binding userControl_AddDanePod.headerOpis.obreb}"
                     Style="{StaticResource tytulOpis}"
-                    x:Name="obrebRaf1"
-
                      />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
-                <TextBox Text="ulica:"
+                <TextBox Text="adres:"
+                     Style="{StaticResource tytulLabel}" Margin="0,20,0,0" VerticalAlignment="Top"
+                     />
+                <TextBox Text="{Binding userControl_AddDanePod.headerOpis.adres}"
+                    Style="{StaticResource tytulOpis}"
+                     />
+            </StackPanel>
+
+            <!--<StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <TextBox Text="adres:"
                      Style="{StaticResource tytulLabel}"
                      />
                 <TextBox 
@@ -98,7 +105,7 @@
                             <Binding  Path="userControl_AddDanePod.UliceSloList"/>
                         </MultiBinding>
                 </TextBox>
-            </StackPanel>
+            </StackPanel>-->
 
         </StackPanel>
 
