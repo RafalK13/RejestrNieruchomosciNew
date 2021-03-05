@@ -121,8 +121,8 @@
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
                         labelRaf="Powierzchnia [ha]"
-                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:#,0.0000}'}"/>
-
+                        tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Pow, ElementName=InfoDanePodstawowe, StringFormat='{}{0:N4}'}"/>
+                <!--StringFormat='{}{0:#,0.0000}'}-->
                 <view:UserControl_ElementInfo
                         Grid.Row="7" Grid.RowSpan="2"
                         Style="{StaticResource userInfo}"

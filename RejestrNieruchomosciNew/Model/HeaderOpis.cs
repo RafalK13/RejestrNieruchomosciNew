@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RejestrNieruchomosciNew.Model
 {
@@ -62,8 +63,17 @@ namespace RejestrNieruchomosciNew.Model
                     var n1 = adresSlo.miejscList.listAll.FirstOrDefault(r1 => r1.MiejscowoscSloId == adr.MiejscowoscSloId).Nazwa;
                     if (adr.UlicaSloId != null)
                     {
-                        string n2 = adresSlo.ulicaList.listAll.FirstOrDefault(r2 => r2.UlicaSloId == adr.UlicaSloId).Nazwa;
-                        return $"{n1}, {n2} {dzialka.Adres?.Numer}";
+                        try
+                        {
+                            string n2 = adresSlo.ulicaList.listAll.FirstOrDefault(r2 => r2.UlicaSloId == adr.UlicaSloId).Nazwa;
+                            return $"{n1}, {n2} {dzialka.Adres?.Numer}";
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"{ex.Message}\r\n{ex.Source}");
+                            return "XXX";
+                        }
+                       
                     }
                     else
                     {

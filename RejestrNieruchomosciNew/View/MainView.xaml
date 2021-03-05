@@ -29,11 +29,35 @@
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
 
             <TextBox  Grid.Row="0" 
-                  FontSize="20"
+                  FontSize="30"
                   TextAlignment="Center"
                   VerticalAlignment="Center"
-                  Text="{Binding modeMessage, Mode=TwoWay}" 
-                  BorderThickness="0"></TextBox>
+                  Text="{Binding modeMessage, Mode=OneWay}"
+                  BorderThickness="0"/>
+
+            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Content="Zaznaczona działka:"
+                   FontSize="20"></Label>
+                <Label Content="Numer:"
+                       FontSize="20"/>
+                <TextBox Text="XXX"
+                          FontSize="23"
+                         FontWeight="Bold"
+                         VerticalAlignment="Center"/>
+                <Label Content="Obręb:"
+                       FontSize="20"/>
+                <TextBox Text="XXX"
+                          FontSize="23"
+                         FontWeight="Bold"
+                         VerticalAlignment="Center"/>
+                <Label Content="Numer:"
+                       FontSize="20"/>
+                <TextBox Text="XXX"
+                          FontSize="23"
+                         FontWeight="Bold"
+                         VerticalAlignment="Center"/>
+            </StackPanel>-->
+
         </StackPanel>
 
         <localView:UserControl_PreviewView Grid.Row="1" Grid.ColumnSpan="2"/>

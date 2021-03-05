@@ -5,6 +5,7 @@ using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
 using System;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
@@ -174,20 +175,23 @@ namespace RejestrNieruchomosciNew.ViewModel
                 case ChangeMode.mod:
                     {
                         if (dzialka.Adres != null)
+                        {
                             dzialka.Adres.DzialkaId = dzialka.DzialkaId;
 
-                        var res = dzialka.Adres.save(dzialka.Adres);
+                            var res = dzialka.Adres.save(dzialka.Adres);
 
-                        if (res == null)
-                            dzialka.Adres = null;
-
+                            if (res == null)
+                                dzialka.Adres = null;
+                        }
                         dzialkaList.ModRow(dzialka);
 
                         canAdd = true;
                         break;
                     }
             }
+            int poz = userPrev.dzialkaView.CurrentPosition;
             userPrev.dzialkaView.Refresh();
+            var result = userPrev.dzialkaView.MoveCurrentToPosition(poz);
         }
 
         #region Metods
@@ -270,9 +274,9 @@ namespace RejestrNieruchomosciNew.ViewModel
             //                canAdd = c == null ? true : false;
             //            }
             //        }
-                
+
             //canAdd &= adresChanged;
-        
+
 
             #endregion
 

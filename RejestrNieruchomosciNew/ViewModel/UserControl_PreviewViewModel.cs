@@ -42,7 +42,6 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             get
             {
-                int r = 14;
                 return CollectionViewSource.GetDefaultView(dzialkiList.list);
             }
             //get => CollectionViewSource.GetDefaultView(dzialkiList.list);

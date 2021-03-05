@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Title="Modyfikacja" Height="600" Width="800"
+        Title="Modyfikacja" Height="643.2" Width="800"
         x:Name="AddView_Win"
         >
     <i:Interaction.Triggers>

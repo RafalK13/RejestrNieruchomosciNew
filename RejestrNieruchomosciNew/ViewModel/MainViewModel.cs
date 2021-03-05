@@ -52,13 +52,12 @@ namespace RejestrNieruchomosciNew.ViewModel
         public MainViewModel( PerformMode mode)
         {
             modeMessage = "Przegl¹danie bazy dzia³ek";
+            
             initButtonCommand();
             if( mode.workMod == PerformMode.workMode.admin)
                 btActivity = true;
             else
                 btActivity = false;
-
-
         }
         #endregion
 
@@ -75,7 +74,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onUpdateAll()
         {
-           
+            int r = 13;
         }
 
         private void onTestClick()

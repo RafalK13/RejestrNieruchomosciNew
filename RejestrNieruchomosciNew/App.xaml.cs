@@ -33,11 +33,21 @@ namespace RejestrNieruchomosciNew
             //MessageBox.Show( $"UserName:{Environment.UserName}");
 
             CultureInfo ci = new CultureInfo("pl-PL");
-
             ci.NumberFormat.NumberDecimalSeparator = ".";
 
-
             Thread.CurrentThread.CurrentCulture = ci;
+
+            #region To dodałem
+
+            Thread.CurrentThread.CurrentUICulture = ci;
+            CultureInfo.DefaultThreadCurrentCulture = ci;
+            CultureInfo.DefaultThreadCurrentUICulture = ci; 
+           
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata( XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            #endregion
+
 
             container.Install(FromAssembly.This());
 

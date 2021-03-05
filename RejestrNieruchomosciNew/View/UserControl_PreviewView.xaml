@@ -10,7 +10,7 @@
              x:Name="PreviewWin"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              >
-    
+
     <UserControl.Resources>
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:resultCnvr x:Key="conv"/>
@@ -56,7 +56,7 @@
             <ColumnDefinition Width="13"/>
             <ColumnDefinition Width="300" MinWidth="50"/>
             <ColumnDefinition Width="*" MinWidth="50"/>
-           
+
         </Grid.ColumnDefinitions>
 
         <GridSplitter Grid.Column="3" Grid.RowSpan="2" Width="5" Background="DarkGray"  Margin="10,0,0,0" />
@@ -68,54 +68,54 @@
                  Margin="0,1,0,0"
                  IsReadOnly="True" Foreground="Black"/>-->
         <StackPanel Grid.Row="1" Grid.Column="1">
-         <Label 
+            <Label 
                Style="{StaticResource label}"
                Content="Wyszukiwanie podstawowe"
                FontWeight="Bold"
                Margin="0,0,0,0"/>
-            
-        <Label 
+
+            <Label 
                Style="{StaticResource label}"
                Content="Numer działki"
                Margin="0,0,0,0"/>
-        <TextBox 
+            <TextBox 
                 Style="{StaticResource tekstBox}"
                 Text="{Binding userControl_prev.dzialkaNr, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
                 Margin="0,0,0,0"/>
-        <Label Grid.Row="1" Grid.Column="1"
+            <Label Grid.Row="1" Grid.Column="1"
                Style="{StaticResource label}"
                Content="Gmina"
                Margin="0,0,0,0"/>
-        <ComboBox
+            <ComboBox
                 Style="{StaticResource comboBox}"
                 Margin="0,0,0,0"
                 SelectedValue="{Binding userControl_prev.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_prev.obreb.gminaView}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </ComboBox>
-        <Label 
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <Label 
                Style="{StaticResource label}"
                Content="Obręb"
                Margin="0,0,0,0"/>
 
-        <ComboBox 
+            <ComboBox 
                 Style="{StaticResource comboBox}"
                 Margin="0,0,0,0"
                 SelectedValue="{Binding userControl_prev.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 ItemsSource="{Binding userControl_prev.obreb.obrebView}"
                 >
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </ComboBox>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding userControl_prev.leftClick}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
 
-        <Button 
+            <Button 
                 Style="{StaticResource button}"
                 Content="Czyść"
                 Margin="0,15,0,0"
@@ -135,7 +135,7 @@
                 Command="{ Binding userControl_prev.clsSzukaj}"
                 />
         </StackPanel>
-        
+
         <Label Grid.Row="0" Grid.Column="3"
                Style="{StaticResource label1}"
                Content="Dane działki"
@@ -148,7 +148,9 @@
                   IsReadOnly="True"
                   AutoGenerateColumns="False"
                   SelectionMode="Single"
-                  Name="DataGridMain">
+                  Name="DataGridMain"
+                  IsSynchronizedWithCurrentItem="True"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer" Binding="{Binding Numer}" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Numer}" Width="*"></DataGridTextColumn>
@@ -172,7 +174,7 @@
 
         <StackPanel  Grid.Row="1" Grid.Column="3"
                      VerticalAlignment="Bottom" ClipToBounds="True">
-        <CheckBox  
+            <CheckBox  
                   Content="Allow DoubleClick to delete row" VerticalAlignment="Bottom"
                   IsChecked="{Binding userControl_prev.allowDelete, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   IsEnabled="{Binding userControl_prev.allowDeleteEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -182,10 +184,38 @@
             </CheckBox>
         </StackPanel>
 
-        <Label Grid.Row="0" Grid.Column="4"
+
+        <StackPanel Grid.Column="4" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom">
+            <Label Grid.Row="0" Grid.Column="4"
                Style="{StaticResource label1}"
                Content="Info"
                Margin="10,0,0,0"/>
+
+            <Label Content="Numer:"
+                   VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding userControl_prev.dzialkaSel.Numer}"
+                     MinWidth="100"
+                     FontSize="23"
+                     FontWeight="Bold"
+                     BorderThickness="0"/>
+            <Label Content="Obręb:"
+                    VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding userControl_prev.dzialkaSel.Obreb.Numer}"
+                     MinWidth="100"
+                     FontSize="23"
+                     FontWeight="Bold"
+                     BorderThickness="0"/>
+            <Label Content="Gmina:"
+                   VerticalAlignment="Bottom"/>
+            <TextBox Text="{Binding userControl_prev.dzialkaSel.Obreb.GminaSlo.Nazwa}"
+                     MinWidth="100"
+                     FontSize="23"
+                     FontWeight="Bold"
+                     BorderThickness="0"/>
+        </StackPanel>
 
         <view:UserControl_InfoMain Grid.Row="1" Grid.Column="4"/>
     </Grid>
