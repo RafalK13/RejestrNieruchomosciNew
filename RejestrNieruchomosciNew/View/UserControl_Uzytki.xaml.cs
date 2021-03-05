@@ -79,11 +79,22 @@ namespace RejestrNieruchomosciNew.View
 
         private void GridRaf_CurrentCellChanged(object sender, EventArgs e)
         {
+            
             powTotal = uzytkiListRaf.Sum(r => r.Pow);
       
             if (powTotal != 0 && dzialka.Pow != 0)
             {
-                sizeAlert = (powTotal - dzialka.Pow) < 0.00001 ? false : true;
+                try
+                {
+                    if (powTotal.HasValue)
+                        sizeAlert = Math.Abs((powTotal - dzialka.Pow).Value) < 0.00001 ? false : true;
+                    else
+                        sizeAlert = false;
+                }
+                catch (Exception exeption)
+                {
+                    MessageBox.Show( $"Błąd transformacji powierzchni uzytków\r\n{exeption.Message}");
+                }
             }
         }
 

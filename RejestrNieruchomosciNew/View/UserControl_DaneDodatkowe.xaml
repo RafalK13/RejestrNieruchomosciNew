@@ -152,7 +152,7 @@
                     Height="25"
                     Margin="90,10,10,40"
                     HorizontalContentAlignment="Right"
-                    Text="{Binding ElementName=PowUzTotalName, Path=powTotal,  StringFormat={}{0:0.0000} }"
+                    Text="{Binding ElementName=PowUzTotalName, Path=powTotal,  StringFormat={}{0:N4} }"
                     >
                     <TextBox.Style>
                         <Style TargetType="TextBox">
@@ -173,7 +173,7 @@
                        labelRaf="Pow.działki"
                        widthLabelRaf="80"
                        Margin="10,10,10,10"
-                       tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.dzialka.Pow, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:0.0000} }">
+                       tekstRaf="{Binding  Path=DataContext.userControl_DaneDod.dzialka.Pow, ElementName=DaneDodWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ConverterCulture=pl-PL, StringFormat={}{0:N4} }">
                     <userControl:UserControl_ElementInfo.Resources>
                         <Style TargetType="TextBox">
                             <Setter Property="HorizontalContentAlignment" Value="Right"/>

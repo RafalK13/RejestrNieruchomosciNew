@@ -69,7 +69,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDaneDodAdd()
         {
-            int r1 = 13;
             uzytkiList.list = new ObservableCollection<Uzytki>(uzytkiListLok.Select(r => new Uzytki(r)).ToList());
             uzytkiList.saveUzytki();
      
