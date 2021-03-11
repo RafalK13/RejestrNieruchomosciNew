@@ -312,6 +312,38 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
     }
 
+    class stringToPowHa : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int r = 13;
+            if (value == null)
+                return null;
+
+            string digit = value.ToString().Replace(",", ".");
+
+            if (double.TryParse(digit, out double result))
+                return string.Format("{0:N4}", result);
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            int iloscPoPrzec = 4;
+            string digit = value.ToString().Replace(",", ".");
+
+            int pozPrzec = digit.IndexOf(".");
+
+            if (digit.Length - pozPrzec - 2 > iloscPoPrzec)
+                digit = digit.Remove(pozPrzec + 1 + iloscPoPrzec);
+
+            if (double.TryParse(digit, out double result) == true)
+                return result;
+
+            return null;
+        }
+    }
+
 
     class stringToDouble : IValueConverter
     {
@@ -323,12 +355,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             string digit = value.ToString().Replace(",", ".");
 
-            //CultureInfo c = CultureInfo.InvariantCulture;
+            CultureInfo c = CultureInfo.InvariantCulture;
 
             double result;
-            //if (double.TryParse(digit, NumberStyles.AllowDecimalPoint, c, out result))
-            if (double.TryParse(digit, out result))
-                return string.Format("{0:#,0.0000}", result);
+            if (double.TryParse(digit, NumberStyles.AllowDecimalPoint, c, out result))
+                if (double.TryParse(digit, out result))
+                    return string.Format("{0:#,0.0000}", result);
             return null;
         }
 

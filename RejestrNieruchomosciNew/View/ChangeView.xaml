@@ -127,7 +127,7 @@
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
                 <TabControl>
-                    <TabItem Header="Własność"
+                    <TabItem Header="Własność i Użytkowanie wiczyczte"
                      Visibility="{Binding tabsVisible, Converter={StaticResource BoolToVis}}"
                      >
                         <view:UserControl_Wlasciciel/>

@@ -27,7 +27,7 @@
 
             <TabItem Header="Stan prawny">
                 <TabControl>
-                    <TabItem Header="Własność">
+                    <TabItem Header="Własność i Użytkowanie wieczyste">
                         <view:UserControl_InfoWladanie/>
                     </TabItem>
 
@@ -43,16 +43,9 @@
                 <view:UserControl_InfoPlatnoscUW/>
             </TabItem>
 
-            
-
             <TabItem Header="Zagospodarowanie działki">
                 <view:UserControl_InfoZagosp/>
             </TabItem>
-
-           
-
-
-
 
         </TabControl>
 

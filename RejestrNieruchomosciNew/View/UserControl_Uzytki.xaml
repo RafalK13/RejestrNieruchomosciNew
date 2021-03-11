@@ -15,6 +15,7 @@
         <con:personIdToPersonName x:Key="parsonConvert"/>
         <con:DateConverter x:Key="dateConvert"/>
         <con:DoubleConverter x:Key="doubleConverter"/>
+        <con:stringToPowHa x:Key="stringPowHa"/>
         <con:IntConverter x:Key="intConverter"/>
         <con:stringToDecimal x:Key="convStrToDec"/>
         <con:stringToDouble x:Key="strToDouble"/>
@@ -56,7 +57,7 @@
                     </DataGridComboBoxColumn.EditingElementStyle>
                 </DataGridComboBoxColumn>
                 <DataGridTextColumn Header="Powierzchnia" 
-                                    Binding="{Binding Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  StringFormat={}{0:####} }" 
+                                    Binding="{Binding Pow, Converter={StaticResource stringPowHa}, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  StringFormat={}{0:N2} }" 
                                     Width="*" 
                                      >
                     <DataGridTextColumn.ElementStyle>

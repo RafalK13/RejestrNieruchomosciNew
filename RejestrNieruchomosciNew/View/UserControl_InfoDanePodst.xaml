@@ -104,7 +104,7 @@
                         Style="{StaticResource userInfo}"
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
-                        labelRaf="KW aktualne"
+                        labelRaf="KW aktualna"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwakt, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo
@@ -112,7 +112,7 @@
                         Style="{StaticResource userInfo}"
                         widthTextRaf ="{Binding ElementName=Column0, Path=ActualWidth}"
                         Margin="0,1,20,1"
-                        labelRaf="KW źródłowy"
+                        labelRaf="KW źródłowa"
                         tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>
 
                 <view:UserControl_ElementInfo

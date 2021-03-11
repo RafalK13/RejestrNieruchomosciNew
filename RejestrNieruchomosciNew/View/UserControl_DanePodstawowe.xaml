@@ -17,7 +17,7 @@
     <UserControl.Resources>
         <loc:resultCnvr x:Key="conv"/>
         <loc:stringToDecimal x:Key="convStrToDec"/>
-        <loc:stringToDouble x:Key="strToDouble"/>
+        <loc:stringToPowHa x:Key="strToPowHa"/>
         <Style TargetType="Label" x:Key="label">
             <Setter Property="Height" Value="30"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -139,7 +139,7 @@
                   />
         <Label     Grid.Row="4" Grid.Column="0"
                    Style="{StaticResource label}"
-                   Content="Numer KW aktualny"
+                   Content="KW aktualna"
                    />
         <xctk:MaskedTextBox
             Grid.Row="4" Grid.Column="1" 
@@ -157,7 +157,7 @@
                    />-->
         <Label     Grid.Row="5" Grid.Column="0"
                    Style="{StaticResource label}"
-                   Content="Numer KW źródłowy"
+                   Content="KW źródłowa"
                    />
         <TextBox   Grid.Row="5" Grid.Column="1"        
                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
@@ -169,7 +169,7 @@
                     Content="Powierzchnia [ha]"/>
         <TextBox    Grid.Row="6" Grid.Column="1"
                     Style="{StaticResource tekstBox}"
-                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToDouble}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"/>
+                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToPowHa}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"/>
 
         <userControl:UserControl_Adres                    
                     Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"

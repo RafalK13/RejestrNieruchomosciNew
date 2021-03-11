@@ -7,14 +7,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d1p1:Ignorable="d" 
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
-  <!--StartupUri="View/MainView.xaml" Startup="Application_Startup">-->
-  <Application.Resources>
-       
-            <Style x:Key="buttonCommon" TargetType="Button">
-                <Setter Property="Width" Value="130"></Setter>
-                <Setter Property="Height" Value="25"></Setter>
-                <Setter Property="Margin" Value="20,0,20,20"></Setter>
-            </Style>
+    <Application.Resources>
+
+        <ControlTemplate x:Key="errorTemplate">
+            <Border BorderBrush="OrangeRed">
+                <Grid >
+                    <AdornedElementPlaceholder />
+                    <TextBlock Text="{Binding [0].ErrorContent}" Foreground="OrangeRed"
+                               VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                               Margin="0,30,4,0"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="buttonCommon" TargetType="Button">
+            <Setter Property="Width" Value="130"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Margin" Value="20,0,20,20"></Setter>
+        </Style>
 
         <Style x:Key="label" TargetType="Label">
             <Setter Property="Margin" Value="10,10,0,0"></Setter>

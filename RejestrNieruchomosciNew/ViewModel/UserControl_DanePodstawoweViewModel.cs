@@ -82,8 +82,6 @@ namespace RejestrNieruchomosciNew.ViewModel
 
                     dzialka.zmianaObreb += Dzialka_zmianaObreb;
                 }
-
-                int r = 13;
             }
         }
 
