@@ -88,6 +88,9 @@
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.9.5.2\lib\net461\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
@@ -310,6 +313,7 @@
     <Compile Include="Model\Interfaces\IDecyzjeAdministracyjne.cs" />
     <Compile Include="Model\Interfaces\IDzialka.cs" />
     <Compile Include="Model\Interfaces\IDzialkaOchrona.cs" />
+    <Compile Include="Model\Interfaces\IDzialkaValidator.cs" />
     <Compile Include="Model\Interfaces\IDzialka_Budynek.cs" />
     <Compile Include="Model\Interfaces\IDzialkaList.cs" />
     <Compile Include="Model\Interfaces\IDzialka_BudynekList.cs" />
@@ -420,6 +424,9 @@
     <Compile Include="Model\ZagospStatusList.cs" />
     <Compile Include="Model\ZagospStatusListSlo.cs" />
     <Compile Include="Model\ZagospStatusSlo.cs" />
+    <Compile Include="Validations\Class_doubleValidatorRule.cs" />
+    <Compile Include="Validations\DoubleConverters.cs" />
+    <Compile Include="Validations\DzialkaValidator.cs" />
     <Compile Include="ViewModel\AddViewModel.cs" />
     <Compile Include="Command\CloseOnClickBehaviour.cs" />
     <Compile Include="ViewModel\ChangeViewModel.cs" />

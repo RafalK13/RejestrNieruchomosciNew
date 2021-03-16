@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RejestrNieruchomosciNew.Model;
+using RejestrNieruchomosciNew.Validations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,12 +69,15 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
-        
+        //public DzialkaValidator _validatorDzialka { get; set; }
+
+
 
         public ModViewModel(UserControl_DanePodstawoweViewModel userPodst,
                         UserControl_DaneDodatkoweViewModel userDod,
                         UserControl_PreviewViewModel userPrev1,
-                        IDzialka dzialkaSel)
+                        IDzialka dzialkaSel,
+                        DzialkaValidator _validatorDzialka)
         {
             tabsVisible = true;
 
@@ -81,7 +85,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             //dzialkaSel = userPrev1.dzialkaSel;          
             //dzialkaSel = (Dzialka)CloneObject1(userPrev1.dzialkaSel);
             #endregion
-          
+
             #region Old solution
             //dzialkaSel.copy(userPrev1.dzialkaSel);
 
@@ -101,6 +105,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             userPodst.dzialka = StaticFunctions.Clone1(dzialkaSel);
             userPodst.obreb.fillValues(dzialkaSel);
             userDod.dzialka = dzialkaSel;
+
+            userPodst.dzialka._validatorDzialka = _validatorDzialka;
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;

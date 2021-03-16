@@ -55,7 +55,7 @@ namespace RejestrNieruchomosciNew.Model
         {
             using (var c = new Context())
             {
-                list = new List<IDzialka>(await c.Dzialka.Include(a => a.Obreb).ThenInclude(a => a.GminaSlo)
+                list = new List<IDzialka>(await c.Dzialka.Take(13).Include(a => a.Obreb).ThenInclude(a => a.GminaSlo)
                                                          .Include(r => r.PlatnoscUW)
                                                          .Include(adr => adr.Adres)
                                                          .Include(w => w.Wladanie).ThenInclude(f => f.FormaWladaniaSlo)

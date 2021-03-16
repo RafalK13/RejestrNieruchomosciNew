@@ -39,13 +39,18 @@ namespace RejestrNieruchomosciNew
 
             #region To dodałem
 
-            Thread.CurrentThread.CurrentUICulture = ci;
-            CultureInfo.DefaultThreadCurrentCulture = ci;
-            CultureInfo.DefaultThreadCurrentUICulture = ci; 
+            //Thread.CurrentThread.CurrentUICulture = ci;
+            //CultureInfo.DefaultThreadCurrentCulture = ci;
+            //CultureInfo.DefaultThreadCurrentUICulture = ci; 
            
-            FrameworkElement.LanguageProperty.OverrideMetadata(
-                typeof(FrameworkElement),
-                new FrameworkPropertyMetadata( XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            //FrameworkElement.LanguageProperty.OverrideMetadata(
+            //    typeof(FrameworkElement),
+            //    new FrameworkPropertyMetadata( XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            #endregion
+
+            #region , . 
+            System.Windows.FrameworkCompatibilityPreferences
+             .KeepTextBoxDisplaySynchronizedWithTextProperty = false;
             #endregion
 
 

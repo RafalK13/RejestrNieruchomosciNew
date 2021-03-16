@@ -188,9 +188,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             if (values[3] == null) // Property NamePAth to display
                 return 0;
-
             
-
            IEnumerable e = values[1] as IEnumerable;
 
             if (e != null)
@@ -320,11 +318,13 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (value == null)
                 return null;
 
-            string digit = value.ToString().Replace(",", ".");
+            //string digit = value.ToString().Replace(",", ".");
 
-            if (double.TryParse(digit, out double result))
-                return string.Format("{0:N4}", result);
-            return null;
+            //if (double.TryParse(digit, out double result))
+            //    return string.Format("{0:N4}", result);
+            //return null;
+
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -340,7 +340,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (double.TryParse(digit, out double result) == true)
                 return result;
 
-            return null;
+            return digit;
         }
     }
 

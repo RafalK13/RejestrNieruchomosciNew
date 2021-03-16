@@ -1,10 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
+using RejestrNieruchomosciNew.Validations;
 using System;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace RejestrNieruchomosciNew.Model
 {
-    public interface IDzialka : IEquatable<IDzialka>
+    public interface IDzialka : IEquatable<IDzialka>, IDataErrorInfo
     {
         int DzialkaId { get; set; }
         string Numer { get; set; }
@@ -30,6 +32,13 @@ namespace RejestrNieruchomosciNew.Model
 
         PlatnoscUW PlatnoscUW { get; set; }
         DzialkaOchrona DzialkaOchrona { get; set; }
+
+        //string Error { get; }
+        //string this[string columnName] { get; }
+
+        DzialkaValidator _validatorDzialka { get; set; }
+
+        int GetHashCode();
 
         void clone( IDzialka d);
         object clone();

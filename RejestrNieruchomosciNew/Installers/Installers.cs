@@ -4,6 +4,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using RejestrNieruchomosciNew.Model;
 using RejestrNieruchomosciNew.Model.Interfaces;
+using RejestrNieruchomosciNew.Validations;
 using RejestrNieruchomosciNew.View;
 using RejestrNieruchomosciNew.ViewModel;
 
@@ -36,6 +37,8 @@ namespace RejestrNieruchomosciNew.Installers
 
             //container.Register(Component.For<IObreb>().ImplementedBy<Obreb>());
 
+            //container.Register(Component.For<IDzialkaValidator>().ImplementedBy<IDzialkaValidator>());
+            container.Register(Component.For<DzialkaValidator>());
             container.Register(Component.For<IObrebList>().ImplementedBy<ObrebList>());
 
             container.Register(Component.For<IDzialka>().ImplementedBy<Dzialka>().LifeStyle.Transient);

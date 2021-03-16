@@ -10,6 +10,7 @@
              xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
+             xmlns:validRule="clr-namespace:RejestrNieruchomosciNew.Validations"
              Name="userControlDanePod"
              xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
              d:DesignHeight="500" d:DesignWidth="1000"
@@ -37,6 +38,31 @@
             <Setter Property="Height" Value="30" ></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="btnCheck">
+            <Setter Property="Width" Value="130"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Margin" Value="20,0,20,20"></Setter>
+            <Setter Property="IsEnabled" Value="False"></Setter>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <Setter Property="IsEnabled" Value="True"></Setter>
+                    <MultiDataTrigger.Conditions>
+
+
+                        <Condition Binding="{Binding Path=userControl_AddDanePod.canAdd}" Value="true"/>
+
+                        <Condition Binding="{Binding ElementName=TekstRaf1, Path=(Validation.HasError)}" Value="false"/>
+
+                        <Condition Binding="{Binding ElementName=kwakt, Path=(Validation.HasError)}" Value="false"/>
+
+                        <Condition Binding="{Binding ElementName=kwzrod, Path=(Validation.HasError)}" Value="false"/>
+
+                        <Condition Binding="{Binding ElementName=pow, Path=(Validation.HasError)}" Value="false"/>
+                    </MultiDataTrigger.Conditions>
+                </MultiDataTrigger>
+            </Style.Triggers>
         </Style>
 
         <ControlTemplate TargetType="TextBox" x:Key="textBoxTemp">
@@ -69,7 +95,7 @@
             </Grid>
         </ControlTemplate>
     </UserControl.Resources>
-    
+
     <Grid ShowGridLines="False" >
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -85,7 +111,7 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition />
-            
+
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -94,7 +120,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0"
+        <Label Grid.Column="0" Grid.Row="0"
                 Content="Działka"
                 FontWeight="Bold"                      
                 FontSize="19"
@@ -103,22 +129,23 @@
                 Style="{StaticResource label}" HorizontalAlignment="Left"
                 />
 
-            <Label Grid.Row="1" Grid.Column="0"
+        <Label Grid.Row="1" Grid.Column="0"
                 Style="{StaticResource label}"
                 Content="Numer działki"
                 />
-            <TextBox Grid.Row="1" Grid.Column="1"
-                     Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        <TextBox Grid.Row="1" Grid.Column="1"
+                     Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  ValidatesOnDataErrors=True}"
+                     Validation.ErrorTemplate="{StaticResource errorTemplate}"
                      Style="{StaticResource tekstBox}"
                      x:Name="TekstRaf1"
                  />
 
-            <Label Grid.Row="2" Grid.Column="0"
+        <Label Grid.Row="2" Grid.Column="0"
                    Style="{StaticResource label}"
                    Content="Gmina"
                    x:Name="labelGmina"
                    />
-            <ComboBox  Grid.Row="2" Grid.Column="1"
+        <ComboBox  Grid.Row="2" Grid.Column="1"
                    Height="30"
                    VerticalAlignment="Top"
                    SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
@@ -126,11 +153,11 @@
                    Template="{StaticResource comboBoxTemp}"
                    x:Name="comboGmina"
                    />
-            <Label Grid.Row="3" Grid.Column="0"
+        <Label Grid.Row="3" Grid.Column="0"
                    Style="{StaticResource label}"
                    Content="Obręb"
                    />
-            <ComboBox Grid.Row="3" Grid.Column="1"
+        <ComboBox Grid.Row="3" Grid.Column="1"
                   Height="30"
                   VerticalAlignment="Top"
                   SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
@@ -141,35 +168,53 @@
                    Style="{StaticResource label}"
                    Content="KW aktualna"
                    />
-        <xctk:MaskedTextBox
-            Grid.Row="4" Grid.Column="1" 
-            Style="{StaticResource tekstBox}"
-            x:Name="_maskedTextBox"
-            Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                             Mask="GD1L\/00000000\/0"
-                            />
-        
-        
-        <!--<TextBox   Grid.Row="4" Grid.Column="1"  
-                   extensions.TextBoxMask.Mask="9a9a-a9a*"
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwakt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                   Style="{StaticResource tekstBox}"
-                   />-->
+        <TextBox
+                    Name="kwakt"
+                    Grid.Row="4" Grid.Column="1" 
+                    Style="{StaticResource tekstBox}"
+                    Text="{Binding userControl_AddDanePod.dzialka.Kwakt,                                
+                                   UpdateSourceTrigger=LostFocus,
+                                   Mode=TwoWay, 
+                                   ValidatesOnDataErrors=True }"
+                    Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                    />
         <Label     Grid.Row="5" Grid.Column="0"
                    Style="{StaticResource label}"
                    Content="KW źródłowa"
                    />
-        <TextBox   Grid.Row="5" Grid.Column="1"        
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwzrob, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
+        <TextBox   Name="kwzrod"
+                   Grid.Row="5" Grid.Column="1"    
                    Style="{StaticResource tekstBox}"
-                   />
+                   Text="{Binding userControl_AddDanePod.dzialka.Kwzrob,                                
+                                   UpdateSourceTrigger=LostFocus,
+                                   Mode=TwoWay, 
+                                   ValidatesOnDataErrors=True }"
+                    Validation.ErrorTemplate="{StaticResource errorTemplate}"
+                    />
+
 
         <Label      Grid.Row="6" Grid.Column="0"
                     Style="{StaticResource label}"
                     Content="Powierzchnia [ha]"/>
-        <TextBox    Grid.Row="6" Grid.Column="1"
+        <TextBox    Name="pow"
+                    Grid.Row="6" Grid.Column="1"
                     Style="{StaticResource tekstBox}"
-                    Text="{Binding userControl_AddDanePod.dzialka.Pow, Converter={StaticResource strToPowHa}, UpdateSourceTrigger=LostFocus, Mode=TwoWay }"/>
+                    Validation.ErrorTemplate="{StaticResource errorTemplate}"                   
+                    >
+            <Binding Path="userControl_AddDanePod.dzialka.Pow" 
+                     StringFormat="0.0000"
+                     ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus">
+                <Binding.ValidationRules>
+                    <validRule:Class_doubleValidatorRule/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+
+        <!--Text="{Binding userControl_AddDanePod.dzialka.Pow, 
+                                   Converter={StaticResource strToPowHa}, 
+                                   UpdateSourceTrigger=PropertyChanged,
+                                   Mode=TwoWay, 
+                                   ValidatesOnDataErrors=True }"-->
 
         <userControl:UserControl_Adres                    
                     Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
@@ -195,7 +240,7 @@
 
         <!--adres="{Binding Path=DataContext.userControl_AddDanePod.adres, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-        
+
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 
@@ -203,16 +248,15 @@
                     Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom">
-                    <Button Content="Zapisz"
-                            Style="{StaticResource buttonCommon}"
-                            IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
+            <Button Content="Zapisz"
+                            Style="{StaticResource btnCheck}"
                             Command="{Binding userControl_AddDanePod.OnAddDzialka}"
                             />
+            <!--IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"-->
 
 
             <Button Content="Zapisz i zamknij"
-                            Style="{StaticResource buttonCommon}"
-                            IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"
+                            Style="{StaticResource btnCheck}"
                             Command="{Binding userControl_AddDanePod.OnAddDzialka}"
                             com:CloseOnClickBehaviour.IsEnabled="True"/>
 
@@ -220,12 +264,14 @@
             <Button Content="Czyść gmina/obręb"
                             Style="{StaticResource buttonCommon}"
                             Command="{Binding userControl_AddDanePod.clsClick}"/>
-                    <Button 
+            <Button 
                         Style="{StaticResource buttonCommon}"
                         IsCancel="True"
                         com:CloseOnClickBehaviour.IsEnabled="True"
-                        Content="Anuluj"/>  
+                        Content="Anuluj"/>
 
         </StackPanel>
-        </Grid>
+    </Grid>
 </UserControl>
+
+    
