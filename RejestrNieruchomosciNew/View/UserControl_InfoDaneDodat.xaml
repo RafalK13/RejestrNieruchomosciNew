@@ -174,6 +174,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
                 <Label  Grid.Row="0"
@@ -213,6 +214,21 @@
                             </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                
+                
+                
+                
+                <view:UserControl_ElementInfo
+                        Grid.Row="2"
+                        widthLabelRaf="100"
+                        Margin="0,1,10,1"
+                        labelRaf="Suma pow.[ha]"   
+                        tekstBoxAlH ="Right"
+                        isReadOnlyRaf="True"
+                        IsHitTestVisible="False"
+                        tekstRaf="{Binding Path=DataContext.infoMain.infoDod.pow, ElementName=InfoDaneDodatkowe, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:#,0.0000}'}"/>
+                      
+                <!--tekstRaf="{Binding Path=DataContext.infoMain.prevModel.dzialkaSel.Kwzrob, ElementName=InfoDanePodstawowe}"/>-->
 
 
             </Grid>

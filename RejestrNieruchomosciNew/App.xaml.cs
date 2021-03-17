@@ -34,18 +34,19 @@ namespace RejestrNieruchomosciNew
 
             CultureInfo ci = new CultureInfo("pl-PL");
             ci.NumberFormat.NumberDecimalSeparator = ".";
-
+            //ci.NumberFormat.NumberGroupSeparator = "X";
             Thread.CurrentThread.CurrentCulture = ci;
 
+            int x = 13;
             #region To dodałem
 
-            //Thread.CurrentThread.CurrentUICulture = ci;
-            //CultureInfo.DefaultThreadCurrentCulture = ci;
-            //CultureInfo.DefaultThreadCurrentUICulture = ci; 
-           
-            //FrameworkElement.LanguageProperty.OverrideMetadata(
-            //    typeof(FrameworkElement),
-            //    new FrameworkPropertyMetadata( XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            Thread.CurrentThread.CurrentUICulture = ci;
+            CultureInfo.DefaultThreadCurrentCulture = ci;
+            CultureInfo.DefaultThreadCurrentUICulture = ci;
+
+            FrameworkElement.LanguageProperty.OverrideMetadata(
+                typeof(FrameworkElement),
+                new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
             #endregion
 
             #region , . 

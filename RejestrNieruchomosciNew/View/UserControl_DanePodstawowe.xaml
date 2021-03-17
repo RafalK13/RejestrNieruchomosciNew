@@ -49,8 +49,6 @@
                 <MultiDataTrigger>
                     <Setter Property="IsEnabled" Value="True"></Setter>
                     <MultiDataTrigger.Conditions>
-
-
                         <Condition Binding="{Binding Path=userControl_AddDanePod.canAdd}" Value="true"/>
 
                         <Condition Binding="{Binding ElementName=TekstRaf1, Path=(Validation.HasError)}" Value="false"/>

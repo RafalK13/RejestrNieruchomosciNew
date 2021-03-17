@@ -25,6 +25,19 @@ namespace RejestrNieruchomosciNew.View
             onClickZal = new RelayCommand(zalClicked);
         }
 
+
+
+        public HorizontalAlignment tekstBoxAlH
+        {
+            get { return (HorizontalAlignment)GetValue(tekstBoxAlHProperty); }
+            set { SetValue(tekstBoxAlHProperty, value); }
+        }
+
+        public static readonly DependencyProperty tekstBoxAlHProperty =
+            DependencyProperty.Register("tekstBoxAlH", typeof(HorizontalAlignment), typeof(UserControl_ElementInfo), new PropertyMetadata(HorizontalAlignment.Left));
+
+
+
         public bool isReadOnlyRaf
         {
             get { return (bool)GetValue(isReadOnlyRafProperty); }
