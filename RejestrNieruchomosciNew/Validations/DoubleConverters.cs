@@ -13,6 +13,7 @@ namespace RejestrNieruchomosciNew.Validations
             if (arg == null)
                 return true;
 
+     
             if (double.TryParse(arg.ToString(), out double result))
             {
                 if (result == 0)
@@ -21,7 +22,7 @@ namespace RejestrNieruchomosciNew.Validations
                 int poPrzec = 4;
                 string r1 = result.ToString();
 
-                int n = r1.IndexOf(".");
+                int n = r1.IndexOf(",");
 
                 if (n != -1)
                 {

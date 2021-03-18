@@ -12,16 +12,18 @@ namespace RejestrNieruchomosciNew.Validations
 
         public DzialkaValidator()
         {
-            RuleFor(p => p.Numer).Matches(@"^\d+/*\d+$")
+            RuleFor(p => p.Numer).Matches(@"^\d*/*\d+$")
+           //RuleFor(p => p.Numer).Matches(@"^\d+$")
                .WithMessage("Tylko cyfry/cyfry");
 
-            RuleFor(n => n.Pow).Must(DoubleConverters.toDouble4).WithMessage("Max. 4 miejsca po przecinku");
+            RuleFor(n => n.Pow).Must(DoubleConverters.toDouble4).WithMessage("Max.4 cyfry po przec.");
 
-            RuleFor(p => p.Kwakt).Matches(@"(^$)|(^GD\dG/{1}\d{4}/{1}\d{1}$)")
+            RuleFor(p => p.Kwakt).Matches(@"(^$)|(^GD\dG/{1}\d+/{1}\d{1}$)")
                 .WithMessage("GD-G/----/-");
 
-            RuleFor(p => p.Kwzrob).Matches(@"^GD\dG/{1}\d{4}/{1}\d{1}$")
+            RuleFor(p => p.Kwzrob).Matches(@"(^$)|(^GD\dG/{1}\d+/{1}\d{1}$)")
                 .WithMessage("GD-G/----/-");
+
         }
     }
 }

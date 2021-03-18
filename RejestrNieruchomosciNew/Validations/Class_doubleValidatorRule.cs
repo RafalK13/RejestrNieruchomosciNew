@@ -12,15 +12,20 @@ namespace RejestrNieruchomosciNew.Validations
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            int r = 13;
             if (value == null)
                 return null;
 
-            bool v = double.TryParse(value.ToString(), out double d);
+            if (value.ToString().Length > 15)
+                return new ValidationResult(false, $"Zbyt duża liczba");
+
+            string s = value.ToString().Replace(cultureInfo.NumberFormat.NumberGroupSeparator, "");
+            //string s = value.ToString().Trim().Replace(" ", "");
+            bool v = double.TryParse(s , NumberStyles.AllowDecimalPoint, cultureInfo, out double d);
             if (v == true)
+                if (v == true)
                 return ValidationResult.ValidResult;
 
-            return new ValidationResult(false, $"Podana wartość nie jest liczbą");
+            return new ValidationResult(false, $"Liczba(, zamiast .)");
         }
     }
 }

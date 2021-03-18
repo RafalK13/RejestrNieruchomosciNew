@@ -32,27 +32,25 @@ namespace RejestrNieruchomosciNew
 
             //MessageBox.Show( $"UserName:{Environment.UserName}");
 
+            //CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pl-PL");
             CultureInfo ci = new CultureInfo("pl-PL");
-            ci.NumberFormat.NumberDecimalSeparator = ".";
-            //ci.NumberFormat.NumberGroupSeparator = "X";
+            //CultureInfo ci = new CultureInfo("en-US");
+            //ci.NumberFormat.NumberDecimalSeparator = "x";
+
+
+
             Thread.CurrentThread.CurrentCulture = ci;
-
-            int x = 13;
-            #region To dodałem
-
             Thread.CurrentThread.CurrentUICulture = ci;
             CultureInfo.DefaultThreadCurrentCulture = ci;
             CultureInfo.DefaultThreadCurrentUICulture = ci;
 
             FrameworkElement.LanguageProperty.OverrideMetadata(
                 typeof(FrameworkElement),
-                new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
-            #endregion
+                new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.Name)));
 
-            #region , . 
-            System.Windows.FrameworkCompatibilityPreferences
-             .KeepTextBoxDisplaySynchronizedWithTextProperty = false;
-            #endregion
+
+            //System.Windows.FrameworkCompatibilityPreferences
+            //   .KeepTextBoxDisplaySynchronizedWithTextProperty = false;
 
 
             container.Install(FromAssembly.This());

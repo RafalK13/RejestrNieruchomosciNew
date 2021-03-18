@@ -181,16 +181,15 @@
                    Content="KW źródłowa"
                    />
         <TextBox   Name="kwzrod"
-                   Grid.Row="5" Grid.Column="1"    
+                   Grid.Row="5" Grid.Column="1"
                    Style="{StaticResource tekstBox}"
                    Text="{Binding userControl_AddDanePod.dzialka.Kwzrob,                                
                                    UpdateSourceTrigger=LostFocus,
                                    Mode=TwoWay, 
                                    ValidatesOnDataErrors=True }"
-                    Validation.ErrorTemplate="{StaticResource errorTemplate}"
-                    />
-
-
+                   Validation.ErrorTemplate="{StaticResource errorTemplate}" />
+        
+        
         <Label      Grid.Row="6" Grid.Column="0"
                     Style="{StaticResource label}"
                     Content="Powierzchnia [ha]"/>
@@ -200,7 +199,7 @@
                     Validation.ErrorTemplate="{StaticResource errorTemplate}"                   
                     >
             <Binding Path="userControl_AddDanePod.dzialka.Pow" 
-                     StringFormat="0.0000"
+                     StringFormat="#,#.###############"
                      ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                     <validRule:Class_doubleValidatorRule/>
