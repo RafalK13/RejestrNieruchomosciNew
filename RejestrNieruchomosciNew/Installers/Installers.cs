@@ -63,7 +63,9 @@ namespace RejestrNieruchomosciNew.Installers
             container.Register(Component.For<UserControl_InnePrawaViewModel>().LifeStyle.Transient);
 
             container.Register(Component.For<ISelectorModel>().ImplementedBy<SelectorModel>().LifeStyle.Transient);
-            container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add").LifeStyle.Transient);
+            //container.Register(Component.For<IChangeViewModel>().ImplementedBy<AddViewModel>().Named("Add").LifeStyle.Transient);
+            container.Register(Component.For<AddViewModel>().LifeStyle.Transient);
+
             container.Register(Component.For<IChangeViewModel>().ImplementedBy<ModViewModel>().Named("Mod").LifeStyle.Transient);
 
             container.Register(Component.For<IContrlosVisibling>().ImplementedBy<ContrlosVisibling>());

@@ -110,6 +110,7 @@ namespace RejestrNieruchomosciNew.ViewModel
 
             userControl_AddDanePod = userPodst;
             userControl_AddDanePod.changeMode = ChangeMode.mod;
+            userControl_AddDanePod.cannAdres = true;
 
             userControl_DaneDod = userDod;
             #endregion

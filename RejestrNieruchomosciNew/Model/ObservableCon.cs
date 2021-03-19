@@ -11,6 +11,9 @@ namespace RejestrNieruchomosciNew.Model
     {
         public static List<T> ObservableToList(ObservableCollection<T> observ)
         {
+            if (observ == null)
+                return null;
+
             List<T> list = new List<T>();
 
             foreach (var r in observ)

@@ -33,8 +33,6 @@ namespace RejestrNieruchomosciNew.ViewModel
                 RaisePropertyChanged(); 
             }
         }
-
-
         private string _opisObreb;
 
         public string opisObreb
@@ -42,7 +40,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             get { return _opisObreb; }
             set { Set(ref _opisObreb, value); }
         }
-
 
         public ChangeMode changeMode;
 
@@ -71,7 +68,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         public IHeaderOpis headerOpis
         {
             get { return _headerOpis; }
-            set { _headerOpis = value; }
+            set {
+                _headerOpis = value;
+                if (changeMode == ChangeMode.add)
+                {
+                    headerOpis.adres = "";
+                    headerOpis.gmina = "";
+                    headerOpis.numer = "";
+                    headerOpis.obreb = "";
+                }
+
+            }
         }
 
         public IAdresSloList adresSloList
@@ -98,14 +105,12 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void Dzialka_zmianaObreb(object sender, EventArgs e)
         {
-            testDzialka();
-
+            testDzialka();           
         }
 
         private void Dzialka_zmiana(object sender, EventArgs e)
         {
             testDzialka();
-
         }
 
         public ObrebClass obreb
@@ -153,25 +158,37 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_DanePodstawoweViewModel(IHeaderOpis h)
         {
+          
             leftClick = new RelayCommand(onLeftClick);
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
             clsClick = new RelayCommand(onClsClick);
             canAdd = false;
-            cannAdres = true;
+
+            
+           
+            //cannAdres = checkIfCannAdres();
         }
+
+        //private bool checkIfCannAdres()
+        //{
+        //    if (changeMode == ChangeMode.add)
+        //        return false;
+
+        //    return true;
+        //}
 
         #endregion
 
         private void onClsClick()
-        {
-            int r = 13;
-            cannAdres = false;
+        {         
             obreb.clsObreb();
             dzialka.ObrebId = 0;
             testDzialka();
-            
+
             if (dzialka.Adres != null)
                 dzialka.Adres.AdresCls();
+
+            cannAdres = false;
         }
 
         private void OnAddDzialkaClick()
@@ -185,7 +202,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                         break;
                     }
                 case ChangeMode.mod:
-                    {
+                    {           
                         if (dzialka.Adres != null)
                         {
                             dzialka.Adres.DzialkaId = dzialka.DzialkaId;
@@ -197,6 +214,9 @@ namespace RejestrNieruchomosciNew.ViewModel
                         }
                         dzialkaList.ModRow(dzialka);
 
+                        Thread.Sleep(2000);
+                        cannAdres = true;
+
                         canAdd = true;
                         break;
                     }
@@ -204,8 +224,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             int poz = userPrev.dzialkaView.CurrentPosition;
             userPrev.dzialkaView.Refresh();
             var result = userPrev.dzialkaView.MoveCurrentToPosition(poz);
-            Thread.Sleep(2000);
-            cannAdres = true;
+           
         }
 
         #region Metods
@@ -218,19 +237,22 @@ namespace RejestrNieruchomosciNew.ViewModel
         }
 
         public void testDzialka()
-        {
+        { 
             if (changeMode == ChangeMode.add)
             {
                 testDzialkaToAdd();
             }
             if (changeMode == ChangeMode.mod)
+            {
+
                 testDzialkaToMod();
+            }
         }
 
         private void testDzialkaToAdd()
         {
             if (obreb.getId().HasValue && string.IsNullOrEmpty(dzialka.Numer) == false)
-            {
+            {              
                 int obrebId = obreb.getId().Value;
 
                 int c = dzialkaList.list.Where(r => r.ObrebId == obrebId &&
@@ -259,43 +281,10 @@ namespace RejestrNieruchomosciNew.ViewModel
                 return 2;
             }
 
-            return 0;
-
-            #region Old version
-
-            //if (dzialka.ObrebId == 0)
-            //    canAdd = false;
-            //else
-            //{
-            //    if (!string.IsNullOrEmpty(dzialka.Numer))
-            //    {
-            //        var dz = dzialkaList.list.FirstOrDefault(n => n.DzialkaId == dzialka.DzialkaId);
-            //        if (dzialka.Equals(dz) && adresChanged == false)
-            //            canAdd = false;
-            //        else
-            //        {
-            //            // zmiana kw, pow .. oprócz obrebu i gminy
-            //            if (string.Compare(dz.Numer, dzialka.Numer) == 0 &&
-            //                               dz.ObrebId == dzialka.ObrebId)
-            //            {
-            //                canAdd = true;
-
-            //            }
-            //            else // zmiana obrebu i/lub gminy
-            //            {
-            //                var c = dzialkaList.list.FirstOrDefault(r => r.ObrebId == dzialka.ObrebId
-            //                                                      && r.Numer == dzialka.Numer);
-            //                canAdd = c == null ? true : false;
-            //            }
-            //        }
-
-            //canAdd &= adresChanged;
-
 
             #endregion
 
 
-            #endregion
         }
     }
 }

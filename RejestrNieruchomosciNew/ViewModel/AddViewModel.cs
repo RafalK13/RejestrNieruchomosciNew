@@ -1,13 +1,21 @@
-﻿namespace RejestrNieruchomosciNew.ViewModel
-{
-    public class AddViewModel : ChangeViewModel
-    {
-        //public IDzialkaList dzialkaList;
+﻿using Castle.Core;
+using RejestrNieruchomosciNew.Model;
 
-        #region ICommand
-        //public ICommand OnCloseWindow { get; set; }
-        //public ICommand OnAddDzialka { get; set; }
-        #endregion
+namespace RejestrNieruchomosciNew.ViewModel
+{
+    public class AddViewModel //: ChangeViewModel
+    {
+        [DoNotWire]
+        public UserControl_DanePodstawoweViewModel userControl_AddDanePod { get; set; }
+
+        [DoNotWire]
+        public UserControl_DaneDodatkoweViewModel userControl_DaneDod { get; set; }
+
+        [DoNotWire]
+        public IDzialka dzialka { get; set; }
+
+        public bool tabsVisible { get; set; }
+        public string modeMessage { get; set; }
 
         public AddViewModel(UserControl_DanePodstawoweViewModel userPodst)
         {
@@ -19,20 +27,21 @@
             tabsVisible = false;
 
             userControl_AddDanePod.changeMode = ChangeMode.add;
+            userControl_AddDanePod.cannAdres = false;
         }
 
-        #region initCommands
-        public override  void onAddDzialka()
-        {
-            //MessageBox.Show("Add Model");
-            //userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
-            //userControl_prevModel.dzialkaView.Refresh();
-        }
+        //#region initCommands
+        //public override  void onAddDzialka()
+        //{
+        //    //MessageBox.Show("Add Model");
+        //    //userControl_prevModel.dzialkiBase.AddRow(userControl_AddDanePod.dzialka);
+        //    //userControl_prevModel.dzialkaView.Refresh();
+        //}
 
-        public override void onCloseWindow()
-        {
-        }
-        #endregion
+        //public override void onCloseWindow()
+        //{
+        //}
+        //#endregion
     }
 }
 

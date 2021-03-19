@@ -100,7 +100,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onAddNewDzialka()
         {
             var v = factory.CreateView<ChangeView>();
-            v.DataContext = factory.CreateView<IChangeViewModel>("Add");
+            v.DataContext = factory.CreateView<AddViewModel>();
             v.ShowDialog();
         }
         private void onDeleteDzialka()

@@ -122,7 +122,8 @@ namespace RejestrNieruchomosciNew.Model
 
                     var v1 = c.Dzialka.First(r => r.DzialkaId == d.DzialkaId);
                     c.Entry(v1).CurrentValues.SetValues(d);
-                    c.SaveChanges();
+
+                    int result = c.SaveChanges();                    
 
                     var v = list.FindIndex(r => r.DzialkaId == dz.DzialkaId);
 
@@ -130,6 +131,8 @@ namespace RejestrNieruchomosciNew.Model
                                                              .Include(r => r.PlatnoscUW)
                                                              .Include(adr => adr.Adres)
                                                              .FirstOrDefault(i => i.DzialkaId == d.DzialkaId);
+
+                    
 
 
                     //if(list[v].Adres != null)
