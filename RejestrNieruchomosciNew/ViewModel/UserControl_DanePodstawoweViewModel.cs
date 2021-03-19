@@ -24,6 +24,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         private bool _canAdd;
         #endregion
 
+        private bool _cannAdres;
+
+        public bool cannAdres
+        {
+            get { return _cannAdres; }
+            set { _cannAdres = value;
+                RaisePropertyChanged(); 
+            }
+        }
+
+
         private string _opisObreb;
 
         public string opisObreb
@@ -146,16 +157,19 @@ namespace RejestrNieruchomosciNew.ViewModel
             OnAddDzialka = new RelayCommand(OnAddDzialkaClick);
             clsClick = new RelayCommand(onClsClick);
             canAdd = false;
+            cannAdres = true;
         }
 
         #endregion
 
         private void onClsClick()
         {
+            int r = 13;
+            cannAdres = false;
             obreb.clsObreb();
             dzialka.ObrebId = 0;
             testDzialka();
-
+            
             if (dzialka.Adres != null)
                 dzialka.Adres.AdresCls();
         }
@@ -190,6 +204,8 @@ namespace RejestrNieruchomosciNew.ViewModel
             int poz = userPrev.dzialkaView.CurrentPosition;
             userPrev.dzialkaView.Refresh();
             var result = userPrev.dzialkaView.MoveCurrentToPosition(poz);
+            Thread.Sleep(2000);
+            cannAdres = true;
         }
 
         #region Metods

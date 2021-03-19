@@ -97,9 +97,7 @@
             SelectedValue="{Binding ulicaSelVal.UlicaSloId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             SelectedItem="{Binding ulicaSelVal, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-
-            <!--tekstRaf="{Binding NumerUlicy, ElementName=AdresControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-            <view:UserControl_ElementInfo
+        <view:UserControl_ElementInfo
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Grid.Row="3"
@@ -126,13 +124,3 @@
     </Grid>
 
 </UserControl>
-
-<!--<view:UserControl_ElementInfo.Resources>
-    <Style
-        TargetType="TextBox">
-        <Setter
-            Property="HorizontalContentAlignment"
-            Value="Left" />
-
-    </Style>
-</view:UserControl_ElementInfo.Resources>-->

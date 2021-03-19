@@ -21,6 +21,18 @@ namespace RejestrNieruchomosciNew.View
             Loaded += UserControl_Adres_Loaded;
         }
 
+        public bool cannAdres
+        {
+            get { return (bool)GetValue(cannAdresProperty); }
+            set { SetValue(cannAdresProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for cannAdres.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty cannAdresProperty =
+            DependencyProperty.Register("cannAdres", typeof(bool), typeof(UserControl_Adres), new PropertyMetadata(true));
+
+
+
         private void onCzysc()
         {
             //MessageBox.Show( "onClcked" + gminaId);

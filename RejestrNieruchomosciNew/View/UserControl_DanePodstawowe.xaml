@@ -1,92 +1,156 @@
-﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_DanePodstawowe"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
-             xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
-             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             mc:Ignorable="d" 
-             xmlns:validRule="clr-namespace:RejestrNieruchomosciNew.Validations"
-             Name="userControlDanePod"
-             xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
-             d:DesignHeight="500" d:DesignWidth="1000"
-             >
+﻿<UserControl
+    x:Class="RejestrNieruchomosciNew.View.UserControl_DanePodstawowe"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:com="clr-namespace:RejestrNieruchomosciNew.Command"
+    xmlns:userControl="clr-namespace:RejestrNieruchomosciNew.View"
+    xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    mc:Ignorable="d"
+    xmlns:validRule="clr-namespace:RejestrNieruchomosciNew.Validations"
+    Name="userControlDanePod"
+    xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    d:DesignHeight="500"
+    d:DesignWidth="1000">
     <UserControl.Resources>
-        <loc:resultCnvr x:Key="conv"/>
-        <loc:stringToDecimal x:Key="convStrToDec"/>
-        <loc:stringToPowHa x:Key="strToPowHa"/>
-        <Style TargetType="Label" x:Key="label">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="VerticalContentAlignment" Value="Bottom"></Setter>
+        <loc:resultCnvr
+            x:Key="conv" />
+        <loc:stringToDecimal
+            x:Key="convStrToDec" />
+        <loc:stringToPowHa
+            x:Key="strToPowHa" />
+        <Style
+            TargetType="Label"
+            x:Key="label">
+            <Setter
+                Property="Height"
+                Value="30" />
+            <Setter
+                Property="VerticalAlignment"
+                Value="Top" />
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Bottom"></Setter>
         </Style>
-        <Style TargetType="TextBox" x:Key="tekstBox">
-            <Setter Property="Height" Value="30" ></Setter>
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Style
+            TargetType="TextBox"
+            x:Key="tekstBox">
+            <Setter
+                Property="Height"
+                Value="30"></Setter>
+            <Setter
+                Property="VerticalAlignment"
+                Value="Top"></Setter>
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center"></Setter>
         </Style>
-        <Style TargetType="ComboBox" x:Key="comboBox">
-            <Setter Property="Height" Value="30" ></Setter>
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Style
+            TargetType="ComboBox"
+            x:Key="comboBox">
+            <Setter
+                Property="Height"
+                Value="30"></Setter>
+            <Setter
+                Property="VerticalAlignment"
+                Value="Top"></Setter>
 
         </Style>
-        <Style TargetType="Button" x:Key="button">
-            <Setter Property="Height" Value="30" ></Setter>
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Style
+            TargetType="Button"
+            x:Key="button">
+            <Setter
+                Property="Height"
+                Value="30"></Setter>
+            <Setter
+                Property="VerticalAlignment"
+                Value="Top"></Setter>
+            <Setter
+                Property="VerticalContentAlignment"
+                Value="Center"></Setter>
         </Style>
 
-        <Style TargetType="Button" x:Key="btnCheck">
-            <Setter Property="Width" Value="130"></Setter>
-            <Setter Property="Height" Value="25"></Setter>
-            <Setter Property="Margin" Value="20,0,20,20"></Setter>
-            <Setter Property="IsEnabled" Value="False"></Setter>
+        <Style
+            TargetType="Button"
+            x:Key="btnCheck">
+            <Setter
+                Property="Width"
+                Value="130"></Setter>
+            <Setter
+                Property="Height"
+                Value="25"></Setter>
+            <Setter
+                Property="Margin"
+                Value="20,0,20,20"></Setter>
+            <Setter
+                Property="IsEnabled"
+                Value="False"></Setter>
             <Style.Triggers>
                 <MultiDataTrigger>
-                    <Setter Property="IsEnabled" Value="True"></Setter>
+                    <Setter
+                        Property="IsEnabled"
+                        Value="True"></Setter>
                     <MultiDataTrigger.Conditions>
-                        <Condition Binding="{Binding Path=userControl_AddDanePod.canAdd}" Value="true"/>
+                        <Condition
+                            Binding="{Binding Path=userControl_AddDanePod.canAdd}"
+                            Value="true" />
 
-                        <Condition Binding="{Binding ElementName=TekstRaf1, Path=(Validation.HasError)}" Value="false"/>
+                        <Condition
+                            Binding="{Binding ElementName=TekstRaf1, Path=(Validation.HasError)}"
+                            Value="false" />
 
-                        <Condition Binding="{Binding ElementName=kwakt, Path=(Validation.HasError)}" Value="false"/>
+                        <Condition
+                            Binding="{Binding ElementName=kwakt, Path=(Validation.HasError)}"
+                            Value="false" />
 
-                        <Condition Binding="{Binding ElementName=kwzrod, Path=(Validation.HasError)}" Value="false"/>
+                        <Condition
+                            Binding="{Binding ElementName=kwzrod, Path=(Validation.HasError)}"
+                            Value="false" />
 
-                        <Condition Binding="{Binding ElementName=pow, Path=(Validation.HasError)}" Value="false"/>
+                        <Condition
+                            Binding="{Binding ElementName=pow, Path=(Validation.HasError)}"
+                            Value="false" />
                     </MultiDataTrigger.Conditions>
                 </MultiDataTrigger>
             </Style.Triggers>
         </Style>
 
-        <ControlTemplate TargetType="TextBox" x:Key="textBoxTemp">
+        <ControlTemplate
+            TargetType="TextBox"
+            x:Key="textBoxTemp">
             <Grid>
-                <TextBox Style="{StaticResource tekstBox}"
-                         Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
+                <TextBox
+                    Style="{StaticResource tekstBox}"
+                    Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent},
                                 Path=Text,
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="LostFocus">
-                            <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
+                        <i:EventTrigger
+                            EventName="LostFocus">
+                            <i:InvokeCommandAction
+                                Command="{Binding userControl_AddDanePod.leftClick}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
             </Grid>
         </ControlTemplate>
-        <ControlTemplate TargetType="ComboBox" x:Key="comboBoxTemp">
+        <ControlTemplate
+            TargetType="ComboBox"
+            x:Key="comboBoxTemp">
             <Grid>
                 <ComboBox
                     ItemsSource="{Binding Path=ItemsSource, RelativeSource={ RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    SelectedValue="{Binding Path=SelectedValue, RelativeSource={ RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    >
+                    SelectedValue="{Binding Path=SelectedValue, RelativeSource={ RelativeSource Mode=TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding userControl_AddDanePod.leftClick}" />
+                        <i:EventTrigger
+                            EventName="SelectionChanged">
+                            <i:InvokeCommandAction
+                                Command="{Binding userControl_AddDanePod.leftClick}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ComboBox>
@@ -94,115 +158,149 @@
         </ControlTemplate>
     </UserControl.Resources>
 
-    <Grid ShowGridLines="False" >
+    <Grid
+        ShowGridLines="False">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition
+                Height="40" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
+            <RowDefinition
+                Height="35" />
             <RowDefinition />
 
-            <RowDefinition Height="50"/>
+            <RowDefinition
+                Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition
+                Width="150" />
+            <ColumnDefinition
+                Width="200" />
+            <ColumnDefinition
+                Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0"
-                Content="Działka"
-                FontWeight="Bold"                      
-                FontSize="19"
-                Height="35"
-                VerticalAlignment="Top"
-                Style="{StaticResource label}" HorizontalAlignment="Left"
-                />
+        <Label
+            Grid.Column="0"
+            Grid.Row="0"
+            Content="Działka"
+            FontWeight="Bold"
+            FontSize="19"
+            Height="35"
+            VerticalAlignment="Top"
+            Style="{StaticResource label}"
+            HorizontalAlignment="Left" />
 
-        <Label Grid.Row="1" Grid.Column="0"
-                Style="{StaticResource label}"
-                Content="Numer działki"
-                />
-        <TextBox Grid.Row="1" Grid.Column="1"
-                     Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  ValidatesOnDataErrors=True}"
-                     Validation.ErrorTemplate="{StaticResource errorTemplate}"
-                     Style="{StaticResource tekstBox}"
-                     x:Name="TekstRaf1"
-                 />
-
-        <Label Grid.Row="2" Grid.Column="0"
-                   Style="{StaticResource label}"
-                   Content="Gmina"
-                   x:Name="labelGmina"
-                   />
-        <ComboBox  Grid.Row="2" Grid.Column="1"
-                   Height="30"
-                   VerticalAlignment="Top"
-                   SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                   ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}"
-                   Template="{StaticResource comboBoxTemp}"
-                   x:Name="comboGmina"
-                   />
-        <Label Grid.Row="3" Grid.Column="0"
-                   Style="{StaticResource label}"
-                   Content="Obręb"
-                   />
-        <ComboBox Grid.Row="3" Grid.Column="1"
-                  Height="30"
-                  VerticalAlignment="Top"
-                  SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                  ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
-                  Template="{StaticResource comboBoxTemp}"
-                  />
-        <Label     Grid.Row="4" Grid.Column="0"
-                   Style="{StaticResource label}"
-                   Content="KW aktualna"
-                   />
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="Numer działki" />
         <TextBox
-                    Name="kwakt"
-                    Grid.Row="4" Grid.Column="1" 
-                    Style="{StaticResource tekstBox}"
-                    Text="{Binding userControl_AddDanePod.dzialka.Kwakt,                                
+            Grid.Row="1"
+            Grid.Column="1"
+            
+            Text="{Binding userControl_AddDanePod.dzialka.Numer, UpdateSourceTrigger=LostFocus, Mode=TwoWay,  ValidatesOnDataErrors=True}"
+            Validation.ErrorTemplate="{StaticResource errorTemplate}"
+            Style="{StaticResource tekstBox}"
+            x:Name="TekstRaf1" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="Gmina"
+            x:Name="labelGmina" />
+        <ComboBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="30"
+            VerticalAlignment="Top"
+            SelectedValue="{Binding userControl_AddDanePod.obreb.gminaValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding userControl_AddDanePod.obreb.gminaView}"
+            Template="{StaticResource comboBoxTemp}"
+            x:Name="comboGmina" />
+        <Label
+            Grid.Row="3"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="Obręb" />
+        <ComboBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Height="30"
+            VerticalAlignment="Top"
+            SelectedValue="{Binding userControl_AddDanePod.obreb.obrebValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            ItemsSource="{Binding userControl_AddDanePod.obreb.obrebView}"
+            Template="{StaticResource comboBoxTemp}" />
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="KW aktualna" />
+        <TextBox
+            Name="kwakt"
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource tekstBox}"
+            Text="{Binding userControl_AddDanePod.dzialka.Kwakt,                                
                                    UpdateSourceTrigger=LostFocus,
                                    Mode=TwoWay, 
                                    ValidatesOnDataErrors=True }"
-                    Validation.ErrorTemplate="{StaticResource errorTemplate}"
-                    />
-        <Label     Grid.Row="5" Grid.Column="0"
-                   Style="{StaticResource label}"
-                   Content="KW źródłowa"
-                   />
-        <TextBox   Name="kwzrod"
-                   Grid.Row="5" Grid.Column="1"
-                   Style="{StaticResource tekstBox}"
-                   Text="{Binding userControl_AddDanePod.dzialka.Kwzrob,                                
+            Validation.ErrorTemplate="{StaticResource errorTemplate}" />
+        <Label
+            Grid.Row="5"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="KW źródłowa" />
+        <TextBox
+            Name="kwzrod"
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource tekstBox}"
+            Text="{Binding userControl_AddDanePod.dzialka.Kwzrob,                                
                                    UpdateSourceTrigger=LostFocus,
                                    Mode=TwoWay, 
                                    ValidatesOnDataErrors=True }"
-                   Validation.ErrorTemplate="{StaticResource errorTemplate}" />
-        
-        
-        <Label      Grid.Row="6" Grid.Column="0"
-                    Style="{StaticResource label}"
-                    Content="Powierzchnia [ha]"/>
-        <TextBox    Name="pow"
-                    Grid.Row="6" Grid.Column="1"
-                    Style="{StaticResource tekstBox}"
-                    Validation.ErrorTemplate="{StaticResource errorTemplate}"                   
-                    >
-            <Binding Path="userControl_AddDanePod.dzialka.Pow" 
-                     StringFormat="#,#.###############"
-                     ValidatesOnDataErrors="True" UpdateSourceTrigger="LostFocus">
+            Validation.ErrorTemplate="{StaticResource errorTemplate}" />
+
+        <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource label}"
+            Content="Powierzchnia [ha]" />
+        <TextBox
+            Name="pow"
+            Grid.Row="6"
+            Grid.Column="1"
+            Style="{StaticResource tekstBox}"
+            Validation.ErrorTemplate="{StaticResource errorTemplate}">
+            <Binding
+                Path="userControl_AddDanePod.dzialka.Pow"
+                StringFormat="#,#.###############"
+                ValidatesOnDataErrors="True"
+                UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
-                    <validRule:Class_doubleValidatorRule/>
+                    <validRule:Class_doubleValidatorRule />
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
@@ -212,20 +310,23 @@
                                    UpdateSourceTrigger=PropertyChanged,
                                    Mode=TwoWay, 
                                    ValidatesOnDataErrors=True }"-->
-
-        <userControl:UserControl_Adres                    
-                    Grid.Row="7" Grid.RowSpan="5" Grid.ColumnSpan="2"
-                    rowHight="35"
-                    column1Width="150"
-                    column2Width="200"
-                    Margin="0,0,-10,0"
-                   
-                   
-                    gminaId="{Binding  Path=DataContext.userControl_AddDanePod.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adresSlo="{Binding  Path=DataContext.userControl_AddDanePod.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    adres="{Binding  Path=DataContext.userControl_AddDanePod.dzialka.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="UserControl_Adres_Loaded"
-                    />
+        <!--IsEnabled="{Binding userControl_AddDanePod.cannAdd, Mode=TwoWay}"-->
+        <userControl:UserControl_Adres
+            Grid.Row="7"
+            Grid.RowSpan="5"
+            Grid.ColumnSpan="2"
+            rowHight="35"
+            column1Width="150"
+            column2Width="200"
+            Margin="0,0,-10,0"
+            
+            IsEnabled="{Binding  Path=DataContext.userControl_AddDanePod.cannAdres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            
+            gminaId="{Binding  Path=DataContext.userControl_AddDanePod.gminaId, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            adresSlo="{Binding  Path=DataContext.userControl_AddDanePod.adresSloList,RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            adres="{Binding  Path=DataContext.userControl_AddDanePod.dzialka.Adres, RelativeSource={RelativeSource AncestorType=userControl:UserControl_DanePodstawowe}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            correctAdr="{Binding Path=DataContext.userControl_AddDanePod.adresChanged, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Loaded="UserControl_Adres_Loaded" />
 
         <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     adresSlo="{Binding Path=DataContext.userControl_AddDanePod.adresSloList, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -242,31 +343,34 @@
         <!--dzialka="{Binding Path=DataContext.userControl_AddDanePod.dzialka, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
         <!--gminaId="{Binding Path=DataContext.userControl_AddDanePod.gminaId, ElementName=userControlDanePod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
 
-        <StackPanel Grid.Column="0" Grid.Row="13" Grid.ColumnSpan="3"
-                    Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Bottom">
-            <Button Content="Zapisz"
-                            Style="{StaticResource btnCheck}"
-                            Command="{Binding userControl_AddDanePod.OnAddDzialka}"
-                            />
+        <StackPanel
+            Grid.Column="0"
+            Grid.Row="13"
+            Grid.ColumnSpan="3"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom">
+            <Button
+                Content="Zapisz"
+                Style="{StaticResource btnCheck}"
+                Command="{Binding userControl_AddDanePod.OnAddDzialka}" />
             <!--IsEnabled="{Binding userControl_AddDanePod.canAdd, Mode=TwoWay}"-->
 
+            <Button
+                Content="Zapisz i zamknij"
+                Style="{StaticResource btnCheck}"
+                Command="{Binding userControl_AddDanePod.OnAddDzialka}"
+                com:CloseOnClickBehaviour.IsEnabled="True" />
 
-            <Button Content="Zapisz i zamknij"
-                            Style="{StaticResource btnCheck}"
-                            Command="{Binding userControl_AddDanePod.OnAddDzialka}"
-                            com:CloseOnClickBehaviour.IsEnabled="True"/>
-
-
-            <Button Content="Czyść gmina/obręb"
-                            Style="{StaticResource buttonCommon}"
-                            Command="{Binding userControl_AddDanePod.clsClick}"/>
-            <Button 
-                        Style="{StaticResource buttonCommon}"
-                        IsCancel="True"
-                        com:CloseOnClickBehaviour.IsEnabled="True"
-                        Content="Anuluj"/>
+            <Button
+                Content="Czyść gmina/obręb"
+                Style="{StaticResource buttonCommon}"
+                Command="{Binding userControl_AddDanePod.clsClick}" />
+            <Button
+                Style="{StaticResource buttonCommon}"
+                IsCancel="True"
+                com:CloseOnClickBehaviour.IsEnabled="True"
+                Content="Anuluj" />
 
         </StackPanel>
     </Grid>
