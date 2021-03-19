@@ -1,52 +1,42 @@
-﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_ElementInfo"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
-             mc:Ignorable="d"
-             d:DesignHeight="50"
-             d:DesignWidth="300">
+﻿<UserControl
+    x:Class="RejestrNieruchomosciNew.View.UserControl_ElementInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+    mc:Ignorable="d"
+    d:DesignHeight="50"
+    d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding widthLabelRaf}" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition
+                Width="{Binding widthLabelRaf}" />
+            <ColumnDefinition
+                Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0"
-               VerticalAlignment="Center"
-               Content="{Binding labelRaf}"
-               Height="{Binding hightRaf}">
+
+        <Label
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            Content="{Binding labelRaf}"
+            Height="{Binding hightRaf}">
         </Label>
 
-        <StackPanel Grid.Column="1"
-                    VerticalAlignment="Center">
-            <TextBox HorizontalContentAlignment="Right"
-                     Text="{Binding tekstRaf}"
-                     Height="{Binding hightRaf}"
-                     TextWrapping="Wrap"
-                     IsReadOnly="{ Binding isReadOnlyRaf}" />
-        </StackPanel>
+        <TextBox
+            Grid.Column="1"
+            HorizontalContentAlignment="{Binding tekstBoxHorizontalAligment }"
+            Text="{Binding tekstRaf}"
+            Height="{Binding hightRaf}"
+            TextWrapping="Wrap"
+            IsReadOnly="{ Binding isReadOnlyRaf}" />
 
-        <Button Grid.Column="1"
-                Height="{Binding hightRaf}"
-                IsEnabled="True"
-                Visibility="{Binding buttonVisibility}"
-                Command="{Binding onClickZal}"
-                Content="{Binding buttonOpis, Mode=TwoWay}" />
-        <!--IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"-->
-
-        <!--<ComboBox Grid.Column="1"
-                  Height="{Binding hightRaf}"
-                  IsEnabled="{Binding buttonEnabled, Mode=TwoWay}"
-                  Visibility="{Binding comboVisibility}"
-                  ItemsSource="{Binding comboList.listAll}"
-                  DisplayMemberPath="{Binding comboDispMember}"
-                  IsEditable="True"
-                  />-->
-
-        <!--DisplayMemberPath="{Binding comboDispMember}"
-                  SelectedValue="{Binding comboSelValue}"
-                  SelectedValuePath="{Binding comboValPath}"-->
+        <Button
+            Grid.Column="1"
+            Height="{Binding hightRaf}"
+            IsEnabled="True"
+            Visibility="{Binding buttonVisibility}"
+            Command="{Binding onClickZal}" />
 
     </Grid>
 </UserControl>

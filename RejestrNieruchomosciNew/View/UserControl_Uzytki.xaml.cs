@@ -82,7 +82,7 @@ namespace RejestrNieruchomosciNew.View
             
             powTotal = uzytkiListRaf.Sum(r => r.Pow);
       
-            if (powTotal != 0 && dzialka.Pow != 0)
+            if (powTotal != 0 && dzialka.Pow.HasValue)
             {
                 try
                 {
@@ -93,7 +93,7 @@ namespace RejestrNieruchomosciNew.View
                 }
                 catch (Exception exeption)
                 {
-                    MessageBox.Show( $"Błąd transformacji powierzchni uzytków\r\n{exeption.Message}");
+                    MessageBox.Show( $"Błąd transformacji powierzchni uzytków\r\n{exeption.Message}\r\n{exeption.Source}\r\n{exeption.StackTrace}");
                 }
             }
         }
