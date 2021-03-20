@@ -31,7 +31,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _selectedIndeks = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged();                
             }
         }
 
@@ -44,7 +44,6 @@ namespace RejestrNieruchomosciNew.ViewModel
             {
                 return CollectionViewSource.GetDefaultView(dzialkiList.list);
             }
-            //get => CollectionViewSource.GetDefaultView(dzialkiList.list);
         }
 
         public event EventHandler zmianaDzialkaSel;
@@ -166,7 +165,7 @@ namespace RejestrNieruchomosciNew.ViewModel
         private void onSzukaj()
         {
             Window_Filtr windowFiltr = new Window_Filtr(viewModel);
-            windowFiltr.ShowDialog();
+            windowFiltr.Show();
 
             if (windowFiltr.DialogResult.HasValue && windowFiltr.DialogResult.Value)
             {
@@ -208,11 +207,14 @@ namespace RejestrNieruchomosciNew.ViewModel
                     deleteDzialka();
                 else
                 {
-                    if (dzialkaSel != null)
+                    if ( (dzialkaSel != null) && (performMode.appMod == PerformMode.appMode.main))
                     {
+                        performMode.appMod = PerformMode.appMode.dod;
                         var v = factory.CreateView<ChangeView>();
                         v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                        v.ShowDialog();
+
+                        v.Show();
+                        //v.ShowDialog();
                     }
                 }
             }

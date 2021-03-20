@@ -56,6 +56,8 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public ICelNabyciaList celNabyciaList { get; set; }
 
+        public IDzialkaList dzialkaList { get; set; }
+
         private IWladanie _wladanieSel;
         public IWladanie wladanieSel
         {
@@ -203,8 +205,14 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onWlascAdd()
         {
-            wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
-            wladanieList.saveWladanie();
+            var dzialkaSel = dzialkaList.list.FirstOrDefault(r => r.DzialkaId == dzialkaId);
+            if (dzialkaSel != null)
+            {
+                wladanieList.getList(dzialkaSel);
+                wladanieList.list = new ObservableCollection<IWladanie>(wladListLok.Select(r => new Wladanie(r)).ToList());
+
+                wladanieList.saveWladanie();
+            }
         }
 
         private bool testWlascExist()

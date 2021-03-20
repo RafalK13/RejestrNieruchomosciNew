@@ -49,7 +49,8 @@ namespace RejestrNieruchomosciNew.Model
         }
 
         public void initList( IDzialka dz)
-        {       
+        {
+            int x = 13;
             if( dz!= null)
                 list = new ObservableCollection<Uzytki>( listAll.Where(r => r.DzialkaId == dz.DzialkaId));
             listOrg = ObservableCon<Uzytki>.ObservableToList(list);
@@ -64,11 +65,14 @@ namespace RejestrNieruchomosciNew.Model
 
         public UzytkiList()
         {
+            int r1 = 1;
             list = new ObservableCollection<Uzytki>();
+          
         }
 
         public UzytkiList(UserControl_PreviewViewModel userPrev)
         {
+            int r1 = 1;
             list = new ObservableCollection<Uzytki>();
 
             if (userPrev.dzialkaSel != null)
@@ -80,14 +84,21 @@ namespace RejestrNieruchomosciNew.Model
         public void getList(IDzialka dzialkaSel)
         {
             dzialkaPrv = dzialkaSel;
-
+            int x = 1;
             initList(dzialkaPrv);
+
+            //if (dzialkaSel.DzialkaId != 0)
+            //{
+            //    dzialkaPrv.copy(dzialkaSel);
+
+            //    initList(dzialkaPrv);
+            //}
         }
 
         public void saveUzytki()
         {
-           
 
+            int x = 1;
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))

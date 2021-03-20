@@ -32,7 +32,7 @@ namespace RejestrNieruchomosciNew.Model
             {
                 try
                 {
-                    list = new List<IPodmiot>(await c.PodmiotView.Take(13).AsNoTracking().ToListAsync());
+                    list = new List<IPodmiot>(await c.PodmiotView.AsNoTracking().ToListAsync());
                 }
                 catch (Exception e)
                 {

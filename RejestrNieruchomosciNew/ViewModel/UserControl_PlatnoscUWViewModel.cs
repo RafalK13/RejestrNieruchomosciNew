@@ -30,16 +30,22 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         public UserControl_PreviewViewModel userPrev { get; set; }
 
+        public int dzialkaId { get; set; }
+
+        public IDzialkaList dzialkaList { get; set; }
+
         public UserControl_PlatnoscUWViewModel(UserControl_PreviewViewModel _userPrev,
                                            
                                                PlatnoscUW _platnoscUW)
         {
-
+            int x = 13;
             if (_userPrev?.dzialkaSel?.PlatnoscUW != null)
             {
+                
                 _platnoscUW = _userPrev.dzialkaSel.PlatnoscUW;
             }
-
+            if (_userPrev?.dzialkaSel != null)
+                dzialkaId = _userPrev.dzialkaSel.DzialkaId;
             platnoscUW = _platnoscUW;
             initButtons();
         }
@@ -51,12 +57,24 @@ namespace RejestrNieruchomosciNew.ViewModel
         
         private void clickPlatnosciAdd()
         {
-            platnoscUW.Dzialka = userPrev.dzialkaSel as Dzialka;
-            platnoscUW.DzialkaId = userPrev.dzialkaSel.DzialkaId;
-            platnoscUW.save(platnoscUW);
+            var dzialkaSel = dzialkaList.list.FirstOrDefault(r => r.DzialkaId == dzialkaId);
 
-            userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
-            userPrev.dzialkaView.Refresh();
+            if (dzialkaSel != null)
+            {
+                platnoscUW.Dzialka = (Dzialka)dzialkaSel;
+                platnoscUW.DzialkaId = dzialkaSel.DzialkaId;
+                platnoscUW.save(platnoscUW);
+
+                userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
+                userPrev.dzialkaView.Refresh();
+
+                //platnoscUW.Dzialka = userPrev.dzialkaSel as Dzialka;
+                //platnoscUW.DzialkaId = userPrev.dzialkaSel.DzialkaId;
+                //platnoscUW.save(platnoscUW);
+
+                //userPrev.dzialkaSel.PlatnoscUW = platnoscUW.clone();
+                //userPrev.dzialkaView.Refresh();
+            }
         }
     }
 }       

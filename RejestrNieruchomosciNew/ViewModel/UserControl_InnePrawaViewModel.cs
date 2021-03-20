@@ -85,7 +85,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             set
             {
                 _innePrawaSel = value;
-                testInnePrawaSel();    
+                testInnePrawaSel();
                 RaisePropertyChanged("innePrawaSel");
             }
         }
@@ -104,11 +104,14 @@ namespace RejestrNieruchomosciNew.ViewModel
             }
         }
 
+        public IDzialkaList dzialkaList { get; set; }
+
         public UserControl_InnePrawaViewModel(UserControl_PreviewViewModel userPrev,
-                                             IInnePrawaList _innePrawaList)
+                                             IInnePrawaList _innePrawaList
+                                             )
         {
             initButtons();
-            
+
             sellVisibility = Visibility.Hidden;
 
             if (userPrev.dzialkaSel != null)
@@ -134,7 +137,7 @@ namespace RejestrNieruchomosciNew.ViewModel
             else
                 podmiotDetail = false;
         }
-        
+
         private bool testWlascExist()
         {
             if (innePrawaList.list.Count == 0)
@@ -202,9 +205,14 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onInnePrawaAdd()
         {
+            var dzialkaSel = dzialkaList.list.FirstOrDefault(r => r.DzialkaId == dzialkaId);
+            if (dzialkaSel != null)
+            {
+                innePrawaList.getList(dzialkaSel);
+                innePrawaList.list = new ObservableCollection<IInnePrawa>(inneListLok.Select(r => new InnePrawa(r)).ToList());
 
-            innePrawaList.list = new ObservableCollection<IInnePrawa>(inneListLok.Select(r => new InnePrawa(r)).ToList());
-            innePrawaList.save();
+                innePrawaList.save();
+            }
         }
 
         private void onPodmiotAdd()
@@ -217,7 +225,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                     innePrawa.PodmiotId = selectedPodmId;
 
                     //innePrawaList.list.Add(new InnePrawa()
-                    inneListLok.Add( new InnePrawa()
+                    inneListLok.Add(new InnePrawa()
                     {
                         DzialkaId = innePrawa.DzialkaId,
                         PodmiotId = innePrawa.PodmiotId,
@@ -233,7 +241,7 @@ namespace RejestrNieruchomosciNew.ViewModel
                 //    DzialkaId = innePrawa.DzialkaId,
                 //    PodmiotId = innePrawa.PodmiotId,
                 //});
-                
+
             }
         }
         private void onPodmiotDel()

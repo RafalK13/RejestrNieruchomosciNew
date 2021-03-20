@@ -56,20 +56,32 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             if (_prev?.dzialkaSel != null)
             {
-                //dzialka = (IDzialka)_prev.dzialkaSel.clone();
+                dzialka = _dzialka;
+                uzytkiList = _uzytkiList;
+
+                dzialka.copy(_prev.dzialkaSel);
                 //_prev.dzialkaSel.Kwzrob = "NowyNr";
                 //_prev.dzialkaView.Refresh();
-                _uzytkiList.getList(_prev.dzialkaSel);
-                uzytkiListLok = new ObservableCollection<Uzytki>(_uzytkiList.list.Select(r => new Uzytki(r)).ToList());
+                //dzialka = _dzialka;
+                //dzialka.copy(dzialka);
+               
+                
+                uzytkiList.getList(dzialka);
+
+                uzytkiListLok = new ObservableCollection<Uzytki>(uzytkiList.list.Select(r => new Uzytki(r)).ToList());
+               
             }
 
             daneDodAdd = new RelayCommand(onDaneDodAdd);
-
+            int x = 1;
         }
 
         private void onDaneDodAdd()
         {
+            int x1 = 13;
+            uzytkiList.getList(dzialka);
             uzytkiList.list = new ObservableCollection<Uzytki>(uzytkiListLok.Select(r => new Uzytki(r)).ToList());
+            int x = 13;
             uzytkiList.saveUzytki();
      
             //dzialkaList.ModRow(dzialka);

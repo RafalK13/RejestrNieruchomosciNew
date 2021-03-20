@@ -93,7 +93,8 @@ namespace RejestrNieruchomosciNew.ViewModel
                 mode.appMod = PerformMode.appMode.dod;
                 var v = factory.CreateView<ChangeView>();
                 v.DataContext = factory.CreateView<IChangeViewModel>("Mod");
-                v.ShowDialog();
+                
+                v.Show();
             }
         }
 
