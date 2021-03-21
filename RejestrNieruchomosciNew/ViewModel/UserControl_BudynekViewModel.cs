@@ -400,6 +400,9 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         #endregion
 
+        public int dzialkaSelId { get; set; }
+        public IDzialkaList dzialkaSelList { get; set; }
+
         #region KONSTRUKTOR
 
         public UserControl_BudynekViewModel(UserControl_PreviewViewModel _userPrev
@@ -408,12 +411,17 @@ namespace RejestrNieruchomosciNew.ViewModel
         {
             initButtons();
             innePrawaDzialka = _innePrawaD;
+            
 
             sellVisibility = Visibility.Hidden;
 
-            if (_userPrev.dzialkaSel != null)
+            if (_userPrev.dzialkaSel != null)              
             {
-                _budList.getList(_userPrev.dzialkaSel);
+                
+                dzialkaSelId = _userPrev.dzialkaSel.DzialkaId;
+                var dzialkaSel = dzialkaSelList?.list.FirstOrDefault(r => r.DzialkaId == dzialkaSelId);
+                _budList.getList( dzialkaSel);
+                int x = 1;
 
                 try
                 {
@@ -591,10 +599,10 @@ namespace RejestrNieruchomosciNew.ViewModel
 
         private void onDzialakBudynekSave()
         {
-
+            
             budSel = null;
             budList.list = budListLok;
-            budList.saveBudynki();
+            budList.saveBudynki(dzialkaSelId);
         }
 
         private void onBudynekAdd()
@@ -602,11 +610,16 @@ namespace RejestrNieruchomosciNew.ViewModel
             if (string.IsNullOrEmpty(budynekName) == false)
                 if (testBudynekIfExist())
                 {
-                    Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId, Dzialka = (Dzialka)userPrev.dzialkaSel } } };
+                    //Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = userPrev.dzialkaSel.DzialkaId, Dzialka = (Dzialka)userPrev.dzialkaSel } } };
+                    var dzialkaSel = dzialkaSelList.list.FirstOrDefault(r => r.DzialkaId == dzialkaSelId);
+                    if (dzialkaSel != null)
+                    {
+                        Budynek bud = new Budynek { Nazwa = budynekName, Dzialka_Budynek = new List<Dzialka_Budynek>() { new Dzialka_Budynek { DzialkaId = dzialkaSelId, Dzialka = (Dzialka)userPrev.dzialkaSel } } };
 
-                    budListLok.Add(bud);
-                    budynekName = string.Empty;
-                    budSel = null;
+                        budListLok.Add(bud);
+                        budynekName = string.Empty;
+                        budSel = null;
+                    }
                 }
 
         }

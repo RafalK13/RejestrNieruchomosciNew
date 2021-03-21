@@ -24,10 +24,10 @@ namespace RejestrNieruchomosciNew.Model
             }
         }
 
-        private List<IBudynek> listOrg { get; set; }
-        private List<IBudynek> listToAdd { get; set; }
-        private List<IBudynek> listToMod { get; set; }
-        private List<IBudynek> listToDel { get; set; }
+        //private List<IBudynek> listOrg { get; set; }
+        //private List<IBudynek> listToAdd { get; set; }
+        //private List<IBudynek> listToMod { get; set; }
+        //private List<IBudynek> listToDel { get; set; }
 
         public string result;
         private IDzialka dzialkaPrv;
@@ -75,16 +75,17 @@ namespace RejestrNieruchomosciNew.Model
 
         public void getList(IDzialka dzialkaSel)
         {
+            int x = 13;
             dzialkaPrv = dzialkaSel;
             initList(dzialkaSel);
         }
 
-        public void saveBudynki()
+        public void saveBudynki( int dzialkaId)
         {
             using (var c = new Context())
             {
-                int dz = dzialkaPrv.DzialkaId;
-                var budAll = c.Budynek.AsNoTracking().Where(r => r.Dzialka_Budynek.FirstOrDefault(l1 => l1.DzialkaId == dz) != null).ToList();
+                //int dz = dzialkaPrv.DzialkaId;
+                var budAll = c.Budynek.AsNoTracking().Where(r => r.Dzialka_Budynek.FirstOrDefault(l1 => l1.DzialkaId == dzialkaId) != null).ToList();
                
                 foreach (var item_budAll in budAll)
                 {

@@ -12,7 +12,6 @@
              d:DesignHeight="660" d:DesignWidth="1450">
     <Grid>
         <Grid.Resources>
-
             <con:personIdToPersonName x:Key="parsonConvert"/>
             <con:DateConverter x:Key="dateConvert"/>
             <con:DoubleConverter x:Key="doubleConverter"/>

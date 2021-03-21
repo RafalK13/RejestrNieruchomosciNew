@@ -84,6 +84,7 @@ namespace RejestrNieruchomosciNew.Model
 
         public void save()
         {
+            int x = 1;
             foreach (var r in list)
             {
                 if (listOrg.Contains(r))

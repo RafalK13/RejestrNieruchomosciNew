@@ -7,7 +7,7 @@ namespace RejestrNieruchomosciNew.Model.Interfaces
         ObservableCollection<IBudynek> listAll { get; set; }
         ObservableCollection<IBudynek> list { get; set; }
 
-        void saveBudynki();
+        void saveBudynki(int dzialkaSel);
         void getList(IDzialka dzialkaSel);
     }
 }
