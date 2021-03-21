@@ -52,9 +52,9 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="180"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition Width="13"/>
-            <ColumnDefinition Width="300" MinWidth="50"/>
+            <ColumnDefinition Width="270" MinWidth="50"/>
             <ColumnDefinition Width="*" MinWidth="50"/>
 
         </Grid.ColumnDefinitions>
@@ -152,9 +152,9 @@
                   IsSynchronizedWithCurrentItem="True"
                   >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Numer" Binding="{Binding Numer}" Width="1.5*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Obreb" Binding="{Binding Obreb.Numer}" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Gmina" Binding="{Binding Obreb.GminaSlo.Nazwa}" Width="1.5*"></DataGridTextColumn>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding   Gesture="LeftDoubleClick" 

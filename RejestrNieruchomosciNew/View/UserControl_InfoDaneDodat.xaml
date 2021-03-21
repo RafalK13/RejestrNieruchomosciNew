@@ -7,7 +7,7 @@
     xmlns:view="clr-namespace:RejestrNieruchomosciNew.View"
     mc:Ignorable="d"
     x:Name="InfoDaneDodatkowe"
-    d:DesignHeight="1000"
+    d:DesignHeight="500"
     d:DesignWidth="1000">
     <UserControl.Resources>
 
@@ -137,8 +137,7 @@
                         Height="30" />
                     <RowDefinition
                         Height="30" />
-                    <RowDefinition
-                        Height="30" />
+
                 </Grid.RowDefinitions>
 
                 <Label
@@ -215,8 +214,7 @@
                         Height="30" />
                     <RowDefinition
                         Height="30" />
-                    <RowDefinition
-                        Height="30" />
+  
                 </Grid.RowDefinitions>
 
                 <Label

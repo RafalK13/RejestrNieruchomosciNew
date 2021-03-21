@@ -63,11 +63,11 @@
         </Grid.Resources>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*" MinWidth="9" />
-            <ColumnDefinition Width="1*" MinWidth="9"/>
-            <ColumnDefinition Width="*" MinWidth="9" />
-            <ColumnDefinition Width="*" MinWidth="9" />
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition MinWidth="300" />
+            <ColumnDefinition MinWidth="280"/>
+            <ColumnDefinition MinWidth="280" />
+            <ColumnDefinition MinWidth="280" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -183,7 +183,7 @@
                       Style="{StaticResource scrollViewer}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="80"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -237,7 +237,6 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
-
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
@@ -246,8 +245,7 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-
+                           
                         </Grid.RowDefinitions>
 
                         <Label Grid.Column="3" Grid.Row="0"
@@ -305,8 +303,8 @@
                                    Content="Rodzaj dokumentu"                                       
                                    Style="{StaticResource labelZbycie}"/>
                         <Label     Grid.Column="1" Grid.Row="11" 
-                                   Content="Nazwa czynności"                                       
-                                   Style="{StaticResource labelTab}"/>
+                                   Content="Nazwa czynności"
+							Style="{StaticResource labelZbycie}"/>
                         <Label     Grid.Column="1" Grid.Row="12" 
                                    Content="Tytuł dokumentu"                                       
                                    Style="{StaticResource labelZbycie}"/>

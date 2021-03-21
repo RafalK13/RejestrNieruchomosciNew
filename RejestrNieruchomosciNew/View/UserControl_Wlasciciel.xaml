@@ -11,7 +11,7 @@
     mc:Ignorable="d"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Name="WladanieWin"
-    d:DesignHeight="660"
+    d:DesignHeight="600"
     d:DesignWidth="1450">
 
     <UserControl.Resources>
@@ -159,16 +159,19 @@
             <Grid.ColumnDefinitions>
 
                 <ColumnDefinition
-                    Width="3*" />
+                    Width="3*" 
+					MinWidth="200"/>
                 <ColumnDefinition
                     Width="3*"
-                    MinWidth="9" />
+                    MinWidth="300"
+					/>
                 <ColumnDefinition
                     Width="3*"
-                    MinWidth="9" />
+					MinWidth="300"
+                />
                 <ColumnDefinition
                     Width="3*"
-                    MinWidth="9" />
+                    MinWidth="300" />
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -387,10 +390,9 @@
                                     Height="30" />
                                 <RowDefinition
                                     Height="30" />
-                                <RowDefinition
-                                    Height="30" />
-
-                                <RowDefinition
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
                                     Height="30" />
                                 <RowDefinition
                                     Height="30" />
