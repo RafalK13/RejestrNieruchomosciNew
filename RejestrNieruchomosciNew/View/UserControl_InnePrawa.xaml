@@ -63,10 +63,8 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
-            <ColumnDefinition MinWidth="300" />
-            <ColumnDefinition MinWidth="280"/>
-            <ColumnDefinition MinWidth="280" />
-            <ColumnDefinition MinWidth="280" />
+            <ColumnDefinition Width="*" />
+            
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -78,7 +76,7 @@
                    Grid.Column ="0"  
                    Style="{StaticResource gridSplitter}"
                    />
-        <GridSplitter 
+        <!--<GridSplitter 
                    Grid.Column ="1"  
                    Style="{StaticResource gridSplitter}"
                    />
@@ -89,7 +87,7 @@
         <GridSplitter 
                    Grid.Column ="3"  
                    Style="{StaticResource gridSplitter}"
-                   />
+                   />-->
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -177,423 +175,583 @@
             </DataGrid>
 
         </Grid>
+		<ScrollViewer
+			Grid.Column="1"
+			VerticalScrollBarVisibility="Auto"
+			HorizontalScrollBarVisibility="Auto"
+			Style="{StaticResource scrollViewer}">
+			<Grid>
+				<Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Column="1" 
-                      Style="{StaticResource scrollViewer}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+					<ColumnDefinition
+						MinWidth="300" />
+					<ColumnDefinition
+						MinWidth="280" />
+					<ColumnDefinition
+						MinWidth="280" />
+					<ColumnDefinition
+						MinWidth="280" />
+				</Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Row="0">
-                   
-                        <Label    
-                                   Content="Forma władania"
-                                   FontWeight="Bold"
-                                   FontSize="19"     
-                                   Margin="0,10,0,0"
-                                   Style="{StaticResource label}"/>
-                        
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="113"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label     Grid.Column="0"
-                                        Content="Rodzaj"                                       
-                                        Style="{StaticResource label1}"/>
-                            <ComboBox  
-                                        Grid.Column="1"
-                                        ItemsSource="{Binding  userControl_InnePrawa.rodzajInnegoPrawaSlo.list}"
-                                        SelectedValue="{Binding  userControl_InnePrawa.innePrawaSel.RodzajInnegoPrawaSloId}"
-                                        SelectedValuePath="RodzajInnegoPrawaSloId"
-                                        DisplayMemberPath="Nazwa"  
-                                        Style="{StaticResource comboBox}"/>
-                        </Grid>
-                    </StackPanel>
-                    
-                <StackPanel Grid.Row="1">
-                    <Label 
-                                   Content="Sposób nabycia prawa"
-                                   FontWeight="Bold"
-                                   FontSize="19"         
-                                   Margin="0,0,0,0"
-                                   Style="{StaticResource label}"/>
-                    <Grid Panel.ZIndex="1" Margin="0,0,5,0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3"/>
-                            <ColumnDefinition Width="113"/>
-                            <ColumnDefinition Width="3"/>
-                            <ColumnDefinition Width="8*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                           
-                        </Grid.RowDefinitions>
+				<Grid
+					Grid.Column="0">
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="80" />
+						<RowDefinition
+							Height="*" />
+					</Grid.RowDefinitions>
 
-                        <Label Grid.Column="3" Grid.Row="0"
-                                   Content="Nabycie"
-                                   FontWeight="Bold"
-                                   FontSize="15"         
-                                   />
-                        <Label Grid.Column="1" Grid.Row="1" 
-                                   Content=""                                       
-                                   Style="{StaticResource labelTab}"/>
+					<StackPanel
+						Grid.Row="0">
 
-                        <Label Grid.Column="1" Grid.Row="1" 
-                                   Content="Numer dokumentu"                                       
-                                   Style="{StaticResource labelTab}"/>
-                        <Label Grid.Column="1" Grid.Row="2" 
-                                   Content="Rodzaj dokumentu"                                       
-                                   Style="{StaticResource labelTab}"/>
-                        <Label Grid.Column="1" Grid.Row="3" 
-                                    Content="Nazwa czynności"                                       
-                                    Style="{StaticResource labelTab}"/>
-                        <Label Grid.Column="1" Grid.Row="4" 
-                                    Content="Tytuł dokumentu"                                       
-                                    Style="{StaticResource labelTab}"/>
-                        <Label Grid.Column="1" Grid.Row="5" 
-                                    Content="Data"                                       
-                                    Style="{StaticResource labelTab}"/>
-                        <Label  Grid.Column="1" Grid.Row="6" 
-                                        Content="Skan dokumentu"    
-                                        Style="{StaticResource labelTab}"/>
+						<Label
+							Content="Forma władania"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
 
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="113" />
+								<ColumnDefinition
+									Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label
+								Grid.Column="0"
+								Content="Rodzaj"
+								Style="{StaticResource label1}" />
+							<ComboBox
+								Grid.Column="1"
+								ItemsSource="{Binding  userControl_InnePrawa.rodzajInnegoPrawaSlo.list}"
+								SelectedValue="{Binding  userControl_InnePrawa.innePrawaSel.RodzajInnegoPrawaSloId}"
+								SelectedValuePath="RodzajInnegoPrawaSloId"
+								DisplayMemberPath="Nazwa"
+								Style="{StaticResource comboBox}" />
+						</Grid>
+					</StackPanel>
 
+					<StackPanel
+						Grid.Row="1">
+						<Label
+							Content="Sposób nabycia prawa"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,0,0,0"
+							Style="{StaticResource label}" />
+						<Grid
+							Panel.ZIndex="1"
+							Margin="0,0,5,0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition
+									Width="3" />
+								<ColumnDefinition
+									Width="113" />
+								<ColumnDefinition
+									Width="3" />
+								<ColumnDefinition
+									Width="8*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
+								<RowDefinition
+									Height="30" />
 
-                        <!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-                        <userCon:UserControl_Transakcja
-                                       Grid.Column="3" Grid.Row="1" Grid.RowSpan="7"
-                                       Grid.ColumnSpan="2" Margin="1,0,0,0"
-                                       transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransK_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}" 
-                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}" 
-                                       collectionToRealod="{Binding Path=DataContext.userControl_InnePrawa.innePrawaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        />
-                        <Label     Grid.Column="3" Grid.Row="8"
-                                   Content="Zbycie"
-                                   FontWeight="Bold"
-                                   FontSize="15"  
-                                   Panel.ZIndex="2"
-                                   />
+							</Grid.RowDefinitions>
 
-                        <Label     Grid.Column="1" Grid.Row="9" 
-                                   Content="Numer dokumentu"                                       
-                                   Style="{StaticResource labelZbycie}"/>
-                        <Label     Grid.Column="1" Grid.Row="10" 
-                                   Content="Rodzaj dokumentu"                                       
-                                   Style="{StaticResource labelZbycie}"/>
-                        <Label     Grid.Column="1" Grid.Row="11" 
-                                   Content="Nazwa czynności"
-							Style="{StaticResource labelZbycie}"/>
-                        <Label     Grid.Column="1" Grid.Row="12" 
-                                   Content="Tytuł dokumentu"                                       
-                                   Style="{StaticResource labelZbycie}"/>
-                        <Label     Grid.Column="1" Grid.Row="13" 
-                                   Content="Data"                                       
-                                   Style="{StaticResource labelZbycie}"/>
-                        <Label     Grid.Column="1" Grid.Row="14" 
-                                   Content="Skan dokumentu"    
-                                   Style="{StaticResource labelZbycie}"/>
+							<Label
+								Grid.Column="3"
+								Grid.Row="0"
+								Content="Nabycie"
+								FontWeight="Bold"
+								FontSize="15" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="1"
+								Content=""
+								Style="{StaticResource labelTab}" />
 
-                        <Button Grid.Column="3" Grid.Row="9"
-                                    Margin="3"
-                                    Content="Sprzedaż udziału"
-                                    Command="{Binding  userControl_InnePrawa.innePrawaSell}">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Visibility" Value="Visible"></Setter>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=TransSell, Path=Visibility}" Value="Visible">
-                                            <Setter Property="Visibility" Value="Hidden"/>
-                                        </DataTrigger>
+							<Label
+								Grid.Column="1"
+								Grid.Row="1"
+								Content="Numer dokumentu"
+								Style="{StaticResource labelTab}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="2"
+								Content="Rodzaj dokumentu"
+								Style="{StaticResource labelTab}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="3"
+								Content="Nazwa czynności"
+								Style="{StaticResource labelTab}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="4"
+								Content="Tytuł dokumentu"
+								Style="{StaticResource labelTab}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="5"
+								Content="Data"
+								Style="{StaticResource labelTab}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="6"
+								Content="Skan dokumentu"
+								Style="{StaticResource labelTab}" />
 
-                                    </Style.Triggers>
-                                </Style>
+							<!--Visibility="{Binding  Path=DataContext.userControl_Wlasciciel.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+							<userCon:UserControl_Transakcja
+								Grid.Column="3"
+								Grid.Row="1"
+								Grid.RowSpan="7"
+								Grid.ColumnSpan="2"
+								Margin="1,0,0,0"
+								transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransK_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}"
+								nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}"
+								collectionToRealod="{Binding Path=DataContext.userControl_InnePrawa.innePrawaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+							<Label
+								Grid.Column="3"
+								Grid.Row="8"
+								Content="Zbycie"
+								FontWeight="Bold"
+								FontSize="15"
+								Panel.ZIndex="2" />
 
-                            </Button.Style>
+							<Label
+								Grid.Column="1"
+								Grid.Row="9"
+								Content="Numer dokumentu"
+								Style="{StaticResource labelZbycie}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="10"
+								Content="Rodzaj dokumentu"
+								Style="{StaticResource labelZbycie}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="11"
+								Content="Nazwa czynności"
+								Style="{StaticResource labelZbycie}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="12"
+								Content="Tytuł dokumentu"
+								Style="{StaticResource labelZbycie}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="13"
+								Content="Data"
+								Style="{StaticResource labelZbycie}" />
+							<Label
+								Grid.Column="1"
+								Grid.Row="14"
+								Content="Skan dokumentu"
+								Style="{StaticResource labelZbycie}" />
 
-                        </Button>
+							<Button
+								Grid.Column="3"
+								Grid.Row="9"
+								Margin="3"
+								Content="Sprzedaż udziału"
+								Command="{Binding  userControl_InnePrawa.innePrawaSell}">
+								<Button.Style>
+									<Style
+										TargetType="Button">
+										<Setter
+											Property="Visibility"
+											Value="Visible"></Setter>
+										<Style.Triggers>
+											<DataTrigger
+												Binding="{Binding ElementName=TransSell, Path=Visibility}"
+												Value="Visible">
+												<Setter
+													Property="Visibility"
+													Value="Hidden" />
+											</DataTrigger>
 
-                        <userCon:UserControl_Transakcja
-                                       x:Name="TransSell"
-                                       Visibility="{Binding  Path=DataContext.userControl_InnePrawa.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       Grid.Column="3" Grid.Row="9" Grid.RowSpan="7"
-                                       Grid.ColumnSpan="2" Margin="1,0,0,0"
-                                       transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransS_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                       rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}" 
-                                       nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}" 
-                        />
-                    </Grid>
-                </StackPanel>
+										</Style.Triggers>
+									</Style>
 
-            </Grid>
-        </ScrollViewer>
+								</Button.Style>
 
-        <ScrollViewer Grid.Column="2" 
-                      Style="{StaticResource scrollViewer}"
-                      >
-            <Grid Margin="0,0,10,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="0"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label  Grid.Row="0" Grid.ColumnSpan="2"
-                                    Content="Data obowiązywania prawa"
-                                    FontWeight="Bold"
-                                    FontSize="19"    
-                                    Margin="0,10,0,0"
-                                    Style="{StaticResource label}"/>
-                <Label              Grid.Column="0" Grid.Row="1" 
-                                    Content="Od"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="1" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowOd,StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="2" 
-                                    Content="Do"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="2" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowDo, StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
-                <Label              Grid.Row="3" Grid.ColumnSpan="2"
-                                    Content="Protokół przejęcia"
-                                    FontWeight="Bold"
-                                    FontSize="19"    
-                                    Margin="0,10,0,0"
-                                    Style="{StaticResource label}"/>
-                <TextBlock          Grid.Column="0" Grid.Row="4" 
-                                    Margin="10,0,0,0"
-                                    TextWrapping="Wrap"
-                                    Text="Wizja teren. Data"  
-                                    />
+							</Button>
 
-                <TextBox            Grid.Column="1" Grid.Row="4" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerPrzek, StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="5" 
-                                    Content="Numer"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="5" 
-                                    Name="ProtPrzejeciaNumer"
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejkNr}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="6" 
-                                    Content="Data"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="6" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejData, StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="7" 
-                                    Content="Skan"  
-                                    Style="{StaticResource labelTab}"/>
+							<userCon:UserControl_Transakcja
+								x:Name="TransSell"
+								Visibility="{Binding  Path=DataContext.userControl_InnePrawa.sellVisibility, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								Grid.Column="3"
+								Grid.Row="9"
+								Grid.RowSpan="7"
+								Grid.ColumnSpan="2"
+								Margin="1,0,0,0"
+								transList="{Binding Path=DataContext.userControl_InnePrawa.transakcjeList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								numerTrans="{Binding Path=DataContext.userControl_InnePrawa.numerTrans, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								selectedIdTrans="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.TransS_Id, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								rodzDokSlo="{Binding Path=DataContext.userControl_InnePrawa.rodzDokSlo, ElementName=InnePrawaWin}"
+								nazwaCzynSlo="{Binding Path=DataContext.userControl_InnePrawa.nazwaCzynSlo, ElementName=InnePrawaWin}" />
+						</Grid>
+					</StackPanel>
 
-                <userCon:UserControl_Attachment
-                                       Grid.Column="1" Grid.Row="7" 
-                                       Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
-                                       Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
-                                       Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
-                                       pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtPrzejPath, ElementName=InnePrawaWin}"
-                                       />
-                <!--<Button             Grid.Column="1" Grid.Row="7" 
+				</Grid>
+
+				<Grid
+					Grid.Column="1">
+					<Grid
+						Margin="0,0,10,0">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="50" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="50" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="50" />
+							<RowDefinition
+								Height="0" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="80" />
+							<ColumnDefinition
+								Width="*" />
+						</Grid.ColumnDefinitions>
+						<Label
+							Grid.Row="0"
+							Grid.ColumnSpan="2"
+							Content="Data obowiązywania prawa"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="1"
+							Content="Od"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="1"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowOd,StringFormat='{}{0:dd.MM.yyyy}'}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="2"
+							Content="Do"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="2"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.DataObowDo, StringFormat='{}{0:dd.MM.yyyy}'}" />
+						<Label
+							Grid.Row="3"
+							Grid.ColumnSpan="2"
+							Content="Protokół przejęcia"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
+						<TextBlock
+							Grid.Column="0"
+							Grid.Row="4"
+							Margin="10,0,0,0"
+							TextWrapping="Wrap"
+							Text="Wizja teren. Data" />
+
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="4"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerPrzek, StringFormat='{}{0:dd.MM.yyyy}'}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="5"
+							Content="Numer"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="5"
+							Name="ProtPrzejeciaNumer"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejkNr}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="6"
+							Content="Data"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="6"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.ProtPrzejData, StringFormat='{}{0:dd.MM.yyyy}'}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="7"
+							Content="Skan"
+							Style="{StaticResource labelTab}" />
+
+						<userCon:UserControl_Attachment
+							Grid.Column="1"
+							Grid.Row="7"
+							Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+							Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+							Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
+							pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtPrzejPath, ElementName=InnePrawaWin}" />
+						<!--<Button             Grid.Column="1" Grid.Row="7" 
                                     Margin="3"
                                     Content="Skan protokołu"
                                     Command="{Binding userControl_InnePrawa.protPrzejScanClick}"
                                     />-->
 
-                <Label               Grid.Row="8" Grid.ColumnSpan="2"
-                                     Content="Protokół zwrotnego przekazania"
-                                     FontWeight="Bold"
-                                     FontSize="19"    
-                                     Margin="0,10,0,0"
-                                     Style="{StaticResource label}"/>
+						<Label
+							Grid.Row="8"
+							Grid.ColumnSpan="2"
+							Content="Protokół zwrotnego przekazania"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
 
-                <Label              Grid.Column="0" Grid.Row="10" 
-                                    Content="Data, wizja terenowa"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="10" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerZwrot,StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
+						<Label
+							Grid.Column="0"
+							Grid.Row="10"
+							Content="Data, wizja terenowa"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="10"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.wizjaTerZwrot,StringFormat='{}{0:dd.MM.yyyy}'}" />
 
-                <Label              Grid.Column="0" Grid.Row="11" 
-                                    Content="Numer"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="11" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotNr}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="12" 
-                                    Content="Data"  
-                                    Style="{StaticResource labelTab}"/>
-                <TextBox            Grid.Column="1" Grid.Row="12" 
-                                    Margin="3"
-                                    Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotData, StringFormat='{}{0:dd.MM.yyyy}'}" 
-                                    />
-                <Label              Grid.Column="0" Grid.Row="13" 
-                                    Content="Skan"  
-                                    Style="{StaticResource labelTab}"/>
-                <userCon:UserControl_Attachment
-                                       Grid.Column="1" Grid.Row="13" 
-                                       Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
-                                       Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
-                                       Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
-                                       pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtZwrotPath, ElementName=InnePrawaWin}"
-                                       />
+						<Label
+							Grid.Column="0"
+							Grid.Row="11"
+							Content="Numer"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="11"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotNr}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="12"
+							Content="Data"
+							Style="{StaticResource labelTab}" />
+						<TextBox
+							Grid.Column="1"
+							Grid.Row="12"
+							Margin="3"
+							Text="{Binding userControl_InnePrawa.innePrawaSel.ProtZwrotData, StringFormat='{}{0:dd.MM.yyyy}'}" />
+						<Label
+							Grid.Column="0"
+							Grid.Row="13"
+							Content="Skan"
+							Style="{StaticResource labelTab}" />
+						<userCon:UserControl_Attachment
+							Grid.Column="1"
+							Grid.Row="13"
+							Width="{Binding  ElementName=ProtPrzejeciaNumer, Path=ActualWidth}"
+							Height="{Binding ElementName=ProtPrzejeciaNumer, Path=ActualHeight}"
+							Margin="{Binding ElementName=ProtPrzejeciaNumer, Path=Margin}"
+							pathRaf="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.ProtZwrotPath, ElementName=InnePrawaWin}" />
 
-            </Grid>
-        </ScrollViewer>
+					</Grid>
+				</Grid>
 
+				<Grid
+					Grid.Column="2">
+					<Grid
+						Margin="10,0,0,0">
+						<StackPanel>
+							<Label
+								Content="Warunki realizacji innego prawa"
+								FontWeight="Bold"
+								FontSize="19"
+								Margin="0,10,0,0"
+								Style="{StaticResource label}" />
+							<TextBox
+								TextWrapping="Wrap"
+								AcceptsReturn="True"
+								AcceptsTab="True"
+								VerticalScrollBarVisibility="Auto"
+								Height="150"
+								Margin="7,0,10,3"
+								Text="{Binding userControl_InnePrawa.innePrawaSel.WarunkiRealizacji}" />
 
-        <ScrollViewer Grid.Column="3" 
-                      Style="{StaticResource scrollViewer}"
-                      >
-            <Grid Margin="10,0,0,0">
-                <StackPanel>
-                    <Label 
-                                   Content="Warunki realizacji innego prawa"
-                                   FontWeight="Bold"
-                                   FontSize="19"         
-                                   Margin="0,10,0,0"
-                                   Style="{StaticResource label}"/>
-                    <TextBox 
-                                   TextWrapping="Wrap"
-                                   AcceptsReturn="True"
-                                   AcceptsTab="True"
-                                   VerticalScrollBarVisibility="Auto"
-                                   Height="150"
-                                   Margin="7,0,10,3"
-                                   Text="{Binding userControl_InnePrawa.innePrawaSel.WarunkiRealizacji}" 
-                                   />
+							<Label
+								Content="Cel nabycia prawa"
+								FontWeight="Bold"
+								FontSize="19"
+								Margin="0,10,0,0"
+								Style="{StaticResource label}" />
+							<userCon:UserControl_CelNabycia
+								celNabyciaList="{Binding Path=DataContext.userControl_InnePrawa.celNabyciaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								selectedId="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.CelNabyciaId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                    <Label 
-                                   Content="Cel nabycia prawa"
-                                   FontWeight="Bold"
-                                   FontSize="19"         
-                                   Margin="0,10,0,0"
-                                   Style="{StaticResource label}"/>
-                    <userCon:UserControl_CelNabycia
-                            celNabyciaList="{Binding Path=DataContext.userControl_InnePrawa.celNabyciaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            selectedId="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.CelNabyciaId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                            />
+						</StackPanel>
 
-                </StackPanel>
+						<StackPanel
+							Grid.Row="4"
+							Grid.Column="1"
+							Grid.ColumnSpan="2"
+							Orientation="Horizontal" />
 
-                <StackPanel Grid.Row="4"  Grid.Column="1" Grid.ColumnSpan="2"
-                             
-                            Orientation="Horizontal" />
+					</Grid>
+				</Grid>
 
+				<Grid
+					Grid.Column="3">
+					<Grid
+						Margin="0,0,10,0">
+						<Grid.RowDefinitions>
+							<RowDefinition
+								Height="50" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="50" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
+							<RowDefinition
+								Height="30" />
 
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition
+								Width="90" />
+							<ColumnDefinition
+								Width="*" />
+						</Grid.ColumnDefinitions>
+						<Label
+							Grid.Row="0"
+							Grid.ColumnSpan="2"
+							Content="Płatność z tytułu innego prawa"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
 
-            </Grid>
-        </ScrollViewer>
+						<userCon:UserControl_Platnosc
+							Grid.Column="0"
+							Grid.Row="1"
+							Grid.RowSpan="10"
+							Grid.ColumnSpan="2"
+							platnosc="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.PlatnoscInnePrawa, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-        <ScrollViewer Grid.Column="4" 
-                      Style="{StaticResource scrollViewer}"
-                      >
-            <Grid Margin="0,0,10,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
+						<Label
+							Grid.Row="8"
+							Grid.ColumnSpan="2"
+							Content="Decyzje Administracyjne"
+							FontWeight="Bold"
+							FontSize="19"
+							Margin="0,10,0,0"
+							Style="{StaticResource label}" />
 
+						<userCon:UserControl_DecyzjeAdmin
+							Grid.Column="0"
+							Grid.Row="9"
+							Grid.RowSpan="9"
+							Grid.ColumnSpan="2"
+							podmiotList="{Binding Path=DataContext.userControl_InnePrawa.podmiotList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							decyzjeAdminList="{Binding Path=DataContext.userControl_InnePrawa.decyzjeAdminList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							selectedIdDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.DecyzjeAdministracyjneId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							collectionToRealodDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						<!--podmiotList="{Binding Path=DataContext.userControl_InnePrawa.podmiotList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+					</Grid>
 
-
-
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Label  Grid.Row="0" Grid.ColumnSpan="2"
-                                    Content="Płatność z tytułu innego prawa"
-                                    FontWeight="Bold"
-                                    FontSize="19"    
-                                    Margin="0,10,0,0"
-                                    Style="{StaticResource label}"/>
-
-                <userCon:UserControl_Platnosc Grid.Column="0" Grid.Row="1" Grid.RowSpan="10" Grid.ColumnSpan="2"
-                                    platnosc="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.PlatnoscInnePrawa, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
-                <Label              Grid.Row="8" Grid.ColumnSpan="2"
-                                    Content="Decyzje Administracyjne"
-                                    FontWeight="Bold"
-                                    FontSize="19"    
-                                    Margin="0,10,0,0"
-                                    Style="{StaticResource label}"/>
-
-                <userCon:UserControl_DecyzjeAdmin Grid.Column="0" Grid.Row="9" Grid.RowSpan="9" Grid.ColumnSpan="2"
-                                  
-                                    podmiotList="{Binding Path=DataContext.userControl_InnePrawa.podmiotList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    decyzjeAdminList="{Binding Path=DataContext.userControl_InnePrawa.decyzjeAdminList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    selectedIdDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaSel.DecyzjeAdministracyjneId, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    collectionToRealodDec="{Binding Path=DataContext.userControl_InnePrawa.innePrawaList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                  />
-                <!--podmiotList="{Binding Path=DataContext.userControl_InnePrawa.podmiotList, ElementName=InnePrawaWin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
-            </Grid>
-
-        </ScrollViewer>
-
-        <StackPanel 
+				</Grid>
+			</Grid>
+		</ScrollViewer>
+		<StackPanel 
                             Grid.Column="0"
                             Grid.Row="1"
                             Grid.ColumnSpan="5"
