@@ -1,112 +1,145 @@
-﻿<UserControl x:Class="RejestrNieruchomosciNew.View.UserControl_Transakcja"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
-             xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
-             xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
-             x:Name="Trans" Loaded="Trans_Loaded"
-             >
-    <UserControl.Resources>
-            <Style x:Key="tekstBoxTrigger" TargetType="TextBox">
-                <Setter Property="TextWrapping" Value="Wrap"/>
-                <Setter Property="AcceptsReturn" Value="True"/>
-                <Style.Triggers>
-                    <Trigger  Property="IsKeyboardFocused" Value="true">
-                        <Setter Property="Height" Value="80"/>
-                        <Setter Property="Panel.ZIndex" Value="13"/>
-                        <Setter Property="Grid.RowSpan" Value="3"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-    </UserControl.Resources>
+﻿<UserControl
+	x:Class="RejestrNieruchomosciNew.View.UserControl_Transakcja"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:RejestrNieruchomosciNew.View"
+	xmlns:conRaf="clr-namespace:WpfControlLibraryRaf;assembly=WpfControlLibraryRaf"
+	xmlns:userCon="clr-namespace:RejestrNieruchomosciNew.View"
+	mc:Ignorable="d"
+	d:DesignHeight="300"
+	d:DesignWidth="300"
+	xmlns:convert="clr-namespace:RejestrNieruchomosciNew.ViewModel"
+	x:Name="Trans"
+	Loaded="Trans_Loaded">
+	<UserControl.Resources>
+		<Style
+			x:Key="tekstBoxTrigger"
+			TargetType="TextBox">
+			<Setter
+				Property="TextWrapping"
+				Value="Wrap" />
+			<Setter
+				Property="AcceptsReturn"
+				Value="True" />
+			<Style.Triggers>
+				<Trigger
+					Property="IsKeyboardFocused"
+					Value="true">
+					<Setter
+						Property="Height"
+						Value="80" />
+					<Setter
+						Property="Panel.ZIndex"
+						Value="13" />
+					<Setter
+						Property="Grid.RowSpan"
+						Value="3" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
 
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-        </Grid.RowDefinitions>
-        
-        <conRaf:DataGridRafALL
-                    Grid.Row="0" 
-                    Margin="3,2,0,0"
-                    x:Name="userControlDataGridRafALL"
-                    VerticalAlignment="Top"
-                    itemSourceRafALL="{Binding itemSourceTrans, ElementName=Trans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    TekstPropALL="{Binding numerTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
-                    selectedIdRafALL="{Binding selectedIdTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
-                    heightRafALL="23"
-                    HorizontalAlignment="Stretch"
-                    colNameIdRaf="TransakcjeId" 
-                    colNameRaf="Numer"
-                    Panel.ZIndex="130"
-                    Grid.RowSpan="6"
-                    clearTekstOnExit="False"
-                    />
-       
-        <ComboBox Grid.Row="1" 
-                  ItemsSource="{Binding rodzDokSlo.list}"
-                  SelectedValue="{Binding  transakcje.RodzajDokumentuSloId}"
-                  SelectedValuePath="RodzajDokumentuSloId"
-                  DisplayMemberPath="Nazwa"  
-                  Margin="3"/>
-        
-        <ComboBox Grid.Row="2" 
-                  ItemsSource="{Binding nazwaCzynSlo.list}"
-                  SelectedValue="{Binding  transakcje.NazwaCzynnosciSloId}"
-                  SelectedValuePath="NazwaCzynnosciSloId"
-                  DisplayMemberPath="Nazwa"  
-                  Margin="3"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+			<RowDefinition
+				Height="30" />
+		</Grid.RowDefinitions>
 
-        <TextBox Grid.Row="3" 
-                 Margin="3"
-                 TextWrapping="Wrap"
-                 Text="{Binding transakcje.Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <TextBox Grid.Row="4" 
-                 Margin="3"
-                 Text="{Binding transakcje.Data, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat='{}{0:dd.MM.yyyy}'}"/>
+		<conRaf:DataGridRafALL
+			Grid.Row="0"
+			Margin="3,2,0,0"
+			x:Name="userControlDataGridRafALL"
+			VerticalAlignment="Top"
+			itemSourceRafALL="{Binding itemSourceTrans, ElementName=Trans, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			TekstPropALL="{Binding numerTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
+			selectedIdRafALL="{Binding selectedIdTrans, Mode=TwoWay, ElementName=Trans, UpdateSourceTrigger=PropertyChanged}"
+			heightRafALL="23"
+			HorizontalAlignment="Stretch"
+			colNameIdRaf="TransakcjeId"
+			colNameRaf="Numer"
+			Panel.ZIndex="130"
+			Grid.RowSpan="6"
+			clearTekstOnExit="False" />
 
-        <userCon:UserControl_Attachment Grid.Row="5"
-                                        Margin="3"
-                                        IsEnabled="{Binding zalButton}"
-                                        pathRaf="{Binding zalPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        />
-        
-        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button
-                 Command="{Binding clickAdd}"
-                 IsEnabled="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Content="Dodaj"
-                 MaxWidth="100" 
-                 
-                 Margin="2,5,2,5"/>
-            <Button
-                 Command="{Binding clickMod}"
-                 IsEnabled="{Binding modButton}"
-                 Content="Zmień"
-                 MaxWidth="100" 
-                 
-                 Margin="2,5,2,5"/>
-            <Button
-                 Command="{Binding clickCls}"
-                 Content="Czyść"
-                 IsEnabled="{Binding clsButton}"
-                 MaxWidth="100" 
-                
-                 Margin="2,5,2,5"/>
-        </StackPanel>
+		
+		<ComboBox
+			Grid.Row="1"
+			ItemsSource="{Binding rodzDokSlo.list}"
+			SelectedValue="{Binding  transakcje.RodzajDokumentuSloId}"
+			SelectedValuePath="RodzajDokumentuSloId"
+			DisplayMemberPath="Nazwa"
+			IsEnabled="{Binding cannAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			Margin="3" />
 
-    </Grid>
+		<ComboBox
+			Grid.Row="2"
+			ItemsSource="{Binding nazwaCzynSlo.list}"
+			SelectedValue="{Binding  transakcje.NazwaCzynnosciSloId}"
+			SelectedValuePath="NazwaCzynnosciSloId"
+			DisplayMemberPath="Nazwa"
+			Margin="3"
+			IsEnabled="{Binding cannAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+		<TextBox
+			Grid.Row="3"
+			Margin="3"
+			TextWrapping="Wrap"
+			Text="{Binding transakcje.Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			IsEnabled="{Binding cannAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+		<TextBox
+			Grid.Row="4"
+			Margin="3"
+			Text="{Binding transakcje.Data, Mode=TwoWay, UpdateSourceTrigger=LostFocus, StringFormat='{}{0:dd.MM.yyyy}'}"
+			IsEnabled="{Binding cannAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+		<userCon:UserControl_Attachment
+			Grid.Row="5"
+			Margin="3"
+			IsEnabled="{Binding zalButton}"
+			pathRaf="{Binding zalPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+		<StackPanel
+			Grid.Row="6"
+			Orientation="Horizontal"
+			HorizontalAlignment="Center">
+			<Button
+				Command="{Binding clickAdd}"
+				IsEnabled="{Binding addButton, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				Content="Dodaj"
+				MaxWidth="100"
+				Margin="2,5,2,5" />
+			<Button
+				Command="{Binding clickMod}"
+				IsEnabled="{Binding modButton}"
+				Content="Zmień"
+				MaxWidth="100"
+				Margin="2,5,2,5" />
+			<Button
+				Command="{Binding clickCls}"
+				Content="Czyść"
+				IsEnabled="{Binding clsButton}"
+				MaxWidth="100"
+				Margin="2,5,2,5" />
+		</StackPanel>
+
+	</Grid>
 </UserControl>

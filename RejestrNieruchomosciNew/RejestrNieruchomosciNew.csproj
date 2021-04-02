@@ -30,7 +30,7 @@
     <UpdateUrl>\\mapa\GeoVidi\RejestrNieruchomosci\Instal\</UpdateUrl>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,10 +58,10 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>35AFD86B58DF1E58D0018A7498F47F7E66184E8E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>4F9D959F31C5F74638B2FD115727B95B8F79C71B</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>RejestrNieruchomosciNew_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RejestrNieruchomosciNew_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -779,6 +779,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="RejestrNieruchomosciNew_1_TemporaryKey.pfx" />
     <None Include="RejestrNieruchomosciNew_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

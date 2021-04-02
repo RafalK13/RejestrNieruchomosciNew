@@ -84,6 +84,16 @@ namespace RejestrNieruchomosciNew.View
 
         #endregion
 
+        public bool cannAdd
+        {
+            get { return (bool)GetValue(cannAddProperty); }
+            set { SetValue(cannAddProperty, value); }
+        }
+
+        public static readonly DependencyProperty cannAddProperty =
+            DependencyProperty.Register("cannAdd", typeof(bool), typeof(UserControl_Transakcja), new PropertyMetadata(false));
+
+
         #region NumerTrans
         public string numerTrans
         {
@@ -98,6 +108,7 @@ namespace RejestrNieruchomosciNew.View
             UserControl_Transakcja u = d as UserControl_Transakcja;
             if (string.IsNullOrEmpty( u.numerTrans) == false )
             {
+                u.cannAdd = true;
                 if (u.selectedIdTrans > 0)
                 {
                     u.addButton = false;
@@ -124,6 +135,7 @@ namespace RejestrNieruchomosciNew.View
                 u.selectedIdTrans = null;
                 u.addButton = false;
                 u.zalButton = false;
+                u.cannAdd = false;
             }
 
         }

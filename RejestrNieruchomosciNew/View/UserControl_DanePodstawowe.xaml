@@ -296,7 +296,7 @@
             Validation.ErrorTemplate="{StaticResource errorTemplate}">
             <Binding
                 Path="userControl_AddDanePod.dzialka.Pow"
-                StringFormat="#,#.###############"
+                StringFormat="N4"
                 ValidatesOnDataErrors="True"
                 UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
@@ -304,6 +304,7 @@
                 </Binding.ValidationRules>
             </Binding>
         </TextBox>
+		<!--StringFormat="#,#.###############"-->
 
         <!--Text="{Binding userControl_AddDanePod.dzialka.Pow, 
                                    Converter={StaticResource strToPowHa}, 
